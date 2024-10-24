@@ -1,3 +1,4 @@
+<!-- #region -->
 Coursework Assessment 
 ===================================================
 
@@ -9,49 +10,55 @@ Assessment will typically be through team-based learning assignments as well as 
 
 ## Masters students
 
-Both your practical computing work itself (including any writeups), and whether you are following good programming and workflow
-practices will be assessed, usually on a weekly basis. 
+Both your practical computing work itself (including any writeups), and whether you are following good programming and workflow practices will be assessed, usually on a weekly basis. 
 
 The goal of the assessment is to gauge and provide feedback on how well you have learned the principles and implementation of good coding practices and keeping workflows/pipelines/software organised and reusable irrespective of of programming language; In particular (remember the [Zen of Python](https://peps.python.org/pep-0020/)!):
 
-### 1. **Write Clear, Readable Code**
+1. **Write Clear, Readable Code**
    - **Meaningful variable and function names**: Use names that clearly describe their purpose.
    - **Consistent naming conventions**: Stick to a single style (e.g., [camelCase](https://simple.wikipedia.org/wiki/CamelCase), [snake_case](https://en.wikipedia.org/wiki/Snake_case)).
    - **Commenting and Documentation**: Provide concise comments and document code sections to explain their logic, especially for complex parts.
 
-### 2. **Modular Code**
+
+2. **Modular Code**
    - **Single Responsibility Principle (SRP)**: Functions or methods should perform one task.
    - **Reusable functions**: Break down large tasks into smaller, reusable functions.
    - **DRY (Don't Repeat Yourself)**: Avoid duplicating code; encapsulate repetitive logic in functions.
 
-### 3. **Error Handling**
+
+3. **Error Handling**
    - **Graceful error handling**: Use `try-except` blocks or other error-handling mechanisms to anticipate failures and handle them without crashing the program.
    - **Meaningful error messages**: Provide messages that help developers understand what went wrong and how to fix it.
 
-### 4. **Testing**
+
+4. **Testing**
    - **Unit tests**: Write automated tests for individual units of code to ensure they behave as expected.
    - **Test early and often**: Test code during development to catch bugs before they become difficult to track.
 
-### 5. **Version Control**
+
+5. **Version Control**
    - **Use Git or other version control systems**: Commit frequently, with clear commit messages describing the purpose of the changes.
    - **Branching strategies**: Develop new features or bug fixes in separate branches to avoid conflicts in the main branch.
 
-### 6. **Code Optimization**
-   - **Efficiency**: Write code that minimizes time and space complexity where possible.
-   - **Avoid premature optimization**: Focus first on functionality, then optimize only where performance is actually a bottleneck.
 
-### 7. **Consistent Code Style**
+6. **Optimization**
+   - **Efficiency**: Write code that minimizes time and space complexity where possible.
+   - **But avoid premature optimization!**: Focus first on functionality, then optimize only where performance is actually a bottleneck. Remember Donald Knuth's quote: "Premature optimizaton is the root of all evil"! 
+
+
+7. **Consistent Code Style**
    - **Follow style guides**: Adhere to style guides (e.g., PEP 8 for Python) to keep code consistent.
    - **Code formatters and linters**: Use automated tools to enforce coding standards and detect errors.
 
-### 8. **Code Reviews**
+
+8. **Code Reviews**
    - **Peer reviews**: Have others review your code to catch issues and get feedback on design and implementation.
    - **Collaborative improvement**: Use feedback to refine the code and learn better practices.
 
-### 9. **Avoid Hardcoding Values**
+9. **Avoid Hardcoding Values**
    - **Use constants or configuration files**: Keep dynamic values and settings outside the code to avoid hardcoding values directly into the program.
 
-### 10. **Refactor Code Regularly**
+10. **Refactor Code Regularly**
    - **Refactoring**: Continuously improve code by removing redundancies, simplifying logic, or improving structure without changing functionality.
    - **Code smell detection**: Watch for patterns that indicate poor design, such as overly complex functions or tightly coupled code, and address them.
 
@@ -219,3 +226,4 @@ Students are encouraged to collaborate on these courses (e.g., CMEE). You may of
 *Alright, full steam ahead then!*
 
 <!-- You could make a separate directory called ``TestData`` as the default input and reference the main Data file in the ``.gitignore`` file (see the `Git Chapter <03-Git.ipynb>`__) -->
+<!-- #endregion -->
