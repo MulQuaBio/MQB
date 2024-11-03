@@ -1,229 +1,183 @@
-<!-- #region -->
-Coursework Assessment 
-===================================================
+# TMQB Coursework Assessment
 
-In case your work on any of the TMQB materials is being assessed, here are the guidelines.
+Here are the guidelines for assessment of any coursework based on the TMQB materials.
 
-## Undergraduates
+Assessment may be through computer-based tests, or individual or group/team-based practicals.
 
-Assessment will typically be through team-based learning assignments as well as a computer-based test. You will be expected to be able to apply the concepts you have learned to address questions by using appropriate computer code (e.g., R) input and interpreting the output.
+In computer-based tests, you will be expected to be able to apply the concepts and techniques you have learned to address the questions by using appropriate computer code input and interpreting the output.
 
-## Masters students
+## Assessment of Practicals
 
-Both your practical computing work itself (including any writeups), and whether you are following good programming and workflow practices will be assessed, usually on a weekly basis. 
+Both, the correctness and quality of your practical work / solutions, and whether you are following good programming & workflow practices will be assessed: how well you have learned the principles and implementation of **keeping workflows/pipelines/software organised and reusable** and **good coding practices**, _irrespective of programming language_ (please refer back to the start of the [UNIX](01-Unix.html) and [Python](#./05-Python_I.ipynb) chapters in particular).
 
-The goal of the assessment is to gauge and provide feedback on how well you have learned the principles and implementation of good coding practices and keeping workflows/pipelines/software organised and reusable irrespective of of programming language; In particular (remember the [Zen of Python](https://peps.python.org/pep-0020/)!):
-
-1. **Write Clear, Readable Code**
-   - **Meaningful variable and function names**: Use names that clearly describe their purpose.
-   - **Consistent naming conventions**: Stick to a single style (e.g., [camelCase](https://simple.wikipedia.org/wiki/CamelCase), [snake_case](https://en.wikipedia.org/wiki/Snake_case)).
-   - **Commenting and Documentation**: Provide concise comments and document code sections to explain their logic, especially for complex parts.
-
-
-2. **Modular Code**
-   - **Single Responsibility Principle (SRP)**: Functions or methods should perform one task.
-   - **Reusable functions**: Break down large tasks into smaller, reusable functions.
-   - **DRY (Don't Repeat Yourself)**: Avoid duplicating code; encapsulate repetitive logic in functions.
-
-
-3. **Error Handling**
-   - **Graceful error handling**: Use `try-except` blocks or other error-handling mechanisms to anticipate failures and handle them without crashing the program.
-   - **Meaningful error messages**: Provide messages that help developers understand what went wrong and how to fix it.
-
-
-4. **Testing**
-   - **Unit tests**: Write automated tests for individual units of code to ensure they behave as expected.
-   - **Test early and often**: Test code during development to catch bugs before they become difficult to track.
-
-
-5. **Version Control**
-   - **Use Git or other version control systems**: Commit frequently, with clear commit messages describing the purpose of the changes.
-   - **Branching strategies**: Develop new features or bug fixes in separate branches to avoid conflicts in the main branch.
-
-
-6. **Optimization**
-   - **Efficiency**: Write code that minimizes time and space complexity where possible.
-   - **But avoid premature optimization!**: Focus first on functionality, then optimize only where performance is actually a bottleneck. Remember Donald Knuth's quote: "Premature optimizaton is the root of all evil"! 
-
-
-7. **Consistent Code Style**
-   - **Follow style guides**: Adhere to style guides (e.g., PEP 8 for Python) to keep code consistent.
-   - **Code formatters and linters**: Use automated tools to enforce coding standards and detect errors.
-
-
-8. **Code Reviews**
-   - **Peer reviews**: Have others review your code to catch issues and get feedback on design and implementation.
-   - **Collaborative improvement**: Use feedback to refine the code and learn better practices.
-
-9. **Avoid Hardcoding Values**
-   - **Use constants or configuration files**: Keep dynamic values and settings outside the code to avoid hardcoding values directly into the program.
-
-10. **Refactor Code Regularly**
-   - **Refactoring**: Continuously improve code by removing redundancies, simplifying logic, or improving structure without changing functionality.
-   - **Code smell detection**: Watch for patterns that indicate poor design, such as overly complex functions or tightly coupled code, and address them.
-
-Adhering to these practices  result in more maintainable, efficient, and scalable code, enhancing collaboration and reducing future technical load.
-
-```{note}
-Lowercase for directory names below is a suggestion - just be consistent with whatever you choose, such as [CamelCase](https://en.wikipedia.org/wiki/Camel_case); for example, you may choose to name your `code` directory, `Code` instead.  
+```{Note}
+Lowercase for directory names below is a suggestion - just be consistent with whatever you choose, such as [CamelCase](https://en.wikipedia.org/wiki/Camel_case); for example, you may choose to name your `code` directory, `Code` instead.
 ```
+
 The basic rules you must follow, irrespective of a Week or project's content are:
 
-* All code/scripts go to a ``code`` directory
-* All data go to a ``data`` directory
-* All results go to ``results`` directory. The results directory should be empty when you submit your week's work, as it will be populated automatically when the assessment script runs.
-* If you have files that don't fit in these categories, put them additional, meaningfully named directories. For example, you can create a ``sandbox`` directory to hold your experimental work (and perhaps [`.gitignore`](./03-Git.ipynb) it).
-* No single file should be greater than 100 mb, either data or script/code. If a script needs a data file, but the example data file is >100 mb, reduce it to a minimum working dataset and upload that, keeping the main data file(s) under `.gitignore`. Keep all your  data backed up elsewhere, of course!
+* All code/scripts go to a `code` directory
+    
+* All data go to a `data` directory
+    
+* All results go to `results` directory. The results directory should be empty when you submit your week's work, as it will be populated automatically when the assessment script runs.
+    
+* If you have files that don't fit in these categories, put them additional, meaningfully named directories. For example, you can create a `sandbox` directory to hold your experimental work (and perhaps [`.gitignore`](03-Git.html) it).
+    
+* No single file should be greater than 100 mb, either data or script/code. If a script needs a data file, but the example data file is >100 mb, reduce it to a minimum working dataset and upload that, keeping the main data file(s) under `.gitignore`. Keep all your data backed up elsewhere, of course!
+    
 * Most importantly, all scripts should run without errors, taking in data and spitting out the results as necessary.
-
+    
 When necessary, more specific, module-specific details on weekly coursework and assessment will be given when relevant.
 
 ### Pre-submission practicals wrap-up
 
-Do this as after you finish with an assignment, and at the end of every week / module, before submission :
+Do this as after you finish with an assignment, and before submission:
 
-* Review and make sure you can run all the commands, code fragments, and named scripts you have built till then and get the expected    outputs.
-* Review your code files and annotate/comment code lines as much and as often as necessary using ``#``.
+* Review and make sure you can run all the commands, code fragments, and named scripts you have built till then and get the expected outputs.
+    
+* Review your code files and annotate/comment code lines as much and as often as necessary using `#`.
+    
 * Check that all code, data and results files organized as instructed above in you weekly directory.
+    
 * `git add`, `commit` and `push` your work after every major change to your weekly work, and make a final push by the given deadline.
+    
 
-### The Weekly Feedback
-
-Your weekly directories will be checked for how neat and organized they are in a logical workflow, and all the scripts tested, and screened for how well they adhere to the above good coding principles. 
-
-A log file of the results will be pushed to your git repo. This file will contain "points" on a weekly basis to give you and the assessor a quantitative measure of how well you have done in that week. Here is the points scheme for this weekly feedback:
-
-```{note} An *in-class script* is one that is either given to you in class, or which you built from code fragments used in class (typically by re-typing them verbatim) to illustrate one or more good programming concepts, or tools. An *assigned script* is one you have written yourself, either from scratch or by modifying one given to you to complete an assigned practical (always appearing under a "Practicals" subsection of a chapter).
+```{Note}
+An _in-class script_ is one that is either given to you in class, or which you built from code fragments used in class (typically by re-typing them verbatim) to illustrate one or more good programming concepts, or tools. An _assigned script_ is one you have written yourself, either from scratch or by modifying one given to you to complete an assigned practical (always appearing under a "Practicals" subsection of a chapter).
 ```
-* You would get 100 points if,
-* All the in-class scripts  were in place (in the code directory in the respective week's directory) and functional when run on the assessor's (Linux) computer.
-* All the assigned practicals / problems  were complete and functional, and give the right answers.
-* The scripts are all up to the the mark in terms of internal documentation and commenting.
-* There is a neat ``readme`` file for the overall repository and in each of the weekly directories.
-* For every missing script or assigned practical/problem, 10 pts deducted (including groupwork scripts; see below)
-* For every assigned practical/problem, 5 pts deducted for wrong answer if applicable (that is, script runs without error, but gives wrong numerical/text/graphical output).
-* For every missing ``readme`` file, 1 pt deducted.
-* For every extra, non-script file in ``code`` directory, 0.5 pt deducted.
-* For every pre-existing file in the ``results`` directory, 0.5 pt deducted.
-* For every *valid* script file in ``code`` directory lacking an appropriate extension file (``*.sh``,\ ``*.py``, etc), 0.5 pt deducted.
-* For every in-class script that gives a syntax error, 5 pts deducted, and for every script that gives an error because of wrong path (e.g., absolute) assignment, 2 pts deducted.
-* For every Python script *completely* lacking a docstring, 2 pts deducted. For every function in a Python script lacking a docstring, 0.5 pt deducted.
-* For every result of a code/script run not saved to a separate results directory, 1 pt deducted. For example, the separate directory may be ``results`` for new results, or ``data``, if the scripts is for generating a new or modified dataset.
 
-### Groupwork
+### Code testing and feedback
 
-#### Execution
+Your project (e.g., weekly) directories will be checked for how neat and organized they are in a logical workflow, and all the scripts tested & screened for how well they adhere to good project structure and coding principles; in particular that:
+
+* All in-class and assigned scripts are in the appropriate `code` directory.
+    
+* All code/script files are functional (no errors, correct output) when run on the assessor's (Linux) computer.
+    
+* The scripts are all up to the the mark in terms of internal documentation (e.g., docstrings in the case of Python) and commenting.
+    
+* There is a good `readme` file for the overall repository and in each of the weekly directories.
+    
+* The `results` directory is empty (no pre-existing results).
+    
+* All _valid_ script files in `code` directory have an appropriate extension (`*.sh`,\\ `*.py`, etc).
+    
+* All results of a code/script run are saved to a separate `results` directory.
+    
+
+### Groupwork execution
 
 * Each student group will assign a "scribe" to the group who will create a **new Groupwork repository** where all assigned groupwork practicals will be tackled collaboratively.
+    
 * The group members will collaborate to develop the solution by creating branches of the script as necessary.
+    
     * The repo's git history will be used to gauge / quantify the relative contributions of group members.
-    * Please read about git branching/merging the [Git Chapter](03-Git.ipynb) (including the Readings \& Resources given at the end of th chaptger). Also [see this article](https://www.gitkraken.com/blog/collaborate-on-github).
+        
 * Once the group has reached a solution only the main branch should remain.
+    
 * The groupwork practicals will will only be evaluated in the final assessment (below).
+    
 
-**Here Are Common Mistakes to avoid with Git Branching and Merging in Team Projects:**
+```{Note}
+Please read about git branching and merging during teamwork in the [Git Chapter](03-Git.html), including the "**Common Mistakes to avoid…**" listed there. Please also check the Readings & Resources at the end of the chapter.
+```
 
-1. **Working Directly on the Main Branch**
-   - **Issue**: Making changes directly to the `main` or `master` branch without using feature branches.
-   - **Why It's a Problem**: This practice can lead to a cluttered commit history and increases the risk of introducing unstable code into the main codebase, affecting all team members.
+#### Groupwork assessment
 
-2. **Not Pulling Latest Changes Before Starting Work**
-   - **Issue**: Forgetting to fetch and merge the latest changes from the remote repository before starting new work.
-   - **Why It's a Problem**: Leads to working on outdated code and causes significant merge conflicts when pushing changes later.
+Every "Groupwork" question / script completed will be assessed using the same criteria as above.
 
-3. **Improper Branching Practices**
-   - **Issue**: Not creating separate branches for new features or bug fixes, or using inconsistent branch naming conventions.
-   - **Why It's a Problem**: Makes it difficult to manage code changes, track progress, and collaborate effectively.
+### Final assessment of computing coursework
 
-4. **Poor Commit Hygiene**
-   - **Issue**: Making large, infrequent commits with vague messages like "Fixed stuff" or "Changes."
-   - **Why It's a Problem**: Hinders the ability to trace specific changes, debug issues, and understand the project's evolution.
+A written summative assessment of your overall performance will be sent at the end of your computing module or course (e.g., the CMEE computing bootcamp; please refer to your course documentation for specific dates). For this, all the weeks scripts (including the Groupwork scripts) will be run / re-run (and logs and feedback returned).
 
-5. **Not Handling Merge Conflicts Properly**
-   - **Issue**: Overwriting code, deleting others' work, or incorrectly resolving conflicts without understanding the implications.
-   - **Why It's a Problem**: Can introduce bugs, cause loss of important code, and disrupt the functionality of the application.
+Using the testing results, the assessor will exercise their judgment to deduct marks if the weekly directory structure is disorganized, the code inadequately commented or insufficiently documented, the solution is not optimal or correct, or the written components of practicals are not up to the mark (see _The Weekly Feedback_ section).
 
-6. **Overwriting Team Members' Changes**
-   - **Issue**: Using `git push --force` or not merging the latest remote changes before pushing local commits.
-   - **Why It's a Problem**: Leads to loss of others' work and creates confusion in the team's codebase.
-
-7. **Ignoring the .gitignore File**
-   - **Issue**: Committing unnecessary files like binaries, temporary files, or sensitive information.
-   - **Why It's a Problem**: Clutters the repository, increases clone/download times, and poses security risks.
-
-8. **Misusing Git Commands**
-   - **Issue**: Incorrectly using commands like `git reset`, `git revert`, or rebasing public branches.
-   - **Why It's a Problem**: Can rewrite commit history, cause loss of work, and confuse team members due to unexpected repository states.
-
-9. **Lack of Communication and Coordination**
-   - **Issue**: Not informing team members about new branches, changes, or issues encountered.
-   - **Why It's a Problem**: Leads to duplicated work, merge conflicts, and a lack of cohesion in development efforts.
-
-10. **Pushing Broken or Untested Code**
-    - **Issue**: Committing untested code.
-    - **Why It's a Problem**: Disrupts the workflow for others, especially if continuous integration pipelines fail due to the broken code.
-
-11. **Confusion Between Local and Remote Branches**
-    - **Issue**: Forgetting to push local branches to the remote repository or misunderstanding the state of branches.
-    - **Why It's a Problem**: Causes discrepancies between local and remote repositories, leading to confusion and potential loss of work.
-
-12. **Conflict Between Personal and Team Workflows**
-    - **Issue**: Using personal Git configurations or workflows that don't align with the team's agreed-upon practices.
-    - **Why It's a Problem**: Creates inconsistency and can cause issues with code integration and collaboration.
-
-13. **Over-Reliance on GUI Tools Without Understanding Git Basics**
-    - **Issue**: Using graphical interfaces without grasping the underlying Git commands.
-    - **Why It's a Problem**: Limits the ability to troubleshoot issues and understand what's happening behind the scenes, leading to mistakes.
-
-14. **Ignoring Merge Warnings and Errors**
-    - **Issue**: Proceeding with merges without addressing warnings or errors.
-    - **Why It's a Problem**: Can result in incomplete merges, broken code, and unresolved conflicts that affect the entire team.
-
-15. **Not Keeping Branches Up-to-Date**
-    - **Issue**: Failing to regularly merge or rebase the main branch into feature branches.
-    - **Why It's a Problem**: Leads to large, complex merge conflicts when it's time to integrate changes back into the main branch.
-
-16. **Mismanaging Merge Strategies**
-    - **Issue**: Inappropriately using `git merge` vs. `git rebase` without understanding the consequences.
-    - **Why It's a Problem**: Can create a confusing commit history and complicate collaboration efforts.
-
-17. **Deleting Branches Prematurely**
-    - **Issue**: Removing branches that others are still using or that contain unmerged changes.
-    - **Why It's a Problem**: Causes loss of work and disrupts team members who are relying on those branches.
-
-**Tips to Avoid These Mistakes:**
-
-- **Educate Yourself**: Take time to learn Git fundamentals, including branching, merging, and resolving conflicts.
-- **Use Feature Branches**: Create a new branch for each feature or bug fix to isolate your work.
-- **Commit Often with Clear Messages**: Make small, incremental commits with descriptive messages.
-- **Pull Frequently**: Regularly fetch and merge changes from the remote repository to stay up-to-date.
-- **Communicate**: Keep open lines of communication with your team about what you're working on.
-- **Test Before Committing**: Ensure your code compiles and passes tests before pushing.
-- **Understand Git Commands**: Before using advanced commands like `git reset` or `git rebase`, make sure you understand their effects.
-- **Use .gitignore Wisely**: Configure your `.gitignore` file to exclude unnecessary or sensitive files.
-- **Review Pull Requests**: Participate in code reviews to catch issues early and share knowledge.
-- **Follow Team Conventions**: Adhere to agreed-upon workflows, branch naming conventions, and commit message formats.
-
-#### Assessment
-
-* Every "Groupwork" question/script completed will be assessed using the same criteria as above, but in the final evaluation only. 
-* If there are inconsistencies between a groupwork script/solution of a given group, 5 points will be deducted from **each** group member's total.    
-
-## The final assessment of computing coursework
-
-A written summative assessment of your overall performance (with your marks) will be sent at the end of your computing module (e.g., thr CMEE  computing bootcamp; please regfer to your course documentation for specific dates). For this, all the weeks scripts (including the Groupwork scripts) will be run / re-run (and logs and feedback returned). 
-
-Using the points obtained by each student in each week based on the criteria given in the (*The Weekly Feedback* section), the assessor will exercise their judgment to deduct further marks if the weekly directory structure is disorganized, the code inadequately commented or insufficiently documented, the solution is not optimal or correct, or the written components of practicals are not up to the mark.
-
-The weekly log files are to help you spot general, as well as programming language-specific issues with your computing coursework on a regular basis. You may and should fix bugs and other problems that the feedback logs bring to your attention. The assessor will have a look at how much you addressed the issues in the final assessment (by re-running all the weeks' scripts). The final assessment will necessarily be more subjective than the weekly assessments, because the goal is to provide an overall, summative picture of how you did and what you can improve on. You will get feedback if these issues needed to be addressed in the final written assessment. The final marks will be based upon the weekly points and your particular coursework marking criteria (please ask your course / module instructor and administrator for them). 
-
-<!-- The contribution of each week to the overall marks will be up- or down-weighed based upon the difficulty level. -->
+The weekly log files are provided to help you spot general, as well as programming language-specific issues with your computing coursework. You may and should fix bugs and other problems that the feedback logs bring to your attention. The assessor will have a look at how much you addressed the issues in the final assessment (by re-running all the weeks' scripts). The final assessment will necessarily be more subjective than the weekly assessments, because the goal is to provide an overall, summative picture of how you did and what you can improve on. You will get feedback if these issues needed to be addressed in the final written assessment. The final marks will be based upon your particular coursework marking criteria (please ask your course / module instructor and administrator for them).
 
 ## Plagiarism
 
-Students are encouraged to collaborate on these courses (e.g., CMEE). You may often exchange code snippets (solutions to sub-problems within the bigger problem, if you like) or blocks of code to test them. Also, two implementations of a coding solution / algorithm might often be very convergent and relatively similar. However, unless it is a groupwork practical (see above), extremely similar or identical scripts / code files will be reviewed carefully by markers. To this end, the assessment script will perform a diff on pairs of (non-groupwork) code files to detect "inordinate" degrees of similarity.
+Students are encouraged to collaborate for learning, including on the practicals. You may often exchange code snippets (solutions to sub-problems within the bigger problem, if you like) or blocks of code to test them. Also, two implementations of a coding solution / algorithm might often be very convergent and relatively similar. However, unless it is a groupwork practical (see above), extremely similar or identical scripts / code files will be reviewed carefully by assessors. To this end, the assessment script will perform a diff on pairs of (non-groupwork) code files to detect "inordinate" degrees of similarity.
 
+### Appropriate usage of AI for coding
+
+Artificial Intelligence (AI) tools such as ChatGPT have become valuable resources for learning and coding assistance. However, it's important to use them responsibly to enhance your learning experience without violating academic integrity and undermining your actual learning.
+
+Here are some guidelines to help you make appropriate use of AI in your coding journey.
+
+1. **Use AI as a Learning Aid, Not a Crutch**
+
+Leverage AI to understand concepts and get unstuck, but avoid relying on it to do the work for you.
+
+*Example:* If you're struggling to understand how a recursive function (recall the [Python Chapter](05-Python.html)) works, you might ask an AI tool to explain the concept or provide a simple example. Use this information to deepen your understanding and then attempt to write your own recursive function.
+
+2. **Understand and Verify AI-Generated Code**
+
+Always read and comprehend any code provided by AI to ensure you understand how it works.
+
+*Example:* Suppose an AI tool suggests a solution for sorting a list. Before using it, go through each line of code to understand the sorting algorithm implemented. Try to explain it in your own words or comment the code to reinforce your understanding.
+
+3. **Avoid Plagiarism and Uphold Academic Integrity**
+
+Do not submit AI-generated code as your own in assignments or projects where external assistance is not permitted.
+
+*Example:* If your assignment requires you to implement a function without outside help, avoid copying code from an AI tool. Instead, use the AI to clarify concepts if allowed, but write the code independently to ensure it reflects your understanding.
+
+4. **Follow Your Institution's Policies on AI Usage**
+
+Be aware of and comply with your institution, school or university's rules regarding AI assistance.
+
+*Example:* If your course syllabus states that using AI tools is prohibited for homework assignments, refrain from using them. Violating these policies can lead to serious academic consequences.
+
+5. **Use AI to Enhance Problem-Solving Skills**
+
+Employ AI to practice coding challenges and improve your skills, not just to get answers.
+
+*Example:* When practicing coding problems, you might attempt a problem on your own first. If you get stuck, use the AI to get hints or alternative approaches, then try solving the problem again without directly copying the solution.
+
+6. **Cite AI Assistance When Required**
+
+Acknowledge the use of AI tools in your work if your academic or professional guidelines require it.
+
+*Example:* In a project report, you might include a section like: "Portions of the code were developed with the assistance of AI tools such as ChatGPT." Alternatively, add comments in your code where AI assistance was used.
+
+7. **Develop Independent Coding Skills**
+
+Strive to solve coding problems on your own to build confidence and proficiency.
+
+*Example:* Before consulting AI, spend time brainstorming and coding your solution. Use AI only after you've made a genuine effort, which helps reinforce learning and retention.
+
+8. **Be Aware of AI's Limitations**
+
+Recognize that AI tools can sometimes provide incorrect or suboptimal solutions.
+
+*Example:* If an AI suggests a piece of code, test it thoroughly. Suppose the AI provides a function that doesn't handle edge cases properly; identifying and correcting this strengthens your debugging skills.
+
+9. **Protect Sensitive Information**
+
+Do not input confidential or personal data into AI tools.
+
+*Example:* If you're working on a project with proprietary code or sensitive data, avoid sharing that code with an AI tool. Instead, abstract the problem or create a simplified version that doesn't disclose sensitive information.
+
+10. **Collaborate Ethically in Team Projects**
+
+Ensure all team members agree on the use of AI tools and properly attribute any AI-generated contributions.
+
+*Example:* In a group project, discuss with your team whether to use AI assistance. If you collectively decide to use it, make sure to document where and how it was used, following any required citation practices.
+
+11. **Avoid Overreliance on AI**
+
+Balance the use of AI with traditional learning resources like textbooks, lectures, and discussions with peers or instructors.
+
+*Example:* If you are learning a new programming language, use official documentation and tutorials as your primary resources. Supplement your learning with AI explanations when needed, but don't let it replace foundational learning methods.
+
+12. **Contribute to the Learning Community**
+
+Share your insights and understanding gained from AI assistance with classmates, fostering a collaborative learning environment.
+
+*Example:* If an AI tool helped you grasp a difficult concept, consider explaining it to study group members or participating in class discussions to help others benefit from your newfound understanding.
+
+By following these guidelines, you can make the most of AI tools to enhance your coding skills while maintaining academic integrity and personal growth. Remember, the goal of using AI in coding is to support your learning journey, *not* to replace the valuable process of learning through practice and problem-solving.
+
+---
 *Alright, full steam ahead then!*
-
-<!-- You could make a separate directory called ``TestData`` as the default input and reference the main Data file in the ``.gitignore`` file (see the `Git Chapter <03-Git.ipynb>`__) -->
-<!-- #endregion -->
