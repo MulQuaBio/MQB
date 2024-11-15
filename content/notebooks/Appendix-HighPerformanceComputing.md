@@ -1,49 +1,38 @@
 # Introduction to High-Performance Computing (HPC)
 
-High-Performance Computing (HPC) refers to the use of supercomputers or
-parallel computing techniques to perform complex computations quickly.
-HPC systems aggregate computing resources to solve problems that would
-be unfeasible or time-consuming using conventional methods. These
-systems play a critical role in research fields like bioinformatics,
-physics, climate modeling, and engineering.
+High-Performance Computing (HPC) refers to the use of supercomputers or parallel computing techniques to perform complex computations quickly. HPC systems aggregate computing resources to solve problems that would be unfeasible or time-consuming using conventional methods. These systems play a critical role in research fields like bioinformatics, physics, climate modeling, and engineering.
 
 ## Why Use HPC?
+High-Performance computing is a game-changer for tackling some of the most challenging problems today in science, engineering, and data analysis. Imagine you are working with a data set so large that a normal desktop computer would take days to weeks to process it - HPCs are able to handle the task in hours or even minutes because of the combined power of many interconnected processors and computers, enabling the simultaneous processing of data. For example, fields like genomics rely on HPC to analyse DNA sequences across entire populations, while climate scientists use it to model weather patterns with high accuracy. Similarly, researchers working on optimisation problems, such as desgigning efficient supply chains or fluid dynamics depend on HPC to handle the scale of calculations involved in their modelling. 
 
-HPC allows researchers to perform large-scale computations, making it
-essential for various tasks:
+But how do HPCs achieve better results in less time? This is because of parallel computing, which is the ability to divide large tasks into smaller pieces that can be completed simultaneously. You can think of this like a group of people working together to build a house - each person has a specific task which they work on at the same time, finishing the job faster. In genomics, for example, modern sequence alignment methods align genomes by splitting up the sequences, and aligning individual chunks to each other until they are successfully aligned, in parallel - a much more efficient method than loading entire genomes (hundreds of millions, to even billions of nucleotides) and placing each genome alongside another to match it, sequentially.   
 
--   **Handling Big Data**: HPC systems can process massive datasets,
-    which is crucial in genomics, climate science, and social data
-    analysis.
+So, when should you consider using HPC? 
+- If you’re running simulations that require thousands of iterations—like predicting how a hurricane might behave over time—or working with massive datasets, such as analyzing millions of genomic sequences, HPC is essential. 
+- It’s also a great choice when your tasks can be automated, like running multiple models or simulations at once, freeing you to focus on interpreting the results. HPC systems are particularly powerful for long-running tasks that demand significant memory or computational power, making them ideal for tasks that go far beyond the capabilities of standard desktop computers. 
 
--   **Simulations and Modeling**: Scientists use HPC to model physical
-    systems (e.g., weather prediction, molecular dynamics) with high
-    accuracy.
+By mastering key high-performance computing concepts, you’ll gain an understanding of how problems can be approached more efficiently, tackle larger datasets, and expand the scale of what’s possible in your field.
 
--   **Complex Problem Solving**: HPC enables solving computationally
-    intensive tasks such as optimisation problems and fluid dynamics.
-
-By pooling together vast resources, HPC allows tasks to be performed
-more efficiently than on standard desktop computers.
 
 ------------------------------------------------------------------------
 
 ## Key Computer Hardware Vocabulary
+It's good to first familiarise yourself with some computer hardware terms that are frequently used. Whether you're running code locally or on an HPC, you can run into limitations with system you are using, informing not only your methods development and hardware optimisation, but also allows you to troubleshoot performance issues and make informed decisions about how to structure your computational tasks.
 
-**CPU (Central Processing Unit)** – Often referred to as the computer’s
+- **CPU (Central Processing Unit)** – Often referred to as the computer’s
 “brain,” the CPU is responsible for executing instructions, managing
 data, and interacting with memory. In all modern computers, including
 HPCs, CPUs consist of multiple cores that allow for the simultaneous
 execution of multiple instructions.
 
-**CPU Core** – A core is a processing unit within a CPU that can execute
+- **CPU Core** – A core is a processing unit within a CPU that can execute
 instructions independently. Cores are designed to handle multiple
 threads, enabling more efficient processing of tasks. Each core and
 thread can execute its own set of instructions, allowing for parallel
 execution of workloads, which is essential for complex computations and
 multitasking.
 
-**Thread** – A thread is the smallest unit of execution within a
+- **Thread** – A thread is the smallest unit of execution within a
 process. In most modern high-performance computing (HPC) systems,
 processes are divided into threads rather than cores, allowing for
 efficient resource utilisation through multithreading. This enables
@@ -51,19 +40,19 @@ multiple threads to run concurrently, maximising CPU utilisation and
 speeding up tasks like data processing, simulations, and scientific
 computations.
 
-**GPU (Graphics Processing Unit)** – Initially developed to manage
+- **GPU (Graphics Processing Unit)** – Initially developed to manage
 visual tasks, GPUs are now widely used in parallel programming for
 handling large volumes of basic arithmetic operations, primarily through
 matrix multiplications. They are highly efficient at processing many
 calculations simultaneously, making them ideal for scientific
 computations and machine learning applications.
 
-**Random Access Memory (RAM)** – RAM is the temporary storage that the
+- **Random Access Memory (RAM)** – Usually referred to as just "memory", RAM is the temporary storage that the
 CPU uses to hold data actively being processed. RAM allows for quick
 access to data needed for computations, which is either deleted or
 deposited into NVM storage once completed.
 
-**Non-Volatile Memory (NVM)** - Non-volatile memory refers to any form
+- **Non-Volatile Memory (NVM)** - Non-volatile memory refers to any form
 of memory that retains data even when the system is powered off. This
 includes storage devices like hard drives (HDDs), solid-state drives
 (SSDs), and flash drives. Unlike RAM, which is cleared when the system
@@ -112,14 +101,9 @@ the next, with no overlap or concurrency. While this method is simple
 and efficient for small, straightforward tasks, it becomes a bottleneck
 for larger problems requiring extensive computation.
 
-<figure>
-<img src="graphics/serialProblem.png" style="width:75.0%"
-alt="Serial programming chain of operations (https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial)" />
-<figcaption aria-hidden="true">Serial programming chain of operations
-(<a
-href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial"
-class="uri">https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial</a>)</figcaption>
-</figure>
+```{figure} graphics/serialProblem.png
+Serial programming chain of operations (https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial)
+```
 
 ### Parallel Processing
 
@@ -134,14 +118,9 @@ accelerate code execution; for enhanced performance, the code must be
 explicitly adapted for parallel processing, a task that falls under
 **your** responsibility as a programmer.
 
-<figure>
-<img src="graphics/parallelProblem.png" style="width:75.0%"
-alt="Parallel programming chain of operations (https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial)" />
-<figcaption aria-hidden="true">Parallel programming chain of operations
-(<a
-href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial"
-class="uri">https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial</a>)</figcaption>
-</figure>
+```{figure} graphics/parallelProblem.png
+Parallel programming chain of operations (https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial)
+```
 
 ### Types of Parallelism
 
@@ -157,18 +136,6 @@ class="uri">https://hpc.llnl.gov/training/tutorials/introduction-parallel-comput
     parallelism, where both the tasks and data are split across multiple
     processors.
 
-### Why Parallel Computing Matters
-
-Parallel computing is crucial for tasks such as:
-
--   **Rendering 3D graphics**: In animation and visual effects, every
-    frame or pixel can be processed in parallel.
-
--   **Simulations with multiple variables**: Scientific models often
-    require running thousands of simulations with varying parameters.
-
--   **Stochastic Simulations**: Randomised processes benefit from
-    parallel execution since each run can be performed independently.
 
 ------------------------------------------------------------------------
 
@@ -270,12 +237,11 @@ the smaller bounds of core-core latency and reach cpu-cpu latency at 32,
 with significant bottlenecks after 128 threads where we use 7 whole
 compute nodes (i.e. 7 separate computers)!
 
-<figure>
-<embed src="graphics/speedup.pdf" style="width:70.0%" />
-<figcaption aria-hidden="true">Speedup from parallelisation (Data from:
-<a href="https://hpc-wiki.info/hpc/Scaling"
-class="uri">https://hpc-wiki.info/hpc/Scaling</a>)</figcaption>
-</figure>
+```{figure} graphics/speedup.png
+Speedup achieved from ideal parallelisation vs realised (Data from: https://hpc-wiki.info/hpc/Scaling)
+```
+
+
 
 -   The realised speedup diverges so much from ideal because of the
     increased latency in communicating and transferring data between the
@@ -287,30 +253,6 @@ one of the latest processor’s from AMD, for example the EPYC 9965, each
 having over 384 threads. **The distribution of information across that
 many independent pathways can be a struggle, and should be considered
 when designing parallelisation workflows.**
-
-------------------------------------------------------------------------
-
-## When to Use
-
-HPC systems are particularly beneficial for:
-
--   **Simulations requiring many iterations**: Simulating physical
-    systems (e.g., fluid dynamics, weather forecasting).
-
--   **Tasks requiring massive memory**: Processing genomic data or
-    large-scale environmental models.
-
--   **Operations that can be automated**: Running multiple models or
-    simulations while freeing up local resources.
-
-HPC systems are best suited for long-running tasks that require large
-amounts of computation, memory, or both.
-
-<!-- --- -->
-<!-- ## File Management in HPC -->
-<!-- To fully utilise HPC resources, effective file management is critical. Users need to move large datasets between local machines and HPC systems. The most common methods for file management are: -->
-<!-- - **SSH (Secure Shell)**: Allows users to log into the remote HPC cluster to navigate directories, create folders, and edit files. -->
-<!-- - **SCP or SFTP (Secure File Transfer Protocol)**: Used for transferring files between local machines and remote HPC clusters. This ensures that users can easily upload and download data necessary for their computational tasks. -->
 
 ------------------------------------------------------------------------
 
@@ -344,34 +286,30 @@ the `parallel` package in `R`. In this code chunk, we generate example
 data that is grouped by an `ID` column and we want to apply a linear
 model to each `ID` group. First we can generate the data:
 
-``` r
-n <- 10000   # Number of observations
+    n <- 10000   # Number of observations
 
-data <- data.frame(
-  ID = sample(1:10, n, replace = TRUE),  # ID column to define 10 groups
-  y = rnorm(n),
-  X = rnorm(n)
-)
-```
+    data <- data.frame(
+      ID = sample(1:10, n, replace = TRUE),  # ID column to define 10 groups
+      y = rnorm(n),
+      X = rnorm(n)
+    )
 
 We can then split the data into a list of data sets, which allows us to
 use a list-apply function like `lapply/mclapply`, and define our
 function for outputting the coefficients for the corresponding `ID`
 group:
 
-``` r
-library(dplyr)
+    library(dplyr)
 
-data_groups <- data %>% group_by(ID) %>% group_split() # Split the data by ID
+    data_groups <- data %>% group_by(ID) %>% group_split() # Split the data by ID
 
-# Define a function to fit a linear model for each group
-fit_model <- function(group_data) {
-  model <- lm(y ~ X, data = group_data)
-  coef_df <- as.data.frame(t(coef(model)))
-  coef_df$ID <- unique(group_data$ID)  # Add ID for reference
-  return(coef_df)
-}
-```
+    # Define a function to fit a linear model for each group
+    fit_model <- function(group_data) {
+      model <- lm(y ~ X, data = group_data)
+      coef_df <- as.data.frame(t(coef(model)))
+      coef_df$ID <- unique(group_data$ID)  # Add ID for reference
+      return(coef_df)
+    }
 
 Finally, we should parallelise the code by identifying the number of
 cores our system has, avoiding hard coding this information - keep this
@@ -380,16 +318,14 @@ want to leave one core for general system processes. As we have applied
 this onto a list we want to consider bringing this information back
 together, using a function like `bind_rows`.
 
-``` r
-library(parallel)
+    library(parallel)
 
-num_cores <- detectCores() - 1 # Use all cores but one
+    num_cores <- detectCores() - 1 # Use all cores but one
 
-results <- mclapply(data_groups, fit_model, mc.cores = num_cores) # Fit the models
+    results <- mclapply(data_groups, fit_model, mc.cores = num_cores) # Fit the models
 
-final_results <- bind_rows(results) # Bind model outputs from list to table
-print(final_results)
-```
+    final_results <- bind_rows(results) # Bind model outputs from list to table
+    print(final_results)
 
 ------------------------------------------------------------------------
 
@@ -415,8 +351,14 @@ To get started, you will need 4 things:
     by logging into the HPC service for the first time. In a terminal
     session, enter the following, substituting your own username (in the
     form abc123), and entering your Imperial password when prompted:
+    
+    ```bash
+     sftp username@login.hpc.imperial.ac.uk
+    ```
+      If this has been successful, you will see a message containing the title “Imperial College London Research Computing Service”
 
-1.  **Necessary modules are set up in your remote are:** It will be
+
+3.  **Necessary modules are set up in your remote are:** It will be
     useful to ensure that Python and R are set up on your area of the
     HPC system at this stage. You will only need to do this once. To
     install Python and R, you will need to first log in to the HPC
@@ -424,11 +366,27 @@ To get started, you will need 4 things:
     following two lines into the command line within your area of the
     remote system:
 
-1.  **A method of file transfer:** Files are exchanged between your
+    ```bash
+    module load anaconda3/personal
+    anaconda-setup
+    ```
+    This could take some time and may require you to respond “yes” when prompted. Once anaconda is fully installed, install R by entering
+    ```bash
+    conda install R
+    ```
+    Once again, this could take some time and may require you to respond “yes” when prompted. Once both of these are installed, you should be able to enter python3 and code in Python on the cluster   node. However, in general you should only run code in either R or Python by submitting them within jobs (as covered in the lectures and in the instructions document). (You will notice that if    you attempt to launch R from your HPC node you will be given a stern message!)
+
+
+4.  **A method of file transfer:** Files are exchanged between your
     local machine and your area on the HPC system using Secure File
     Transfer Protocol (SFTP). If you are working in Linux or macOS, you
     should be able to achieve this directly from the terminal. To check
     this, enter the following and enter your password when prompted:
+
+    ```bash
+    sftp username@login.hpc.imperial.ac.uk
+    ```
+    Once you are logged in, type and enter pwd to find out which area of the system you are in. By default you should land in username\$HOME, and by entering put filename.R this file should be        copied from your current local directory to your current remote directory. You can also similarly use the Secure Copy (SCP) method to transfer files – this, and further information about         copying and getting files to/from the remote directory, will be covered in the main instruction document
 
 ------------------------------------------------------------------------
 
@@ -448,33 +406,29 @@ different jobs will overwrite each other).
 
 **In R:**
 
-``` r
-seed_number <- as.numeric(Sys.getenv("PBS_ARRAY_INDEX")) # Find out the job number
+    seed_number <- as.numeric(Sys.getenv("PBS_ARRAY_INDEX")) # Find out the job number
 
-set.seed(seed_number) # Set this as the random seed so that all runs have a unique seed
+    set.seed(seed_number) # Set this as the random seed so that all runs have a unique seed
 
-output <- runif(n=10000,min=0,max=1) # # Run whatever simulation we want
+    output <- runif(n=10000,min=0,max=1) # # Run whatever simulation we want
 
-save(output,file=paste("output_",seed_number,".rda")) # Save this to a file
+    save(output,file=paste("output_",seed_number,".rda")) # Save this to a file
 
-rm(output,seed_number) # Remove our objects from the environment
-```
+    rm(output,seed_number) # Remove our objects from the environment
 
 **Similarly, in Python:**
 
-``` python
-seed_number = int(os.getenv("PBS_ARRAY_INDEX")) # Find out the job number
+    seed_number = int(os.getenv("PBS_ARRAY_INDEX")) # Find out the job number
 
-seed(seed_number) # Set this as the random seed so that all runs have a unique seed
+    seed(seed_number) # Set this as the random seed so that all runs have a unique seed
 
-output = numpy.random.uniform(0,1,1000) # Run whatever simulation we want
+    output = numpy.random.uniform(0,1,1000) # Run whatever simulation we want
 
-with open(print("output_",str(seed_number),".data",sep=""),"w") as f:
-  f.write(output) # Save this to a file
-  
-del seed_number # Remove our objects from the environment
-del output
-```
+    with open(print("output_",str(seed_number),".data",sep=""),"w") as f:
+      f.write(output) # Save this to a file
+      
+    del seed_number # Remove our objects from the environment
+    del output
 
 Using SFTP or SCP from the terminal of your local machine, copy your
 task script to an area on the remote machine (e.g.,
@@ -485,11 +439,9 @@ cluster with instructions to run the task script. This will reference
 your task script, so you will need to be mindful of the relative file
 path. This file must contain the following fields at the top:
 
-``` bash
-#!/bin/bash
-#PBS -l select=N:ncpus=X:mem=Ygb
-#PBS -l walltime=HH:00:00
-```
+    #!/bin/bash
+    #PBS -l select=N:ncpus=X:mem=Ygb
+    #PBS -l walltime=HH:00:00
 
 This will determine the queue that your job gets put into. If your
 requested specifications do not fall within at least one queue, your job
@@ -511,23 +463,21 @@ not parallelise within it and does not load a significant amount of
 data, we will only request a single thread (`ncpus`) and 1GB of RAM
 (`mem`):
 
-``` bash
-#!/bin/bash
-#PBS -l walltime=12:00:00
-#PBS -l select=1:ncpus=1:mem=1gb
+    #!/bin/bash
+    #PBS -l walltime=12:00:00
+    #PBS -l select=1:ncpus=1:mem=1gb
 
-module load anaconda3/personal
+    module load anaconda3/personal
 
-echo "R is about to run"
+    echo "R is about to run"
 
-cp $HOME/HPC_script.R $TMPDIR
+    cp $HOME/HPC_script.R $TMPDIR
 
-R --vanilla < $TMPDIR/HPC_script.R
+    R --vanilla < $TMPDIR/HPC_script.R
 
-mv $TMPDIR/output_* $HOME/output_files/
+    mv $TMPDIR/output_* $HOME/output_files/
 
-echo "R has finished running"
-```
+    echo "R has finished running"
 
 The Imperial HPC uses the PBS Pro job scheduler (documentation available
 [here](https://2021.help.altair.com/2021.1.2/PBS%20Professional/PBSUserGuide2021.1.2.pdf)),
