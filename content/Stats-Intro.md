@@ -1,6 +1,8 @@
-# Introduction to this section
+# Basic Data Science and Statistics: Introduction
 
-This section of TheMulQuaBio course builds on the computing component, introducing you to statistical analyses of data. You will learn statistics in a hands-on on way using the programming language R, interspersed with lectures on statistical concepts.
+This section builds on the computing component, introducing you to basic Data Science including visualization and statistical analyses of data. 
+
+You will learn statistics in a hands-on on way, interspersed with lectures on statistical concepts.
 
 ```{note}
 The chapters in this Section assume that you have already worked through at least the basic sections of the [R Chapter](./notebooks/07-R.ipynb) of these notes.
