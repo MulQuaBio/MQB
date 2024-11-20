@@ -41,7 +41,7 @@ It is important that you work through the exercises and problems in each chapter
 The goal of these notes is to teach you to become (or at least show you the path towards becoming) a competent quantitative biologist. A large part of this involves learning computer programming. Why do biologists
 need to write computer programs? Here are some (hopefully compelling!) reasons:
 
-* Short of fieldwork, programs can do anything (that can be specified). In fact, even fieldwork, if you could one day *program* a robot to do it for you <sup>[1](#intro:robot)</sup>!
+* Short of fieldwork, programs can do anything (that can be specified). In fact, even fieldwork, if you could one day *program* a robot to do it for you <sup>[^footnote1]</sup>.
 
 * As such, no software is typically available to perform exactly the analysis you are planning. You should be unhappy if you are trying to shoehorn your data into methods that don't quite seem right.
 
@@ -184,4 +184,4 @@ Your computing coursework may be assessed. If you have been told that it will, p
 
 **Footnotes**
 
-<a name="intro:robot">1</a>: That way you can traipse around the forest catching rare butterflies and frogs while the robot does the boring data collecting for you.
+[^footnote1]: That way you can traipse around the forest catching rare butterflies and frogs while the robot does the boring data collecting for you.
