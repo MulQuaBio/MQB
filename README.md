@@ -36,11 +36,13 @@ This is the current MQB project structure:
 
 All code in this project was written in and tested with R 4.xx, Python 3.xx and GNU bash 5.xx.
 
-**First**, Please examine the `_toc.yml` file to see how the book is structured, and where the source files lie.
+**First**, please examine the `_toc.yml` file to see how the book is structured, and where the source files lie.
 
-**Second**, if you are new to Jupyter books, please have a take a look at this [tutorial](https://jupyterbook.org/en/stable/start/your-first-book.html). 
+**Second**, if you are completely new to Jupyter, please have a take a look at this [Introduction](https://jupyter-notebook.readthedocs.io/en/stable/notebook.html).
 
-**Third**, check the software needed to compile and deploy the MQB or run its Jupyter notebooks by peeking at the `requirements.txt` file.
+**Third**, if you are completely new to Jupyter books, please have a take a look at this [tutorial](https://jupyterbook.org/en/stable/start/your-first-book.html), and also [this Appendix of the MQB](https://themulquabio.github.io/TMQB/notebooks/Appendix-JupyIntro.html).
+
+**Fourth**, check the software needed to compile and deploy the MQB or run its Jupyter notebooks by peeking at the `requirements.txt` file.
 
 > ⚠️ **Note:** Please read the "Getting Started" section below before installing anything on your local computer!
 
@@ -52,7 +54,7 @@ The MQB is a collaborative project. Contributions are welcome, and they are grea
 
 ### Report Bugs
 
-Report bugs using this poroject's [GitHub issues](https://github.com/TheMulQuaBio/TMQB/issues).
+Report bugs using this project's [GitHub issues](https://github.com/TheMulQuaBio/TMQB/issues).
 
 If you are reporting a bug, please include:
 * Your operating system name and version.
@@ -61,7 +63,7 @@ If you are reporting a bug, please include:
 
 ### Fix Bugs
 
-Look through the GitHub issues for bugs. Anything tagged with "bug" and "help wanted" is open to whoever wants to implement it.
+Look through the GitHub issues for bugs. Anything tagged with "bug" and "help wanted" is open to whoever wants to implement it. Other tagged issues might also be in your wheelhouse. 
 
 ### Implement Features
 
@@ -81,6 +83,32 @@ If you are proposing a feature:
 * Keep the scope as narrow as possible, to make it easier to implement (typically, restricted to a specific code file or particular Jupyter notebook or markdown file).
   * Avoid broad suggestions without example solutions or specific action points. 
 * Remember that this is a volunteer-driven project, and that direct contributions are welcome :)
+
+## Types of MQB content
+
+There are three main types of content that you can contribute to:
+
+* Chapters
+* Appendices
+* Lectures
+
+Typically, each of these will be in the form of a Jupyter notebook or markdown file. Each of these will typically include code and data.
+
+### Chapters
+
+The main content type. Each chapter is a Jupyter notebook or markdown file.
+
+### Appendices
+
+These support the main chapters by providing foundational / background or specialised information and training. Each Appendix is also a Jupyter notebook or markdown file.
+
+### Lectures
+
+Lectures should ideally be Jupyter notebook or LaTeX-based.  
+
+Creating lectures using Jupyter Notebooks is the recommended option as it allows you to blend live code, rich text, external media, and visualizations into a single, interactive document. For this you will need to install the [Jupyter slideshow extension `rise`](https://rise.readthedocs.io/en/latest/index.html). Also see [this video tutorial](https://www.youtube.com/watch?v=sXyFa_r1nxA). 
+
+> ⚠️ **Note:** If you are using jupyterlab instead of the classic jupyter notebook, you should install the [rise extension directly](https://github.com/jupyterlab-contrib/rise) (again, virtual environment recommended - see next section).  
 
 ## Getting Started
 

@@ -1,4 +1,85 @@
-# ** TMQB Meeting Notes**
+# ** TMQB Notes and TODOs**
+
+# Proposition: create a new set of materials under MQB to teach Ecological and Evolutionary theory and modelling hands-on
+
+## Structure
+
+* Introduction
+  * (Brief) history of Ecology and Evolutionary biology and theory
+    * Interlinkages between the two fields
+    * Gimme some time - ecological vs evolutionary dynamics
+  * Real world applications in
+    * Microbial ecology and engineering
+    * Fisheries
+    * Global change
+    * Agriculture
+    * Disease
+    * Etc
+  * Structure of this section
+    * We will go from individual (single cells, organisms) to ecosystem levels
+    * We will integrate ecology and evolution (as seamlessly as possible) at each level 
+  * Pre-requisites
+    * Maths
+      * Each chapter linked to specific maths appendix sections for pre-requisites (Move current maths materials to a single Appendix)
+      * Bifurcation analyses / theory
+    * Computing
+      * Python
+    * Jupyter
+
+* The metabolic basis of everything
+  * Scaling laws - space and time
+  * Biochemical kinetics and thermodynamics
+  * Implications for ecological and evolutionary dynamics (?)
+  * Applications/Examples 
+* Single populations
+  * Are there *any* single populations? 
+  * Exponential growth
+    * Metabolic basis
+  * From populations to alleles
+    * Basic pop gen
+  * Logistic growth
+    * Density dependence
+    * Logistic growth as an "effective" model
+      * SIS model (VJ)
+    * Bifurcations (+Intro to theory - VJ) 
+  * Evolutionary dynamics
+  * Stochasticity
+  * Applications/Examples
+  * Stage and age structured populations
+    * Stage- vs Age-structured models
+    * IPMs
+  * Applications/Examples
+
+* Species Interactions
+  * Consumer-resource interactions
+    * Predator-prey (VJ)
+    * Bacterial-substrate
+    * MacArthur  
+  * The Lotka-Volterra equations
+    * Every LV system is "effective"
+      * Normal form?
+    * Bifurcations (VJ) 
+  * Evolutionary dynamics
+  * Stochasticity
+  * Applications/Examples
+
+* Spatial structure
+  * Island biogeography and neutral theory
+  * Metapopulations (VJ)
+  * Evolutionary dynamics in space
+    * Kin selection?
+  * Applications/Examples
+
+* Communities, Food-webs and Ecosystems
+  * Community vs Ecosystem
+    * Microbial community vs microbiome
+  * Food-webs
+  * Random matrix theory
+  * Evolutionary dynamics (!!)
+    * Microbial systems as an example
+  * Applications/Examples
+
+-----
 
 **Date:** October 9, 2024  
 **Time:** 2:03 PM  
