@@ -2,7 +2,7 @@
 
 # The Multilingual Quantitative Biologist - Source
 
-This is the main source code repository of the **Multilingual Quantitative Biologist** (MQB) online book.
+This is the main source code repository of the [**Multilingual Quantitative Biologist**](https://mulquabio.github.io/MQB/intro.html) (MQB) online book.
 
 This is the current MQB project structure:
 
