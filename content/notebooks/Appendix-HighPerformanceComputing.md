@@ -353,7 +353,7 @@ To get started, you will need 4 things:
     form abc123), and entering your Imperial password when prompted:
     
     ```bash
-     sftp username@login.hpc.imperial.ac.uk
+     ssh username@login.hpc.imperial.ac.uk
     ```
       If this has been successful, you will see a message containing the title “Imperial College London Research Computing Service”
 
@@ -472,10 +472,11 @@ data, we will only request a single thread (`ncpus`) and 1GB of RAM
     echo "R is about to run"
 
     cp $HOME/HPC_script.R $TMPDIR
+    cp $HOME/other_file_I_need.csv $TMPDIR
 
     R --vanilla < $TMPDIR/HPC_script.R
 
-    mv $TMPDIR/output_* $HOME/output_files/
+    mv output_* $HOME/output_files/
 
     echo "R has finished running"
 
