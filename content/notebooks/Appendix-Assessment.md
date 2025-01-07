@@ -8,7 +8,7 @@ In computer-based tests, you will be expected to be able to apply the concepts a
 
 ## Assessment of Practicals
 
-Both, the correctness and quality of your practical work / solutions, and whether you are following good programming & workflow practices will be assessed: how well you have learned the principles and implementation of **keeping workflows/pipelines/software organised and reusable** and **good coding practices**, _irrespective of programming language_ (please refer back to the start of the [UNIX](01-Unix.html) and [Python](#./05-Python_I.ipynb) chapters in particular).
+Both, the correctness and quality of your practical work / solutions, and whether you are following good programming & workflow practices will be assessed: how well you have learned the principles and implementation of **keeping workflows/pipelines/software organised and reusable** and **good coding practices**, _irrespective of programming language_ (please refer back to the start of the [UNIX](Unix) and [Python](Python) chapters in particular).
 
 ```{Note}
 Lowercase for directory names below is a suggestion - just be consistent with whatever you choose, such as [CamelCase](https://en.wikipedia.org/wiki/Camel_case); for example, you may choose to name your `code` directory, `Code` instead.
@@ -22,7 +22,7 @@ The basic rules you must follow, irrespective of a Week or project's content are
     
 * All results go to `results` directory. The results directory should be empty when you submit your week's work, as it will be populated automatically when the assessment script runs.
     
-* If you have files that don't fit in these categories, put them additional, meaningfully named directories. For example, you can create a `sandbox` directory to hold your experimental work (and perhaps [`.gitignore`](03-Git.html) it).
+* If you have files that don't fit in these categories, put them additional, meaningfully named directories. For example, you can create a `sandbox` directory to hold your experimental work (and perhaps [`.gitignore`](Git) it).
     
 * No single file should be greater than 100 mb, either data or script/code. If a script needs a data file, but the example data file is >100 mb, reduce it to a minimum working dataset and upload that, keeping the main data file(s) under `.gitignore`. Keep all your data backed up elsewhere, of course!
     
@@ -80,7 +80,7 @@ Your project (e.g., weekly) directories will be checked for how neat and organiz
     
 
 ```{Note}
-Please read about git branching and merging during teamwork in the [Git Chapter](03-Git.html), including the "**Common Mistakes to avoid…**" listed there. Please also check the Readings & Resources at the end of the chapter.
+Please read about git branching and merging during teamwork in the [Git Chapter](Git), including the "**Common Mistakes to avoid…**" listed there. Please also check the Readings & Resources at the end of the chapter.
 ```
 
 #### Groupwork assessment
@@ -109,7 +109,7 @@ Here are some guidelines to help you make appropriate use of AI in your coding j
 
 Leverage AI to understand concepts and get unstuck, but avoid relying on it to do the work for you.
 
-*Example:* If you're struggling to understand how a recursive function (recall the [Python Chapter](05-Python.html)) works, you might ask an AI tool to explain the concept or provide a simple example. Use this information to deepen your understanding and then attempt to write your own recursive function.
+*Example:* If you're struggling to understand how a recursive function (recall the [Python Chapter](Python)) works, you might ask an AI tool to explain the concept or provide a simple example. Use this information to deepen your understanding and then attempt to write your own recursive function.
 
 2. **Understand and Verify AI-Generated Code**
 

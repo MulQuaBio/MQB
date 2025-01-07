@@ -159,7 +159,7 @@ If you run into any issues with the rendered book, try removing the existing `Th
 
 Once you are happy that the book has been built including your updates, `git add`, `commit` and `push` your changes to the branch. 
 
-> ⚠️ **Note:** *Please do not push changes for every little edit you make to the book (e.g., after fixing some typos)*. Push only significant changes. But don't make a whole slew of changes, such as edits / additions to several chapters either! In general, follow [good git practices](https://mulquabio.github.io/MQB/notebooks/03-Git.html#teamwork-using-git-and-common-branching-mistakes) in this respect. 
+> ⚠️ **Note:** *Please do not push changes for every little edit you make to the book (e.g., after fixing some typos)*. Push only significant changes. But don't make a whole slew of changes, such as edits / additions to several chapters either! In general, follow [good git practices](https://mulquabio.github.io/MQB/notebooks/Git#teamwork-using-git-and-common-branching-mistakes) in this respect. 
 
 ### Step 7. Create a pull request  
 
