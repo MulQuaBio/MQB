@@ -1,4 +1,4 @@
-[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://github.com/TheMulQuaBio/TMQB)
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://github.com/mulquabio/MQB)
 
 # The Multilingual Quantitative Biologist - Source
 
@@ -10,10 +10,10 @@ This is the current MQB project structure:
 .
 ├── CONDUCT.md
 ├── content
-│   ├── _build
 │   ├── code
 │   ├── _config.yml
 │   ├── data
+│   ├── HPC
 │   ├── images
 │   ├── intro.md
 │   ├── lectures
@@ -22,12 +22,12 @@ This is the current MQB project structure:
 │   ├── readings
 │   ├── references.bib
 │   ├── results
-│   ├── sols
 │   ├── _static
 │   ├── Stats-Intro.md
 │   └── _toc.yml
 ├── LICENSE
-├── Notes_n_TODOs
+├── MQB.code-workspace
+├── Notes_n_TODOs.md
 ├── README.md
 └── requirements.txt
 ```
@@ -40,7 +40,7 @@ All code in this project was written in and tested with R 4.xx, Python 3.xx and 
 
 **Second**, if you are completely new to Jupyter, please have a take a look at this [Introduction](https://jupyter-notebook.readthedocs.io/en/stable/notebook.html).
 
-**Third**, if you are completely new to Jupyter books, please have a take a look at this [tutorial](https://jupyterbook.org/en/stable/start/your-first-book.html), and also [this Appendix of the MQB](https://themulquabio.github.io/TMQB/notebooks/Appendix-JupyIntro.html).
+**Third**, if you are completely new to Jupyter books, please have a take a look at this [tutorial](https://jupyterbook.org/en/stable/start/your-first-book.html), and also [this Appendix of the MQB](https://mulquabio.github.io/MQB/notebooks/Appendix-JupyIntro.html).
 
 **Fourth**, check the software needed to compile and deploy the MQB or run its Jupyter notebooks by peeking at the `requirements.txt` file.
 
@@ -54,7 +54,7 @@ The MQB is a collaborative project. Contributions are welcome, and they are grea
 
 ### Report Bugs
 
-Report bugs using this project's [GitHub issues](https://github.com/TheMulQuaBio/TMQB/issues).
+Report bugs using this project's [GitHub issues](https://github.com/mulquabio/MQB/issues).
 
 If you are reporting a bug, please include:
 * Your operating system name and version.
@@ -124,11 +124,11 @@ But first, here's how to set up the MQB for local development.
 
 For this it is strongly recommended that you use a virtualenv, e.g., using [`conda`](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) or the simpler [`venv`](https://docs.python.org/3/library/venv.html).
 
-> ⚠️ **Note:** Specific venv instructions for Ubuntu / Debian Linux-based systems are [here](https://themulquabio.github.io/TMQB/notebooks/Appendix-JupyIntro.html#installing-jupyter).
+> ⚠️ **Note:** Specific venv instructions for Ubuntu / Debian Linux-based systems are [here](https://mulquabio.github.io/MQB/notebooks/Appendix-JupyIntro.html#installing-jupyter).
 
 Once you have activated your virtual environment, run `requirements.txt`; for example, on Debian Linux / Ubuntu, you can use `pip install -r requirements.txt`.
 
-In addition, if you will be contributing content that involves running `R` or or `bash`, you will need to manually install their Jupyter  languge [kernels](https://themulquabio.github.io/TMQB/notebooks/Appendix-JupyIntro.html#language-kernels) in addition to Python (which is the default Jupyter / book kernel). 
+In addition, if you will be contributing content that involves running `R` or or `bash`, you will need to manually install their Jupyter  languge [kernels](https://mulquabio.github.io/MQB/notebooks/Appendix-JupyIntro.html#language-kernels) in addition to Python (which is the default Jupyter / book kernel). 
 
 Now you are ready for the workflow!
 
@@ -144,7 +144,7 @@ Create a branch for local development and make changes locally (e.g., to a Jupyt
 
 Test the changes and compile the book locally to make sure it all looks good when rendered in html. To build a local version of the book in your current branch:
 
-- `cd` to its root directory (i.e., `TMQB/`)  
+- `cd` to its root directory (i.e., `MQB/`)  
 - Run `jupyter-book build content`
 
 A fully-rendered HTML version of the book will be built in `_build/html/`. That is, there should be a collection of newly generated HTML files in the `content/_build/html` folder. 
@@ -153,13 +153,13 @@ Check to ensure that HTML has been built of the complete book by loading `_build
 
 If you run into any issues with the rendered book, try removing the existing `The Multilingual Quantitative Biologist/_build/` directory and rebuilding the book.
 
-> ⚠️ **Note:** if you add a new chapter or appendix to the book, you will need to update the `_toc.yml` file before you compile the book. This is a major change, so you should put in a [github issue](https://github.com/TheMulQuaBio/TMQB/issues) with a "feature request" label to get the ball rolling even before you add any new content. This is necessary because it will also also help you determine *where* (in the project tree; see above) to create the new content.
+> ⚠️ **Note:** if you add a new chapter or appendix to the book, you will need to update the `_toc.yml` file before you compile the book. This is a major change, so you should put in a [github issue](https://github.com/mulquabio/MQB/issues) with a "feature request" label to get the ball rolling even before you add any new content. This is necessary because it will also also help you determine *where* (in the project tree; see above) to create the new content.
 
 ### Steps 5-6. Commit and push
 
 Once you are happy that the book has been built including your updates, `git add`, `commit` and `push` your changes to the branch. 
 
-> ⚠️ **Note:** *Please do not push changes for every little edit you make to the book (e.g., after fixing some typos)*. Push only significant changes. But don't make a whole slew of changes, such as edits / additions to several chapters either! In general, follow [good git practices](https://themulquabio.github.io/TMQB/notebooks/03-Git.html#teamwork-using-git-and-common-branching-mistakes) in this respect. 
+> ⚠️ **Note:** *Please do not push changes for every little edit you make to the book (e.g., after fixing some typos)*. Push only significant changes. But don't make a whole slew of changes, such as edits / additions to several chapters either! In general, follow [good git practices](https://mulquabio.github.io/MQB/notebooks/03-Git.html#teamwork-using-git-and-common-branching-mistakes) in this respect. 
 
 ### Step 7. Create a pull request  
 
@@ -175,7 +175,7 @@ Once your branched changes have been reviewed, approved, and merged, the updated
 
 ### Step 8. Deploy the book online
 
-The compiled, html version of MQB is hosted on the `gh-pages` branch of this repo, which is then deployed on [https://themulquabio.github.io/TMQB](https://themulquabio.github.io/TMQB/intro.html).
+The compiled, html version of MQB is hosted on the `gh-pages` branch of this repo, which is then deployed on [https://mulquabio.github.io/MQB](https://mulquabio.github.io/MQB/intro.html).
 
 To deploy the book online, simply run:
 
@@ -183,7 +183,7 @@ To deploy the book online, simply run:
 
 This will automatically push the latest build to the `gh-pages` branch.
 
-Typically after a few minutes the site should be viewable online at [https://themulquabio.github.io/TMQB/intro.html](https://themulquabio.github.io/TMQB/intro.html). If not, check repository settings under Options -> GitHub Pages to ensure that the gh-pages branch is configured as the build source for GitHub Pages.
+Typically after a few minutes the site should be viewable online at [https://mulquabio.github.io/MQB/intro.html](https://mulquabio.github.io/MQB/intro.html). If not, check repository settings under Options -> GitHub Pages to ensure that the gh-pages branch is configured as the build source for GitHub Pages.
 
 > ⚠️ **Note:** if you want your local changes to be reflected on MQB online before they are reviewed, accepted and merged following your pull request (i.e., skip Steps 5-7 above), you *can* deploy the book from your local branch directly by pushing to the `gh-pages` branch). However, this is not advisable, and please do so cautiously. The main reason why you would be wanting to do this  is that an urgent correction or update to the book is warranted (which, if left unaddressed could lead to mass mortality among the students - *just kidding!*) 
 
@@ -191,9 +191,9 @@ More information on this hosting process can be found [here](https://jupyterbook
 
 ## Additional notes
 
-* We do not currently use GitHub actions to automatically build and deploy the book to the `gh-pages` branch (Step 8). This is a [currently pending issue](https://github.com/TheMulQuaBio/TMQB/issues/132)); please feel free to tackle it if you wish!
+* We do not currently use GitHub actions to automatically build and deploy the book to the `gh-pages` branch (Step 8). This is a [currently pending issue](https://github.com/mulquabio/MQB/issues/132)); please feel free to tackle it if you wish!
 
-* The solutions to the exercises in this book are in a [separate private git repo](https://github.com/TheMulQuaBio/TMQB_Sols) under this organization.
+* The solutions to the exercises in this book are in a [separate private git repo](https://github.com/mulquabio/MQB_Sols) under this organization.
 
 * The `results` directory in `content` is populated when scripts are run, but these are not version controlled (all files in this directory under `.gitignore`).
 
@@ -201,7 +201,7 @@ More information on this hosting process can be found [here](https://jupyterbook
 
 Please note that the MQB is released with a [Contributor Code of Conduct](CONDUCT.md). By contributing to this project you agree to abide by its terms.
 
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/TheMulQuaBio/TMQB/graphs/contributors).
+We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/mulquabio/MQB/graphs/contributors).
 
 
 ## Credits

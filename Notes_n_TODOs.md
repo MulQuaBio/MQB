@@ -1,7 +1,6 @@
 # ** TMQB Notes and TODOs**
 
 **Date:** October 9, 2024  
-**Time:** 2:03 PM  
 
 **Attendees:**  
 - Samraat Pawar
@@ -11,57 +10,9 @@
 - Tin-Yu Jonathan Hui  
 - Francis Windram  
 
----
-
-**Purpose:** Organize teaching and assessments for the second term of the Living Planet Masters Programme - CMEE stream.
-
-1. **Key Topics:**
-   - Changes in curriculum and assessments for 2024-25
-   - Centralized teaching materials and use of GitHub for coursework
-   - Discussion on module structures, assessment, and mini-project design
-   - Collaboration and integration of high-performance computing (HPC) and data science teaching materials
-
-### Discussion Points:
-
-1. **Course Changes and Teaching Approach:**  
-   - Focus on centralized teaching materials for computational fundamentals, modeling, and data science.
-   - Usage of GitHub as the main platform for materials; Blackboard for administrative purposes only.
-   - Transition from exams to coursework-based assessment through a **mini project**.
-
-2. **Assessment Strategy:**  
-   - ECTS credits for each module are clearly defined. High-performance computing (HPC), ecological and evolutionary theory, Bayesian, and machine learning modules to be assessed via a single mini project.
-   - Mini project replaces exams and will test the cumulative knowledge across all topics.
-   - Discussion around balancing complexity, auto-marking systems, and maintaining student engagement with the mini project.
-  
-3. **Student Engagement:**  
-   - Concerns raised about low student engagement. Strategies discussed for increasing engagement, including potential pass/fail assessment components for coursework.
-   - Importance of formative feedback throughout modules before the summative mini project.
-  
-4. **Mini Project Structure:**  
-   - The mini project will cover data science, HPC, and modeling.
-   - Possible inclusion of biological data, mathematical models (e.g., competition models), and likelihood-based inference as project options.
-   - Concerns about project feasibility within the 3-week timeline.
-  
-5. **Collaboration on Teaching Materials:**  
-   - Development of teaching materials in Jupyter Notebooks and LaTeX.
-   - Contributions to centralized GitHub repositories discussed, including materials for HPC and Bayesian analysis.
-   - Project-specific contributions by attendees, particularly around ecological modeling and Bayesian computation.
-
----
-
-### Decisions Made:
-- **Mini Project** will serve as the only summative assessment for Term 2 modules, replacing exams.
-- **GitHub** will be the primary platform for teaching materials and assessments, supplemented by Blackboard for final submissions and student communication.
-- Formative assessments will be used during teaching weeks to ensure students are progressing, especially given the removal of formal exams.
-
----
-
 ### Action Items / TODOs:
 1. **Samraat**  
    - Finalize the structure and design of the mini project with input from module leads by January.
-   - Coordinate GitHub repository access for teaching materials.
-   - Set up meetings to develop the **Ecological and Evolutionary Theory** module with Yan, Bhavin and Vincent.
-   - Organize a focused meeting on mini project integration of HPC materials with James (Done).
 
 2. **Ruben**  
    - Integrate Bayesian and likelihood materials into the centralized repository.
