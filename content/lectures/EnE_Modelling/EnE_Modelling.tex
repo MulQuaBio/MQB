@@ -1,75 +1,77 @@
-\documentclass[xcolor={usenames,x11names},compress]{beamer}
-% Otherwise use xcolor=x11names
+\documentclass[xcolor=x11names,compress]{beamer}
 
 %% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx}
 \graphicspath{{graphics/}}
-
-% \usepackage{tikz}
-% \usetikzlibrary{decorations.pathreplacing}
-% \tikzstyle{every picture}+=[remember picture]
-
+\usepackage{tikz}
 \usepackage{color,colortbl}
+\usepackage{framed}
+\usepackage{textcomp, setspace} %Needed for customization of ``listings''
+% package
+\usepackage[procnames]{listings} % to display code; don't forget [fragile]
+% option after \begin{frame}
 \input{inputs/rgb}
+\definecolor{shadecolor}{rgb}{1,.9,.3}
 
-\usepackage{animate}
+\usepackage [autostyle]{csquotes}
+\MakeOuterQuote{"}
 
-% \usepackage[table]{xcolor}
-  \usepackage{multirow}
-
+\lstset{
+    backgroundcolor=\color{shadecolor},
+    tabsize=4,
+    rulecolor=,
+    language=python,
+        basicstyle=\ttfamily\setstretch{1},
+        upquote=true,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.133,0.545,0.133},
+        stringstyle=\color[rgb]{0.627,0.126,0.941},
+        numbers=left, 
+        numberstyle=\tiny, 
+        stepnumber=2, 
+        numbersep=5pt
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \usetheme{Madrid}
 \usecolortheme{seahorse}
-
-\setbeamertemplate{headline}{}
-\title{Modelling Global Change Biology}
-\author{Samraat Pawar}
-
-\setbeamertemplate{footline}
-{
-  \leavevmode%
-  \hbox{%
-%   \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in 
-% head/foot}%
-%     \usebeamerfont{author in head/foot}\insertshortauthor
-%   \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.93\paperwidth,ht=2.25ex,dp=1ex,left]{title in 
-head/foot}%
-    \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{0em}
-    --
-    \usebeamerfont{author in head/foot}\insertshortauthor
-
-  \end{beamercolorbox}}%
-  \begin{beamercolorbox}[wd=.07\paperwidth,ht=2.25ex,dp=1ex,center]{}
-     \insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
-%       \insertframenumber{}
-  \end{beamercolorbox}
-
-%   \vskip0pt%
-}
-
-% \useoutertheme[subsection=false,shadow]{miniframes}
+\useoutertheme[subsection=false,shadow]{miniframes}
 \useinnertheme{default}
-\usefonttheme{serif}
+% \usefonttheme{serif}
 \usepackage{palatino}
 
 \setbeamerfont{title like}{shape=\scshape}
 \setbeamerfont{frametitle}{shape=\scshape, series = \bfseries}
 \setbeamertemplate{frametitle}[default][center]
-\setbeamertemplate{note page}[plain]
+\setbeamertemplate{headline}{} %suppress headline (navigation pane)
 
-% \setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
-% \setbeamercolor*{normal text}{fg=black,bg=white} 
-% \setbeamercolor*{alerted text}{fg=red} 
-% \setbeamercolor*{example text}{fg=black} 
-% \setbeamercolor*{structure}{fg=black}
- 
-% \setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
-% \setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.2ex,dp=1ex,center]{author in head/foot}
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=2.2ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{3em}
+  \end{beamercolorbox}}
+  \begin{beamercolorbox}[wd=.05\paperwidth,ht=2.2ex,dp=1ex,center]{}
+     \insertframenumber{} / \inserttotalframenumber\hspace*{-3ex}
+  \end{beamercolorbox}
+}
 
 \renewcommand{\(}{\begin{columns}}
 \renewcommand{\)}{\end{columns}}
@@ -84,152 +86,129 @@ head/foot}%
 \newenvironment{aquote}[1]
   {\savebox\mybox{#1}\begin{quote}}
   {\signed{\usebox\mybox}\end{quote}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[EnE Modelling]{Mathematical Modelling, Theory, and Model Fitting in Ecology \& Evolution}
+\subtitle{\it A MulQuaBio Lecture}
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}[plain]
-
-\title{Modelling Approaches in Global Change Biology}
-\vspace{12pt}
-\subtitle{Global Change Biology}
-\author{
-	Samraat Pawar\\
-	\vspace{10pt}
-	{\it Imperial College London,\\
-	\vspace{5pt}
-	Silwood Park}\\
-	\vspace{20pt}
-  \centering
-  \includegraphics[height = .3in]{Imperial_Color1.pdf}
-}
- 
-\titlepage
+	\titlepage
 \end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section{\scshape Introduction}
-% \subsection{}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Outline}
-  \begin{itemize}\setlength{\itemindent}{0em}\itemsep12pt
-
-    \item A primer on modelling (philosophy) 
-
-    \item Key examples of Global Change Biology models/modelling
-    \begin{itemize}
-        \item Fisheries and over-harvesting 
-        \begin{itemize}
-          \item Importance of body size and metabolic scaling
-        \end{itemize}        
-        \item  Carbon cycle and warming
-        \begin{itemize}
-          \item Importance of thermal physiology
-        \end{itemize}        
-      \end{itemize}
-    
-      \item Summary and Readings
-    \end{itemize}  
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[plain]{}
+	\begin{itemize}\setlength{\itemindent}{0em}\itemsep12pt
   
-\begin{center}
-  {\LARGE \bf A primer on modelling (philosophy)}
-\end{center}  
+	  \item Modelling - what and why
+  
+	  \item Types of Models
+	  
+	  \item How to build 'em
+	  
+	  \item How to test 'em (AKA Fitting Models to Data)
 
-\end{frame}
-
-
+	  \item Summary and Readings
+	  \end{itemize}  
+  
+  \end{frame}
+  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Modelling in Global Change Biology}
+\begin{frame}{Models and Modelling}
 
 	\begin{center}
 
-    \it What does ``modelling'' mean to you?\\
-    \vspace{20pt}
-    \pause 
-    Caricature of a phenomenon that captures its essence \\ (the model's output reproduces/emulates the phenomenon)
+		\it What does ``modelling'' mean to you?\\
+		\vspace{20pt}
+		\pause 
+		Caricature of a phenomenon that captures its essence \\ (the model's output reproduces/emulates the phenomenon)
 		
-  \end{center}
-\end{frame}
-  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Why use models (Mathematical or not)?}
-
-  \begin{columns}[c]
-    \column{2.3in}
-    \includegraphics[width=\textwidth]{Reef.jpg}
-    \column{2.3in}
-    \includegraphics[width=\textwidth]{Forest.jpg}
-  \end{columns}
-
-  \centering
-  {\it Answer in the context of Global Change Biology}
-
-  \pause
-
-  \begin{itemize}[<+->] \itemsep4pt
-  
-      \item To understand/explain an observed phenomenon     
-
-      \item To develop accurate predictions of an observed phenomenon in the future    
-      
-      \item To find out what is important to know in an otherwise complex system
-      (cannot measure and monitor everything!)
-    
-  \end{itemize}
-
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{How to build 'em?}
-
-\begin{columns}[c]
-  \column{2.3in}
-    \includegraphics[width=\textwidth]{Reef.jpg}
-  \column{2.3in}
-    \includegraphics[width=\textwidth]{Forest.jpg}
-  \end{columns}
-
-  \begin{center}
-    {\it Essentially, all models are wrong, but some are useful}\\--- 
-    {\small George Box (1987) (British Mathematician)}
-  \end{center}
-
-  \pause
-  \begin{itemize}[<+->] \itemsep6pt
-    \item ``{\it All models are wrong}'' --- every model is a 
-      simplification of reality (e.g., the frictionless pendulum!)
-
-    \item ``{\it But some are useful}'' --- the appropriately simplistic 
-      ones can ({\it sufficiently}) explain and predict phenomena
-  \end{itemize}
-
-\end{frame}
-
+	  \end{center}
+ 
+ \end{frame}
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- \begin{frame}{Two types of models}
+\begin{frame}{Why use (Mathematical) models?}
+
+	\begin{columns}[c]
+	  \column{2.3in}
+	  \includegraphics[width=\textwidth]{Reef.jpg}
+	  \column{2.3in}
+	  \includegraphics[width=\textwidth]{Forest.jpg}
+	\end{columns}
+  
+	\pause
+  
+	\begin{itemize}[<+->] \itemsep4pt
+	
+		\item To understand/explain an observed phenomenon
+  
+		\item To develop accurate predictions of an observed phenomenon in the future    
+		
+		\item To find out what is important to know in an otherwise complex system (cannot measure and monitor everything!)
+	  
+	\end{itemize}
+  
+  \end{frame}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{How to build 'em?}
+
+	\begin{columns}[c]
+	  \column{2.3in}
+		\includegraphics[width=\textwidth]{Reef.jpg}
+	  \column{2.3in}
+		\includegraphics[width=\textwidth]{Forest.jpg}
+	  \end{columns}
+	
+	  \begin{center}
+		{\it Essentially, all models are wrong, but some are useful}\\--- 
+		{\small George Box (1987) (British Mathematician)}
+	  \end{center}
+	
+	  \pause
+	  \begin{itemize}[<+->] \itemsep6pt
+		\item ``{\it All models are wrong}'' --- every model is a 
+		  simplification of reality (e.g., the frictionless pendulum!)
+	
+		\item ``{\it But some are useful}'' --- the appropriately simplistic 
+		  ones can ({\it sufficiently}) explain and predict phenomena
+	  \end{itemize}
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Models and Modelling}
+
+	\begin{center}
+
+		\it What is more important to you when it come's to a Model's capabilities - Accuracy or Precision?\\
+		\vspace{20pt}
+		\pause 
+		Accuracy is a more fundamental property
+		
+	  \end{center}
+ 
+ \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Two Types of Models}
 
 	\begin{itemize}[<+->]\itemsep20pt
 
-		\item {\it Mechanistic models} aim to explain the PROCESSES or
-		MECHANISMS underlying PATTERNS or PHENOMENA in empirical data 
+		\item {\it Mechanistic models} aim to explain the PROCESSES or MECHANISMS underlying PATTERNS or PHENOMENA in empirical data 
 		\begin{itemize}
 			\item These models have a THEORETICAL BASIS
 		\end{itemize}
  
-		\item {\it Empirical/Phenomenological models} establish the existence of
+		\item {\it Inferential/Empirical (AKA Phenomenological) models} establish the existence of
 		STATISTICALLY SIGNIFICANT, NON-RANDOM PATTERNS or PHENOMENA in empirical
-		data 
+		data
 		\begin{itemize}
 			\item They make no assumptions about the processes or mechanisms that generate the patterns
 			\item That is, these models lack a THEORETICAL BASIS
@@ -240,7 +219,7 @@ head/foot}%
  \end{frame}
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Mechanistic vs. Phenomenological models}
+\begin{frame}{Mechanistic vs. Inferential model fitting}
 
 \begin{center}
 		\includegraphics[width=.7\textwidth]{graphics/L-H_cycle.png}\\
@@ -251,24 +230,24 @@ head/foot}%
 
 	\item {\bf Mechanistic model}: \it The Lynx-Hare Cycle is driven by density-dependent population growth in hares
 
-	\item {\bf Phenomenological model}: \it The Lynx and Hare Cycles have a significant asynchrony (period shift) of x years
+	\item {\bf Inferential model}: \it The Lynx and Hare Cycles have a significant asynchrony (period shift) of x years
 
 \end{itemize}
 
  \end{frame}
  
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Mechanistic vs. Phenomenological models}
+\begin{frame}{Mechanistic vs. Inferential model fitting}
 
 	\begin{itemize}[<+->]\itemsep10pt
 		\item {\it It's not really one vs. the other}; Both types of models play a role in science (and Biology)
-		\item Phenomenological model-fitting reveals patterns in data that generate HYPOTHESES 
+		\item Inferential model-fitting reveals patterns in data that generate HYPOTHESES 
  		\begin{itemize}
-			\item These can be tested using further models
+			\item These can be tested using further model fitting
 			\item Example: {\it Whether} climatic temperature affects the Lynx-Hare cycle (using Generalized Linear Model-fitting)
 		\end{itemize} 
 
-		\item Mechanistic model-fitting {\it tries} to validate a mechanistic model that can explain the observed phenomenological pattern and generate MORE ACCURATE, MECHANISTIC HYPOTHESES
+		\item Mechanistic model-fitting {\it tries} to validate a model that can {\it mechanistically explain} the observed pattern and generate MORE ACCURATE, MECHANISTIC HYPOTHESES
 		\begin{itemize}
 			\item Example: {\it How} climatic temperature {\it drives} the Lynx-Hare cycle
 		\end{itemize} 
@@ -279,7 +258,7 @@ head/foot}%
  \end{frame}
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Mechanistic vs. Phenomenological models}
+\begin{frame}{Mechanistic vs. Inferential model fitting}
 	 
   \begin{center}
 	  \includegraphics[width=\textwidth]{Mechanisms.pdf}
@@ -288,667 +267,366 @@ head/foot}%
  \end{frame}
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{How to build models --- {\it the} recipe}
+\begin{frame}{Mechanistic models in Ecology and Evolution?}
 
-  \begin{columns}[c]
-    \column{2.3in}
-    \includegraphics[width=\textwidth]{Reef.jpg}
-    \column{2.3in}
-    \includegraphics[width=\textwidth]{Forest.jpg}
-  \end{columns}
-
-  \begin{itemize} \itemsep4pt
-    \item Build competing models (not just one) --- can be 
-      increasingly complex versions of the same basic one
-      \pause
-    \item Then use Occam's razor ({\it lex parsimoniae}) \pause --- 
-      select the competing model with the fewest assumptions (usually, 
-      least complexity) \pause (remember model simplification from your R \& Stats weeks! )
-  \end{itemize}
-
-  \pause
-  Understanding fundamental mechanisms (friction, force) makes life (and       
-  modelling) easier (ask any physicist!) \pause --- {\it \bf Mechanistic       
-  models!}                                                                     
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{A modified recipe for biological modelling}
-
-  \begin{itemize}[<+->] \itemsep6pt
-    \item Use knowledge of biological {\it mechanisms} to construct models
-    \item But start at the right level of organization! 
-      \begin{center}
-	\includegraphics[width=.6\textwidth]{Mechanisms.pdf}
-      \end{center} 
-    \item See if the models ``agree well'' with data
-    \item Whichever model ``agrees best'' is most likely to have the right 
-      mechanisms --- the one that's best for predictions (e.g., population 
-      cycles), estimating rates (e.g., growth rates), etc.
-    % \item Of course, {\it model selection} using Occam's Razor will be 
-    %   necessary
-  \end{itemize}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[plain]{}
-
-  \centering
-
-  {\LARGE \bf Fisheries (importance of Body Size)}\\
-  \vspace{10pt}
-  \includegraphics[width=.7\textwidth]{Pieter_Fish.jpg}
-
-  \vspace{4pt}
-
-  {\small {\bf \it Big Fish Eat Little Fish}, 1557, Pieter van der Heyden}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{The Goal of Fisheries Modelling}
-
-  \centering 
-  \includegraphics[width=.5\textwidth]{Pieter_Fish.jpg}
-
-  \begin{itemize}[<+->] \itemsep4pt
-    \item Enable sustainable exploitation ({\it Maximum sustainable yield};  
-      MSY)
-    \item Accounting for impacts on the wider ecosystem (e.g., non-commercial
-      species, potentially of conservation concern)
-  \end{itemize}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Fisheries Modelling Approaches}
-
-  \begin{itemize}[<+->] \itemsep16pt
-    \item Single species models
-
-    \item Multi-species models
-      \begin{itemize}
-	% BGC: Simplify things a bit here.
-	%\item Size-spectrum models
-	\item Food web models, including the kitchen-sink approach 
-      \end{itemize}
-
-    \item Trait-based (species-independent) models
-      \begin{itemize}
-	\item Size-spectrum models
-      \end{itemize}
-  \end{itemize}
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%BGC
-\begin{frame}{Single-species fisheries models}
-
-  \begin{itemize}[<+->] \itemsep6pt
-    \item Single species models focus on the population dynamics of
-      just one species 
-    \item There are many different models
-    \item A classical one: the Ricker model
-      \begin{equation} 
-	N_{t+1} = N_t \, e^{r\left(1-\frac{N_t}{K}\right)} 
-      \end{equation} 
-    \item There are many others (e.g., Beverton-Holt)
-    \item \textit{But what of the effect of age, or size?}
-  \end{itemize}
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Single-species fisheries models}
-
-  \begin{itemize}[<+->] \itemsep3pt
-    \item In another single-species approach, ``cohort'' (individuals born   
-      in a same year), are tracked:                                               
-				{\small $$N_{1,t+1} = N_{1,t} \, e^{-(z + F_{1,t})}$$
-				$$N_{2,t+1} = N_{2,t} \, e^{-(z + F_{2,t})}$$
-				$$ . $$
-				$$ . $$
-				$$ . $$
-				$$ N_{k,t+1} = N_{k,t} \, e^{-(z + F_{k,t})}$$
-
-      $z$: ``Natural mortality'' \\
-      $F$: Fishing mortality \\
-      $k$: Number of cohorts }
-    \item $z$ includes mortality due to predation, competition,    
-      etc. in a single term (the rest of the ecosystem is a \textit{black box}) 
-    \item \textit{Should $z$ be dependent on age or size?} \pause Most likely!
-  \end{itemize}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Single-species fisheries models}
-
-  \textit{Pros and cons of single-species fisheries models}
-  \begin{itemize} [<+->]\itemsep6pt
-    \item[+] Can include very detailed information on a species, assuming you
-      have the data
-
-      \item[+] We know these models well, and have been using them in management
-      for a long time
-
-      \item[-] No real idea of the effect of fishing on the wider community
-      (e.g., rare species) or on habitats
-
-      \item[-] No species interactions (e.g., cannot capture trophic cascades)
-
-    \end{itemize}
-  \vspace{10pt}
-  \pause
-  \textit{Which goals can we achieve with these models?} 
-  \begin{itemize} [<+->]
-    \item MSY? -- Perhaps, but if each species has its on MSY, what happens then?
-    \item What about the wider ecosystem? Non-target species (fisheries ``by-catches'')?
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Multi-species fisheries models}
-
-  \pause
-  $\frac{dx_{i}}{dt} =  x_{i}\left[g(\cdot) - \sum_{j\in con(i)}\boxed 
-    {\alpha_{ji}}f(\cdot)x_{j} + \sum_{k\in res(i)}\varepsilon_{ik} \boxed 
-    {\alpha_{ik}}f(\cdot)x_{k} \right]$
-  \vspace{10pt}
-  \centering
-  \begin{columns}[c]
-    \column{1.7in}
-    \centering
-    \includegraphics[width=1.5in]{graphics/FoodWeb.pdf}
-    \column{3.2in}
-    \begin{itemize}\setlength{\itemindent}{0em} \itemsep10pt
-	\pause
-      \item Such models are necessarily more complex
-      \item They account for species interactions 
-      \item They account for dynamics like trophic cascades 
-      \item These include the kitchen sink approach such as \textit{Ecopath    
-	  with Ecosim} (and \textit{Ecospace}, etc.; developed by UBC, Cefas,           
-	\textit{et al.}) and \textit{Atlantis} (developed by Beth Fulton at CSIRO)    
-    \end{itemize}
-  \end{columns}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Multi-species fisheries models}
-
-  \textit{Pros and cons of multi-species fisheries models}
-
-  \begin{itemize} [<+->]\itemsep6pt
-    \item[+] Can account for species interactions 
-
-    \item[+] Estimate wider ecosystem impacts 
-      \begin{itemize}
-        \item Effects on non-target species
-        \item Effects on overall quality of the ecosystem
-      \end{itemize}
-    \item[+] Project long-term scenarios
-
-      \item[-] very ambitious, can become very complex, and as a result
-      \begin{itemize}
-	      \item Become black boxes (who knows what's going on in the model?)
-	      \item Require a \textit{lot} of data, which are not always available
-      \end{itemize}
-      \item [-] Their complexity means that they can fail miserably (can't even predict next year's catch)
-  \end{itemize}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Multi-species fisheries models}
-
-  \begin{itemize}[<+->]\itemsep10pt
-    \item We can {\it potentially} better meet sustainable fisheries objectives with multi-species fisheries models
-    \item Because we can capture the wider ecosystem effects of fisheries with them
-    \item But data, parameters, details\ldots
-    \item These models are necessarily more complex because they needed parameterisation of species interaction (consumption) rates
-    \item How do we predict / parameterise the interaction rates between myriad species?
-    \item Mechanistic Modelling to the rescue
-    \begin{itemize}
-      \item Using metabolic (size) scaling (Importance of body size)
-    \end{itemize}
-  \end{itemize}
-  
-  \end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Mechanistic Fisheries models: Using size scaling}
-  \pause
-  \begin{itemize}
-    \item Metabolic rate: Rate of individual's energy use (watts, J/s, kcal/s)
-    \item Metabolic rate in the resting state ($B$) sets the ``pace of life''
-      \pause
-    \item B increases with body size ($M$) as a ``power-law'':
-
-  \begin{columns}[c]
-	  \column{2.5in}\centering
-	  $B = B_0 \, M^{b}$ (where $b = 0.75$ )\\
-	  \includegraphics[width=0.9\textwidth]{MetabScaling.jpg} \\ (Kleiber's Law)
-	\column{2.5in}\centering
-	\pause
-	\includegraphics[width=0.45\textwidth]{fester.jpg}
+\begin{itemize}[<+->] \itemsep12pt
+	\item \it Do most ecological studies perform Inferential or Mechanistic modelling (or model-fitting)?
+	
+	\item The answer is mostly Inferential \pause --- {\it Why?} \pause
 	\begin{itemize}
-	  \item {\it Your wattage is $\sim$75W (unless you are sleeping!)}
+		\item Partly because we are still establishing the existence of GENERAL PATTERNS/PHENOMENA,
+		\item  ... and partly because we are (or are forced to be) interested in FORECASTING rather than EXPLAINING. 
+ 
+	\end{itemize}	  
+	
+	\item {\it So the big question is, can we FORECAST WITHOUT EXPLAINING?}
+	
+	\begin{itemize}
+		\item For example, disease outbreaks: Do we really need to care about the underlying mechanisms if we can predict a future event using Inferential modelling (e.g., Machine-learning of time series patterns)?
+		
 	\end{itemize}
-      \end{columns}
-  \end{itemize}
+
+\end{itemize}
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Using size scaling}
+\begin{frame}{What are Mechanisms?}
 
-  \begin{columns}[c]
-    \column{0.45\textwidth}\centering
-    Because
-    \vspace{10pt}\\
-    \includegraphics[width=\textwidth]{MetabScaling.jpg} 
-    \column{0.55\textwidth}\centering
-    \pause
-    Therefore,\\ \pause
-    \includegraphics[width=.9\textwidth]{graphics/DimRes1.pdf}
-    Size predicts interaction rates ({\it voila!})
-  \end{columns}
+   \begin{itemize}[<+->] \itemsep10pt
+		\item Somewhat subjective! 
+		\item For example, the Logistic growth model can be thought of as mechanistic:
+		$$ 
+			\dfrac{dN}{dt} = r N \left(1-\frac{N}{K}\right)  
+		$$ 
+				
+		\item What is the mechanism? \pause --- Density dependence through scramble competition (Brannstrom \& Sumpter 2005)
+
+		\item If the Logistic growth model and another model with contest
+			competition were compared with data --- some would call it
+			mechanistic  modelling because one is trying to get at the
+			underlying mechanism - scramble vs contest competition
+			
+		\item But is this REALLY mechanistic? What are $r$ and $K$ really?
+   \end{itemize}
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Using Size scaling}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example of a fundamental mechanism: metabolic rate}
 
-\begin{columns}
-  \column{0.6\textwidth}\centering
-    \includegraphics[width=.9\textwidth]{DimRes1.pdf}
-  \column{0.4\textwidth}\centering
-    \begin{itemize}\setlength{\itemindent}{0em}
-      \item Size predicts interaction rates (consumption rates)
-      \item 3$D$ consumption rates scale differently than 2$D$
-      % \item Search rates drive differences in consumption rate scaling
-    \end{itemize}
-    \vspace{6pt}
-    \includegraphics[width=.9\textwidth]{Dimensionality.pdf}\\
-    {\tiny Pawar et al Nature 2012}
+	\begin{itemize}
+		\item Proponents of {\it Ecological Metabolic Theory} (AKA ``Metabolic Theory of Ecology'') argue that we have not progressed far enough towards mechanistic modelling because metabolism has been ignored
+	\end{itemize}
+
+	\begin{center}
+		\includegraphics[width=\textwidth]{Mechanisms.pdf}
+	\end{center} 	
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example of a fundamental mechanism: metabolic rate}
+
+	\begin{itemize}
+		\item The mechanistic basis of thermal performance curves (\url{https://youtu.be/6n8fCuDwn74}) 
+	\end{itemize}
+
+\begin{columns}[c]
+  \column{.4\textwidth}
+    \pause
+      \includegraphics[width=\textwidth]{graphics/Photobacterium.pdf}
+  \pause
+  \column{.6\textwidth}
+  \scriptsize
+    $B = B_0 \boxed {e^{-\frac{E}{kT}}}f(T,T_{pk},E_D)$\\
+    \vspace{10pt}
+    \raggedright{$T$ = temperature (K)\\
+     $k$ = Boltzmann constant (eV K$^{-1}$)}\\
+     $E$ = Activation energy (eV)\\
+     $T_{pk}$ = Temperature of peak performance\\
+	 $E_D$ = Deactivation energy (eV)\\
+	 
+    {\tiny (J H van't Hoff 1884, S Arrhenius 1889)}
 \end{columns}
 
+\begin{itemize}\setlength{\itemindent}{0em}
+  \pause
+  \item Surely there is more to thermal responses?
+    % \begin{itemize}\setlength{\itemindent}{-1em}
+    %  \item Oxygen limitation
+    %  \item Complexity of metabolic network
+    %  \item Hormonal regulation
+    % \end{itemize}
+    % \pause
+  \item \textit{What about alternative models?}\\
+
+\end{itemize}
+ 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Multi-species fisheries models}
+\begin{frame}{Modelling, and fitting models to data: What's the big idea?}
 
-  \begin{columns}[c]
-    \column{0.25\textwidth}\centering
-      \includegraphics[width=\textwidth]{graphics/FoodWeb.pdf}
-    \column{0.75\textwidth}\centering
-    \includegraphics[width=.6\textwidth]{DimRes1.pdf}
-  \end{columns}
+\begin{itemize} [<+->] \itemsep8pt
 
-  \vspace{10pt}
+	\item {\it If possible}, use biological knowledge to construct models
+	\item See if the models ``agree well'' with data
+	\item Whichever model ``agrees best'' is most likely to have the right 
+	mechanisms
+	\item That's the one that's best for predictions (e.g. population 
+	cycles), estimating rates (e.g. population or individual growth rates), etc
+	\item Don't use models you already know have the wrong mechanisms just because they are popular!
+	\item Inferential/statistical models often perform better than mechanistic ones. \pause {\it Why? \pause --- because they have lest restrictive assumptions}   
 
-  \begin{itemize}\setlength{\itemindent}{0em} \itemsep10pt
-        \item Metabolic (size) scaling can help {\it mechanistically  parameterise} (provide values for the $\alpha$'s in the multi-species model) 
-  \end{itemize}
-
+\end{itemize}
+  
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{A compromise: Size-spectrum models}
 
-  \begin{itemize}
-     \item Size-spectrum models try to capture energy/biomass flows across trophic levels in  marine food webs {\it without worrying about specific species interactions}
-     
-     \begin{center}
-        \includegraphics[width=.35\textwidth]{size_spectrum.jpg} 
-     \end{center}
+\begin{frame}{Building Models}
 
-     \item All that matters in these models is size, irrespective of species identity
-     
-     \item Thus they are essentially ``trait-based'' (species-independent) models
+\begin{itemize}\itemsep10pt
 
-  \end{itemize}
+	\item It's an art, takes practice (Levins' paper on the  strategy of model building in biology)
+	
+	\item Build models one mechanism at a time --- in biology, it means 
+	start at the right level of organization! 
+	
+	\item Always consider an alternative that is more parsimonious, even if 
+	it is an Inferential model! 
 
-\end{frame}
+	\item For example, the Boltzmann-Arrhenius model is a good first try 
+	describe and uncover mechanisms underlying individual level ``traits'' that are rates (e.g., fecundity or development rate)  
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Size-Specturm Fisheries models}
+	\item The next step would be to include species interactions with  
+	temperature dependence of individuals (or go in an evolutionary direction)
 
-  \begin{itemize}\itemsep10pt
-     
-    \item They can capture effects such as trophic cascades without the underlying complexity of the food web
-
-    \item These models can work quite well for mid-term forecasting (better than single-species, not as good as multi-species models - when the latter are actually working well) 
-    
-    \item But the jury is still out on effective size-spectrum models really are (species interactions do matter at some level)
-
-  \end{itemize}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Size-spectrum Fisheries models: mechanistic basis}
-
-  \begin{itemize}
-    \item These models use ``Damuth's law'' to estimate the ``size spectrum'' of a community
-     
-    \centering 
-    
-    \includegraphics[width=.65\textwidth]{Damuth.png}
-
-  \end{itemize}
+\end{itemize}   
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{The mechanistic basis of Size-specturm Models}
+\begin{frame}{Models and Modelling?}
 
-  \begin{columns}[c]
-    \column{2.4in}\centering
-    Resting metabolic rate (watts),\\ 
-    $B = B_0 M^{0.75}$\\
-    {\small (''Kleiber's Law``: Metabolic rate increases {\it allometrically} with size)}\\[10pt]
-    % \vspace{10pt}
-    \includegraphics[width=2.2in]{MetabScaling.jpg} 
-    \column{2.4in}\centering
-    \pause
-    Therefore,\\ 
-    $r_\text{max} = r_0 M^{-0.25} $\\
-    (Population growth rate declines {\it allometrically} with body size)\\[10pt]
-    % \vspace{20pt}
-    \includegraphics[width=2.2in]{r_max.pdf}
-  \end{columns}
-\pause   
-\end{frame}
+	\begin{center}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{The mechanistic basis of Size-specturm Models}
+		\it Which modelling approach (Mechanistic vs Inferential) is more likely to yield accurate predictions under global change?\\
+		\vspace{20pt}
+		\pause 
+		Mechanisms are the key to accurate {\it prediction}!
+		
+	  \end{center}
+ 
+ \end{frame}
 
-  \begin{itemize} \itemsep10pt
-    \item So in general, larger animals and plants have relatively less power to crank out offspring
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Building EnE Models}
+	 
+\begin{center}
+	\includegraphics[width=\textwidth]{Mechanisms.pdf}
+\end{center} 
 
-  \begin{columns}[c]
-    \column{2.5in}\centering
-    \centering
-    \includegraphics[width=0.8\textwidth]{r_max.pdf}
-    \column{2.5in}\centering
-    \pause
-    \includegraphics[width=0.8\textwidth]{Elephants.jpg}
-  \end{columns}
+\begin{itemize}\itemsep2pt
 
-    \item {\it This} is why smaller organisms typically show stronger exponential growth than larger ones!
-  \end{itemize}
+	\item \it You will learn about (deriving and analysing) key models (and theories) at different levels of organization in this part of the course (starting with metabolism)
+
+\end{itemize}   
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{The mechanistic basis of Size-specturm Models}
+\begin{frame}{Fitting Models (to data)}
 
-  \begin{itemize}
-    \item And, assuming sufficient energy supply to all species, population density will scale negatively with body size ({\it Damuth's law})
+\begin{itemize}\itemsep16pt
 
-    \begin{center}
-      \includegraphics[width=.5\textwidth]{Damuth.png} 
-    \end{center}
- \vspace{-10pt}
+	\item Least Squares methods
+	\begin{itemize}
+		 \item Linear 
+		 \item Non-linear
+	\end{itemize}
+	\item Likelihood-based methods 
+	\begin{itemize}
+	 \item Maximum Likelihood Estimation (MLE) 
+	 \item Bayesian
+	\end{itemize}
+	\item Machine learning and Artificial intelligence
 
-  \item So big animals and plants are rarer 
-   \item Carnivores of a given size are rarer than herbivores of the same size  because less energy is available higher up in food chains
-
-  \end{itemize}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[plain]{}
-  \centering
-
-  {\Large \bf Global Warming and Carbon Balance (importance of Thermal Physiology)}\\
-  \vspace{10pt}
-  \includegraphics[width=.7\textwidth]{800.jpg}
-
-  \vspace{4pt}
-
-  {\small {\bf \it The world's getting warmer}}
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Earth's Carbon Cycle}
-
-  \centering
-  \includegraphics[width=.7\textwidth]{graphics/Carbon_cycle.jpg}\\
-\vspace{-8pt}
-{\tiny \url{https://en.wikipedia.org/wiki/Carbon_cycle}}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Mathematically Modelling the Carbon Cycle}
-
-\begin{itemize}[<+->]\itemsep10pt
-  \item Ecosystem-scale models 
-    \begin{itemize}
-      \item Seek to model the cycling of carbon within specific ecosystems (e.g, in pond, lake, ocean, soil, grassland, forest) 
-      \item Often focus on net Greenhouse Gas (GHG) emission vs sequestration (absorbtion / storage)
-      \item They often ignore feedbacks between the biological (e.g., the food web) and physical (e.g., water or soil chemistry) components of the ecosystem
-    \end{itemize}
-    \item Global-scale models
-    \begin{itemize}
-      \item Seek to model the cycling of carbon {\it across} ecosystems 
-      \item Typically, they are global- (Earth-) scale models 
-      \item They typically include feedbacks between the biological and physical components of the Globe (therefore, AKA ``Earth system models, or ESMs'') 
-    \end{itemize}
-    \item \it We will focus on Ecosystem-scale models in this lecture
 \end{itemize}
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ecosystem Scale Carbon Cycle Models}
+\begin{frame}{Fitting Models (to data)}
 
-  \begin{itemize}[<+->]\itemsep0pt
-    \item Compartment-based: divide the ecosystem into functional compartments and model carbon flows/fluxes between/through them\\[10pt]
-    \centering
-    \includegraphics[width=.5\textwidth]{EltonFW.pdf}
-    \item They typically assume that abundances in the different compartments are not fluctuating (steady-state assumption)  
+\begin{itemize} \itemsep12pt
+	
+\item Linear and non-linear least squares model fitting:  (mathematically /algorithmically simple) approaches, useful in many scenarios in biology 
+\begin{itemize}
+	\item Many mechanisms in biology are inherently non-linear (i.e., r data are better-explained by a non-linear mathematical model)
+\end{itemize} 
 
-  \end{itemize}
+\item Bayesian (and MLE) methods: Versatile and powerful when data are limited and your (e.g., mechanistic) models are complex (many parameters). Bayesian  more accurate results than MLE if you have prior info (mechanistic models!). 
+
+\item AI/machine Learning: most versatile and powerful for large amounts of noisy data, but the focus on maximizing ability to discover pattern and predict comes at the cost of mechanistic insights
+
+
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Summary: Model comparison and selection is the key}
+
+\begin{itemize}[<+->]\itemsep12pt
+	\item Ideally, several competing (meaningful, not just null) hypotheses (mathematical models) should be fitted to data and compared using statistical theory 
+	\item This is an advance over the traditional ``null hypothesis'' approach in Biology
+	\item Necessary for the advancement of Biology from from an observational and axiomatic discipline to one with general theories
+	\item Necessary for understanding the mechanisms underlying biological patterns/phenomena
+\end{itemize}
+ 
+ \end{frame}
   
-\end{frame}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ecosystem-Scale Carbon Cycle Models}
+% \begin{frame}{Comparing and selecting models}
 
-  \begin{itemize}[<+->]\itemsep10pt
-    \item Food web-based: explicitly model the flows of carbon through the trophic network\\[10pt]
-    \centering
-    \includegraphics[width=.35\textwidth]{FoodWeb.pdf}
-  \item They may or may not make a steady-state assumption
+% \begin{itemize}\itemsep12pt
+	
+% 	\item It's all about the ``Likelihood'' of a model: \\
+% 	the set of parameter values of the	model ($\theta$) given outcomes ($x$),	equals the probability of those observed outcomes given those parameter
+% 	values, that is,
 
-  \end{itemize}
-  
-\end{frame}
+% 	$$ \mathcal{L}(\theta |x) = P(x | \theta)$$
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Multi-species fisheries models}
+% 	\item The easiest thing to do for you is to use information theory
+% 	(including AIC and BIC) to compare models. 
 
-  \textit{Pros and cons of the different Ecosystem-scale Carbon cycle models}
+% 	\item Both AIC and BIC use the {\it estimated (log-) likelihood of a model}:\\
+	
+% 	\begin{itemize}
+		
+% 		\item AIC: $-2 \ln[\mathcal{L}(\theta |x)] + 2p$\\
 
-  \begin{itemize} [<+->]\itemsep10pt
-    \item Compartment-based models
+% 		\item BIC (Schwartz criterion): $-2 ln[\mathcal{L}(\theta |x) ] + p \ln(n)$
+		
+% 		($n = $ sample size, $p$ = number of free parameters)	
+% 	\end{itemize}
+	
+	
+% 	\item The lower the AIC or BIC, the better
 
-    \begin{itemize} 
-      \item[+] Relatively simple, require less parameterisation
-      \item[-] Assume steady state, so cannot capture dynamics, or include effects of changing species composition (e.g., driven by climate change)
-    \end{itemize}
-    
-    \item Food web-based models
-    \begin{itemize} 
-      \item[+] Can provide predictions based on a steady state assumption, or can model changes in dynamics/abundances of component populations driven by factors such as climate change
-      \item[+] So can potentially predict future trends in ecosystem carbon cycling
-      \item[-] Difficult to parameterise (same issues as multi-species fisheries models, and same potential solution, using metabolic scaling)
-    \end{itemize}
-  \end{itemize}
+% \end{itemize}
 
-\end{frame}
+% \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Including climatic warming into Ecosystem-scale Carbon Cycle models}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  \begin{itemize}[<+->]\setlength{\itemindent}{0em}\itemsep2pt
-    \item Earth's Carbon Cycle is {\it inevitably} temperature-dependent
+% \begin{frame}{AIC and BIC}
 
-  \begin{center}
-    \includegraphics[width=0.8\textwidth]{Bar-on_et_al.pdf}\\
-    {\tiny Bar-On et al, ``The Biomass Distribution on Earth'' PNAS 2018}
-  \end{center}\par
+% 	\begin{itemize}\itemsep6pt
+		
+% 		\item In models fitted with least squares and normally-distributed errors,
+		
+% 		 $\ln[\mathcal{L}(\theta |x)] = -\frac{n}{2}\ln\left(\frac{RSS}{n}\right)$
 
-    \item Metabolic rates of the {\it vast majority} of life depend directly on environmental temperature
-    \item The rest, endotherms, also depend indirectly on temperature (e.g., they eat ectotherms, such as rabbit eating grass)
-  \end{itemize}
+% 		\item Thus 
+% 		\begin{align*}
+% 			\text{AIC} &= -2 \ln[\mathcal{L}(\theta |x)] + 2p \\
+% 			&= n + 2 + n \ln\left(\frac{2 \pi}{n}\right) + n \ln(\text{RSS}) + 2 p			
+% 		\end{align*}
+		
+% 		\item And 
+% 		\begin{align*}
+% 			\text{BIC} &= -2 ln[\mathcal{L}(\theta |x) ] + p \ln(n) \\ 
+% 			&= n + 2 + n \ln\left(\frac{2 \pi}{n}\right) + n \ln(\text{RSS}) + p \ln(n)
+% 		\end{align*}
 
-  \end{frame}
+% 		\item  \it The small-sample AIC can also be calculated similarly (see Johnson \& Omland 2004)
+
+% 	\end{itemize}
+	
+% 	\end{frame}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{The world's getting warmer (duh!)}
 
-  \centering
-  \includegraphics[width=4in]{Warming.png}
+% \begin{frame}{Comparing and selecting models}
 
-\end{frame}
+% This is how you calculate AIC and BIC (using python syntax): 
+
+% \pause
+% \begin{itemize}\itemsep10pt
+% \small
+% 	\item residuals = Observations - Predictions
+% 	\item rss = sum(residuals ** 2) 
+% 	\item Then, AIC = n + 2 + n * log((2 * pi) / n) + n * log(rss) + 2 * p \\
+% 		({\it note n and p!})
+% 	\item And BIC = n + 2 + n * log((2 * pi) / n) + n * log(rss) + (log(n)) * (p + 1)
+
+% 	\item For both AIC and BIC, If model {\bf A} has AIC lower by 2-3 or 
+% 	more than model {\bf B}, it's better --- Differences of less than 2-3 
+% 	don't really matter
+
+% \end{itemize}
+
+%     \pause
+% Also note that:
+% \begin{itemize}
+% \small
+% 	\item R$^{2}$ = 1 - (rss$/$tss), where tss is total sum of squares: \\
+% tss = sum((Observations - mean(Predictions)) ** 2)\\
+% (a useful measure of goodness of fit)
+
+% \end{itemize}
+
+% \end{frame}
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \begin{frame}{Thermal fluctuations are also predicted to increase}
 
-%   \centering
-%   \includegraphics[width=2.5in]{graphics/Fluctuations.jpg}\\
-%   \vspace{5pt}
-%   \centering
-%   \includegraphics[width=4.3in]{graphics/ClimFluctHot.jpg}
+% \begin{frame}{Comparing and selecting models: More stuff}
+
+% \begin{itemize} \itemsep12pt
+% 	\item You can also calculate Akaike Weights, which is very useful/important
+% 	when comparing $ > 2$ models. These weights can then be used to perform {\it
+% 	model averaging}
+
+% 	\item Model selection using the Likelihood-Ratio test (LRT) is another
+% 	option when you are comparing 2 models
+	
+% 	\item Adjusted $R^2$ can be used to get a rigorous ``idea'' about how
+% 	alternative models are performing
+	
+% 	\item Very often, you can do step-wise model simplification, especially in
+% 	{\it for linear least squares model fitting}: Start with a complex model and
+% 	drop terms till you have found a the most {\it parsimonious} simpler version
+% 	of the original model
+% 	\begin{itemize}
+% 		\item There are ready-made functions in {\tt R} to do this (of course!)
+% 	\end{itemize}
+
+% \end{itemize}
 
 % \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Modelling effects of climatic warming on the Carbon Cycle}
-
-  \begin{itemize}[<+->] \itemsep6pt
-			\item We can understand effects on carbon balance by modelling:
-      \begin{itemize} \itemsep4pt
-				\item Carbon Use Efficiency (CUE) --- quantifies organismal growth efficiency and ecosystem productivity potential
-					$$\textrm{CUE}  = 1 - \frac{R}{P_{\textrm{gross}}}$$
-				\item Net carbon flux (exchange) --- the rate of organismal and 
-				ecosystem carbon gain or loss due to metabolism
-				$$\textrm{Net carbon flux} = P_{\textrm{net}} - R$$
-			\end{itemize}
-  \end{itemize}
-  $R$: Respiration rate (plants + heterotrophs -- microbes and animals)\\
-  $P_{\text{gross}}$: (Diurnal) Gross photosynthesis rate \\ 
-  $P_{\text{net}}$: Diurnal net photosynthesis rate (difference between $P_\text{gross}$ and diurnal respiration rate of plants)
-
-\end{frame}
-
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Ecosystem-scale Carbon cycle Models: The importance of thermal physiology}
-      
-  \begin{columns}[c]
-    \column{2.1in}
-    \pause
-    \includegraphics[width=\textwidth]{graphics/Photobacterium.pdf}\\
-    {\scriptsize (J H van't Hoff 1884, S Arrhenius 1889)}
-    \pause
-    \column{2.7in}
-    $B = B_0 \boxed {e^{-\frac{E}{kT}}}f(T,T_{pk},E_D)$\\
-    \vspace{6pt}
-    \raggedright{\footnotesize $T$ = temperature (K)\\
-    $B$ = The metabolic (e.g., Photosynthesis, Respiration) rate \\   
-    $B_0$ = A ``normalization'' constant (may include effect of body size) \\   
-    $k$ = Boltzmann constant (eV K$^{-1}$)\\
-    $E$ = Activation energy (eV) (thermal sensitivity)\\
-    $T_{pk}$ = Temperature of peak performance\\
-    $E_D$ = Deactivation energy (eV)}
-  \end{columns}
-
-  \pause
-
-  \begin{itemize}\setlength{\itemindent}{0em}
-
-    \item This is very general; key biological rates: Respiration, photosynthesis, consumption rate, growth rate, etc., all depend upon temperature in a similar way (following the above equation)
-
-  \end{itemize} 
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Modelling effects of climatic warming on the Carbon Cycle}
-  \begin{itemize}
-			\item Ecosystem carbon balance depends on differences in the 
-			thermal responses of respiration (which releases carbon) and 
-			photosynthesis (which fixes carbon) rates:
-  \end{itemize}
-
-  \begin{center} \it
-    \includegraphics[width=.45\textwidth]{Fig1_IntraspPlotsTerAqInv.pdf}
-
-\pause 
-Note that these are Arrhenius plots (temperature axis is inverted)
-\end{center}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Summary}
-   
-    \begin{itemize}[<+->] \setlength{\itemindent}{0em} \itemsep6pt
-  
-      \item Mechanistic Modelling is key to {\it predictive} Models in Global Change Biology 
-      
-      \item Species' body sizes determine their population growth rate and population size
-      \begin{itemize}
-        \item Therefore size also predicts the robustness to and recovery from perturbations of species' populations in both fisheries and carbon cycle models
-      \end{itemize} 
-
-      \item Fisheries Models have historically not been particularly accurate or forward looking (predictive)
-        \begin{itemize}
-          \item Using metabolic theory to develop more mechanistic. muti-species fisheries  models is necessary (and is a work in progress) 
-        \end{itemize}  
-        
-        \item Metabolic theory can be used to model the balance of  whole-ecosystem respiration and primary production (Ecosystem-scale carbon cycle models)
-
-        \begin{itemize}
-          \item Because environmental temperature determines metabolic rate, and most life on earth is ectothermic 
-        \end{itemize}  
-
-    \end{itemize}
-    
-  \end{frame}  
-
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Readings}
 
-  \begin{enumerate}\itemsep2pt
+\begin{itemize}\itemsep10pt
 
-    \item Brown, J. H.,  et al. Toward a metabolic theory of ecology. Ecology 85, 1771--1789. (2004). 
+\item Levins, R. (1966) The strategy of model building in population biology. Am. Sci. 54, 421--431.  
 
-    \item Dell, A. I. et al. Systematic variation in the temperature dependence
-      of physiological and ecological traits. PNAS. 108, 10591--10596. (2011)
-    
-    \item Sprules, W. G. \& Barth, L. E. Surfing the biomass size spectrum: Some remarks on history, theory, and application. Canadian Journal of Fisheries and Aquatic Sciences vol. 73 477--495 (2016).
-    
-    \item Schramski, J. R. et al. Metabolic theory predicts whole-ecosystem properties. PNAS 112, 2617--2622. (2015).
-    
-    \item Yvon-Durocher, G. et al. Reconciling the temperature dependence of respiration across timescales and ecosystem types. Nature 487, 472--476 (2012).
+\item Otto, S.P. and Day, T. (2011) A biologist's guide to mathematical modeling in ecology and evolution. Princeton University Press. (Read Chapters 1-2) 
 
-    \item Smith, T.P. et al. Community-level respiration of prokaryotic microbes
-    may rise with global warming. Nat. Commun. 10 (1) (2019). 
+\item Kingsland, Sharon E. (1995) Modeling Nature. University of Chicago Press. (Read over this term - and beyond!)
 
-  \end{enumerate}
+% \item Johnson, J. B. \& Omland, K. S. (2004) Model selection in ecology 
+% and evolution. Trends Ecol. Evol. 19, 101--108. (coming up later)
 
-
+\item Additional readings on the MQB git repository ({\tt Modelling} directory)
+ 
+\end{itemize}
 \end{frame}
 
 \end{document}
