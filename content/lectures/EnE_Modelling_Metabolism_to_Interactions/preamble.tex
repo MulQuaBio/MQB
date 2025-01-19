@@ -1,0 +1,64 @@
+\documentclass[xcolor=x11names, compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\graphicspath{{graphics/}}
+
+\usepackage{tikz}
+\usepackage{color}
+\input{rgb}
+
+\definecolor{capri}{rgb}{0,.75,1}
+\definecolor{coral}{rgb}{1,.2,.2}
+
+\newcommand{\hltyellow}[1]{\colorbox{yellow}{$\displaystyle #1$}}
+\newcommand{\hltblue}[1]{\colorbox{capri}{$\displaystyle #1$}}
+\newcommand{\hltred}[1]{\colorbox{coral}{$\displaystyle #1$}}
+\newcommand{\hltgreen}[1]{\colorbox{green}{$\displaystyle #1$}}
+
+\usepackage{hyperref}
+
+\usepackage{ulem}
+\renewcommand<>{\sout}[1]{
+  \only#2{\beameroriginal{\sout}{#1}}
+  \invisible#2{#1}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usetheme{Madrid}
+
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+\usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape, series = \bfseries}
+\setbeamertemplate{frametitle}[default][center]
+\setbeamerfont{footnote}{size=\tiny}
+\addtobeamertemplate{footnote}{}{\vspace{1ex}} %so that the footnotes do not overlap with navigation symbols at bottom
+
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4} 
+\setbeamercolor*{normal text}{fg=black,bg=white} 
+\setbeamercolor*{alerted text}{fg=red} 
+\setbeamercolor*{example text}{fg=black} 
+\setbeamercolor*{structure}{fg=black}
+ 
+\setbeamercolor*{palette tertiary}{fg=black,bg=black!10} 
+\setbeamercolor*{palette quaternary}{fg=black,bg=black!10} 
+
+\renewcommand{\(}{\begin{columns}}
+\renewcommand{\)}{\end{columns}}
+\newcommand{\<}[1]{\begin{column}{#1}}
+\renewcommand{\>}{\end{column}}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
+  \hbox{}\nobreak\hfil(#1)%
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quote}}
+  {\signed{\usebox\mybox}\end{quote}}
