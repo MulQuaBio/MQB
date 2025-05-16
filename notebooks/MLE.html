@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -61,6 +61,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/MLE';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -196,8 +197,6 @@
 <li class="toctree-l1"><a class="reference internal" href="MetabolicBasis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Populations.html">Single Populations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Interactions.html">Species Interactions</a></li>
-
-
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
@@ -489,21 +488,21 @@ f(y_i|\beta_0, \beta_1, x_i) = \frac{1}{\sqrt{2\sigma^2 \pi}} \exp\left(-\frac{(
 <p>First, we need to build an R function that returns the (negative log) likelihood for simple linear regression (it is negative log because the log of likelihood is itself negative):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nll.slr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">par</span><span class="p">,</span><span class="w"> </span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="kc">...</span><span class="p">){</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nll.slr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">par</span><span class="p">,</span><span class="w"> </span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="kc">...</span><span class="p">){</span>
 <span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="kc">...</span><span class="p">)</span>
 <span class="w"> </span>
 <span class="w"> </span><span class="n">b0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">par</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
 <span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">par</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
 <span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">X</span>
 <span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Y</span>
-<span class="w"> </span><span class="nf">if</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">args</span><span class="o">$</span><span class="n">sigma</span><span class="p">)){</span>
+<span class="w"> </span><span class="kr">if</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">args</span><span class="o">$</span><span class="n">sigma</span><span class="p">)){</span>
 <span class="w">  </span><span class="n">sigma</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">args</span><span class="o">$</span><span class="n">sigma</span>
-<span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span>
 <span class="w">  </span><span class="n">sigma</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">par</span><span class="p">[</span><span class="m">3</span><span class="p">]</span>
 
 <span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">b0</span><span class="o">+</span><span class="n">b1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">X</span>
 <span class="w"> </span>
-<span class="w"> </span><span class="nf">return</span><span class="p">(</span><span class="o">-</span><span class="nf">sum</span><span class="p">(</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span><span class="w"> </span><span class="n">log</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)))</span>
+<span class="w"> </span><span class="kr">return</span><span class="p">(</span><span class="o">-</span><span class="nf">sum</span><span class="p">(</span><span class="nf">dnorm</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span><span class="w"> </span><span class="n">log</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)))</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -535,7 +534,8 @@ f(y_i|\beta_0, \beta_1, x_i) = \frac{1}{\sqrt{2\sigma^2 \pi}} \exp\left(-\frac{(
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/4b277a65a9c5227e95e6373bfff43be1bf485c0cc16fcd8969e497d03cd6a9ed.png"><img alt="../_images/4b277a65a9c5227e95e6373bfff43be1bf485c0cc16fcd8969e497d03cd6a9ed.png" src="../_images/4b277a65a9c5227e95e6373bfff43be1bf485c0cc16fcd8969e497d03cd6a9ed.png" style="width: 420px; height: 420px;" /></a>
+<a class="reference internal image-reference" href="../_images/4b277a65a9c5227e95e6373bfff43be1bf485c0cc16fcd8969e497d03cd6a9ed.png"><img alt="../_images/4b277a65a9c5227e95e6373bfff43be1bf485c0cc16fcd8969e497d03cd6a9ed.png" src="../_images/4b277a65a9c5227e95e6373bfff43be1bf485c0cc16fcd8969e497d03cd6a9ed.png" style="width: 420px; height: 420px;" />
+</a>
 </div>
 </div>
 <section id="likelihood-profile">
@@ -546,7 +546,7 @@ f(y_i|\beta_0, \beta_1, x_i) = \frac{1}{\sqrt{2\sigma^2 \pi}} \exp\left(-\frac{(
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">N</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">50</span>
 <span class="n">b0s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
 <span class="n">mynll</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="m">50</span><span class="p">)</span>
-<span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">N</span><span class="p">){</span>
+<span class="kr">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">N</span><span class="p">){</span>
 <span class="w"> </span><span class="n">mynll</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">nll.slr</span><span class="p">(</span><span class="n">par</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">b0s</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">b1</span><span class="p">),</span><span class="w"> </span><span class="n">dat</span><span class="o">=</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
@@ -564,7 +564,8 @@ f(y_i|\beta_0, \beta_1, x_i) = \frac{1}{\sqrt{2\sigma^2 \pi}} \exp\left(-\frac{(
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/d99bebd4069de1df31ad48c52244bd4192c4949fc4102ba9fa5b2ac949091c89.png"><img alt="../_images/d99bebd4069de1df31ad48c52244bd4192c4949fc4102ba9fa5b2ac949091c89.png" src="../_images/d99bebd4069de1df31ad48c52244bd4192c4949fc4102ba9fa5b2ac949091c89.png" style="width: 420px; height: 420px;" /></a>
+<a class="reference internal image-reference" href="../_images/d99bebd4069de1df31ad48c52244bd4192c4949fc4102ba9fa5b2ac949091c89.png"><img alt="../_images/d99bebd4069de1df31ad48c52244bd4192c4949fc4102ba9fa5b2ac949091c89.png" src="../_images/d99bebd4069de1df31ad48c52244bd4192c4949fc4102ba9fa5b2ac949091c89.png" style="width: 420px; height: 420px;" />
+</a>
 </div>
 </div>
 <p>The true value for b0 (10) is the red line, while the value that minimizes the log-likelihood (i.e., maximizes the negative log-likelihood) is the green line. These are not the same because maximum likelihood is providing an * estimate * of the true value given the measurement errors (that we ourselves generated in tgis synthetic dataset).</p>
@@ -580,8 +581,8 @@ f(y_i|\beta_0, \beta_1, x_i) = \frac{1}{\sqrt{2\sigma^2 \pi}} \exp\left(-\frac{(
 <span class="n">b1s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="n">N1</span><span class="p">)</span>
 
 <span class="n">mynll</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="o">=</span><span class="n">N0</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="o">=</span><span class="n">N1</span><span class="p">)</span>
-<span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">N0</span><span class="p">){</span>
-<span class="w"> </span><span class="nf">for</span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">N1</span><span class="p">)</span><span class="w"> </span><span class="n">mynll</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">nll.slr</span><span class="p">(</span><span class="n">par</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">b0s</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">b1s</span><span class="p">[</span><span class="n">j</span><span class="p">]),</span><span class="w"> </span><span class="n">dat</span><span class="o">=</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+<span class="kr">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">N0</span><span class="p">){</span>
+<span class="w"> </span><span class="kr">for</span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">N1</span><span class="p">)</span><span class="w"> </span><span class="n">mynll</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">nll.slr</span><span class="p">(</span><span class="n">par</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">b0s</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">b1s</span><span class="p">[</span><span class="n">j</span><span class="p">]),</span><span class="w"> </span><span class="n">dat</span><span class="o">=</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="n">ww</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">which</span><span class="p">(</span><span class="n">mynll</span><span class="o">==</span><span class="nf">min</span><span class="p">(</span><span class="n">mynll</span><span class="p">),</span><span class="w"> </span><span class="n">arr.ind</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
@@ -604,7 +605,8 @@ f(y_i|\beta_0, \beta_1, x_i) = \frac{1}{\sqrt{2\sigma^2 \pi}} \exp\left(-\frac{(
 	<tr><td>10.48485</td><td>2.96</td></tr>
 </tbody>
 </table>
-</div><a class="reference internal image-reference" href="../_images/5a5bd71f629ea6192663916a5ef7cdec7889b615accf298608e71d6a1e4d87f3.png"><img alt="../_images/5a5bd71f629ea6192663916a5ef7cdec7889b615accf298608e71d6a1e4d87f3.png" src="../_images/5a5bd71f629ea6192663916a5ef7cdec7889b615accf298608e71d6a1e4d87f3.png" style="width: 420px; height: 420px;" /></a>
+</div><a class="reference internal image-reference" href="../_images/5a5bd71f629ea6192663916a5ef7cdec7889b615accf298608e71d6a1e4d87f3.png"><img alt="../_images/5a5bd71f629ea6192663916a5ef7cdec7889b615accf298608e71d6a1e4d87f3.png" src="../_images/5a5bd71f629ea6192663916a5ef7cdec7889b615accf298608e71d6a1e4d87f3.png" style="width: 420px; height: 420px;" />
+</a>
 </div>
 </div>
 <p>There is a lot going on here. Make sure you ask one of us if some of the code does not make sense!</p>
@@ -622,7 +624,8 @@ f(y_i|\beta_0, \beta_1, x_i) = \frac{1}{\sqrt{2\sigma^2 \pi}} \exp\left(-\frac{(
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/8e956f318aa848b592d5763ed71b6e539926d7c9b10cb5f590449c992895264e.png"><img alt="../_images/8e956f318aa848b592d5763ed71b6e539926d7c9b10cb5f590449c992895264e.png" src="../_images/8e956f318aa848b592d5763ed71b6e539926d7c9b10cb5f590449c992895264e.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/8e956f318aa848b592d5763ed71b6e539926d7c9b10cb5f590449c992895264e.png"><img alt="../_images/8e956f318aa848b592d5763ed71b6e539926d7c9b10cb5f590449c992895264e.png" src="../_images/8e956f318aa848b592d5763ed71b6e539926d7c9b10cb5f590449c992895264e.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 </section>
@@ -704,7 +707,8 @@ f(y_i|\beta_0, \beta_1, x_i) = \frac{1}{\sqrt{2\sigma^2 \pi}} \exp\left(-\frac{(
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/a9cd045fd9c0c6806c5d24e6c549bf953ea68fbb63f71f82851022a56571452e.png"><img alt="../_images/a9cd045fd9c0c6806c5d24e6c549bf953ea68fbb63f71f82851022a56571452e.png" src="../_images/a9cd045fd9c0c6806c5d24e6c549bf953ea68fbb63f71f82851022a56571452e.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/a9cd045fd9c0c6806c5d24e6c549bf953ea68fbb63f71f82851022a56571452e.png"><img alt="../_images/a9cd045fd9c0c6806c5d24e6c549bf953ea68fbb63f71f82851022a56571452e.png" src="../_images/a9cd045fd9c0c6806c5d24e6c549bf953ea68fbb63f71f82851022a56571452e.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 <section id="confidence-intervals">

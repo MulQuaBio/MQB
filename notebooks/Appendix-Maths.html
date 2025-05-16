@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -61,6 +61,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Appendix-Maths';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Maths for Biologists" href="Appendix-MathsForBiologists/MathsForBiologists.html" />
@@ -196,8 +197,6 @@
 <li class="toctree-l1"><a class="reference internal" href="MetabolicBasis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Populations.html">Single Populations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Interactions.html">Species Interactions</a></li>
-
-
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
@@ -478,7 +477,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">p</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">p</span>
 </pre></div>
 </div>
 </div>
@@ -486,8 +485,8 @@ document.write(`
 <p>And import scipy and sympy:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sc</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sc</span>
 <span class="n">init_printing</span><span class="p">()</span> <span class="c1"># for pretty-printing equations etc</span>
 </pre></div>
 </div>
@@ -760,7 +759,7 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 <p>The speedup when using “lambdified” functions instead of direct numerical evaluation can be significant, often several orders of magnitude. Even in this simple example we get a significant speed up:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it #remember this?
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span> #remember this?
 
 <span class="n">MyFun_vec</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">N</span><span class="p">(((</span><span class="n">x</span> <span class="o">+</span> <span class="n">pi</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">xx</span><span class="p">))</span> <span class="k">for</span> <span class="n">xx</span> <span class="ow">in</span> <span class="n">x_vec</span><span class="p">])</span>
 </pre></div>
@@ -774,7 +773,7 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span>
 
 <span class="n">MyFun_vec</span> <span class="o">=</span> <span class="n">MyFun_lamb</span><span class="p">(</span><span class="n">x_vec</span><span class="p">)</span>
 </pre></div>
@@ -1375,8 +1374,8 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 <section id="one-population-exponential-growth">
 <h3>One population: Exponential growth<a class="headerlink" href="#one-population-exponential-growth" title="Link to this heading">#</a></h3>
 <p>Let’s look at how populations grow when there are no environmental constraints. The differential equation model is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a0b91132-8b15-43c0-ad2e-b5f22dc133cc">
-<span class="eqno">(11)<a class="headerlink" href="#equation-a0b91132-8b15-43c0-ad2e-b5f22dc133cc" title="Permalink to this equation">#</a></span>\[\begin{equation}\label{eq:exp_growth}
+<div class="amsmath math notranslate nohighlight" id="equation-002ee973-7d9a-458a-90a2-88117a774153">
+<span class="eqno">(11)<a class="headerlink" href="#equation-002ee973-7d9a-458a-90a2-88117a774153" title="Permalink to this equation">#</a></span>\[\begin{equation}\label{eq:exp_growth}
 	\frac{\text{d}N}{\text{d}t} = r_m N
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(r_m\)</span> is the intrinsic, constant rate of population gowth (units of 1/time), and <span class="math notranslate nohighlight">\(N\)</span> is population size (or biomass abundance). I use the subscript <span class="math notranslate nohighlight">\(m\)</span> in <span class="math notranslate nohighlight">\(r_m\)</span> to denote both <a class="reference external" href="https://en.wikipedia.org/wiki/Malthusianism">Malthusian</a> and maximal population growth rate because, in theory, without any constraints, this growth rate is expected to at its theoretical/biological maximum.</p>
@@ -1437,15 +1436,15 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 <div class="math notranslate nohighlight">
 \[C_1 = N_0\]</div>
 <p>That is,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6571aa70-2031-4e54-9355-d8c92ffcb74f">
-<span class="eqno">(12)<a class="headerlink" href="#equation-6571aa70-2031-4e54-9355-d8c92ffcb74f" title="Permalink to this equation">#</a></span>\[\begin{equation}\label{eq:exp_growth_sol}
+<div class="amsmath math notranslate nohighlight" id="equation-ffbf1a0e-8c17-47b4-bf1b-33c77aecac49">
+<span class="eqno">(12)<a class="headerlink" href="#equation-ffbf1a0e-8c17-47b4-bf1b-33c77aecac49" title="Permalink to this equation">#</a></span>\[\begin{equation}\label{eq:exp_growth_sol}
 N{\left (t \right )} = N_0 e^{r_m t}
 \end{equation}\]</div>
 <p>We could use Sympy for this last step as well (using <code class="docutils literal notranslate"><span class="pre">subs()</span></code> like you learned above), but that would be just plain silly – like using a sledge-hammer to drive in a nail!</p>
 <p>We can now have a go at plotting the model (eqn. \ref{eq:exp_growth}), and also the solution eqn. \ref{eq:exp_growth_sol}. First, let’s get an approximate solution by using numerical integration (which you learnt in the Advanced Python chapter):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span>  <span class="kn">import</span> <span class="n">integrate</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w">  </span><span class="kn">import</span> <span class="n">integrate</span>
 
 <span class="c1"># parameters</span>
 <span class="n">r_m</span> <span class="o">=</span> <span class="mf">1.</span>
@@ -1456,7 +1455,7 @@ N{\left (t \right )} = N_0 e^{r_m t}
 <span class="c1"># The time vector</span>
 <span class="n">t_vec</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">exp_pop</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r_m</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">exp_pop</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r_m</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The right-hand side of the exponential growth ODE&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">r_m</span><span class="o">*</span><span class="n">N</span>
 
@@ -1546,15 +1545,15 @@ N{\left (t \right )} = N_0 e^{r_m t}
 </div>
 </div>
 <p>This is a bit more complicated than the solution for exponential growth above. But we can solve it the same way. First substitute <span class="math notranslate nohighlight">\(t = 0\)</span>, and then solve the resulting equation for the initital condition of <span class="math notranslate nohighlight">\(N_0\)</span>, which then gives This the time-dependent solution:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a70593f2-86ea-4ff6-b551-c9f46dae97f9">
-<span class="eqno">(14)<a class="headerlink" href="#equation-a70593f2-86ea-4ff6-b551-c9f46dae97f9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8afccb4a-1c0d-47cf-8ba3-45edf5949627">
+<span class="eqno">(14)<a class="headerlink" href="#equation-8afccb4a-1c0d-47cf-8ba3-45edf5949627" title="Permalink to this equation">#</a></span>\[\begin{equation}
     N_t = \frac{N_0 K\mathrm{e}^{r_m t}}{K + N_0(\mathrm{e}^{r_m t}-1)}
 \end{equation}\]</div>
 <p>You can do the last steps to obtain this solution using Sympy as well (I leave it to you to try it).</p>
 <p>No let’s again compare the analytical solution against the numerical one:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span>  <span class="kn">import</span> <span class="n">integrate</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w">  </span><span class="kn">import</span> <span class="n">integrate</span>
 
 <span class="c1"># parameters</span>
 <span class="n">r_m</span> <span class="o">=</span> <span class="mf">1.</span>
@@ -1565,7 +1564,7 @@ N{\left (t \right )} = N_0 e^{r_m t}
 <span class="c1">#The time vector </span>
 <span class="n">t_vec</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">log_pop</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r_m</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">log_pop</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r_m</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The right-hand side of the logistic ODE&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">r_m</span><span class="o">*</span><span class="n">N</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="n">K</span><span class="p">)</span>
 
@@ -1591,8 +1590,8 @@ N{\left (t \right )} = N_0 e^{r_m t}
 <section id="two-interacting-populations-the-lotka-volterra-predator-prey-model">
 <h3>Two interacting populations: The Lotka-Volterra predator-prey model<a class="headerlink" href="#two-interacting-populations-the-lotka-volterra-predator-prey-model" title="Link to this heading">#</a></h3>
 <p>Now for the classical Lotka-Volterra model that you encountered in the advanced Python week (without logistic growth for the consumer, <span class="math notranslate nohighlight">\(C\)</span>).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5e76946e-581b-40ce-afa6-f6aa0cabcdea">
-<span class="eqno">(15)<a class="headerlink" href="#equation-5e76946e-581b-40ce-afa6-f6aa0cabcdea" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d327c719-a089-4b3d-bb7d-694d751ee2d8">
+<span class="eqno">(15)<a class="headerlink" href="#equation-d327c719-a089-4b3d-bb7d-694d751ee2d8" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{dN}{dt} &amp;= r_m N \left(1-\frac{N}{K}\right) - a N C\\
 \frac{dC}{dt} &amp;= e a N C - z C
 \end{align}\]</div>
@@ -1652,7 +1651,7 @@ N{\left (t \right )} = N_0 e^{r_m t}
 <p>As an exercise try plotting this exact solution for the steady state along with the one you would obtain (asymptotically) using numerical integration of the system of ODEs. Below is code that does the numerical integration (essentially, same as the <code class="docutils literal notranslate"><span class="pre">LV.py</span></code> script).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">integrate</span>
 
 <span class="n">t_vec</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">100.</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
 
@@ -1667,7 +1666,7 @@ N{\left (t \right )} = N_0 e^{r_m t}
 <span class="n">N0C0</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
 
 <span class="c1"># the function still receives only `x`, but it will be an array, not a number</span>
-<span class="k">def</span> <span class="nf">LV</span><span class="p">(</span><span class="n">NC</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r_m</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">LV</span><span class="p">(</span><span class="n">NC</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r_m</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
     <span class="c1"># Unlike the esponental and logistic growth model, we now need to convert </span>
     <span class="c1"># the output to a numpy array as it has two populations.</span>
     <span class="k">return</span> <span class="n">sc</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">r_m</span> <span class="o">*</span> <span class="n">NC</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">NC</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">K</span><span class="p">)</span> <span class="o">-</span> <span class="n">a</span> <span class="o">*</span> <span class="n">NC</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">NC</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>

@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -61,6 +61,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/R';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="The Metabolic Basis of Ecology and Evolutionary dynamics" href="MetabolicBasis.html" />
@@ -196,8 +197,6 @@
 <li class="toctree-l1"><a class="reference internal" href="MetabolicBasis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Populations.html">Single Populations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Interactions.html">Species Interactions</a></li>
-
-
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
@@ -619,7 +618,8 @@ document.write(`
 <p>Launch R (From Applications menu on Window or Mac, from terminal in  Linux/Ubuntu) — it should look something like this (on Linux/Ubuntu or Mac terminal):</p>
 <hr class="docutils" />
 <figure class="align-default" id="r-linux-console">
-<a class="reference internal image-reference" href="../_images/R_Linux.png"><img alt="R in UNIX/Linux" src="../_images/R_Linux.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/R_Linux.png"><img alt="R in UNIX/Linux" src="../_images/R_Linux.png" style="width: 500px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 18 </span><span class="caption-text"><strong>The R console in Linux/Unix.</strong></span><a class="headerlink" href="#r-linux-console" title="Link to this image">#</a></p>
 </figcaption>
@@ -627,7 +627,8 @@ document.write(`
 <p>Or like this (Windows “console”, similar in Mac):</p>
 <hr class="docutils" />
 <figure class="align-default" id="r-windows-console">
-<a class="reference internal image-reference" href="../_images/R_terminal.jpg"><img alt="R in Windows" src="../_images/R_terminal.jpg" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/R_terminal.jpg"><img alt="R in Windows" src="../_images/R_terminal.jpg" style="width: 500px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text"><strong>The R console in Windows/Mac OS.</strong></span><a class="headerlink" href="#r-windows-console" title="Link to this image">#</a></p>
 </figcaption>
@@ -3070,7 +3071,8 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>Thus, your typical R analysis workflow will be:</p>
 <hr class="docutils" />
 <figure class="align-default" id="r-project-org">
-<a class="reference internal image-reference" href="../_images/RWorkflow.png"><img alt="R Project Organization" src="../_images/RWorkflow.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/RWorkflow.png"><img alt="R Project Organization" src="../_images/RWorkflow.png" style="width: 600px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 20 </span><span class="caption-text"><strong>Your R project.</strong> Keeping it neat and organized if the key to becoming a good R programmer.</span><a class="headerlink" href="#r-project-org" title="Link to this image">#</a></p>
 </figcaption>
@@ -3443,9 +3445,9 @@ your R Workspace during the current R session. But the main thing is, you should
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">TRUE</span>
-<span class="nf">if </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nf">print </span><span class="p">(</span><span class="s">&quot;a is TRUE&quot;</span><span class="p">)</span>
-<span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nf">print </span><span class="p">(</span><span class="s">&quot;a is FALSE&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
@@ -3463,7 +3465,7 @@ your R Workspace during the current R session. But the main thing is, you should
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">runif</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="c1">## Generate a uniformly distributed random number</span>
-<span class="nf">if </span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="nf">print </span><span class="p">(</span><span class="s">&quot;Less than a half&quot;</span><span class="p">)}</span>
+<span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="nf">print </span><span class="p">(</span><span class="s">&quot;Less than a half&quot;</span><span class="p">)}</span>
 </pre></div>
 </div>
 </div>
@@ -3473,7 +3475,7 @@ your R Workspace during the current R session. But the main thing is, you should
 <p class="admonition-title">Tip</p>
 <p>Please indent your code for readability, even if its not strictly necessary (unlike <a class="reference internal" href="Python.html"><span class="std std-doc">Python</span></a>). Indentation helps you see the flow of the logic, rather than flattened version, which is hard for you and anybody else to read. For example, the following code block is so much much readable than the one above:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">runif</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-<span class="nf">if </span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nf">print </span><span class="p">(</span><span class="s">&quot;Less than a half&quot;</span><span class="p">)</span>
 <span class="w">   </span><span class="p">}</span>
 </pre></div>
@@ -3486,7 +3488,7 @@ your R Workspace during the current R session. But the main thing is, you should
 <p>The following code “loops” over a range of numbers, squaring each, and then printing the result:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span>
 <span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; squared is&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">))</span>
 <span class="p">}</span>
@@ -3534,7 +3536,7 @@ your R Workspace during the current R session. But the main thing is, you should
 <p>You can also loop over a vector of strings:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for</span><span class="p">(</span><span class="n">species</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;Heliodoxa rubinoides&#39;</span><span class="p">,</span><span class="w"> </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span><span class="p">(</span><span class="n">species</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;Heliodoxa rubinoides&#39;</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                 </span><span class="s">&#39;Boissonneaua jardini&#39;</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                 </span><span class="s">&#39;Sula nebouxii&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&#39;The species is&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">species</span><span class="p">))</span>
@@ -3555,7 +3557,7 @@ your R Workspace during the current R session. But the main thing is, you should
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="s">&quot;bc&quot;</span><span class="p">,</span><span class="s">&quot;def&quot;</span><span class="p">)</span>
-<span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">v1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="n">v1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
@@ -3576,7 +3578,7 @@ your R Workspace during the current R session. But the main thing is, you should
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">i</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0</span>
-<span class="nf">while </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">i</span><span class="m">+1</span>
 <span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 <span class="p">}</span>
@@ -3611,10 +3613,10 @@ your R Workspace during the current R session. But the main thing is, you should
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">i</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="c1">#Initialize i</span>
-<span class="w">    </span><span class="nf">while </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kc">Inf</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nf">if </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">break</span><span class="w"> </span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># Break out of the while loop!  </span>
+<span class="w">    </span><span class="kr">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kc">Inf</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kr">break</span><span class="w"> </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># Break out of the while loop!  </span>
 <span class="w">            </span><span class="nf">cat</span><span class="p">(</span><span class="s">&quot;i equals &quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&quot; \n&quot;</span><span class="p">)</span>
 <span class="w">            </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># Update i</span>
 <span class="w">    </span><span class="p">}</span>
@@ -3643,9 +3645,9 @@ i equals  9
 <p>You can also skip to next iteration of a loop. Both <code class="docutils literal notranslate"><span class="pre">next</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code> can be used within other loops (<code class="docutils literal notranslate"> <span class="pre">while</span></code>, <code class="docutils literal notranslate"><span class="pre">for</span></code>). Try this (type into <code class="docutils literal notranslate"><span class="pre">next.R</span></code> and save in <code class="docutils literal notranslate"><span class="pre">code</span></code>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">if </span><span class="p">((</span><span class="n">i</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="c1"># check if the number is odd</span>
-<span class="w">    </span><span class="n">next</span><span class="w"> </span><span class="c1"># pass to next iteration of loop </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">((</span><span class="n">i</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="c1"># check if the number is odd</span>
+<span class="w">    </span><span class="kr">next</span><span class="w"> </span><span class="c1"># pass to next iteration of loop </span>
 <span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
@@ -3674,13 +3676,13 @@ The syntax for R functions is quite simple, with each function accepting “argu
 <p>★ Type the following into a script file called  <code class="docutils literal notranslate"><span class="pre">boilerplate.R</span></code>and save it in your <code class="docutils literal notranslate"><span class="pre">code</span></code> directory:</p>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1"># A boilerplate R script</span>
 
-<span class="n">MyFunction</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">Arg1</span><span class="p">,</span><span class="w"> </span><span class="n">Arg2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">MyFunction</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">Arg1</span><span class="p">,</span><span class="w"> </span><span class="n">Arg2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span>
 <span class="w">  </span><span class="c1"># Statements involving Arg1, Arg2:</span>
 <span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Argument&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">Arg1</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;is a&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">Arg1</span><span class="p">)))</span><span class="w"> </span><span class="c1"># print Arg1&#39;s type</span>
 <span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Argument&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">Arg2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;is a&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">Arg2</span><span class="p">)))</span><span class="w"> </span><span class="c1"># print Arg2&#39;s type</span>
 <span class="w">    </span>
-<span class="w">  </span><span class="nf">return </span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">Arg1</span><span class="p">,</span><span class="w"> </span><span class="n">Arg2</span><span class="p">))</span><span class="w"> </span><span class="c1">#this is optional, but very useful</span>
+<span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">Arg1</span><span class="p">,</span><span class="w"> </span><span class="n">Arg2</span><span class="p">))</span><span class="w"> </span><span class="c1">#this is optional, but very useful</span>
 <span class="p">}</span>
 
 <span class="nf">MyFunction</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1">#test the function</span>
@@ -3733,11 +3735,11 @@ The syntax for R functions is quite simple, with each function accepting “argu
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Checks if an integer is even</span>
-<span class="n">is.even</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">if </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is even!&#39;</span><span class="p">))</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is odd!&#39;</span><span class="p">))</span>
+<span class="n">is.even</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is even!&#39;</span><span class="p">))</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is odd!&#39;</span><span class="p">))</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -3751,11 +3753,11 @@ The syntax for R functions is quite simple, with each function accepting “argu
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Checks if a number is a power of 2</span>
-<span class="n">is.power2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">if </span><span class="p">(</span><span class="nf">log2</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="m">1</span><span class="o">==</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;is a power of 2!&#39;</span><span class="p">))</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is not a power of 2!&#39;</span><span class="p">))</span>
+<span class="n">is.power2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nf">log2</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="m">1</span><span class="o">==</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;is a power of 2!&#39;</span><span class="p">))</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is not a power of 2!&#39;</span><span class="p">))</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -3769,19 +3771,19 @@ The syntax for R functions is quite simple, with each function accepting “argu
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Checks if a number is prime</span>
-<span class="n">is.prime</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">if </span><span class="p">(</span><span class="n">n</span><span class="o">==</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is a zero!&#39;</span><span class="p">))</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="nf">if </span><span class="p">(</span><span class="n">n</span><span class="o">==</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is just a unit!&#39;</span><span class="p">))</span>
+<span class="n">is.prime</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="o">==</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is a zero!&#39;</span><span class="p">))</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="o">==</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is just a unit!&#39;</span><span class="p">))</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="w">    </span>
 <span class="w">  </span><span class="n">ints</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="p">(</span><span class="n">n</span><span class="m">-1</span><span class="p">)</span>
 <span class="w">  </span>
-<span class="w">  </span><span class="nf">if </span><span class="p">(</span><span class="nf">all</span><span class="p">(</span><span class="n">n</span><span class="o">%%</span><span class="n">ints</span><span class="o">!=</span><span class="m">0</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is a prime!&#39;</span><span class="p">))</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is a composite!&#39;</span><span class="p">))</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nf">all</span><span class="p">(</span><span class="n">n</span><span class="o">%%</span><span class="n">ints</span><span class="o">!=</span><span class="m">0</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is a prime!&#39;</span><span class="p">))</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is a composite!&#39;</span><span class="p">))</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -3810,12 +3812,12 @@ The syntax for R functions is quite simple, with each function accepting “argu
 <span class="c1"># OUTPUT</span>
 <span class="c1"># The heights of the tree, same units as &quot;distance&quot;</span>
 
-<span class="n">TreeHeight</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">TreeHeight</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">radians</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">degrees</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kc">pi</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">180</span>
 <span class="w">    </span><span class="n">height</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">tan</span><span class="p">(</span><span class="n">radians</span><span class="p">)</span>
 <span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Tree height is:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">))</span>
 <span class="w">  </span>
-<span class="w">    </span><span class="nf">return </span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="nf">TreeHeight</span><span class="p">(</span><span class="m">37</span><span class="p">,</span><span class="w"> </span><span class="m">40</span><span class="p">)</span>
@@ -3887,15 +3889,15 @@ The syntax for R functions is quite simple, with each function accepting “argu
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">M</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">runif</span><span class="p">(</span><span class="m">1000000</span><span class="p">),</span><span class="m">1000</span><span class="p">,</span><span class="m">1000</span><span class="p">)</span>
 
-<span class="n">SumAllElements</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">SumAllElements</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">Dimensions</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">dim</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
 <span class="w">  </span><span class="n">Tot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0</span>
-<span class="w">  </span><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">Dimensions</span><span class="p">[</span><span class="m">1</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nf">for </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">Dimensions</span><span class="p">[</span><span class="m">2</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">Dimensions</span><span class="p">[</span><span class="m">1</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">Dimensions</span><span class="p">[</span><span class="m">2</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="n">Tot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Tot</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="nf">return </span><span class="p">(</span><span class="n">Tot</span><span class="p">)</span>
+<span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="p">(</span><span class="n">Tot</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="w"> </span>
 <span class="nf">print</span><span class="p">(</span><span class="s">&quot;Using loops, the time taken is:&quot;</span><span class="p">)</span>
@@ -3926,9 +3928,9 @@ The syntax for R functions is quite simple, with each function accepting “argu
 <p>And if you are using loops, one operation that is slow in R (and somewhat slow in all languages) is memory allocation for a particular variable that will change during looping (e.g., a variable that is a dataframe). So writing a for loop that resizes a vector repeatedly makes R re-allocate memory repeatedly, which makes it slow. Try this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NoPreallocFun</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">NoPreallocFun</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vector</span><span class="p">()</span><span class="w"> </span><span class="c1"># empty vector</span>
-<span class="w">    </span><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="c1"># concatenate</span>
 <span class="w">        </span><span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="w">        </span><span class="nf">print</span><span class="p">(</span><span class="nf">object.size</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
@@ -3972,9 +3974,9 @@ The syntax for R functions is quite simple, with each function accepting “argu
 <p>On the other hand, if you “pre-allocate” a vector that fits all the values, R doesn’t have to re-allocate memory each iteration. Here’s how you’d do that for the above case:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">PreallocFun</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">PreallocFun</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="c1"># pre-allocated vector</span>
-<span class="w">    </span><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="c1"># assign</span>
 <span class="w">        </span><span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="w">        </span><span class="nf">print</span><span class="p">(</span><span class="nf">object.size</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
@@ -4076,11 +4078,11 @@ The syntax for R functions is quite simple, with each function accepting “argu
 <p>★ Type the following in a script file called <code class="docutils literal notranslate"><span class="pre">apply2.R</span></code>, save it to your <code class="docutils literal notranslate"><span class="pre">Code</span></code> directory, and run it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">SomeOperation</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># (What does this function do?)</span>
-<span class="w">  </span><span class="nf">if </span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">#note that sum(v) is a single (scalar) value</span>
-<span class="w">    </span><span class="nf">return </span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span><span class="p">)</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
-<span class="w">  </span><span class="nf">return </span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">SomeOperation</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># (What does this function do?)</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">#note that sum(v) is a single (scalar) value</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -4130,49 +4132,49 @@ for some guidelines.</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">######### Functions ##########</span>
 
 <span class="c1">## A function to take a sample of size n from a population &quot;popn&quot; and return its mean</span>
-<span class="n">myexperiment</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">myexperiment</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">pop_sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">pop_sample</span><span class="p">))</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">pop_sample</span><span class="p">))</span>
 <span class="p">}</span>
 
 <span class="c1">## Calculate means using a FOR loop on a vector without preallocation:</span>
-<span class="n">loopy_sample1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">loopy_sample1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">result1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vector</span><span class="p">()</span><span class="w"> </span><span class="c1">#Initialize empty vector of size 1 </span>
-<span class="w">    </span><span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">result1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">result1</span><span class="p">,</span><span class="w"> </span><span class="nf">myexperiment</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">))</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="n">result1</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">result1</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">## To run &quot;num&quot; iterations of the experiment using a FOR loop on a vector with preallocation:</span>
-<span class="n">loopy_sample2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">loopy_sample2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">result2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vector</span><span class="p">(,</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="c1">#Preallocate expected size</span>
-<span class="w">    </span><span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">result2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">myexperiment</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="n">result2</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">result2</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">## To run &quot;num&quot; iterations of the experiment using a FOR loop on a list with preallocation:</span>
-<span class="n">loopy_sample3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">loopy_sample3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">result3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vector</span><span class="p">(</span><span class="s">&quot;list&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="c1">#Preallocate expected size</span>
-<span class="w">    </span><span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">result3</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">myexperiment</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="n">result3</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">result3</span><span class="p">)</span>
 <span class="p">}</span>
 
 
 <span class="c1">## To run &quot;num&quot; iterations of the experiment using vectorization with lapply:</span>
-<span class="n">lapply_sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">result4</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="nf">myexperiment</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">))</span>
-<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="n">result4</span><span class="p">)</span>
+<span class="n">lapply_sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">result4</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="nf">myexperiment</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">))</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">result4</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">## To run &quot;num&quot; iterations of the experiment using vectorization with sapply:</span>
-<span class="n">sapply_sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">result5</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="nf">myexperiment</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">))</span>
-<span class="w">    </span><span class="nf">return</span><span class="p">(</span><span class="n">result5</span><span class="p">)</span>
+<span class="n">sapply_sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">result5</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="nf">myexperiment</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">))</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">result5</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -4189,7 +4191,8 @@ for some guidelines.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/8a3f7e2c9611919838852b051cd7975c99554b352aa33d7ab2db317d10c46a95.png"><img alt="../_images/8a3f7e2c9611919838852b051cd7975c99554b352aa33d7ab2db317d10c46a95.png" src="../_images/8a3f7e2c9611919838852b051cd7975c99554b352aa33d7ab2db317d10c46a95.png" style="width: 360px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/8a3f7e2c9611919838852b051cd7975c99554b352aa33d7ab2db317d10c46a95.png"><img alt="../_images/8a3f7e2c9611919838852b051cd7975c99554b352aa33d7ab2db317d10c46a95.png" src="../_images/8a3f7e2c9611919838852b051cd7975c99554b352aa33d7ab2db317d10c46a95.png" style="width: 360px; height: 360px;" />
+</a>
 </div>
 </div>
 <p>And run and time the different functions:</p>
@@ -4558,7 +4561,7 @@ for examples.    There you will also see a comparison of speed of <code class="d
 <p>Here <span class="math notranslate nohighlight">\(r\)</span> is intrinsic growth rate and <span class="math notranslate nohighlight">\(k\)</span> as the carrying capacity of the environment. Try this script (call it <code class="docutils literal notranslate"><span class="pre">Ricker.R</span></code> and save it to <code class="docutils literal notranslate"><span class="pre">code</span></code>) that runs it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Ricker</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">N0</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">generations</span><span class="o">=</span><span class="m">50</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Ricker</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">N0</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">generations</span><span class="o">=</span><span class="m">50</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="c1"># Runs a simulation of the Ricker model</span>
 <span class="w">  </span><span class="c1"># Returns a vector of length generations</span>
@@ -4566,11 +4569,11 @@ for examples.    There you will also see a comparison of speed of <code class="d
 <span class="w">  </span><span class="n">N</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">generations</span><span class="p">)</span><span class="w">    </span><span class="c1"># Creates a vector of NA</span>
 <span class="w">  </span>
 <span class="w">  </span><span class="n">N</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">N0</span>
-<span class="w">  </span><span class="nf">for </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="n">generations</span><span class="p">)</span>
+<span class="w">  </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="n">generations</span><span class="p">)</span>
 <span class="w">  </span><span class="p">{</span>
 <span class="w">    </span><span class="n">N</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">N</span><span class="p">[</span><span class="n">t</span><span class="m">-1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">exp</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="m">1.0</span><span class="o">-</span><span class="p">(</span><span class="n">N</span><span class="p">[</span><span class="n">t</span><span class="m">-1</span><span class="p">]</span><span class="o">/</span><span class="n">K</span><span class="p">)))</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="nf">return </span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="nf">plot</span><span class="p">(</span><span class="nf">Ricker</span><span class="p">(</span><span class="n">generations</span><span class="o">=</span><span class="m">10</span><span class="p">),</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
@@ -4578,7 +4581,8 @@ for examples.    There you will also see a comparison of speed of <code class="d
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/4f985e9223a1303b9eb5de40d7d4c19aec9b477dcae3c2037932062ab6dd1b03.png"><img alt="../_images/4f985e9223a1303b9eb5de40d7d4c19aec9b477dcae3c2037932062ab6dd1b03.png" src="../_images/4f985e9223a1303b9eb5de40d7d4c19aec9b477dcae3c2037932062ab6dd1b03.png" style="width: 360px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/4f985e9223a1303b9eb5de40d7d4c19aec9b477dcae3c2037932062ab6dd1b03.png"><img alt="../_images/4f985e9223a1303b9eb5de40d7d4c19aec9b477dcae3c2037932062ab6dd1b03.png" src="../_images/4f985e9223a1303b9eb5de40d7d4c19aec9b477dcae3c2037932062ab6dd1b03.png" style="width: 360px; height: 360px;" />
+</a>
 </div>
 </div>
 <p>Now open and run the script <code class="docutils literal notranslate"><span class="pre">Vectorize2.R</span></code> (available on the TheMulQuaBio repository). This is the stochastic Ricker model (compare with the above script to see where the stochasticity (random error) enters). Now modify the script to complete the exercise given.
@@ -4595,18 +4599,18 @@ for examples.    There you will also see a comparison of speed of <code class="d
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define nested functions</span>
-<span class="n">outer_function</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">outer_function</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nf">middle_function</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="n">middle_function</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">middle_function</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nf">inner_function</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="n">inner_function</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">inner_function</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1"># Intentional error: division by zero</span>
 <span class="w">  </span><span class="n">result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">d</span>
-<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1"># Call the outer function</span>
@@ -4637,18 +4641,18 @@ for examples.    There you will also see a comparison of speed of <code class="d
 <p>Justy like the <code class="docutils literal notranslate"><span class="pre">ipdb.set_tarce()</span></code> command in Python, <code class="docutils literal notranslate"><span class="pre">browser()</span></code> allows you to insert a breakpoint in your script and then step through your code. Place it within your script at the point you want to examine local variables  (e.g. inside a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop).</p>
 <p>Let’s look at an example usage of <code class="docutils literal notranslate"><span class="pre">browser()</span></code>.</p>
 <p>★ Type the following in a script file called <code class="docutils literal notranslate"><span class="pre">browse.R</span></code> and save in <code class="docutils literal notranslate"><span class="pre">code</span></code>:</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">Exponential</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">N0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">generations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">Exponential</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">N0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">generations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1"># Runs a simulation of exponential growth</span>
 <span class="w">  </span><span class="c1"># Returns a vector of length generations</span>
 <span class="w">  </span>
 <span class="w">  </span><span class="n">N</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">generations</span><span class="p">)</span><span class="w">    </span><span class="c1"># Creates a vector of NA</span>
 <span class="w">  </span>
 <span class="w">  </span><span class="n">N</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">N0</span>
-<span class="w">  </span><span class="nf">for </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="n">generations</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="n">generations</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">N</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">N</span><span class="p">[</span><span class="n">t</span><span class="m">-1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">exp</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
 <span class="w">    </span><span class="nf">browser</span><span class="p">()</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="nf">return </span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="nf">plot</span><span class="p">(</span><span class="nf">Exponential</span><span class="p">(),</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">&quot;Exponential growth&quot;</span><span class="p">)</span>
@@ -4671,9 +4675,9 @@ for examples.    There you will also see a comparison of speed of <code class="d
 <h3>Using <code class="docutils literal notranslate"><span class="pre">debug()</span></code><a class="headerlink" href="#using-debug" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">debug()</span></code> function flags a function for debugging; R will enter the browser mode every time the function is called.</p>
 <p>Let’s define a function with a bug (type and run it):</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">buggy_function</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">buggy_function</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">unknown_variable</span>
-<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -4709,12 +4713,12 @@ for examples.    There you will also see a comparison of speed of <code class="d
 <p>First, let’s write a function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">doit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">doit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">temp_x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">if</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">temp_x</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">30</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="c1">#only take mean if sample was sufficient</span>
+<span class="w">    </span><span class="kr">if</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">temp_x</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">30</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="c1">#only take mean if sample was sufficient</span>
 <span class="w">         </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Mean of this sample was:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">temp_x</span><span class="p">))))</span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span>
-<span class="w">    </span><span class="n">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nf">stop</span><span class="p">(</span><span class="s">&quot;Couldn&#39;t calculate mean: too few unique values!&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -4735,13 +4739,14 @@ for examples.    There you will also see a comparison of speed of <code class="d
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/9ebdc4737a3d383db77a9a95bc94a0c61825d6eacb6027949413deec2695b97f.png"><img alt="../_images/9ebdc4737a3d383db77a9a95bc94a0c61825d6eacb6027949413deec2695b97f.png" src="../_images/9ebdc4737a3d383db77a9a95bc94a0c61825d6eacb6027949413deec2695b97f.png" style="width: 360px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/9ebdc4737a3d383db77a9a95bc94a0c61825d6eacb6027949413deec2695b97f.png"><img alt="../_images/9ebdc4737a3d383db77a9a95bc94a0c61825d6eacb6027949413deec2695b97f.png" src="../_images/9ebdc4737a3d383db77a9a95bc94a0c61825d6eacb6027949413deec2695b97f.png" style="width: 360px; height: 360px;" />
+</a>
 </div>
 </div>
 <p>Now try running it using <code class="docutils literal notranslate"><span class="pre">lapply</span></code> as you did above, repeating the sampling exercise 15 times:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="nf">doit</span><span class="p">(</span><span class="n">popn</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="nf">doit</span><span class="p">(</span><span class="n">popn</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -4767,7 +4772,7 @@ for examples.    There you will also see a comparison of speed of <code class="d
 <p>Now try doing the same using <code class="docutils literal notranslate"><span class="pre">try</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="nf">try</span><span class="p">(</span><span class="nf">doit</span><span class="p">(</span><span class="n">popn</span><span class="p">),</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="nf">try</span><span class="p">(</span><span class="nf">doit</span><span class="p">(</span><span class="n">popn</span><span class="p">),</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -4874,7 +4879,7 @@ attr(,&quot;condition&quot;)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vector</span><span class="p">(</span><span class="s">&quot;list&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="p">)</span><span class="w"> </span><span class="c1">#Preallocate/Initialize</span>
-<span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">15</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">15</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">result</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">try</span><span class="p">(</span><span class="nf">doit</span><span class="p">(</span><span class="n">popn</span><span class="p">),</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 </pre></div>
@@ -4997,7 +5002,8 @@ Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/086423a1f3a9a84a386c4e320b463454b69f120b74adbebc0508a9c9b7e95697.png"><img alt="../_images/086423a1f3a9a84a386c4e320b463454b69f120b74adbebc0508a9c9b7e95697.png" src="../_images/086423a1f3a9a84a386c4e320b463454b69f120b74adbebc0508a9c9b7e95697.png" style="width: 420px; height: 420px;" /></a>
+<a class="reference internal image-reference" href="../_images/086423a1f3a9a84a386c4e320b463454b69f120b74adbebc0508a9c9b7e95697.png"><img alt="../_images/086423a1f3a9a84a386c4e320b463454b69f120b74adbebc0508a9c9b7e95697.png" src="../_images/086423a1f3a9a84a386c4e320b463454b69f120b74adbebc0508a9c9b7e95697.png" style="width: 420px; height: 420px;" />
+</a>
 </div>
 </div>
 <p>Then,</p>

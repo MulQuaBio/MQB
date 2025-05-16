@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -61,6 +61,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/ModelSimp';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Generalised Linear Models" href="GLMs.html" />
@@ -196,8 +197,6 @@
 <li class="toctree-l1"><a class="reference internal" href="MetabolicBasis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Populations.html">Single Populations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Interactions.html">Species Interactions</a></li>
-
-
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
@@ -460,7 +459,8 @@ document.write(`
 </div></blockquote>
 <p>The approach we will look at is to start with a <em>maximal model</em> — the model that contains everything that might be important — and simplify it towards the <em>null model</em> — the
 model that says that none of your variables are important. Hopefully, there is a point somewhere in between where you can’t remove any further terms without making the model significantly worse: this is called the <em>minimum adequate model</em>.</p>
-<a class="reference internal image-reference" href="../_images/minmodflow.png"><img alt="../_images/minmodflow.png" src="../_images/minmodflow.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/minmodflow.png"><img alt="../_images/minmodflow.png" src="../_images/minmodflow.png" style="width: 600px;" />
+</a>
 <section id="chapter-aims">
 <h3>Chapter aims<a class="headerlink" href="#chapter-aims" title="Link to this heading">#</a></h3>
 <p>The main aim of this chapter<a class="reference internal" href="#fn1"><span class="xref myst"><span class="math notranslate nohighlight">\(^{[1]}\)</span></span></a> is to learn how to build and then simplify complex models by removing non-explanatory terms, to arrive at the <em>Minimum Adequate Model</em>.</p>
@@ -468,7 +468,8 @@ model that says that none of your variables are important. Hopefully, there is a
 <section id="the-process-of-model-simplification">
 <h3>The process of model simplification<a class="headerlink" href="#the-process-of-model-simplification" title="Link to this heading">#</a></h3>
 <p>Model simplification is an iterative process. The flow diagram below shows how it works: at each stage you try and find an acceptable simplification. If successful, then you start again with the new simpler model and try and find a way to simplify this, until eventually, you can’t find anything more to remove.</p>
-<a class="reference internal image-reference" href="../_images/maxmodflow.png"><img alt="../_images/maxmodflow.png" src="../_images/maxmodflow.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/maxmodflow.png"><img alt="../_images/maxmodflow.png" src="../_images/maxmodflow.png" style="width: 600px;" />
+</a>
 <p>As always, we can use an <span class="math notranslate nohighlight">\(F\)</span>-test to compare two models and see if they have significantly different explanatory power (there are also other ways to do this, such as using the Akaike Information Criterion, but we will not cover this here). In this context, the main thing to remember is that significance of the <span class="math notranslate nohighlight">\(F\)</span>-test used to compare a model and its simplified counterpart is a <em>bad</em> thing — it means that we’ve removed a term from the fitted model that makes it <em>significantly</em> worse.</p>
 </section>
 </section>

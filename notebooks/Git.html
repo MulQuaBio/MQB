@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -61,6 +61,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Git';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Scientific documents with \(\LaTeX\)" href="LaTeX.html" />
@@ -196,8 +197,6 @@
 <li class="toctree-l1"><a class="reference internal" href="MetabolicBasis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Populations.html">Single Populations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Interactions.html">Species Interactions</a></li>
-
-
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
@@ -501,7 +500,8 @@ document.write(`
 <p>Version control is in fact the technology embedded in the versioning of various word processor and spreadsheet applications (e.g., Google Docs, Overleaf).</p>
 <hr class="docutils" />
 <figure class="align-default" id="vc-overview">
-<a class="reference internal image-reference" href="../_images/VC.png"><img alt="Version control" src="../_images/VC.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/VC.png"><img alt="Version control" src="../_images/VC.png" style="width: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 6 </span><span class="caption-text"><strong>An overview of how version control works.</strong> Some of the project mainline’s branches may eventually be merged back into the mainline if they are successful in achieving some objective that is worth integrating into the mainline.</span><a class="headerlink" href="#vc-overview" title="Link to this image">#</a></p>
 </figcaption>
@@ -519,7 +519,8 @@ document.write(`
 </ul>
 <hr class="docutils" />
 <figure class="align-default" id="mess-happens-without-vc">
-<a class="reference internal image-reference" href="../_images/cvs.png"><img alt="Mess without Version Control" src="../_images/cvs.png" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="../_images/cvs.png"><img alt="Mess without Version Control" src="../_images/cvs.png" style="width: 350px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 7 </span><span class="caption-text"><strong>This will very likely happen if you don’t use Version Control.</strong> <br> (Source: <a class="reference external" href="http://maktoons.blogspot.com/2009/06/if-dont-use-version-control-system.html">maktoons.blogspot.com</a>).</span><a class="headerlink" href="#mess-happens-without-vc" title="Link to this image">#</a></p>
 </figcaption>
@@ -544,7 +545,8 @@ document.write(`
 <p>The Git repository is a directory that contains your project’s files and the entire history of changes made to those files. Here is a graphical outline of the git repository, workflow and command structure:</p>
 <hr class="docutils" />
 <figure class="align-default" id="git-workflow">
-<a class="reference internal image-reference" href="../_images/git.png"><img alt="Git Workflow" src="../_images/git.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/git.png"><img alt="Git Workflow" src="../_images/git.png" style="width: 500px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 8 </span><span class="caption-text"><strong>The git repository, workflow and command structure.</strong> - The  “workspace” is your working directory - the actual files and folders you see and edit.  The index” is your <em>staging area</em> (more on this below) - a place where you can group changes you want to <code class="docutils literal notranslate"><span class="pre">commit</span></code> together. The “local repository” contains the database of all objects (commits, files (“blobs”), directories (“trees”), etc.) in your repository along with their metadata. The index and the actual data (the objects) associated with each repo snapshot you commit are all all inside a hidden directory named <code class="docutils literal notranslate"><span class="pre">.git</span></code> that sits within your project directory.</span><a class="headerlink" href="#git-workflow" title="Link to this image">#</a></p>
 </figcaption>
@@ -735,7 +737,8 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 </div>
 <hr class="docutils" />
 <figure class="align-default" id="git-commit">
-<a class="reference internal image-reference" href="../_images/git_xkcd.png"><img alt="XKCD committing" src="../_images/git_xkcd.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/git_xkcd.png"><img alt="XKCD committing" src="../_images/git_xkcd.png" style="width: 400px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 9 </span><span class="caption-text"><strong>Make meaningful comments in your git commit.</strong> Please don’t neglect to make each commit message meaningful. And use this mantra: “commit often, comment always”. The correct meaning of “often” in this context comes with experience.<br> (Source: <a class="reference external" href="https://m.xkcd.com/1296/">XKCD</a>)</span><a class="headerlink" href="#git-commit" title="Link to this image">#</a></p>
 </figcaption>
@@ -1079,7 +1082,8 @@ abandon the branch:</p>
 </div>
 <hr class="docutils" />
 <figure class="align-default" id="git-xkcd-2">
-<a class="reference internal image-reference" href="../_images/git_xkcd_1.png"><img alt="git desperation" src="../_images/git_xkcd_1.png" style="width: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/git_xkcd_1.png"><img alt="git desperation" src="../_images/git_xkcd_1.png" style="width: 250px;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 10 </span><span class="caption-text"><strong>Try not to do this.</strong> But most of us mortals will have, at some point! <br> (Source: <a class="reference external" href="https://xkcd.com/1597/">XKCD</a>)</span><a class="headerlink" href="#git-xkcd-2" title="Link to this image">#</a></p>
 </figcaption>

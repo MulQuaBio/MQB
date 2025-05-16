@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -61,6 +61,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Bayesian';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -196,8 +197,6 @@
 <li class="toctree-l1"><a class="reference internal" href="MetabolicBasis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Populations.html">Single Populations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Interactions.html">Species Interactions</a></li>
-
-
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
@@ -629,7 +628,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/fcbdb12d69499535a9b2e562ec0b2f5ac091d08af6351efc5040aecc2024e945.png"><img alt="../_images/fcbdb12d69499535a9b2e562ec0b2f5ac091d08af6351efc5040aecc2024e945.png" src="../_images/fcbdb12d69499535a9b2e562ec0b2f5ac091d08af6351efc5040aecc2024e945.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/fcbdb12d69499535a9b2e562ec0b2f5ac091d08af6351efc5040aecc2024e945.png"><img alt="../_images/fcbdb12d69499535a9b2e562ec0b2f5ac091d08af6351efc5040aecc2024e945.png" src="../_images/fcbdb12d69499535a9b2e562ec0b2f5ac091d08af6351efc5040aecc2024e945.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 <section id="non-bayesian-analysis">
@@ -661,7 +661,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/4c823491bab93793f82e62faefb735fe7f9c5aa9a39b56dffe1416ab8e732420.png"><img alt="../_images/4c823491bab93793f82e62faefb735fe7f9c5aa9a39b56dffe1416ab8e732420.png" src="../_images/4c823491bab93793f82e62faefb735fe7f9c5aa9a39b56dffe1416ab8e732420.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/4c823491bab93793f82e62faefb735fe7f9c5aa9a39b56dffe1416ab8e732420.png"><img alt="../_images/4c823491bab93793f82e62faefb735fe7f9c5aa9a39b56dffe1416ab8e732420.png" src="../_images/4c823491bab93793f82e62faefb735fe7f9c5aa9a39b56dffe1416ab8e732420.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 <div class="admonition note">
@@ -738,11 +739,11 @@ $<span class="math notranslate nohighlight">\(
 <p>So lets write a little function to calculate <span class="math notranslate nohighlight">\(\mu_p\)</span> and <span class="math notranslate nohighlight">\(\tau_p\)</span> and the plug in our numbers:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tau.post</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span><span class="w"> </span><span class="n">tau0</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">){</span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau0</span><span class="p">}</span>
-<span class="n">mu.post</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">Ybar</span><span class="p">,</span><span class="w"> </span><span class="n">mu0</span><span class="p">,</span><span class="w"> </span><span class="n">sig20</span><span class="p">,</span><span class="w"> </span><span class="n">sig2</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">){</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tau.post</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span><span class="w"> </span><span class="n">tau0</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">){</span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tau0</span><span class="p">}</span>
+<span class="n">mu.post</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">Ybar</span><span class="p">,</span><span class="w"> </span><span class="n">mu0</span><span class="p">,</span><span class="w"> </span><span class="n">sig20</span><span class="p">,</span><span class="w"> </span><span class="n">sig2</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">){</span>
 <span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sig2</span><span class="o">+</span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sig20</span>
 <span class="w"> </span>
-<span class="w"> </span><span class="nf">return</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sig20</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Ybar</span><span class="o">/</span><span class="n">weight</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sig2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mu0</span><span class="o">/</span><span class="n">weight</span><span class="p">)</span>
+<span class="w"> </span><span class="kr">return</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sig20</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Ybar</span><span class="o">/</span><span class="n">weight</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sig2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mu0</span><span class="o">/</span><span class="n">weight</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -774,7 +775,8 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/a864ffebfa76bac526d826f89a47ad9e9a3d44474f4efbf7d60365868ceeb654.png"><img alt="../_images/a864ffebfa76bac526d826f89a47ad9e9a3d44474f4efbf7d60365868ceeb654.png" src="../_images/a864ffebfa76bac526d826f89a47ad9e9a3d44474f4efbf7d60365868ceeb654.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/a864ffebfa76bac526d826f89a47ad9e9a3d44474f4efbf7d60365868ceeb654.png"><img alt="../_images/a864ffebfa76bac526d826f89a47ad9e9a3d44474f4efbf7d60365868ceeb654.png" src="../_images/a864ffebfa76bac526d826f89a47ad9e9a3d44474f4efbf7d60365868ceeb654.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 </section>
@@ -856,7 +858,8 @@ Initializing model
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/17145c1320d08ae07f106816d9e06ea99442ce04162a3dc4565c682fd6b76da2.png"><img alt="../_images/17145c1320d08ae07f106816d9e06ea99442ce04162a3dc4565c682fd6b76da2.png" src="../_images/17145c1320d08ae07f106816d9e06ea99442ce04162a3dc4565c682fd6b76da2.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/17145c1320d08ae07f106816d9e06ea99442ce04162a3dc4565c682fd6b76da2.png"><img alt="../_images/17145c1320d08ae07f106816d9e06ea99442ce04162a3dc4565c682fd6b76da2.png" src="../_images/17145c1320d08ae07f106816d9e06ea99442ce04162a3dc4565c682fd6b76da2.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 <p>MCMC is a rejection algorithm that often needs to converge or “burn-in” – that is we need to potentially move until we’re taking draws from the correct distribution. Unlike for optimization problems, this does not mean that the algorithm :eads toward a single value. Instead we’re looking for a pattern where the draws are seemingly unrelated and random. To assess convergence we look at trace plots, the goal is to get traces that look like “fuzzy caterpillars”.</p>
@@ -874,7 +877,8 @@ Initializing model
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/693cd66f30f72c5cf3264974936730ab02b9ebf78bd18ce02f58f73f74bd63e5.png"><img alt="../_images/693cd66f30f72c5cf3264974936730ab02b9ebf78bd18ce02f58f73f74bd63e5.png" src="../_images/693cd66f30f72c5cf3264974936730ab02b9ebf78bd18ce02f58f73f74bd63e5.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/693cd66f30f72c5cf3264974936730ab02b9ebf78bd18ce02f58f73f74bd63e5.png"><img alt="../_images/693cd66f30f72c5cf3264974936730ab02b9ebf78bd18ce02f58f73f74bd63e5.png" src="../_images/693cd66f30f72c5cf3264974936730ab02b9ebf78bd18ce02f58f73f74bd63e5.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 <p>This is a very fuzzy caterpillar!</p>
@@ -918,7 +922,8 @@ Sample size per chain = 20000
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/a3ab903c4e2aa8efdfb9f321783beccbf9156541418d55fb9055558ef6ad136a.png"><img alt="../_images/a3ab903c4e2aa8efdfb9f321783beccbf9156541418d55fb9055558ef6ad136a.png" src="../_images/a3ab903c4e2aa8efdfb9f321783beccbf9156541418d55fb9055558ef6ad136a.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/a3ab903c4e2aa8efdfb9f321783beccbf9156541418d55fb9055558ef6ad136a.png"><img alt="../_images/a3ab903c4e2aa8efdfb9f321783beccbf9156541418d55fb9055558ef6ad136a.png" src="../_images/a3ab903c4e2aa8efdfb9f321783beccbf9156541418d55fb9055558ef6ad136a.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 <p>It worked!</p>
@@ -1001,7 +1006,8 @@ mu -0.288547 0.071837 0.103609 0.11822 0.1525
 s2  0.001188 0.002328 0.003969 0.01011 0.0590
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/9e384ef562d2b0515a830d5eab1fc1ca5a884d7d2b676733dd5a7857e7e05d58.png"><img alt="../_images/9e384ef562d2b0515a830d5eab1fc1ca5a884d7d2b676733dd5a7857e7e05d58.png" src="../_images/9e384ef562d2b0515a830d5eab1fc1ca5a884d7d2b676733dd5a7857e7e05d58.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/9e384ef562d2b0515a830d5eab1fc1ca5a884d7d2b676733dd5a7857e7e05d58.png"><img alt="../_images/9e384ef562d2b0515a830d5eab1fc1ca5a884d7d2b676733dd5a7857e7e05d58.png" src="../_images/9e384ef562d2b0515a830d5eab1fc1ca5a884d7d2b676733dd5a7857e7e05d58.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 <p>Now we plot each with their priors:</p>
@@ -1021,7 +1027,8 @@ s2  0.001188 0.002328 0.003969 0.01011 0.0590
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/da04a465632984a89145836411b30332d6cf3a408db2941806bf78918ac37cd4.png"><img alt="../_images/da04a465632984a89145836411b30332d6cf3a408db2941806bf78918ac37cd4.png" src="../_images/da04a465632984a89145836411b30332d6cf3a408db2941806bf78918ac37cd4.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/da04a465632984a89145836411b30332d6cf3a408db2941806bf78918ac37cd4.png"><img alt="../_images/da04a465632984a89145836411b30332d6cf3a408db2941806bf78918ac37cd4.png" src="../_images/da04a465632984a89145836411b30332d6cf3a408db2941806bf78918ac37cd4.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 <p>We also want to look at the joint distribution of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma^2\)</span>:</p>
@@ -1032,7 +1039,8 @@ s2  0.001188 0.002328 0.003969 0.01011 0.0590
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/5b2b64d5b9a8237f607c3a1003626aab282bec9d33120e7255e7135a1abbf03a.png"><img alt="../_images/5b2b64d5b9a8237f607c3a1003626aab282bec9d33120e7255e7135a1abbf03a.png" src="../_images/5b2b64d5b9a8237f607c3a1003626aab282bec9d33120e7255e7135a1abbf03a.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/5b2b64d5b9a8237f607c3a1003626aab282bec9d33120e7255e7135a1abbf03a.png"><img alt="../_images/5b2b64d5b9a8237f607c3a1003626aab282bec9d33120e7255e7135a1abbf03a.png" src="../_images/5b2b64d5b9a8237f607c3a1003626aab282bec9d33120e7255e7135a1abbf03a.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 </section>
@@ -1126,7 +1134,8 @@ The following object is masked from ‘package:coda’:
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/ef7e49b73c6cb5b394ce1182dd9c40d5fc73dca63a8168cba5fdf184ccd696c9.png"><img alt="../_images/ef7e49b73c6cb5b394ce1182dd9c40d5fc73dca63a8168cba5fdf184ccd696c9.png" src="../_images/ef7e49b73c6cb5b394ce1182dd9c40d5fc73dca63a8168cba5fdf184ccd696c9.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/ef7e49b73c6cb5b394ce1182dd9c40d5fc73dca63a8168cba5fdf184ccd696c9.png"><img alt="../_images/ef7e49b73c6cb5b394ce1182dd9c40d5fc73dca63a8168cba5fdf184ccd696c9.png" src="../_images/ef7e49b73c6cb5b394ce1182dd9c40d5fc73dca63a8168cba5fdf184ccd696c9.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 <p>Note that the <span class="math notranslate nohighlight">\(\mu\)</span> data is u-shaped and the lifespan data is unimodal (hump-shaped).</p>
@@ -1142,7 +1151,8 @@ The following object is masked from ‘package:coda’:
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/24d9c15670bd1a8788d0629185fa78ea985be13baf049987315b261abbe88a85.png"><img alt="../_images/24d9c15670bd1a8788d0629185fa78ea985be13baf049987315b261abbe88a85.png" src="../_images/24d9c15670bd1a8788d0629185fa78ea985be13baf049987315b261abbe88a85.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/24d9c15670bd1a8788d0629185fa78ea985be13baf049987315b261abbe88a85.png"><img alt="../_images/24d9c15670bd1a8788d0629185fa78ea985be13baf049987315b261abbe88a85.png" src="../_images/24d9c15670bd1a8788d0629185fa78ea985be13baf049987315b261abbe88a85.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 </section>
@@ -1221,7 +1231,7 @@ The following object is masked from ‘package:coda’:
 <span class="n">parameters</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;cf.q&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;cf.T0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;cf.Tm&quot;</span><span class="p">,</span><span class="s">&quot;cf.sigma&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;z.trait.mu.pred&quot;</span><span class="p">)</span>
 
 <span class="c1"># Initial values for the parameters</span>
-<span class="n">inits</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(){</span><span class="nf">list</span><span class="p">(</span>
+<span class="n">inits</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(){</span><span class="nf">list</span><span class="p">(</span>
 <span class="w"> </span><span class="n">cf.q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.01</span><span class="p">,</span>
 <span class="w"> </span><span class="n">cf.Tm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">35</span><span class="p">,</span>
 <span class="w"> </span><span class="n">cf.T0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span>
@@ -1495,7 +1505,8 @@ Warning message in jags.model(model.file, data = data, inits = init.values, n.ch
 <span class="mi">7</span><span class="o">.</span> <span class="nb">eval</span><span class="p">(</span><span class="n">predvars</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">env</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/28152b8ac46b56351feb85bc8b1c7bc30b670793df6b89cb1fd75a6e66563d19.png"><img alt="../_images/28152b8ac46b56351feb85bc8b1c7bc30b670793df6b89cb1fd75a6e66563d19.png" src="../_images/28152b8ac46b56351feb85bc8b1c7bc30b670793df6b89cb1fd75a6e66563d19.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/28152b8ac46b56351feb85bc8b1c7bc30b670793df6b89cb1fd75a6e66563d19.png"><img alt="../_images/28152b8ac46b56351feb85bc8b1c7bc30b670793df6b89cb1fd75a6e66563d19.png" src="../_images/28152b8ac46b56351feb85bc8b1c7bc30b670793df6b89cb1fd75a6e66563d19.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 </section>
@@ -1644,7 +1655,8 @@ The following object is masked from ‘package:coda’:
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/8881d7f34bf93a117324c5799f0419097918a5d59d9b7f22b50f82eae65aea42.png"><img alt="../_images/8881d7f34bf93a117324c5799f0419097918a5d59d9b7f22b50f82eae65aea42.png" src="../_images/8881d7f34bf93a117324c5799f0419097918a5d59d9b7f22b50f82eae65aea42.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/8881d7f34bf93a117324c5799f0419097918a5d59d9b7f22b50f82eae65aea42.png"><img alt="../_images/8881d7f34bf93a117324c5799f0419097918a5d59d9b7f22b50f82eae65aea42.png" src="../_images/8881d7f34bf93a117324c5799f0419097918a5d59d9b7f22b50f82eae65aea42.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 </section>
@@ -1719,7 +1731,7 @@ The following object is masked from ‘package:coda’:
 <span class="n">parameters</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;Y0&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;K&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;r&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;sigma&#39;</span><span class="p">)</span>
 
 <span class="c1"># Initial values for the parameters</span>
-<span class="n">inits</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(){</span><span class="nf">list</span><span class="p">(</span>
+<span class="n">inits</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(){</span><span class="nf">list</span><span class="p">(</span>
 <span class="w"> </span><span class="n">Y0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span>
 <span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.4</span><span class="p">,</span>
 <span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span>
@@ -1846,7 +1858,7 @@ Warning message in jags.model(model.file, data = data, inits = init.values, n.ch
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">OD.12C.mcmc</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
 <span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-<span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="nf">acf</span><span class="p">(</span><span class="n">s1</span><span class="p">[,</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">lag.max</span><span class="o">=</span><span class="m">20</span><span class="p">)</span>
+<span class="kr">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="nf">acf</span><span class="p">(</span><span class="n">s1</span><span class="p">[,</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">lag.max</span><span class="o">=</span><span class="m">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1885,7 +1897,7 @@ Warning message in jags.model(model.file, data = data, inits = init.values, n.ch
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">samps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NULL</span>
-<span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">nc</span><span class="p">){</span>
+<span class="kr">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">nc</span><span class="p">){</span>
 <span class="w"> </span><span class="n">samps</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">samps</span><span class="p">,</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">OD.12C.mcmc</span><span class="p">[[</span><span class="n">i</span><span class="p">]]))</span>
 <span class="p">}</span>
 
@@ -1939,7 +1951,7 @@ Warning message in jags.model(model.file, data = data, inits = init.values, n.ch
 <p>It’s often useful to also look at the joint distbution of all of your parameters together. Of course, if you have a high dimensional posterior, rendering a 2-D representation can be difficult. Instead, the standard is to examine the pair-wise posterior distribution, for instance as follows (using the <code class="docutils literal notranslate"><span class="pre">s1</span></code> data frame we created above):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ipairs</span><span class="p">(</span><span class="n">s1</span><span class="p">[,</span><span class="m">2</span><span class="o">:</span><span class="m">5</span><span class="p">],</span><span class="w"> </span><span class="n">ztransf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">&lt;</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="nf">log2</span><span class="p">(</span><span class="n">x</span><span class="p">)})</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ipairs</span><span class="p">(</span><span class="n">s1</span><span class="p">[,</span><span class="m">2</span><span class="o">:</span><span class="m">5</span><span class="p">],</span><span class="w"> </span><span class="n">ztransf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">&lt;</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="nf">log2</span><span class="p">(</span><span class="n">x</span><span class="p">)})</span>
 </pre></div>
 </div>
 </div>
@@ -1967,15 +1979,15 @@ $<span class="math notranslate nohighlight">\(
 for the \)</span>i^{\mathrm th}<span class="math notranslate nohighlight">\( set of parameters for a sequence of times, \)</span>t<span class="math notranslate nohighlight">\(. This we obtain points describing the curve \)</span>\mu_i(t)$ for each set of parameters. Here is one way to do this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">my.logistic</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">Y0</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">){</span>
-<span class="w"> </span><span class="nf">return</span><span class="p">(</span><span class="n">K</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Y0</span><span class="o">/</span><span class="p">(</span><span class="n">Y0</span><span class="o">+</span><span class="p">(</span><span class="n">K</span><span class="o">-</span><span class="n">Y0</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">)))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">my.logistic</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">Y0</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">){</span>
+<span class="w"> </span><span class="kr">return</span><span class="p">(</span><span class="n">K</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Y0</span><span class="o">/</span><span class="p">(</span><span class="n">Y0</span><span class="o">+</span><span class="p">(</span><span class="n">K</span><span class="o">-</span><span class="n">Y0</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">)))</span>
 <span class="p">}</span>
 
 <span class="n">ts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
 <span class="n">ss</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="nf">dim</span><span class="p">(</span><span class="n">samps</span><span class="p">)[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">by</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
 <span class="n">my.curves</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="o">=</span><span class="nf">length</span><span class="p">(</span><span class="n">ss</span><span class="p">),</span><span class="w"> </span><span class="n">ncol</span><span class="o">=</span><span class="nf">length</span><span class="p">(</span><span class="n">ts</span><span class="p">))</span>
 
-<span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">ss</span><span class="p">)){</span>
+<span class="kr">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">ss</span><span class="p">)){</span>
 <span class="w"> </span><span class="n">my.curves</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">my.logistic</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">ts</span><span class="p">,</span><span class="w"> </span><span class="n">Y0</span><span class="o">=</span><span class="n">samps</span><span class="o">$</span><span class="n">Y0</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">K</span><span class="o">=</span><span class="n">samps</span><span class="o">$</span><span class="n">K</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">r</span><span class="o">=</span><span class="n">samps</span><span class="o">$</span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 <span class="p">}</span>
 </pre></div>
@@ -1997,7 +2009,7 @@ for the \)</span>i^{\mathrm th}<span class="math notranslate nohighlight">\( set
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="w"> </span><span class="n">my.curves</span><span class="p">[</span><span class="m">1</span><span class="p">,],</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0.09</span><span class="p">,</span><span class="w"> </span><span class="m">0.36</span><span class="p">),</span><span class="w"> </span>
 <span class="w">  </span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;predicted OD&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;time (days)&quot;</span><span class="p">)</span>
-<span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">ss</span><span class="p">))</span><span class="w"> </span><span class="nf">lines</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="w"> </span><span class="n">my.curves</span><span class="p">[</span><span class="n">i</span><span class="p">,],</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+<span class="kr">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">ss</span><span class="p">))</span><span class="w"> </span><span class="nf">lines</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="w"> </span><span class="n">my.curves</span><span class="p">[</span><span class="n">i</span><span class="p">,],</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2038,7 +2050,7 @@ for the \)</span>i^{\mathrm th}<span class="math notranslate nohighlight">\( set
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">hpd.log</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NULL</span>
-<span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">ts</span><span class="p">)){</span>
+<span class="kr">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">ts</span><span class="p">)){</span>
 <span class="w"> </span><span class="n">hpd.log</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">cbind</span><span class="p">(</span><span class="n">hpd.log</span><span class="p">,</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">HPDinterval</span><span class="p">(</span><span class="nf">mcmc</span><span class="p">(</span><span class="n">my.curves</span><span class="p">[,</span><span class="n">i</span><span class="p">]))))</span>
 <span class="p">}</span>
 </pre></div>
@@ -2085,7 +2097,8 @@ for the \)</span>i^{\mathrm th}<span class="math notranslate nohighlight">\( set
 <span class="mi">4</span><span class="o">.</span> <span class="n">xy</span><span class="o">.</span><span class="n">coords</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/5dfba90c11e5a7038765225eae2b18fdff81028766c746d1b657038d8914d0a4.png"><img alt="../_images/5dfba90c11e5a7038765225eae2b18fdff81028766c746d1b657038d8914d0a4.png" src="../_images/5dfba90c11e5a7038765225eae2b18fdff81028766c746d1b657038d8914d0a4.png" style="width: 300px; height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/5dfba90c11e5a7038765225eae2b18fdff81028766c746d1b657038d8914d0a4.png"><img alt="../_images/5dfba90c11e5a7038765225eae2b18fdff81028766c746d1b657038d8914d0a4.png" src="../_images/5dfba90c11e5a7038765225eae2b18fdff81028766c746d1b657038d8914d0a4.png" style="width: 300px; height: 360px;" />
+</a>
 </div>
 </div>
 <p>Note that this only shows the uncertainty in the * mean function * – the assumed model with log normal noise says that the observations simply have this mean. The fit is attributing the majority of the observed noise to process error rather than parameter uncertainty.</p>

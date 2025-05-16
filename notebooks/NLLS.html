@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -61,6 +61,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/NLLS';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Introduction to Jupyter" href="Appendix-JupyIntro.html" />
@@ -196,8 +197,6 @@
 <li class="toctree-l1"><a class="reference internal" href="MetabolicBasis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Populations.html">Single Populations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Interactions.html">Species Interactions</a></li>
-
-
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
@@ -545,7 +544,8 @@ V = \frac{V_{\max} S}{K_M + S}
 <li><p><span class="math notranslate nohighlight">\(K_M\)</span> is the Michaelis or half-saturation constant, defined as the substrate concentration at which the reaction rate is half of <span class="math notranslate nohighlight">\(V_{\max }\)</span>. This parameter controls the overall shape of the curve, i.e., whether <span class="math notranslate nohighlight">\(V\)</span> approaches <span class="math notranslate nohighlight">\(V_{\max}\)</span> slowly or rapidly. In enzyme catalyzed reactions, it measures how loosely the substrate binds the enzyme: large <span class="math notranslate nohighlight">\(K_M\)</span> indicates loose binding of enzyme to substrate, small <span class="math notranslate nohighlight">\(K_M\)</span> indicates tight binding (it has units of the substrate concentration, <span class="math notranslate nohighlight">\(S\)</span>).</p></li>
 </ul>
 <p>Biochemical reactions involving a single substrate are often well fitted by the Michaelis-Menten kinetics.</p>
-<a class="reference internal image-reference" href="../_images/MM.png"><img alt="Michaelis-Menten model" src="../_images/MM.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/MM.png"><img alt="Michaelis-Menten model" src="../_images/MM.png" style="width: 400px;" />
+</a>
 <p><small><center>The Michaelis-Menten model.</center></small></p>
 <p>Let’s fit the Michaelis-Menten model to some data.</p>
 <section id="generating-data">
@@ -579,7 +579,8 @@ V = \frac{V_{\max} S}{K_M + S}
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/bc7dddd31cca5899e87217186108ea51a733c2043f85c11dfa553b9946112263.png"><img alt="../_images/bc7dddd31cca5899e87217186108ea51a733c2043f85c11dfa553b9946112263.png" src="../_images/bc7dddd31cca5899e87217186108ea51a733c2043f85c11dfa553b9946112263.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/bc7dddd31cca5899e87217186108ea51a733c2043f85c11dfa553b9946112263.png"><img alt="../_images/bc7dddd31cca5899e87217186108ea51a733c2043f85c11dfa553b9946112263.png" src="../_images/bc7dddd31cca5899e87217186108ea51a733c2043f85c11dfa553b9946112263.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>Note that our choice of <span class="math notranslate nohighlight">\(V_{\max} = 12.5\)</span> and <span class="math notranslate nohighlight">\(K_M = 7.1\)</span> is completely arbitrary. As long as we make sure that <span class="math notranslate nohighlight">\(V_{\max} &gt; 0\)</span>, <span class="math notranslate nohighlight">\(K_H &gt; 0\)</span>, and <span class="math notranslate nohighlight">\(K_M\)</span> lies well within the lower half of the the range of substrate concentrations (0-50), these “data” will be physically biologically sensible.</p>
@@ -593,7 +594,8 @@ V = \frac{V_{\max} S}{K_M + S}
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/a15a3e554fe181291541b96d1906177d518594dc21520b339969b7cf2e7485b7.png"><img alt="../_images/a15a3e554fe181291541b96d1906177d518594dc21520b339969b7cf2e7485b7.png" src="../_images/a15a3e554fe181291541b96d1906177d518594dc21520b339969b7cf2e7485b7.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/a15a3e554fe181291541b96d1906177d518594dc21520b339969b7cf2e7485b7.png"><img alt="../_images/a15a3e554fe181291541b96d1906177d518594dc21520b339969b7cf2e7485b7.png" src="../_images/a15a3e554fe181291541b96d1906177d518594dc21520b339969b7cf2e7485b7.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>That looks real!</p>
@@ -634,7 +636,8 @@ Consider specifying &#39;start&#39; or using a selfStart model”
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/acbea972718f3aae6efabc147714b63b6c1faec984a7d746caadf0b4330685b4.png"><img alt="../_images/acbea972718f3aae6efabc147714b63b6c1faec984a7d746caadf0b4330685b4.png" src="../_images/acbea972718f3aae6efabc147714b63b6c1faec984a7d746caadf0b4330685b4.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/acbea972718f3aae6efabc147714b63b6c1faec984a7d746caadf0b4330685b4.png"><img alt="../_images/acbea972718f3aae6efabc147714b63b6c1faec984a7d746caadf0b4330685b4.png" src="../_images/acbea972718f3aae6efabc147714b63b6c1faec984a7d746caadf0b4330685b4.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>This looks OK.</p>
@@ -680,7 +683,8 @@ Consider specifying &#39;start&#39; or using a selfStart model”
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/481d9f13bab6f26a1b6c86075db6cb5eb1f20c637f10ae096b305a02303da8fc.png"><img alt="../_images/481d9f13bab6f26a1b6c86075db6cb5eb1f20c637f10ae096b305a02303da8fc.png" src="../_images/481d9f13bab6f26a1b6c86075db6cb5eb1f20c637f10ae096b305a02303da8fc.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/481d9f13bab6f26a1b6c86075db6cb5eb1f20c637f10ae096b305a02303da8fc.png"><img alt="../_images/481d9f13bab6f26a1b6c86075db6cb5eb1f20c637f10ae096b305a02303da8fc.png" src="../_images/481d9f13bab6f26a1b6c86075db6cb5eb1f20c637f10ae096b305a02303da8fc.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>That looks much better (smoother) than the plot above !</p>
@@ -898,7 +902,8 @@ Achieved convergence tolerance: 9.503e-06
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/726feccf2057c7208a1fd23f7b8f3fee3b06b1620b4f129b387698057852d7bd.png"><img alt="../_images/726feccf2057c7208a1fd23f7b8f3fee3b06b1620b4f129b387698057852d7bd.png" src="../_images/726feccf2057c7208a1fd23f7b8f3fee3b06b1620b4f129b387698057852d7bd.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/726feccf2057c7208a1fd23f7b8f3fee3b06b1620b4f129b387698057852d7bd.png"><img alt="../_images/726feccf2057c7208a1fd23f7b8f3fee3b06b1620b4f129b387698057852d7bd.png" src="../_images/726feccf2057c7208a1fd23f7b8f3fee3b06b1620b4f129b387698057852d7bd.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>As you would have guessed from the really funky coefficient estimates that were obtained in <code class="docutils literal notranslate"><span class="pre">MM_model3</span></code>, this is a pretty poor model fit to the data, with the negative value of <code class="docutils literal notranslate"><span class="pre">K_M</span></code> causing the fitted version of the Michaelis-Menten model to behave strangely.</p>
@@ -1190,7 +1195,8 @@ Achieved convergence tolerance: 1.49e-08
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/30bee34f202463767660b799988b63378eb84ff17a27a691206546e608b03fa2.png"><img alt="../_images/30bee34f202463767660b799988b63378eb84ff17a27a691206546e608b03fa2.png" src="../_images/30bee34f202463767660b799988b63378eb84ff17a27a691206546e608b03fa2.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/30bee34f202463767660b799988b63378eb84ff17a27a691206546e608b03fa2.png"><img alt="../_images/30bee34f202463767660b799988b63378eb84ff17a27a691206546e608b03fa2.png" src="../_images/30bee34f202463767660b799988b63378eb84ff17a27a691206546e608b03fa2.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>The residuals look OK. But this should not come as a surprise because we generated these “data” ourselves using normally-distributed errors!</p>
@@ -1258,7 +1264,8 @@ y = a x^b
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/62a33520032d38696c8900c1eed81e29fa2656b57073aa449f55c8cb56ca1cff.png"><img alt="../_images/62a33520032d38696c8900c1eed81e29fa2656b57073aa449f55c8cb56ca1cff.png" src="../_images/62a33520032d38696c8900c1eed81e29fa2656b57073aa449f55c8cb56ca1cff.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/62a33520032d38696c8900c1eed81e29fa2656b57073aa449f55c8cb56ca1cff.png"><img alt="../_images/62a33520032d38696c8900c1eed81e29fa2656b57073aa449f55c8cb56ca1cff.png" src="../_images/62a33520032d38696c8900c1eed81e29fa2656b57073aa449f55c8cb56ca1cff.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>Or, using <code class="docutils literal notranslate"><span class="pre">ggplot</span></code>:</p>
@@ -1273,7 +1280,8 @@ y = a x^b
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/ef82ab43f147b5c2c5e4fc67ba6e02bb1845afdc4ef72937a7427ddcab206ce1.png"><img alt="../_images/ef82ab43f147b5c2c5e4fc67ba6e02bb1845afdc4ef72937a7427ddcab206ce1.png" src="../_images/ef82ab43f147b5c2c5e4fc67ba6e02bb1845afdc4ef72937a7427ddcab206ce1.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/ef82ab43f147b5c2c5e4fc67ba6e02bb1845afdc4ef72937a7427ddcab206ce1.png"><img alt="../_images/ef82ab43f147b5c2c5e4fc67ba6e02bb1845afdc4ef72937a7427ddcab206ce1.png" src="../_images/ef82ab43f147b5c2c5e4fc67ba6e02bb1845afdc4ef72937a7427ddcab206ce1.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>You can see these body weights of dragonflies does not increase proportionally with body length – they curve upwards w.r.t. wing length (so the allometric constant <span class="math notranslate nohighlight">\(b\)</span> in eqn <a class="reference internal" href="#equation-eq-allom">(8)</a> mustbe greater than 1), instead of increasing as a straight line (in which case <span class="math notranslate nohighlight">\(b = 1\)</span> (isometry, instead of allometry).</p>
@@ -1299,8 +1307,8 @@ y = a x^b
 <p>Another way to tell <code class="docutils literal notranslate"><span class="pre">nlsLM</span></code> which model to fit, is to first create a function object for the power law model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">powMod</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w"> </span><span class="nf">return</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="o">^</span><span class="n">b</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">powMod</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="kr">return</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="o">^</span><span class="n">b</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1353,7 +1361,8 @@ y = a x^b
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/0be8dde533791c619dc1c867818fffc7f61221f70bdbc53767543dd1da5a96c3.png"><img alt="../_images/0be8dde533791c619dc1c867818fffc7f61221f70bdbc53767543dd1da5a96c3.png" src="../_images/0be8dde533791c619dc1c867818fffc7f61221f70bdbc53767543dd1da5a96c3.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/0be8dde533791c619dc1c867818fffc7f61221f70bdbc53767543dd1da5a96c3.png"><img alt="../_images/0be8dde533791c619dc1c867818fffc7f61221f70bdbc53767543dd1da5a96c3.png" src="../_images/0be8dde533791c619dc1c867818fffc7f61221f70bdbc53767543dd1da5a96c3.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 </section>
@@ -1412,7 +1421,8 @@ b 2.318292e+00 2.872287e+00
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/89699fe8ad23aace87bf687cadb13c200d7ff2ac648c34480b70cfb64bc6cace.png"><img alt="../_images/89699fe8ad23aace87bf687cadb13c200d7ff2ac648c34480b70cfb64bc6cace.png" src="../_images/89699fe8ad23aace87bf687cadb13c200d7ff2ac648c34480b70cfb64bc6cace.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/89699fe8ad23aace87bf687cadb13c200d7ff2ac648c34480b70cfb64bc6cace.png"><img alt="../_images/89699fe8ad23aace87bf687cadb13c200d7ff2ac648c34480b70cfb64bc6cace.png" src="../_images/89699fe8ad23aace87bf687cadb13c200d7ff2ac648c34480b70cfb64bc6cace.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>The residuals look OK.</p>
@@ -1473,7 +1483,8 @@ y = a + b x + c x^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/48ff509735afaf0c7bab4aea1745621a8e70318d0587256578347d6ac7012fa9.png"><img alt="../_images/48ff509735afaf0c7bab4aea1745621a8e70318d0587256578347d6ac7012fa9.png" src="../_images/48ff509735afaf0c7bab4aea1745621a8e70318d0587256578347d6ac7012fa9.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/48ff509735afaf0c7bab4aea1745621a8e70318d0587256578347d6ac7012fa9.png"><img alt="../_images/48ff509735afaf0c7bab4aea1745621a8e70318d0587256578347d6ac7012fa9.png" src="../_images/48ff509735afaf0c7bab4aea1745621a8e70318d0587256578347d6ac7012fa9.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>Very similar fits, except that the quadratic model seems to deviate a bit from the data at the lower end of the data range. Let’s do a proper, formal model comparison now to check which model better-fits the data.</p>
@@ -1547,7 +1558,8 @@ y = a + b x + c x^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/e16d450a550af34914299d36b906315861aec8037e6a2b9f81c94cca60a797d4.png"><img alt="../_images/e16d450a550af34914299d36b906315861aec8037e6a2b9f81c94cca60a797d4.png" src="../_images/e16d450a550af34914299d36b906315861aec8037e6a2b9f81c94cca60a797d4.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/e16d450a550af34914299d36b906315861aec8037e6a2b9f81c94cca60a797d4.png"><img alt="../_images/e16d450a550af34914299d36b906315861aec8037e6a2b9f81c94cca60a797d4.png" src="../_images/e16d450a550af34914299d36b906315861aec8037e6a2b9f81c94cca60a797d4.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <section id="fitting-the-three-models-using-nlls">
@@ -1574,11 +1586,11 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 <p>First, as we did before, let’s define the R functions for the two models:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">logistic1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">N0</span><span class="p">){</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">logistic1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">N0</span><span class="p">){</span>
 <span class="w"> </span><span class="n">N0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">exp</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">K</span><span class="o">+</span><span class="n">N0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nf">exp</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="m">-1</span><span class="p">))</span>
 <span class="p">}</span>
 
-<span class="n">vonbert.w</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">Winf</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">){</span>
+<span class="n">vonbert.w</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">Winf</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">){</span>
 <span class="w"> </span><span class="n">Winf</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">K</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">K</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">))</span><span class="o">^</span><span class="m">3</span>
 <span class="p">}</span>
 </pre></div>
@@ -1632,7 +1644,8 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/e07fedb57f96ba1b189dc08a6174b7d077c9712ccf807124dc76121881e3b188.png"><img alt="../_images/e07fedb57f96ba1b189dc08a6174b7d077c9712ccf807124dc76121881e3b188.png" src="../_images/e07fedb57f96ba1b189dc08a6174b7d077c9712ccf807124dc76121881e3b188.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/e07fedb57f96ba1b189dc08a6174b7d077c9712ccf807124dc76121881e3b188.png"><img alt="../_images/e07fedb57f96ba1b189dc08a6174b7d077c9712ccf807124dc76121881e3b188.png" src="../_images/e07fedb57f96ba1b189dc08a6174b7d077c9712ccf807124dc76121881e3b188.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>Next examine the residuals between the 3 models:</p>
@@ -1646,7 +1659,8 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/74a99a960d28e3b168a641f1b3a4429c3f6a7f96f52456fdeca8bd8f624d9954.png"><img alt="../_images/74a99a960d28e3b168a641f1b3a4429c3f6a7f96f52456fdeca8bd8f624d9954.png" src="../_images/74a99a960d28e3b168a641f1b3a4429c3f6a7f96f52456fdeca8bd8f624d9954.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/74a99a960d28e3b168a641f1b3a4429c3f6a7f96f52456fdeca8bd8f624d9954.png"><img alt="../_images/74a99a960d28e3b168a641f1b3a4429c3f6a7f96f52456fdeca8bd8f624d9954.png" src="../_images/74a99a960d28e3b168a641f1b3a4429c3f6a7f96f52456fdeca8bd8f624d9954.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>The residuals for all 3 models still exhibit some patterns. In particular, the data seems to go down near the end of the observation period, but none of these models can capture that behavior.</p>
@@ -1693,7 +1707,8 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/607fd57884a48ff887e971fbd1fa9514522df46a71bb50f7d17949bccf7ae2ae.png"><img alt="../_images/607fd57884a48ff887e971fbd1fa9514522df46a71bb50f7d17949bccf7ae2ae.png" src="../_images/607fd57884a48ff887e971fbd1fa9514522df46a71bb50f7d17949bccf7ae2ae.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/607fd57884a48ff887e971fbd1fa9514522df46a71bb50f7d17949bccf7ae2ae.png"><img alt="../_images/607fd57884a48ff887e971fbd1fa9514522df46a71bb50f7d17949bccf7ae2ae.png" src="../_images/607fd57884a48ff887e971fbd1fa9514522df46a71bb50f7d17949bccf7ae2ae.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <section id="the-thermal-performance-curve-models">
@@ -1701,7 +1716,7 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 <p>Let’s define some models for Thermal Performance Curves:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">quad1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">T0</span><span class="p">,</span><span class="w"> </span><span class="n">Tm</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">){</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">quad1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">T0</span><span class="p">,</span><span class="w"> </span><span class="n">Tm</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">){</span>
 <span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="bp">T</span><span class="o">-</span><span class="n">T0</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="bp">T</span><span class="o">-</span><span class="n">Tm</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="bp">T</span><span class="o">&lt;</span><span class="n">Tm</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="bp">T</span><span class="o">&gt;</span><span class="n">T0</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
@@ -1711,7 +1726,7 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 <p>Instead of using the inbuilt quadratic function in R, we we defined our own to make it easier to choose starting values, and so that we can force the function to be equal to zero above and below the minimum and maximum temperature thresholds (more on this below).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">briere</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">T0</span><span class="p">,</span><span class="w"> </span><span class="n">Tm</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">){</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">briere</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">T0</span><span class="p">,</span><span class="w"> </span><span class="n">Tm</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">){</span>
 <span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="bp">T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="bp">T</span><span class="o">-</span><span class="n">T0</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">Tm</span><span class="o">-</span><span class="bp">T</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="bp">T</span><span class="o">&lt;</span><span class="n">Tm</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="bp">T</span><span class="o">&gt;</span><span class="n">T0</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
@@ -1795,7 +1810,8 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/4ae8e201b47c8f68aca1aa6a0fb4b1cca033788530e60a72200bc6b61a3974b7.png"><img alt="../_images/4ae8e201b47c8f68aca1aa6a0fb4b1cca033788530e60a72200bc6b61a3974b7.png" src="../_images/4ae8e201b47c8f68aca1aa6a0fb4b1cca033788530e60a72200bc6b61a3974b7.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/4ae8e201b47c8f68aca1aa6a0fb4b1cca033788530e60a72200bc6b61a3974b7.png"><img alt="../_images/4ae8e201b47c8f68aca1aa6a0fb4b1cca033788530e60a72200bc6b61a3974b7.png" src="../_images/4ae8e201b47c8f68aca1aa6a0fb4b1cca033788530e60a72200bc6b61a3974b7.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <section id="basic-approach">
@@ -1821,7 +1837,8 @@ r = \frac{\log(N(t)) - \log(N_0)}{t} ,
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/540dbe7279dd824ca2e1d12e0fde94cc96e35c386c83d1eec23cb841cc09bfc0.png"><img alt="../_images/540dbe7279dd824ca2e1d12e0fde94cc96e35c386c83d1eec23cb841cc09bfc0.png" src="../_images/540dbe7279dd824ca2e1d12e0fde94cc96e35c386c83d1eec23cb841cc09bfc0.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/540dbe7279dd824ca2e1d12e0fde94cc96e35c386c83d1eec23cb841cc09bfc0.png"><img alt="../_images/540dbe7279dd824ca2e1d12e0fde94cc96e35c386c83d1eec23cb841cc09bfc0.png" src="../_images/540dbe7279dd824ca2e1d12e0fde94cc96e35c386c83d1eec23cb841cc09bfc0.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>By eye the logged data looks fairly linear (beyond the initial “lag phase” of growth; see below) between hours 5 and 10, so we’ll use that time-period to calculate the growth rate.</p>
@@ -1914,8 +1931,8 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 <p>Let’s fit it to the data. First, we need to define it as a function object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">logistic_model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">r_max</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">N_0</span><span class="p">){</span><span class="w"> </span><span class="c1"># The classic logistic equation</span>
-<span class="w"> </span><span class="nf">return</span><span class="p">(</span><span class="n">N_0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">exp</span><span class="p">(</span><span class="n">r_max</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">K</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">N_0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nf">exp</span><span class="p">(</span><span class="n">r_max</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">logistic_model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">r_max</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">N_0</span><span class="p">){</span><span class="w"> </span><span class="c1"># The classic logistic equation</span>
+<span class="w"> </span><span class="kr">return</span><span class="p">(</span><span class="n">N_0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">exp</span><span class="p">(</span><span class="n">r_max</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">K</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">N_0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nf">exp</span><span class="p">(</span><span class="n">r_max</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)))</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1978,7 +1995,8 @@ Achieved convergence tolerance: 1.49e-08
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/73a141ad43288a93443fc5f111d64fa95abaa4e394d7244dec032feb2224a16f.png"><img alt="../_images/73a141ad43288a93443fc5f111d64fa95abaa4e394d7244dec032feb2224a16f.png" src="../_images/73a141ad43288a93443fc5f111d64fa95abaa4e394d7244dec032feb2224a16f.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/73a141ad43288a93443fc5f111d64fa95abaa4e394d7244dec032feb2224a16f.png"><img alt="../_images/73a141ad43288a93443fc5f111d64fa95abaa4e394d7244dec032feb2224a16f.png" src="../_images/73a141ad43288a93443fc5f111d64fa95abaa4e394d7244dec032feb2224a16f.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>That looks nice, and the <span class="math notranslate nohighlight">\(r_{max}\)</span> estimate we get (0.64) is fairly close to what we got above with OLS fitting.</p>
@@ -1994,7 +2012,8 @@ Achieved convergence tolerance: 1.49e-08
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/89c23c6a8be4677efa95ae5dbc04c19756d27258bec66c534ff42afd910753ec.png"><img alt="../_images/89c23c6a8be4677efa95ae5dbc04c19756d27258bec66c534ff42afd910753ec.png" src="../_images/89c23c6a8be4677efa95ae5dbc04c19756d27258bec66c534ff42afd910753ec.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/89c23c6a8be4677efa95ae5dbc04c19756d27258bec66c534ff42afd910753ec.png"><img alt="../_images/89c23c6a8be4677efa95ae5dbc04c19756d27258bec66c534ff42afd910753ec.png" src="../_images/89c23c6a8be4677efa95ae5dbc04c19756d27258bec66c534ff42afd910753ec.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>The model actually diverges from the data at the lower end! This was not visible in the previous plot where you examined the model in linear scale (without taking a log) because the deviation of the model is small, and only becomes clear in the log scale. This is because of the way logarithms work. Let’s have a look at this in our Cell counts “data”:</p>
@@ -2008,7 +2027,8 @@ Achieved convergence tolerance: 1.49e-08
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/cd2722c00c37cf632ed71a362df9dc0d431acd13dcc2a813c6007b2ffde9fd82.png"><img alt="../_images/cd2722c00c37cf632ed71a362df9dc0d431acd13dcc2a813c6007b2ffde9fd82.png" src="../_images/cd2722c00c37cf632ed71a362df9dc0d431acd13dcc2a813c6007b2ffde9fd82.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/cd2722c00c37cf632ed71a362df9dc0d431acd13dcc2a813c6007b2ffde9fd82.png"><img alt="../_images/cd2722c00c37cf632ed71a362df9dc0d431acd13dcc2a813c6007b2ffde9fd82.png" src="../_images/cd2722c00c37cf632ed71a362df9dc0d431acd13dcc2a813c6007b2ffde9fd82.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>As you can see the logarithm is a strongly nonlinear transformation of any sequence of real numbers, with small numbers close to zero yielding disproportionately large deviations.</p>
@@ -2032,8 +2052,8 @@ Achieved convergence tolerance: 1.49e-08
 <p>First, specify the function object for the Gompertz model (we already defined the function for the Logistic model above):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">gompertz_model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">r_max</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">N_0</span><span class="p">,</span><span class="w"> </span><span class="n">t_lag</span><span class="p">){</span><span class="w"> </span><span class="c1"># Modified gompertz growth model (Zwietering 1990)</span>
-<span class="w"> </span><span class="nf">return</span><span class="p">(</span><span class="n">N_0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">K</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">N_0</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="nf">exp</span><span class="p">(</span><span class="n">r_max</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">exp</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">t_lag</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">K</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">N_0</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="m">10</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">gompertz_model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">r_max</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">N_0</span><span class="p">,</span><span class="w"> </span><span class="n">t_lag</span><span class="p">){</span><span class="w"> </span><span class="c1"># Modified gompertz growth model (Zwietering 1990)</span>
+<span class="w"> </span><span class="kr">return</span><span class="p">(</span><span class="n">N_0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">K</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">N_0</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="nf">exp</span><span class="p">(</span><span class="n">r_max</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">exp</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">t_lag</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">K</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">N_0</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="m">10</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">)))</span>
 <span class="p">}</span><span class="w">   </span>
 </pre></div>
 </div>
@@ -2178,7 +2198,8 @@ Achieved convergence tolerance: 1.49e-08
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/371f77d6a4ca196b815bbac92b38d545d96ddde547615cd0b7ff22683f30173b.png"><img alt="../_images/371f77d6a4ca196b815bbac92b38d545d96ddde547615cd0b7ff22683f30173b.png" src="../_images/371f77d6a4ca196b815bbac92b38d545d96ddde547615cd0b7ff22683f30173b.png" style="width: 240px; height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/371f77d6a4ca196b815bbac92b38d545d96ddde547615cd0b7ff22683f30173b.png"><img alt="../_images/371f77d6a4ca196b815bbac92b38d545d96ddde547615cd0b7ff22683f30173b.png" src="../_images/371f77d6a4ca196b815bbac92b38d545d96ddde547615cd0b7ff22683f30173b.png" style="width: 240px; height: 240px;" />
+</a>
 </div>
 </div>
 <p>Clearly, the Gompertz model fits way better than the logistic growth equation in this case! Note also that there is a big difference in the fitted value of <span class="math notranslate nohighlight">\(r_{max}\)</span> from the two models; the value is much lower from the Logistic model because it ignores the lag phase, including it into the exponential growth phase.</p>

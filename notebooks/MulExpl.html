@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
@@ -61,6 +61,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/MulExpl';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Linear Models: Multiple variables with interactions" href="MulExplInter.html" />
@@ -196,8 +197,6 @@
 <li class="toctree-l1"><a class="reference internal" href="MetabolicBasis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Populations.html">Single Populations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Interactions.html">Species Interactions</a></li>
-
-
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
@@ -543,7 +542,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/8b8d61dfa9e7169cb0e2246877532e804b4457e34fc67a193b15184dd1533373.png"><img alt="../_images/8b8d61dfa9e7169cb0e2246877532e804b4457e34fc67a193b15184dd1533373.png" src="../_images/8b8d61dfa9e7169cb0e2246877532e804b4457e34fc67a193b15184dd1533373.png" style="width: 300px; height: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/8b8d61dfa9e7169cb0e2246877532e804b4457e34fc67a193b15184dd1533373.png"><img alt="../_images/8b8d61dfa9e7169cb0e2246877532e804b4457e34fc67a193b15184dd1533373.png" src="../_images/8b8d61dfa9e7169cb0e2246877532e804b4457e34fc67a193b15184dd1533373.png" style="width: 300px; height: 250px;" />
+</a>
 </div>
 </div>
 <p><span class="math notranslate nohighlight">\(\star\)</span> Create the ggplot plots above from within your script.</p>
@@ -574,13 +574,13 @@ Yes 1.2138170  1.297662 1.299017
 standard errors for the groups <code class="docutils literal notranslate"><span class="pre">groupSE</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">seMean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">seMean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span>
 <span class="w">	</span><span class="c1"># get rid of missing values</span>
 <span class="w">	</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">na.omit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="w">	</span><span class="c1"># calculate the standard error</span>
 <span class="w">	</span><span class="n">se</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">var</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="w">	</span><span class="c1"># tell the function to report the standard error</span>
-<span class="w">	</span><span class="nf">return</span><span class="p">(</span><span class="n">se</span><span class="p">)</span>
+<span class="w">	</span><span class="kr">return</span><span class="p">(</span><span class="n">se</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -637,7 +637,8 @@ the bars and the length of error bar caps.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/74a4fa4fcc86b2c3de7d26a6cf21254e55ad902aa7419a08c55bd37d3aeef4bf.png"><img alt="../_images/74a4fa4fcc86b2c3de7d26a6cf21254e55ad902aa7419a08c55bd37d3aeef4bf.png" src="../_images/74a4fa4fcc86b2c3de7d26a6cf21254e55ad902aa7419a08c55bd37d3aeef4bf.png" style="width: 300px; height: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/74a4fa4fcc86b2c3de7d26a6cf21254e55ad902aa7419a08c55bd37d3aeef4bf.png"><img alt="../_images/74a4fa4fcc86b2c3de7d26a6cf21254e55ad902aa7419a08c55bd37d3aeef4bf.png" src="../_images/74a4fa4fcc86b2c3de7d26a6cf21254e55ad902aa7419a08c55bd37d3aeef4bf.png" style="width: 300px; height: 250px;" />
+</a>
 </div>
 </div>
 <p><span class="math notranslate nohighlight">\(\star\)</span> Generate the barplot above and then edit your script to change the colours and error bar lengths to your taste.</p>
@@ -646,7 +647,8 @@ the bars and the length of error bar caps.</p>
 <h3>Plotting means and confidence intervals<a class="headerlink" href="#plotting-means-and-confidence-intervals" title="Link to this heading">#</a></h3>
 <p>We’ll use the <code class="docutils literal notranslate"><span class="pre">plotmeans</span></code> function again as an exercise to change graph settings and to prepare figures for reports and write ups. This is the figure you should be able to reproduce the figure below.</p>
 <hr class="docutils" />
-<a class="reference internal image-reference" href="../_images/plotmeans.svg"><img alt="../_images/plotmeans.svg" src="../_images/plotmeans.svg" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/plotmeans.svg"><img alt="../_images/plotmeans.svg" src="../_images/plotmeans.svg" style="width: 600px;" />
+</a>
 <p><small> <center> Means and 95% confidence intervals for log genome size (picograms) in mammals for different trophic levels for a) ground dwelling species and b) other species. </center> </small></p>
 <hr class="docutils" />
 <p><span class="math notranslate nohighlight">\(\star\)</span> Use <code class="docutils literal notranslate"><span class="pre">plotmeans</span></code> from the <a class="reference internal" href="ANOVA.html"><span class="std std-doc">ANOVA chapter</span></a> and the <code class="docutils literal notranslate"><span class="pre">subset</span></code> option to generate the two plots below. You will need to
@@ -690,7 +692,8 @@ before we rush into interpretation.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/922cb0c13cc9b14636d3d9c6b05b68bc94994f639a2174cb078c8c4d8aad7068.png"><img alt="../_images/922cb0c13cc9b14636d3d9c6b05b68bc94994f639a2174cb078c8c4d8aad7068.png" src="../_images/922cb0c13cc9b14636d3d9c6b05b68bc94994f639a2174cb078c8c4d8aad7068.png" style="width: 350px; height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/922cb0c13cc9b14636d3d9c6b05b68bc94994f639a2174cb078c8c4d8aad7068.png"><img alt="../_images/922cb0c13cc9b14636d3d9c6b05b68bc94994f639a2174cb078c8c4d8aad7068.png" src="../_images/922cb0c13cc9b14636d3d9c6b05b68bc94994f639a2174cb078c8c4d8aad7068.png" style="width: 350px; height: 400px;" />
+</a>
 </div>
 </div>
 <p>Examine these diagnostic plots. There are six predicted values now - three trophic levels for each of the two levels of ground dwelling. Those plots look ok so now we can look at the analysis of variance table:</p>
@@ -850,7 +853,8 @@ omnivory and both of these have large effects sizes, each introducing about a 20
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/a5cfcc0235087ec61bbad12978db43c2ad26e8739de5a8b56d0096a7ea7c1e31.png"><img alt="../_images/a5cfcc0235087ec61bbad12978db43c2ad26e8739de5a8b56d0096a7ea7c1e31.png" src="../_images/a5cfcc0235087ec61bbad12978db43c2ad26e8739de5a8b56d0096a7ea7c1e31.png" style="width: 300px; height: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/a5cfcc0235087ec61bbad12978db43c2ad26e8739de5a8b56d0096a7ea7c1e31.png"><img alt="../_images/a5cfcc0235087ec61bbad12978db43c2ad26e8739de5a8b56d0096a7ea7c1e31.png" src="../_images/a5cfcc0235087ec61bbad12978db43c2ad26e8739de5a8b56d0096a7ea7c1e31.png" style="width: 300px; height: 250px;" />
+</a>
 </div>
 </div>
 <p>The red markers do not match to the calculated means. This is because the model only includes a single difference between ground and non-ground species, which has to be the same for each trophic group. That is, there is no interaction between trophic level and ground / non-ground identity of each species in the current model.</p>

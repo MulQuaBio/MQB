@@ -1,0 +1,902 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Practical session 2. Penguins! &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=01a0bdc2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Bayesian_Practicals/N2.penguins';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ShellScripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LaTeX.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Python.html">Biological Computing in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R.html">Biological Computing in R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../MetabolicBasis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Populations.html">Single Populations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Interactions.html">Species Interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro-Stats.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_R.html">Data Management and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ExpDesign.html">Experimental design and Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t_F_tests.html">Basic hypothesis testing: <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(F\)</span> tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Regress.html">Linear Models: Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ANOVA.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MulExpl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MulExplInter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ModelSimp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../GLMs.html">Generalised Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NLLS.html">Model Fitting using Non-linear Least-squares</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Appendix-JupyIntro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix-Data-Python.html">Data analyses  with Python &amp; Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix-Maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix-MathsForBiologists/MathsForBiologists.html">Maths for Biologists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix-Databases.html">Databases <span class="tocSkip"></span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix-NLLS-Python.html">Model fitting in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix-MiniProj.html">The Computing Miniproject</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix-Assessment.html">TMQB Coursework Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix-HighPerformanceComputing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Bayesian_Practicals/N2.penguins.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/Bayesian_Practicals/N2.penguins.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Practical session 2. Penguins!</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-calculating-proportions">Part 1: Calculating proportions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical-modelling">Hierarchical modelling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-linear-regression">Part 2: Linear Regression</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="practical-session-2-penguins">
+<h1>Practical session 2. Penguins!<a class="headerlink" href="#practical-session-2-penguins" title="Link to this heading">#</a></h1>
+<p>Kristen Gorman visited 3 Antarctic islands of the Palmer Archipelago (Torgersen, Biscoe, and Dream) and collected data about three penguin species (Adelie, Gentoo, and Chinstrap). You can find the full dataset in <a class="reference external" href="https://allisonhorst.github.io/palmerpenguins/">their github page</a>. Today we will use a modified subset of the data (<code class="docutils literal notranslate"><span class="pre">penguins.csv</span></code>) to infer sex and anatomic relationships between the penguins. We will start by loading the required libraries for the notebook and loading the data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> <span class="c1"># numpy is the standard numeric libray</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ss</span> <span class="c1"># scipy is the scientific library, the stats module contains different functions</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span> <span class="c1"># matplotlib is the standard plotting library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span> <span class="c1"># library for statistical plotting</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pymc</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pm</span> <span class="c1"># library for Bayesian MCMC inference</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">arviz</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">az</span> <span class="c1"># library to analyze and plot Bayesian results</span>
+
+
+<span class="c1">### Loading data</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> <span class="c1"># pandas is a library to manipulate dataframes</span>
+<span class="n">penguin_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;penguins.csv&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">penguin_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>species</th>
+      <th>island</th>
+      <th>bill_length_mm</th>
+      <th>bill_depth_mm</th>
+      <th>flipper_length_mm</th>
+      <th>body_mass_g</th>
+      <th>sex</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>39.1</td>
+      <td>18.7</td>
+      <td>181</td>
+      <td>3750</td>
+      <td>male</td>
+      <td>2007</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>39.5</td>
+      <td>17.4</td>
+      <td>186</td>
+      <td>3800</td>
+      <td>female</td>
+      <td>2007</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>40.3</td>
+      <td>18.0</td>
+      <td>195</td>
+      <td>3250</td>
+      <td>female</td>
+      <td>2007</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>36.7</td>
+      <td>19.3</td>
+      <td>193</td>
+      <td>3450</td>
+      <td>female</td>
+      <td>2007</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>39.3</td>
+      <td>20.6</td>
+      <td>190</td>
+      <td>3650</td>
+      <td>male</td>
+      <td>2007</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>337</th>
+      <td>Chinstrap</td>
+      <td>Dream</td>
+      <td>55.8</td>
+      <td>19.8</td>
+      <td>207</td>
+      <td>4000</td>
+      <td>male</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>338</th>
+      <td>Chinstrap</td>
+      <td>Dream</td>
+      <td>43.5</td>
+      <td>18.1</td>
+      <td>202</td>
+      <td>3400</td>
+      <td>female</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>339</th>
+      <td>Chinstrap</td>
+      <td>Dream</td>
+      <td>49.6</td>
+      <td>18.2</td>
+      <td>193</td>
+      <td>3775</td>
+      <td>male</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>340</th>
+      <td>Chinstrap</td>
+      <td>Dream</td>
+      <td>50.8</td>
+      <td>19.0</td>
+      <td>210</td>
+      <td>4100</td>
+      <td>male</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>341</th>
+      <td>Chinstrap</td>
+      <td>Dream</td>
+      <td>50.2</td>
+      <td>18.7</td>
+      <td>198</td>
+      <td>3775</td>
+      <td>female</td>
+      <td>2009</td>
+    </tr>
+  </tbody>
+</table>
+<p>342 rows × 8 columns</p>
+</div></div></div>
+</div>
+<section id="part-1-calculating-proportions">
+<h2>Part 1: Calculating proportions<a class="headerlink" href="#part-1-calculating-proportions" title="Link to this heading">#</a></h2>
+<p>In the 2007, the dataset shows that Kirsten’s team observed more female than male Adelie penguinin the island of Togersen.</p>
+<p><strong>Question 1.1</strong> We want to evaluate how confident can we be that in that year there were more female than male penguins in the island. To solve this use pyMC to generate a posterior distribution for the ratio <span class="math notranslate nohighlight">\(f\)</span> of females in the population.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Loading data</span>
+
+<span class="n">f_Adelie</span> <span class="o">=</span> <span class="n">penguin_df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Adelie&#39;</span> <span class="c1"># mask of entries for Adelie penguins</span>
+<span class="n">f_Torgersen</span> <span class="o">=</span> <span class="n">penguin_df</span><span class="p">[</span><span class="s1">&#39;island&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Torgersen&#39;</span> <span class="c1"># mask of entries for Torgersen island</span>
+<span class="n">f_2007</span> <span class="o">=</span> <span class="n">penguin_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2007</span> <span class="c1"># mask for entries from 2007</span>
+<span class="n">penguin_subset_df</span> <span class="o">=</span> <span class="n">penguin_df</span><span class="p">[</span><span class="n">f_Adelie</span> <span class="o">&amp;</span> <span class="n">f_Torgersen</span> <span class="o">&amp;</span> <span class="n">f_2007</span><span class="p">]</span> <span class="c1"># subset used in the question</span>
+
+
+<span class="n">display</span><span class="p">(</span><span class="n">penguin_subset_df</span><span class="p">)</span>
+<span class="n">N_penguins</span> <span class="o">=</span> <span class="n">penguin_subset_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">N_female</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">penguin_subset_df</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;female&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;In 2007 </span><span class="si">{}</span><span class="s2"> Adelie penguins where observed in Torgersen, from which </span><span class="si">{}</span><span class="s2"> were female&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N_penguins</span><span class="p">,</span><span class="n">N_female</span><span class="p">))</span>
+
+
+<span class="c1"># To generate the MCMC model you can use the same steps that we used in the previous notebook.</span>
+<span class="c1"># Note that the parameter we are trying to infer is now continuous</span>
+<span class="k">with</span> <span class="n">pm</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span> <span class="k">as</span> <span class="n">Pea_Model</span><span class="p">:</span>
+    <span class="n">f_prior</span> <span class="o">=</span> <span class="c1">### Define the prior disrtibution using a Truncated Normal. the prior could also use a uniform distribution, play with different values to see how it affects the result!</span>
+    <span class="n">f_likelihood</span> <span class="o">=</span> <span class="c1">### Write the corresponding binomial likelihood </span>
+    <span class="n">mcmc_sample</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">4000</span><span class="p">,</span> <span class="n">chains</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">return_inferencedata</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>    
+    
+<span class="n">az</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">mcmc_sample</span><span class="p">)</span> <span class="c1"># summary of MCMC statistics</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Question 1.2</strong> Using the posterior distribution you can evaluate different hypothesis regarding <span class="math notranslate nohighlight">\(f\)</span>: 1) Can we reject the hypothesis that f=1/2? 2) Can we accept the hypothesis that f=1/2? 3) Is the number of females greater than the number of males?. Answer the three questions separately</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Remember that you can evalute the hdi using arviz.</span>
+<span class="n">hdi</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">hdi</span><span class="p">(</span><span class="n">mcmc_sample</span><span class="p">,</span><span class="n">var_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">],</span> <span class="n">hdi_prob</span> <span class="o">=</span> <span class="mf">0.94</span><span class="p">)</span> <span class="c1"># 94% credibility interval</span>
+<span class="n">hdi_numpy</span> <span class="o">=</span> <span class="n">hdi</span><span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="c1"># you can extract the hdi as numpy arrays as well</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The 94% HDI is&#39;</span><span class="p">,</span><span class="n">hdi_numpy</span><span class="p">)</span>
+
+<span class="c1">## You can access all the values of the trace (posterior) as</span>
+<span class="n">posteriorf</span> <span class="o">=</span> <span class="n">mcmc_sample</span><span class="o">.</span><span class="n">posterior</span><span class="o">.</span><span class="n">f</span> <span class="c1"># extract the values of N for the posterior distribution</span>
+<span class="n">posteriorf_all</span> <span class="o">=</span> <span class="n">posteriorf</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="c1"># flatten the array to gather all the chains in a single array</span>
+<span class="c1">## We can also plot the posterior. In the previous notebook we used a histogram, we can also use a KDE</span>
+<span class="n">kde</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">gaussian_kde</span><span class="p">(</span><span class="n">posteriorf_all</span><span class="p">)</span>
+<span class="n">f_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f_values</span><span class="p">,</span><span class="n">kde</span><span class="p">(</span><span class="n">f_values</span><span class="p">),</span><span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="c1"># plot KDE</span>
+<span class="n">f_values_hdi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">hdi_numpy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">hdi_numpy</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">f_values_hdi</span><span class="p">,</span><span class="n">kde</span><span class="p">(</span><span class="n">f_values_hdi</span><span class="p">),</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># shade the KDE under the 95% HDR</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;credibility&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="hierarchical-modelling">
+<h3>Hierarchical modelling<a class="headerlink" href="#hierarchical-modelling" title="Link to this heading">#</a></h3>
+<p>In our analysis of penguin populations, we have focused on individual islands without considering additional data from neighboring islands. Given that the fraction <span class="math notranslate nohighlight">\(f\)</span> of females within each island’s penguin population is likely to be similar across islands in the same year, we can leverage this information to refine our inference through a hierarchical model. Hierarchical modeling allows us to treat each island’s <span class="math notranslate nohighlight">\(f\)</span> as originating from a shared distribution, acknowledging that while each island’s fraction may vary, these variations are part of a coherent pattern influenced by broader factors.</p>
+<p>This does not imply a single joint distribution for the number of females in the archipelago rather enables us to infer a specific posterior distribution of <span class="math notranslate nohighlight">\(f\)</span> for each island, under the assumption that these distributions are related rather than completely independent. Essentially, hierarchical models connect the prior distributions for <span class="math notranslate nohighlight">\(f\)</span> across islands, reflecting our belief in a structured, not random, variation among them.</p>
+<p>Therefore, the parameters we want to infer are: 1) The credibility distribution of <span class="math notranslate nohighlight">\(f\)</span> for each island, and 2) The shared parameters among the islands (hyperprior). In particular, the credibility for the cross-island average <span class="math notranslate nohighlight">\(\mu\)</span>, and the cross-island standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_Adelie</span> <span class="o">=</span> <span class="n">penguin_df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Adelie&#39;</span> <span class="c1"># mask of entries for Adelie penguins</span>
+<span class="n">f_2007</span> <span class="o">=</span> <span class="n">penguin_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">2007</span> <span class="c1"># mask for entries from 2007</span>
+
+<span class="n">f_Torgersen</span> <span class="o">=</span> <span class="n">penguin_df</span><span class="p">[</span><span class="s1">&#39;island&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Torgersen&#39;</span> <span class="c1"># mask of entries for Torgersen island</span>
+<span class="n">f_Biscoe</span> <span class="o">=</span> <span class="n">penguin_df</span><span class="p">[</span><span class="s1">&#39;island&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Biscoe&#39;</span> <span class="c1"># mask of entries for Torgersen island</span>
+<span class="n">f_Dream</span> <span class="o">=</span> <span class="n">penguin_df</span><span class="p">[</span><span class="s1">&#39;island&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Dream&#39;</span> <span class="c1"># mask of entries for Torgersen island</span>
+<span class="n">f_female</span> <span class="o">=</span> <span class="n">penguin_df</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;female&#39;</span> <span class="c1"># mask of entries for Torgersen island</span>
+
+<span class="n">N_Torgersen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f_Adelie</span> <span class="o">&amp;</span> <span class="n">f_2007</span> <span class="o">&amp;</span> <span class="n">f_Torgersen</span><span class="p">)</span> <span class="c1"># Number of Torgersen penguins observed</span>
+<span class="n">N_Torgersen_female</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f_Adelie</span> <span class="o">&amp;</span> <span class="n">f_2007</span> <span class="o">&amp;</span> <span class="n">f_Torgersen</span> <span class="o">&amp;</span> <span class="n">f_female</span><span class="p">)</span> <span class="c1"># Number of female Torgersen penguins observed</span>
+
+<span class="n">N_Biscoe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f_Adelie</span> <span class="o">&amp;</span> <span class="n">f_2007</span> <span class="o">&amp;</span> <span class="n">f_Biscoe</span><span class="p">)</span> <span class="c1"># Number of Biscoe penguins observed</span>
+<span class="n">N_Biscoe_female</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f_Adelie</span> <span class="o">&amp;</span> <span class="n">f_2007</span> <span class="o">&amp;</span> <span class="n">f_Biscoe</span> <span class="o">&amp;</span> <span class="n">f_female</span><span class="p">)</span> <span class="c1"># Number of female Biscoe penguins observed</span>
+
+<span class="n">N_Dream</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f_Adelie</span> <span class="o">&amp;</span> <span class="n">f_2007</span> <span class="o">&amp;</span> <span class="n">f_Dream</span><span class="p">)</span> <span class="c1"># Number of Dream penguins observed</span>
+<span class="n">N_Dream_female</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f_Adelie</span> <span class="o">&amp;</span> <span class="n">f_2007</span> <span class="o">&amp;</span> <span class="n">f_Dream</span> <span class="o">&amp;</span> <span class="n">f_female</span><span class="p">)</span> <span class="c1"># Number of female Dream penguins observed</span>
+
+<span class="k">with</span> <span class="n">pm</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+    
+    <span class="c1"># cross-island parameters</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span><span class="s1">&#39;mu&#39;</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#cross-island mean f, the value is between 0,1 using an uninformative prior</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">HalfNormal</span><span class="p">(</span><span class="s1">&#39;sigma&#39;</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">)</span> <span class="c1">#cross-island std f, we don&#39;t expect the &quot;f&quot; of each island to be very different among each other</span>
+    
+    <span class="c1"># island-specific parameters</span>
+    <span class="n">f_Torgersen</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">TruncatedNormal</span><span class="p">(</span><span class="s2">&quot;f_Torgersen&quot;</span><span class="p">,</span><span class="n">mu</span> <span class="o">=</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">lower</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># The prior is taken from the shared prior</span>
+    <span class="n">f_Biscoe</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">TruncatedNormal</span><span class="p">(</span><span class="s2">&quot;f_Biscoe&quot;</span><span class="p">,</span><span class="n">mu</span> <span class="o">=</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">lower</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># The prior is taken from the shared prior</span>
+    <span class="n">f_Dream</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">TruncatedNormal</span><span class="p">(</span><span class="s2">&quot;f_Dream&quot;</span><span class="p">,</span><span class="n">mu</span> <span class="o">=</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">lower</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># The prior is taken from the shared prior</span>
+    
+    <span class="c1">#The likelihood will be the product of all the observations for each island. If you define 3 likelihoods, pymc multiplies them for you!!</span>
+    <span class="n">lkl_Torgersen</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Binomial</span><span class="p">(</span><span class="s2">&quot;lkl_Torgersen&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">N_Torgersen</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">f_Torgersen</span><span class="p">,</span> <span class="n">observed</span> <span class="o">=</span> <span class="n">N_Torgersen_female</span><span class="p">)</span><span class="c1"># Write the binomial likelihood </span>
+    <span class="n">lkl_Biscoe</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Binomial</span><span class="p">(</span><span class="s2">&quot;lkl_Biscoe&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">N_Biscoe</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">f_Biscoe</span><span class="p">,</span> <span class="n">observed</span> <span class="o">=</span> <span class="n">N_Biscoe_female</span><span class="p">)</span><span class="c1"># Write the binomial likelihood </span>
+    <span class="n">lkl_Dream</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Binomial</span><span class="p">(</span><span class="s2">&quot;lkl_Dream&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">N_Dream</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">f_Dream</span><span class="p">,</span> <span class="n">observed</span> <span class="o">=</span> <span class="n">N_Dream_female</span><span class="p">)</span><span class="c1"># Write the binomial likelihood </span>
+    <span class="c1"># </span>
+    <span class="n">mcmc_sample_hierarchical</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">40000</span><span class="p">,</span> <span class="n">chains</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">return_inferencedata</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>    
+
+<span class="n">az</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">mcmc_sample_hierarchical</span><span class="p">)</span> <span class="c1"># summary of MCMC statistics</span>
+
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Question 1.3</strong> Compare the hypothesis of the ratio <span class="math notranslate nohighlight">\(f\)</span> of female penguins in Torgersen Island with those obtained in Question 1.2. How different are they?</p>
+</section>
+</section>
+<section id="part-2-linear-regression">
+<h2>Part 2: Linear Regression<a class="headerlink" href="#part-2-linear-regression" title="Link to this heading">#</a></h2>
+<p>In this part we will use the same Bayesian workflow to study the linear relationship between two variables. This can be done in a straightforward way, since the flexibility of the Bayesian approach enables us to adapt our analysis to various models of likelihood. By incorporating our understanding and beliefs about the possible underlying relationships within the data, we can use the Bayesian approach to constrain our predictions.</p>
+<p><strong>Question 2.1</strong> For each penguin, create a scatter plot with bill length on one axis and flipper length on the other. Then, visually inspect the plot to determine if there is a correlation between these two measurements. Hint: since your data is in a Pandas dataframe you can use seaborn’s <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.scatterplot.html"><code class="docutils literal notranslate"><span class="pre">scatterplot</span></code></a> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to fit a linear regression, we need to write our credibility for the linear relationship in the data. One possible way is to assume that for each species the mean flipper length is a linear function of the bill_length <span class="math notranslate nohighlight">\(\mu_{flipper} = a\cdot \)</span> bill_length <span class="math notranslate nohighlight">\(+ b\)</span>. In addition we can assume that the observed flipper_length is normally distributed around the corresponding <span class="math notranslate nohighlight">\(\mu_{flipper}\)</span> with a standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>. And alternative way of writing this relationship that you can find in books is <span class="math notranslate nohighlight">\(flipper \sim \mathcal{N}(a\cdot bill+b,\sigma)\)</span>.</p>
+<p><strong>Question 2.2</strong> The 3 parameters in our model are <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>. Before conducting any analysis, What values do you think would fit the data well?</p>
+<p><strong>Question 2.3</strong> Fill the gaps in the following code to perform the linear regression using Bayesian inference for the penguins of Torgersen island.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_Torgersen</span> <span class="o">=</span> <span class="n">penguin_df</span><span class="p">[</span><span class="s1">&#39;island&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Torgersen&#39;</span> <span class="c1"># mask of entries for Torgersen island</span>
+
+<span class="n">flipper_length_Torgersen</span> <span class="o">=</span> <span class="n">penguin_df</span><span class="p">[</span><span class="n">f_Torgersen</span><span class="p">][</span><span class="s1">&#39;flipper_length_mm&#39;</span><span class="p">]</span>
+<span class="n">bill_length_Torgersen</span> <span class="o">=</span> <span class="n">penguin_df</span><span class="p">[</span><span class="n">f_Torgersen</span><span class="p">][</span><span class="s1">&#39;bill_length_mm&#39;</span><span class="p">]</span>
+
+<span class="k">with</span> <span class="n">pm</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+    
+    <span class="c1"># you can find a,b,sigma ranges by visual exploration of the data. Some times the analysis is </span>
+    <span class="c1"># easier if the daya is z-score normalized </span>
+    <span class="n">a</span> <span class="o">=</span> <span class="c1"># reasonable prior for a</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="c1"># reasonable prior for b</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="c1"># reasonable prior for sigma </span>
+    
+    <span class="c1"># expected mean as a function of bill_length (it could be any non-linear function as well!)</span>
+    <span class="n">mu_flipper</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">bill_length_Torgersen</span> <span class="o">+</span> <span class="n">b</span>
+    
+    <span class="n">likelihood</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s2">&quot;lkl&quot;</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="n">mu_flipper</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">observed</span> <span class="o">=</span> <span class="n">flipper_length_Torgersen</span><span class="p">)</span><span class="c1"># Write the binomial likelihood </span>
+    <span class="c1"># </span>
+    <span class="n">mcmc_sample_hierarchical</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="n">chains</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">return_inferencedata</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="nb">map</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">find_MAP</span><span class="p">()</span> <span class="c1"># this tme we will also store the MAP</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MAP: a=</span><span class="si">{}</span><span class="s2">,  b=</span><span class="si">{}</span><span class="s2">,  sigma=</span><span class="si">{}</span><span class="s2">,&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">map</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">],</span><span class="nb">map</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">],</span><span class="nb">map</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">]))</span>
+<span class="n">az</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">mcmc_sample_hierarchical</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Question 2.4</strong> Use the results to infer if there is a linear relationship.</p>
+<p><strong>Question 2.5</strong> Posterior predictive checks. The posterior distributions contain values of the parameters with highest credibility but it could be that those “best” paramerters, are still not good approximations of the data. For this reason is good to perform posterior predictive checks. In our case we can plot the following on top of the original data:</p>
+<ol class="arabic simple">
+<li><p>The linear fit predicted by the MAP of the posterior distribution.</p></li>
+<li><p>We had to assume that the data were normally distributed along our prediction of <span class="math notranslate nohighlight">\(\mu_{flipper}\)</span>. In order to check this, we can generate synthetic data given by the posterior and compare if the results qualitative resemble the original data. In some texts this posterior predictive check is denoted as <span class="math notranslate nohighlight">\(P(\,\widetilde{data}\,|data)\)</span>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">penguin_df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;bill_length_mm&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;flipper_length_mm&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;species&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bill_length_Torgersen</span><span class="p">,</span>
+            <span class="n">bill_length_Torgersen</span><span class="o">*</span><span class="nb">map</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span><span class="o">+</span><span class="nb">map</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span> <span class="o">=</span> <span class="nb">map</span><span class="p">[</span><span class="s1">&#39;sigma&#39;</span><span class="p">],</span><span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bill_length_Torgersen</span><span class="p">)),</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;posterior predictive&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bill_length_Torgersen</span><span class="p">,</span>
+            <span class="n">bill_length_Torgersen</span><span class="o">*</span><span class="nb">map</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span><span class="o">+</span><span class="nb">map</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;linear regression&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/Bayesian_Practicals"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-calculating-proportions">Part 1: Calculating proportions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical-modelling">Hierarchical modelling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-linear-regression">Part 2: Linear Regression</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
