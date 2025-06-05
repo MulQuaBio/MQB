@@ -10,7 +10,7 @@ Welcome to The Multilingual Quantitative Biologist!
 ## About
 
 These notes have emerged from the development of content for modules on Biological Computing taught in various past and present courses at the
-Department of Life Sciences, Imperial College London. These courses include Year 1 & 2 Computational Biostatistics modules at the South Kensington Campus, the Computational Methods in Ecology and Evolution [(CMEE) Masters program](http://www.imperial.ac.uk/life-sciences/postgraduate/masters-courses/computational-methods-in-ecology-and-evolution/) at the Silwood Park Campus, the Quantitative Methods in Ecology and Evolution Centre for Doctoral Training ([QMEE CDT](https://www.imperial.ac.uk/qmee-cdt/)), and the training workshops of the [VectorBiTE RCN](http://vectorbite.org).
+Department of Life Sciences, Imperial College London. These courses include Year 1 & 2 Computational Biostatistics modules at the South Kensington Campus, the Computational Methods in Ecology and Evolution [(CMEE) Masters program](http://www.imperial.ac.uk/life-sciences/postgraduate/masters-courses/computational-methods-in-ecology-and-evolution/) at the Silwood Park Campus, the Quantitative Methods in Ecology and Evolution Centre for Doctoral Training ([QMEE CDT](https://www.imperial.ac.uk/qmee-cdt/)), and the training workshops of the [VectorBiTE RCN](http://vectorbite.org) and [VBD Hub](https://vbdhub.org?utm_source=mulquabio.github.io).
 
 Different subsets of these notes will be covered in different courses. Please look up your respective course guidebooks/handbooks to determine when the modules covered in these notes are scheduled in your course. You will be given instructions about which sections are covered in your course.
 
