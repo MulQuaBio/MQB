@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -586,8 +586,33 @@ document.write(`
 <section id="getting-started-in-r">
 <h2>Getting started in R<a class="headerlink" href="#getting-started-in-r" title="Link to this heading">#</a></h2>
 <p>Before we go any further it is advisable to install the packages required for this workshop <code class="docutils literal notranslate"><span class="pre">fpp3</span></code>, <code class="docutils literal notranslate"><span class="pre">astsa</span></code>, <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">GGally</span></code>. <code class="docutils literal notranslate"><span class="pre">fp33</span></code> actually installs a bunch of other useful packages such as <code class="docutils literal notranslate"><span class="pre">tsibble</span></code>, <code class="docutils literal notranslate"><span class="pre">feasts</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">fable</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="n">fpp3</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="n">astsa</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="n">devtools</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>It will also be worthwhile installing the hub’s own <code class="docutils literal notranslate"><span class="pre">ohvbd</span></code> package:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">devtools</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&quot;fwimp/ohvbd&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">build_vignettes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>If you do not have much time, you can install the package without building the vignettes locally, using:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">devtools</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&quot;fwimp/ohvbd&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>The documentation for ohvbd as a whole can be found <a class="reference external" href="https://fwimp.github.io/ohvbd/">here</a></p>
 <p>Once you have installed these (it may take a while if you have not previously installed tidyverse in particular), it’s time to load the fpp3 and ohvbd packages:</p>
 <div class="cell docutils container">
