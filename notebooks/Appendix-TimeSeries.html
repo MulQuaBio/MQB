@@ -1099,7 +1099,33 @@ document.write(`
 <li><p>Use the code to specifically investigate one of the following countries: <code class="docutils literal notranslate"><span class="pre">Indonesia</span></code>, <code class="docutils literal notranslate"><span class="pre">Ecuador</span></code>, <code class="docutils literal notranslate"><span class="pre">Singapore</span></code>. What do you notice?</p></li>
 </ol>
 <p>Remember to look carefully at the scale of the y axis on each subplot!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">fetch_ad</span><span class="p">(</span><span class="n">use_cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">extract</span><span class="p">(</span><span class="n">places</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;United Kingdom&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w">  </span><span class="c1"># Change the place name here!</span>
+<span class="w">  </span><span class="nf">enframe</span><span class="p">()</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">rename</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">temperature</span><span class="o">=</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="nf">as_date</span><span class="p">(</span><span class="n">date</span><span class="p">))</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">tsibble</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">date</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">index_by</span><span class="p">(</span><span class="n">ym</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="nf">yearmonth</span><span class="p">(</span><span class="n">.</span><span class="p">))</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">temperature</span><span class="p">))</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">model</span><span class="p">(</span>
+<span class="w">    </span><span class="nf">STL</span><span class="p">(</span><span class="n">temperature</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="nf">trend</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">        </span><span class="nf">season</span><span class="p">(</span><span class="n">period</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span><span class="p">))</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">components</span><span class="p">()</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">autoplot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>Note:</strong> If you are struggling to find the given name for a country within AD, enter the following command into R to get a list of all country names:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">rownames</span><span class="p">(</span><span class="nf">fetch_ad</span><span class="p">(</span><span class="n">use_cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <hr class="docutils" />
 <section id="additive-decompositions">
@@ -1657,6 +1683,15 @@ document.write(`
 <h3>Another forecasting exercise<a class="headerlink" href="#another-forecasting-exercise" title="Link to this heading">#</a></h3>
 <p>Try forecasting using some of these Exponential Smoothing models to the <code class="docutils literal notranslate"><span class="pre">aus_arrivals</span></code> dataset.</p>
 <p>I’ve started you off here with a reminder that we need to filter a particular country to get just one time series:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">aus_arrivals</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">    </span><span class="nf">filter</span><span class="p">(</span><span class="n">Origin</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Japan&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">    </span><span class="kc">...</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="summary-statistics">
@@ -2049,6 +2084,9 @@ the fit parameters would be \)</span>\alpha<span class="math notranslate nohighl
 <h2>Fitting (S)ARIMA models using <code class="docutils literal notranslate"><span class="pre">fable</span></code><a class="headerlink" href="#fitting-s-arima-models-using-fable" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">fable</span></code> provides an <em>exceptionally</em> easy interface for fitting ARIMA-style models to data: the <code class="docutils literal notranslate"><span class="pre">ARIMA()</span></code> command.</p>
 <p>More explicitly, an ARIMA model is specified as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ARIMA</span><span class="p">(</span><span class="n">X</span> <span class="o">~</span> <span class="n">pdq</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span> <span class="o">+</span> <span class="n">PDQ</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">period</span> <span class="o">=</span> <span class="n">m</span><span class="p">)</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>The arguments here have the following meanings:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">X</span></code>: column name of the time series being modeled</p></li>
