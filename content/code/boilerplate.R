@@ -1,11 +1,12 @@
-MyFunction <- function(Arg1, Arg2){
-  
-  # Statements involving Arg1, Arg2:
-  print(paste("Argument", as.character(Arg1), "is a", class(Arg1))) # print Arg1's type
-  print(paste("Argument", as.character(Arg2), "is a", class(Arg2))) # print Arg2's type
-    
-  return(c(Arg1, Arg2)) #this is optional, but very useful
+my_function <- function(arg1, arg2) {
+  # Statements involving arg1, arg2:
+  cat(sprintf("Argument %s is a %s\n", as.character(arg1),
+              class(arg1))) # print arg1's type
+  cat(sprintf("Argument %s is a %s\n", as.character(arg2),
+              class(arg2))) # print arg2's type
+
+  return(c(arg1, arg2)) #this is optional, but very useful
 }
 
-MyFunction(1,2) #test the function
-MyFunction("Riki","Tiki") #A different test
+my_function(1, 2) #test the function
+my_function("Riki", "Tiki") #A different test
