@@ -1,5 +1,5 @@
-# A simple R script to illustrate R input-output.   
-# Run line by line and check inputs outputs to understand what is happening  
+# A simple R script to illustrate R input-output.
+# Run line by line and check inputs outputs to understand what is happening here.
 
 MyData <- read.csv("../data/trees.csv", header = TRUE) # import with headers
 
