@@ -174,7 +174,7 @@ If you end up using multiple programming languages, you will want an IDE that ca
 
 #### Gooey IDEs
 
-IDEs come with graphic user interfaces (GUI's, or "gooeys") of differing levels of sophistication and shiny-ness. Some go over and above the call of duty to offer further useful features like embedded data and plot views and package management. One such example is th freelty available [RStudio](http://rstudio.org), which is dedicated to R.  However, there is a tradeoff &ndash; these are necessarily specialized to one language (e.g., RStudio). It is up to you if you want to use multiple, language specific IDEs, or one somewhat less shiny multi-lingual IDE.   
+IDEs come with graphic user interfaces (GUI's, or "gooeys") of differing levels of sophistication and shiny-ness. Some go over and above the call of duty to offer further useful features like embedded data and plot views and package management. One such example is the freely available [RStudio](http://rstudio.org), which is dedicated to R.  However, there is a tradeoff &ndash; these are necessarily specialized to one language (e.g., RStudio). It is up to you if you want to use multiple, language specific IDEs, or one somewhat less shiny multi-lingual IDE.   
 
 ### Assessment
 
