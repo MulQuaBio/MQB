@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -197,6 +197,8 @@
 <li class="toctree-l1"><a class="reference internal" href="MetabolicBasis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Populations.html">Single Populations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Interactions.html">Species Interactions</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
@@ -912,10 +914,10 @@ origin<span class="w">  </span>git@github.com:YourGithubUsername/CMEECourseWork.
 <li><p>In this case <code class="docutils literal notranslate"><span class="pre">fetch</span></code> and <code class="docutils literal notranslate"><span class="pre">push</span></code> have that the same URL for both fetching updates and pushing commits.</p></li>
 </ul>
 <p>No you can <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> all your local commits:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>master
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
 </pre></div>
 </div>
-<p>This pushes the (committed) changes in your local repository up to the remote repository you specified as the <code class="docutils literal notranslate"><span class="pre">origin</span></code>. Note that <code class="docutils literal notranslate"><span class="pre">master</span></code> refers to the branch (you currently only have one). More on branching below.</p>
+<p>This pushes the (committed) changes in your local repository up to the remote repository you specified as the <code class="docutils literal notranslate"><span class="pre">origin</span></code>. Note that <code class="docutils literal notranslate"><span class="pre">main</span></code> refers to the branch (you currently only have one). Until recently, the default was <code class="docutils literal notranslate"><span class="pre">master</span></code>, so you may see that on older repositories. More on branching below.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Only when you <code class="docutils literal notranslate"><span class="pre">push</span></code> or <code class="docutils literal notranslate"><span class="pre">fetch</span></code> do you need an internet connection, because before that you are only archiving in a local (hidden) repository (that sits in a hidden <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory within your project).</p>
@@ -960,7 +962,7 @@ origin<span class="w">  </span>git@github.com:YourGithubUsername/CMEECourseWork.
 <p>git tells you that you have two branches.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If you are not seeing this specific output (with two branches) at this stage of your git chapter work, scroll back and re-check / rerun the above sequence of commands again! Note that we had renamed all <code class="docutils literal notranslate"><span class="pre">master</span></code> branches as <code class="docutils literal notranslate"><span class="pre">main</span></code> above (if you had not done that, your <code class="docutils literal notranslate"><span class="pre">main</span></code> branch will be called <code class="docutils literal notranslate"><span class="pre">master</span></code> instead).</p>
+<p>If you are not seeing this specific output (with two branches) at this stage of your git chapter work, scroll back and re-check / rerun the above sequence of commands again!</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1105,7 +1107,7 @@ abandon the branch:</p>
 <ul class="simple">
 <li><p><strong>Working Directly on the Main Branch</strong></p>
 <ul>
-<li><p><em>Issue</em>: Making changes directly to the <code class="docutils literal notranslate"><span class="pre">main</span></code> or <code class="docutils literal notranslate"><span class="pre">master</span></code> branch without using feature branches.</p></li>
+<li><p><em>Issue</em>: Making changes directly to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch without using feature branches.</p></li>
 <li><p><em>Why It’s a Problem</em>: This practice can lead to a cluttered commit history and increases the risk of introducing unstable code into the main codebase, affecting all team members.</p></li>
 </ul>
 </li>
@@ -1411,7 +1413,7 @@ abandon the branch:</p>
 <p>Here,</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">repo</span></code> is the GitHub repository where the <code class="docutils literal notranslate"><span class="pre">pre-commit-hooks</span></code> package is hosted.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rev</span></code> is the version of the <code class="docutils literal notranslate"><span class="pre">pre-commit-hooks</span></code> repository to use. You can specify a tag (like <code class="docutils literal notranslate"><span class="pre">v5.0.0</span></code>) or use <code class="docutils literal notranslate"><span class="pre">master</span></code> for the latest version, though pinning to a specific version is best for stability.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rev</span></code> is the version of the <code class="docutils literal notranslate"><span class="pre">pre-commit-hooks</span></code> repository to use. You can specify a tag (like <code class="docutils literal notranslate"><span class="pre">v5.0.0</span></code>) or use <code class="docutils literal notranslate"><span class="pre">main</span></code> for the latest version, though pinning to a specific version is best for stability.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hooks</span></code> are a list of hooks to configure:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: Specifies the hook to use, in this case, <code class="docutils literal notranslate"><span class="pre">check-added-large-files</span></code>.</p></li>
@@ -1433,7 +1435,8 @@ To allow the hook to check all files in the repo (both staged and unstaged), add
 </section>
 <section id="removing-files">
 <h2>Removing files<a class="headerlink" href="#removing-files" title="Link to this heading">#</a></h2>
-<p>To remove a file (i.e., stop version controlling it) use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rm</span></code>:</p>
+<p>To remove a file (i.e., stop version controlling it) use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rm</span></code>:
+(Note that in this section, the default branch name is set to <code class="docutils literal notranslate"><span class="pre">master</span></code>. GitHub now sets its default branch to <code class="docutils literal notranslate"><span class="pre">main</span></code>.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Text in a file to remove&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>FileToRem.txt
@@ -1528,7 +1531,7 @@ git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </s
 </div>
 <p>e.g, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">95f7d0</span></code></p>
 <p>Now you can play around. However, if you do want to commit changes, you create a “branch” (see below). To go back to the future, type</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>master
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
 </pre></div>
 </div>
 </section>
@@ -1541,7 +1544,7 @@ git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </s
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p><strong>Cloning the MulQuaBio repository</strong>: You can clone the master repository of this book on your computer and regularly git pull it to keep it updated. That way the these notes and the associated code and data files are easily and locally available on your computer. <strong>DO NOT</strong> clone the repository into your own coursework repository though!</p>
+<p><strong>Cloning the MulQuaBio repository</strong>: You can clone the main repository of this book on your computer and regularly git pull it to keep it updated. That way the these notes and the associated code and data files are easily and locally available on your computer. <strong>DO NOT</strong> clone the repository into your own coursework repository though!</p>
 </div>
 <section id="running-git-commands-on-multiple-repositories-at-once">
 <h3>Running git commands on multiple repositories at once<a class="headerlink" href="#running-git-commands-on-multiple-repositories-at-once" title="Link to this heading">#</a></h3>
@@ -1589,7 +1592,7 @@ git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </s
 <h2>Practicals<a class="headerlink" href="#practicals" title="Link to this heading">#</a></h2>
 <section id="instructions">
 <h3>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h3>
-<p><em>Don’t modify anything (or refer to any files) in your local copy of the git repository of these notes (on Github). Copy whatever you need from the master repository to your own repository.</em></p>
+<p><em>Don’t modify anything (or refer to any files) in your local copy of the git repository of these notes (on Github). Copy whatever you need from the main repository to your own repository.</em></p>
 <p><em>Git commit and push every time you do some significant amount of coding work (after testing it), and then again before the given deadline (this will be announced in class).</em> This includes <code class="docutils literal notranslate"><span class="pre">UnixPrac1.txt</span></code> from the <a class="reference internal" href="Unix.html"><span class="std std-doc">Unix Chapter</span></a>.</p>
 <p><strong>Push your git repository</strong></p>
 <ul class="simple">
