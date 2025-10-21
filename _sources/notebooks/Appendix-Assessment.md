@@ -1,30 +1,30 @@
-# TMQB Coursework Assessment
+# MQB Coursework Assessment
 
-Here are the guidelines for assessment of any coursework based on the TMQB materials.
+Here are the guidelines for the assessment of any coursework based on the MQB materials.
 
 Assessment may be through computer-based tests, or individual or group/team-based practicals.
 
-In computer-based tests, you will be expected to be able to apply the concepts and techniques you have learned to address the questions by using appropriate computer code input and interpreting the output.
+In computer-based tests, you will be expected to apply the concepts and techniques you have learned to address the questions by using appropriate computer code and interpreting the output.
 
 ## Assessment of Practicals
 
-Both, the correctness and quality of your practical work / solutions, and whether you are following good programming & workflow practices will be assessed: how well you have learned the principles and implementation of **keeping workflows/pipelines/software organised and reusable** and **good coding practices**, _irrespective of programming language_ (please refer back to the start of the [UNIX](Unix) and [Python](Python) chapters in particular).
+Both the correctness and quality of your practical work/solutions, and whether you are following good programming and workflow practices, will be assessed: how well you have learned the principles and implementation of **keeping workflows/pipelines/software organised and reusable** and **good coding practices**, _irrespective of programming language_ (please refer back to the start of the [UNIX](Unix) and [Python](Python) chapters in particular).
 
 ```{Note}
-Lowercase for directory names below is a suggestion - just be consistent with whatever you choose, such as [CamelCase](https://en.wikipedia.org/wiki/Camel_case); for example, you may choose to name your `code` directory, `Code` instead.
+Lowercase for directory names below is a suggestion—just be consistent with whatever you choose, such as [CamelCase](https://en.wikipedia.org/wiki/Camel_case); for example, you may choose to name your `code` directory `Code` instead.
 ```
 
-The basic rules you must follow, irrespective of a Week or project's content are:
+The basic rules you must follow, irrespective of the week or project's content, are:
 
-* All code/scripts go to a `code` directory
+* All code/scripts go in a `code` directory.
     
-* All data go to a `data` directory
+* All data go in a `data` directory.
     
-* All results go to `results` directory. The results directory should be empty when you submit your week's work, as it will be populated automatically when the assessment script runs.
+* All results go to the `results` directory. The results directory should be empty when you submit your week's work, as it will be populated automatically when the assessment script runs.
     
-* If you have files that don't fit in these categories, put them additional, meaningfully named directories. For example, you can create a `sandbox` directory to hold your experimental work (and perhaps [`.gitignore`](Git) it).
+* If you have files that don't fit in these categories, put them in additional, meaningfully named directories. For example, you can create a `sandbox` directory to hold your experimental work (and perhaps [`.gitignore`](Git) it).
     
-* No single file should be greater than 100 mb, either data or script/code. If a script needs a data file, but the example data file is >100 mb, reduce it to a minimum working dataset and upload that, keeping the main data file(s) under `.gitignore`. Keep all your data backed up elsewhere, of course!
+* No single file should be greater than 100 MB, whether data or script/code. If a script needs a data file, but the example data file is >100 MB, reduce it to a minimally sized working dataset and upload that, keeping the main data file(s) in `.gitignore`. Keep all your data backed up elsewhere, of course!
     
 * Most importantly, all scripts should run without errors, taking in data and spitting out the results as necessary.
     
@@ -32,72 +32,152 @@ When necessary, more specific, module-specific details on weekly coursework and 
 
 ### Pre-submission practicals wrap-up
 
-Do this as after you finish with an assignment, and before submission:
+Do this after you finish an assignment, and before submission:
 
-* Review and make sure you can run all the commands, code fragments, and named scripts you have built till then and get the expected outputs.
+* Review and make sure you can run all the commands, code fragments, and named scripts you have built so far and get the expected outputs.
     
 * Review your code files and annotate/comment code lines as much and as often as necessary using `#`.
     
-* Check that all code, data and results files organized as instructed above in you weekly directory.
+* Check that all code, data, and results files are organised as instructed above in your weekly directory.
     
-* `git add`, `commit` and `push` your work after every major change to your weekly work, and make a final push by the given deadline.
+* `git add`, `commit`, and `push` your work after every major change to your weekly work, and make a final push by the given deadline.
     
 
 ```{Note}
-An _in-class script_ is one that is either given to you in class, or which you built from code fragments used in class (typically by re-typing them verbatim) to illustrate one or more good programming concepts, or tools. An _assigned script_ is one you have written yourself, either from scratch or by modifying one given to you to complete an assigned practical (always appearing under a "Practicals" subsection of a chapter).
+An _in-class script_ is one that is either given to you in class, or which you built from code fragments used in class (typically by re-typing them verbatim) to illustrate one or more good programming concepts, or tools. An _assigned script_ is one you have written yourself, either from scratch or by modifying one given to you to complete an *assigned* practical (always appearing under a "Practicals" subsection of a chapter).
 ```
 
 ### Code testing and feedback
 
-Your project (e.g., weekly) directories will be checked for how neat and organized they are in a logical workflow, and all the scripts tested & screened for how well they adhere to good project structure and coding principles; in particular that:
+Your project (e.g., weekly) directories will be checked for how neat and organised they are in a logical workflow, and all the scripts tested and screened for how well they adhere to good project structure and coding principles; in particular, that:
 
 * All in-class and assigned scripts are in the appropriate `code` directory.
     
 * All code/script files are functional (no errors, correct output) when run on the assessor's (Linux) computer.
     
-* The scripts are all up to the the mark in terms of internal documentation (e.g., docstrings in the case of Python) and commenting.
+* The scripts are all up to the mark in terms of internal documentation (e.g., docstrings in the case of Python) and commenting.
     
-* There is a good `readme` file for the overall repository and in each of the weekly directories.
+* There is a good `README` file for the overall repository and for each of the weekly directories.
     
 * The `results` directory is empty (no pre-existing results).
     
-* All _valid_ script files in `code` directory have an appropriate extension (`*.sh`,\\ `*.py`, etc).
+* All _valid_ script files in the `code` directory have an appropriate extension (`*.sh`, `*.py`, etc.).
     
 * All results of a code/script run are saved to a separate `results` directory.
     
 
-### Groupwork execution
+### Group work execution
 
-* Each student group will assign a "scribe" to the group who will create a **new Groupwork repository** where all assigned groupwork practicals will be tackled collaboratively.
+#### Repository setup and access
+
+* Each student group will assign a "scribe" to the group who will create a **new Group work repository** where all assigned group work practicals will be tackled collaboratively.
     
-* The group members will collaborate to develop the solution by creating branches of the script as necessary.
+* The scribe must add all group members as collaborators with **write access** to ensure everyone can contribute directly.
     
-    * The repo's git history will be used to gauge / quantify the relative contributions of group members.
-        
-* Once the group has reached a solution only the main branch should remain.
+* All group members are expected to clone the repository and work on it throughout the assignment period.
+
+#### Collaborative workflow
+
+* Group members will collaborate to develop the solution by creating feature branches as necessary, following proper Git workflow practices.
     
-* The groupwork practicals will will only be evaluated in the final assessment (below).
+* Each team member should create their own branches for specific features or tasks, with descriptive branch names (e.g., `jane-data-import`, `john-analysis-function`).
     
+* Use pull requests (or merge requests) for merging branches into main, allowing for code review and discussion.
+    
+* Once the group has reached a solution, merge all feature branches into main. **Do not delete branches before merging** — the full Git history, including merged branches, is essential for assessment.
+
+#### Contribution expectations
+
+All group members are expected to contribute meaningfully to the project. The Git repository history will be used to assess individual contributions. Specifically:
+
+* **Commit regularly**: Make frequent, incremental commits throughout the assignment period, not just before the deadline. Each commit should represent a logical unit of work.
+    
+* **Write descriptive commit messages**: Use clear, informative commit messages that explain what was changed and why (e.g., "Add data validation function for tree heights" rather than "update code").
+    
+* **Participate in code reviews**: Comment on pull requests, suggest improvements, and engage in technical discussions (visible in PR comments).
+    
+* **Document your work**: Contribute to code comments, docstrings, and README documentation.
+    
+* **Share responsibilities**: Aim for a balanced distribution of coding, testing, documentation, and debugging tasks across all team members.
+
+#### Required documentation
+
+Each group work repository must include a `CONTRIBUTIONS.md` file in the root directory that documents:
+
+* The name and role(s) of each team member
+* A brief description of each member's specific contributions (e.g., "Implemented data import functions", "Wrote unit tests", "Created visualization code", "Debugged edge cases and improved error handling")
+* Any challenges faced and how they were resolved as a team
+
+This file should be updated collaboratively and reflect the actual work distribution. A template is available at [`CONTRIBUTIONS_template.md`](CONTRIBUTIONS_template.md) to help you get started.
+
+#### Assessing individual contributions
+
+Your individual grade for group work will be determined by:
+
+1. **Group work quality** (60%): The overall correctness, code quality, and documentation of the submitted solution.
+    
+2. **Individual contribution** (40%): Your personal contribution as evidenced by:
+    * Number and quality of commits
+    * Complexity and significance of code contributed
+    * Participation in code reviews and discussions
+    * Contributions to documentation and testing
+    * Accuracy of the `CONTRIBUTIONS.md` documentation
+
+A group member who does not contribute meaningfully (as evidenced by Git history and peer feedback) may receive a significantly reduced grade, even if the group's solution is excellent.
+
+#### Peer assessment
+
+After the final submission, each team member will complete a brief confidential peer assessment form rating each teammate's:
+
+* Contribution to coding and problem-solving
+* Communication and collaboration
+* Reliability and meeting commitments
+* Overall contribution to the team's success
+
+Significant discrepancies between Git history and peer assessments will be investigated and may affect individual grades.
+
+#### Handling team issues
+
+If team conflicts arise or a team member is not contributing:
+
+1. First, try to resolve the issue within the team through open communication.
+2. If the issue persists, document the problem and contact your instructor or TA as early as possible (not just before the deadline).
+3. Provide specific evidence (e.g., lack of commits, missed meetings, unresponsive to communications).
+
+The instructor can provide mediation, reassign work, or adjust individual grades based on documented evidence.
+
+#### Timeline expectations
+
+* **Start early**: Begin work within the first few days of receiving the assignment.
+* **Commit regularly**: Aim for commits spread across multiple days/weeks, not concentrated in the final 24 hours.
+* **Coordinate meetings**: Schedule regular team meetings (online or in-person) to discuss progress, divide tasks, and resolve issues.
+* **Review before submission**: Allow time for final code review, testing, and documentation polish before the deadline.
 
 ```{Note}
-Please read about git branching and merging during teamwork in the [Git Chapter](Git), including the "**Common Mistakes to avoid…**" listed there. Please also check the Readings & Resources at the end of the chapter.
+Please read about Git branching and merging during teamwork in the [Git Chapter](Git), including the "**Common Mistakes to avoid…**" listed there. Please also check the Readings & Resources at the end of the chapter.
 ```
 
-#### Groupwork assessment
+#### Group work assessment
 
-Every "Groupwork" question / script completed will be assessed using the same criteria as above.
+Every "Group work" question/script completed will be assessed using the criteria above, with both group-level and individual-level components. The final assessment (below) will include reviewing:
+
+* The quality and correctness of the submitted code
+* The Git repository history (commits, branches, merges)
+* The `CONTRIBUTIONS.md` documentation
+* Peer assessment feedback
+* Individual contribution patterns and engagement
 
 ### Final assessment of computing coursework
 
-A written summative assessment of your overall performance will be sent at the end of your computing module or course (e.g., the CMEE computing bootcamp; please refer to your course documentation for specific dates). For this, all the weeks scripts (including the Groupwork scripts) will be run / re-run (and logs and feedback returned).
+A written summative assessment of your overall performance will be sent at the end of your computing module or course (e.g., the CMEE computing bootcamp; please refer to your course documentation for specific dates). For this, all the weeks' scripts (including the Group work scripts) will be run/re-run (and logs and feedback returned).
 
-Using the testing results, the assessor will exercise their judgment to deduct marks if the weekly directory structure is disorganized, the code inadequately commented or insufficiently documented, the solution is not optimal or correct, or the written components of practicals are not up to the mark (see _The Weekly Feedback_ section).
+Using the testing results, the assessor will exercise their judgment to deduct marks if the weekly directory structure is disorganised, the code inadequately commented or insufficiently documented, the solution is not optimal or correct, or the written components of practicals are not up to the mark (see _The Weekly Feedback_ section).
 
-The weekly log files are provided to help you spot general, as well as programming language-specific issues with your computing coursework. You may and should fix bugs and other problems that the feedback logs bring to your attention. The assessor will have a look at how much you addressed the issues in the final assessment (by re-running all the weeks' scripts). The final assessment will necessarily be more subjective than the weekly assessments, because the goal is to provide an overall, summative picture of how you did and what you can improve on. You will get feedback if these issues needed to be addressed in the final written assessment. The final marks will be based upon your particular coursework marking criteria (please ask your course / module instructor and administrator for them).
+The weekly log files are provided to help you spot general, as well as programming language-specific, issues with your computing coursework. You may and should fix bugs and other problems that the feedback logs bring to your attention. The assessor will have a look at how much you addressed the issues in the final assessment (by re-running all the weeks' scripts). The final assessment will necessarily be more subjective than the weekly assessments, because the goal is to provide an overall, summative picture of how you did and what you can improve on. You will get feedback if these issues need to be addressed in the final written assessment. The final marks will be based upon your particular coursework marking criteria (please ask your course/module instructor and administrator for them).
 
 ## Plagiarism
 
-Students are encouraged to collaborate for learning, including on the practicals. You may often exchange code snippets (solutions to sub-problems within the bigger problem, if you like) or blocks of code to test them. Also, two implementations of a coding solution / algorithm might often be very convergent and relatively similar. However, unless it is a groupwork practical (see above), extremely similar or identical scripts / code files will be reviewed carefully by assessors. To this end, the assessment script will perform a diff on pairs of (non-groupwork) code files to detect "inordinate" degrees of similarity.
+Students are encouraged to collaborate for learning, including on the practicals. You may often exchange code snippets (solutions to sub-problems within the bigger problem, if you like) or blocks of code to test them. Also, two implementations of a coding solution / algorithm might often be very convergent and relatively similar. However, unless it is a group work practical (see above), extremely similar or identical scripts / code files will be reviewed carefully by assessors. To this end, the assessment script will perform a diff on pairs of (non-group work) code files to detect "inordinate" degrees of similarity.
 
 ### Appropriate usage of AI for coding
 
@@ -125,7 +205,7 @@ Do not submit AI-generated code as your own in assignments or projects where ext
 
 4. **Follow Your Institution's Policies on AI Usage**
 
-Be aware of and comply with your institution, school or university's rules regarding AI assistance.
+Be aware of and comply with your institution, school, or university's rules regarding AI assistance.
 
 *Example:* If your course syllabus states that using AI tools is prohibited for homework assignments, refrain from using them. Violating these policies can lead to serious academic consequences.
 

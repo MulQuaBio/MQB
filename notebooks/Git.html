@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -228,7 +228,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Appendix-Databases.html">Databases <span class="tocSkip"></span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="Appendix-NLLS-Python.html">Model fitting in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Appendix-MiniProj.html">The Computing Miniproject</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Appendix-Assessment.html">TMQB Coursework Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix-Assessment.html">MQB Coursework Assessment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Appendix-HighPerformanceComputing.html">Introduction to High-Performance Computing (HPC)</a></li>
 </ul>
 
@@ -429,8 +429,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-version-control">Why Version Control?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-git">Why git ?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-get-started">Let’s get started!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-git">Installing git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-configuring-git">Installing and configuring git</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-repository">Your first repository</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-good-commit-messages">Writing Good Commit Messages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commits">Commits</a></li>
 </ul>
 </li>
@@ -441,15 +442,22 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branching">Branching</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teamwork-using-git-and-common-branching-mistakes">Teamwork using git and common <code class="docutils literal notranslate"><span class="pre">branch</span></code>ing mistakes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-readme-file">The README file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">Key concepts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-workflow-and-command-structure">Repository, workflow and command structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Commits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branch">Branch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hash">Hash</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-git-commands">Common git commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-readme-filea-readme-like-the-readme-md-that-you-created-in-your-git-repo-above-is-a-text-file-that-introduces-and-explains-a-project-it-contains-information-that-is-required-to-understand-what-the-project-is-about-and-how-to-use-or-run-it-while-readmes-can-be-written-in-any-text-file-format-markdown-saved-as-an-md-file-is-most-commonly-used-as-it-allows-you-to-add-simple-text-formatting-easily-two-other-formats-that-you-might-most-often-see-are-plain-text-and-restructuredtext-saved-as-an-rst-file-common-in-python-projects-essential-readme-componentsyou-can-find-many-readme-file-suggestions-and-templates-online-essentially-it-should-ideally-have-the-following-features-content-project-name-title-clear-descriptive-name-for-your-project-brief-description-what-your-project-does-and-or-is-for-provide-context-and-add-links-to-any-references-to-help-new-visitors-understand-the-purpose-and-scope-languages-list-language-s-and-their-versions-used-in-the-project-e-g-python-3-11-r-4-3-0-dependencies-what-special-packages-which-are-not-part-of-standard-libraries-of-the-language-s-used-might-be-needed-for-a-new-user-to-run-your-project-include-version-numbers-if-specific-versions-are-required-installation-guidelines-for-installing-the-project-if-applicable-including-dependencies-provide-step-by-step-instructions-for-setting-up-the-environment-project-structure-brief-overview-of-the-repository-organization-main-directories-and-their-purposes-usage-how-to-run-use-the-project-include-command-line-examples-or-code-snippets-explain-what-specific-key-files-do-no-need-to-list-every-file-such-as-data-or-experimental-ones-like-those-in-sandbox-author-name-and-contact-list-all-contributors-with-their-roles-especially-important-for-group-projects-additional-components-for-group-projectsfor-group-coursework-your-readme-should-also-include-team-members-names-and-contributions-of-each-team-member-with-link-to-contributions-md-for-details-division-of-work-high-level-overview-of-who-worked-on-which-components-detailed-documentation-belongs-in-contributions-md-how-to-run-tests-if-you-have-unit-tests-explain-how-to-execute-them-known-issues-any-bugs-or-limitations-that-users-should-be-aware-of-optional-componentsin-addition-you-may-want-to-include-but-not-necessary-for-your-current-coursework-license-specifies-how-others-can-use-your-code-acknowledgments-credit-external-code-datasets-or-assistance-contributing-guidelines-instructions-for-others-who-want-to-contribute-badges-status-indicators-build-status-test-coverage-etc-tip-readme-best-practices-keep-it-concise-but-comprehensive-use-clear-headings-and-formatting-include-code-examples-where-helpful-keep-it-updated-as-your-project-evolves-test-that-all-instructions-actually-work-on-a-fresh-system-for-group-projects-ensure-readme-accurately-reflects-all-team-members-contributions-important-assessment-requirement-for-group-projects-your-readme-must-clearly-identify-all-team-members-and-link-to-your-contributions-md-file-reviewers-will-check-that-your-readme-is-informative-and-professionally-formatted-further-resources-search-online-for-readme-best-practices-or-readme-templates-for-additional-guidance-and-examples">The README fileA README (like the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> that you created in your git repo above) is a text file that introduces and explains a project. It contains information that is required to understand what the project is about and how to use or run it. While READMEs can be written in any text file format, Markdown (saved as an <code class="docutils literal notranslate"><span class="pre">.md</span></code> file) is most commonly used, as it allows you to add simple text formatting easily. Two other formats that you might most often see are plain text and reStructuredText (saved as an <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file, common in Python projects).### Essential README ComponentsYou can find many README file suggestions (and templates) online. Essentially, it should ideally have the following features/content:  * <strong>Project name / title</strong>: Clear, descriptive name for your project* <strong>Brief description</strong>: What your project does and/or is for. Provide context and add links to any references to help new visitors understand the purpose and scope* <strong>Languages</strong>: List language(s) and their versions used in the project (e.g., Python 3.11, R 4.3.0)* <strong>Dependencies</strong>: What special packages (which are not part of standard libraries of the language(s) used) might be needed for a new user to run your project. Include version numbers if specific versions are required* <strong>Installation</strong>: Guidelines for installing the project (if applicable), including dependencies. Provide step-by-step instructions for setting up the environment* <strong>Project structure</strong>: Brief overview of the repository organization (main directories and their purposes)* <strong>Usage</strong>: How to run/use the project. Include command-line examples or code snippets. Explain what specific key files do (no need to list every file, such as data or experimental ones like those in <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>)* <strong>Author name and contact</strong>: List all contributors with their roles (especially important for group projects)### Additional Components for Group ProjectsFor group coursework, your README should also include:* <strong>Team members</strong>: Names and contributions of each team member (with link to <code class="docutils literal notranslate"><span class="pre">CONTRIBUTIONS.md</span></code> for details)* <strong>Division of work</strong>: High-level overview of who worked on which components (detailed documentation belongs in <code class="docutils literal notranslate"><span class="pre">CONTRIBUTIONS.md</span></code>)* <strong>How to run tests</strong>: If you have unit tests, explain how to execute them* <strong>Known issues</strong>: Any bugs or limitations that users should be aware of### Optional ComponentsIn addition, you may want to include (but not necessary for your current coursework):* <strong>License</strong>: Specifies how others can use your code* <strong>Acknowledgments</strong>: Credit external code, datasets, or assistance* <strong>Contributing guidelines</strong>: Instructions for others who want to contribute* <strong>Badges</strong>: Status indicators (build status, test coverage, etc.)<code class="docutils literal notranslate"><span class="pre">{tip}**README</span> <span class="pre">Best</span> <span class="pre">Practices:**-</span> <span class="pre">Keep</span> <span class="pre">it</span> <span class="pre">concise</span> <span class="pre">but</span> <span class="pre">comprehensive-</span> <span class="pre">Use</span> <span class="pre">clear</span> <span class="pre">headings</span> <span class="pre">and</span> <span class="pre">formatting-</span> <span class="pre">Include</span> <span class="pre">code</span> <span class="pre">examples</span> <span class="pre">where</span> <span class="pre">helpful-</span> <span class="pre">Keep</span> <span class="pre">it</span> <span class="pre">updated</span> <span class="pre">as</span> <span class="pre">your</span> <span class="pre">project</span> <span class="pre">evolves-</span> <span class="pre">Test</span> <span class="pre">that</span> <span class="pre">all</span> <span class="pre">instructions</span> <span class="pre">actually</span> <span class="pre">work</span> <span class="pre">on</span> <span class="pre">a</span> <span class="pre">fresh</span> <span class="pre">system-</span> <span class="pre">For</span> <span class="pre">group</span> <span class="pre">projects:</span> <span class="pre">Ensure</span> <span class="pre">README</span> <span class="pre">accurately</span> <span class="pre">reflects</span> <span class="pre">all</span> <span class="pre">team</span> <span class="pre">members'</span> <span class="pre">contributions``````{important}**Assessment</span> <span class="pre">Requirement**:</span> <span class="pre">For</span> <span class="pre">group</span> <span class="pre">projects,</span> <span class="pre">your</span> <span class="pre">README</span> <span class="pre">must</span> <span class="pre">clearly</span> <span class="pre">identify</span> <span class="pre">all</span> <span class="pre">team</span> <span class="pre">members</span> <span class="pre">and</span> <span class="pre">link</span> <span class="pre">to</span> <span class="pre">your</span> <span class="pre">`CONTRIBUTIONS.md`</span> <span class="pre">file.</span> <span class="pre">Reviewers</span> <span class="pre">will</span> <span class="pre">check</span> <span class="pre">that</span> <span class="pre">your</span> <span class="pre">README</span> <span class="pre">is</span> <span class="pre">informative</span> <span class="pre">and</span> <span class="pre">professionally</span> <span class="pre">formatted.</span></code><strong>Further Resources</strong>: Search online for “README best practices” or “README templates” for additional guidance and examples.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ignoring-files">Ignoring Files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-and-file-patterns-for-gitignoring">Directory and file patterns for gitignoring</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitignore-ng-after-commit-ing"><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>-ng after <code class="docutils literal notranslate"><span class="pre">commit</span></code>-ing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-good-practice-for-gitignoring">General good practice for gitignoring</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#whitelist-principle">Whitelist principle</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-remote-repositories">Working with remote repositories</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-a-remote-git-repository">Set up a remote git repository</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-binary-files">Dealing with binary files</a></li>
@@ -470,6 +478,20 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-git-through-a-gui">Using git through a GUI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborative-git-workflows-for-group-work">Collaborative Git Workflows for Group Work</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-for-collaboration">Setting Up for Collaboration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branch-based-development">Branch-Based Development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meaningful-commit-messages-for-collaboration">Meaningful Commit Messages for Collaboration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syncing-with-the-team">Syncing with the Team</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-merge-conflicts">Handling Merge Conflicts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-review-and-merging">Code Review and Merging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution-documentation">Contribution Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-for-group-work">Best Practices for Group Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-resolution">Conflict Resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-workflow-summary">Example Workflow Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-reference-to-assessment">Cross-Reference to Assessment</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-friendly-concluding-note-on-git">A friendly concluding note on git</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals">Practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
@@ -480,7 +502,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">Markdown</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#committing-practices">Committing practices</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitignore">.gitignore</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Branching</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Branching</a></li>
 </ul>
 </li>
 </ul>
@@ -556,33 +578,35 @@ document.write(`
 </figure>
 <p>There are several core git concepts and commands that you need to understand. But first things first - let’s first install get and set up your first git repository!</p>
 </section>
-<section id="installing-git">
-<h2>Installing git<a class="headerlink" href="#installing-git" title="Link to this heading">#</a></h2>
-<p>Let’s install and configure <code class="docutils literal notranslate"><span class="pre">git</span></code>. On Ubuntu:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git
-</pre></div>
+<section id="installing-and-configuring-git">
+<h2>Installing and configuring git<a class="headerlink" href="#installing-and-configuring-git" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is a JupyterLite notebook. Code cells here will not work for this particular chapter. Follow the instructions and run the commands on your terminal/console.</p>
 </div>
-<p>Then, some configurations:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="s2">&quot;Your Name&quot;</span>
-<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="s2">&quot;your.login@imperial.ac.uk&quot;</span>
-<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">init</span><span class="o">.</span><span class="n">defaultBranch</span> <span class="n">main</span>
-</pre></div>
-</div>
-<p>Now check your git configurations:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="nb">list</span>
-</pre></div>
-</div>
-<p>This output displays the configuration variables and their corresponding values that are currently active in your Git environment. As you are just getting started, the output will consist of just a few lines.</p>
+<p>But first things first - let’s first install git and set up your first git repository!</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Git configurations are stored in different files at three levels:</p>
+<p><strong>Installing git on your machine</strong>: If you do not have <code class="docutils literal notranslate"><span class="pre">git</span></code> installed already:</p>
 <ul class="simple">
-<li><p>System Level (e.g., <code class="docutils literal notranslate"><span class="pre">/etc/gitconfig</span></code>): Applies to all users on the system.</p></li>
-<li><p>Global Level (e.g., <code class="docutils literal notranslate"><span class="pre">~/.gitconfig</span></code> or <code class="docutils literal notranslate"><span class="pre">~/.config/git/config</span></code>): Specific to your user account.</p></li>
-<li><p>Local Level (<code class="docutils literal notranslate"><span class="pre">.git/config</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">repository</span></code>): Specific to a single repository.</p></li>
+<li><p>On <strong>Linux</strong>, use a package manager of your choice to install <code class="docutils literal notranslate"><span class="pre">git</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">git</span></code> on Ubuntu).</p></li>
+<li><p>On <strong>Mac</strong>, install using <code class="docutils literal notranslate"><span class="pre">homebrew</span></code> first (if you haven’t already — google to install it) and then use <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">git</span></code>).</p></li>
+<li><p>On <strong>Windows</strong>, install <code class="docutils literal notranslate"><span class="pre">git</span></code> from <a class="reference external" href="https://git-scm.com/downloads">here</a>. You can also install <a class="reference external" href="https://desktop.github.com/">GitHub Desktop</a>, which includes <code class="docutils literal notranslate"><span class="pre">git</span></code> as well.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span></code> reads these config files in order, with local settings overriding global and system settings. If you want to know which of your configurations are local vs global, use this:</p>
-<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--list</span> <span class="pre">--show-origin</span></code></p>
+</div>
+<p>Let’s install and configure <code class="docutils literal notranslate"><span class="pre">git</span></code> and create a repository.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In what follows, I will sometimes show the expected output from a command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```bash
+pwd
+```
+
+```
+/home/YourUserName
+```
+</pre></div>
+</div>
 </div>
 </section>
 <section id="your-first-repository">
@@ -747,6 +771,50 @@ nothing added to commit but untracked files present (use &quot;git add&quot; to 
 </figcaption>
 </figure>
 <hr class="docutils" />
+<section id="writing-good-commit-messages">
+<h3>Writing Good Commit Messages<a class="headerlink" href="#writing-good-commit-messages" title="Link to this heading">#</a></h3>
+<p>A good commit message helps you and others understand what changed and why. Follow these guidelines:</p>
+<p><strong>Structure:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>First line (subject)</strong>: Short summary (50 characters or less)</p></li>
+<li><p><strong>Blank line</strong></p></li>
+<li><p><strong>Body</strong> (optional): Detailed explanation of what and why</p></li>
+</ol>
+<p><strong>Best Practices:</strong></p>
+<ul class="simple">
+<li><p>Use the <strong>imperative mood</strong>: “Add feature” not “Added feature” or “Adds feature”</p></li>
+<li><p>Be <strong>specific</strong>: “Fix data import bug for CSV files” not “Fix bug”</p></li>
+<li><p>Explain <strong>why</strong>, not just what: “Add data validation to prevent negative values”</p></li>
+<li><p>For <strong>group work</strong>: Include your initials (e.g., “JS: Add plotting functions”)</p></li>
+<li><p><strong>Capitalize</strong> the first word</p></li>
+<li><p><strong>No period</strong> at the end of the subject line</p></li>
+</ul>
+<p><strong>Examples:</strong></p>
+<p>✅ Good:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Add</span> <span class="n">function</span> <span class="n">to</span> <span class="n">calculate</span> <span class="n">species</span> <span class="n">richness</span>
+
+<span class="n">This</span> <span class="n">function</span> <span class="n">takes</span> <span class="n">a</span> <span class="n">community</span> <span class="n">matrix</span> <span class="ow">and</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">number</span>
+<span class="n">of</span> <span class="n">species</span> <span class="n">per</span> <span class="n">site</span><span class="o">.</span> <span class="n">Includes</span> <span class="n">handling</span> <span class="k">for</span> <span class="n">missing</span> <span class="n">data</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">JS</span><span class="p">:</span> <span class="n">Fix</span> <span class="n">temperature</span> <span class="n">conversion</span> <span class="n">bug</span>
+
+<span class="n">Corrected</span> <span class="n">Fahrenheit</span> <span class="n">to</span> <span class="n">Celsius</span> <span class="n">formula</span> <span class="p">(</span><span class="n">was</span> <span class="n">using</span> <span class="n">addition</span>
+<span class="n">instead</span> <span class="n">of</span> <span class="n">subtraction</span><span class="p">)</span><span class="o">.</span> <span class="n">Closes</span> <span class="c1">#23.</span>
+</pre></div>
+</div>
+<p>❌ Poor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">updated</span> <span class="n">stuff</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fixed</span> <span class="n">it</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Linking Commits to Issues</strong>: Reference issue numbers in commit messages (e.g., “Fixes #42”) to automatically link commits to GitHub issues and close them when merged.</p>
+</div>
+</section>
 <section id="commits">
 <h3>Commits<a class="headerlink" href="#commits" title="Link to this heading">#</a></h3>
 <p>A commit is a snapshot of your repository at a specific point in time. Each commit records:</p>
@@ -1100,147 +1168,53 @@ abandon the branch:</p>
 <p>You can perform Git branching and merging entirely within a local repository without needing a remote.</p>
 </div>
 </section>
-<section id="teamwork-using-git-and-common-branching-mistakes">
-<h2>Teamwork using git and common <code class="docutils literal notranslate"><span class="pre">branch</span></code>ing mistakes<a class="headerlink" href="#teamwork-using-git-and-common-branching-mistakes" title="Link to this heading">#</a></h2>
-<p>As you can see, branchhing is the cornerstone of collaborative coding and software development using git.</p>
-<p>Here are common mistakes to avoid with git branching and merging in team projects:</p>
-<ul class="simple">
-<li><p><strong>Working Directly on the Main Branch</strong></p>
-<ul>
-<li><p><em>Issue</em>: Making changes directly to the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch without using feature branches.</p></li>
-<li><p><em>Why It’s a Problem</em>: This practice can lead to a cluttered commit history and increases the risk of introducing unstable code into the main codebase, affecting all team members.</p></li>
-</ul>
-</li>
-<li><p><strong>Not Keeping Branches Up-to-Date</strong></p>
-<ul>
-<li><p><em>Issue</em>: Failing to regularly merge or rebase the main branch into feature branches.</p></li>
-<li><p><em>Why It’s a Problem</em>: Leads to large, complex merge conflicts when it’s time to integrate changes back into the main branch.</p></li>
-</ul>
-</li>
-<li><p><strong>Not Pulling Latest Changes Before Starting Work</strong></p>
-<ul>
-<li><p><em>Issue</em>: Forgetting to fetch and merge the latest changes from the remote repository before starting new work.</p></li>
-<li><p><em>Why It’s a Problem</em>: Leads to working on outdated code and causes significant merge conflicts when pushing changes later.</p></li>
-</ul>
-</li>
-<li><p><strong>Improper Branching Practices</strong></p>
-<ul>
-<li><p><em>Issue</em>: Not creating separate branches for new features or bug fixes, or using inconsistent branch naming conventions.</p></li>
-<li><p><em>Why It’s a Problem</em>: Makes it difficult to manage code changes, track progress, and collaborate effectively.</p></li>
-</ul>
-</li>
-<li><p><strong>Poor Commit Hygiene</strong></p>
-<ul>
-<li><p><em>Issue</em>: Making large, infrequent commits with vague messages like “Fixed stuff” or “Changes.”</p></li>
-<li><p><em>Why It’s a Problem</em>: Hinders the ability to trace specific changes, debug issues, and understand the project’s evolution.</p></li>
-</ul>
-</li>
-<li><p><strong>Not Handling Merge Conflicts Properly</strong></p>
-<ul>
-<li><p><em>Issue</em>: Overwriting code, deleting others’ work, or incorrectly resolving conflicts without understanding the implications.</p></li>
-<li><p><em>Why It’s a Problem</em>: Can introduce bugs, cause loss of important code, and disrupt the functionality of the application.</p></li>
-</ul>
-</li>
-<li><p><strong>Overwriting Team Members’ Changes</strong></p>
-<ul>
-<li><p><em>Issue</em>: Using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">--force</span></code> or not merging the latest remote changes before pushing local commits.</p></li>
-<li><p><em>Why It’s a Problem</em>: Leads to loss of others’ work and creates confusion in the team’s codebase.</p></li>
-</ul>
-</li>
-<li><p><strong>Ignoring the .gitignore File</strong></p>
-<ul>
-<li><p><em>Issue</em>: Committing unnecessary files like binaries, temporary files, or sensitive information.</p></li>
-<li><p><em>Why It’s a Problem</em>: Clutters the repository, increases clone/download times, and poses security risks.</p></li>
-</ul>
-</li>
-<li><p><strong>Misusing Git Commands</strong></p>
-<ul>
-<li><p><em>Issue</em>: Incorrectly using commands like <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">revert</span></code>, or rebasing public branches.</p></li>
-<li><p><em>Why It’s a Problem</em>: Can rewrite commit history, cause loss of work, and confuse team members due to unexpected repository states.</p></li>
-</ul>
-</li>
-<li><p><strong>Lack of Communication and Coordination</strong></p>
-<ul>
-<li><p><em>Issue</em>: Not informing team members about new branches, changes, or issues encountered.</p></li>
-<li><p><em>Why It’s a Problem</em>: Leads to duplicated work, merge conflicts, and a lack of cohesion in development efforts.</p></li>
-</ul>
-</li>
-<li><p><strong>Pushing Broken or Untested Code</strong></p>
-<ul>
-<li><p><em>Issue</em>: Committing untested code.</p></li>
-<li><p><em>Why It’s a Problem</em>* Disrupts the workflow for others, especially if continuous integration pipelines fail due to the broken code.</p></li>
-</ul>
-</li>
-<li><p><strong>Confusion Between Local and Remote Branches</strong></p>
-<ul>
-<li><p><em>Issue</em>: Forgetting to push local branches to the remote repository or misunderstanding the state of branches.</p></li>
-<li><p><em>Why It’s a Problem</em>: Causes discrepancies between local and remote repositories, leading to confusion and potential loss of work.</p></li>
-</ul>
-</li>
-<li><p><strong>Conflict Between Personal and Team Workflows</strong></p>
-<ul>
-<li><p><em>Issue</em>: Using personal Git configurations or workflows that don’t align with the team’s agreed-upon practices.</p></li>
-<li><p><em>Why It’s a Problem</em>: Creates inconsistency and can cause issues with code integration and collaboration.</p></li>
-</ul>
-</li>
-<li><p><strong>Over-Reliance on GUI Tools Without Understanding Git Basics</strong></p>
-<ul>
-<li><p><em>Issue</em>: Using graphical interfaces without grasping the underlying Git commands.</p></li>
-<li><p><em>Why It’s a Problem</em>: Limits the ability to troubleshoot issues and understand what’s happening behind the scenes, leading to mistakes.</p></li>
-</ul>
-</li>
-<li><p><strong>Ignoring Merge Warnings and Errors</strong></p>
-<ul>
-<li><p><em>Issue</em>: Proceeding with merges without addressing warnings or errors.</p></li>
-<li><p><em>Why It’s a Problem</em>: Can result in incomplete merges, broken code, and unresolved conflicts that affect the entire team.</p></li>
-</ul>
-</li>
-<li><p><strong>Mismanaging Merge Strategies</strong></p>
-<ul>
-<li><p><em>Issue</em>: Inappropriately using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code> vs. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span></code> without understanding the consequences.</p></li>
-<li><p><em>Why It’s a Problem</em>: Can create a confusing commit history and complicate collaboration efforts.</p></li>
-</ul>
-</li>
-<li><p><strong>Deleting Branches Prematurely</strong></p>
-<ul>
-<li><p><em>Issue</em>: Removing branches that others are still using or that contain unmerged changes.</p></li>
-<li><p><em>Why It’s a Problem</em>: Causes loss of work and disrupts team members who are relying on those branches.</p></li>
-</ul>
-</li>
-</ul>
-<p><strong>Tips to Avoid These Mistakes:</strong></p>
-<ul class="simple">
-<li><p><em>Educate Yourself</em>: Take time to learn Git fundamentals, including branching, merging, and resolving conflicts.</p></li>
-<li><p><em>Use Feature Branches</em>: Create a new branch for each feature or bug fix to isolate your work.</p></li>
-<li><p><em>Commit Often with Clear Messages</em>: Make small, incremental commits with descriptive messages.</p></li>
-<li><p><em>Pull Frequently</em>: Regularly fetch and merge changes from the remote repository to stay up-to-date.</p></li>
-<li><p><em>Communicate</em>: Keep open lines of communication with your team about what you’re working on.</p></li>
-<li><p><em>Test Before Committing</em>: Ensure your code compiles and passes tests before pushing.</p></li>
-<li><p><em>Understand Git Commands</em>: Before using advanced commands like <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span></code> or <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span></code>, make sure you understand their effects.</p></li>
-<li><p><em>Use .gitignore Wisely</em>: Configure your <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file to exclude unnecessary or sensitive files.</p></li>
-<li><p><em>Review Pull Requests</em>: Participate in code reviews to catch issues early and share knowledge.</p></li>
-<li><p><em>Follow Team Conventions</em>: Adhere to agreed-upon workflows, branch naming conventions, and commit message formats.</p></li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><strong>Cloning vs. Forking</strong>: Forking a git repository allows you to create a personal copy of someone else’s repository on your own GitHub account. This is ideal if you want to contribute to the original repository. You can make changes in your forked copy and then submit those changes back to the original repository through <strong>pull requests</strong>.  Merely Cloning on the other hand, only creates a local copy on your machine. It does not provide a way to contribute changes back to the original repository without special permissions. Forking is a common approach in open-source projects because it doesn’t require permission from the original repository’s owner to make changes. You can work on your copy and submit a pull request without needing write access to the original repository.</p>
-</div>
+<section id="key-concepts">
+<h2>Key concepts<a class="headerlink" href="#key-concepts" title="Link to this heading">#</a></h2>
+<p>Here are some of the key concepts in the working of git:</p>
+<section id="repository-workflow-and-command-structure">
+<h3>Repository, workflow and command structure<a class="headerlink" href="#repository-workflow-and-command-structure" title="Link to this heading">#</a></h3>
+<p><strong>Repository, workflow and command structure.</strong> - The  “workspace” is your working directory - the actual files and folders you see and edit.  The “index” is your <em>staging area</em> (more on this below) - a place where you can group changes you want to <code class="docutils literal notranslate"><span class="pre">commit</span></code> together. The “local repository” contains the database of all objects (commits, files (“blobs”), directories (“trees”), etc.) in your repository along with their metadata. The index and the actual data (the objects) associated with each repo snapshot you commit are all inside a hidden directory named <code class="docutils literal notranslate"><span class="pre">.git</span></code> that sits within your project directory.</p>
+<figure class="margin align-center" id="id3">
+<img alt="git_data_transport" src="images/git_data_transport.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">The different components of a git repository and the commands used to move data between them. <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Git_data_flow_simplified.svg">Source</a>.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>All git commands must be issued from inside the directory (repository) that you have initialized using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code>, and within which the hidden <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory resides.</p>
 </section>
-<section id="the-readme-file">
-<h2>The README file<a class="headerlink" href="#the-readme-file" title="Link to this heading">#</a></h2>
-<p>A README (like the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> that you created in your git repo above) is a text file that introduces and explains a project. It contains information that is required to understand what the project is about and how to use or run it.</p>
-<p>While READMEs can be written in any text file format, Markdown (saved as an <code class="docutils literal notranslate"><span class="pre">.md</span></code> file) is most commonly used, as it allows you to add simple text formatting easily. Two other formats that you might most often see are plain text and <a class="reference external" href="https://en.wikipedia.org/wiki/ReStructuredText">reStructuredText</a> (saved as an <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file, common in Python projects).</p>
-<p>You can find many README file suggestions (and templates) online. Essentially, it should ideally have the following features/content:</p>
+<section id="id1">
+<h3>Commits<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p><strong>Commits.</strong> A <em>commit</em> is an action or rather, snapshot that records changes to the repository. Each commit typically represents a set of related changes (e.g., bug fixes, a new feature, documentation updates), and is associated with a unique ID (we will see this later), an Author, and a timestamp. This allows you to revert to these individual snapshots and track the history of your project.</p>
+<p>Git, as opposed to many other version control software you may have encountered (e.g., Word’s “track changes”), tracks <em>every version of every file as discrete “snapshots”</em>, rather than just the changes or “diffs”. Git’s snapshot-based approach makes operations like switching between branches or merging changes faster and more reliable. It also allows you to efficiently restore any previous version of the project. Here’s a <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F">nice visualisation</a> of how commits and snapshots work.</p>
+</section>
+<section id="branch">
+<h3>Branch<a class="headerlink" href="#branch" title="Link to this heading">#</a></h3>
+<p><strong>Branch.</strong> A “branch” is an independent line of development in a project repository. The default branch is typically called <code class="docutils literal notranslate"><span class="pre">main</span></code> (or <code class="docutils literal notranslate"><span class="pre">master</span></code> for backwards compatibility in older versions of git).</p>
+<p>New branches can be created at any point in the project’s history (we will learn about this later). Branches enable multiple lines of development in a repository, such as working on new features or bug fixes without affecting the stable <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. When a branch is ready, it is “merged” back to <code class="docutils literal notranslate"><span class="pre">main</span></code> branch or another branch.</p>
+</section>
+<section id="hash">
+<h3>Hash<a class="headerlink" href="#hash" title="Link to this heading">#</a></h3>
+<p><strong>Hash.</strong> A <em>commit hash</em> is a 40-character unique identifier for a commit (You will see these later — they look like: <code class="docutils literal notranslate"><span class="pre">d94cd91</span></code>). It is generated by applying the SHA-1 (Secure Hash Algorithm 1) cryptographic function to the contents and metadata of a Git object. <em>OK, that was some serious Gobbledygook!</em> All you need to know is that this hash acts as a unique identifier for all commits, files, directories, and other objects within a Git repo so that you can track specific snapshots of the repo.</p>
+</section>
+</section>
+<section id="common-git-commands">
+<h2>Common git commands<a class="headerlink" href="#common-git-commands" title="Link to this heading">#</a></h2>
+<p>Here’s a list of the most common <code class="docutils literal notranslate"><span class="pre">git</span></code> commands:</p>
 <ul class="simple">
-<li><p><strong>Project name / title</strong></p></li>
-<li><p><strong>Brief description</strong>: what your project does and/or is for. Provide context and add links to any references to help new visitors.</p></li>
-<li><p><strong>Languages</strong>: List language(s) and their versions used in the project</p></li>
-<li><p><strong>Dependencies</strong>: What special packages (which are not part of standard libraries of the language(s) used) might be needed for a new user to run your project</p></li>
-<li><p><strong>Installation</strong>: Guidelines for installing the project (if applicable), including dependencies.</p></li>
-<li><p><strong>Project structure and Usage</strong>: How the project is structured and how to run/use it. Explain, if relevant, what specific files do. No need to list every file, such as data or experimental ones (like the ones in <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>).</p></li>
-<li><p><strong>Author name and contact</strong></p></li>
+<li><p><em>Status check:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> to see the current state of the repository.</p></li>
+<li><p><em>Stage changes:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;file&gt;</span></code> to stage files for commit.</p></li>
+<li><p><em>Commit Changes:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;commit</span> <span class="pre">message&quot;</span></code> to save changes to the repository.</p></li>
+<li><p><em>View history:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> to view commit history.</p></li>
+<li><p><em>Create a branch:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">&lt;branch_name&gt;</span></code> to create a new branch.</p></li>
+<li><p><em>Switch branch:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;branch_name&gt;</span></code> to switch to a different branch.</p></li>
+<li><p><em>Merge branches:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">&lt;branch_name&gt;</span></code> to merge changes from one branch to another.</p></li>
+<li><p><em>Clone repository:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">&lt;URL&gt;</span></code> to copy a repository from a remote server.</p></li>
+<li><p><em>Push changes:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> to upload local changes to a remote repository.</p></li>
+<li><p><em>Pull changes:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> to fetch and merge changes from a remote repository.</p></li>
 </ul>
-<p>In addition, you may want to include(but not necessary for your current coursework), <a class="reference external" href="https://en.wikipedia.org/wiki/Software_license">License</a>, Acknowledgments, and instructions for Contributing.</p>
+</section>
+<section id="the-readme-filea-readme-like-the-readme-md-that-you-created-in-your-git-repo-above-is-a-text-file-that-introduces-and-explains-a-project-it-contains-information-that-is-required-to-understand-what-the-project-is-about-and-how-to-use-or-run-it-while-readmes-can-be-written-in-any-text-file-format-markdown-saved-as-an-md-file-is-most-commonly-used-as-it-allows-you-to-add-simple-text-formatting-easily-two-other-formats-that-you-might-most-often-see-are-plain-text-and-restructuredtext-saved-as-an-rst-file-common-in-python-projects-essential-readme-componentsyou-can-find-many-readme-file-suggestions-and-templates-online-essentially-it-should-ideally-have-the-following-features-content-project-name-title-clear-descriptive-name-for-your-project-brief-description-what-your-project-does-and-or-is-for-provide-context-and-add-links-to-any-references-to-help-new-visitors-understand-the-purpose-and-scope-languages-list-language-s-and-their-versions-used-in-the-project-e-g-python-3-11-r-4-3-0-dependencies-what-special-packages-which-are-not-part-of-standard-libraries-of-the-language-s-used-might-be-needed-for-a-new-user-to-run-your-project-include-version-numbers-if-specific-versions-are-required-installation-guidelines-for-installing-the-project-if-applicable-including-dependencies-provide-step-by-step-instructions-for-setting-up-the-environment-project-structure-brief-overview-of-the-repository-organization-main-directories-and-their-purposes-usage-how-to-run-use-the-project-include-command-line-examples-or-code-snippets-explain-what-specific-key-files-do-no-need-to-list-every-file-such-as-data-or-experimental-ones-like-those-in-sandbox-author-name-and-contact-list-all-contributors-with-their-roles-especially-important-for-group-projects-additional-components-for-group-projectsfor-group-coursework-your-readme-should-also-include-team-members-names-and-contributions-of-each-team-member-with-link-to-contributions-md-for-details-division-of-work-high-level-overview-of-who-worked-on-which-components-detailed-documentation-belongs-in-contributions-md-how-to-run-tests-if-you-have-unit-tests-explain-how-to-execute-them-known-issues-any-bugs-or-limitations-that-users-should-be-aware-of-optional-componentsin-addition-you-may-want-to-include-but-not-necessary-for-your-current-coursework-license-specifies-how-others-can-use-your-code-acknowledgments-credit-external-code-datasets-or-assistance-contributing-guidelines-instructions-for-others-who-want-to-contribute-badges-status-indicators-build-status-test-coverage-etc-tip-readme-best-practices-keep-it-concise-but-comprehensive-use-clear-headings-and-formatting-include-code-examples-where-helpful-keep-it-updated-as-your-project-evolves-test-that-all-instructions-actually-work-on-a-fresh-system-for-group-projects-ensure-readme-accurately-reflects-all-team-members-contributions-important-assessment-requirement-for-group-projects-your-readme-must-clearly-identify-all-team-members-and-link-to-your-contributions-md-file-reviewers-will-check-that-your-readme-is-informative-and-professionally-formatted-further-resources-search-online-for-readme-best-practices-or-readme-templates-for-additional-guidance-and-examples">
+<h2>The README fileA README (like the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> that you created in your git repo above) is a text file that introduces and explains a project. It contains information that is required to understand what the project is about and how to use or run it. While READMEs can be written in any text file format, Markdown (saved as an <code class="docutils literal notranslate"><span class="pre">.md</span></code> file) is most commonly used, as it allows you to add simple text formatting easily. Two other formats that you might most often see are plain text and <a class="reference external" href="https://en.wikipedia.org/wiki/ReStructuredText">reStructuredText</a> (saved as an <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file, common in Python projects).### Essential README ComponentsYou can find many README file suggestions (and templates) online. Essentially, it should ideally have the following features/content:  * <strong>Project name / title</strong>: Clear, descriptive name for your project* <strong>Brief description</strong>: What your project does and/or is for. Provide context and add links to any references to help new visitors understand the purpose and scope* <strong>Languages</strong>: List language(s) and their versions used in the project (e.g., Python 3.11, R 4.3.0)* <strong>Dependencies</strong>: What special packages (which are not part of standard libraries of the language(s) used) might be needed for a new user to run your project. Include version numbers if specific versions are required* <strong>Installation</strong>: Guidelines for installing the project (if applicable), including dependencies. Provide step-by-step instructions for setting up the environment* <strong>Project structure</strong>: Brief overview of the repository organization (main directories and their purposes)* <strong>Usage</strong>: How to run/use the project. Include command-line examples or code snippets. Explain what specific key files do (no need to list every file, such as data or experimental ones like those in <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>)* <strong>Author name and contact</strong>: List all contributors with their roles (especially important for group projects)### Additional Components for Group ProjectsFor group coursework, your README should also include:* <strong>Team members</strong>: Names and contributions of each team member (with link to <code class="docutils literal notranslate"><span class="pre">CONTRIBUTIONS.md</span></code> for details)* <strong>Division of work</strong>: High-level overview of who worked on which components (detailed documentation belongs in <code class="docutils literal notranslate"><span class="pre">CONTRIBUTIONS.md</span></code>)* <strong>How to run tests</strong>: If you have unit tests, explain how to execute them* <strong>Known issues</strong>: Any bugs or limitations that users should be aware of### Optional ComponentsIn addition, you may want to include (but not necessary for your current coursework):* <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Software_license">License</a></strong>: Specifies how others can use your code* <strong>Acknowledgments</strong>: Credit external code, datasets, or assistance* <strong>Contributing guidelines</strong>: Instructions for others who want to contribute* <strong>Badges</strong>: Status indicators (build status, test coverage, etc.)<code class="docutils literal notranslate"><span class="pre">{tip}**README</span> <span class="pre">Best</span> <span class="pre">Practices:**-</span> <span class="pre">Keep</span> <span class="pre">it</span> <span class="pre">concise</span> <span class="pre">but</span> <span class="pre">comprehensive-</span> <span class="pre">Use</span> <span class="pre">clear</span> <span class="pre">headings</span> <span class="pre">and</span> <span class="pre">formatting-</span> <span class="pre">Include</span> <span class="pre">code</span> <span class="pre">examples</span> <span class="pre">where</span> <span class="pre">helpful-</span> <span class="pre">Keep</span> <span class="pre">it</span> <span class="pre">updated</span> <span class="pre">as</span> <span class="pre">your</span> <span class="pre">project</span> <span class="pre">evolves-</span> <span class="pre">Test</span> <span class="pre">that</span> <span class="pre">all</span> <span class="pre">instructions</span> <span class="pre">actually</span> <span class="pre">work</span> <span class="pre">on</span> <span class="pre">a</span> <span class="pre">fresh</span> <span class="pre">system-</span> <span class="pre">For</span> <span class="pre">group</span> <span class="pre">projects:</span> <span class="pre">Ensure</span> <span class="pre">README</span> <span class="pre">accurately</span> <span class="pre">reflects</span> <span class="pre">all</span> <span class="pre">team</span> <span class="pre">members'</span> <span class="pre">contributions``````{important}**Assessment</span> <span class="pre">Requirement**:</span> <span class="pre">For</span> <span class="pre">group</span> <span class="pre">projects,</span> <span class="pre">your</span> <span class="pre">README</span> <span class="pre">must</span> <span class="pre">clearly</span> <span class="pre">identify</span> <span class="pre">all</span> <span class="pre">team</span> <span class="pre">members</span> <span class="pre">and</span> <span class="pre">link</span> <span class="pre">to</span> <span class="pre">your</span> <span class="pre">`CONTRIBUTIONS.md`</span> <span class="pre">file.</span> <span class="pre">Reviewers</span> <span class="pre">will</span> <span class="pre">check</span> <span class="pre">that</span> <span class="pre">your</span> <span class="pre">README</span> <span class="pre">is</span> <span class="pre">informative</span> <span class="pre">and</span> <span class="pre">professionally</span> <span class="pre">formatted.</span></code><strong>Further Resources</strong>: Search online for “README best practices” or “README templates” for additional guidance and examples.<a class="headerlink" href="#the-readme-filea-readme-like-the-readme-md-that-you-created-in-your-git-repo-above-is-a-text-file-that-introduces-and-explains-a-project-it-contains-information-that-is-required-to-understand-what-the-project-is-about-and-how-to-use-or-run-it-while-readmes-can-be-written-in-any-text-file-format-markdown-saved-as-an-md-file-is-most-commonly-used-as-it-allows-you-to-add-simple-text-formatting-easily-two-other-formats-that-you-might-most-often-see-are-plain-text-and-restructuredtext-saved-as-an-rst-file-common-in-python-projects-essential-readme-componentsyou-can-find-many-readme-file-suggestions-and-templates-online-essentially-it-should-ideally-have-the-following-features-content-project-name-title-clear-descriptive-name-for-your-project-brief-description-what-your-project-does-and-or-is-for-provide-context-and-add-links-to-any-references-to-help-new-visitors-understand-the-purpose-and-scope-languages-list-language-s-and-their-versions-used-in-the-project-e-g-python-3-11-r-4-3-0-dependencies-what-special-packages-which-are-not-part-of-standard-libraries-of-the-language-s-used-might-be-needed-for-a-new-user-to-run-your-project-include-version-numbers-if-specific-versions-are-required-installation-guidelines-for-installing-the-project-if-applicable-including-dependencies-provide-step-by-step-instructions-for-setting-up-the-environment-project-structure-brief-overview-of-the-repository-organization-main-directories-and-their-purposes-usage-how-to-run-use-the-project-include-command-line-examples-or-code-snippets-explain-what-specific-key-files-do-no-need-to-list-every-file-such-as-data-or-experimental-ones-like-those-in-sandbox-author-name-and-contact-list-all-contributors-with-their-roles-especially-important-for-group-projects-additional-components-for-group-projectsfor-group-coursework-your-readme-should-also-include-team-members-names-and-contributions-of-each-team-member-with-link-to-contributions-md-for-details-division-of-work-high-level-overview-of-who-worked-on-which-components-detailed-documentation-belongs-in-contributions-md-how-to-run-tests-if-you-have-unit-tests-explain-how-to-execute-them-known-issues-any-bugs-or-limitations-that-users-should-be-aware-of-optional-componentsin-addition-you-may-want-to-include-but-not-necessary-for-your-current-coursework-license-specifies-how-others-can-use-your-code-acknowledgments-credit-external-code-datasets-or-assistance-contributing-guidelines-instructions-for-others-who-want-to-contribute-badges-status-indicators-build-status-test-coverage-etc-tip-readme-best-practices-keep-it-concise-but-comprehensive-use-clear-headings-and-formatting-include-code-examples-where-helpful-keep-it-updated-as-your-project-evolves-test-that-all-instructions-actually-work-on-a-fresh-system-for-group-projects-ensure-readme-accurately-reflects-all-team-members-contributions-important-assessment-requirement-for-group-projects-your-readme-must-clearly-identify-all-team-members-and-link-to-your-contributions-md-file-reviewers-will-check-that-your-readme-is-informative-and-professionally-formatted-further-resources-search-online-for-readme-best-practices-or-readme-templates-for-additional-guidance-and-examples" title="Link to this heading">#</a></h2>
 </section>
 <section id="ignoring-files">
 <h2>Ignoring Files<a class="headerlink" href="#ignoring-files" title="Link to this heading">#</a></h2>
@@ -1337,36 +1311,35 @@ abandon the branch:</p>
 <p>for a directory.</p>
 <p>While these commands will not remove the physical file from your local repository, it will remove the files from other locals on their next <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>.</p>
 </section>
-<section id="general-good-practice-for-gitignoring">
-<h3>General good practice for gitignoring<a class="headerlink" href="#general-good-practice-for-gitignoring" title="Link to this heading">#</a></h3>
-<p>When writing a gitignore it is best to ignore any file that does not contain plaintext code. This type of file is what git was designed for!</p>
-<p>If you do need to include a <strong>small</strong> csv file, image, or output (such as when creating reports or including test data) it is a good idea to do this using exceptions (aka the ! symbol)</p>
-<p>For example the following gitignore file would ignore ALL csv files except for pushabledata.csv</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>*.csv
-!pushabledata.csv
-</pre></div>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>As git reads gitignore files top-to-bottom and can overwrite contradicticting rules with others, it is important to make sure that these are in the correct order.</p>
-</div>
-<section id="whitelist-principle">
-<h4>Whitelist principle<a class="headerlink" href="#whitelist-principle" title="Link to this heading">#</a></h4>
-<p>Gitignore files are usually used as a blacklist: where anything you add to your git repository is allowed unless you specifically outlaw it in the gitignore.</p>
-<p>An alternative, safer technique (though one which is definitely more work to maintain) is a whitelist-based approach.</p>
-<p>To do this, you firstly ignore every file with the pattern <code class="docutils literal notranslate"><span class="pre">*.*</span></code> and then explicitly allow files and file types that you <em>know</em> you want. For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>*.*
-!.gitignore
-!*.R
-!*.py
-!*.sh
-!*.tex
-!*.bib
-!Week1/results/myfirstlatexdoc.tex
-</pre></div>
-</div>
-<p>This is not necessarily a better or worse way to do things, you are in the end trading your time and effort for increased safety and cleanliness of your repository.</p>
 </section>
+<section id="working-with-remote-repositories">
+<h2>Working with remote repositories<a class="headerlink" href="#working-with-remote-repositories" title="Link to this heading">#</a></h2>
+<p>Remote repositories are versions of your project hosted on the internet or another network. Common platforms include GitHub, GitLab, and Bitbucket.</p>
+<section id="set-up-a-remote-git-repository">
+<h3>Set up a remote git repository<a class="headerlink" href="#set-up-a-remote-git-repository" title="Link to this heading">#</a></h3>
+<p>So let’s go to your online git service (e.g., GitHub) and set up. Note that GitHub and Bitbucket both give you unlimited free private repositories if you register with an academic email. Not a big deal if you will not be writing private code, handy if you are (<em>can you think of examples when you would need to write private code?</em>).</p>
+<ul class="simple">
+<li><p>Login to your GitHub or Bitbucket account</p></li>
+<li><p>Follow the instructions to setup an ssh key to enable cryptography-based interfacing with your remote git repository (Google “how do I do this”):</p>
+<ul>
+<li><p><a class="reference external" href="https://help.github.com/articles/connecting-to-github-with-ssh">GitHub</a></p></li>
+<li><p><a class="reference external" href="https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html">bitbucket</a></p></li>
+</ul>
+</li>
+<li><p>Create your remote git repository:</p>
+<ul>
+<li><p><a class="reference external" href="https://help.github.com/articles/create-a-repo">GitHub</a></p></li>
+<li><p><a class="reference external" href="https://confluence.atlassian.com/bitbucket/create-a-git-repository-759857290.html">bitbucket</a></p></li>
+</ul>
+</li>
+<li><p>Now, following the instructions:</p>
+<ul>
+<li><p><a class="reference external" href="https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line">GitHub</a></p></li>
+<li><p><a class="reference external" href="https://confluence.atlassian.com/bitbucket/push-updates-to-a-repo-221449503.html">bitbucket</a></p></li>
+</ul>
+</li>
+</ul>
+<p>The first step after having created your remote repository and added your ssh key to it, is to link the remote to your local repo (as the instructions in web pages linked above will already have told you).</p>
 </section>
 </section>
 <section id="dealing-with-binary-files">
@@ -1566,6 +1539,341 @@ git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </s
 <p><strong>Checking git status</strong>: Always run the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>command on a repository before pulling/fetching from, or pushing to a remote repository!</p>
 </div>
 </section>
+<section id="collaborative-git-workflows-for-group-work">
+<h2>Collaborative Git Workflows for Group Work<a class="headerlink" href="#collaborative-git-workflows-for-group-work" title="Link to this heading">#</a></h2>
+<p>When working on group projects, Git enables effective collaboration through structured workflows. This section covers best practices for team-based development, which are particularly important for coursework assessments.</p>
+<section id="setting-up-for-collaboration">
+<h3>Setting Up for Collaboration<a class="headerlink" href="#setting-up-for-collaboration" title="Link to this heading">#</a></h3>
+<p><strong>Repository Setup:</strong></p>
+<ol class="arabic simple">
+<li><p>One team member creates the repository on GitHub/Bitbucket</p></li>
+<li><p>Add collaborators with <strong>write access</strong> (push privileges)</p></li>
+<li><p>All team members clone the repository to their local machines</p></li>
+<li><p>Agree on a workflow and naming conventions before starting</p></li>
+</ol>
+<p><strong>Initial Configuration:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clone the group repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>git@github.com:username/group-project.git
+<span class="nb">cd</span><span class="w"> </span>group-project
+
+<span class="c1"># Verify you&#39;re on the main branch</span>
+git<span class="w"> </span>status
+
+<span class="c1"># Pull the latest changes before starting work</span>
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+</section>
+<section id="branch-based-development">
+<h3>Branch-Based Development<a class="headerlink" href="#branch-based-development" title="Link to this heading">#</a></h3>
+<p>Using branches allows team members to work independently without interfering with each other’s code.</p>
+<p><strong>Create a Feature Branch:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create and switch to a new branch</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/data-analysis-js
+
+<span class="c1"># Or create a branch for a specific module</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>module/statistical-models
+</pre></div>
+</div>
+<p><strong>Branch Naming Conventions:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">feature/description</span></code> - For new features (e.g., <code class="docutils literal notranslate"><span class="pre">feature/plotting-functions</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bugfix/description</span></code> - For fixing bugs (e.g., <code class="docutils literal notranslate"><span class="pre">bugfix/correct-calculation</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">module/name</span></code> - For specific project modules (e.g., <code class="docutils literal notranslate"><span class="pre">module/data-cleaning</span></code>)</p></li>
+<li><p>Consider including your initials for clarity (e.g., <code class="docutils literal notranslate"><span class="pre">feature/analysis-jsmith</span></code>)</p></li>
+</ul>
+<p><strong>Work on Your Branch:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make changes to your files</span>
+<span class="c1"># Stage and commit regularly</span>
+git<span class="w"> </span>add<span class="w"> </span>myfile.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;JS: Add data cleaning functions&quot;</span>
+
+<span class="c1"># Push your branch to the remote repository</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/data-analysis-js
+</pre></div>
+</div>
+</section>
+<section id="meaningful-commit-messages-for-collaboration">
+<h3>Meaningful Commit Messages for Collaboration<a class="headerlink" href="#meaningful-commit-messages-for-collaboration" title="Link to this heading">#</a></h3>
+<p>Good commit messages are essential for tracking individual contributions and understanding project history.</p>
+<p><strong>Commit Message Best Practices:</strong></p>
+<ul class="simple">
+<li><p>Use the <strong>imperative mood</strong>: “Add feature” not “Added feature”</p></li>
+<li><p>Be <strong>specific and descriptive</strong>: “Add linear regression function” not “Update code”</p></li>
+<li><p>Include <strong>context</strong>: Explain <em>why</em>, not just <em>what</em></p></li>
+<li><p>For group work: <strong>Prefix with initials</strong> to track contributions (e.g., “JS: Fix data import bug”)</p></li>
+<li><p>Keep the first line under 50 characters; add details in subsequent lines if needed</p></li>
+</ul>
+<p><strong>Examples of Good vs Poor Commit Messages:</strong></p>
+<p>❌ Poor:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;fixed stuff&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;updated file&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;asdfgh&quot;</span>
+</pre></div>
+</div>
+<p>✅ Good:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;JS: Add function to calculate species diversity&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;AM: Fix bug in temperature conversion (Celsius to Kelvin)&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;TK: Add unit tests for data validation functions&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="syncing-with-the-team">
+<h3>Syncing with the Team<a class="headerlink" href="#syncing-with-the-team" title="Link to this heading">#</a></h3>
+<p>Regularly synchronize your work with the main branch to avoid conflicts.</p>
+<p><strong>Before Starting Work:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Switch to main and pull latest changes</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+
+<span class="c1"># Switch back to your feature branch</span>
+git<span class="w"> </span>checkout<span class="w"> </span>feature/your-feature
+
+<span class="c1"># Merge main into your branch to stay updated</span>
+git<span class="w"> </span>merge<span class="w"> </span>main
+</pre></div>
+</div>
+<p><strong>Daily Workflow:</strong></p>
+<ol class="arabic simple">
+<li><p>Pull from main at the start of each work session</p></li>
+<li><p>Work on your feature branch</p></li>
+<li><p>Commit regularly with meaningful messages</p></li>
+<li><p>Push your branch to the remote repository</p></li>
+<li><p>Before finishing, merge main into your branch again to catch any new changes</p></li>
+</ol>
+</section>
+<section id="handling-merge-conflicts">
+<h3>Handling Merge Conflicts<a class="headerlink" href="#handling-merge-conflicts" title="Link to this heading">#</a></h3>
+<p>Merge conflicts occur when two people modify the same lines of code. They are inevitable in collaborative work but can be resolved systematically.</p>
+<p><strong>When Conflicts Occur:</strong></p>
+<p>Git will notify you of conflicts when you try to merge or pull:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Auto-merging<span class="w"> </span>analysis.R
+CONFLICT<span class="w"> </span><span class="o">(</span>content<span class="o">)</span>:<span class="w"> </span>Merge<span class="w"> </span>conflict<span class="w"> </span><span class="k">in</span><span class="w"> </span>analysis.R
+Automatic<span class="w"> </span>merge<span class="w"> </span>failed<span class="p">;</span><span class="w"> </span>fix<span class="w"> </span>conflicts<span class="w"> </span>and<span class="w"> </span><span class="k">then</span><span class="w"> </span>commit<span class="w"> </span>the<span class="w"> </span>result.
+</pre></div>
+</div>
+<p><strong>Identifying Conflicts:</strong></p>
+<p>Open the conflicted file. Git marks conflicts like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+# Your changes
+result &lt;- mean(data$temperature)
+=======
+# Their changes  
+result &lt;- median(data$temperature)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; main
+</pre></div>
+</div>
+<p><strong>Resolving Conflicts:</strong></p>
+<ol class="arabic">
+<li><p><strong>Communicate with your team</strong>: Discuss which version to keep or how to combine them</p></li>
+<li><p><strong>Edit the file</strong>: Remove the conflict markers (<code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">=======</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span></code>) and keep the correct code</p></li>
+<li><p><strong>Test the resolution</strong>: Make sure the code works</p></li>
+<li><p><strong>Stage and commit</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>analysis.R
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;JS: Resolve merge conflict in temperature calculation&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p><strong>Minimizing Conflicts:</strong></p>
+<ul class="simple">
+<li><p><strong>Divide work clearly</strong>: Assign different files or functions to different team members</p></li>
+<li><p><strong>Pull frequently</strong>: Sync with main regularly</p></li>
+<li><p><strong>Communicate</strong>: Use issues or comments to coordinate who’s working on what</p></li>
+<li><p><strong>Small, frequent commits</strong>: Easier to resolve conflicts in small changes</p></li>
+</ul>
+</section>
+<section id="code-review-and-merging">
+<h3>Code Review and Merging<a class="headerlink" href="#code-review-and-merging" title="Link to this heading">#</a></h3>
+<p>Before merging your work into the main branch, have teammates review your code.</p>
+<p><strong>Using Pull Requests (GitHub) / Merge Requests (GitLab):</strong></p>
+<ol class="arabic">
+<li><p><strong>Push your branch</strong> to the remote:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/your-feature
+</pre></div>
+</div>
+</li>
+<li><p><strong>Create a Pull Request</strong> on GitHub:</p>
+<ul class="simple">
+<li><p>Go to your repository on GitHub</p></li>
+<li><p>Click “Pull requests” → “New pull request”</p></li>
+<li><p>Select your feature branch to merge into main</p></li>
+<li><p>Add a description of your changes</p></li>
+<li><p>Request review from team members</p></li>
+</ul>
+</li>
+<li><p><strong>Review Process</strong>:</p>
+<ul class="simple">
+<li><p>Teammates review the code</p></li>
+<li><p>Discuss changes in comments</p></li>
+<li><p>Make requested modifications</p></li>
+<li><p>Push updates to the same branch (automatically updates the PR)</p></li>
+</ul>
+</li>
+<li><p><strong>Merge</strong> when approved:</p>
+<ul>
+<li><p>Click “Merge pull request” on GitHub</p></li>
+<li><p>Delete the feature branch after merging</p></li>
+<li><p>Pull the updated main branch locally:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Code Review Benefits</strong>: Code review isn’t just for catching bugs—it helps team members understand all parts of the project, ensures code quality, and provides documentation of who contributed what.</p>
+</div>
+</section>
+<section id="contribution-documentation">
+<h3>Contribution Documentation<a class="headerlink" href="#contribution-documentation" title="Link to this heading">#</a></h3>
+<p>For coursework assessments, you must document individual contributions.</p>
+<p><strong>Required: <a class="reference external" href="http://CONTRIBUTIONS.md">CONTRIBUTIONS.md</a> File</strong></p>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">CONTRIBUTIONS.md</span></code> file in your repository documenting:</p>
+<ul class="simple">
+<li><p>Who worked on which components</p></li>
+<li><p>Individual code contributions</p></li>
+<li><p>Collaboration and communication efforts</p></li>
+<li><p>Code review participation</p></li>
+</ul>
+<p>See the <a class="reference internal" href="Appendix-Assessment.html#group-work-execution"><span class="std std-ref">Group work execution</span></a> section in the Assessment chapter for detailed requirements and use the provided template.</p>
+<p><strong>Tracking Contributions Through Git:</strong></p>
+<p>Your Git history provides evidence of individual work:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># View commits by author</span>
+git<span class="w"> </span>log<span class="w"> </span>--author<span class="o">=</span><span class="s2">&quot;Jane Smith&quot;</span>
+
+<span class="c1"># View detailed statistics</span>
+git<span class="w"> </span>shortlog<span class="w"> </span>-sn
+
+<span class="c1"># See who modified each line of a file</span>
+git<span class="w"> </span>blame<span class="w"> </span>filename.py
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Assessment Note</strong>: Your Git commit history will be reviewed as part of individual assessment. Make sure to:</p>
+<ul class="simple">
+<li><p>Commit your own work under your own name</p></li>
+<li><p>Use meaningful commit messages</p></li>
+<li><p>Push regularly to demonstrate ongoing contribution</p></li>
+<li><p>Maintain accurate <a class="reference external" href="http://CONTRIBUTIONS.md">CONTRIBUTIONS.md</a> documentation</p></li>
+</ul>
+<p>Individual marks account for 40% of group project grades, based on your documented contributions. See the Assessment chapter for full details.</p>
+</div>
+</section>
+<section id="best-practices-for-group-work">
+<h3>Best Practices for Group Work<a class="headerlink" href="#best-practices-for-group-work" title="Link to this heading">#</a></h3>
+<p><strong>Communication:</strong></p>
+<ul class="simple">
+<li><p>Use GitHub Issues or project management tools to track tasks</p></li>
+<li><p>Comment on commits and pull requests</p></li>
+<li><p>Hold regular team meetings to coordinate work</p></li>
+<li><p>Discuss major decisions before implementing them</p></li>
+</ul>
+<p><strong>Organization:</strong></p>
+<ul class="simple">
+<li><p>Agree on code style and formatting (consider using linting tools)</p></li>
+<li><p>Use consistent file and variable naming conventions</p></li>
+<li><p>Document your code with clear comments</p></li>
+<li><p>Write README files for each module or component</p></li>
+</ul>
+<p><strong>Version Control Hygiene:</strong></p>
+<ul class="simple">
+<li><p>Never commit directly to main without review</p></li>
+<li><p>Keep branches short-lived (merge frequently)</p></li>
+<li><p>Delete branches after merging</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> to exclude unnecessary files</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> before every commit and push</p></li>
+</ul>
+<p><strong>Pre-commit Hooks for Team Consistency:</strong></p>
+<p>Set up pre-commit hooks to enforce standards across all team members:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># .pre-commit-config.yaml</span>
+<span class="nt">repos</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/pre-commit/pre-commit-hooks</span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v4.4.0</span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">check-added-large-files</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;--maxkb=500&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trailing-whitespace</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">end-of-file-fixer</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">check-yaml</span>
+<span class="w">      </span>
+<span class="w">  </span><span class="c1"># For Python projects</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/psf/black</span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">23.1.0</span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">black</span>
+<span class="w">        </span>
+<span class="w">  </span><span class="c1"># For R projects  </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/lorenzwalthert/precommit</span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.3.2</span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">style-files</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lintr</span>
+</pre></div>
+</div>
+<p>This ensures all team members follow the same code formatting and quality standards.</p>
+</section>
+<section id="conflict-resolution">
+<h3>Conflict Resolution<a class="headerlink" href="#conflict-resolution" title="Link to this heading">#</a></h3>
+<p>If disagreements arise within the team about technical decisions or contributions:</p>
+<ol class="arabic simple">
+<li><p><strong>Document the issue</strong>: Write it down clearly</p></li>
+<li><p><strong>Discuss as a team</strong>: Try to reach consensus</p></li>
+<li><p><strong>Consult your supervisor</strong>: If unresolved, seek guidance from course instructors</p></li>
+<li><p><strong>Use the peer assessment process</strong>: The formal peer assessment (see Assessment chapter) provides a mechanism for addressing contribution imbalances</p></li>
+</ol>
+<p>For serious issues with team dynamics or non-contributing members, contact your course coordinator early—don’t wait until the deadline.</p>
+</section>
+<section id="example-workflow-summary">
+<h3>Example Workflow Summary<a class="headerlink" href="#example-workflow-summary" title="Link to this heading">#</a></h3>
+<p>Here’s a complete workflow for a typical group work session:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Start of work session - get latest changes</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+
+<span class="c1"># 2. Create or switch to your feature branch</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/my-analysis
+
+<span class="c1"># 3. Work on your code, commit regularly</span>
+<span class="c1"># ... edit files ...</span>
+git<span class="w"> </span>add<span class="w"> </span>analysis.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;JS: Add species diversity calculation&quot;</span>
+
+<span class="c1"># 4. Sync with main to avoid conflicts</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+git<span class="w"> </span>checkout<span class="w"> </span>feature/my-analysis
+git<span class="w"> </span>merge<span class="w"> </span>main
+<span class="c1"># Resolve any conflicts if they occur</span>
+
+<span class="c1"># 5. Push your branch</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/my-analysis
+
+<span class="c1"># 6. Create pull request on GitHub for team review</span>
+
+<span class="c1"># 7. After approval, merge and cleanup</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>feature/my-analysis<span class="w">  </span><span class="c1"># Delete local branch</span>
+</pre></div>
+</div>
+</section>
+<section id="cross-reference-to-assessment">
+<h3>Cross-Reference to Assessment<a class="headerlink" href="#cross-reference-to-assessment" title="Link to this heading">#</a></h3>
+<p>All collaborative Git practices described here support the assessment criteria outlined in the <a class="reference internal" href="Appendix-Assessment.html"><span class="std std-doc">Assessment chapter</span></a>. Key points:</p>
+<ul class="simple">
+<li><p><strong>Group work quality</strong> (60% of group project marks): Measured by code quality, documentation, testing, and Git repository organization</p></li>
+<li><p><strong>Individual contributions</strong> (40% of group project marks): Tracked through Git history, <a class="reference external" href="http://CONTRIBUTIONS.md">CONTRIBUTIONS.md</a>, and peer assessment</p></li>
+<li><p><strong>Repository requirements</strong>: Proper <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>, meaningful README, clean commit history</p></li>
+<li><p><strong>Peer assessment</strong>: Formal process to evaluate team member contributions</p></li>
+</ul>
+<p>Effective use of Git not only helps you collaborate but also provides the documentation needed for fair individual assessment.</p>
+</section>
+</section>
 <section id="a-friendly-concluding-note-on-git">
 <h2>A friendly concluding note on git<a class="headerlink" href="#a-friendly-concluding-note-on-git" title="Link to this heading">#</a></h2>
 <p>Git can feel hard and unintuitive. It is likely that at some point you will make a mistake and lose some work as a consequence.</p>
@@ -1629,8 +1937,8 @@ git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </s
 <li><p>Guidelines for the <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file: <a class="reference external" href="https://labs.consol.de/development/git/2017/02/22/gitignore.html">https://labs.consol.de/development/git/2017/02/22/gitignore.html</a>, <a class="reference external" href="https://docs.github.com/en/free-pro-team&#64;latest/github/using-git/ignoring-files">https://docs.github.com/en/free-pro-team&#64;latest/github/using-git/ignoring-files</a></p></li>
 </ul>
 </section>
-<section id="id1">
-<h3>Branching<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<section id="id2">
+<h3>Branching<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Guidelines for brancing: <a class="reference external" href="https://gist.github.com/digitaljhelms/4287848">https://gist.github.com/digitaljhelms/4287848</a></p></li>
 <li><p><a class="reference external" href="https://www.gitkraken.com/blog/collaborate-on-github">Git Kraken’s tips for collaborating effectively on github</a></p></li>
@@ -1711,8 +2019,9 @@ git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </s
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-version-control">Why Version Control?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-git">Why git ?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-get-started">Let’s get started!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-git">Installing git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-configuring-git">Installing and configuring git</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-repository">Your first repository</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-good-commit-messages">Writing Good Commit Messages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commits">Commits</a></li>
 </ul>
 </li>
@@ -1723,15 +2032,22 @@ git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </s
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branching">Branching</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teamwork-using-git-and-common-branching-mistakes">Teamwork using git and common <code class="docutils literal notranslate"><span class="pre">branch</span></code>ing mistakes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-readme-file">The README file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">Key concepts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-workflow-and-command-structure">Repository, workflow and command structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Commits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branch">Branch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hash">Hash</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-git-commands">Common git commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-readme-filea-readme-like-the-readme-md-that-you-created-in-your-git-repo-above-is-a-text-file-that-introduces-and-explains-a-project-it-contains-information-that-is-required-to-understand-what-the-project-is-about-and-how-to-use-or-run-it-while-readmes-can-be-written-in-any-text-file-format-markdown-saved-as-an-md-file-is-most-commonly-used-as-it-allows-you-to-add-simple-text-formatting-easily-two-other-formats-that-you-might-most-often-see-are-plain-text-and-restructuredtext-saved-as-an-rst-file-common-in-python-projects-essential-readme-componentsyou-can-find-many-readme-file-suggestions-and-templates-online-essentially-it-should-ideally-have-the-following-features-content-project-name-title-clear-descriptive-name-for-your-project-brief-description-what-your-project-does-and-or-is-for-provide-context-and-add-links-to-any-references-to-help-new-visitors-understand-the-purpose-and-scope-languages-list-language-s-and-their-versions-used-in-the-project-e-g-python-3-11-r-4-3-0-dependencies-what-special-packages-which-are-not-part-of-standard-libraries-of-the-language-s-used-might-be-needed-for-a-new-user-to-run-your-project-include-version-numbers-if-specific-versions-are-required-installation-guidelines-for-installing-the-project-if-applicable-including-dependencies-provide-step-by-step-instructions-for-setting-up-the-environment-project-structure-brief-overview-of-the-repository-organization-main-directories-and-their-purposes-usage-how-to-run-use-the-project-include-command-line-examples-or-code-snippets-explain-what-specific-key-files-do-no-need-to-list-every-file-such-as-data-or-experimental-ones-like-those-in-sandbox-author-name-and-contact-list-all-contributors-with-their-roles-especially-important-for-group-projects-additional-components-for-group-projectsfor-group-coursework-your-readme-should-also-include-team-members-names-and-contributions-of-each-team-member-with-link-to-contributions-md-for-details-division-of-work-high-level-overview-of-who-worked-on-which-components-detailed-documentation-belongs-in-contributions-md-how-to-run-tests-if-you-have-unit-tests-explain-how-to-execute-them-known-issues-any-bugs-or-limitations-that-users-should-be-aware-of-optional-componentsin-addition-you-may-want-to-include-but-not-necessary-for-your-current-coursework-license-specifies-how-others-can-use-your-code-acknowledgments-credit-external-code-datasets-or-assistance-contributing-guidelines-instructions-for-others-who-want-to-contribute-badges-status-indicators-build-status-test-coverage-etc-tip-readme-best-practices-keep-it-concise-but-comprehensive-use-clear-headings-and-formatting-include-code-examples-where-helpful-keep-it-updated-as-your-project-evolves-test-that-all-instructions-actually-work-on-a-fresh-system-for-group-projects-ensure-readme-accurately-reflects-all-team-members-contributions-important-assessment-requirement-for-group-projects-your-readme-must-clearly-identify-all-team-members-and-link-to-your-contributions-md-file-reviewers-will-check-that-your-readme-is-informative-and-professionally-formatted-further-resources-search-online-for-readme-best-practices-or-readme-templates-for-additional-guidance-and-examples">The README fileA README (like the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> that you created in your git repo above) is a text file that introduces and explains a project. It contains information that is required to understand what the project is about and how to use or run it. While READMEs can be written in any text file format, Markdown (saved as an <code class="docutils literal notranslate"><span class="pre">.md</span></code> file) is most commonly used, as it allows you to add simple text formatting easily. Two other formats that you might most often see are plain text and reStructuredText (saved as an <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file, common in Python projects).### Essential README ComponentsYou can find many README file suggestions (and templates) online. Essentially, it should ideally have the following features/content:  * <strong>Project name / title</strong>: Clear, descriptive name for your project* <strong>Brief description</strong>: What your project does and/or is for. Provide context and add links to any references to help new visitors understand the purpose and scope* <strong>Languages</strong>: List language(s) and their versions used in the project (e.g., Python 3.11, R 4.3.0)* <strong>Dependencies</strong>: What special packages (which are not part of standard libraries of the language(s) used) might be needed for a new user to run your project. Include version numbers if specific versions are required* <strong>Installation</strong>: Guidelines for installing the project (if applicable), including dependencies. Provide step-by-step instructions for setting up the environment* <strong>Project structure</strong>: Brief overview of the repository organization (main directories and their purposes)* <strong>Usage</strong>: How to run/use the project. Include command-line examples or code snippets. Explain what specific key files do (no need to list every file, such as data or experimental ones like those in <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>)* <strong>Author name and contact</strong>: List all contributors with their roles (especially important for group projects)### Additional Components for Group ProjectsFor group coursework, your README should also include:* <strong>Team members</strong>: Names and contributions of each team member (with link to <code class="docutils literal notranslate"><span class="pre">CONTRIBUTIONS.md</span></code> for details)* <strong>Division of work</strong>: High-level overview of who worked on which components (detailed documentation belongs in <code class="docutils literal notranslate"><span class="pre">CONTRIBUTIONS.md</span></code>)* <strong>How to run tests</strong>: If you have unit tests, explain how to execute them* <strong>Known issues</strong>: Any bugs or limitations that users should be aware of### Optional ComponentsIn addition, you may want to include (but not necessary for your current coursework):* <strong>License</strong>: Specifies how others can use your code* <strong>Acknowledgments</strong>: Credit external code, datasets, or assistance* <strong>Contributing guidelines</strong>: Instructions for others who want to contribute* <strong>Badges</strong>: Status indicators (build status, test coverage, etc.)<code class="docutils literal notranslate"><span class="pre">{tip}**README</span> <span class="pre">Best</span> <span class="pre">Practices:**-</span> <span class="pre">Keep</span> <span class="pre">it</span> <span class="pre">concise</span> <span class="pre">but</span> <span class="pre">comprehensive-</span> <span class="pre">Use</span> <span class="pre">clear</span> <span class="pre">headings</span> <span class="pre">and</span> <span class="pre">formatting-</span> <span class="pre">Include</span> <span class="pre">code</span> <span class="pre">examples</span> <span class="pre">where</span> <span class="pre">helpful-</span> <span class="pre">Keep</span> <span class="pre">it</span> <span class="pre">updated</span> <span class="pre">as</span> <span class="pre">your</span> <span class="pre">project</span> <span class="pre">evolves-</span> <span class="pre">Test</span> <span class="pre">that</span> <span class="pre">all</span> <span class="pre">instructions</span> <span class="pre">actually</span> <span class="pre">work</span> <span class="pre">on</span> <span class="pre">a</span> <span class="pre">fresh</span> <span class="pre">system-</span> <span class="pre">For</span> <span class="pre">group</span> <span class="pre">projects:</span> <span class="pre">Ensure</span> <span class="pre">README</span> <span class="pre">accurately</span> <span class="pre">reflects</span> <span class="pre">all</span> <span class="pre">team</span> <span class="pre">members'</span> <span class="pre">contributions``````{important}**Assessment</span> <span class="pre">Requirement**:</span> <span class="pre">For</span> <span class="pre">group</span> <span class="pre">projects,</span> <span class="pre">your</span> <span class="pre">README</span> <span class="pre">must</span> <span class="pre">clearly</span> <span class="pre">identify</span> <span class="pre">all</span> <span class="pre">team</span> <span class="pre">members</span> <span class="pre">and</span> <span class="pre">link</span> <span class="pre">to</span> <span class="pre">your</span> <span class="pre">`CONTRIBUTIONS.md`</span> <span class="pre">file.</span> <span class="pre">Reviewers</span> <span class="pre">will</span> <span class="pre">check</span> <span class="pre">that</span> <span class="pre">your</span> <span class="pre">README</span> <span class="pre">is</span> <span class="pre">informative</span> <span class="pre">and</span> <span class="pre">professionally</span> <span class="pre">formatted.</span></code><strong>Further Resources</strong>: Search online for “README best practices” or “README templates” for additional guidance and examples.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ignoring-files">Ignoring Files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-and-file-patterns-for-gitignoring">Directory and file patterns for gitignoring</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitignore-ng-after-commit-ing"><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>-ng after <code class="docutils literal notranslate"><span class="pre">commit</span></code>-ing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-good-practice-for-gitignoring">General good practice for gitignoring</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#whitelist-principle">Whitelist principle</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-remote-repositories">Working with remote repositories</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-a-remote-git-repository">Set up a remote git repository</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-binary-files">Dealing with binary files</a></li>
@@ -1752,6 +2068,20 @@ git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </s
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-git-through-a-gui">Using git through a GUI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborative-git-workflows-for-group-work">Collaborative Git Workflows for Group Work</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-for-collaboration">Setting Up for Collaboration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branch-based-development">Branch-Based Development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meaningful-commit-messages-for-collaboration">Meaningful Commit Messages for Collaboration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syncing-with-the-team">Syncing with the Team</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-merge-conflicts">Handling Merge Conflicts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-review-and-merging">Code Review and Merging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution-documentation">Contribution Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-for-group-work">Best Practices for Group Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-resolution">Conflict Resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-workflow-summary">Example Workflow Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-reference-to-assessment">Cross-Reference to Assessment</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-friendly-concluding-note-on-git">A friendly concluding note on git</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals">Practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
@@ -1762,7 +2092,7 @@ git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </s
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">Markdown</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#committing-practices">Committing practices</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitignore">.gitignore</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Branching</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Branching</a></li>
 </ul>
 </li>
 </ul>
