@@ -128,7 +128,7 @@ For this it is strongly recommended that you use a virtualenv, e.g., using [`con
 
 Once you have activated your virtual environment, run `requirements.txt`; for example, on Debian Linux / Ubuntu, you can use `pip install -r requirements.txt`.
 
-In addition, if you will be contributing content that involves running `R` or or `bash`, you will need to manually install their Jupyter  languge [kernels](https://mulquabio.github.io/MQB/notebooks/Appendix-JupyIntro.html#language-kernels) in addition to Python (which is the default Jupyter / book kernel). 
+In addition, if you will be contributing content that involves running `R` or `bash`, you will need to manually install their Jupyter language [kernels](https://mulquabio.github.io/MQB/notebooks/Appendix-JupyIntro.html#language-kernels) in addition to Python (which is the default Jupyter / book kernel). 
 
 Now you are ready for the workflow!
 
@@ -138,60 +138,62 @@ Fork (optional) the repo on GitHub, and clone locally.
 
 ### Step 3. Create a branch and make changes
 
-Create a branch for local development and make changes locally (e.g., to a Jupyter notebook corresponding to a specific chapter). 
+Create a branch for local development and make changes locally (e.g., to a Jupyter notebook corresponding to a specific chapter).
 
 ### Step 4. Build and test the book locally
 
-Test the changes and compile the book locally to make sure it all looks good when rendered in html. To build a local version of the book in your current branch:
+Test the changes and compile the book locally to make sure it all looks good when rendered in HTML. To build a local version of the book in your current branch:
 
-- `cd` to its root directory (i.e., `MQB/`)  
+- `cd` to its root directory (i.e., `MQB/`)
 - Run `jupyter-book build content`
 
-A fully-rendered HTML version of the book will be built in `_build/html/`. That is, there should be a collection of newly generated HTML files in the `content/_build/html` folder. 
+A fully-rendered HTML version of the book will be built in `content/_build/html/`. That is, there should be a collection of newly generated HTML files in the `content/_build/html` folder.
 
-Check to ensure that HTML has been built of the complete book by loading `_build/html/notebooks/index.html` in a web browser. Also randomly test some of the navigation links within the book.
+Check to ensure that HTML has been built of the complete book by loading `content/_build/html/index.html` in a web browser. Also randomly test some of the navigation links within the book.
 
-If you run into any issues with the rendered book, try removing the existing `The Multilingual Quantitative Biologist/_build/` directory and rebuilding the book.
+If you run into any issues with the rendered book, try removing the existing `content/_build/` directory and rebuilding the book using `jupyter-book clean content` followed by `jupyter-book build content`.
 
-> ⚠️ **Note:** if you add a new chapter or appendix to the book, you will need to update the `_toc.yml` file before you compile the book. This is a major change, so you should put in a [github issue](https://github.com/mulquabio/MQB/issues) with a "feature request" label to get the ball rolling even before you add any new content. This is necessary because it will also also help you determine *where* (in the project tree; see above) to create the new content.
+> ⚠️ **Note:** if you add a new chapter or appendix to the book, you will need to update the `_toc.yml` file before you compile the book. This is a major change, so you should put in a [GitHub issue](https://github.com/mulquabio/MQB/issues) with a "feature request" label to get the ball rolling even before you add any new content. This is necessary because it will also help you determine *where* (in the project tree; see above) to create the new content.
 
 ### Steps 5-6. Commit and push
 
-Once you are happy that the book has been built including your updates, `git add`, `commit` and `push` your changes to the branch. 
+Once you are happy that the book has been built including your updates, `git add`, `commit` and `push` your changes to the branch.
 
-> ⚠️ **Note:** *Please do not push changes for every little edit you make to the book (e.g., after fixing some typos)*. Push only significant changes. But don't make a whole slew of changes, such as edits / additions to several chapters either! In general, follow [good git practices](https://mulquabio.github.io/MQB/notebooks/Git#teamwork-using-git-and-common-branching-mistakes) in this respect. 
+> ⚠️ **Note:** *Please do not push changes for every little edit you make to the book (e.g., after fixing some typos)*. Push only significant changes. But don't make a whole slew of changes, such as edits / additions to several chapters either! In general, follow [good git practices](https://mulquabio.github.io/MQB/notebooks/Git#collaborative-git-workflows-for-group-work) in this respect.
 
-### Step 7. Create a pull request  
+### Step 7. Create a pull request
 
-The `master` branch of this repository is protected, so even contributors / MQB team members with write (push) access need to push changes on a branch and make then make a [pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
+The `main` branch of this repository is protected, so even contributors / MQB team members with write (push) access need to push changes on a branch and then make a [pull request](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
 
-So, after after pushing to your new branch, submit a pull request through the the MQB GitHub project website, preferably tagging specific individual(s) in the team for a review and merge. If in doubt about whom to tag / assign the task, please tag `@mhasoba`.
+So, after pushing to your new branch, submit a pull request through the MQB GitHub project website, preferably tagging specific individual(s) in the team for a review and merge. If in doubt about whom to tag / assign the task, please tag `@mhasoba`.
 
 If you are unfamiliar with pull requests, also see [this documentation](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-Note that new commits to a non-master branch *after* a pull request has been made will result in any pull requests from that non-master branch to be discarded. Please [read this](https://gist.github.com/digitaljhelms/4287848) for good practices for branching (and merging).
+Note that new commits to a non-main branch *after* a pull request has been made will result in any pull requests from that non-main branch to be discarded. Please [read this](https://gist.github.com/digitaljhelms/4287848) for good practices for branching (and merging).
 
 Once your branched changes have been reviewed, approved, and merged, the updated book is ready to be deployed. 
 
 ### Step 8. Deploy the book online
 
-The compiled, html version of MQB is hosted on the `gh-pages` branch of this repo, which is then deployed on [https://mulquabio.github.io/MQB](https://mulquabio.github.io/MQB/intro.html).
+The compiled HTML version of MQB is hosted on the `gh-pages` branch of this repo, which is then deployed at [https://mulquabio.github.io/MQB](https://mulquabio.github.io/MQB/intro.html).
 
 To deploy the book online, simply run:
 
-`ghp-import -n -p -f content/_build/html`
+```bash
+ghp-import -n -p -f content/_build/html
+```
 
 This will automatically push the latest build to the `gh-pages` branch.
 
-Typically after a few minutes the site should be viewable online at [https://mulquabio.github.io/MQB/intro.html](https://mulquabio.github.io/MQB/intro.html). If not, check repository settings under Options -> GitHub Pages to ensure that the gh-pages branch is configured as the build source for GitHub Pages.
+Typically after a few minutes the site should be viewable online at [https://mulquabio.github.io/MQB/intro.html](https://mulquabio.github.io/MQB/intro.html). If not, check repository settings under Settings → Pages to ensure that the `gh-pages` branch is configured as the build source for GitHub Pages and that the deployment is active.
 
-> ⚠️ **Note:** if you want your local changes to be reflected on MQB online before they are reviewed, accepted and merged following your pull request (i.e., skip Steps 5-7 above), you *can* deploy the book from your local branch directly by pushing to the `gh-pages` branch). However, this is not advisable, and please do so cautiously. The main reason why you would be wanting to do this  is that an urgent correction or update to the book is warranted (which, if left unaddressed could lead to mass mortality among the students - *just kidding!*) 
+> ⚠️ **Note:** if you want your local changes to be reflected on MQB online before they are reviewed, accepted and merged following your pull request (i.e., skip Steps 5-7 above), you *can* deploy the book from your local branch directly by pushing to the `gh-pages` branch. However, this is not advisable, and please do so cautiously. The main reason why you would be wanting to do this is that an urgent correction or update to the book is warranted (which, if left unaddressed could lead to mass mortality among the students - *just kidding!*)
 
 More information on this hosting process can be found [here](https://jupyterbook.org/en/stable/publish/web.html).
 
 ## Additional notes
 
-* We do not currently use GitHub actions to automatically build and deploy the book to the `gh-pages` branch (Step 8). This is a [currently pending issue](https://github.com/mulquabio/MQB/issues/132)); please feel free to tackle it if you wish!
+* We do not currently use GitHub Actions to automatically build and deploy the book to the `gh-pages` branch (Step 8). This is a [currently pending issue](https://github.com/mulquabio/MQB/issues/132); please feel free to tackle it if you wish!
 
 * The solutions to the exercises in this book are in a [separate private git repo](https://github.com/mulquabio/MQB_Sols) under this organization.
 
@@ -207,5 +209,5 @@ We welcome and recognize all contributions. You can see a list of current contri
 ## Credits
 
 * This project is created using the excellent open source [Jupyter Book project](https://jupyterbook.org/), initiated using [executablebooks/cookiecutter-jupyter-book template](https://github.com/executablebooks/cookiecutter-jupyter-book).
-* The computing sections were originally inspired by, and many of the materials are based on Stefano Allesina's excellent notes back when Samraat was a Postdoc in the Allesina Lab. Check out [the book](https://computingskillsforbiologists.com/)! 
+* The computing sections were originally inspired by, and many of the materials are based on Stefano Allesina's excellent notes back when Samraat was a Postdoc in the Allesina Lab. Check out [the book](https://computingskillsforbiologists.com/)!
 * Most of the chapters under the Data Analysis and Basic Statistics section were originally written by David Orme (<d.orme@imperial.ac.uk>).
