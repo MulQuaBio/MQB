@@ -769,6 +769,33 @@ And whether pigs have wings.’</p>
 </tbody>
 </table>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code class="docutils literal notranslate"><span class="pre">$()</span></code>, <code class="docutils literal notranslate"><span class="pre">$((</span> <span class="pre">))</span></code>, and <code class="docutils literal notranslate"><span class="pre">${}</span></code> are all Bash expansions, used for different purposes!
+<code class="docutils literal notranslate"><span class="pre">${}</span></code> is a parameter expansion, used when referencing a variable to make it clear where the variable name ends.
+<code class="docutils literal notranslate"><span class="pre">$()</span></code> is a command substitution, which runs a command and inserts its output.
+<code class="docutils literal notranslate"><span class="pre">$((</span> <span class="pre">))</span></code> is an arithmetic expansion, used to evaluate mathematical expressions.</p>
+<p>Run the code below to test these commands out!</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Alice&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">!&quot;</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello on </span><span class="k">$(</span>date<span class="w"> </span>+%F<span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;1 + 2 * 3 = </span><span class="k">$((</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">3</span><span class="k">))</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Alice!
+Hello on 2025-10-21
+1 + 2 * 3 = 7
+</pre></div>
+</div>
+</div>
+</div>
 <section id="exploring-files-and-directories">
 <h3>Exploring files and directories<a class="headerlink" href="#exploring-files-and-directories" title="Link to this heading">#</a></h3>
 <p>A fundamental command that you will probably use the most frequently of all is <code class="docutils literal notranslate"><span class="pre">ls</span></code> (this stands for <em>list</em> files and directories in current directory).</p>

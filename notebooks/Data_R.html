@@ -1697,7 +1697,21 @@ distributions of the two variables.</p>
 </section>
 <section id="boxplots">
 <h3>Boxplots<a class="headerlink" href="#boxplots" title="Link to this heading">#</a></h3>
-<p>Now, let’s try plotting boxplots instead of histograms. These are useful for getting a visual summary of the distribution of your data.</p>
+<p>Box plots are another way to show the distribution of data.<br />
+They display the <strong>median</strong> as a solid horizontal line, and the <strong>interquartile range (IQR)</strong> as the box, which contains the middle 50% of the data.<br />
+The <strong>whiskers</strong> typically extend to 1.5× the IQR on either side, and <strong>outliers</strong> beyond this range are shown as individual points. This provides a compact summary of how values are spread and centered.</p>
+<p><img alt="Boxplot" src="../_images/Boxplot.svg" /></p>
+<p>Although box plots may seem more <em>primitive</em> than histograms or kernel density estimates (KDEs), they are a very useful method of visualising data.<br />
+While they show less detail than a full distribution plot (since they hide the shape of the data), they offer several advantages:</p>
+<ul class="simple">
+<li><p>Because box plots are small and simple, they allow for quick visual comparison between multiple datasets.</p></li>
+<li><p>They are not influenced by the choice of bin width (as histograms are) or bandwidth (as Kernal density estimations are).</p></li>
+<li><p>They provide a quick visual summary of variability and potential outliers.</p></li>
+</ul>
+<p align="center">
+  <img src="graphics/Boxplot_vs_PDF.svg" width="500">
+</p>
+<p>Now, let’s try plotting box plots instead of histograms to explore how they summarise data differently.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">boxplot</span><span class="p">(</span><span class="nf">log10</span><span class="p">(</span><span class="n">MyDF</span><span class="o">$</span><span class="n">Predator.mass</span><span class="p">),</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Location&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;log10(Predator Mass)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Predator mass&quot;</span><span class="p">)</span>

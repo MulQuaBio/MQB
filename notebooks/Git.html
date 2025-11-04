@@ -1368,6 +1368,20 @@ abandon the branch:</p>
 </div>
 <p>for a directory.</p>
 <p>While these commands will not remove the physical file from your local repository, it will remove the files from other locals on their next <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>.</p>
+<p>An alternative, safer technique (though one which is definitely more work to maintain) is a whitelist-based approach. This is not necessarily a better or worse way to do things, you are in the end trading your time and effort for increased safety and cleanliness of your repository.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>*.*
+!.gitignore
+!*.R
+!*.py
+!*.sh
+!*.tex
+!*.bib
+!*.txt
+!*.md
+!Week1/results/myfirstlatexdoc.tex
+</pre></div>
+</div>
+<p>Your feedback will be in .txt files, so don’t ignore these!</p>
 </section>
 </section>
 <section id="working-with-remote-repositories">
@@ -1378,12 +1392,14 @@ abandon the branch:</p>
 <p>So let’s go to your online git service (e.g., GitHub) and set up. Note that GitHub and Bitbucket both give you unlimited free private repositories if you register with an academic email. Not a big deal if you will not be writing private code, handy if you are (<em>can you think of examples when you would need to write private code?</em>).</p>
 <ul class="simple">
 <li><p>Login to your GitHub or Bitbucket account</p></li>
-<li><p>Follow the instructions to setup an ssh key to enable cryptography-based interfacing with your remote git repository (Google “how do I do this”):</p>
-<ul>
-<li><p><a class="reference external" href="https://help.github.com/articles/connecting-to-github-with-ssh">GitHub</a></p></li>
-<li><p><a class="reference external" href="https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html">bitbucket</a></p></li>
+<li><p>Follow the instructions to setup an ssh key to enable cryptography-based interfacing with your remote git repository (Google “how do I do this”):</p></li>
 </ul>
-</li>
+<p>An alternative, safer technique (though one which is definitely more work to maintain) is a whitelist-based approach. This is not necessarily a better or worse way to do things, you are in the end trading your time and effort for increased safety and cleanliness of your repository.
+* <a class="reference external" href="https://help.github.com/articles/connecting-to-github-with-ssh">GitHub</a></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* [bitbucket](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html)
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>Create your remote git repository:</p>
 <ul>
 <li><p><a class="reference external" href="https://help.github.com/articles/create-a-repo">GitHub</a></p></li>

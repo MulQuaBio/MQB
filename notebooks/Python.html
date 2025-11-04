@@ -488,6 +488,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-csv-s">Handling <code class="docutils literal notranslate"><span class="pre">csv</span></code>’s</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-code-compartmentalization">Modules and code compartmentalization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing Modules</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-python-programs">Writing Python programs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-python-program">Components of the Python program</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shebang">The shebang</a></li>
@@ -501,6 +505,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-program-with-control-flows-example">A program-with-control-flows example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-control-flow-py">Modules and <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals">Practicals</a><ul class="nav section-nav flex-column">
@@ -520,11 +525,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-that-cannot-be-debugged">Errors that cannot be debugged</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-code-compartmentalization">Modules and code compartmentalization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing Modules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages">Python packages</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Practicals</a><ul class="nav section-nav flex-column">
@@ -567,7 +567,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-profiling-with-timeit">Quick profiling with <code class="docutils literal notranslate"><span class="pre">timeit</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorization-revisited">Vectorization revisited</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorization">Vectorization</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example">An example</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-vectorize">When to vectorize?</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#no-free-lunch">“No free lunch!”</a></li>
@@ -616,13 +616,13 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-and-resources">Readings and Resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages">Python packages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general">General</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">IPython</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Python data structures</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elements-of-the-python-program">Elements of the Python program</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-and-debugging">Errors and Debugging</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-modules-and-classes">Functions, Modules, and Classes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Python Packages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scientific-computing">Scientific computing</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-expressions">Regular expressions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-stuff">Other stuff</a></li>
@@ -668,12 +668,12 @@ document.write(`
 <p>Python was designed with readability and re-usability in mind. Time taken by programming + debugging + running is likely to be relatively lower in python than less intuitive or cluttered languages (e.g., FORTRAN, Perl).</p>
 <p>Python is a pretty good solution if you want to easily write readable code that is also reasonably efficient computationally (see the figure below).</p>
 <hr class="docutils" />
-<figure class="align-default" id="id9">
+<figure class="align-default" id="id8">
 <a class="reference internal image-reference" href="../_images/benchmarks.svg"><img alt="Language speeds" src="../_images/benchmarks.svg" style="width: 700px;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text"><strong>Python’s numerical computing performance compared to some others</strong>. Smaller numbers are better. Note that the y-axis is in <span class="math notranslate nohighlight">\(\log_{10}\)</span> scale. <br>
-(Source: <a class="reference external" href="http://julialang.org/">http://julialang.org/</a>)</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+(Source: <a class="reference external" href="http://julialang.org/">http://julialang.org/</a>)</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1336,6 +1336,19 @@ y          int       2
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90
+</pre></div>
+</div>
+</div>
+</div>
+<p>The modulo operator <code class="docutils literal notranslate"><span class="pre">%</span></code> is used to find the remainder after a division.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">9</span> <span class="o">%</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -3860,6 +3873,27 @@ changed to [1, 2, 3, 4]
 <p><span class="math notranslate nohighlight">\(\star\)</span> Run this script from bash, bash with ipython, and from within ipython, like you did above for the <code class="docutils literal notranslate"><span class="pre">basic_io*.py</span></code> scripts.</p>
 </section>
 </section>
+<section id="modules-and-code-compartmentalization">
+<h2>Modules and code compartmentalization<a class="headerlink" href="#modules-and-code-compartmentalization" title="Link to this heading">#</a></h2>
+<p>Ideally you should aim to compartmentalize your code into a bunch of functions, typically written in a single <code class="docutils literal notranslate"><span class="pre">.py</span></code> file: these are Python “modules”, which you were introduced to previously.</p>
+<p>Why bother with modules? Because:</p>
+<ul class="simple">
+<li><p>Keeping code compartmentalized is good for debugging, unit testing, and profiling (coming up later)</p></li>
+<li><p>Makes code more compact by minimizing redundancies (write repeatedly used code segments as a module)</p></li>
+<li><p>Allows you to import and use useful functions that you yourself wrote, just like you would from standard python packages (coming up)</p></li>
+</ul>
+<section id="importing-modules">
+<h3>Importing Modules<a class="headerlink" href="#importing-modules" title="Link to this heading">#</a></h3>
+<p>There are different ways to <em>import</em> a module:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_module</span></code>, then functions in the module can be called as <code class="docutils literal notranslate"><span class="pre">my_module.one_of_my_functions()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">my_module</span> <span class="pre">import</span> <span class="pre">my_function</span></code> imports only the function <code class="docutils literal notranslate"><span class="pre">my_function</span></code> in the module <code class="docutils literal notranslate"><span class="pre">my_module</span></code>. It can then be called as if it were part of the main file: <code class="docutils literal notranslate"><span class="pre">my_function()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_module</span> <span class="pre">as</span> <span class="pre">mm</span></code> imports the module <code class="docutils literal notranslate"><span class="pre">my_module</span></code> and calls it <code class="docutils literal notranslate"><span class="pre">mm</span></code>. Convenient when the name of the module is very long. The functions in the module can be called as <code class="docutils literal notranslate"><span class="pre">mm.one_of_my_functions()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">my_module</span> <span class="pre">import</span> <span class="pre">*</span></code>. Avoid doing this! <em>Why?</em> – to avoid name conflicts!</p></li>
+</ul>
+<p>You can also access variables written into modules: <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_module</span></code>, then do: <code class="docutils literal notranslate"><span class="pre">my_module.one_of_my_variables</span></code></p>
+</section>
+</section>
 <section id="writing-python-programs">
 <h2>Writing Python programs<a class="headerlink" href="#writing-python-programs" title="Link to this heading">#</a></h2>
 <p>Now let’s start with proper python programs.</p>
@@ -4368,6 +4402,29 @@ There are 25 primes between 2 and 100
 <p>For more documentation on the current f-string method as well as the older .format() method, <a class="reference external" href="https://fstring.help/">see this</a> and <a class="reference external" href="https://pyformat.info">this</a> respectively..</p>
 </div>
 </section>
+<section id="modules-and-control-flow-py">
+<h3>Modules and <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code><a class="headerlink" href="#modules-and-control-flow-py" title="Link to this heading">#</a></h3>
+<p>You can practise importing <strong>modules</strong> using the file <strong><code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code></strong>.</p>
+<p>When you import a module in python, you make all of its functions available in your current script or notebook. Run the following code in a new python terminal in your code directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">control_flow</span>
+<span class="n">control_flow</span><span class="o">.</span><span class="n">even_or_odd</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">control_flow</span><span class="o">.</span><span class="n">largest_divisor_five</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Just one function can be imported and used to be more efficient</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">control_flow</span><span class="w"> </span><span class="kn">import</span> <span class="n">odd_or_even</span>
+<span class="n">even_or_odd</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="practicals">
 <h2>Practicals<a class="headerlink" href="#practicals" title="Link to this heading">#</a></h2>
@@ -4770,51 +4827,6 @@ The result of dividing a number by zero is undefined
 <p><code class="docutils literal notranslate"><span class="pre">theta</span> <span class="pre">=</span> <span class="pre">30</span></code></p>
 <p>print(f”{theta = } {cos(radians(theta)) = :.3f}”)</p>
 </div>
-</section>
-</section>
-<section id="modules-and-code-compartmentalization">
-<h2>Modules and code compartmentalization<a class="headerlink" href="#modules-and-code-compartmentalization" title="Link to this heading">#</a></h2>
-<p>Ideally you should aim to compartmentalize your code into a bunch of functions, typically written in a single <code class="docutils literal notranslate"><span class="pre">.py</span></code> file: these are Python “modules”, which you were introduced to previously.</p>
-<p>Why bother with modules? Because:</p>
-<ul class="simple">
-<li><p>Keeping code compartmentalized is good for debugging, unit testing, and profiling (coming up later)</p></li>
-<li><p>Makes code more compact by minimizing redundancies (write repeatedly used code segments as a module)</p></li>
-<li><p>Allows you to import and use useful functions that you yourself wrote, just like you would from standard python packages (coming up)</p></li>
-</ul>
-<section id="importing-modules">
-<h3>Importing Modules<a class="headerlink" href="#importing-modules" title="Link to this heading">#</a></h3>
-<p>There are different ways to <em>import</em> a module:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_module</span></code>, then functions in the module can be called as <code class="docutils literal notranslate"><span class="pre">my_module.one_of_my_functions()</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">my_module</span> <span class="pre">import</span> <span class="pre">my_function</span></code> imports only the function <code class="docutils literal notranslate"><span class="pre">my_function</span></code> in the module <code class="docutils literal notranslate"><span class="pre">my_module</span></code>. It can then be called as if it were part of the main file: <code class="docutils literal notranslate"><span class="pre">my_function()</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_module</span> <span class="pre">as</span> <span class="pre">mm</span></code> imports the module <code class="docutils literal notranslate"><span class="pre">my_module</span></code> and calls it <code class="docutils literal notranslate"><span class="pre">mm</span></code>. Convenient when the name of the module is very long. The functions in the module can be called as <code class="docutils literal notranslate"><span class="pre">mm.one_of_my_functions()</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">my_module</span> <span class="pre">import</span> <span class="pre">*</span></code>. Avoid doing this! <em>Why?</em> – to avoid name conflicts!</p></li>
-</ul>
-<p>You can also access variables written into modules: <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_module</span></code>, then do: <code class="docutils literal notranslate"><span class="pre">my_module.one_of_my_variables</span></code></p>
-</section>
-<section id="python-packages">
-<h3>Python packages<a class="headerlink" href="#python-packages" title="Link to this heading">#</a></h3>
-<p>A Python package is simply a directory of Python modules (quite like an <code class="docutils literal notranslate"><span class="pre">R</span></code> package). A number of packages, such as the following particularly useful ones, are always available as standard libraries (just require <code class="docutils literal notranslate"><span class="pre">import</span></code> from within python or ipython):</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">io</span></code>: file input-output with <code class="docutils literal notranslate"><span class="pre">.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">.txt</span></code>, etc.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">subprocess</span></code>: to run other programs, including multiple ones at the same time, including operating system-dependent functionality</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">math</span></code>: for mathematical functions</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sqlite3</span></code>: for manipulating and querying <code class="docutils literal notranslate"><span class="pre">sqlite</span></code> databases</p></li>
-</ul>
-<p>Scores of other packages are accessible by explicitly installing them using <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">python-packagename</span></code> (as you did previously) or by using <code class="docutils literal notranslate"><span class="pre">pip</span></code>. Some particularly mentionable ones are:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="http://scipy.org"><code class="docutils literal notranslate"><span class="pre">sciPy</span></code></a> contains a wide array of numerical tools for scientific computing, including <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>
-for efficient data crunching</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> for plotting (very matlab-like, requires <code class="docutils literal notranslate"><span class="pre">scipy</span></code>) (all packaged in <code class="docutils literal notranslate"><span class="pre">pylab</span></code>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> for manipulating data, and comes with a DataFrame object similar to the <code class="docutils literal notranslate"><span class="pre">R</span></code> data frame.</p></li>
-<li><p><a class="reference external" href="http://scikit-learn.org"><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></a> for applying different machine learning algorithms to data</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ipython</span></code> is an enhanced python terminal (which you are currently using)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">jupyter</span></code> is an interactive notebook environment for data analysis, visualization, and creation of documents that can be shared. This course is written entirely as Jupyter notebooks.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">scrapy</span></code> allows you to write efficient programs that <a class="reference external" href="https://en.wikipedia.org/wiki/Web_crawler">crawl</a> through web sites and extract data from them</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">beautifulsoup4</span></code> can be used for parsing HTML and XML to extract data (can do a lot of what <code class="docutils literal notranslate"><span class="pre">scrapy</span></code> does)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">biopython</span></code> for bioinformatics. Check out the <a class="reference external" href="http://biopython.org/DIST/docs/tutorial/Tutorial.html">worked examples</a> in particular.</p></li>
-</ul>
-<p>We will use many of these in the <a class="reference internal" href="#"><span class="std std-doc">Advanced Python Chapter</span></a>.</p>
 </section>
 </section>
 <section id="id1">
@@ -5918,8 +5930,8 @@ from the end of an array:</p>
 <section id="the-lotka-volterra-model">
 <h5>The Lotka-Volterra model<a class="headerlink" href="#the-lotka-volterra-model" title="Link to this heading">#</a></h5>
 <p>Now let’s try numerical integration in Python for solving a classical model in biology — the Lotka-Volterra (LV) model for a predator-prey system in two-dimensional space (e.g., on land). The LV model is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dba0abbd-2b81-4be4-a598-d326fc9ee93c">
-<span class="eqno">(2)<a class="headerlink" href="#equation-dba0abbd-2b81-4be4-a598-d326fc9ee93c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c78673f8-6d38-4d7e-8c23-92a9ff00f976">
+<span class="eqno">(2)<a class="headerlink" href="#equation-c78673f8-6d38-4d7e-8c23-92a9ff00f976" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dR}{dt} &amp;= r R - a C R  \nonumber \\
     \frac{dC}{dt} &amp;= - z C + e a C R
 \end{align}\]</div>
@@ -6339,8 +6351,8 @@ from the end of an array:</p>
 <p><em>But remember, don’t go crazy with profiling for the sake of shaving a couple of milliseconds, tempting as that may be!</em></p>
 </section>
 </section>
-<section id="vectorization-revisited">
-<h2>Vectorization revisited<a class="headerlink" href="#vectorization-revisited" title="Link to this heading">#</a></h2>
+<section id="vectorization">
+<h2>Vectorization<a class="headerlink" href="#vectorization" title="Link to this heading">#</a></h2>
 <p>We have now had fairly extensive practice in iteratively creating solutions to problems using for loops. Thus far all our problems have been mathematically quite straightforward, and not very computationally intensive. As you begin to move on from your taught modules into project work, you may find yourselves solving larger and more complex problems, at which point you will start to discover that for-loops have a fundamental weakness - speed!</p>
 <p>In a nutshell, there are two issues keeping loops slow:</p>
 <ul class="simple">
@@ -6478,8 +6490,8 @@ vectorized method took 100.99498260242399 ms on average.
 <h3>The Lotka-Volterra model revisited<a class="headerlink" href="#the-lotka-volterra-model-revisited" title="Link to this heading">#</a></h3>
 <p><em>What happens when the Consumer population <span class="math notranslate nohighlight">\(C\)</span> goes extinct in the Lotka-Volterra that you encountered above</em>?</p>
 <p>If the consumer population goes extinct, the resources grow to infinity! This is not biologically realistic, of course. To address this, we can introduce density dependence to the resource population <span class="math notranslate nohighlight">\(\left(1 - \frac{R} {K}\right)\)</span>, which changes the ODE system to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7eaa2217-99de-4646-880c-8c7b2d761ac7">
-<span class="eqno">(3)<a class="headerlink" href="#equation-7eaa2217-99de-4646-880c-8c7b2d761ac7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1ec803f5-ea1b-4702-a1b3-e329e9746f32">
+<span class="eqno">(3)<a class="headerlink" href="#equation-1ec803f5-ea1b-4702-a1b3-e329e9746f32" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dR}{dt} &amp;= r R \left(1 - \frac{R} {K}\right) - a C R\\
     \frac{dC}{dt} &amp;= - z C + e a C R
 \end{align}\]</div>
@@ -6509,8 +6521,8 @@ vectorized method took 100.99498260242399 ms on average.
 <ul class="simple">
 <li><p>Write a discrete-time version of the LV model called <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>. The discrete-time model is:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-7927e9d7-b395-4d19-8bb0-532b21533a89">
-<span class="eqno">(4)<a class="headerlink" href="#equation-7927e9d7-b395-4d19-8bb0-532b21533a89" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-c570400b-9807-4b25-bce6-22bac9334ba1">
+<span class="eqno">(4)<a class="headerlink" href="#equation-c570400b-9807-4b25-bce6-22bac9334ba1" title="Permalink to this equation">#</a></span>\[\begin{align} 
     R_{t+1} &amp;= R_t (1 + r \left(1 - \frac{R_t}{K}\right) - a C_t)\\ 
     C_{t+1} &amp;= C_t (1 - z + e a R_t) 
 \end{align}\]</div>
@@ -6521,14 +6533,14 @@ vectorized method took 100.99498260242399 ms on average.
 <ul class="simple">
 <li><p>Write a version of the discrete-time model (which you implemented in <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>) simulation with a random gaussian fluctuation in resource’s growth rate at each time-step:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-86631426-030f-427e-b73f-dfcb3f4cfd47">
-<span class="eqno">(5)<a class="headerlink" href="#equation-86631426-030f-427e-b73f-dfcb3f4cfd47" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d36928d6-ed7b-4460-9035-4717a94bb773">
+<span class="eqno">(5)<a class="headerlink" href="#equation-d36928d6-ed7b-4460-9035-4717a94bb773" title="Permalink to this equation">#</a></span>\[\begin{align}
         R_{t+1} &amp;= R_t (1 + (r + \epsilon) \left(1 - \frac{R_t}{K}\right)- a C_t)\\
         C_{t+1} &amp;= C_t (1 - z + e a R_t)
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random fluctuation drawn from a gaussian distribution (use <code class="docutils literal notranslate"><span class="pre">sc.stats</span></code> or <code class="docutils literal notranslate"><span class="pre">np.random</span></code>). Include this script in <code class="docutils literal notranslate"> <span class="pre">run_LV.py</span></code>, and profile it as well. You can also add fluctuations to both populations simultaneously this way:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-84f66f85-d0bd-4ced-934b-f8d28e8ab571">
-<span class="eqno">(6)<a class="headerlink" href="#equation-84f66f85-d0bd-4ced-934b-f8d28e8ab571" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-34aef752-35c1-47a7-8f4d-bcf35ef50a09">
+<span class="eqno">(6)<a class="headerlink" href="#equation-34aef752-35c1-47a7-8f4d-bcf35ef50a09" title="Permalink to this equation">#</a></span>\[\begin{align}
     R_{t+1} &amp;= R_t (1 + (r + \epsilon)  \left(1 - \frac{R_t}{K}\right) - a C_t)\\
     C_{t+1} &amp;= C_t (1 - (z + \epsilon) + e a R_t)
 \end{align}\]</div>
@@ -7601,6 +7613,30 @@ python script. A simple example, where the output is a platform-dependent direct
 </section>
 <section id="readings-and-resources">
 <h2>Readings and Resources<a class="headerlink" href="#readings-and-resources" title="Link to this heading">#</a></h2>
+<section id="python-packages">
+<h3>Python packages<a class="headerlink" href="#python-packages" title="Link to this heading">#</a></h3>
+<p>A Python package is simply a directory of Python modules (quite like an <code class="docutils literal notranslate"><span class="pre">R</span></code> package). A number of packages, such as the following particularly useful ones, are always available as standard libraries (just require <code class="docutils literal notranslate"><span class="pre">import</span></code> from within python or ipython):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">io</span></code>: file input-output with <code class="docutils literal notranslate"><span class="pre">.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">.txt</span></code>, etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subprocess</span></code>: to run other programs, including multiple ones at the same time, including operating system-dependent functionality</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">math</span></code>: for mathematical functions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sqlite3</span></code>: for manipulating and querying <code class="docutils literal notranslate"><span class="pre">sqlite</span></code> databases</p></li>
+</ul>
+<p>Scores of other packages are accessible by explicitly installing them using <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">python-packagename</span></code> (as you did previously) or by using <code class="docutils literal notranslate"><span class="pre">pip</span></code>. Some particularly mentionable ones are:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://scipy.org"><code class="docutils literal notranslate"><span class="pre">sciPy</span></code></a> contains a wide array of numerical tools for scientific computing, including <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>
+for efficient data crunching</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> for plotting (very matlab-like, requires <code class="docutils literal notranslate"><span class="pre">scipy</span></code>) (all packaged in <code class="docutils literal notranslate"><span class="pre">pylab</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> for manipulating data, and comes with a DataFrame object similar to the <code class="docutils literal notranslate"><span class="pre">R</span></code> data frame.</p></li>
+<li><p><a class="reference external" href="http://scikit-learn.org"><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></a> for applying different machine learning algorithms to data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ipython</span></code> is an enhanced python terminal (which you are currently using)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jupyter</span></code> is an interactive notebook environment for data analysis, visualization, and creation of documents that can be shared. This course is written entirely as Jupyter notebooks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scrapy</span></code> allows you to write efficient programs that <a class="reference external" href="https://en.wikipedia.org/wiki/Web_crawler">crawl</a> through web sites and extract data from them</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">beautifulsoup4</span></code> can be used for parsing HTML and XML to extract data (can do a lot of what <code class="docutils literal notranslate"><span class="pre">scrapy</span></code> does)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">biopython</span></code> for bioinformatics. Check out the <a class="reference external" href="http://biopython.org/DIST/docs/tutorial/Tutorial.html">worked examples</a> in particular.</p></li>
+</ul>
+<p>We will use many of these in the <a class="reference internal" href="#"><span class="std std-doc">Advanced Python Chapter</span></a>. You can look up <a class="reference external" href="https://docs.python.org/3/library/index.html">https://docs.python.org/3/library/index.html</a> – Read about the packages you think will be important to you.</p>
+</section>
 <section id="general">
 <h3>General<a class="headerlink" href="#general" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -7642,12 +7678,6 @@ python script. A simple example, where the output is a platform-dependent direct
 <h3>Functions, Modules, and Classes<a class="headerlink" href="#functions-modules-and-classes" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>For functions vs. modules vs. classes in Python, have a look <a class="reference external" href="http://learnpythonthehardway.org/book/ex40.html">at this</a></p></li>
-</ul>
-</section>
-<section id="id8">
-<h3>Python Packages<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Look up <a class="reference external" href="https://docs.python.org/3/library/index.html">https://docs.python.org/3/library/index.html</a> – Read about the packages you think will be important to you</p></li>
 </ul>
 </section>
 <section id="scientific-computing">
@@ -7809,6 +7839,10 @@ And this exercise: <a class="reference external" href="https://developers.google
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-csv-s">Handling <code class="docutils literal notranslate"><span class="pre">csv</span></code>’s</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-code-compartmentalization">Modules and code compartmentalization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing Modules</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-python-programs">Writing Python programs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-python-program">Components of the Python program</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shebang">The shebang</a></li>
@@ -7822,6 +7856,7 @@ And this exercise: <a class="reference external" href="https://developers.google
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-program-with-control-flows-example">A program-with-control-flows example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-control-flow-py">Modules and <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals">Practicals</a><ul class="nav section-nav flex-column">
@@ -7841,11 +7876,6 @@ And this exercise: <a class="reference external" href="https://developers.google
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-that-cannot-be-debugged">Errors that cannot be debugged</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-code-compartmentalization">Modules and code compartmentalization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing Modules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages">Python packages</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Practicals</a><ul class="nav section-nav flex-column">
@@ -7888,7 +7918,7 @@ And this exercise: <a class="reference external" href="https://developers.google
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-profiling-with-timeit">Quick profiling with <code class="docutils literal notranslate"><span class="pre">timeit</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorization-revisited">Vectorization revisited</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorization">Vectorization</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example">An example</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-vectorize">When to vectorize?</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#no-free-lunch">“No free lunch!”</a></li>
@@ -7937,13 +7967,13 @@ And this exercise: <a class="reference external" href="https://developers.google
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-and-resources">Readings and Resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages">Python packages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general">General</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">IPython</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Python data structures</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elements-of-the-python-program">Elements of the Python program</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-and-debugging">Errors and Debugging</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-modules-and-classes">Functions, Modules, and Classes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Python Packages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scientific-computing">Scientific computing</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-expressions">Regular expressions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-stuff">Other stuff</a></li>
