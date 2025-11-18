@@ -22,7 +22,7 @@ multinomial <- function(pool, probs) {
   }
   death = 1 - sum(probs) # death prob
   probd = c(probs, death) # merge them
-  x = as.vector(rmultinom(n=11, pool, probd)) # sample
+  x = as.vector(rmultinom(n=1, pool, probd)) # sample
   return(x[1:length(probs)])
 }
 
