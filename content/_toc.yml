@@ -3,27 +3,19 @@ root: intro
 parts:
 - caption: Computing
   chapters:
+  - file: part-computing
   - file: notebooks/unix
   - file: notebooks/shell-scripting
   - file: notebooks/git
   - file: notebooks/latex
   - file: notebooks/python
+    sections:
+    - file: notebooks/object-oriented-programming
   - file: notebooks/r
-
-- caption: Ecological & Evolutionary Modelling
-  chapters:
-  # - file: intro-e-n-e-modelling
-  # - file: notebooks/turbulent-marriage
-  - file: notebooks/metabolic-basis
-  - file: notebooks/populations
-  - file: notebooks/interactions
-  # - file: notebooks/Ecosystems
-  # - file: notebooks/Space
-  - file: references.md
 
 - caption: Basic Data Analyses and Statistics
   chapters:
-  - file: intro-stats
+  - file: part-basic-stats
   - file: notebooks/data-r
   - file: notebooks/exp-design
   - file: notebooks/t-f-tests
@@ -33,21 +25,61 @@ parts:
   - file: notebooks/mul-expl-inter
   - file: notebooks/model-simp
 
+- caption: Advanced Modelling & Statistics Pre-work
+  chapters:
+  - file: part-prework
+  - file: notebooks/mqb-prework-exercises
+    sections:
+    - file: notebooks/mqb-prework-solutions
+
+- caption: Ecological & Evolutionary Modelling
+  chapters:
+  - file: part-eemodelling
+  # - file: intro-e-n-e-modelling
+  # - file: notebooks/turbulent-marriage
+  - file: notebooks/metabolic-basis
+  - file: notebooks/populations
+  - file: notebooks/interactions
+  # - file: notebooks/Ecosystems
+  # - file: notebooks/Space
+
 - caption: Advanced Data Analyses and Statistics
   chapters:
+  - file: part-advanced-stats
   - file: notebooks/glms
+  - file: notebooks/time-series
   - file: notebooks/nlls
+    sections:
+    - file: notebooks/nlls-python
   - file: notebooks/mle
-  # - file: notebooks/bayesian
+
+- caption: Assignments and Assessments
+  chapters:
+  - file: part-assignments
+  - file: notebooks/appendix-assessment
+  - file: notebooks/appendix-mini-proj
 
 - caption: Appendices
   chapters:
-  - file: notebooks/appendix-jupy-intro
-  - file: notebooks/appendix-data-python
-  - file: notebooks/appendix-maths
-  - file: notebooks/appendix-mathsforbiologists/maths-for-biologists
-  - file: notebooks/appendix-databases
-  - file: notebooks/appendix-nlls-python
-  - file: notebooks/appendix-mini-proj
-  - file: notebooks/appendix-assessment
-  - file: notebooks/appendix-high-performance-computing
+  - file: part-appendices
+  - file: appendices/tooling
+    sections:
+    - file: notebooks/appendix-jupy-intro
+    - file: notebooks/appendix-databases
+
+  - file: appendices/data-python
+    sections:
+    - file: notebooks/appendix-data-python
+
+  - file: appendices/maths
+    sections:
+    - file: notebooks/appendix-maths
+    - file: notebooks/appendix-mathsforbiologists/maths-for-biologists
+
+  - file: appendices/performance
+    sections:
+    - file: notebooks/appendix-high-performance-computing
+
+- caption: References
+  chapters:
+  - file: references.md
