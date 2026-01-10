@@ -1,9 +1,9 @@
-# CHAPTER 5. LINEAR MODELS: REGRESSION
+# CHAPTEr 5. LINEAr MODELS: rEGrESSION
 
-# This script uses genome size and morphology data to explore regression in R
+# This script uses genome size and morphology data to explore regression in r
 
 # (1) Load the data
-genome <- read.csv('../data/GenomeSize.csv')
+genome <- read.csv('../data/genome_size.csv')
 
 # (2) look at pairwise plots of all variables
 pairs(genome)
@@ -15,10 +15,10 @@ pairs(genome[, morpho], col=genome$Suborder)
 
 # (4) Look at pairwise correlation coefficients and a correlation test
 cor(genome[, morpho], use='pairwise')
-cor.test(genome$GenomeSize, genome$TotalLength, use='pairwise')
+cor.test(genome$genome_size, genome$TotalLength, use='pairwise')
 
 # (5) log transform the key variables
-genome$logGS <- log(genome$GenomeSize)
+genome$logGS <- log(genome$genome_size)
 genome$logBW <- log(genome$BodyWeight)
 genome$logTL <- log(genome$TotalLength)
 genome$logFL <- log(genome$ForewingLength)

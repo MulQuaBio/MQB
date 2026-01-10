@@ -1,10 +1,10 @@
-CREATE VIEW bigtb AS
-SELECT * FROM
+CrEATE VIEW bigtb AS
+SELECT * FrOM
 communities cc 
-INNER JOIN sites ss
+INNEr JOIN sites ss
 ON cc.IDsite = ss.IDsite
-INNER JOIN species sp
+INNEr JOIN species sp
 ON cc.IDspecies = sp.IDspecies
-INNER JOIN reference rr
+INNEr JOIN reference rr
 ON ss.IDreference = rr.IDref;
 

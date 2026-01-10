@@ -8,7 +8,7 @@ Here is a list of the prerequisite computing and mathematics skills and topics y
 
 ## Prerequisites
 
-### Maximum Likelihood and Bayesian Methods in Ecology and Evolution
+### Maximum Likelihood and bayesian Methods in Ecology and Evolution
 
 1. *Understanding and analysing functions* (e.g., as a ``height'' over a parameter space).
 
@@ -35,5 +35,5 @@ All of the above, and in addition,
    - Familiarity with the definitions and significance of eigenvectors and eigenvalues.
 
 4. *Computing and Software Installation Skills*  
-   - Ability to troubleshoot R/Python environment setups.  
+   - Ability to troubleshoot r/Python environment setups.  
    - Installing and configuring libraries like Keras/TensorFlow in Linux/UNIX.

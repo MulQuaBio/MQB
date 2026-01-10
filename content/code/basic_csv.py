@@ -1,6 +1,6 @@
 import csv
 
-# Read a file containing:
+# read a file containing:
 # 'Species','Infraorder','Family','Distribution','Body mass male (Kg)'
 with open('../data/testcsv.csv','r') as f:
     

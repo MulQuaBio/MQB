@@ -143,7 +143,7 @@ The result of dynamic linkage can be a much smaller executable, but this executa
 
 In this module, we will compile dynamically linked libraries as these are most useful when calling C from a non-C environment. 
 These are normally saved as a `.so` (for shared object) file.
-Compiling a dynamically linked library on a Unix-like machine is as simple as:
+Compiling a dynamically linked library on a unix-like machine is as simple as:
 
 ```bash
 gcc -shared -o libmycalc.so -fPIC mycalculator.c
@@ -228,14 +228,14 @@ dataptr = NULL;
 We use this so often that we might like to create a shorthand for it. We can do this with a function-like macro:
 
 ```C
-#define CFREE(x) {free(x); x = NULL;}
+#define CFrEE(x) {free(x); x = NULL;}
 ```
 
 If we wish, we can write this on separate lines. 
 However, because preprocessor directives are terminated by carriage returns (newline), we need to escape them with a `\`:
 
 ```C
-#define CFREE(x) { \ 
+#define CFrEE(x) { \ 
                     free(x); \
                     x = NULL; \
                  }
@@ -243,10 +243,10 @@ However, because preprocessor directives are terminated by carriage returns (new
 
 Whatever is passed into the argument as 'x' in this case will be included in the text when this macro is expanded by the preprocessor.
 
-Returning to the example above, to free and clear a pointer, we would simply write:
+returning to the example above, to free and clear a pointer, we would simply write:
 
 ```C
-CFREE(dataptr)
+CFrEE(dataptr)
 ```
 
 This will get expanded to:

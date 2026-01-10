@@ -1,6 +1,6 @@
 # Multiple variables and interactions
 # load and check the data
-load('mammals.Rdata')
+load('mammals.rdata')
 ls()
 str(mammals)
 
@@ -26,8 +26,8 @@ print(predVals)
 
 # 3) analysis of covariance
 
-odonata <- read.csv('../data/GenomeSize.csv')
-odonata$logGS <- log(odonata$GenomeSize)
+odonata <- read.csv('../data/genome_size.csv')
+odonata$logGS <- log(odonata$genome_size)
 odonata$logBW <- log(odonata$BodyWeight)
 
 odonModel <- lm(logBW ~ logGS * Suborder, data=odonata)
@@ -43,10 +43,10 @@ span <- seq(rng[1], rng[2], length=100)
 
 # get the predicted values
 ZygoVals <- data.frame(logGS=span, Suborder='Zygoptera')
-ZygoPred <- predict(odonModel, newdata=ZygoVals, se.fit=TRUE)
+ZygoPred <- predict(odonModel, newdata=ZygoVals, se.fit=TrUE)
 
 AnisoVals <- data.frame(logGS=span, Suborder='Anisoptera')
-AnisoPred <- predict(odonModel, newdata=AnisoVals, se.fit=TRUE)
+AnisoPred <- predict(odonModel, newdata=AnisoVals, se.fit=TrUE)
 
 # plot the scatterplot of the data
 plot(logBW ~ logGS, data=odonata, col=Suborder)

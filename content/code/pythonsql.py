@@ -10,20 +10,20 @@ c = conn.cursor()
 # use the cursor to execute the queries
 # use the triple single quote to write 
 # queries on several lines
-c.execute('''CREATE TABLE Test
-           (ID INTEGER PRIMARY KEY, 
-           MyVal1 INTEGER,
+c.execute('''CrEATE TABLE Test
+           (ID INTEGEr PrIMArY KEY, 
+           MyVal1 INTEGEr,
            MyVal2 TEXT)''')
 
-#~c.execute('''DROP TABLE test''')
+#~c.execute('''DrOP TABLE test''')
            
 # insert the records. note that because
 # we set the primary key, it will auto-increment
 # therefore, set it to NULL
-c.execute('''INSERT INTO Test VALUES 
+c.execute('''INSErT INTO Test VALUES 
            (NULL, 3, 'mickey')''')
 
-c.execute('''INSERT INTO Test VALUES 
+c.execute('''INSErT INTO Test VALUES 
            (NULL, 4, 'mouse')''')
 
 # when you "commit", all the commands will 
@@ -31,14 +31,14 @@ c.execute('''INSERT INTO Test VALUES
 conn.commit()
 
 # now we select the records
-c.execute("SELECT * FROM TEST")
+c.execute("SELECT * FrOM TEST")
 
 # access the next record:
 print c.fetchone()
 print c.fetchone()
 
 # let's get all the records at once
-c.execute("SELECT * FROM TEST")
+c.execute("SELECT * FrOM TEST")
 print c.fetchall()
 
 # insert many records at once: 
@@ -48,7 +48,7 @@ manyrecs = [(5, 'goofy'),
             (7, 'duck')]
 
 # now call executemany
-c.executemany('''INSERT INTO test 
+c.executemany('''INSErT INTO test 
                  VALUES(NULL, ?, ?)''', manyrecs)
 
 # and commit
@@ -56,7 +56,7 @@ conn.commit()
 
 # now let's fetch the records
 # we can use the query as an iterator!
-for row in c.execute('SELECT * FROM test'):
+for row in c.execute('SELECT * FrOM test'):
     print 'Val', row[1], 'Name', row[2]
 
 # close the connection before exiting

@@ -1,6 +1,6 @@
 MyFunction <- function(Arg1, Arg2){
   ## statements
-  return (ReturnValue)
+  return (returnValue)
 }
 
 ## Computes the Position^th Fibonacci

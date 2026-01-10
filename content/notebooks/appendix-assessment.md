@@ -8,7 +8,7 @@ In computer-based tests, you will be expected to apply the concepts and techniqu
 
 ## Assessment of Practicals
 
-Both the correctness and quality of your practical work/solutions, and whether you are following good programming and workflow practices, will be assessed: how well you have learned the principles and implementation of **keeping workflows/pipelines/software organised and reusable** and **good coding practices**, _irrespective of programming language_ (please refer back to the start of the [UNIX](Unix) and [Python](Python) chapters in particular).
+Both the correctness and quality of your practical work/solutions, and whether you are following good programming and workflow practices, will be assessed: how well you have learned the principles and implementation of **keeping workflows/pipelines/software organised and reusable** and **good coding practices**, _irrespective of programming language_ (please refer back to the start of the [UNIX](unix) and [Python](python) chapters in particular).
 
 ```{Note}
 Lowercase for directory names below is a suggestion—just be consistent with whatever you choose, such as [CamelCase](https://en.wikipedia.org/wiki/Camel_case); for example, you may choose to name your `code` directory `Code` instead.
@@ -34,9 +34,9 @@ When necessary, more specific, module-specific details on weekly coursework and 
 
 Do this after you finish an assignment, and before submission:
 
-* Review and make sure you can run all the commands, code fragments, and named scripts you have built so far and get the expected outputs.
+* review and make sure you can run all the commands, code fragments, and named scripts you have built so far and get the expected outputs.
     
-* Review your code files and annotate/comment code lines as much and as often as necessary using `#`.
+* review your code files and annotate/comment code lines as much and as often as necessary using `#`.
     
 * Check that all code, data, and results files are organised as instructed above in your weekly directory.
     
@@ -57,7 +57,7 @@ Your project (e.g., weekly) directories will be checked for how neat and organis
     
 * The scripts are all up to the mark in terms of internal documentation (e.g., docstrings in the case of Python) and commenting.
     
-* There is a good `README` file for the overall repository and for each of the weekly directories.
+* There is a good `readme` file for the overall repository and for each of the weekly directories.
     
 * The `results` directory is empty (no pre-existing results).
     
@@ -68,7 +68,7 @@ Your project (e.g., weekly) directories will be checked for how neat and organis
 
 ### Group work execution
 
-#### Repository setup and access
+#### repository setup and access
 
 * Each student group will assign a "scribe" to the group who will create a **new Group work repository** where all assigned group work practicals will be tackled collaboratively.
     
@@ -94,21 +94,21 @@ All group members are expected to contribute meaningfully to the project. The Gi
     
 * **Write descriptive commit messages**: Use clear, informative commit messages that explain what was changed and why (e.g., "Add data validation function for tree heights" rather than "update code").
     
-* **Participate in code reviews**: Comment on pull requests, suggest improvements, and engage in technical discussions (visible in PR comments).
+* **Participate in code reviews**: Comment on pull requests, suggest improvements, and engage in technical discussions (visible in Pr comments).
     
-* **Document your work**: Contribute to code comments, docstrings, and README documentation.
+* **Document your work**: Contribute to code comments, docstrings, and readme documentation.
     
 * **Share responsibilities**: Aim for a balanced distribution of coding, testing, documentation, and debugging tasks across all team members.
 
-#### Required documentation
+#### required documentation
 
-Each group work repository must include a `CONTRIBUTIONS.md` file in the root directory that documents:
+Each group work repository must include a `CONTrIBUTIONS.md` file in the root directory that documents:
 
 * The name and role(s) of each team member
 * A brief description of each member's specific contributions (e.g., "Implemented data import functions", "Wrote unit tests", "Created visualization code", "Debugged edge cases and improved error handling")
 * Any challenges faced and how they were resolved as a team
 
-This file should be updated collaboratively and reflect the actual work distribution. A template is available at [`CONTRIBUTIONS_template.md`](CONTRIBUTIONS_template.md) to help you get started.
+This file should be updated collaboratively and reflect the actual work distribution. A template is available at [`contributions-template.md`](contributions-template.md) to help you get started.
 
 #### Assessing individual contributions
 
@@ -121,7 +121,7 @@ Your individual grade for group work will be determined by:
     * Complexity and significance of code contributed
     * Participation in code reviews and discussions
     * Contributions to documentation and testing
-    * Accuracy of the `CONTRIBUTIONS.md` documentation
+    * Accuracy of the `CONTrIBUTIONS.md` documentation
 
 A group member who does not contribute meaningfully (as evidenced by Git history and peer feedback) may receive a significantly reduced grade, even if the group's solution is excellent.
 
@@ -131,7 +131,7 @@ After the final submission, each team member will complete a brief confidential 
 
 * Contribution to coding and problem-solving
 * Communication and collaboration
-* Reliability and meeting commitments
+* reliability and meeting commitments
 * Overall contribution to the team's success
 
 Significant discrepancies between Git history and peer assessments will be investigated and may affect individual grades.
@@ -151,10 +151,10 @@ The instructor can provide mediation, reassign work, or adjust individual grades
 * **Start early**: Begin work within the first few days of receiving the assignment.
 * **Commit regularly**: Aim for commits spread across multiple days/weeks, not concentrated in the final 24 hours.
 * **Coordinate meetings**: Schedule regular team meetings (online or in-person) to discuss progress, divide tasks, and resolve issues.
-* **Review before submission**: Allow time for final code review, testing, and documentation polish before the deadline.
+* **review before submission**: Allow time for final code review, testing, and documentation polish before the deadline.
 
 ```{Note}
-Please read about Git branching and merging during teamwork in the [Git Chapter](Git), including the "**Common Mistakes to avoid…**" listed there. Please also check the Readings & Resources at the end of the chapter.
+Please read about git branching and merging during teamwork in the [git Chapter](git), including the "**Common Mistakes to avoid…**" listed there. Please also check the readings & resources at the end of the chapter.
 ```
 
 #### Group work assessment
@@ -163,7 +163,7 @@ Every "Group work" question/script completed will be assessed using the criteria
 
 * The quality and correctness of the submitted code
 * The Git repository history (commits, branches, merges)
-* The `CONTRIBUTIONS.md` documentation
+* The `CONTrIBUTIONS.md` documentation
 * Peer assessment feedback
 * Individual contribution patterns and engagement
 
@@ -189,7 +189,7 @@ Here are some guidelines to help you make appropriate use of AI in your coding j
 
 Leverage AI to understand concepts and get unstuck, but avoid relying on it to do the work for you.
 
-*Example:* If you're struggling to understand how a recursive function (recall the [Python Chapter](Python)) works, you might ask an AI tool to explain the concept or provide a simple example. Use this information to deepen your understanding and then attempt to write your own recursive function.
+*Example:* If you're struggling to understand how a recursive function (recall the [Python Chapter](python)) works, you might ask an AI tool to explain the concept or provide a simple example. Use this information to deepen your understanding and then attempt to write your own recursive function.
 
 2. **Understand and Verify AI-Generated Code**
 
@@ -215,7 +215,7 @@ Employ AI to practice coding challenges and improve your skills, not just to get
 
 *Example:* When practicing coding problems, you might attempt a problem on your own first. If you get stuck, use the AI to get hints or alternative approaches, then try solving the problem again without directly copying the solution.
 
-6. **Cite AI Assistance When Required**
+6. **Cite AI Assistance When required**
 
 Acknowledge the use of AI tools in your work if your academic or professional guidelines require it.
 
@@ -229,7 +229,7 @@ Strive to solve coding problems on your own to build confidence and proficiency.
 
 8. **Be Aware of AI's Limitations**
 
-Recognize that AI tools can sometimes provide incorrect or suboptimal solutions.
+recognize that AI tools can sometimes provide incorrect or suboptimal solutions.
 
 *Example:* If an AI suggests a piece of code, test it thoroughly. Suppose the AI provides a function that doesn't handle edge cases properly; identifying and correcting this strengthens your debugging skills.
 
@@ -257,7 +257,7 @@ Share your insights and understanding gained from AI assistance with classmates,
 
 *Example:* If an AI tool helped you grasp a difficult concept, consider explaining it to study group members or participating in class discussions to help others benefit from your newfound understanding.
 
-By following these guidelines, you can make the most of AI tools to enhance your coding skills while maintaining academic integrity and personal growth. Remember, the goal of using AI in coding is to support your learning journey, *not* to replace the valuable process of learning through practice and problem-solving.
+By following these guidelines, you can make the most of AI tools to enhance your coding skills while maintaining academic integrity and personal growth. remember, the goal of using AI in coding is to support your learning journey, *not* to replace the valuable process of learning through practice and problem-solving.
 
 ---
 *Alright, full steam ahead then!*

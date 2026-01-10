@@ -5,7 +5,7 @@ for(counter in 1:10){
 }
 
 for(counter in 2:6){
-  print("I like R!")
+  print("I like r!")
 }
 
 for(counter in 1:10){
@@ -23,7 +23,7 @@ for(species in c('Heliodoxa rubinoides',
   print(paste('The species is', species))
 }
 
-for(l in LETTERS){
+for(l in LETTErS){
   print(l)
 }
 

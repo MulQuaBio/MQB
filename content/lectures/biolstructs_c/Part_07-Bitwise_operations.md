@@ -2,7 +2,7 @@
 
 When I first encountered bitwise operations, I skimmed the chapter. I thought this wasn't really relevant to anything I'd likely be programming. The whole process seemed to be more concerned with systems programming. Why would I want to be able to manipulate individual bits? It turns out, a lot of logical operations can be made *vastly* more efficient using bitwise operations. The initial overhead to set up a bitwise operations environment can be a bit tedious, but once you have it, logical and set comparisons can be conducted extremely quickly, reducing your loop and condition overheads immensely.
 
-Bitwise operations exist in other languages, such as Python and R (even MS Excel has macros for these!), so what you will learn here will be applicable in those languages (even if you think you're struggling with C). 
+Bitwise operations exist in other languages, such as Python and r (even MS Excel has macros for these!), so what you will learn here will be applicable in those languages (even if you think you're struggling with C). 
 
 ## Bits and bytes
 
@@ -10,7 +10,7 @@ Working in binary is a bit unintuitive. Most of what we will learn about in this
 
 One **bit** refers to one *binary digit*. A binary digit can therefore be one of two states: 0 or 1. 
 
-Bits are packed into units called **bytes**. A byte is typically 8 bits wide on most modern systems. However, I believe it is considered unsafe to assume that a byte will be 8 bits on all systems. In one of the exercises in this section, you will use your knowledge of bitwise operations to test the bit width of a byte on your machine. If there's a risk, the C standard library defines a macro `CHAR_BIT` that will expand to the number of bits in a byte on the target system.
+Bits are packed into units called **bytes**. A byte is typically 8 bits wide on most modern systems. However, I believe it is considered unsafe to assume that a byte will be 8 bits on all systems. In one of the exercises in this section, you will use your knowledge of bitwise operations to test the bit width of a byte on your machine. If there's a risk, the C standard library defines a macro `CHAr_BIT` that will expand to the number of bits in a byte on the target system.
 
 The following table shows how the first seven decimal numbers are represented in binary:
 
@@ -46,9 +46,9 @@ Does the job of setting all bits for us.
 The following lists the basic bitwise operators in C.
 
 ```
-|	bitwise OR
+|	bitwise Or
 &	bitwise AND
-^	exclusive OR (XOR) operator
+^	exclusive Or (XOr) operator
 ~	bitwise inverse operator (ones complement)
 >>	right-shift operator
 <<	left-shift operator
@@ -56,7 +56,7 @@ The following lists the basic bitwise operators in C.
 
 The first three operators are just like the arithmetic operators in that they take two operands and return a result. The `~` operator works on a single operand. 
 
-As you can see, some of them resemble the logical comparison operators. The bitwise OR, AND, and XOR operators work, in effect, by aligning two variabes 'by-the-bit' and comparing them according to particular logical operations.
+As you can see, some of them resemble the logical comparison operators. The bitwise Or, AND, and XOr operators work, in effect, by aligning two variabes 'by-the-bit' and comparing them according to particular logical operations.
 
 To show the way these operators work, I'll work in 8-bit and use the following notation:
 
@@ -113,9 +113,9 @@ Obviously, if two variables share no set bits in common, then the result is simp
 
 The bitwise AND operator is therefore analogous to the logical *intersection* operation.
 
-### Bitwise OR: `|`
+### Bitwise Or: `|`
 
-The bitwise OR operator works by combining all set bits in *either* operand:
+The bitwise Or operator works by combining all set bits in *either* operand:
 
 ```
 01100010 
@@ -124,9 +124,9 @@ The bitwise OR operator works by combining all set bits in *either* operand:
 01110110 
 ```
 
-The bitwise OR operator is therefore analogous to the logical *union* operator.
+The bitwise Or operator is therefore analogous to the logical *union* operator.
 
-### Exclusive OR (XOR) operator: `^`
+### Exclusive Or (XOr) operator: `^`
 
 This operator works by setting only those bits that are set in one or the other operand, but not both:
 
@@ -149,7 +149,7 @@ The bitwise inverse or ones complement operator 'flips' the bits into their inve
 ```
 If you remember from above, we could set all the bits in a signed integer simply by setting that variable to -1. Another way to set all the bits in any integer is to set it to `~0`. 
 
-### Right-shift and left-shift operators: `>>` and `<<`
+### right-shift and left-shift operators: `>>` and `<<`
 
 These operators do exactly what their name says: they shift bits either to the left or to the right. The way these work is:
 
@@ -324,7 +324,7 @@ else if (base == 'T' || base == 'T') {
 
 **Polymorphisms? No problem!**
 
-Very often, DNA sequences can be polymorphic at a particular site. A special symbol is usually used to represent these. In the case of pyrimidine polymorphisms it's usually `Y` (pYrimidine) and a purine it's `R` (puRine).
+Very often, DNA sequences can be polymorphic at a particular site. A special symbol is usually used to represent these. In the case of pyrimidine polymorphisms it's usually `Y` (pYrimidine) and a purine it's `r` (purine).
 
 We can thus extend our code above to handle this:
 
@@ -346,7 +346,7 @@ else if (base == 'T' || base == 'T') {
 else if (base == 'Y' || base == 'y') {
 	ret = C_ | T_;
 }
-else if (base == 'R' || base == 'r') {
+else if (base == 'r' || base == 'r') {
 	ret = A_ | G_;
 }
 

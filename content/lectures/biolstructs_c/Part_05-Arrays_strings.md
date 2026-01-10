@@ -86,7 +86,7 @@ Even more well-tuned library methods are available for this in C++ in the form o
 
 ## Arrays as primitive C data tyes
 
-Remember that data types in C are primitive and thus there's no object-oriented methods associated with them, nor any fancy run-time magic. What do you think would happen if you included the following in a program?
+remember that data types in C are primitive and thus there's no object-oriented methods associated with them, nor any fancy run-time magic. What do you think would happen if you included the following in a program?
 
 ```C
 array1[] = {1, 2, 3, 4, 5, 6};
@@ -226,7 +226,7 @@ int main (void)
 ```
 
 ### 2- Break it!
-Recall the following example code:
+recall the following example code:
 ```C
 array1[] = {1, 2, 3, 4, 5, 6};
 array2[] = {7, 8, 9};
@@ -247,7 +247,7 @@ array3[8] = array2[2];
 Write a program that contains this code. Experiment by changing the size of `array3` and see what happens when you compile and run it.
 
 ### 3- Looping with arrays
-Rewrite the above code using a loop. Then use a loop with `printf()` to display the result.
+rewrite the above code using a loop. Then use a loop with `printf()` to display the result.
 
 ### 4- Joining two strings
 Write a program that concatenates the following two strings:

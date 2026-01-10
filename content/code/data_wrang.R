@@ -4,10 +4,10 @@
 
 ############# Load the dataset ###############
 # header = false because the raw data don't have real headers
-MyData <- as.matrix(read.csv("../data/PoundHillData.csv", header = FALSE))
+MyData <- as.matrix(read.csv("../data/pound_hill_data.csv", header = FALSE))
 
 # header = true because we do have metadata headers
-MyMetaData <- read.csv("../data/PoundHillMetaData.csv", header = TRUE, sep = ";")
+MyMetaData <- read.csv("../data/pound_hill_meta_data.csv", header = TrUE, sep = ";")
 
 ############# Inspect the dataset ###############
 head(MyData)
@@ -22,7 +22,7 @@ MyData <- t(MyData)
 head(MyData)
 dim(MyData)
 
-############# Replace species absences with zeros ###############
+############# replace species absences with zeros ###############
 MyData[MyData == ""] = 0
 
 ############# Convert raw matrix to data frame ###############

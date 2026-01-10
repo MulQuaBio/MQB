@@ -209,7 +209,7 @@ pdf('Varying_timeline.pdf', height=w, width=2*w)
 	
 dev.off()
 
-pdf('JustRight.pdf', height=w, width=w)
+pdf('Justright.pdf', height=w, width=w)
 
 	par(mar=c(3,3,0.5,0.5), mgp=c(1.8,0.5,0), tcl=-0.4)
 
@@ -240,7 +240,7 @@ pdf('Predicted.pdf', height=w, width=w)
 	
 dev.off()
 
-pdf('ResidDemo.pdf', height=1.5*w, width= 1.2*w )
+pdf('residDemo.pdf', height=1.5*w, width= 1.2*w )
 
 	par(mar=c(3,3,0.5,0.5), mfrow=c(2,1), mgp=c(1.8,0.5,0), tcl=-0.4)
 
@@ -301,7 +301,7 @@ pdf('ResidDemo.pdf', height=1.5*w, width= 1.2*w )
 	}
 	
 	arrows(q, dnorm(q), q, rep(0.43, length(q)), code=0, col='gray')
-	curve(dnorm(x), xlim=c(-3,3), add=TRUE)
+	curve(dnorm(x), xlim=c(-3,3), add=TrUE)
 	points(q, dnorm(q), col='red')
 	points(q, rep(0.43, length(q)), col='red')
 
@@ -505,12 +505,12 @@ pdf('ConstantVarianceMods.pdf', height=2/3*w, width=2*w)
 	arrows(xreg, quadpred, xreg, yqd, code=0, col='grey')
 	cf <- as.list(coef(quadmod))
 	names(cf) <- c('i','l','q')
-	with(cf, curve(i + l*x + q*x^2, col='blue', add=TRUE))
+	with(cf, curve(i + l*x + q*x^2, col='blue', add=TrUE))
 	points(yqd ~ xreg, col='red', data=dat)
 
 dev.off()
 
-pdf('FitResid.pdf', height=2/3*w, width=2*w)
+pdf('Fitresid.pdf', height=2/3*w, width=2*w)
 
 	par(mar=c(3,3,2,0.5), mfrow=c(1,3), mgp=c(1.8,0.5,0), tcl=-0.4)
 
@@ -570,12 +570,12 @@ pdf('NonConstantVarianceMods.pdf', height=2/3*w, width=2*w)
 	arrows(xreg, nonnormpred, xreg, ynonnorm, code=0, col='grey')
 	cf <- as.list(coef(nonnormmod))
 	names(cf) <- c('i','l','q')
-	with(cf, curve(i + l*x + q*x^2, col='blue', add=TRUE))
+	with(cf, curve(i + l*x + q*x^2, col='blue', add=TrUE))
 	points(ynonnorm ~ xreg, col='red', data=dat)
 
 dev.off()
 
-pdf('BadFitResid.pdf', height=2/3*w, width=2*w)
+pdf('BadFitresid.pdf', height=2/3*w, width=2*w)
 
 	par(mar=c(3,3,2,0.5), mfrow=c(1,3), mgp=c(1.8,0.5,0), tcl=-0.4)
 
@@ -612,7 +612,7 @@ dev.off()
 
 # dev.off()
 
-## EXPLANATORY POWER
+## EXPLANATOrY POWEr
 
 
 # null and saturated model
@@ -638,14 +638,14 @@ pdf('NullSaturated.pdf', height=1.5*w, width=1.2*w)
 	abline(null, col='blue')
 	arrows(x, np, x, y, col='blue', code=0)
 	title(main=expression(y == beta[1]), line=1.2)
-	text(1, 3.5, sprintf("ESS = %0.2f\nRSS = %0.2f", 0,nullSS), adj=0)	
+	text(1, 3.5, sprintf("ESS = %0.2f\nrSS = %0.2f", 0,nullSS), adj=0)	
 
 	mod <- lm(y ~ f2) 
 	plot(y ~ x, col='red', xlim=c(0.5,9.5), xaxt='n')
 	axis(1, at=1:9, labels=levels(f2))
 	arrows(x-0.5, y, x+0.5, y, col='blue', code=0)
 	title(main=expression(y == beta[1] + beta[2]*f[b] + ldots + beta[8]*f[h]), line=1.2)
-	text(1, 3.5, sprintf("ESS = %0.2f\nRSS = %0.2f", nullSS, 0), adj=0)	
+	text(1, 3.5, sprintf("ESS = %0.2f\nrSS = %0.2f", nullSS, 0), adj=0)	
 
 dev.off()
 
@@ -662,7 +662,7 @@ pdf('Intermediate.pdf', height=0.75*w, width=1.2*w)
 	arrows(c(1,4,7), cf, c(3,6,9), cf, col=2, code=0 )
 	arrows(x, p, x, y, col='blue', code=0)
 	title(main=expression(y == beta[1] + beta[2]*f[b] + beta[3]*f[c]), line=1.2)
-	text(1, 3.5, sprintf("ESS = %0.2f\nRSS = %0.2f", nullSS-rss,rss), adj=0)		
+	text(1, 3.5, sprintf("ESS = %0.2f\nrSS = %0.2f", nullSS-rss,rss), adj=0)		
 
 dev.off()
 
@@ -677,9 +677,9 @@ y <- matrix(rnorm(9 *N), ncol=9)
 null <- apply(y, 1, function(x) var(x) * 8)
 means <- t(apply(y, 1, function(x) rep(c(mean(x[1:3]), mean(x[4:6]), mean(x[7:9])), each=3)))
 
-RSS <- rowSums((y - means)^2)
-ESS <- null - RSS
-ratio <- (ESS/2)/(RSS/6)
+rSS <- rowSums((y - means)^2)
+ESS <- null - rSS
+ratio <- (ESS/2)/(rSS/6)
 
 idx <- c(which.min(ratio), which.min(abs(ratio - median(ratio))),  which.min(abs((ratio -12))))
 
@@ -706,7 +706,7 @@ pdf('F_extremes.pdf', height=2/3*w, width=2*w)
 		arrows(x, p, x, y[i,], col='blue', code=0)
 		title(main=expression(y == beta[1] + beta[2]*f[b] + beta[3]*f[c]), line=1.2)
 		
-		text(0.2, 1., sprintf("ESS = %0.2f\nRSS = %0.2f\nF = %0.2f", nullSS-rss, rss, anova(mod)[1,4]), adj=0)		
+		text(0.2, 1., sprintf("ESS = %0.2f\nrSS = %0.2f\nF = %0.2f", nullSS-rss, rss, anova(mod)[1,4]), adj=0)		
 	
 	}
 
@@ -772,7 +772,7 @@ pdf('T_examples.pdf',height=1.5*w, width= 2*w)
 		if(i == 4) mtext('High precision', side=4, line=1, cex=1.2)
 
 
-		p <- predict(mod, newdata=xd, se.fit=TRUE)
+		p <- predict(mod, newdata=xd, se.fit=TrUE)
 	
 		abline(h=mean(y), col='grey')
 		abline(mod, col='blue')
@@ -818,7 +818,7 @@ pdf('t_extremes.pdf', height=2/3*w, width=2*w)
 		plot(y[i, ] ~ x, col='red', ylab='y', ylim=yl)
 		title(main=expression(y == beta[1] + beta[2]*x, line=1.2))
 		mod <- lm(y[i,] ~ x)
-		p <- predict(mod, newdata=xd, se.fit=TRUE)
+		p <- predict(mod, newdata=xd, se.fit=TrUE)
 	
 		abline(h=mean(y[i,]), col='grey')
 		abline(mod, col='blue')
@@ -900,7 +900,7 @@ y3 <- c(0.39, 0.65, -0.13, 1.14, 1.58, 2, 2.85, 1.74, 3.9,
 		2.55, 2.66, 3.47, 4.7, 3.75, 4.48, 4.12, 6.49, 5.42, 4.86, 5.97, 
 		6.61, 6.04, 6.58, 6.39, 7.51, 7.42, 8.37)
 
-pdf('ANOVA_null.pdf', height=2/3*w, width=2*w)
+pdf('anova_null.pdf', height=2/3*w, width=2*w)
 
 	par(mar=c(3,3,2,0.5), mfrow=c(1,3), mgp=c(1.8,0.5,0), tcl=-0.4)
 
@@ -922,7 +922,7 @@ pdf('ANOVA_null.pdf', height=2/3*w, width=2*w)
 dev.off()
 
 
-pdf('ANOVA_mod.pdf', height=2/3*w, width=2*w)
+pdf('anova_mod.pdf', height=2/3*w, width=2*w)
 
 	par(mar=c(3,3,2,0.5), mfrow=c(1,3), mgp=c(1.8,0.5,0), tcl=-0.4)
 
@@ -945,7 +945,7 @@ pdf('ANOVA_mod.pdf', height=2/3*w, width=2*w)
 dev.off()
 
 
-pdf('ANOVA_mod2.pdf', height=2/3*w, width=2*w)
+pdf('anova_mod2.pdf', height=2/3*w, width=2*w)
 
 	par(mar=c(3,3,2,0.5), mfrow=c(1,3), mgp=c(1.8,0.5,0), tcl=-0.4)
 
@@ -1040,7 +1040,7 @@ pdf('FAnimate.pdf',height=1.5*w, width= 1.2*w)
 	}
 
 #   plot.new(); plot.new(); par(usr=usr2)
-#	curve(df(x, sampleSize-1, sampleSize-1), add=TRUE, col='red', lwd=2)
+#	curve(df(x, sampleSize-1, sampleSize-1), add=TrUE, col='red', lwd=2)
 
 dev.off()
 
@@ -1049,18 +1049,18 @@ pdf('F_simulated.pdf', height=2/3*w, width=2*w)
 
 	par(mar=c(3,3,2,0.5), mgp=c(1.8,0.5,0), tcl=-0.4)
 
-	hist(ratio, breaks=seq(-0.05,3.55, by=0.1), xlab='Variance Ratio', freq=FALSE, main='')
+	hist(ratio, breaks=seq(-0.05,3.55, by=0.1), xlab='Variance ratio', freq=FALSE, main='')
 
 	abline(v=quantile(ratio, c(0.025, 0.975)), col='red', lwd=2)
 	abline(v=quantile(ratio, c(0.005, 0.995)), col='red', lwd=2, lty=2)
 	
-	curve(df(x, sampleSize-1, sampleSize-1), add=TRUE, col='red', n=500)
+	curve(df(x, sampleSize-1, sampleSize-1), add=TrUE, col='red', n=500)
 
 dev.off()
 
 
 
-## FOR PRACTICAL
+## FOr PrACTICAL
 x <- 1:4
 y <- 4*x + 5 + c(0.50,-2,2.58,-1)
 
@@ -1073,7 +1073,7 @@ predict(mod)
 model.matrix(mod) %*% coef(mod) + resid(mod)
 print(y)
 
-# HARDCORE MATHS
+# HArDCOrE MATHS
 D <- model.matrix(mod)
 
 t(D) %*% y
@@ -1179,7 +1179,7 @@ dev.off()
 
 
 x <- rep((0:9)+0.5, times=3)
-f <- gl(3,10, labels=LETTERS[1:3])
+f <- gl(3,10, labels=LETTErS[1:3])
 # y <- 0.25*x + unclass(f) + rnorm(30, sd=0.3)
 y <-  c(1.05, 1.073, 1.924, 2.17, 1.836, 2.513, 2.593, 2.826, 
 		3.106, 3.387, 2.113, 2.712, 2.364, 3.092, 2.617, 2.889, 3.225, 
@@ -1193,10 +1193,10 @@ resid <- resid(mod)
 cf <- as.list(coef(mod))
 names(cf)[1] <- 'a'
 
-predPoints <-  data.frame(x=c(2,5,8), f=LETTERS[3:1])
+predPoints <-  data.frame(x=c(2,5,8), f=LETTErS[3:1])
 predPoints$y <- predict(mod, newdata=predPoints)
 
-regrEnds <-  data.frame(x=rep(c(-2,12), times=3), f=rep(LETTERS[1:3], each=2))
+regrEnds <-  data.frame(x=rep(c(-2,12), times=3), f=rep(LETTErS[1:3], each=2))
 regrEnds$y <- predict(mod, newdata=regrEnds)
 
 

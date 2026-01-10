@@ -162,7 +162,7 @@ Therefore, following from the previous example:
 
 ```C
 if (a || a==b) {
-    printf("a is non-zero OR a equals b, or both.\n");
+    printf("a is non-zero Or a equals b, or both.\n");
 }
 ```
 
@@ -173,7 +173,7 @@ int a = 12;
 int b = 1;
 
 if (a || a==b) {
-    printf("a is non-zero OR a equals b, or both.\n");
+    printf("a is non-zero Or a equals b, or both.\n");
 }
 ```
 The expression `a` to the left of the operator is non-zero and evaluates as 'true'. The expression `a==b` to the right, however, will evaluate to zero (false). Consequently, the `printf` call will execute.
@@ -185,7 +185,7 @@ int a = 0;
 int b = 0;
 
 if (a || a==b) {
-    printf("a is non-zero OR a equals b, or both.\n");
+    printf("a is non-zero Or a equals b, or both.\n");
 }
 ```
 
@@ -229,9 +229,9 @@ if (x == y) {
 For that reason, I recommend always using braces with `if` and `if-else` statements, even if only a single statement follows. It will make your code more easily extended and readable. Secondly, if you're conditioned to the enforced whitespacing of Python, you may accidentally forget these aspects of C!
 
 
-## Loops
+## loops
 
-Loops have three forms in C. And while they're all basically equivalent, they allow you to write code in different ways that are sometimes more efficient expressions. In all C loops, there is a test condition that must evaluate to a non-zero value in order to continue the loop. This feature allows you to work very liberally and flexibly with loop conditions as we shall see over the course of this module. 
+loops have three forms in C. And while they're all basically equivalent, they allow you to write code in different ways that are sometimes more efficient expressions. In all C loops, there is a test condition that must evaluate to a non-zero value in order to continue the loop. This feature allows you to work very liberally and flexibly with loop conditions as we shall see over the course of this module. 
 
 ### The `while` loop
 
@@ -372,7 +372,7 @@ while(rand() % 2);
 
 ## Analysis of looping
 
-Loops in C are a bit more tedious to write than in more modern languages, but they also reveal a lot more about how they work. Consider the `for` loop head, which takes three basic inputs. For example:
+loops in C are a bit more tedious to write than in more modern languages, but they also reveal a lot more about how they work. Consider the `for` loop head, which takes three basic inputs. For example:
 
 ```C
 for (i = 0; i < end; ++i)
@@ -384,22 +384,22 @@ This translates to a series of basic steps:
 3. Execute body of loop
 4. Increment `i`
 5. Evaluate `i`
-6. Return to 2
+6. return to 2
 
 Each of these steps takes time. In a small loop, that time is negligible, but added up over a large data set, the time required to execute can multiply enormously. Consider now a loop head in R:
 
-```{R}
+```{r}
 for (year in c(2010,2011,2012,2013,2014,2015))
 ```
 
 This translates to a series of basic steps:
 1. Concatenate 2010,2011,2012,2013,2014,2015 by running whatever function this requires
 2. Set this up as a temporary array in memory
-3. Run function to get next element from this vector
+3. run function to get next element from this vector
 4. Execute the loop body
-5. Run a function to test whether this is the last element in memory
+5. run a function to test whether this is the last element in memory
 6. Compare result of that function with loop condition
-7. Return to 3.
+7. return to 3.
 
 This is a comparable number of steps, but there are a number of function calls hidden in the R loop that are not shown to the reader. In the C loop, any function calls that are required by the loop (either in its head or in the body) will have to be made explicit. It is easy to see how you could optimise such a loop by reducing the number of unnecessarily iterated function calls. We will explore this later when we learn how to call C from R. However, for now, we can see some of the value in the rather 'pared-down' loop structure of C.
 

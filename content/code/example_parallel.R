@@ -3,14 +3,14 @@ require(parallel)
 rm(list=ls())
 graphics.off()
 
-#Runs a stochastic Ricker model. This is not vectorized, so it
+#runs a stochastic ricker model. This is not vectorized, so it
 #is slow (on purpose)
 #
 #Args
 #len        The number of steps to do each run for
 #numruns    The number of stochastic runs to do
 #p0         Starting population
-#r, K       Parameters of the deterministic Ricker
+#r, K       Parameters of the deterministic ricker
 #sig        Strength of the stochasticity
 
 slowricker<-function(len,numruns,p0,r,K,sig)

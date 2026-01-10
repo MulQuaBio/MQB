@@ -1,16 +1,16 @@
 library(lattice)
 library(nlme)
 
-JapBeet_NoChoice <- read.csv("~/Documents/FIU/Research/JapBeetle_Temp_Herbivory/Data/No_Choice_Assays/JapBeet_NoChoice.csv")
-jap.feeding <- subset(JapBeet_NoChoice, Consumption!='NA')
+jap_beet_no_choice <- read.csv("~/Documents/FIU/research/JapBeetle_Temp_Herbivory/Data/No_Choice_Assays/jap_beet_no_choice.csv")
+jap.feeding <- subset(jap_beet_no_choice, Consumption!='NA')
 jap.feeding$Food_Type <- factor(jap.feeding$Food_Type)
 jap.feeding$Temperature[which(jap.feeding$Temperature==33)] <- 35
-jap.feeding$ratio <- jap.feeding$Herb_RGR/jap.feeding$MassCorr_Consumption_Daily
+jap.feeding$ratio <- jap.feeding$Herb_rGr/jap.feeding$MassCorr_Consumption_Daily
 
 cons.data <- with(jap.feeding, aggregate(list('mean'=MassCorr_Consumption_Daily), list('Plant'=Food_Type, 'Temp'=Temperature), mean, na.rm=T))
 growth.data <- with(jap.feeding, aggregate(list('mean'=Herb_Growth), list('Plant'=Food_Type, 'Temp'=Temperature), mean, na.rm=T))
 
-all_trait <- read.csv("~/Documents/FIU/Research/JapBeetle_Temp_Herbivory/Data/Plant_Traits/all_trait.csv")
+all_trait <- read.csv("~/Documents/FIU/research/JapBeetle_Temp_Herbivory/Data/Plant_Traits/all_trait.csv")
 all_trait <- subset(all_trait[,-8], pctN!='NA')
 
 cor(all_trait[,2:7])
@@ -29,7 +29,7 @@ cons.mod <- gls(mean ~ PC1 + PC2 + PC3 + Temp
                 + PC1:Temp + PC2:Temp + PC3:Temp,
                 data=trait.merged.cons,
                 weights=varExp(form=~Temp * PC3),
-                method='REML')
+                method='rEML')
 
 plot(cons.mod)
 summary(cons.mod)
@@ -40,11 +40,11 @@ cons.modFull <- gls(mean ~ pctC + pctN + pctP + pct.water
                     + pct.water:Temp + pctProtein:Temp
                     + toughness:Temp,
                     data=trait.merged.cons,
-                    method='REML')
+                    method='rEML')
 
 
 
-## GROWTH ANALYSIS ##
+## GrOWTH ANALYSIS ##
 
 trait.merged.growth <- merge(growth.data, all_trait)
 
@@ -52,18 +52,18 @@ trait.merged.growth <- merge(growth.data, all_trait)
 growth.mod <- gls(mean ~ PC1 + PC2 + PC3 + Temp
                  + PC1:Temp + PC2:Temp + PC3:Temp,
                  data=trait.merged.growth,
-                  subset=Plant!='Rosa multiflora',
+                  subset=Plant!='rosa multiflora',
                   weights=varExp(form=~PC3))
 
 plot(growth.mod)
 summary(growth.mod)
 
-# Analyze w/ no Rubus
-t2 <- subset(trait.merged.growth, Plant!='Rubus phoenicolasius')
+# Analyze w/ no rubus
+t2 <- subset(trait.merged.growth, Plant!='rubus phoenicolasius')
 growth.mod2 <- gls(mean ~ PC1 + PC2 + PC3 + Temp
                   + PC1:Temp + PC2:Temp + PC3:Temp,
                   data=t2,
-                  subset=Plant!='Rosa multiflora',
+                  subset=Plant!='rosa multiflora',
                   weights=varExp(form=~PC3))
 
 plot(growth.mod2)
@@ -77,12 +77,12 @@ growth.modFull <- gls(mean ~ pctC + pctN + pctP + pct.water
                     + pct.water:Temp + pctProtein:Temp
                     + toughness:Temp,
                     data=trait.merged.growth,
-                    method='REML',
-                      subset=Plant!='Rosa multiflora')
+                    method='rEML',
+                      subset=Plant!='rosa multiflora')
 
 
 plot.mod <- lm(mean ~ PC3 + Temp + PC3:Temp,
-               data=trait.merged.growth, subset=Plant!='Rosa multiflora')
+               data=trait.merged.growth, subset=Plant!='rosa multiflora')
 
 PC3 <- seq(min(trait.merged.growth$PC3), max(trait.merged.growth$PC3), 0.01)
 
@@ -94,7 +94,7 @@ yhat35 <- predict(plot.mod, data.frame(PC3=PC3, Temp=35))
 
 CairoPDF('JapBeetle_Growth_PC3.pdf', width=6.5, height=5.5, bg='transparent')
 xyplot(mean ~ PC3|as.factor(Temp), data=trait.merged.growth,
-       subset=Plant!='Rosa multiflora',
+       subset=Plant!='rosa multiflora',
        pch=16, col='black', cex=1.2,
        strip=strip.custom(bg='grey90'),
        ylab=list('Mass Change', cex=1.2),
@@ -113,7 +113,7 @@ xyplot(mean ~ PC3|as.factor(Temp), data=trait.merged.growth,
 )
 
 
-# MONTE CARLO POWER SIMULATION FOR PC3:TEMP INTERACTION OF CONSUMPTION
+# MONTE CArLO POWEr SIMULATION FOr PC3:TEMP INTErACTION OF CONSUMPTION
 yhat <- fitted(cons.mod)
 
 p.vals <- numeric(999)
@@ -124,7 +124,7 @@ for(i in 2:9999){
                   + PC1:Temp + PC2:Temp + PC3:Temp,
                   data=trait.merged.cons,
                   weights=varExp(form=~Temp * PC3),
-                  method='REML'), silent=TRUE)
+                  method='rEML'), silent=TrUE)
   p.vals[i] <- summary(sim.mod)$tTable[8,4]
 }
 

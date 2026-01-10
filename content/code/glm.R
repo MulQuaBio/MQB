@@ -1,7 +1,7 @@
-# GENERALISED LINEAR MODELS
+# GENErALISED LINEAr MODELS
 
 # 1) Load the data
-colonies <- read.csv("../data/PracData.csv")
+colonies <- read.csv("../data/prac_data.csv")
 str(colonies)
 
 # 2) Look at all the data
@@ -11,8 +11,8 @@ colonies$logCC <- log(colonies$ColonyCount + 1)
 boxplot(logCC ~ Treatment, data=colonies)
 
 # 3) Check the variation i colony count across treatments
-tapply(colonies$ColonyCount, colonies$Treatment, min, na.rm=TRUE)
-tapply(colonies$ColonyCount, colonies$Treatment, max, na.rm=TRUE)
+tapply(colonies$ColonyCount, colonies$Treatment, min, na.rm=TrUE)
+tapply(colonies$ColonyCount, colonies$Treatment, max, na.rm=TrUE)
 
 # 4) Subset the data down to control and NG
 coloniesCN <- subset(colonies, Treatment %in% c('Control', 'NG'))
@@ -27,8 +27,8 @@ bwplot(logCC ~ Strain | Treatment, data=coloniesCN)
 
 # alternatively, get a barplot
 tab <- tapply(coloniesCN$ColonyCount, list(coloniesCN$Treatment,
-	          coloniesCN$Strain), mean, na.rm=TRUE)
-barplot(tab, beside=TRUE)
+	          coloniesCN$Strain), mean, na.rm=TrUE)
+barplot(tab, beside=TrUE)
 
 # 6) A test linear model
 modLM <- lm(logCC ~ Strain * Treatment, data=coloniesCN)

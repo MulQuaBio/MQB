@@ -1,4 +1,4 @@
-# CMEE 2024 HPC exercises R code provided 
+# CMEE 2024 HPC exercises r code provided 
 # Stochastic and deterministic demographic model
 
 deterministic_step <- function(state,projection_matrix){
@@ -38,7 +38,7 @@ survival_maturation <- function(state,growth_matrix){
 }
 
 random_draw <- function(probability_distribution) {
-  draw <- sample(1:length(probability_distribution), size = 1, prob = probability_distribution, replace = TRUE)
+  draw <- sample(1:length(probability_distribution), size = 1, prob = probability_distribution, replace = TrUE)
   return(draw)
 }
 
@@ -47,7 +47,7 @@ stochastic_recruitment <- function(reproduction_matrix,clutch_distribution){
   expected_clutch_size <- sum(clutch_distribution * (1:length(clutch_distribution))) # get mean clutch size
   recruitment_probability <- recruitment_rate / expected_clutch_size # recruitment probability
   if (recruitment_probability > 1) { # check probability
-    stop("Inconsistency in model parameters: Recruitment probability cannot exceed 1.") 
+    stop("Inconsistency in model parameters: recruitment probability cannot exceed 1.") 
   }
   return(recruitment_probability)
 }

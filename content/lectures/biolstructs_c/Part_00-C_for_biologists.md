@@ -16,7 +16,7 @@ The utility of C for computational biologists will range from simply creating mo
 
 ## Introduction to C
 
-C is a compiled general-purpose programming language designed by Dennis Ritchie for Bell Labs in 1972. However, the modern standard of C (ANSI-C) was developed and published in the 1980s. The current C standard is C17, published in 2018. It is today still used as the core language for many operating systems including all Unix-like operating systems. 
+C is a compiled general-purpose programming language designed by Dennis ritchie for Bell Labs in 1972. However, the modern standard of C (ANSI-C) was developed and published in the 1980s. The current C standard is C17, published in 2018. It is today still used as the core language for many operating systems including all unix-like operating systems. 
 
 C is a procedural programming language which means its major units of program design are functions while the data objects are comparatively simple. This contrasts with object-oriented programming where the major units of program design are the data objects which have key functions associated with and 'built into' them. These are often 'hidden' from the user in object-oriented languages. 
 

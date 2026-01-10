@@ -3,7 +3,7 @@ echo $#
 if [[ -d $1 ]]
 then
    echo $1
-   cd $DIR
+   cd $DIr
    for f in *.tif
       do
          echo "Converting $f";

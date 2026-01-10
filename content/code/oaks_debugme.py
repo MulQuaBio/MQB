@@ -3,12 +3,12 @@ import sys
 
 #Define function
 def is_an_oak(name):
-    """ Returns True if name is starts with 'quercus' """
+    """ returns True if name is starts with 'quercus' """
     return name.lower().startswith('quercs')
 
 def main(argv): 
-    f = open('../data/TestOaksData.csv','r')
-    g = open('../data/JustOaksData.csv','w')
+    f = open('../data/test_oaks_data.csv','r')
+    g = open('../data/just_oaks_data.csv','w')
     taxa = csv.reader(f)
     csvwrite = csv.writer(g)
     oaks = set()

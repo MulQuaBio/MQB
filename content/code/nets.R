@@ -2,19 +2,19 @@ library(igraph) # Load the igraph package
 
 rm(list = ls())
 
-# 	ICL	UoR	CEH	ZSL	CEFAS	Nonacademic/CASE
+# 	ICL	Uor	CEH	ZSL	CEFAS	Nonacademic/CASE
 # ICL	0	0	10	9	5	70
-# UoR		0	12	0	2	76
+# Uor		0	12	0	2	76
 # CEH			0	0	0	6
 # ZSL			       0 	0	28
 # CEFAS			       0	0
 # Nonacademic/CASE                        0
 
-links <- read.csv("../data/QMEE_Net_Mat_edges.csv", header=T, as.is=T)
-nodes <- read.csv("../data/QMEE_Net_Mat_nodes.csv", header=T, row.names = 1)
+links <- read.csv("../data/qmee_net_mat_edges.csv", header=T, as.is=T)
+nodes <- read.csv("../data/qmee_net_mat_nodes.csv", header=T, row.names = 1)
 
 #Create graph object
-net <- graph.adjacency(as.matrix(links), mode = "directed", weighted=TRUE, diag=F)
+net <- graph.adjacency(as.matrix(links), mode = "directed", weighted=TrUE, diag=F)
         
 #Test plot
 # plot(net, edge.arrow.size=1, edge.curved=.1,

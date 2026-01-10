@@ -1,4 +1,4 @@
-dat <- read.csv('../data/genome_size_data_061112_02-10-18.csv', skip=5, stringsAsFactors=FALSE)
+dat <- read.csv('../data/genome_size_data_061112_02_10_18.csv', skip=5, stringsAsFactors=FALSE)
 
 # chop up the species names into bits
 speciesnames <- strsplit(dat$Species, ' ')
@@ -36,7 +36,7 @@ spDat <- data.frame(Binomial=names(spAVG), meanCvalue=as.vector(spAVG))
 str(spDat)
 
 # match to Pantheria
-pantheria <- read.delim('../data/PanTHERIA_1-0_WR93_Aug2008.txt', na.string='-999')
+pantheria <- read.delim('../data/pan_theria_1_0_wr_93_aug_2008.txt', na.string='-999')
 pantheria <- subset(pantheria, select=c(MSW93_Order,  MSW93_Binomial, X5.1_AdultBodyMass_g, X6.1_DietBreadth, 
                                         X12.1_HabitatBreadth, X15.1_LitterSize, X12.2_Terrestriality, X6.2_TrophicLevel))
 str(pantheria)
@@ -55,4 +55,4 @@ names(spDat) <- c("Binomial", "meanCvalue" ,"Order", "AdultBodyMass_g", "DietBre
 # label the factors
 spDat$GroundDwelling <- factor(spDat$GroundDwelling, labels=c('Yes', 'No'))
 spDat$TrophicLevel <- factor(spDat$TrophicLevel, labels=c('Herbivore', 'Omnivore', 'Carnivore'))
-write.table(spDat, file='../data/MammalData.csv', sep=',', row.names=FALSE)
+write.table(spDat, file='../data/mammal_data.csv', sep=',', row.names=FALSE)

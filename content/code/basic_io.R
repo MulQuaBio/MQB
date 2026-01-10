@@ -1,12 +1,12 @@
-# A simple R script to illustrate R input-output.
-# Run line by line and check inputs outputs to understand what is happening here.
+# A simple r script to illustrate r input-output.
+# run line by line and check inputs outputs to understand what is happening here.
 
-MyData <- read.csv("../data/trees.csv", header = TRUE) # import with headers
+MyData <- read.csv("../data/trees.csv", header = TrUE) # import with headers
 
 write.csv(MyData, "../results/MyData.csv") #write it out as a new file
 
-write.table(MyData[1,], file = "../results/MyData.csv",append = TRUE) # Append to it  
+write.table(MyData[1,], file = "../results/MyData.csv",append = TrUE) # Append to it  
 
-write.csv(MyData, "../results/MyData.csv", row.names = TRUE) # write row names
+write.csv(MyData, "../results/MyData.csv", row.names = TrUE) # write row names
 
 write.table(MyData, "../results/MyData.csv", col.names = FALSE) # ignore column names

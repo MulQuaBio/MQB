@@ -15,7 +15,7 @@ powMod <- function(x, a, b) {
 
 ############## Main code: NLS Fitting ##############
     
-MyData <- read.csv("../Data/GenomeSize.csv")
+MyData <- read.csv("../Data/genome_size.csv")
 
 Data2Fit <- subset(MyData,Suborder == "Anisoptera")
 
@@ -37,15 +37,15 @@ Predic2PlotQua <- predict.lm(QuaFit, data.frame(TotalLength = Lengths))
 lines(Lengths, Predic2PlotPow, col = 'blue', lwd = 2.5)
 lines(Lengths, Predic2PlotQua, col = 'red', lwd = 2.5)
 
-# Calculate RSS TSS, etc
+# Calculate rSS TSS, etc
 
-RSS_Pow <- sum(residuals(PowFit)^2)  # Residual sum of squares
+rSS_Pow <- sum(residuals(PowFit)^2)  # residual sum of squares
 TSS_Pow <- sum((Data2Fit$BodyWeight - mean(Data2Fit$BodyWeight))^2)  # Total sum of squares
-RSq_Pow <- 1 - (RSS_Pow/TSS_Pow)  # R-squared value
+rSq_Pow <- 1 - (rSS_Pow/TSS_Pow)  # r-squared value
 
-RSS_Qua <- sum(residuals(QuaFit)^2)  # Residual sum of squares
+rSS_Qua <- sum(residuals(QuaFit)^2)  # residual sum of squares
 TSS_Qua <- sum((Data2Fit$BodyWeight - mean(Data2Fit$BodyWeight))^2)  # Total sum of squares
-RSq_Qua <- 1 - (RSS_Qua/TSS_Qua)  # R-squared value
+rSq_Qua <- 1 - (rSS_Qua/TSS_Qua)  # r-squared value
 
 # Now calculate AIC, BIC etc
 
@@ -54,12 +54,12 @@ n = nrow(Data2Fit)
 kPow = length(coef(PowFit))
 kQua = length(coef(QuaFit))
 
-AIC_Pow = n * log((2 * pi) / n) + n + 2 + n * log(RSS_Pow) + 2 * kPow
-AIC_Qua = n * log((2 * pi) / n) + n + 2 + n * log(RSS_Qua) + 2 * kQua
+AIC_Pow = n * log((2 * pi) / n) + n + 2 + n * log(rSS_Pow) + 2 * kPow
+AIC_Qua = n * log((2 * pi) / n) + n + 2 + n * log(rSS_Qua) + 2 * kQua
 AIC_Pow - AIC_Qua
 
-BIC_Pow = n + n * log(2 * pi) + n * log(RSS_Pow / n) + (log(n)) * (kPow + 1)
-BIC_Qua = n + n * log(2 * pi) + n * log(RSS_Qua / n) + (log(n)) * (kQua + 1)
+BIC_Pow = n + n * log(2 * pi) + n * log(rSS_Pow / n) + (log(n)) * (kPow + 1)
+BIC_Qua = n + n * log(2 * pi) + n * log(rSS_Qua / n) + (log(n)) * (kQua + 1)
 BIC_Pow - BIC_Qua
 
 #Automatically

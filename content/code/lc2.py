@@ -1,9 +1,9 @@
-# Average UK Rainfall (mm) for 1910 by month
+# Average UK rainfall (mm) for 1910 by month
 # http://www.metoffice.gov.uk/climate/uk/datasets
 rainfall = (('JAN',111.4),
             ('FEB',126.1),
-            ('MAR', 49.9),
-            ('APR', 95.3),
+            ('MAr', 49.9),
+            ('APr', 95.3),
             ('MAY', 71.8),
             ('JUN', 70.2),
             ('JUL', 97.1),

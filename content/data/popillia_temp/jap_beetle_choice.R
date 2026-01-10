@@ -3,15 +3,15 @@ library(lattice)
 library(reshape2)
 library(vegan)
 
-# CairoPDF('JapBeetle_Choice_raw.pdf', width=6.5, height=5.5, bg='transparent')
+# CairoPDF('jap_beetle_choice_raw.pdf', width=6.5, height=5.5, bg='transparent')
 par(mar=c(4,4,1,1)+0.2)
 
-JapBeet_Choice <- read.csv("~/Documents/FIU/Research/JapBeetle_Temp_Herbivory/Data/Choice_Assays/JapBeet_Choice.csv")
-JapBeet_Choice$Temperature[which(JapBeet_Choice$Temperature==33)] <- 35
+jap_beet_choice <- read.csv("~/Documents/FIU/research/JapBeetle_Temp_Herbivory/Data/Choice_Assays/jap_beet_choice.csv")
+jap_beet_choice$Temperature[which(jap_beet_choice$Temperature==33)] <- 35
 
-## PLOT PERCENT LOSS
-means <- with(JapBeet_Choice, aggregate(PctLoss, list('Temp'=Temperature, 'Plant'=Food_Type), mean))
-errs <- with(JapBeet_Choice, aggregate(PctLoss, list('Temp'=Temperature, 'Plant'=Food_Type), std.error))
+## PLOT PErCENT LOSS
+means <- with(jap_beet_choice, aggregate(PctLoss, list('Temp'=Temperature, 'Plant'=Food_Type), mean))
+errs <- with(jap_beet_choice, aggregate(PctLoss, list('Temp'=Temperature, 'Plant'=Food_Type), std.error))
 
 
 
@@ -51,8 +51,8 @@ legend('top', pch=as.numeric(colors$shape), lty=colors$line,
 
 par(op)
 
-means <- with(JapBeet_Choice, tapply(PctLoss, Temperature, mean))
-errs <- with(JapBeet_Choice, tapply(PctLoss, Temperature, std.error))
+means <- with(jap_beet_choice, tapply(PctLoss, Temperature, mean))
+errs <- with(jap_beet_choice, tapply(PctLoss, Temperature, std.error))
 
 segments(c(25,35)+1, means-errs, c(25,35)+1, means+errs)
 
@@ -72,9 +72,9 @@ rm(temp.sub)
 rm(temp.sub2)
 rm(colors)
 
-manova.data <- dcast(JapBeet_Choice, CupID + Date + Temperature~Food_Type, value.var='PctLoss', mean)
+manova.data <- dcast(jap_beet_choice, CupID + Date + Temperature~Food_Type, value.var='PctLoss', mean)
 manova.data$TempGrp <- ifelse(manova.data$Temp==25, 'A', 'B')
-colnames(manova.data) <- c('CupID', 'Date', 'Temp', 'Acn', 'Acr', 'Lis', 'Plo', 'Rom', 'Rua', 'Rup', 'Vip', 'Viv', 'Grp')
+colnames(manova.data) <- c('CupID', 'Date', 'Temp', 'Acn', 'Acr', 'Lis', 'Plo', 'rom', 'rua', 'rup', 'Vip', 'Viv', 'Grp')
 
 # Calculate Within group SSCP for each temperture
 t25 <- subset(manova.data, Temp==25)
@@ -113,8 +113,8 @@ test.stat <- -((16-1) - 0.5*(9+2))*log(wilks)
 1-pchisq(test.stat, 9)
 #p-value = 0.037
 
-# MANOVA is significant, so post-hoc it using False Discovery Rate correction
-p20 <- subset(JapBeet_Choice, Temperature==25)
+# Manova is significant, so post-hoc it using False Discovery rate correction
+p20 <- subset(jap_beet_choice, Temperature==25)
 p20 <- with(p20, pairwise.t.test(PctLoss, Food_Type, 
                                  var.equal=F, p.adjust='none'))
 p20 <- round(p20$p.value,5)
@@ -122,10 +122,10 @@ p20 <- unmatrix(p20)
 p20 <- p20[!is.na(p20)]
 p20 <- as.data.frame(sort(p20))
 p20$rank <- order(p20[,1])
-p20$FDR <- p20$rank * (0.05/144)
-p20$sig <- p20[,1] < p20$FDR
+p20$FDr <- p20$rank * (0.05/144)
+p20$sig <- p20[,1] < p20$FDr
 
-p35 <- subset(JapBeet_Choice, Temperature==35)
+p35 <- subset(jap_beet_choice, Temperature==35)
 p35 <- with(p35, pairwise.t.test(PctLoss, Food_Type, 
                                  var.equal=F, p.adjust='none'))
 p35 <- round(p35$p.value,5)
@@ -133,8 +133,8 @@ p35 <- unmatrix(p35)
 p35 <- p35[!is.na(p35)]
 p35 <- as.data.frame(sort(p35))
 p35$rank <- order(p35[,1])
-p35$FDR <- p35$rank * (0.05/144)
-p35$sig <- p35[,1] < p35$FDR
+p35$FDr <- p35$rank * (0.05/144)
+p35$sig <- p35[,1] < p35$FDr
 
 # Equality of Covariance Matrices
 Choice25 <- subset(manova.data, Temp==25)

@@ -1,1 +1,1 @@
-Ipython solutions to the notebooks used in the Bayesian Inference practicals
+Ipython solutions to the notebooks used in the bayesian Inference practicals

@@ -1,7 +1,7 @@
-Ricker <- function(N0=1, r=1, K=10, generations=50)
+ricker <- function(N0=1, r=1, K=10, generations=50)
 {
-  # Runs a simulation of the ricker model
-  # Returns a vector of length generations
+  # runs a simulation of the ricker model
+  # returns a vector of length generations
   
   N <- rep(NA, generations)    # Creates a vector of NA
   
@@ -12,4 +12,4 @@ Ricker <- function(N0=1, r=1, K=10, generations=50)
   }
   return (N)
 }
-plot(Ricker(generations=10), type="l")
+plot(ricker(generations=10), type="l")

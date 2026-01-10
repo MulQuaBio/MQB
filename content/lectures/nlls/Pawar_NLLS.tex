@@ -77,7 +77,7 @@
 \renewcommand{\>}{\end{column}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title[Non-linear Least-squares model fitting]{\bf Fitting Mathematical Models to Biological Data using Non-Linear Least-Squares (NLLS)}
+\title[Non-linear Least-squares model fitting]{\bf Fitting Mathematical Models to Biological Data using Non-Linear Least-Squares (nlls)}
 % \subtitle{ }
 \author[Samraat]{Samraat Pawar}
 % \institute{\it
@@ -106,9 +106,9 @@
 \begin{frame}{Outline}
 
 \begin{itemize}\itemsep16pt
-	\item Why NLLS? 
-	\item The NLLS fitting method 
-	\item Practicals (in {\tt R}) overview
+	\item Why nlls? 
+	\item The nlls fitting method 
+	\item Practicals (in {\tt r}) overview
 \end{itemize}
 
 \end{frame}
@@ -116,8 +116,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[plain]
  
-	\begin{center}\LARGE
-		\textsc{Why NLLS?}
+	\begin{center}\LArGE
+		\textsc{Why nlls?}
 	\end{center}
 
 \end{frame}
@@ -176,7 +176,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{The Least-Squares Solution}
 
-{\bf Recall what the Least Squares method does:}
+{\bf recall what the Least Squares method does:}
 
 	\begin{itemize}[<+->] \itemsep10pt
 
@@ -190,10 +190,10 @@
 		\item An example of $f(x_i,\boldsymbol\beta) + \varepsilon_i $ could be:
 		$y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$ (linear regression)
 
-		\item The objective of any {\it least squares} method is to find estimates of values of the parameters ($\hat{\beta_j}$) that {\it minimize} the sum ($S$) of squared residuals ($r_i$) (AKA RSS):
+		\item The objective of any {\it least squares} method is to find estimates of values of the parameters ($\hat{\beta_j}$) that {\it minimize} the sum ($S$) of squared residuals ($r_i$) (AKA rSS):
 		
 		$$
-		\text{RSS} = S = \sum\nolimits_{i=1}^n{\left[ y_i - f(x_i,\boldsymbol\beta) 
+		\text{rSS} = S = \sum\nolimits_{i=1}^n{\left[ y_i - f(x_i,\boldsymbol\beta) 
 		\right]^2} = \sum\nolimits_{i=1}^n{r_i^2}
 		$$
 	
@@ -206,10 +206,10 @@
 
 	\begin{itemize}[<+->] \itemsep20pt
 
-		\item The objective of any {\it least squares} method  is to find estimates of values of the parameters ($\hat{\beta_j}$) that minimize the sum ($S$) of squared residuals ($r_i$) (AKA RSS):
+		\item The objective of any {\it least squares} method  is to find estimates of values of the parameters ($\hat{\beta_j}$) that minimize the sum ($S$) of squared residuals ($r_i$) (AKA rSS):
 		
 		$$
-		\text{RSS} = S = \sum\nolimits_{i=1}^n{\left[ y_i - f(x_i,\boldsymbol\beta) 
+		\text{rSS} = S = \sum\nolimits_{i=1}^n{\left[ y_i - f(x_i,\boldsymbol\beta) 
 		\right]^2} = \sum\nolimits_{i=1}^n{r_i^2}
 		$$
 		
@@ -236,7 +236,7 @@
 \begin{columns}[T]
 
 	\column{0.5\textwidth}
-		\includegraphics[width=\textwidth]{JustRight.pdf}
+		\includegraphics[width=\textwidth]{Justright.pdf}
 		
 	\column{0.5\textwidth}
 		\begin{align*}
@@ -272,13 +272,13 @@
 
 \pause 
 \begin{center}
-	\includegraphics[width=.9\textwidth]{graphics/RSS_min.pdf}
+	\includegraphics[width=.9\textwidth]{graphics/rSS_min.pdf}
 \end{center}
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{OK, fine, why would {\it I} ever need NLLS?}
+\begin{frame}{OK, fine, why would {\it I} ever need nlls?}
 
 	\begin{itemize}[<+->]\itemsep10pt
 		\pause 
@@ -295,9 +295,9 @@
 			
 			\item Allometric growth
 		
-			\item Responses of metabolic rates to changing temperature 
+			\item responses of metabolic rates to changing temperature 
 	
-			\item Consumer-Resource (e.g., predator-prey) functional responses 
+			\item consumer-resource (e.g., predator-prey) functional responses 
 			
 			\item Individual growth
 	
@@ -340,22 +340,22 @@
 	% \begin{columns}[c]
 	%   \column{2in}
 	%   \begin{center}
-	% 			   $f(x_R) = \frac{{a x_R^{q + 1}}}{{1 + h a x_R^{q + 1}}}$
+	% 			   $f(x_r) = \frac{{a x_r^{q + 1}}}{{1 + h a x_r^{q + 1}}}$
 	% 	\scriptsize (Holling, 1959)
 	% 	\end{center}
 	%  \scriptsize
-	%  $x_R$ = Resource density (Mass / Area or Volume)\\
+	%  $x_r$ = resource density (Mass / Area or Volume)\\
 	%  $a$ = Search rate (Area or Volume / Time )\\
 	%  $h$ = Handling time \\
 	%  $q$ = Shape parameter (dimensionless) 
 	%  \column{2.3in}
-	%       \includegraphics[width=\textwidth]{graphics/FR.pdf}
+	%       \includegraphics[width=\textwidth]{graphics/Fr.pdf}
 	% \end{columns}
 	
 	% \vspace{10pt}
 	%  Note that: 
 	% \begin{itemize}
-	% \item NLLS fitting can yield $h < 0$, $q < 0$, or both 
+	% \item nlls fitting can yield $h < 0$, $q < 0$, or both 
 	% \item $h < 0$ is biologically impossible but indicates an upward curving response
 	% \item $q < 0$ is biologically unlikely as it indicates a decline in 
 	% search rate with resource density (but is useful as a measure of 
@@ -367,14 +367,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[plain]
  
-	\begin{center}\LARGE 
-		\textsc{The NLLS Fitting Method}
+	\begin{center}\LArGE 
+		\textsc{The nlls Fitting Method}
 	\end{center}
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{The NLLS method: Overview}
+\begin{frame}{The nlls method: Overview}
 
 	\begin{itemize}[<+->]\itemsep10pt
 			
@@ -385,10 +385,10 @@
 		\begin{itemize}[<+->]\itemsep6pt
 			\item Choose starting (initial values for the parameters we want to estimate ( $\beta_j$'s)
 		
-			\item Then, adjust the parameters {\it iteratively} (using a specific ``algorithm'' that is better than searching {\it randomly}) such that the RSS is gradually decreased 
+			\item Then, adjust the parameters {\it iteratively} (using a specific ``algorithm'' that is better than searching {\it randomly}) such that the rSS is gradually decreased 
 	
 			\item Eventually, if it all goes well, a combination of
-		$\beta_j$'s that is {\it very close} to the desired solution (where the RSS is {\it approximately} minimized) can be found
+		$\beta_j$'s that is {\it very close} to the desired solution (where the rSS is {\it approximately} minimized) can be found
 				
 		\end{itemize}
 	\end{itemize}
@@ -396,10 +396,10 @@
 	\end{frame}
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{The NLLS fitting / optimization process}
+\begin{frame}{The nlls fitting / optimization process}
 
 	\begin{center}
-		\includegraphics[width=\textwidth]{graphics/RSS_min.pdf}
+		\includegraphics[width=\textwidth]{graphics/rSS_min.pdf}
 	\end{center}
 
 \end{frame}
@@ -407,21 +407,21 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{The NLLS fitting / optimization process}
+\begin{frame}{The nlls fitting / optimization process}
 
 The general procedure / algorithm is:
 
 \begin{enumerate}[<+->] \itemsep4pt
 	\item Start with an initial value for each parameter in the model
 	\item Generate the curve defined by the initial values
-	\item Calculate the residual sum-of-squares (RSS)
+	\item Calculate the residual sum-of-squares (rSS)
 	\item Adjust the parameters to make the curve come closer to the data 
 	points. {\it This the tricky part --- more on this in the next slide}
 	\item Adjust the parameters again so that the curve comes even closer 
-	to the points (RSS decreases)
-	\item Repeat 4--5
+	to the points (rSS decreases)
+	\item repeat 4--5
 	\item Stop simulations when the adjustments make virtually no 
-	difference to the RSS
+	difference to the rSS
 \end{enumerate}
 
 
@@ -429,7 +429,7 @@ The general procedure / algorithm is:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{NLLS fitting / optimization algorithms}
+\begin{frame}{nlls fitting / optimization algorithms}
 
 The {\it tricky part --- adjust parameters to make curve come closer to 
 the data points} (step 4) --- has two main algorithms that are generally used:
@@ -447,19 +447,19 @@ the data points} (step 4) --- has two main algorithms that are generally used:
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{NLLS fits -- assessment and reporting}
+\begin{frame}{nlls fits -- assessment and reporting}
 
 \begin{itemize}[<+->] \itemsep6pt
-\item Once the NLLS fitting is done, you need to get the {\it goodness of fit measures}
+\item Once the nlls fitting is done, you need to get the {\it goodness of fit measures}
 
 \item First, of course, examine the fits visually
 
-\item Report the goodness-fit results:
+\item report the goodness-fit results:
 
 	\begin{itemize}
 	
 		\item Sums of deviations of the data points from the final model 
-		fit (final RSS)
+		fit (final rSS)
 		\item Estimated coefficients
 		\item For each coefficient, standard error (can be used for CI's), t-statistic and corresponding (two-tailed) p-value 
 	\end{itemize} 
@@ -468,16 +468,16 @@ the data points} (step 4) --- has two main algorithms that are generally used:
 
 \item You may also want to {\it compare and select between multiple competing  models}  
 
-\item Unlike in Linear Models, R$^2$ values {\it should not} be used to interpret the quality of a NLLS fit (more on this in the practicals).    
+\item Unlike in Linear Models, r$^2$ values {\it should not} be used to interpret the quality of a nlls fit (more on this in the practicals).    
 
 \end{itemize}
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{NLLS Assumptions}
+\begin{frame}{nlls Assumptions}
 
-NLLS-regression has all the assumptions of OLS-regression:
+nlls-regression has all the assumptions of OLS-regression:
 	\begin{itemize}[<+->]\itemsep10pt
 		
 		\item No (in practice, minimal) measurement error in explanatory 
@@ -493,7 +493,7 @@ NLLS-regression has all the assumptions of OLS-regression:
 		% \varepsilon_i$? \pause
 		
 		\item What if the errors are not normal? --- Interpret results
-		cautiously, and use Maximum Likelihood or Bayesian fitting methods instead
+		cautiously, and use Maximum Likelihood or bayesian fitting methods instead
 	
 	\end{itemize}
 \end{frame}
@@ -501,7 +501,7 @@ NLLS-regression has all the assumptions of OLS-regression:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[plain]
  
-	\begin{center}\LARGE 
+	\begin{center}\LArGE 
 		\textsc{Practicals Overview}
 	\end{center}
 
@@ -510,13 +510,13 @@ NLLS-regression has all the assumptions of OLS-regression:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{NLLS Fitting Practicals}
+\begin{frame}{nlls Fitting Practicals}
 	
 	\begin{itemize}[<+->]\itemsep16pt
 	
-		\item We will use {\tt R}
+		\item We will use {\tt r}
 		
-		\item For fitting simple non-linear models, the {\tt nls} function in R is sufficient 
+		\item For fitting simple non-linear models, the {\tt nls} function in r is sufficient 
 			\begin{itemize}
 				\item It uses the {\bf Gauss-Newton} algorithm by default
 				\item The command is {\tt nls()}
@@ -537,11 +537,11 @@ NLLS-regression has all the assumptions of OLS-regression:
 	\end{frame}
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{NLLS Fitting Practicals}
+\begin{frame}{nlls Fitting Practicals}
 
 \begin{itemize}\itemsep10pt
 
-	\item We will start with NLLS fitting of the Michaelis-Menten model of biochemical reaction kinetics:
+	\item We will start with nlls fitting of the Michaelis-Menten model of biochemical reaction kinetics:
 
 \end{itemize}
 	
@@ -566,7 +566,7 @@ NLLS-regression has all the assumptions of OLS-regression:
 \vspace{10pt}
 \begin{itemize}\itemsep10pt
 
-	\item You will use NLLS fitting to obtain estimates of $V_{\max}$ and $K_M$
+	\item You will use nlls fitting to obtain estimates of $V_{\max}$ and $K_M$
 
 	\item Note that $V_{\max} \le 0 $ and $K_M \le 0$ are physically impossible (useful fir picking starting values)
 
@@ -576,16 +576,16 @@ NLLS-regression has all the assumptions of OLS-regression:
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \begin{frame}{More NLLS tips}
+% \begin{frame}{More nlls tips}
 
 % \begin{itemize}[<+->]\itemsep10pt
-% 	\item You can use mixed-effects modelling with NLLS in R; the package is {\tt nlme}
+% 	\item You can use mixed-effects modelling with nlls in r; the package is {\tt nlme}
 % 	{\small \url 
-% 	{https://stat.ethz.ch/R-manual/R-devel/library/nlme/html/nlme.html}}
+% 	{https://stat.ethz.ch/r-manual/r-devel/library/nlme/html/nlme.html}}
 % 	(You are probably stuck with the Gauss-Newton algorithm with 
 % 	{\tt nlme} though)
 	
-% 	\item You can also use Python --- look up {\tt lmfit} \url{https://lmfit.github.io/lmfit-py/index.html}. \\ {\tt python} seems to have a better Levenberg-Marqualdt implementation than {\tt R} 
+% 	\item You can also use python --- look up {\tt lmfit} \url{https://lmfit.github.io/lmfit-py/index.html}. \\ {\tt python} seems to have a better Levenberg-Marqualdt implementation than {\tt r} 
 	
 % \end{itemize}   
 
@@ -593,7 +593,7 @@ NLLS-regression has all the assumptions of OLS-regression:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Readings}
+\begin{frame}{readings}
 
 \begin{itemize}\itemsep16pt
 	
@@ -617,7 +617,7 @@ NLLS-regression has all the assumptions of OLS-regression:
 			
 % 		\item We want to find estimates of values of the parameters 
 % 		($\hat{\beta_j}$) that {\it minimize} the sum ($S$) of squared residuals 
-% 		($r_i$) (AKA ``RSS'') $S = \sum\nolimits_{i=1}^n{\left[ y_i - 
+% 		($r_i$) (AKA ``rSS'') $S = \sum\nolimits_{i=1}^n{\left[ y_i - 
 % 		f(x_i,\boldsymbol\beta) \right]^2} = \sum\nolimits_{i=1}^n{r_i^2}$
 
 % 		\item For this we can solve $\frac{\partial S}{\partial 
@@ -662,7 +662,7 @@ NLLS-regression has all the assumptions of OLS-regression:
 % 		\varepsilon_i$ \\
 		
 % 		\item That is, our model is $y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$ 
-% 		(Linear Regression)
+% 		(Linear regression)
 		
 % 	\item Then we want to solve 
 		
@@ -709,7 +709,7 @@ NLLS-regression has all the assumptions of OLS-regression:
 % 		}_{1}}\sum\nolimits_{i=1}^{n}{x_{i}^{2}}=0$
 
 % 		\item That is, we need to solve $\mathbf{Y} = \mathbf{X 
-% 		\boldsymbol\beta  +  \boldsymbol\varepsilon}$ ({\it this is what R 
+% 		\boldsymbol\beta  +  \boldsymbol\varepsilon}$ ({\it this is what r 
 % 		solves when you use {\tt lm()}})
 
 % 	\end{itemize}

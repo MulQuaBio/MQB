@@ -12,7 +12,7 @@ import scipy as sc
 import matplotlib.pyplot as plt
 # import matplotlib.animation as ani #for animation
 
-def GenRdmAdjList(N = 2, C = 0.5):
+def GenrdmAdjList(N = 2, C = 0.5):
 	""" 
 	Generate random adjacency list given N nodes with connectance 
 	probability C
@@ -27,18 +27,18 @@ def GenRdmAdjList(N = 2, C = 0.5):
 	return ALst
 
 ## Assign body mass range
-SizRan = ([-10,10]) #use log scale
+Sizran = ([-10,10]) #use log scale
 
 ## Assign number of species (MaxN) and connectance (C)
 MaxN = 30
 C = 0.75
 
 ## Generate adjacency list:
-AdjL = sc.array(GenRdmAdjList(MaxN, C))
+AdjL = sc.array(GenrdmAdjList(MaxN, C))
 
 ## Generate species (node) data:
 Sps = sc.unique(AdjL) # get species ids
-Sizs = sc.random.uniform(SizRan[0],SizRan[1],MaxN)# Generate body sizes (log10 scale)
+Sizs = sc.random.uniform(Sizran[0],Sizran[1],MaxN)# Generate body sizes (log10 scale)
 
 ###### The Plotting #####
 plt.close('all')

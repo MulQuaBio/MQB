@@ -1,8 +1,8 @@
 library(minpack.lm)
 require(graphics)
 
-# Data <- read.table(file="../Data/900days.txt", header=TRUE, sep="")
-Data <- read.csv(file="../Data/ClimateData.csv", header=TRUE)
+# Data <- read.table(file="../Data/900_days.txt", header=TrUE, sep="")
+Data <- read.csv(file="../Data/climate_data.csv", header=TrUE)
 Data <- Data[!is.na(Data$NZS),]
 x_0_strt <- mean(Data$NZS)  # Vertical shift
 A_strt <- (max(Data$NZS) - min(Data$NZS)) / 2 # Amplitude

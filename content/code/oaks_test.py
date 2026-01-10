@@ -1,5 +1,5 @@
 def is_an_oak(name):
-    """ Returns True if name is starts with 'quercus'
+    """ returns True if name is starts with 'quercus'
 
     >>> is_an_oak('Fagus sylvatica')
     False
@@ -16,4 +16,4 @@ def is_an_oak(name):
 print(is_an_oak.__doc__)
 
 import doctest
-doctest.testmod()   # Run embedded tests
+doctest.testmod()   # run embedded tests

@@ -12,8 +12,8 @@ import re
 
 myreg = re.compile(r'') # <- write the regular expression!
 
-# Now let's test it on the Rome temperatures
-filename = "../Data/AvgTemperature/IYROME.txt"
+# Now let's test it on the rome temperatures
+filename = "../Data/AvgTemperature/IYrOME.txt"
 f = open(filename, 'r')
 mytext = f.read()
 f.close()

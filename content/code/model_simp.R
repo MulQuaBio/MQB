@@ -1,6 +1,6 @@
 ## Model simplification
 
-mammals <- read.csv('../data/MammalData.csv')
+mammals <- read.csv('../data/mammal_data.csv')
 
 # get logs of continuous variables
 mammals$logLS <- log(mammals$LitterSize)

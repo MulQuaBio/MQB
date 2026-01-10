@@ -12,13 +12,13 @@ On your computer, create a text file called ```hello.c```. Open it in a text edi
         printf("Hello, world of pain!\n");    // Another comment: all statements in C end with a
                                               // semicolon
     
-        return 0;  // Everything went OK. Return 0 to the OS.
+        return 0;  // Everything went OK. return 0 to the OS.
     }
 
 Now save the file and exit to the console.
 
 ## The compiler:
-As mentioned, C is a compiled programming language. That means, your text code is used to generate machine code only once prior to run time. The result is a file called a 'binary' meaning it has been translated from human-readable source code to computer readable binary instructions. The commonly used C compilers for Unix-like systems are the GNU C compiler gcc or cc and Clang. The use of these C compilers is pretty simple. At the command line, from within the directory containing your source file, enter `gcc` followed by the the name of your source file, like so:
+As mentioned, C is a compiled programming language. That means, your text code is used to generate machine code only once prior to run time. The result is a file called a 'binary' meaning it has been translated from human-readable source code to computer readable binary instructions. The commonly used C compilers for unix-like systems are the GNU C compiler gcc or cc and Clang. The use of these C compilers is pretty simple. At the command line, from within the directory containing your source file, enter `gcc` followed by the the name of your source file, like so:
 
 ``` $ gcc hello.c```
 
@@ -32,7 +32,7 @@ The executable output file will usually be called:
 
 ```a.out```
 
-Run this program by entering the following at the command prompt:
+run this program by entering the following at the command prompt:
 
 ```$ ./a.out```
 
@@ -50,7 +50,7 @@ All that said, it doesn't mean we can't write highly (or even completely) portab
 
 **The compiler vs. run-time:**
 
-There is remarkably little run-time magic that happens in C. Languages like Python and R run in an interpreter, while Java runs on a virtual machine which is basically a program pretending to be another computer (the language is written to be understood by that virtual computer which, in turn, can translate and transmit signals to your system). Because of this, interpreted languages have lots of little 'tricks' that can be applied during run time. As you will see, many of these will not be possible in C (not without writing a bit of your own code to do the job).
+There is remarkably little run-time magic that happens in C. Languages like Python and r run in an interpreter, while Java runs on a virtual machine which is basically a program pretending to be another computer (the language is written to be understood by that virtual computer which, in turn, can translate and transmit signals to your system). Because of this, interpreted languages have lots of little 'tricks' that can be applied during run time. As you will see, many of these will not be possible in C (not without writing a bit of your own code to do the job).
 
 
 ## Expressions and statements:
@@ -121,7 +121,7 @@ return 0;
 which returns the number 0 to the operating system indicating that the program has executed as planned and is now terminating. A more advanced topic not covered in this module is returning other values to the operating system, for instance to indicate run-time errors. This is an advanced topic on error reporting which we won't go into and for which more sophisticated techniques are available in object-oriented languages like C++. 
 
 ## Whitespace:
-There is not a lot of whitespace enforcement in C, unlike Python. Instead, structure is enforced primarily by a combination of braces {}, whitespace, and the all-important semi-colon.
+There is not a lot of whitespace enforcement in C, unlike python. Instead, structure is enforced primarily by a combination of braces {}, whitespace, and the all-important semi-colon.
 
 The following code would compile and run equally well as the above:
 
@@ -172,7 +172,7 @@ We won't go into the details of `printf()` here, because we haven't yet looked a
 ## Understanding the compiler (a bit more detail)
 
 The compiler is really at least three different programs: the **preprocessor**, the **compiler**, and the **linker**. 
-While these details aren't needed to compile very simple programs, understanding these details becomes useful later when you want to write C modules that are used by R and Python.
+While these details aren't needed to compile very simple programs, understanding these details becomes useful later when you want to write C modules that are used by r and python.
 Therefore, we'll learn a bit about it now, but don't worry if this seems a bit complicated or opaque.
 
 ### The preprocessor
@@ -197,7 +197,7 @@ The files are usually called *object files* and typically have a `.o` or `.obj` 
 A program can consist of one or more object files, and can even include pre-compiled binaries from other places. 
 The linker's job is to build the **executable** from the individual compiled object files and output a program that is ready for use on your system.
 A clue to what the linker does and how it works is in our 'hello world' program.
-Recall that we used the `#include <stdio.h>` preprocessor directive and that we needed this in order to use the function `printf`.
+recall that we used the `#include <stdio.h>` preprocessor directive and that we needed this in order to use the function `printf`.
 The linker 'knows' where the definition of `printf` is and 'builds it into' the new executable.
 
 ### Building a program
@@ -231,7 +231,7 @@ What are the three things missing in this program?
         return 0;
     }
 
-Also in the "hello, world!" program above, delete or 'comment-out' the include statement. Recompile the software. What happens?
+Also in the "hello, world!" program above, delete or 'comment-out' the include statement. recompile the software. What happens?
 
 ### 3- Writing and compiling a program
 These `hello world` examples are always inappropriate at the end of a session.
@@ -258,7 +258,7 @@ program=$1
 ## Compiling the program
 gcc ${program} -o ${program}.out
 
-## Running the program
+## running the program
 ./${program}.out
 ```
 -->

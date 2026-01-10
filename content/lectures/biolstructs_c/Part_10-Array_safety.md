@@ -1,6 +1,6 @@
 # 10. Array, pointer, and memory safety (Part 2)
 
-Because arrays, and the related properties of pointers, in C lack bounds checking, working with arrays can be perilous for C programmers. This is especially important in larger programs which may have complex data. However, given that you are likely to use C to extend R or Python code, you will likely also have intensive memory needs when using C. So it is useful to create a C library that allows you to customise your arrays and work safely with them. A solid, mature library of array utilities will help you use arrays reliably and problem free.
+Because arrays, and the related properties of pointers, in C lack bounds checking, working with arrays can be perilous for C programmers. This is especially important in larger programs which may have complex data. However, given that you are likely to use C to extend r or Python code, you will likely also have intensive memory needs when using C. So it is useful to create a C library that allows you to customise your arrays and work safely with them. A solid, mature library of array utilities will help you use arrays reliably and problem free.
 
 ## Wrapping arrays in a struct
 
@@ -115,10 +115,10 @@ In the section on header files and programs with multiple files, we will constru
 ### Accessing other members with functions
 Extend the examples by adding functions to return the capacity (maximum storage) for the array and the number of elements stored in the array.
 
-### Resizing the array
+### resizing the array
 How would you resize the array (i.e increase its capacity)?
 
-### Returning error from get_int_from_array()
+### returning error from get_int_from_array()
 In our function to get an int from an array, we checked that our index parameter `place` was within the bounds of our array. If it wasn't it returned the value 0. What is the potential problem with this? What might be a better way to handle errors fromt his function?
 
 ### Challenge: dynamic arrays for any datatype

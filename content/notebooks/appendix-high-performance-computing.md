@@ -47,15 +47,15 @@ matrix multiplications. They are highly efficient at processing many
 calculations simultaneously, making them ideal for scientific
 computations and machine learning applications.
 
-- **Random Access Memory (RAM)** – Usually referred to as just "memory", RAM is the temporary storage that the
-CPU uses to hold data actively being processed. RAM allows for quick
+- **random Access Memory (rAM)** – Usually referred to as just "memory", rAM is the temporary storage that the
+CPU uses to hold data actively being processed. rAM allows for quick
 access to data needed for computations, which is either deleted or
 deposited into NVM storage once completed.
 
 - **Non-Volatile Memory (NVM)** - Non-volatile memory refers to any form
 of memory that retains data even when the system is powered off. This
 includes storage devices like hard drives (HDDs), solid-state drives
-(SSDs), and flash drives. Unlike RAM, which is cleared when the system
+(SSDs), and flash drives. Unlike rAM, which is cleared when the system
 shuts down, NVM provides long-term data storage, allowing for the
 preservation of files, applications, and system states across power
 cycles.
@@ -273,7 +273,7 @@ particularly useful for tasks like cross-validation or Monte Carlo
 simulations, where each iteration is independent and benefits from being
 run in parallel.
 
--   In R, the `parallel` package gives us access to parallelisation
+-   In r, the `parallel` package gives us access to parallelisation
     functions, such as `mclapply` (multi-core `lapply`) Additional
     packages include future and foreach.
 
@@ -289,7 +289,7 @@ model to each `ID` group. First we can generate the data:
     n <- 10000   # Number of observations
 
     data <- data.frame(
-      ID = sample(1:10, n, replace = TRUE),  # ID column to define 10 groups
+      ID = sample(1:10, n, replace = TrUE),  # ID column to define 10 groups
       y = rnorm(n),
       X = rnorm(n)
     )
@@ -339,7 +339,7 @@ To get started, you will need 4 things:
 
 1.  **Access to the HPC system:** You should have received an email from
     <noreply@imperial.ac.uk> with the subject heading “Welcome from the
-    Research Computing Service”. If you have not received this email,
+    research Computing Service”. If you have not received this email,
     please let me know as soon as possible so we can try and get you
     added this week.
 
@@ -355,13 +355,13 @@ To get started, you will need 4 things:
     ```bash
      sftp username@login.hpc.imperial.ac.uk
     ```
-      If this has been successful, you will see a message containing the title “Imperial College London Research Computing Service”
+      If this has been successful, you will see a message containing the title “Imperial College London research Computing Service”
 
 
 3.  **Necessary modules are set up in your remote are:** It will be
-    useful to ensure that Python and R are set up on your area of the
+    useful to ensure that Python and r are set up on your area of the
     HPC system at this stage. You will only need to do this once. To
-    install Python and R, you will need to first log in to the HPC
+    install Python and r, you will need to first log in to the HPC
     service (as covered in the above section), and then enter the
     following two lines into the command line within your area of the
     remote system:
@@ -370,11 +370,11 @@ To get started, you will need 4 things:
     module load anaconda3/personal
     anaconda-setup
     ```
-    This could take some time and may require you to respond “yes” when prompted. Once anaconda is fully installed, install R by entering
+    This could take some time and may require you to respond “yes” when prompted. Once anaconda is fully installed, install r by entering
     ```bash
-    conda install R
+    conda install r
     ```
-    Once again, this could take some time and may require you to respond “yes” when prompted. Once both of these are installed, you should be able to enter python3 and code in Python on the cluster   node. However, in general you should only run code in either R or Python by submitting them within jobs (as covered in the lectures and in the instructions document). (You will notice that if    you attempt to launch R from your HPC node you will be given a stern message!)
+    Once again, this could take some time and may require you to respond “yes” when prompted. Once both of these are installed, you should be able to enter python3 and code in Python on the cluster   node. However, in general you should only run code in either r or Python by submitting them within jobs (as covered in the lectures and in the instructions document). (You will notice that if    you attempt to launch r from your HPC node you will be given a stern message!)
 
 
 4.  **A method of file transfer:** Files are exchanged between your
@@ -390,44 +390,44 @@ To get started, you will need 4 things:
 
 ------------------------------------------------------------------------
 
-## Running a job on the Imperial HPC
+## running a job on the Imperial HPC
 
 You first must determine the task at hand. Are you running your own
 script or software that natively parallelises tasks? Is your job an
 array?
 
-Using arrays as an example, we would first want to make an R or Python
+Using arrays as an example, we would first want to make an r or Python
 script that takes in a job number and uses that to determine which task
-to perform. The `HPC_script.R/py` files below, when sourced, identify
+to perform. The `HPC_script.r/py` files below, when sourced, identify
 the job number (that is, the job number the Imperial HPC assigns to our
 code submission), run our code, and then save the outputs to the current
 working directory, with all file names being distinct (otherwise the
 different jobs will overwrite each other).
 
-**In R:**
+**In r:**
 
-    seed_number <- as.numeric(Sys.getenv("PBS_ARRAY_INDEX")) # Find out the job number
+    seed_number <- as.numeric(Sys.getenv("PBS_ArrAY_INDEX")) # Find out the job number
 
     set.seed(seed_number) # Set this as the random seed so that all runs have a unique seed
 
-    output <- runif(n=10000,min=0,max=1) # # Run whatever simulation we want
+    output <- runif(n=10000,min=0,max=1) # # run whatever simulation we want
 
     save(output,file=paste("output_",seed_number,".rda")) # Save this to a file
 
-    rm(output,seed_number) # Remove our objects from the environment
+    rm(output,seed_number) # remove our objects from the environment
 
 **Similarly, in Python:**
 
-    seed_number = int(os.getenv("PBS_ARRAY_INDEX")) # Find out the job number
+    seed_number = int(os.getenv("PBS_ArrAY_INDEX")) # Find out the job number
 
     seed(seed_number) # Set this as the random seed so that all runs have a unique seed
 
-    output = numpy.random.uniform(0,1,1000) # Run whatever simulation we want
+    output = numpy.random.uniform(0,1,1000) # run whatever simulation we want
 
     with open(print("output_",str(seed_number),".data",sep=""),"w") as f:
       f.write(output) # Save this to a file
       
-    del seed_number # Remove our objects from the environment
+    del seed_number # remove our objects from the environment
     del output
 
 Using SFTP or SCP from the terminal of your local machine, copy your
@@ -445,7 +445,7 @@ path. This file must contain the following fields at the top:
 
 This will determine the queue that your job gets put into. If your
 requested specifications do not fall within at least one queue, your job
-won’t run! Have a look at the [RCS job sizing
+won’t run! Have a look at the [rCS job sizing
 guidance](https://icl-rcs-user-guide.readthedocs.io/en/latest/hpc/queues/job-sizing-guidance/)
 for more information.
 
@@ -453,14 +453,14 @@ Within this file, you will generally want to load any modules and
 packages, print any statements to check your progress within the job
 output files, and transfer files to and from the job to your working
 directory. **For your outputs to be created correctly, you must move
-your files to `$TMPDIR` to be processed, and then move files from this
-back to `$HOME`**. This is because `$TMPDIR` is where your files are
+your files to `$TMPDIr` to be processed, and then move files from this
+back to `$HOME`**. This is because `$TMPDIr` is where your files are
 run, whereas `$HOME` is where you interact with them!
 
 This can be summarised in the `run_script.sh` file below, where we are
 running the `HPC_script.R` file from above. Because the R script does
 not parallelise within it and does not load a significant amount of
-data, we will only request a single thread (`ncpus`) and 1GB of RAM
+data, we will only request a single thread (`ncpus`) and 1GB of rAM
 (`mem`):
 
     #!/bin/bash
@@ -469,19 +469,19 @@ data, we will only request a single thread (`ncpus`) and 1GB of RAM
 
     module load anaconda3/personal
 
-    echo "R is about to run"
+    echo "r is about to run"
 
-    cp $HOME/HPC_script.R $TMPDIR
+    cp $HOME/HPC_script.R $TMPDIr
 
-    R --vanilla < $TMPDIR/HPC_script.R
+    r --vanilla < $TMPDIr/HPC_script.R
 
-    mv $TMPDIR/output_* $HOME/output_files/
+    mv $TMPDIr/output_* $HOME/output_files/
 
-    echo "R has finished running"
+    echo "r has finished running"
 
 The Imperial HPC uses the PBS Pro job scheduler (documentation available
 [here](https://2021.help.altair.com/2021.1.2/PBS%20Professional/PBSUserGuide2021.1.2.pdf)),
-whereas other systems may use SLURM (documentation available
+whereas other systems may use SLUrM (documentation available
 [here](https://slurm.schedmd.com/documentation.html)). To submit your
 job to the queue you will use the `qsub` command. If you are submitting
 an array job, as we are with `run_script.sh`, you want to use the `-J`

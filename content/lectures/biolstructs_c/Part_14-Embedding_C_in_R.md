@@ -1,9 +1,9 @@
 # 14. Embedding C code in R
 
-While R is useful for a wide variety of statistcal programming applications, one of R's major shortcomings is in performance, especially in loops, and loops containing conditional statements.
-For that reason, many people working with R actually embed C modules and libraries within their R packages. 
-You may wish to do the same with your own R modules in order to improve performance.
-However, what might end up being as or more useful is debugging some of the C code within R packages (I've seen some pretty terrifying and unsafe code in some of these modules).
+While r is useful for a wide variety of statistcal programming applications, one of R's major shortcomings is in performance, especially in loops, and loops containing conditional statements.
+For that reason, many people working with R actually embed C modules and libraries within their r packages. 
+You may wish to do the same with your own r modules in order to improve performance.
+However, what might end up being as or more useful is debugging some of the C code within r packages (I've seen some pretty terrifying and unsafe code in some of these modules).
 
 There are a number of ways of calling C functions from R. In this chapter we will look at the `.Call` function in `R`. Before that, we'll look at the `.C` function.
 
@@ -18,14 +18,14 @@ void double_me(int *x)
 }
 ```
 
-R comes with its own version of the `gcc` C/C++ compiler bundled with it. 
+r comes with its own version of the `gcc` C/C++ compiler bundled with it. 
 This is useful because it takes care of a lot of the issues of cross-platform compatibility. 
 As long as R's C compiler is willing to compile it, the code should be portable.
 
 **shell:**
 
 ```sh
-R CMD SHLIB doubler.c 
+r CMD SHLIB doubler.c 
 ```
 
 This will create a shared object library file called `doubler.so` which can now be called from `R` by using the `.C` interface:
@@ -44,7 +44,7 @@ In particular, let's look at the painfully slow nested loops in `R` by writing a
 
 ### in `R`
 
-**R:**
+**r:**
 
 ```{r}
 ## Function for counting the prime numbers between 1 and the given limit
@@ -78,10 +78,10 @@ count.primes.R <- function(limit) {
 
 Let's benchmark this function using `system.time`:
 
-**R:**
+**r:**
 
 ```{r}
-time_R <- system.time(results_R <- count.primes.R(10000))
+time_r <- system.time(results_r <- count.primes.r(10000))
 ```
 
 On my machine, this took 1.276 seconds.
@@ -136,12 +136,12 @@ Don't forget to compile it.
 **shell:**
 
 ```sh
-R CMD SHLIB prime.c 
+r CMD SHLIB prime.c 
 ```
 
 And let's just load and run it in `R`:
 
-**R:**
+**r:**
 
 ```{r}
 ## Loading the compiled function
@@ -164,14 +164,14 @@ $n_primes
 But more than that, you should an enormous speed difference. That took 0.007 seconds on my machine!
 Let's actually compare all that:
 
-**R:**
+**r:**
 
 ```{r}
 ## Did both functions returne the same values?
-results_C$n_primes == results_R ## I want a TRUE!
+results_C$n_primes == results_r ## I want a TrUE!
 
 ## What was the actual time difference?
-time_R[[3]] / time_C[[3]] ## C is that many times faster!
+time_r[[3]] / time_C[[3]] ## C is that many times faster!
 ```
 
 Holly astringent plum like fruit! That's 164 faster!
@@ -180,9 +180,9 @@ There are 78499 prime numbers there  , who would have guessed!
 
 ## Using .Call!
 
-As we've seen, this methods simply changes the value of an `int` that lives somewhere in your R session and that gets modified by the C function.
-R simply keeps track of the pointer and retrieves the `int` that it points to at the end of the program.
-The problem here can be that R will not be able to do other parallel operation (the execution takes place at the main level of your environment) and is not optimised for complex structures or series of functions.
+As we've seen, this methods simply changes the value of an `int` that lives somewhere in your r session and that gets modified by the C function.
+r simply keeps track of the pointer and retrieves the `int` that it points to at the end of the program.
+The problem here can be that r will not be able to do other parallel operation (the execution takes place at the main level of your environment) and is not optimised for complex structures or series of functions.
 We can solve that using the slightly trickier `.Call` function.
 
 ### In C
@@ -192,32 +192,32 @@ First replace the content of your `doubler.c` program by the following:
 **C:**
 
 ```C
-#include <R.h> // The R library for C
-#include <Rdefines.h> // The R library for defining variables in C
+#include <r.h> // The r library for C
+#include <rdefines.h> // The r library for defining variables in C
 
 SEXP double_me(SEXP x)
 {
   SEXP result;
-  PROTECT(result = NEW_INTEGER(1));
-  *(INTEGER(result)) = *(INTEGER(x)) + *(INTEGER(x));
-  UNPROTECT(1);
+  PrOTECT(result = NEW_INTEGEr(1));
+  *(INTEGEr(result)) = *(INTEGEr(x)) + *(INTEGEr(x));
+  UNPrOTECT(1);
   return result;
 }
 ```
 
 Okay, that looks way more different than the previous version and looks very little as C we have been seen so far.
 This is partly because the authors of the `.Call` interface have made extensive use of macros (in capital letters here - a C feature we won't examine in details).
-Basically, all these macro are used to communicate between R and C by coercing the data types appropriately. The `PROTECT` and `UNPROTECT` statements ensure that R's run-time memory manager (garbage collector) doesn't sweep up any memory needed by the C environment.
+Basically, all these macro are used to communicate between r and C by coercing the data types appropriately. The `PrOTECT` and `UNPrOTECT` statements ensure that R's run-time memory manager (garbage collector) doesn't sweep up any memory needed by the C environment.
 
 If we dissect the code line by line, it'll make actually sense:
   
 ```C
-#include <R.h>
-#include <Rdefines.h>
+#include <r.h>
+#include <rdefines.h>
 ```
 
 Since you're now familiar with C, I highly suggest you have a look at what's in these libraries.
-You can find them in your R `include/` folder; it's local location varies between machines but you can easily find it in R by typing: `R.home("include")`.
+You can find them in your r `include/` folder; it's local location varies between machines but you can easily find it in R by typing: `r.home("include")`.
 
 The function is then declared as follows:
 
@@ -238,43 +238,43 @@ SEXP result;
 Now this is regular variable structure definition: we define `result` to be a `SEXP` structure (as described just above).
 
 ```C
-PROTECT(result = NEW_INTEGER(1));
+PrOTECT(result = NEW_INTEGEr(1));
 ```
 
 Again, in a similar way as we've seen before, in this step we attribute some memory space to result that will be the size of one integer.
-The macro `PROTECT` protects the `SEXP` pointer (here `result`) and the macro `NEW_INTEGER` allocates the memory of one integer to `result`.
+The macro `PrOTECT` protects the `SEXP` pointer (here `result`) and the macro `NEW_INTEGEr` allocates the memory of one integer to `result`.
 This is to allow the `result` variable to exist safely out of the R environment and won't risk it being over-written or lost due to another software you're running at the same time.
 
 ```C
-*(INTEGER(result)) = *(INTEGER(x)) + *(INTEGER(x));
+*(INTEGEr(result)) = *(INTEGEr(x)) + *(INTEGEr(x));
 ```
 
 For here things look a bit more familiar.
-Again, `INTEGER` is just a macro that allows to make sure that `x` or `result` are of the primitive C structure `int` even though they could have come from a higher level language (here R).
+Again, `INTEGEr` is just a macro that allows to make sure that `x` or `result` are of the primitive C structure `int` even though they could have come from a higher level language (here r).
 If you ignore this macro for a while, it actually looks exactly the same as the simpler programme: we're attributing to some pointer the sum of two other ones.
 
 And finally:
 
 ```C
-UNPROTECT(1);
+UNPrOTECT(1);
 return result;
 ```
 
-This simply cancel the effect of the previous `PROTECT` macro (similar to a `free()` function) and then returns the `SEXP` structure `result` to be properly interpreted by R through.
+This simply cancel the effect of the previous `PrOTECT` macro (similar to a `free()` function) and then returns the `SEXP` structure `result` to be properly interpreted by r through.
 
-### `PROTECT` and `UNPROTECT`
+### `PrOTECT` and `UNPrOTECT`
 What are these expressions and what do they do? They are required for any data that you reserve in a C function that needs either to:
 
-1. Perist in memory when control returns from C to R
-2. Be declared in C but returned to R.
+1. Perist in memory when control returns from C to r
+2. Be declared in C but returned to r.
 
-`PROTECT` prevents R's runtime 'garbage collector' from freeing memory allocated on the C side until you are ready to be done with it. When we no longer need to protect the data object, we can call `UNPROTECT(n)`. This call removes the last `n` elements that were protected. So we can see that `PROTECT` actually governs a stack-type data structure.
+`PrOTECT` prevents R's runtime 'garbage collector' from freeing memory allocated on the C side until you are ready to be done with it. When we no longer need to protect the data object, we can call `UNPrOTECT(n)`. This call removes the last `n` elements that were protected. So we can see that `PrOTECT` actually governs a stack-type data structure.
 
-### In R
+### In r
 
-Now once we've dissected the syntax of this chock-full-of-macros program, we can compile it for R the exact same way as before (`SHLIB` it!), and then call it in R the same way as well with a dynamic loading.
+Now once we've dissected the syntax of this chock-full-of-macros program, we can compile it for r the exact same way as before (`SHLIB` it!), and then call it in R the same way as well with a dynamic loading.
 
-**R:**
+**r:**
 
 ```{r}
 dyn.load("doubler.so")
@@ -282,14 +282,14 @@ dyn.load("doubler.so")
 
 Once that's done, we can simply call the function using the `.Call` function:
 
-**R:**
+**r:**
 
 ```{r}
 .Call("double_me", x = as.integer(1))
 ```
 
 All right, so again, what's the point, this C program was way easier to write in the syntax before so why bother?
-Well, first, as you might have noticed, the output is not a list any more but is actually the proper value in the right format (an R style `integer`).
+Well, first, as you might have noticed, the output is not a list any more but is actually the proper value in the right format (an r style `integer`).
 Second, this practice is actually way more safe and allow to write your functions in the proper input/output format.
 
 Let's see the example with our previous prime number function (compile that one instead of the former `prime.c` program):
@@ -298,8 +298,8 @@ Let's see the example with our previous prime number function (compile that one 
 
 ```C
 #include <stdio.h>
-#include <R.h>
-#include <Rdefines.h>
+#include <r.h>
+#include <rdefines.h>
 
 SEXP count_primes_C(SEXP limit)
 {
@@ -308,13 +308,13 @@ SEXP count_primes_C(SEXP limit)
     int divisor = 2; // the divisor number
     int is_prime = 0; // if 0 it's not a prime, if 1 it's a prime
 
-    // R interface datatypes
+    // r interface datatypes
     SEXP n_prime; // the counter of number of primes (declared as SEXP)
-    PROTECT(n_prime = NEW_INTEGER(1)); // Set up n_prime space in the memory
-    *(INTEGER(n_prime)) = 0; // Initialising the counting
+    PrOTECT(n_prime = NEW_INTEGEr(1)); // Set up n_prime space in the memory
+    *(INTEGEr(n_prime)) = 0; // Initialising the counting
 
 
-    while (prime < INTEGER(limit)[0])
+    while (prime < INTEGEr(limit)[0])
     {
         is_prime = 0; // Set the condition to 0 (not prime)
 
@@ -331,14 +331,14 @@ SEXP count_primes_C(SEXP limit)
         }
 
         if (is_prime == 0) {
-            *(INTEGER(n_prime)) = *(INTEGER(n_prime)) + 1;  // increment prime
+            *(INTEGEr(n_prime)) = *(INTEGEr(n_prime)) + 1;  // increment prime
                                                             // number counter
         }
 
         ++prime; // increment number counter
     }
 
-    UNPROTECT(1); // Release the allocated memory
+    UNPrOTECT(1); // release the allocated memory
 
     return n_prime;
 }
@@ -346,7 +346,7 @@ SEXP count_primes_C(SEXP limit)
 
 And then (don't forget to `SHLIB` it!) in R:
 
-**R:**
+**r:**
 
 ```{r}
 dyn.load("prime.so")
@@ -357,13 +357,13 @@ This resembles much more to a proper input/output function.
 It also has the huge advantage of being able to deal with a lot of data structures that are common in R but not primitive to C.
 For example, this is [some (ugly) code](https://github.com/TGuillerme/CharactersCorrelation/blob/master/Functions/char.diff.c) using C in R through `.Call` rather and `.C`.
 This function called in R as `char.diff` calculates a squared distance matrix, a loopy task that takes ages in R.
-As you can see it's a lot of code mumbo-jumbo in C but you should be able to recognise the C logic with a couple of easy C functions (from line 35 to 180) and a `SEXP` output function at the end (the wrapper for communicating between C and R).
+As you can see it's a lot of code mumbo-jumbo in C but you should be able to recognise the C logic with a couple of easy C functions (from line 35 to 180) and a `SEXP` output function at the end (the wrapper for communicating between C and r).
 
 
 ## Exercise
 
 In the following example, we only dealt with input/outputs being single integers, but what about more complex ones, like a phylogenetic tree?
-In this exercise we will try to write an `R/C` interface that will allow use to manipulate trees simply in `R` but doing all the background in `C`.
+In this exercise we will try to write an `r/C` interface that will allow use to manipulate trees simply in `R` but doing all the background in `C`.
 You will need to have `ape` installed on your computer (`install.packages(ape)` in `R`).
 Let's go through the first example together:
 
@@ -375,7 +375,7 @@ An easy one:
 
 The code should look something like that:
 
-**R:**
+**r:**
 
 ```{r}
 library(ape)
@@ -399,7 +399,7 @@ Now let's modify the example that will allow to get either the number of tips or
 
 The code should look something like that:
 
-**R:**
+**r:**
 
 ```{r}
 library(ape)
@@ -411,7 +411,7 @@ dyn.load("count.tips.so")
 
 ## Counting the number of tips
 .Call("count_tips", tree = as.character(newick_tree), tips = FALSE,
-      nodes = TRUE)
+      nodes = TrUE)
 ```
 
 <!-- ### 3 Modifying a tree
@@ -440,7 +440,7 @@ plot(read.tree(text = tree_modified))
 ### 4 Wrapping up interface
 And here's just a nice function to wrap up all that in R:
 
-**R:**
+**r:**
 
 ```{r}
 modify.tree <- function(tree, remove) {
@@ -448,7 +448,7 @@ modify.tree <- function(tree, remove) {
     require(ape)
     dyn.load("modify.tree.so")
 
-    ## Removing tree's branch length
+    ## removing tree's branch length
     tree$edge.length <- NULL
     ## Transforming the tree into a newick string
     tree_newick <- write.tree(tree)
@@ -460,16 +460,16 @@ modify.tree <- function(tree, remove) {
     ## Transforming it into phylo format
     tree_out <- read.tree(text = tree_modified)
 
-    ## Return the results
+    ## return the results
     return(tree_out)
 }
 
-count.tree <- function(tree, tips = TRUE, nodes = FALSE) {
+count.tree <- function(tree, tips = TrUE, nodes = FALSE) {
     ## Loading the library and the C code
     require(ape)
     dyn.load("modify.tree.so")
 
-    ## Removing tree's branch length
+    ## removing tree's branch length
     tree$edge.length <- NULL
     ## Transforming the tree into a newick string
     tree_newick <- write.tree(tree)
@@ -478,7 +478,7 @@ count.tree <- function(tree, tips = TRUE, nodes = FALSE) {
     out <- .Call("count_tips", tree = as.character(newick_tree), tips = tips,
                  nodes = nodes)
 
-    ## Return the results
+    ## return the results
     return(out)
 }
 

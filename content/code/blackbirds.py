@@ -1,6 +1,6 @@
 import re
 
-# Read the file (using a different, more python 3 way, just for fun!)
+# read the file (using a different, more python 3 way, just for fun!)
 with open('../data/blackbirds.txt', 'r') as f:
     text = f.read()
 

@@ -4,9 +4,9 @@
 
 **Attendees:**  
 - Samraat Pawar
-- James Rosindell  
+- James rosindell  
 - Bhavin Khatri  
-- Ruben Perez-Carrasco  
+- ruben Perez-Carrasco  
 - Tin-Yu Jonathan Hui  
 - Francis Windram  
 
@@ -14,17 +14,17 @@
 1. **Samraat**  
    - Finalize the structure and design of the mini project with input from module leads by January.
 
-2. **Ruben**  
-   - Integrate Bayesian and likelihood materials into the centralized repository.
+2. **ruben**  
+   - Integrate bayesian and likelihood materials into the centralized repository.
    - Propose a project structure based on cell competition data for the mini project.
 
 3. **Austin + Bhavin + Tin-Yu**
    - Collaborate on the evolutionary theory segment for the mini project and teaching materials.
    - Consider ABC projects for possible inclusion in the mini project.
 
-4. **James Rosindell**  
-   - Assist with HPC content integration into the mini project and GitHub repository.
-   - Ensure HPC materials are compatible with both R and Python formats for students.
+4. **James rosindell**  
+   - Assist with HPC content integration into the mini project and gitHub repository.
+   - Ensure HPC materials are compatible with both r and python formats for students.
 
 5. **Francis**  
    - Develop auto-marking scripts for assessing the mini project.
@@ -41,13 +41,13 @@
 
 #### **Attendees:**  
 - **Pawar Samraat**  
-- **Nelson Rhodri B**
+- **Nelson rhodri B**
 
 #### **Key Discussion Points:**
 
 1. **Overview of Automated Assessment Framework:**
-   - Rhodri demonstrated the assessment framework using **GitHub Classroom**.
-   - Assignments are distributed via GitHub, creating repositories for students.
+   - rhodri demonstrated the assessment framework using **gitHub Classroom**.
+   - Assignments are distributed via gitHub, creating repositories for students.
    - Tests and sample solutions are organized in specific folders for the AI assistant to analyze.
    - The framework supports both student assessments and internal testing of solutions.
 
@@ -56,8 +56,8 @@
    - The system processes student code, test outputs, and assignment specifications to produce detailed feedback in markdown format.
    - The goal is to provide feedback beyond error codes, addressing code quality and optimization.
 
-3. **GitHub Actions for Automation:**
-   - GitHub Actions are used to automate the process of fetching student repositories, running tests, and generating feedback.
+3. **gitHub Actions for Automation:**
+   - gitHub Actions are used to automate the process of fetching student repositories, running tests, and generating feedback.
    - Pawar raised questions about the role of AI in the feedback process and how it integrates with the automated system.
 
 4. **Documentation and Setup:**
@@ -66,7 +66,7 @@
 
 5. **Next Steps for Pawar’s Implementation:**
    - Pawar plans to implement both automated assessment and chatbot functionalities.
-   - He will integrate shell scripts, Python, and R into his GitHub Classroom for a three-week boot camp.
+   - He will integrate shell scripts, python, and r into his gitHub Classroom for a three-week boot camp.
    - There will be a focus on creating documentation on his end, aiming to run automated assessments within two weeks.
 
 6. **Long-Term Vision:**
@@ -79,21 +79,21 @@
 
 #### **Decisions Made:**
 - **Automated feedback generation** using LLM will be integrated into both Nelson’s and Pawar’s frameworks.
-- Pawar will start testing the system with shell scripts in his GitHub Classroom, followed by Python and R.
+- Pawar will start testing the system with shell scripts in his gitHub Classroom, followed by python and r.
 - Further documentation will be created by Pawar for his team’s use.
 
 #### **Action Items:**
 
 1. **Pawar Samraat:**
-   - Implement the GitHub Classroom framework for the boot camp (first week: shell scripts, second week: Python, third week: R).
+   - Implement the gitHub Classroom framework for the boot camp (first week: shell scripts, second week: python, third week: r).
    - Prepare documentation to explain the setup to his team (GTA and postdoc).
-   - Reach out to Nelson for help with GitHub Actions if necessary.
+   - reach out to Nelson for help with gitHub Actions if necessary.
    - Begin automated assessments within two weeks.
 
-2. **Nelson Rhodri B:**
+2. **Nelson rhodri B:**
    - Provide guidance to Pawar and his team on setting up the framework.
    - Plan a meeting in November with potential stakeholders in **Medicine** and other departments.
-   - Consider tweaking the "generate feedback" script and GitHub Actions based on testing needs.
+   - Consider tweaking the "generate feedback" script and gitHub Actions based on testing needs.
 
 3. **Both:**
    - Collaborate on developing a more generalized and user-friendly version of the framework, possibly extending it to other departments.
@@ -137,12 +137,12 @@ Here are the structured meeting notes and action items based on the transcript p
    - Francis expressed some skepticism about the chatbot’s capabilities and raised concerns about its effectiveness.
 
 6. **Automated Assessment**:
-   - Automated assessments were discussed but are not yet integrated into the chatbot. This is planned for future work based on Rodri's framework.
+   - Automated assessments were discussed but are not yet integrated into the chatbot. This is planned for future work based on rodri's framework.
 
 ### Action Items (TODOs):
 1. **Yang Wenxia**:
    - Share deployment documentation and shell scripts for deploying the chatbot on a cloud/server by **Thursday, September 26, 2024**.
-   - Integrate Pawar's Jupyter notebooks and materials into the chatbot and create a new GitHub repository for them.
+   - Integrate Pawar's Jupyter notebooks and materials into the chatbot and create a new gitHub repository for them.
    - Provide user account setup for the 25 students by **Thursday, September 26, 2024**.
 
 2. **Pawar Samraat**:
@@ -151,7 +151,7 @@ Here are the structured meeting notes and action items based on the transcript p
    - Prepare a guide for students to access the chatbot by **Monday, September 30, 2024**.
 
 3. **Francis and Stanley**:
-   - Review the chatbot implementation and provide feedback on its potential for improving student engagement.
+   - review the chatbot implementation and provide feedback on its potential for improving student engagement.
 
 ======================================================
 
@@ -163,7 +163,7 @@ Here are the structured meeting notes and action items based on the transcript p
 
 * For deployment of the notebooks online: https://tljh.jupyter.org/en/latest/install/azure.html (<100 students); Jupyterhub on Kubernetes scales better: https://zero-to-jupyterhub.readthedocs.io/en/latest/microsoft/step-zero-azure.html (from Florian J Song, Chemistry)
 
-* Outline coding principles in a general way right at the start of the Intro or Unix chapter
+* Outline coding principles in a general way right at the start of the Intro or unix chapter
     * Explain steps in the way to writing a program: outline steps/agorithm, write pseudocode, write functions, etc  
 
 * Assessments - create
@@ -176,21 +176,21 @@ Here are the structured meeting notes and action items based on the transcript p
 
 This is a useful post: https://stats.stackexchange.com/questions/349883/what-is-the-logic-behind-rule-of-thumb-for-meaningful-differences-in-aic
 
-* Restrict usage of packages, by showing students how to keep things simpler.
+* restrict usage of packages, by showing students how to keep things simpler.
 
-### NLLS: 
+### nlls: 
 
-  * Explain what some of the common NLLS fitting error messages (like singular gradient matrix) mean, with examples.
+  * Explain what some of the common nlls fitting error messages (like singular gradient matrix) mean, with examples.
   * Illustrate approaches for getting starting values and the difference between sampling start values vs and bounding parameters.
-  * Show graphical illustrations of how NLLS parameter searching works and what local minima mean intuitively. 
+  * Show graphical illustrations of how nlls parameter searching works and what local minima mean intuitively. 
 
-### Unix
+### unix
 
 * Explain what colors of items returned by ls mean (directory/file type and permissions): https://unix.stackexchange.com/questions/94498/what-causes-this-green-background-in-ls-output (green background means all users have w permission on that directory (and its contents)) - explain the implications of this in words.
 
 * grep -r -n -w -l '.' -e 'ecology and evolution*'
  
-    -r or -R is recursive, -n gives  line number where the pattern occurs, -w makes sure that the whole pattern is matched, and -l gives just the name of files containing the pattern.
+    -r or -r is recursive, -n gives  line number where the pattern occurs, -w makes sure that the whole pattern is matched, and -l gives just the name of files containing the pattern.
 
     Along with these, --exclude, --include, --exclude-dir flags can be used for fine tuning the search. For example, 
 
@@ -205,19 +205,19 @@ This is a useful post: https://stats.stackexchange.com/questions/349883/what-is-
 * makefiles
 
 
-### Git 
+### git 
 * git chapter to be updated with most common/useful scenarios
 * https://gist.github.com/digitaljhelms/4287848
 * https://www.red-gate.com/simple-talk/sysadmin/devops/git-anatomy/ 
 * To add to the chapter: Please `git fetch` and then `git merge`, or if you are brave (or "pullhardy" (ha!)) `git pull`  directly. See this blog:  https://longair.net/blog/2009/04/16/git-fetch-and-merge/​​​​​​​
 
-### Python
+### python
 
 * https://johnsbutler.netlify.app/talk/primaryschooltalk2019/
 * https://towardsdatascience.com/6-simple-tips-for-prettier-and-customised-plots-in-seaborn-python-22f02ecc2393
 * Make list comprehensions clearer (esp. operations in loops ) 
 
-### R/Python
+### r/python
 
 * When you use `rm(list = ls())`
 
@@ -225,7 +225,7 @@ This is a useful post: https://stats.stackexchange.com/questions/349883/what-is-
 
 * Debugging include `options(error = browser)` for entering interactive debugging
 
-* boxplot() and plot() not equivalent in some R versions?
+* boxplot() and plot() not equivalent in some r versions?
 
 * https://stats.stackexchange.com/questions/798/calculating-optimal-number-of-bins-in-a-histogram
 
@@ -281,21 +281,21 @@ The principle of a sampling distribution applies to other quantities that we may
 
 In many publications a ± sign is used to join the standard deviation (SD) or standard error (SE) to an observed mean—for example, 69.4±9.3 kg. That notation gives no indication whether the second figure is the standard deviation or the standard error (or indeed something else). A review of 88 articles published in 2002 found that 12 (14%) failed to identify which measure of dispersion was reported (and three failed to report any measure of variability).4 The policy of the BMJ and many other journals is to remove ± signs and request authors to indicate clearly whether the standard deviation or standard error is being quoted. All journals should follow this practice.
 
-* Regression - add explanation of standard error of coefficients and calculation of CI's
+* regression - add explanation of standard error of coefficients and calculation of CI's
 
-* ### F-test vs ANOVA 
+* ### F-test vs anova 
  
  - Defn 1: the ratio of the variance calculated across the samples (groups) (the null hypothesis) to the variance within the samples (groups).
  
-    This definition is about using the F-statistic in an ANOVA to check the hypothesis that two or more groups are drawn from populations with the same mean value.
+    This definition is about using the F-statistic in an anova to check the hypothesis that two or more groups are drawn from populations with the same mean value.
   
     Defn 2: ratio of the mean sum of squares explained by the linear model to the mean sum of squares about the linear model (the variance not explained by the linear model).
  
-    Here, imagine you've run a linear model on some sample data, to obtain a line (y intercept + gradient) that you hope is a good predictor for how some variables are related. Maybe the line fits well in the sense of having a low RSS, but it doesn't account for much of the variance in your data, because something else is going on that your model isn't capturing. I've drawn an example of such a situation below. The linear model (diagonal blue line) has a low RSS (i.e. is a "good fit"), but because the data actually consists of two clearly different subpopulations with different means but the same gradient, there is a lot of variance in the data that the linear model fit isn't able to capture (I've tried to show this with the difference between the two vertical lines to the right of the plot).
+    Here, imagine you've run a linear model on some sample data, to obtain a line (y intercept + gradient) that you hope is a good predictor for how some variables are related. Maybe the line fits well in the sense of having a low rSS, but it doesn't account for much of the variance in your data, because something else is going on that your model isn't capturing. I've drawn an example of such a situation below. The linear model (diagonal blue line) has a low rSS (i.e. is a "good fit"), but because the data actually consists of two clearly different subpopulations with different means but the same gradient, there is a lot of variance in the data that the linear model fit isn't able to capture (I've tried to show this with the difference between the two vertical lines to the right of the plot).
  
-    So Defn 2 is about using the F-test in an ANOVA to determine how much of the variance in your sample can be explained by a particular linear model.
+    So Defn 2 is about using the F-test in an anova to determine how much of the variance in your sample can be explained by a particular linear model.
  
-    You can hopefully see how this is sort of similar to the case for Defn 1; which explicitly checks if two or more specified samples are drawn from populations with the same mean. Defn 2 is about asking the same kind of question in a slightly different way - if the whole sample is drawn from populations with the same mean then the line should explain a good proportion of the variance, if in fact your sample is composed of various populations with different means, then no single line (even if it has a minimal RSS) will ever be able to explain much of the variance.
+    You can hopefully see how this is sort of similar to the case for Defn 1; which explicitly checks if two or more specified samples are drawn from populations with the same mean. Defn 2 is about asking the same kind of question in a slightly different way - if the whole sample is drawn from populations with the same mean then the line should explain a good proportion of the variance, if in fact your sample is composed of various populations with different means, then no single line (even if it has a minimal rSS) will ever be able to explain much of the variance.
  
     In summary, both definitions are essentially asking the same question, but to different ends. One is a straightforward comparison between groups to compare their underlying means, another is a diagnostic test using the same idea in order to determine how well a linear model actually explains the data on which it's been fit.
 
@@ -305,7 +305,7 @@ Some questions that are arising:
 
 * How can the Tukey Honest Significant Difference test ensure a probability of 0.05 of a type I error across all tested pairs? What is different with an ordinary t-test?
 
-    - Regarding the Tukey HSD test: You can actually think of it as a special kind of t-test, since the test statistic is very similar:
+    - regarding the Tukey HSD test: You can actually think of it as a special kind of t-test, since the test statistic is very similar:
 
     - For the t-statistic we take the difference of the sample mean and the hypothesised mean, and divide by the standard error.
 
@@ -317,7 +317,7 @@ Some questions that are arising:
 
     - You can think of this as a t-test that corrects for a "family-wise" error rate, which is how the type I error applies to the entire testing of all group means against each other, rather than to each comparison individually.
 
-    - Family-wise error rate In statistics, family-wise error rate (FWER) is the probability of making one or more false discoveries, or type I errors when performing multiple hypotheses tests.
+    - Family-wise error rate In statistics, family-wise error rate (FWEr) is the probability of making one or more false discoveries, or type I errors when performing multiple hypotheses tests.
 
 ### Feedback Script
 
@@ -335,9 +335,9 @@ organization, readme,  etc.
 * 		########## block for accessing git log - to be finished ########### 
 		## Store gits codes, along with the corresponding field names in two lists:
 		# GIT_COMMIT_FIELDS = ['id', 'author_name', 'author_email', 'date', 'message']
-		# GIT_LOG_FORMAT = ['%H', '%an', '%ae', '%ad', '%s']
+		# GIT_LOG_FOrMAT = ['%H', '%an', '%ae', '%ad', '%s']
 		##join the format fields together with "\x1f" (ASCII field separator) and delimit the records by "\x1e" (ASCII record separator)
-		# GIT_LOG_FORMAT = '%x1f'.join(GIT_LOG_FORMAT) + '%x1e' 
+		# GIT_LOG_FOrMAT = '%x1f'.join(GIT_LOG_FOrMAT) + '%x1e' 
 		# p, log, err, time_used = run_popen('git log --format="%s"', timeout)
 		# (log, _) = p.communicate()
 		# log = log.strip('\n\x1e').split("\x1e")

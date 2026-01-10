@@ -11,4 +11,4 @@ source .venv/bin/activate
 python -m pip install --upgrade pip setuptools wheel
 python -m pip install -r requirements.txt
 
-echo "Ready: virtualenv created at .venv/ and requirements installed."
+echo "ready: virtualenv created at .venv/ and requirements installed."

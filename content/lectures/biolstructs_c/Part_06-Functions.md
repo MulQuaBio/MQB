@@ -136,7 +136,7 @@ Notice that you need to pass the number of elements within the array to the func
 
 ## Passing `NULL` arguments
 
-If a function requires arguments, then some value must be stated in the call---even if that function does not require those arguments for its execution. Unlike R or Python, most functions in C don't allow variable arguments as a default. Variable arguments is an advanced feature we won't cover here, however, it's possible to define functions that don't require all parameters. For instance, we could write a function that will double all values in an array, regardless of whether it is a floating point or integral value:
+If a function requires arguments, then some value must be stated in the call---even if that function does not require those arguments for its execution. Unlike r or Python, most functions in C don't allow variable arguments as a default. Variable arguments is an advanced feature we won't cover here, however, it's possible to define functions that don't require all parameters. For instance, we could write a function that will double all values in an array, regardless of whether it is a floating point or integral value:
 
 ```C
 
@@ -237,7 +237,7 @@ add_integers(myin1, myint2);
 Any valid C expression can be included as a function argument, as long as its result or return value is consistent with the typing of the parameters.
 This is what we where doing with the `printf` function all along! 
 
-### Receiving the return value
+### receiving the return value
 The above function calls are without context in code and would be useless because we never store the return value to a variable. A return value needs to be copied into somewhere. Therefore, it's common to have a function call associated with an assignment operation. 
 
 ```C
@@ -258,9 +258,9 @@ printf("The return value of add_integers: %i\n", add_integers(1, 2));
 As long as the function returns a compatible data type, it can be called in the place of another function's argument.
 
 
-## Recursion: a function calling itself
+## recursion: a function calling itself
 
-Recursion is an extremely powerful concept in programming, and one that can have seriously unfortunate consequences for your program if you don't handle correctly. When we work with phylogenetic trees, we will use recursion quite a lot. So it is good to start thinking about and practising this concept.
+recursion is an extremely powerful concept in programming, and one that can have seriously unfortunate consequences for your program if you don't handle correctly. When we work with phylogenetic trees, we will use recursion quite a lot. So it is good to start thinking about and practising this concept.
 
 Let's write a recursive function to compute n-factorial:
 
@@ -314,7 +314,7 @@ Have it report the index in the array where the number occurs.
 Have it report a message if the queried value cannot be found.
 (As we haven't gone into textual input, you can just pre-program some test cases into your main function).
 
-### 5- Recursion
+### 5- recursion
  * It is pretty trivial to write a loop that counts from 0 to 10. Try to write the same loop without using `for` by using a recursive function.
  * Ever hear or read about fork bombs or recursive bombs?
 

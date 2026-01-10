@@ -9,4 +9,4 @@ my_function <- function(arg1, arg2) {
 }
 
 my_function(1, 2) #test the function
-my_function("Riki", "Tiki") #A different test
+my_function("riki", "Tiki") #A different test

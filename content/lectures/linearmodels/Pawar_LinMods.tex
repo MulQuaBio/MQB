@@ -127,8 +127,8 @@ Topics:
 \begin{itemize}
     \item What is a linear model?
     \begin{itemize}
-        \item Regression
-        \item ANOVA
+        \item regression
+        \item anova
         \item Multiple explanatory variables (ANCOVA)
     \end{itemize} 
     \item Fitting linear models to your data  
@@ -230,8 +230,8 @@ Topics:
                   
         \node (exp)  [inner sep=0pt, yshift=1cm, fit={(e) (cS)}, label=center:Explanatory variables, fill=blue!10, draw=blue] {};	
         \node (coef) [inner sep=0pt, yshift=-1cm, fit={(b2) (b6)}, label=center:Coefficients, fill=red!10, draw=red] {};	
-        \node (resp)  [above = 4mm of w, fill=teal!10, draw=teal] {Response variable};
-        \node (resid)  [below = 4.5mm of eps, fill=gray!10, draw=gray] {Residuals};
+        \node (resp)  [above = 4mm of w, fill=teal!10, draw=teal] {response variable};
+        \node (resid)  [below = 4.5mm of eps, fill=gray!10, draw=gray] {residuals};
     
         \foreach \i in {e, d, g, cS}  \draw [blue] (\i.north) -- (\i.north |- exp.south);
         \draw [blue] (cA.north) |- (exp.east);
@@ -580,7 +580,7 @@ What our example linear model means (literally):
 \pause
 
 \begin{center}
-    {\bf Regression} with {\it known baseline value (intercept) }
+    {\bf regression} with {\it known baseline value (intercept) }
 \end{center}
 
 \end{frame}
@@ -606,7 +606,7 @@ What our example linear model means (literally):
     \end{columns}
 \pause
     \begin{center}
-        {\bf Regression} with {\it unknown baseline value (intercept) }
+        {\bf regression} with {\it unknown baseline value (intercept) }
     \end{center}
     
 \end{frame}
@@ -634,7 +634,7 @@ What our example linear model means (literally):
     \end{columns}
     \pause
     \begin{center}
-        {\it Analysis of Variance} ({\bf ANOVA})
+        {\it Analysis of Variance} ({\bf anova})
     \end{center}
 
 \end{frame}
@@ -696,13 +696,13 @@ What our example linear model means (literally):
 
 \begin{frame}{``Fitting'' a linear model to data}
 
-% Residuals; variation is everywhere!
+% residuals; variation is everywhere!
 % \pause
 
  \begin{center}
-            \includegraphics[width=0.5\textwidth]{CarnivoreBMRplot.pdf}\\
+            \includegraphics[width=0.5\textwidth]{CarnivoreBMrplot.pdf}\\
             \vspace{-6pt}
-            {\tiny Rizzuto et al. 2017, Nat Ecol Evol}
+            {\tiny rizzuto et al. 2017, Nat Ecol Evol}
 \end{center}		
 \begin{itemize}\itemsep6pt
     \item Data always shows variation from a perfect model (deviations)
@@ -816,7 +816,7 @@ Minimize the {\it sum} of the {\it squared} {\it residuals:}
 \begin{columns}[T]
 
 	\column{0.5\textwidth}
-		\includegraphics[width=\textwidth]{JustRight.pdf}
+		\includegraphics[width=\textwidth]{Justright.pdf}
 		
 	\column{0.5\textwidth}
 		\begin{align*}
@@ -839,7 +839,7 @@ Minimize the {\it sum} of the {\it squared} {\it residuals:}
 	
 	\begin{center}
 	
-	{\LARGE $\mathbf{Y} = \mathbf{X \beta  +  \varepsilon}$}
+	{\LArGE $\mathbf{Y} = \mathbf{X \beta  +  \varepsilon}$}
 	
 	\vspace{5mm}
 	
@@ -861,7 +861,7 @@ Minimize the {\it sum} of the {\it squared} {\it residuals:}
 		\node [above= 5mm of Y] (obs) {Observed values};
 		\node [below= 5mm of X] (mat) {Model matrix};
 		\node [above= 5mm of b] (coe) {Coefficients};
-		\node [below= 5mm of e] (res) {Residuals};
+		\node [below= 5mm of e] (res) {residuals};
 		\draw (Y) -- (obs);
 		\draw (X) -- (mat);
 		\draw (b) -- (coe);
@@ -880,7 +880,7 @@ Minimize the {\it sum} of the {\it squared} {\it residuals:}
 
 \begin{center}
 
-{\LARGE $\mathbf{Y} = \mathbf{X \beta  +  \varepsilon}$}
+{\LArGE $\mathbf{Y} = \mathbf{X \beta  +  \varepsilon}$}
 
 \vspace{5mm}
 
@@ -914,7 +914,7 @@ Minimize the {\it sum} of the {\it squared} {\it residuals:}
 	\node [above= 5mm of Y] (obs) {Observed values};
 	\node [below= 5mm of X] (mat) {Model matrix};
 	\node [above= 5mm of b] (coe) {Coefficients};
-	\node [below= 5mm of e] (res) {Residuals};
+	\node [below= 5mm of e] (res) {residuals};
 	\draw (Y) -- (obs);
 	\draw (X) -- (mat);
 	\draw (b) -- (coe);
@@ -944,7 +944,7 @@ Minimize the {\it sum} of the {\it squared} {\it residuals:}
 
 \begin{center}
 
-{\LARGE $\mathbf{\hat{Y}} = \mathbf{X \beta }$}
+{\LArGE $\mathbf{\hat{Y}} = \mathbf{X \beta }$}
 
 \vspace{5mm}
 
@@ -981,7 +981,7 @@ Minimize the {\it sum} of the {\it squared} {\it residuals:}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Predicted values and Residuals}
+\begin{frame}{Predicted values and residuals}
 
 \begin{columns}[T]
 
@@ -1029,7 +1029,7 @@ Minimize the {\it sum} of the {\it squared} {\it residuals:}
 \begin{columns}[T]
 
 	\column{0.5\textwidth}
-		\includegraphics[height=72mm]{ResidDemo.pdf}
+		\includegraphics[height=72mm]{residDemo.pdf}
 		
 	\column{0.5\textwidth}
 		\begin{itemize}
@@ -1066,13 +1066,13 @@ Minimize the {\it sum} of the {\it squared} {\it residuals:}
 \begin{itemize}[<+->]\itemsep6pt
     \item \it The spread of the real data around the fitted line (fitted values) is about the same across the x-axis\\ \pause
     
-    \includegraphics[width=0.95\textwidth]{FitResid.pdf}
+    \includegraphics[width=0.95\textwidth]{Fitresid.pdf}
 
     \pause 
     \item That is, the residuals have about the same spread irrespective of the fitted values 
     \item The three numbered points in each plot are the three most `badly behaved' data points.
     \begin{itemize}
-        \item Each number is the datum's row number in the R data frame 
+        \item Each number is the datum's row number in the r data frame 
     \end{itemize}
 \end{itemize}
 
@@ -1088,7 +1088,7 @@ Minimize the {\it sum} of the {\it squared} {\it residuals:}
     \includegraphics[width=0.95\textwidth]{QQNorm.pdf}
 
     \pause 
-    \item Residuals from the first (simple regression) and third (polynomial) model's fits show some deviations from normality at the ends (high and low ends of their distributions), but it's acceptable
+    \item residuals from the first (simple regression) and third (polynomial) model's fits show some deviations from normality at the ends (high and low ends of their distributions), but it's acceptable
     \end{itemize}
 
 \end{frame}
@@ -1115,7 +1115,7 @@ Minimize the {\it sum} of the {\it squared} {\it residuals:}
 
 \begin{frame}{Diagnostics for a (badly) fitted linear model}
 
-\includegraphics[width=0.95\textwidth]{BadFitResid.pdf}
+\includegraphics[width=0.95\textwidth]{BadFitresid.pdf}
 
 \pause
 
@@ -1178,15 +1178,15 @@ ESS = $\sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2$\\
 {\it ESS tells us how much of the variation in the dependent variable 
 our model was able to explain}
 
-\item {\bf Residual sum of squares} (RSS): Sum of the squared 
+\item {\bf residual sum of squares} (rSS): Sum of the squared 
 differences between the observed $y$ and the predicted $\hat{y}$ (residuals), or, \\
 
-RSS = $\sum_{i=1}^{n} (\hat{y}_i - y_i)^2$\\
+rSS = $\sum_{i=1}^{n} (\hat{y}_i - y_i)^2$\\
 
-{\it RSS tells us how much of the variation in the dependent variable 
+{\it rSS tells us how much of the variation in the dependent variable 
 our model could not explain}
 
-\item Of course, TSS = ESS + RSS
+\item Of course, TSS = ESS + rSS
 
 \end{itemize}
 
@@ -1204,11 +1204,11 @@ our model could not explain}
 		\item The null model ($H_0$)
 		\item Nothing is going on
 		\item Biggest possible residuals
-		\item Residual sum of squares (RSS) is as big as it can be
+		\item residual sum of squares (rSS) is as big as it can be
 		\vspace{1cm}
 		\item The saturated model
 		\item One coefficient per data point
-		\item RSS is zero - all the sums of squares are now explained (ESS)
+		\item rSS is zero - all the sums of squares are now explained (ESS)
 		\end{itemize}
 		
 \end{columns}
@@ -1239,7 +1239,7 @@ our model could not explain}
 
 	\matrix (ratio1) [right=of eq1,ampersand replacement=\&] {
 		\node (ESS) {ESS}; \node(div1) [right=of ESS] {/}; \node (Nc) [right= of div1]{$N_c$} ; \\ 
-		\node (RSS) 	{RSS}; \node(div2) [right=of RSS]{/}; \node (Nr) [right= of div2]{$N_r$} ;\\
+		\node (rSS) 	{rSS}; \node(div2) [right=of rSS]{/}; \node (Nr) [right= of div2]{$N_r$} ;\\
 	};
 
 	\draw (ESS.south west) -- (Nc.south east);
@@ -1247,7 +1247,7 @@ our model could not explain}
 
 	\matrix (ratio2)[right=of eq2,ampersand replacement=\&] {
 		\node (ESSn) {9.92}; \node(div3) [right=of ESSn] {/}; \node (Ncn) [right= of div3]{$2$} ; \\ 
-		\node (RSSn) {6.59}; \node(div4) [right=of RSSn]{/}; \node (Nrn) [right= of div4]{$6$} ;\\
+		\node (rSSn) {6.59}; \node(div4) [right=of rSSn]{/}; \node (Nrn) [right= of div4]{$6$} ;\\
 	};
 
 	\draw (ESSn.south west) -- (Ncn.south east);
@@ -1261,13 +1261,13 @@ our model could not explain}
     \node (ESSGood)  [above=of ESS, yshift=8mm, xshift=-4mm] {Large ESS \\ is good};	
 	\draw [blue] (ESS.north) -- (ESS.north |- ESSGood.south);
     \pause 
-    \node (RSSGood)  [below=of RSS, yshift=-8mm, xshift=-4mm] {Small RSS \\ is good};	
-	\draw  [blue](RSS.south) -- (RSS.south |- RSSGood.north);
+    \node (rSSGood)  [below=of rSS, yshift=-8mm, xshift=-4mm] {Small rSS \\ is good};	
+	\draw  [blue](rSS.south) -- (rSS.south |- rSSGood.north);
     \pause 
     \node (NcGood)  [above=of Nc, yshift=8mm, xshift=8mm, anchor=south west] {Fewer coefficients \\ is better};	
     \draw [blue] (Nc.north) |- (NcGood.west);
     \pause 
-    \node (NrGood)  [below=of Nr, yshift=-8mm, xshift=8mm, anchor=north west] {Residual degrees of freedom:\\ larger sample size is better};	
+    \node (NrGood)  [below=of Nr, yshift=-8mm, xshift=8mm, anchor=north west] {residual degrees of freedom:\\ larger sample size is better};	
 	\draw [blue] (Nr.south) |- (NrGood.west);
 	
 	\end{scope}
@@ -1416,11 +1416,11 @@ our model could not explain}
 
 \begin{frame}{Some more examples of linear model fitting}
 
-\includegraphics[width=\textwidth]{ANOVA_null.pdf}
+\includegraphics[width=\textwidth]{anova_null.pdf}
 
 \begin{itemize}[<+->]\itemsep6pt
 \item The null hypothesis ($H_0$): Nothing is going on (model is just $\beta_1$!)
-\item The residuals (and therefore, RSS) will get {\it smaller} as we include more terms to the model
+\item The residuals (and therefore, rSS) will get {\it smaller} as we include more terms to the model
 \item {\it How much smaller is enough?}
 \end{itemize}
 
@@ -1433,7 +1433,7 @@ our model could not explain}
     \begin{center}
         {\it First try: Add one continuous term}\\
 
-        \includegraphics[width=\textwidth]{ANOVA_mod.pdf}
+        \includegraphics[width=\textwidth]{anova_mod.pdf}
     \end{center}
 
 \begin{itemize}[<+->]\itemsep10pt
@@ -1451,12 +1451,12 @@ our model could not explain}
     \begin{center}
         {\it Second try: Add one continuous term}\\
 
-        \includegraphics[width=\textwidth]{ANOVA_mod2.pdf}
+        \includegraphics[width=\textwidth]{anova_mod2.pdf}
     \end{center}
 
 \begin{itemize}[<+->]\itemsep6pt
     \item Fitted another model ($H_2$) with continuous predictor $x$ and factor $f$
-    \item The RSS gets still smaller 
+    \item The rSS gets still smaller 
     \item Is this {\it even} better than $H_1$?
 \end{itemize}
 
@@ -1548,7 +1548,7 @@ our model could not explain}
 	% \newcommand{\bb}{\node [circle,  fill=blue, inner sep=0.5mm]{} ;}
 	% \newcommand{\rr}{\node [circle,  fill=red, inner sep=0.5mm]{} ;}
 	% 
-	% \matrix (contrasts) [matrix of nodes, ampersand replacement=\&,  BEAMER hijacks straight &
+	% \matrix (contrasts) [matrix of nodes, ampersand replacement=\&,  BEAMEr hijacks straight &
 	                     % row sep=1mm, column sep=2.5mm, 
 	                     % nodes={circle, fill=black!35, inner sep=0.5mm}, nodes in empty cells]
 	% {
@@ -1621,7 +1621,7 @@ our model could not explain}
 %
 %\begin{center}
 %
-%{\LARGE $\mathbf{Y} = \mathbf{X \beta  +  \varepsilon}$}
+%{\LArGE $\mathbf{Y} = \mathbf{X \beta  +  \varepsilon}$}
 %
 %\vspace{5mm}
 %
@@ -1679,7 +1679,7 @@ our model could not explain}
 %
 %\begin{center}
 %
-%{\LARGE $\mathbf{Y} = \mathbf{X \beta  +  \varepsilon}$}
+%{\LArGE $\mathbf{Y} = \mathbf{X \beta  +  \varepsilon}$}
 %
 %\vspace{5mm}
 %

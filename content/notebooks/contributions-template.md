@@ -7,7 +7,7 @@
 ## Individual Contributions
 
 ### [Team Member 1 Name]
-**Role(s)**: [e.g., Lead developer, Data analysis specialist, Testing coordinator]
+**role(s)**: [e.g., Lead developer, Data analysis specialist, Testing coordinator]
 
 **Specific Contributions**:
 - [Describe specific code/functions written]
@@ -20,7 +20,7 @@
 ---
 
 ### [Team Member 2 Name]
-**Role(s)**: [e.g., Code reviewer, Visualization specialist, Documentation lead]
+**role(s)**: [e.g., Code reviewer, Visualization specialist, Documentation lead]
 
 **Specific Contributions**:
 - [Describe specific code/functions written]
@@ -33,7 +33,7 @@
 ---
 
 ### [Team Member 3 Name]
-**Role(s)**: [e.g., Integration specialist, Error handling, Code optimization]
+**role(s)**: [e.g., Integration specialist, Error handling, Code optimization]
 
 **Specific Contributions**:
 - [Describe specific code/functions written]
@@ -55,13 +55,13 @@
 
 **Challenges and Solutions**: [Describe any significant challenges faced and how they were resolved]
 
-## Code Review Summary
+## Code review Summary
 
 [Describe the code review process used, e.g., pull request reviews, pair programming sessions]
 
-**Pull Requests**:
-- PR #1: [Brief description] - Reviewed by: [names]
-- PR #2: [Brief description] - Reviewed by: [names]
+**Pull requests**:
+- Pr #1: [Brief description] - reviewed by: [names]
+- Pr #2: [Brief description] - reviewed by: [names]
 - [etc.]
 
 ## Testing and Quality Assurance

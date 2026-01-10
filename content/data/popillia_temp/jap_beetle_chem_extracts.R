@@ -3,44 +3,44 @@ library(lattice)
 library(nlme)
 library(reshape2)
 
-Chem_Extracts <- read.csv("Chem_Extracts.csv")
-Chem_Extracts <- subset(Chem_Extracts[,1:17], Comments=='')
-Chem_Extracts$Temperature[which(Chem_Extracts$Temperature==33)] <- 35
+chem_extracts <- read.csv("chem_extracts.csv")
+chem_extracts <- subset(chem_extracts[,1:17], Comments=='')
+chem_extracts$Temperature[which(chem_extracts$Temperature==33)] <- 35
 
-levels(Chem_Extracts$Food_Type) <- c('Rubus allegheniensis', 'Acer negundo', 'Acer rubrum', 'Rosa multiflora', 'Liquidambar styraciflua', 'Plantanus occidentalis', 'Viburnum prunifolium', 'Vitis vulpina', 'Rubus phoenicolasius')
-Chem_Extracts$Food_Type <- factor(Chem_Extracts$Food_Type, levels = c('Acer negundo', 'Acer rubrum', 'Liquidambar styraciflua', 'Plantanus occidentalis', 'Rosa multiflora', 'Rubus allegheniensis', 'Rubus phoenicolasius', 'Viburnum prunifolium', 'Vitis vulpina'))
+levels(chem_extracts$Food_Type) <- c('rubus allegheniensis', 'Acer negundo', 'Acer rubrum', 'rosa multiflora', 'Liquidambar styraciflua', 'Plantanus occidentalis', 'Viburnum prunifolium', 'Vitis vulpina', 'rubus phoenicolasius')
+chem_extracts$Food_Type <- factor(chem_extracts$Food_Type, levels = c('Acer negundo', 'Acer rubrum', 'Liquidambar styraciflua', 'Plantanus occidentalis', 'rosa multiflora', 'rubus allegheniensis', 'rubus phoenicolasius', 'Viburnum prunifolium', 'Vitis vulpina'))
 
-Chem_Extracts$MassCorrConsumpTreat <- as.numeric(Chem_Extracts$MassCorrConsumpTreat)
-Chem_Extracts$MassCorrConsumpControl <- as.numeric(Chem_Extracts$MassCorrConsumpControl)
+chem_extracts$MassCorrConsumpTreat <- as.numeric(chem_extracts$MassCorrConsumpTreat)
+chem_extracts$MassCorrConsumpControl <- as.numeric(chem_extracts$MassCorrConsumpControl)
 
-Chem_Extracts$diff <- with(Chem_Extracts, MassCorrConsumpTreat-MassCorrConsumpControl)
+chem_extracts$diff <- with(chem_extracts, MassCorrConsumpTreat-MassCorrConsumpControl)
 
-mod25 <- gls(diff~Food_Type-1, data=Chem_Extracts, subset=Temperature==25,
+mod25 <- gls(diff~Food_Type-1, data=chem_extracts, subset=Temperature==25,
              weights=varIdent(form=~1|Food_Type))
 
-mod35 <- gls(diff~Food_Type-1, data=Chem_Extracts, subset=Temperature==35,
+mod35 <- gls(diff~Food_Type-1, data=chem_extracts, subset=Temperature==35,
              weights=varIdent(form=~1|Food_Type))
 
-means <- with(Chem_Extracts,
+means <- with(chem_extracts,
               aggregate(
                 list('diff'=diff), 
                 by=list('Temp'=Temperature, 'Plant'=Food_Type),
                 mean))
 
-errors <- with(Chem_Extracts,
+errors <- with(chem_extracts,
                aggregate(
                  list('err'=diff),
                  by=list('Temp'=Temperature, 'Plant'=Food_Type),
                  std.error))
 errors <- errors[order(errors$Temp, errors$Plant),]
 
-ov.means <- with(Chem_Extracts,
+ov.means <- with(chem_extracts,
                  aggregate(
                    list('diff'=diff), 
                    by=list('Temp'=Temperature),
                    mean))
 
-ov.errors <- with(Chem_Extracts,
+ov.errors <- with(chem_extracts,
                   aggregate(
                     list('err'=diff),
                     by=list('Temp'=Temperature),
@@ -72,9 +72,9 @@ xyplot(rev(Plant)~diff|as.factor(Temp), means,
                   expression('Overall Mean'),
                   expression(italic('Vitis vulpina')),
                   expression(italic('Viburnum prunifolium')),
-                  expression(italic('Rubus phoenicolasius')),
-                  expression(italic('Rubus allegheniensis')),
-                  expression(italic('Rosa multiflora')),
+                  expression(italic('rubus phoenicolasius')),
+                  expression(italic('rubus allegheniensis')),
+                  expression(italic('rosa multiflora')),
                   expression(italic('Plantanus occidentalis')),
                   expression(italic('Liquidambar styraciflua')),
                   expression(italic('Acer rubrum')),

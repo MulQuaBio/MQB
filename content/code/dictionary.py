@@ -1,8 +1,8 @@
 taxa = [ ('Myotis lucifugus','Chiroptera'),
-         ('Gerbillus henleyi','Rodentia',),
-         ('Peromyscus crinitus', 'Rodentia'),
-         ('Mus domesticus', 'Rodentia'),
-         ('Cleithrionomys rutilus', 'Rodentia'),
+         ('Gerbillus henleyi','rodentia',),
+         ('Peromyscus crinitus', 'rodentia'),
+         ('Mus domesticus', 'rodentia'),
+         ('Cleithrionomys rutilus', 'rodentia'),
          ('Microgale dobsoni', 'Afrosoricida'),
          ('Microgale talazaci', 'Afrosoricida'),
          ('Lyacon pictus', 'Carnivora'),
@@ -16,7 +16,7 @@ taxa = [ ('Myotis lucifugus','Chiroptera'),
 # An example output is:
 #  
 # 'Chiroptera' : set(['Myotis lucifugus']) ... etc. 
-# OR, 
+# Or, 
 # 'Chiroptera': {'Myotis  lucifugus'} ... etc
 
 #### Your solution here #### 

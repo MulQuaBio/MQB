@@ -125,21 +125,21 @@ int main(void)
 	int i = 0;
 	int *int_ptr = NULL;
 	
-	printf("The value of i BEFORE indirection: %i\n", i);
+	printf("The value of i BEFOrE indirection: %i\n", i);
 	
 	int_ptr = &i; // Assign address of i to int_ptr
 	
 	*int_ptr = 4; // Indirectly assign 4 to the memory of i via the pointer in int_ptr
 	
-	printf("The value of i AFTER indirection: %i\n", i);
+	printf("The value of i AFTEr indirection: %i\n", i);
 }
 ```
 
 You should get:
 
 ```
-The value of i BEFORE indirection: 0
-The value of i AFTER indirection: 4
+The value of i BEFOrE indirection: 0
+The value of i AFTEr indirection: 4
 ```
 
 ### Pointers in expressions
@@ -207,7 +207,7 @@ char *site_names[] =	{"Parking lot",
 			 "Cricket lawn",
 			 "Manor house",
 			 "Silwood Bottom",
-			 "The Reactor",
+			 "The reactor",
 			 "Japanese Garden",
 			 };
 					
@@ -223,7 +223,7 @@ char *site_names[] =	{"Parking lot",
 			 "Cricket lawn",
 			 "Manor house",
 			 "Silwood Bottom",
-			 "The Reactor",
+			 "The reactor",
 			 "Japanese Garden",
 			 };
 						
@@ -251,7 +251,7 @@ We will revisit this when we begin working with phylogenetic trees.
 
 Like any C variable, you can perform arithmetic on pointers. This is extremely useful, but only really relevant when a pointer addresses an element of an array or block of memory (more on that later).
 
-In the example above with the `populations_ptr` above, we set the pointer to the fourth element of `site_populations` by subscripting the latter and passing the address back to `populations_ptr`. Another way to do this is to use arithmetic on the pointer value. Remember that a pointer simply contains a memory address, and an array is a sequentially ordered set of memory addresses that are physically next to each other. For that reason, we could also do the following:
+In the example above with the `populations_ptr` above, we set the pointer to the fourth element of `site_populations` by subscripting the latter and passing the address back to `populations_ptr`. Another way to do this is to use arithmetic on the pointer value. remember that a pointer simply contains a memory address, and an array is a sequentially ordered set of memory addresses that are physically next to each other. For that reason, we could also do the following:
 
 ```C
 populations_ptr = site_populations;
@@ -342,9 +342,9 @@ my_function_that_uses_a_pointer(int_ptr);
 When this function call executes, the memory address stored in int\_ptr is *copied into* the function call. 
 
 
-### Returning pointers from a function
+### returning pointers from a function
 
-Returning a pointer value from a function can be really handy. In the next section on dynamic memory allocation, for instance, we will see two functions that return pointers after allocating some memory.
+returning a pointer value from a function can be really handy. In the next section on dynamic memory allocation, for instance, we will see two functions that return pointers after allocating some memory.
 
 A function definition or prototype that returns a pointer value is easy. You simply use the `*` in the function name to indicate the type of return value it has.
 
@@ -515,7 +515,7 @@ In the event that dynamically allocated memory is insufficient for the program's
 For that reason, I won't detail the use of `realloc()` and recommend that you explore its behaviour thoroughly in test programs before you try using it in any meaningful applications.
 
 ### Cleaning up 'heap' memory
-Unlike stack memory, heap memory doesn't come and go with program flow. Once allocated, heap memory remains reserved until it is either returned to the system by the `free()` function or the end of program execution. You should always return memory to the system once you are done with it. I know of at least a few R libraries with embedded C code that never do this; they have ever-expanding memory footprints during their execution that will slow your whole machine down. We are nicer human beings than this and will not hog memory from the system. We play nice.
+Unlike stack memory, heap memory doesn't come and go with program flow. Once allocated, heap memory remains reserved until it is either returned to the system by the `free()` function or the end of program execution. You should always return memory to the system once you are done with it. I know of at least a few r libraries with embedded C code that never do this; they have ever-expanding memory footprints during their execution that will slow your whole machine down. We are nicer human beings than this and will not hog memory from the system. We play nice.
 
 Thus, a good practice is to match any function that allocates memory with a function that deallocates it using `free()`. This function takes as its parameter any pointer that points to valid memory.
 
@@ -531,7 +531,7 @@ if (something_ptr) {
 However, remember that pointers are simply copied into function calls. Thus, you may really need to work with a pointer to a pointer.
 
 ## Safety and errors in memory allocation
-The C language requires us to be "hands-on" with the management of memory in our programs. Fortunately, object-oriented derivatives of C provide safe systems for doing this. In languages like Python and R, we almost never have to think about it. However, the lack of 'safety rails' in C means we need to build our own. On most modern systems, memory is rarely a limiting issue. However, it can be. You're likely to need to use C for computationally intensive tasks, possibly as a consequence of large datasets. 
+The C language requires us to be "hands-on" with the management of memory in our programs. Fortunately, object-oriented derivatives of C provide safe systems for doing this. In languages like Python and r, we almost never have to think about it. However, the lack of 'safety rails' in C means we need to build our own. On most modern systems, memory is rarely a limiting issue. However, it can be. You're likely to need to use C for computationally intensive tasks, possibly as a consequence of large datasets. 
 
 ### Allocation failure
 Memory allocation functions aren't guaranteed to succeed. When `malloc()` or `calloc()` fails, they return a `NULL` value. It is therefore good pratice to check that these functions succeeded before continuing program execution. You may wish for the program to terminate if memory allocation fails.
@@ -551,7 +551,7 @@ We never bothered to check whether `calloc` succeeded. We can do this quite simp
 if (!(nucleotide_sites = (char*)calloc(num_sites, sizeof(char))) )
 {
     printf("Error: unable to allocate sufficient memory\n");
-    exit(EXIT_FAILURE)
+    exit(EXIT_FAILUrE)
 }
 ```
 
@@ -567,7 +567,7 @@ void *my_malloc(size_t size_of_data)
      }
      else {
          printf("Error: unable to allocate sufficient memory\n");
-	 exit(EXIT_FAILURE);
+	 exit(EXIT_FAILUrE);
      }
 	
      return new_mem;
@@ -582,7 +582,7 @@ A memory leak occurs when heap memory is 'lost'. That is, access to allocated me
 
 We will see all of these techniques in practice later, but it is a good idea to be already thinking about them.
 
- * Firstly, use 'safe storage' practices. Remember: you can set as many pointers as you like to an area of memory. Therefore, a good 'trick' you can employ is to use one pointer to store the return value from an allocation call. Use another pointer for any operations on that memory, especially where you have linked lists and trees. We will see this in practice later.
+ * Firstly, use 'safe storage' practices. remember: you can set as many pointers as you like to an area of memory. Therefore, a good 'trick' you can employ is to use one pointer to store the return value from an allocation call. Use another pointer for any operations on that memory, especially where you have linked lists and trees. We will see this in practice later.
  * Free all allocated memory after it is no longer needed.
  * Free all memory that you allocate after you no longer use it. For every function that allocates memory, create an 'equal and opposite' function that frees it. If you create complex data structures with allocated memory, you should create a function that un-does every memory allocation call. We will look at 'create' and 'destroy' functions later when building trees and linked lists.
 
@@ -600,7 +600,7 @@ After freeing, the pointer now points to invalid memory.
 Write a function that takes a pointer of a pointer to both safely free the memory and set the pointer to NULL.
 
 ## Passing pointers to and from functions
-Review the examples under the section on returning pointers from functions. Notice that the first function incremented the pointer before returning. We can check (using a `printf()` statement or debugger, for instance) that the second function *did* loop through from the beginning again, even though it was passed the same pointer.
+review the examples under the section on returning pointers from functions. Notice that the first function incremented the pointer before returning. We can check (using a `printf()` statement or debugger, for instance) that the second function *did* loop through from the beginning again, even though it was passed the same pointer.
 
 Why didn't the second function start over at the beginning if the pointer was incremented within the body of the first function?
 

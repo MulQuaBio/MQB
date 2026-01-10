@@ -1,9 +1,9 @@
-#Examine the bahaviour of the stochastic Ricker model
+#Examine the bahaviour of the stochastic ricker model
 
-StochRicker <- function(N0=1, r=1, K=10, sigma=.1, generations=50)
+Stochricker <- function(N0=1, r=1, K=10, sigma=.1, generations=50)
 {
-  # Runs a simulation of the stochastic ricker model
-  # Returns a vector of length generations
+  # runs a simulation of the stochastic ricker model
+  # returns a vector of length generations
   
   N <- rep(NA, generations)    # Creates a vector of NA
   
@@ -17,5 +17,5 @@ StochRicker <- function(N0=1, r=1, K=10, sigma=.1, generations=50)
 }
 
 #different values of N0
-plot(StochRicker(generations=20,sigma=.5), type="l",ylim=c(0,20))
-lines(StochRicker(generations=20,sigma=0),col='red')
+plot(Stochricker(generations=20,sigma=.5), type="l",ylim=c(0,20))
+lines(Stochricker(generations=20,sigma=0),col='red')

@@ -6,7 +6,7 @@ The key to understanding the C language is to understand C's data types and what
 This might sound complicated at first, but as we'll see it is fairly straightforward for our purposes. 
 
 ## 2.1 Memory
-Programming of any kind revolves around the manipulation of information in memory. Typically, this is the machine's RAM (but can also include the CPU's registers). Data is fetched from RAM and sent to the CPU to be processed. "Data" in this case can be anything from a single integer value to an entire function or even program. When a program is being executed, it interacts with the operating system to allocate and de-allocate memory. This memory is not in a state of complete and utter chaos, but is structed in the form of addresses and areas "reserved" by the OS for your program's use. Thus, when you are writing an R or Python script and you import some data, you need to declare a variable to assign it to or attach it to your workspace. That way, your program now stores the address of that data in memory and gives it a name so that it can be retrieved.
+Programming of any kind revolves around the manipulation of information in memory. Typically, this is the machine's rAM (but can also include the CPU's registers). Data is fetched from rAM and sent to the CPU to be processed. "Data" in this case can be anything from a single integer value to an entire function or even program. When a program is being executed, it interacts with the operating system to allocate and de-allocate memory. This memory is not in a state of complete and utter chaos, but is structed in the form of addresses and areas "reserved" by the OS for your program's use. Thus, when you are writing an r or Python script and you import some data, you need to declare a variable to assign it to or attach it to your workspace. That way, your program now stores the address of that data in memory and gives it a name so that it can be retrieved.
 
 ## 2.2 Data and Types
 
@@ -49,7 +49,7 @@ However, the key point (no pun intended) is that the underlying representation o
 The representation in floating point data is called IEEE 754 and it is more complicated and derives from the conventions of scientific notation. The largest unsigned floating point number is 1.7976931348623157e+308 and the smallest is 2.2250738585072014e-308. 
 What is important to realise is that there are infinitely many numbers between those two values, but only 64 bits to represent them (less than that in reality, but we haven't talked about signing variables yet).
 
-Because there are infinitely many values but only a finite number of bits to store them, floating point numbers are *approximations* of the real numbers they are meant to represent.This is because there is a new range problem we encounter when we go from integers to real numbers. Because between any two real numbers there are infinitely many values, then there are limits on their exactness and precision. In real types, the representation is the closest binary approximation that can be achieved. For instance, 1.1 cannot be represented exactly. as a float it is 1.100000023841857910156250000000 (and 1.100000000000000088817841970013 as a double). This creates complications for arithmetic and comparisons involving real values. Real types should rarely (if ever) be compared using the ‘==‘ operator, and instead they should be compared within a tolerance (often called ‘epsilon’), representing an error you are willing to accept. 
+Because there are infinitely many values but only a finite number of bits to store them, floating point numbers are *approximations* of the real numbers they are meant to represent.This is because there is a new range problem we encounter when we go from integers to real numbers. Because between any two real numbers there are infinitely many values, then there are limits on their exactness and precision. In real types, the representation is the closest binary approximation that can be achieved. For instance, 1.1 cannot be represented exactly. as a float it is 1.100000023841857910156250000000 (and 1.100000000000000088817841970013 as a double). This creates complications for arithmetic and comparisons involving real values. real types should rarely (if ever) be compared using the ‘==‘ operator, and instead they should be compared within a tolerance (often called ‘epsilon’), representing an error you are willing to accept. 
 
 Arithmetic on floating point numbers in a computer is not straightforward and we need to be careful what we are doing. Problems of rounding error and underflow are critical to consider because large numbers of calculations can cause accumulation of errors. Underflow is particularly problematic when compounding the multiplication of very small values. For instance, probabilities in likelihood calculations are often very small and need to be multiplied together, often becoming so small they are not representable by the chosen type. You therefore need to be aware of algorithms and techniques that can help you handle or avoid these cases (for instance, multiplying them by a scaling factor that you can eliminate later).
 
@@ -74,13 +74,13 @@ A single byte is typically what is called the **smallest addressable unit**. Aga
 
 We are familiar with the terms 32- and 64-bit when talking about computer architectures (and the headaches this can cause for legacy and cross-platform computing). This refers to the size of an int variable.
 
-On a 32-bit machine, the standard int size is 32 bits. The smallest addressable unit is the byte (typically 8 bits), so one 32-bit int will consist of 4 addressable units, all living physically next to each other in RAM. Similarly, a 64-bit int (on a 64-bit machine) will consist of 8 addressable units (or bytes).
+On a 32-bit machine, the standard int size is 32 bits. The smallest addressable unit is the byte (typically 8 bits), so one 32-bit int will consist of 4 addressable units, all living physically next to each other in rAM. Similarly, a 64-bit int (on a 64-bit machine) will consist of 8 addressable units (or bytes).
 
 You should never write code that makes particular assumptions about the size of a variable. We will learn ways of avoiding these assumptions.
 
 
 ## 2.4 Declaring variables
-C only works with very simple data types. But as we will see, you have the power to make the data more complex and structured. Unlike Python and R, C uses **static typing**. A variable, once declared and named does not change type throughout the scope of its use (although, as we'll see, this is not strictly enforced by the compiler). Furthermore, variables are declared to be of a particular type prior to initialisation.
+C only works with very simple data types. But as we will see, you have the power to make the data more complex and structured. Unlike Python and r, C uses **static typing**. A variable, once declared and named does not change type throughout the scope of its use (although, as we'll see, this is not strictly enforced by the compiler). Furthermore, variables are declared to be of a particular type prior to initialisation.
 
 We need to declare variables to have a particular type so that the compiler knows how we want the data to be represented (i.e. as integer data or as floating point data).
 
@@ -128,7 +128,7 @@ After compiling and running, on my system I got:
 
     The value of x: 1762254902
 
-This is garbage. Because x was never initialised to any value. If I compiled and ran the program again, I might get a different number. To give you a sense of what it means to be working close to the machine level, we can revisit the commented function above. Remember that the statement
+This is garbage. Because x was never initialised to any value. If I compiled and ran the program again, I might get a different number. To give you a sense of what it means to be working close to the machine level, we can revisit the commented function above. remember that the statement
 
     int x;
 
@@ -183,11 +183,11 @@ Some exceptions are conventions that are so common that they don't inhibit reada
 ##  Why are we talking about all of this low-level nonsense?
 There are two reasons. The first reason will become much more obvious later when we are working with arrays and pointers and need to avoid unsafe operations and learning how to debug issues we may have created with 'sloppy' typing. As you can imagine, the fact that different variables have different 'widths' at the machine level means they are not easily interchangeable. And even though C allows you do do some of that, if you've been sloppy, you can run into trouble.
 
-The second reason is to understand how simple C datatypes are. While this is all very complex stuff, what I mean is that datatypes in C basically just boil down to one or a few bytes in the system. We will discuss basic operations on C datatypes such as basic arithmetic. However, these operators work only on the byte level, not higher levels. For instance, unlike in python or R, you can't simply add two arrays together with the '+' operator in C. As we'll see later, adding two arrays this way is more likely to lead to a program crash. However, to understand why, you need to understand C's low-level of operation.
+The second reason is to understand how simple C datatypes are. While this is all very complex stuff, what I mean is that datatypes in C basically just boil down to one or a few bytes in the system. We will discuss basic operations on C datatypes such as basic arithmetic. However, these operators work only on the byte level, not higher levels. For instance, unlike in Python or r, you can't simply add two arrays together with the '+' operator in C. As we'll see later, adding two arrays this way is more likely to lead to a program crash. However, to understand why, you need to understand C's low-level of operation.
 
-Understanding these issues will prevent you from a lot of headaches later. The levels of abstraction that work in R and python won't work in C (quite as easily). After all, under python code is really just a lot of C code that you don't see. And, if nothing else, understanding what's going on at the machine level can help you get your head around things that may seem cryptic or arcane in some higher level languages.
+Understanding these issues will prevent you from a lot of headaches later. The levels of abstraction that work in R and Python won't work in C (quite as easily). After all, under Python code is really just a lot of C code that you don't see. And, if nothing else, understanding what's going on at the machine level can help you get your head around things that may seem cryptic or arcane in some higher level languages.
 
-For now, it serves to remember that, whether you are writing C, or R, or Python, declaring a new variable instructs the machine to reserve space in memory for some information. The space reserved in C will have a fixed size.
+For now, it serves to remember that, whether you are writing C, or r, or Python, declaring a new variable instructs the machine to reserve space in memory for some information. The space reserved in C will have a fixed size.
 
 
 ## `int` variables
@@ -306,7 +306,7 @@ int main()
     printf("The value of x: %i", z);
     printf("The value of x: %i", 'a');
     
-    /* Return 0 to the OS
+    /* return 0 to the OS
     return 0;
 }
 
@@ -336,7 +336,7 @@ int main (void)
 
 
 ### 4- Variable declarations
-Rewrite the the example program below trying different type of basic variables (`int`, `char`, `float`, `double` - you can express each of them using `printf` and respectively `%i`, `%c`, `%f` and `%e`)
+rewrite the the example program below trying different type of basic variables (`int`, `char`, `float`, `double` - you can express each of them using `printf` and respectively `%i`, `%c`, `%f` and `%e`)
 
     #include <stdio.h>
   

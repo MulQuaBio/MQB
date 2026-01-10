@@ -1,6 +1,6 @@
 .PHONY: init test
 
-# Create/update the local virtualenv and install Python dependencies
+# Create/update the local virtualenv and install python dependencies
 init:
 	bash scripts/bootstrap.sh
 
