@@ -114,6 +114,30 @@ Creating lectures using Jupyter Notebooks is the recommended option as it allows
 
 *Ready to contribute?* 
 
+### Quickstart (recommended)
+
+This repository uses a per-project Python virtual environment under `.venv/`.
+It is intentionally **not** version controlled (see `.gitignore`) and should not be committed.
+
+From the repository root:
+
+```bash
+make init
+make test
+```
+
+If you prefer to activate the environment explicitly:
+
+```bash
+source .venv/bin/activate
+```
+
+To leave the virtual environment:
+
+```bash
+deactivate
+```
+
 The standard workflow to contribute to the MQB is:
 
 **1. Fork > 2. Clone > 3. Branch > 4. Make Local changes > 5. Compile and test book locally > 6. Push branch > 7. Create Pull request > 8. (once accepted and merged) Deploy updated book online** 

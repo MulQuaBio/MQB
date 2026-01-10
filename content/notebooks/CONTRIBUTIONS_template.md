@@ -1,7 +1,7 @@
 # Group Work Contributions
 
 **Assignment**: [Assignment name/number]  
-**Group Members**: [List all member names]  
+**Group Members**: [List all member names]
 **Submission Date**: [Date]
 
 ## Individual Contributions
