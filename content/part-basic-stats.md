@@ -14,18 +14,22 @@ The chapters in this Part assume that you have already worked through at least t
 
 It is important that you work through the problems in each chapter, particularly as some of the questions ask you to find out about commands and functions not introduced in the chapter text itself, but which will be relied on in later chapters.
 
-## You will learn
+## Learning goals
 
-- Data wrangling and plotting basics
-- Experimental design concepts and workflow
-- Classic hypothesis tests (t-tests, ANOVA)
-- Regression and multiple explanatory variables
-- Model simplification and interpretation
+By the end of this part, you will be able to:
+
+- Import, clean, and explore biological datasets in R with confidence
+- Design experiments with proper replication, randomisation, and controls
+- Apply and interpret classical frequentist tests (t-tests, F-tests, ANOVA)
+- Build, diagnose, and communicate linear regression models
+- Fit models with multiple predictors and interactions
+- Simplify complex models systematically using nested tests and AIC
 
 ## Prerequisites
 
-- Basic comfort with R syntax and running code.
-- If needed, review the [R chapter](notebooks/r) first.
+- **Essential**: Functional R programming skills — variables, vectors, data frames, basic plotting (covered in [R chapter](notebooks/r))
+- **Helpful**: Basic understanding of mean, variance, and probability concepts
+- **If rusty**: Review [R chapter](notebooks/r) before starting
 
 ## Do this first
 
