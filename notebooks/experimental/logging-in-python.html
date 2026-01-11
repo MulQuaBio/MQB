@@ -1,0 +1,1125 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Logging in Python &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=01a0bdc2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/experimental/logging-in-python';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-computing.html">Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Biological Computing in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r.html">Biological Computing in R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-basic-stats.html">Basic Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-r.html">Data Management and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exp-design.html">Experimental design and Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-prework.html">Advanced Modelling &amp; Statistics Pre-work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-eemodelling.html">Ecological &amp; Evolutionary Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../populations.html">Single populations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interactions.html">Species interactions</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-advanced-stats.html">Advanced Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time-series.html">Time series analysis in R</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../mle.html">Model Fitting using Maximum Likelihood</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-assignments.html">Assignments and Assessments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-assessment.html">MQB Coursework Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-mini-proj.html">The Computing Miniproject</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-appendices.html">Appendices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MulQuaBio/MQB/master?urlpath=lab/tree/notebooks/experimental/logging-in-python.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MulQuaBio/MQB/blob/master/notebooks/experimental/logging-in-python.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/experimental/logging-in-python.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/experimental/logging-in-python.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Logging in Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basics-of-logging">The basics of logging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-levels">Logging levels</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debug"><code class="docutils literal notranslate"><span class="pre">DEBUG</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#info"><code class="docutils literal notranslate"><span class="pre">INFO</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warning"><code class="docutils literal notranslate"><span class="pre">WArNING</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error"><code class="docutils literal notranslate"><span class="pre">ErrOr</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#critical"><code class="docutils literal notranslate"><span class="pre">CrITICAL</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-logging">Implementing logging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-logging-system">Setting up the logging system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-messages">Logging messages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-1">Challenge 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-exceptions">Logging exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highly-recommended-reading">HIGHLY rECOMMENDED rEADING</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-to-a-file">Logging to a file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-notes">Final notes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="logging-in-python">
+<h1>Logging in Python<a class="headerlink" href="#logging-in-python" title="Link to this heading">#</a></h1>
+<p>Knowing what your Python program is doing is essential to understanding if it is working correctly. This seems like an obvious statement, but a lot of the time we do this sort of verifications without thinking about it. You could be using:</p>
+<ul class="simple">
+<li><p>Print statements</p></li>
+<li><p>A debugger &amp; breakpoints</p></li>
+<li><p>Output verification (data files or graphs)</p></li>
+<li><p>Other, less quantitative methods:</p>
+<ul>
+<li><p>Is this program running too long?</p></li>
+<li><p>Is this program using any cpu?</p></li>
+<li><p>etc.</p></li>
+</ul>
+</li>
+</ul>
+<p>Unfortunately, there are a few problems with these methods when we come to larger tasks, such as big monte-carlo simulation:</p>
+<ul class="simple">
+<li><p>Print statements are very slow and you might not want to print everything all of the time</p></li>
+<li><p>Debuggers are great for development, but you may not be at your computer when something fails</p></li>
+<li><p>running a program in a debugger is slower than running it without a debugger</p></li>
+<li><p>You don’t want to constantly be checking your outputs for x hours straight.</p></li>
+<li><p>You don’t want to constantly be checking your cpu usage.</p></li>
+<li><p>“Too long” might not have much meaning, depending on the algorithm you are performing.</p></li>
+</ul>
+<p>Wouldn’t it be nice if your program produced a report as it went in which it recorded things you wanted to know and any errors it found?</p>
+<p><strong>THIS</strong> is where logging comes in.</p>
+<section id="the-basics-of-logging">
+<h2>The basics of logging<a class="headerlink" href="#the-basics-of-logging" title="Link to this heading">#</a></h2>
+<p>Logging is much like a much more highly controlled print system. Anywhere you might put a <code class="docutils literal notranslate"><span class="pre">print()</span></code> you can put a log statement instead.</p>
+<p>In Python, it is split into a few classes that work with each other to customise the log output:</p>
+<ul class="simple">
+<li><p>Loggers expose the interface that application code directly uses.</p></li>
+<li><p>Handlers send the log records (created by loggers) to the appropriate destination (e.g. the screen or a file)</p></li>
+<li><p>Filters provide a finer grained facility for determining which log records to output.</p></li>
+<li><p>Formatters specify the layout of log records in the final output.</p></li>
+</ul>
+</section>
+<section id="logging-levels">
+<h2>Logging levels<a class="headerlink" href="#logging-levels" title="Link to this heading">#</a></h2>
+<p>Logging in Python has a system to organise and filter log statements by <strong>level</strong> (aka priority). In order from least severe to most severe these are as follows:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DEBUG</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INFO</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WArNING</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ErrOr</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CrITICAL</span></code></p></li>
+</ul>
+<p>There are no absolute rules for how to use these, but the following sections give a good framework within which to work.</p>
+<hr class="docutils" />
+<section id="debug">
+<h3><code class="docutils literal notranslate"><span class="pre">DEBUG</span></code><a class="headerlink" href="#debug" title="Link to this heading">#</a></h3>
+<p>Use debug everywhere as a fine-scale feedback system for large jobs. For instance if you were looping through a file row by row, you might add a debug log entry saying <code class="docutils literal notranslate"><span class="pre">Working</span> <span class="pre">on</span> <span class="pre">row</span> <span class="pre">x</span></code>, and maybe even a debug entry for every operation you are doing.</p>
+</section>
+<section id="info">
+<h3><code class="docutils literal notranslate"><span class="pre">INFO</span></code><a class="headerlink" href="#info" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">INFO</span></code> level is your general purpose logging level. It can be used for coarse status updates and generally tracking the control flow as the program runs. Log entries at this level might look like the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Loading</span> <span class="pre">data...</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Fitting</span> <span class="pre">curves</span> <span class="pre">(10/100)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rendering</span> <span class="pre">graphs</span></code></p></li>
+</ul>
+</section>
+<section id="warning">
+<h3><code class="docutils literal notranslate"><span class="pre">WArNING</span></code><a class="headerlink" href="#warning" title="Link to this heading">#</a></h3>
+<p>This log level is used when something is out of the ordinary, but in a manner which is handled or known about and mitigated. For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rate</span> <span class="pre">parameter</span> <span class="pre">not</span> <span class="pre">supplied,</span> <span class="pre">falling</span> <span class="pre">back</span> <span class="pre">to</span> <span class="pre">default</span> <span class="pre">(0.5)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">contains</span> <span class="pre">0s,</span> <span class="pre">skipping</span> <span class="pre">log</span> <span class="pre">transformation...</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Not</span> <span class="pre">enough</span> <span class="pre">points</span> <span class="pre">to</span> <span class="pre">fit</span> <span class="pre">a</span> <span class="pre">5</span> <span class="pre">parameter</span> <span class="pre">curve</span> <span class="pre">(3</span> <span class="pre">points</span> <span class="pre">in</span> <span class="pre">sample),</span> <span class="pre">skipping...</span></code></p></li>
+</ul>
+</section>
+<section id="error">
+<h3><code class="docutils literal notranslate"><span class="pre">ErrOr</span></code><a class="headerlink" href="#error" title="Link to this heading">#</a></h3>
+<p>Errors occur when something big went wrong in a non-fatal way. This can be a bit hard to define, but safe to say if you’re really annoyed that it’s occuring, it’s probably an <code class="docutils literal notranslate"><span class="pre">ErrOr</span></code>. Examples include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">34/60</span> <span class="pre">unreadable</span> <span class="pre">or</span> <span class="pre">missing</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">file</span> <span class="pre">empty</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Unexpected</span> <span class="pre">error</span> <span class="pre">in</span> <span class="pre">fitting</span> <span class="pre">curve</span> <span class="pre">2/5</span> <span class="pre">for</span> <span class="pre">Species</span> <span class="pre">18</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">has</span> <span class="pre">0</span> <span class="pre">variance</span> <span class="pre">and</span> <span class="pre">is</span> <span class="pre">thus</span> <span class="pre">identical</span></code></p></li>
+</ul>
+</section>
+<section id="critical">
+<h3><code class="docutils literal notranslate"><span class="pre">CrITICAL</span></code><a class="headerlink" href="#critical" title="Link to this heading">#</a></h3>
+<p>You do not want to see <code class="docutils literal notranslate"><span class="pre">CrITICAL</span></code> errors. These are a sign that something vital has gone wrong which makes the program inviable to execute past that point. It could also be a sign that something has gone wrong which may have had lasting side-effects that require cleaning up or mitigating. Examples could be:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Cannot</span> <span class="pre">access</span> <span class="pre">database</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">cores</span> <span class="pre">detected</span> <span class="pre">for</span> <span class="pre">multithreading</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Missing</span> <span class="pre">system</span> <span class="pre">libraries</span> <span class="pre">for</span> <span class="pre">GDAL</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Error</span> <span class="pre">when</span> <span class="pre">performing</span> <span class="pre">in-place</span> <span class="pre">edit</span> <span class="pre">to</span> <span class="pre">file.</span> <span class="pre">File</span> <span class="pre">may</span> <span class="pre">now</span> <span class="pre">be</span> <span class="pre">corrupt!</span></code></p></li>
+</ul>
+<hr class="docutils" />
+<p>To put these in a slightly more intuitive way, here are my translations of log levels in terms of how they should make you feel when you see them:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> - “Cool, literally everything works.”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INFO</span></code> - “Nice to know how things are progressing.”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WArNING</span></code> - “Hmm.”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ErrOr</span></code> - “Bugger.”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CrITICAL</span></code> - “I’m going to set this computer on fire in a minute…”</p></li>
+</ul>
+</section>
+</section>
+<section id="implementing-logging">
+<h2>Implementing logging<a class="headerlink" href="#implementing-logging" title="Link to this heading">#</a></h2>
+<p>Let’s implement logging in a script. Currently it is in a state which produces a lot of useless output. Take a minute to have a look and work out how the script works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some setup</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SithError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="c1"># Main script</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">train_padawans</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training </span><span class="si">{}</span><span class="s2"> padawan/s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="n">trained_successfully</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training padawan </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="n">train</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">trained_successfully</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">except</span> <span class="n">SithError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Padawan has fallen to the dark side.&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">padawan</span><span class="p">):</span>
+    <span class="n">lightpoints</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">darkpoints</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Light = </span><span class="si">{}</span><span class="s2">, Dark = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lightpoints</span><span class="p">,</span> <span class="n">darkpoints</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">darkpoints</span> <span class="o">&gt;</span> <span class="n">lightpoints</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">SithError</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    
+<span class="n">train_padawans</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training 20 padawan/s
+Training padawan 0
+Light = 10, Dark = 3
+Training padawan 1
+Light = 6, Dark = 1
+Training padawan 2
+Light = 10, Dark = 6
+Training padawan 3
+Light = 9, Dark = 0
+Training padawan 4
+Light = 9, Dark = 2
+Training padawan 5
+Light = 6, Dark = 4
+Training padawan 6
+Light = 7, Dark = 5
+Training padawan 7
+Light = 10, Dark = 0
+Training padawan 8
+Light = 5, Dark = 2
+Training padawan 9
+Light = 9, Dark = 3
+Training padawan 10
+Light = 7, Dark = 0
+Training padawan 11
+Light = 5, Dark = 5
+Training padawan 12
+Light = 6, Dark = 4
+Training padawan 13
+Light = 10, Dark = 7
+Training padawan 14
+Light = 6, Dark = 5
+Training padawan 15
+Light = 9, Dark = 7
+Training padawan 16
+Light = 10, Dark = 2
+Training padawan 17
+Light = 5, Dark = 1
+Training padawan 18
+Light = 6, Dark = 3
+Training padawan 19
+Light = 5, Dark = 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>So let’s see if we can make this more informative and reasonable to debug and manage.</p>
+</section>
+<section id="setting-up-the-logging-system">
+<h2>Setting up the logging system<a class="headerlink" href="#setting-up-the-logging-system" title="Link to this heading">#</a></h2>
+<p>You usually want to set up logging at the start of your script, before doing much else. Only your header and imports usually come beforehand (as anything that is done before setting up logging <strong>can’t be logged</strong>)</p>
+<p>First let’s import logging and get the <code class="docutils literal notranslate"><span class="pre">root</span></code> logger, this is always intantiated and in the absence of a custom logger, this will do the trick for many applications.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we have done that we can set up the logging format for the messages. These can be formatted like any string, but for now let’s get the log messages in the format <code class="docutils literal notranslate"><span class="pre">2020-09-08</span> <span class="pre">19:16:16,855</span> <span class="pre">-</span> <span class="pre">INFO</span> <span class="pre">-</span> <span class="pre">Log</span> <span class="pre">message</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This format string might seem a little arcane, but it relates to the <a class="reference external" href="https://docs.python.org/3/library/logging.html#logrecord-attributes">Logrecord attributes</a>, the data contained in the Log record.</p>
+<p>Anyway a formatter on its own will do little good, we need to also add a stream handler to pass data to the console. The handler decides where the log records generated by logging calls are directed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chandler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Good, however this handler is unconfigured and could cause us problems if we use it as-is. Let’s set the handler to only transmit log entries at an <code class="docutils literal notranslate"><span class="pre">INFO</span></code> level and higher. We will also set the handler to use the formatter we created above</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chandler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">chandler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally we need to add this handler to the logger we retrieved at the top.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">chandler</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Note: the root logger is set by default to only deal with logs at an <code class="docutils literal notranslate"><span class="pre">ErrOr</span></code> level or above. In this case we want it to accept and handle log entries at a <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> level and above.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we are all set!</p>
+</section>
+<section id="logging-messages">
+<h2>Logging messages<a class="headerlink" href="#logging-messages" title="Link to this heading">#</a></h2>
+<p>Now let’s test it using log messages at all levels. To do this we need to call <code class="docutils literal notranslate"><span class="pre">logger.x()</span></code> where <code class="docutils literal notranslate"><span class="pre">x</span></code> is the level we want to log at. So to log a <code class="docutils literal notranslate"><span class="pre">WArNING</span></code> you would use <code class="docutils literal notranslate"><span class="pre">logger.warning()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;DEBUG message&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;INFO message&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;WArNING message&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;ErrOr message&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">&quot;CrITICAL message&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-09-08 21:02:02,428 - INFO - INFO message
+2020-09-08 21:02:02,429 - WArNING - WArNING message
+2020-09-08 21:02:02,429 - ErrOr - ErrOr message
+2020-09-08 21:02:02,430 - CrITICAL - CrITICAL message
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice how we only got 4 messages from the logger even though we wrote 5 commands.</p>
+<p>As the <code class="docutils literal notranslate"><span class="pre">chandler</span></code> handler is set to a level of <code class="docutils literal notranslate"><span class="pre">INFO</span></code> it steadfastly ignores any message that it sees that are below that level, thus the <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> message was not logged. Let’s change that for now and see what happens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chandler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+
+
+<span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;DEBUG message&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;INFO message&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;WArNING message&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;ErrOr message&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">&quot;CrITICAL message&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-09-08 21:02:02,435 - DEBUG - DEBUG message
+2020-09-08 21:02:02,436 - INFO - INFO message
+2020-09-08 21:02:02,436 - WArNING - WArNING message
+2020-09-08 21:02:02,437 - ErrOr - ErrOr message
+2020-09-08 21:02:02,437 - CrITICAL - CrITICAL message
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we got all the log messages as expected. It is generally good practice to make sure that the logs that you are seeing by default are at <code class="docutils literal notranslate"><span class="pre">INFO</span></code> level and above, and that you’re not logging every little thing at <code class="docutils literal notranslate"><span class="pre">INFO</span></code> level either. If a log at <code class="docutils literal notranslate"><span class="pre">INFO</span></code> level is absolutely packed full of things you rarely care about, it’s worthwhile reconsidering the levels at which you are logging some of your messages.</p>
+<p>With that in mind, let’s move the <code class="docutils literal notranslate"><span class="pre">chandler</span></code> back to INFO level.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chandler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-1">
+<h2>Challenge 1<a class="headerlink" href="#challenge-1" title="Link to this heading">#</a></h2>
+<p>Try to modify the jedi training script above to use appropriate logging. Note there is no right or wrong answer for this, but try to apply the guidelines at the top of the workbook.</p>
+</section>
+<section id="logging-exceptions">
+<h2>Logging exceptions<a class="headerlink" href="#logging-exceptions" title="Link to this heading">#</a></h2>
+<p>Exceptions can be handled using just a simple <code class="docutils literal notranslate"><span class="pre">logger.error()</span></code> command with an appropriate message, however this will only display the message that you set. An exception usually gives a lot more information, such as a stack trace, and this would be useful to have in the log!</p>
+<p>Here is where a special logger method caller <code class="docutils literal notranslate"><span class="pre">logger.exception()</span></code> comes in.</p>
+<p>For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">div_by_nsub1</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">div_by_nsub1</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;An error occurred&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-09-08 21:02:02,448 - ErrOr - An error occurred
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8333333333333334
+0.8
+0.75
+0.6666666666666666
+0.5
+-0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>And now the same thing but using <code class="docutils literal notranslate"><span class="pre">logger.exception()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">logger.error()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">div_by_nsub1</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">div_by_nsub1</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;An error occurred&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-09-08 21:02:02,455 - ErrOr - An error occurred
+Traceback (most recent call last):
+  File &quot;&lt;ipython-input-12-f2c9a3acdcbc&gt;&quot;, line 6, in &lt;module&gt;
+    print(div_by_nsub1(i))
+  File &quot;&lt;ipython-input-12-f2c9a3acdcbc&gt;&quot;, line 2, in div_by_nsub1
+    return n/(n-1)
+ZeroDivisionError: division by zero
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8333333333333334
+0.8
+0.75
+0.6666666666666666
+0.5
+-0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note the large amount of extra information present in the stack trace alongside the error message itself! Much easier to see exactly where in the code the error was triggered (<code class="docutils literal notranslate"><span class="pre">line</span> <span class="pre">2,</span> <span class="pre">in</span> <span class="pre">div_by_nsub1</span></code>).</p>
+<p>Also worthwhile noting that <code class="docutils literal notranslate"><span class="pre">logger.exception()</span></code> logs at the <code class="docutils literal notranslate"><span class="pre">ErrOr</span></code> level.</p>
+<p>You don’t <em>need</em> to use the <code class="docutils literal notranslate"><span class="pre">logger.exception()</span></code> method to write to the log whenever you catch an exception, and in many situations it will just spam up your log with useless information (precisely what we are trying to avoid). If you think that the information contained in the stack trace will be useful then use <code class="docutils literal notranslate"><span class="pre">logger.exception()</span></code>, otherwise another form will do just as well.</p>
+</section>
+<section id="highly-recommended-reading">
+<h2>HIGHLY rECOMMENDED rEADING<a class="headerlink" href="#highly-recommended-reading" title="Link to this heading">#</a></h2>
+<p>At this point, go to the following article, read it in full (should take less than 5 minutes), then bookmark it for future reference.</p>
+<p>It provides some really nice ways to log Python exceptions and I thoroughly recommend everyone read this before implementing logging in their own code.</p>
+<hr class="docutils" />
+<blockquote>
+<div><p><a class="reference external" href="https://www.loggly.com/blog/exceptional-logging-of-exceptions-in-Python/"><strong>Exceptional logging of exceptions in Python</strong></a></p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="logging-to-a-file">
+<h2>Logging to a file<a class="headerlink" href="#logging-to-a-file" title="Link to this heading">#</a></h2>
+<p>The console isn’t the only place you might want to put a log. Arguably more useful is a log file that you can investigate and search at your leisure. To create a logger that writes to the file <code class="docutils literal notranslate"><span class="pre">my.log</span></code> in the current directory, you can set up and attach another handler as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fhandler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s1">&#39;my.log&#39;</span><span class="p">)</span>
+<span class="n">fhandler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">fhandler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">fhandler</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that it is possible to have different handlers with differing log levels or formatters.</p>
+<p>Now let’s log some stuff!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;DEBUG message&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;INFO message&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;WArNING message&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;ErrOr message&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;EXCEPTION + stacktrace&quot;</span><span class="p">)</span>
+
+<span class="n">logger</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">&quot;CrITICAL message&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-09-08 21:02:02,469 - INFO - INFO message
+2020-09-08 21:02:02,470 - WArNING - WArNING message
+2020-09-08 21:02:02,470 - ErrOr - ErrOr message
+2020-09-08 21:02:02,471 - ErrOr - EXCEPTION + stacktrace
+Traceback (most recent call last):
+  File &quot;&lt;ipython-input-14-e48625660833&gt;&quot;, line 6, in &lt;module&gt;
+    x = 1/0
+ZeroDivisionError: division by zero
+2020-09-08 21:02:02,471 - CrITICAL - CrITICAL message
+</pre></div>
+</div>
+</div>
+</div>
+<p>And let’s look at what is in the log file</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;my.log&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-09-08 21:02:02,469 - DEBUG - DEBUG message
+2020-09-08 21:02:02,469 - INFO - INFO message
+2020-09-08 21:02:02,470 - WArNING - WArNING message
+2020-09-08 21:02:02,470 - ErrOr - ErrOr message
+2020-09-08 21:02:02,471 - ErrOr - EXCEPTION + stacktrace
+Traceback (most recent call last):
+File &quot;&lt;ipython-input-14-e48625660833&gt;&quot;, line 6, in &lt;module&gt;
+x = 1/0
+ZeroDivisionError: division by zero
+2020-09-08 21:02:02,471 - CrITICAL - CrITICAL message
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see here, even the bits that are logged at <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> level are appearing in the log file, but they do NOT appear at the console level.</p>
+</section>
+<section id="final-notes">
+<h2>Final notes<a class="headerlink" href="#final-notes" title="Link to this heading">#</a></h2>
+<p>With these skills you should now be able to set up logging for large scripts easily and use it effectively to provide insight into the inner workings of a script as it is running. A few final tips to see you off:</p>
+<ul class="simple">
+<li><p>You can follow a log file in real time as a program is running using the bash command <code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-f</span> <span class="pre">my.log</span></code>. You can quit this view using Ctrl+C.</p></li>
+<li><p>Implementing a debug mode can be quite a good idea at the top of a file. With a simple boolean value, you can switch between different logging setups, leading to a way to easily turn on a much more detailed view of what is going on.</p></li>
+<li><p>There is a package called <code class="docutils literal notranslate"><span class="pre">logzero</span></code> that makes a lot of this stuff even easier, go check it out!</p></li>
+<li><p>Logging in R is possible using the <code class="docutils literal notranslate"><span class="pre">futile.logger</span></code> package or a few others, however in my experience it is less powerful. Nonetheless the same reasons for using it apply.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/experimental"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basics-of-logging">The basics of logging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-levels">Logging levels</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debug"><code class="docutils literal notranslate"><span class="pre">DEBUG</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#info"><code class="docutils literal notranslate"><span class="pre">INFO</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warning"><code class="docutils literal notranslate"><span class="pre">WArNING</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error"><code class="docutils literal notranslate"><span class="pre">ErrOr</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#critical"><code class="docutils literal notranslate"><span class="pre">CrITICAL</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-logging">Implementing logging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-logging-system">Setting up the logging system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-messages">Logging messages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-1">Challenge 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-exceptions">Logging exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highly-recommended-reading">HIGHLY rECOMMENDED rEADING</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logging-to-a-file">Logging to a file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-notes">Final notes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

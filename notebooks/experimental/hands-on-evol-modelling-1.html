@@ -1,0 +1,1160 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hands-on Evolutionary Modelling I &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=01a0bdc2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/experimental/hands-on-evol-modelling-1';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-computing.html">Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Biological Computing in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r.html">Biological Computing in R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-basic-stats.html">Basic Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-r.html">Data Management and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exp-design.html">Experimental design and Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-prework.html">Advanced Modelling &amp; Statistics Pre-work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-eemodelling.html">Ecological &amp; Evolutionary Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../populations.html">Single populations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interactions.html">Species interactions</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-advanced-stats.html">Advanced Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time-series.html">Time series analysis in R</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../mle.html">Model Fitting using Maximum Likelihood</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-assignments.html">Assignments and Assessments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-assessment.html">MQB Coursework Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-mini-proj.html">The Computing Miniproject</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-appendices.html">Appendices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MulQuaBio/MQB/master?urlpath=lab/tree/notebooks/experimental/hands-on-evol-modelling-1.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MulQuaBio/MQB/blob/master/notebooks/experimental/hands-on-evol-modelling-1.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/experimental/hands-on-evol-modelling-1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/experimental/hands-on-evol-modelling-1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Hands-on Evolutionary Modelling I</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">0. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wright-fisher-drift-simulator">1. Wright-Fisher drift simulator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-1">1.1 Version 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-2-frequency-only">1.2 Version 2 (frequency only)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drift-and-population-size">2. Drift and population size</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-methods">3. Monte-Carlo methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-allele-frequency-due-to-drift">3.1 Variance of allele frequency due to drift</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-mc-estimates">3.2 Variance of MC estimates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persistence-time-of-an-allele">3.3 Persistence time of an allele</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-about-the-sample-function">4. Bonus: about the <code>sample()</code> function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">5. references</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hands-on-evolutionary-modelling-i">
+<h1>Hands-on Evolutionary Modelling I<a class="headerlink" href="#hands-on-evolutionary-modelling-i" title="Link to this heading">#</a></h1>
+<p>21/01/2025 Tin-Yu Hui</p>
+<section id="introduction">
+<h2>0. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>As someone who did not have a solid biology/ecology background, it is often a challenge for me to accept all the ideas I read from a genetics textbook, at least not straight away. This is not because the textbooks were poorly written (Hartl &amp; Clark is an excellent read by the way), more likely it is due to my lack of imagination, or the educational background I’d been exposed to.</p>
+<p>Over the years, I have gradually developed the habit to check my understanding or to pick up knowledge from simulations. Surely I must possess a reasonably good deal of understanding towards a certain topic if I can replicate it on my screen, right? And from that I can run all sorts of quantitative analyses, complementary to the other tools like mathematical equations we learnt in this course.</p>
+<p>I hope by the end of these “hands-on” days you will appreciate the use of computer simulation as a learning medium, also the art of translating abstract theories and human languages into something that computers can understand. On the practical side of things, these models can help solve problems if they are in the right hands.</p>
+</section>
+<section id="wright-fisher-drift-simulator">
+<h2>1. Wright-Fisher drift simulator<a class="headerlink" href="#wright-fisher-drift-simulator" title="Link to this heading">#</a></h2>
+<section id="version-1">
+<h3>1.1 Version 1<a class="headerlink" href="#version-1" title="Link to this heading">#</a></h3>
+<p>Assumptions: Drift is the only evolutionary force (no mutation/migration/selection). random mating. Discrete generation. Constant population size. Diploid. One biallelic locus (“0” or “1” allele).</p>
+<p>Since the locus is genetically neutral, the relative frequency of “0” in the gamete pool (from which gametes are sampled to form offsprings in the next generation) equals the current frequency.</p>
+<p>Parameters: Population size <span class="math notranslate nohighlight">\(N\)</span>, initial allele frequency of the “0” allele <span class="math notranslate nohighlight">\(p_0\)</span>, number of generations we wish to simulate forward in time <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>Output(s): Two items. 1) A vector of <span class="math notranslate nohighlight">\((t+1)\)</span> allele frequencies over time. 2) A list containing <span class="math notranslate nohighlight">\((t+1)\)</span> matrices to store all the genotypic configurations across all individuals and time. Each matrix has <span class="math notranslate nohighlight">\(N\)</span> columns (individuals) and 2 rows (ploidy).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sim_genetic_drift</span><span class="o">&lt;-</span><span class="kr">function</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">p0</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1"># THE BIG LIST OF MATrICES (TO BE FILLED IN LATEr)</span>
+<span class="w">    </span><span class="n">population</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">length</span><span class="p">(</span><span class="n">population</span><span class="p">)</span><span class="o">&lt;-</span><span class="n">t</span><span class="m">+1</span>
+<span class="w">    </span><span class="c1"># GIVE NAMES TO THE ELEMENTS (OPTIONAL)</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">t</span><span class="m">+1</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nf">names</span><span class="p">(</span><span class="n">population</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">paste</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;generation&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="m">-1</span><span class="p">),</span><span class="w"> </span><span class="n">collapse</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1"># ALSO KEEP TrACK ON THE ALLELE FrEQ OVEr TIME, AS A VECTOr</span>
+<span class="w">    </span><span class="n">allele.freq</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="m">+1</span><span class="p">)</span>
+<span class="w">    </span><span class="c1"># INITIALISE</span>
+<span class="w">    </span><span class="c1"># NUMBEr OF &quot;0&quot; ALLELE AT THE STArT, GOVErNED BY p0</span>
+<span class="w">    </span><span class="n">k</span><span class="o">&lt;-</span><span class="nf">round</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">N</span><span class="o">*</span><span class="n">p0</span><span class="p">)</span>
+<span class="w">    </span><span class="n">population</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">),</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="n">k</span><span class="p">))),</span><span class="w"> </span><span class="n">nr</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="w">    </span><span class="c1"># THE INITIAL ALLELE FrEQ</span>
+<span class="w">    </span><span class="n">allele.freq</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">sum</span><span class="p">(</span><span class="n">population</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">==</span><span class="m">0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">N</span><span class="p">)</span>
+<span class="w">    </span><span class="c1"># PrOPAGATION</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">t</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1"># THE GAMETIC FrEQ IS JUST THE ALLELE FrEQ FrOM THE PArENTAL GEN</span>
+<span class="w">        </span><span class="n">population</span><span class="p">[[</span><span class="n">i</span><span class="m">+1</span><span class="p">]]</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">sample</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="o">*</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">allele.freq</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="m">1</span><span class="o">-</span><span class="n">allele.freq</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="w"> </span><span class="n">replace</span><span class="o">=</span><span class="bp">T</span><span class="p">),</span><span class="w"> </span><span class="n">nr</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="w">        </span><span class="c1"># UPDATE NEW FrEQ</span>
+<span class="w">        </span><span class="n">allele.freq</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">sum</span><span class="p">(</span><span class="n">population</span><span class="p">[[</span><span class="n">i</span><span class="m">+1</span><span class="p">]]</span><span class="o">==</span><span class="m">0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">N</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1"># rETUrN A BIG LIST, EXIT</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">population</span><span class="o">=</span><span class="n">population</span><span class="p">,</span><span class="w"> </span><span class="n">allele.freq</span><span class="o">=</span><span class="n">allele.freq</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST rUN</span>
+<span class="nf">sim_genetic_drift</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><dl>
+	<dt>$population</dt>
+		<dd><dl>
+	<dt>$generation0</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 10 of type dbl</caption>
+<tbody>
+	<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+	<tr><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$generation1</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 10 of type int</caption>
+<tbody>
+	<tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+	<tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$generation2</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 10 of type int</caption>
+<tbody>
+	<tr><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+	<tr><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$generation3</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 10 of type int</caption>
+<tbody>
+	<tr><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+	<tr><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$generation4</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 10 of type int</caption>
+<tbody>
+	<tr><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+	<tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$generation5</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 10 of type int</caption>
+<tbody>
+	<tr><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd>
+	<dt>$allele.freq</dt>
+		<dd><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0.5</li><li>0.5</li><li>0.45</li><li>0.45</li><li>0.45</li><li>0.5</li></ol>
+</dd>
+</dl>
+</div></div>
+</div>
+<p>Note 1: <code>return()</code> should be the last line of a function. Subsequent commands will be ignored.</p>
+<p>Note 2: A function can only return one item (a number, a vector, a matrix, a list). If multiple items are needed put them into a list. You can put a list within another list.</p>
+</section>
+<section id="version-2-frequency-only">
+<h3>1.2 Version 2 (frequency only)<a class="headerlink" href="#version-2-frequency-only" title="Link to this heading">#</a></h3>
+<p>Version 1 is individual-based. Depending on the problems of interest population-based models can be developed to simplified the compuation. If only allele frequency is concerned then the allele <em>count</em> in the next generation follows a binomial distribution with size <span class="math notranslate nohighlight">\(2*N\)</span> and probability <span class="math notranslate nohighlight">\(p\)</span>, where <span class="math notranslate nohighlight">\(p\)</span> is the current allele freuqnecy (of the “0” allele, say). Under this assumption we can simplify our drift simulator. The various probability distributions will be discussed in the Statistics module.</p>
+<p>Assumptions: same</p>
+<p>Parameters: same</p>
+<p>Output(s): A vector of allele frequencies over time with <span class="math notranslate nohighlight">\((t+1)\)</span> elements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sim_genetic_drift2</span><span class="o">&lt;-</span><span class="kr">function</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">p0</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1"># A VECTOr FOr ALLELE FrEQ</span>
+<span class="w">    </span><span class="n">allele.freq</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="m">+1</span><span class="p">)</span>
+<span class="w">    </span><span class="c1"># INITIALISE</span>
+<span class="w">    </span><span class="n">allele.freq</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&lt;-</span><span class="n">p0</span>
+<span class="w">    </span><span class="c1"># PrOPAGATION</span>
+<span class="w">    </span><span class="c1"># DIVIDE COUNT BY 2*N TO GET FrEQ</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">t</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">allele.freq</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">rbinom</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="o">*</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="o">=</span><span class="n">allele.freq</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">N</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1"># rETUrN AND EXIT</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">allele.freq</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST rUN</span>
+<span class="nf">sim_genetic_drift2</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0.5</li><li>0.5</li><li>0.55</li><li>0.8</li><li>0.85</li><li>0.75</li></ol>
+</div></div>
+</div>
+<p>Note that the two WF drift simulators should give identical results on frequency-based inferences. But the latter lacks genotypic information which inhibits us from calculating summary statistics such as heterozygosity or Hardy-Weinberg Equilibrium.</p>
+</section>
+</section>
+<section id="drift-and-population-size">
+<h2>2. Drift and population size<a class="headerlink" href="#drift-and-population-size" title="Link to this heading">#</a></h2>
+<p>The magnitude of drift is inversely proportional to <span class="math notranslate nohighlight">\(N\)</span>. People have been using drift signals to estimate effective population size, see Waples (1989), Hui, Brenas &amp; Burt (2021).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># SMALL N=50 SCENArIO, WITH 20 rEPLICATEAS</span>
+<span class="n">af_N50</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="n">nr</span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">nc</span><span class="o">=</span><span class="m">51</span><span class="p">)</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">af_N50</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">af_N50</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">&lt;-</span><span class="nf">sim_genetic_drift2</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">50</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1"># LArGE N=500 SCENArIO, WITH 20 rEPLICATES</span>
+<span class="n">af_N500</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="n">nr</span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">nc</span><span class="o">=</span><span class="m">51</span><span class="p">)</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">af_N500</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">af_N500</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">&lt;-</span><span class="nf">sim_genetic_drift2</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">50</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1"># PLOTS ALLELE FrEQ TrAJECTOrIES</span>
+<span class="nf">matplot</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">af_N50</span><span class="p">),</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span>
+<span class="w">        </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;generations&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;allele frequency&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">&#39;N=50&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="nf">matplot</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">af_N500</span><span class="p">),</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span>
+<span class="w">        </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;generations&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;allele frequency&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">&#39;N=500&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../_images/7c3b8b29aaa4f73f62bfa2ba0897607677dfb694648cb59132ef9741b560d791.png"><img alt="../../_images/7c3b8b29aaa4f73f62bfa2ba0897607677dfb694648cb59132ef9741b560d791.png" src="../../_images/7c3b8b29aaa4f73f62bfa2ba0897607677dfb694648cb59132ef9741b560d791.png" style="width: 420px; height: 420px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/50ebf19afe4159a86221a99ebd5c6986af92a7800af72347730c72b7d41dae70.png"><img alt="../../_images/50ebf19afe4159a86221a99ebd5c6986af92a7800af72347730c72b7d41dae70.png" src="../../_images/50ebf19afe4159a86221a99ebd5c6986af92a7800af72347730c72b7d41dae70.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+</section>
+<section id="monte-carlo-methods">
+<h2>3. Monte-Carlo methods<a class="headerlink" href="#monte-carlo-methods" title="Link to this heading">#</a></h2>
+<section id="variance-of-allele-frequency-due-to-drift">
+<h3>3.1 Variance of allele frequency due to drift<a class="headerlink" href="#variance-of-allele-frequency-due-to-drift" title="Link to this heading">#</a></h3>
+<p>The classical theory states that drift will not change the mean allele frequency but will increase its uncertainly (variance) over time. As seen from the two plots above, the uncertainly increases with <span class="math notranslate nohighlight">\(t\)</span>, but is also inversely proportional to <span class="math notranslate nohighlight">\(N\)</span> (Waples, 1989).</p>
+<p>There is no surprise that geneticists want to quantify such relationship. One may ask for the mean and variance of allele frequency, given <span class="math notranslate nohighlight">\(p_0=0.5\)</span>, <span class="math notranslate nohighlight">\(N=200\)</span>, in <span class="math notranslate nohighlight">\(t=10\)</span> generations. We could find these quantities by working out the statistical distributions and moments of allele frequency, and by studying the conditional mean and variance of the associated random variables (Statistics module). Or you may have heard using a diffusion model to approximate the WF process.</p>
+<p>Here I propose using the WF simulator to approximate the answers. Suppose our quantities of interest are the mean and variance of allele frequency due to drift. We can run the WF simulator given the known parameters for many times (10,000, say), independently, to obtain 10,000 such final allele frequencies. Our empirical answers are the sample average and variance of these simulated final allele frequencies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># MEAN, VArIANCE, AND DISTrIBUTION OF ALLELE FrEQ DUE TO DrIFT</span>
+<span class="c1"># p0=0.5, N=200, t=10</span>
+<span class="c1"># 10000 INDEPENDENT SIMS (Or LOCI), NOTE THAT WE&#39;rE ONLY INTErESTED IN THE FINAL ALLELE FrEQ</span>
+<span class="n">final_af</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">10000</span><span class="p">)</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">final_af</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">final_af</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">sim_genetic_drift2</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="m">200</span><span class="p">,</span><span class="w"> </span><span class="n">p0</span><span class="o">=</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">10</span><span class="p">)[</span><span class="m">11</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="c1"># OUr APPrOXIMATIONS </span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">final_af</span><span class="p">)</span>
+<span class="nf">var</span><span class="p">(</span><span class="n">final_af</span><span class="p">)</span>
+<span class="nf">hist</span><span class="p">(</span><span class="n">final_af</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;allele freq&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">&#39;Histogram of 10000 final allele freq, given the initial conditions. &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.50035825</div><div class="output text_html">0.00611383241517902</div><a class="reference internal image-reference" href="../../_images/9624b028fc55d5bd4ac4854d32f9f680c6b858f7a362d7d38f525f2af46a5251.png"><img alt="../../_images/9624b028fc55d5bd4ac4854d32f9f680c6b858f7a362d7d38f525f2af46a5251.png" src="../../_images/9624b028fc55d5bd4ac4854d32f9f680c6b858f7a362d7d38f525f2af46a5251.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p>In fact, Waples (1989) worked out that $<span class="math notranslate nohighlight">\(Var[p_t]=p_{0}(1-p_{0})(1-(1-1/2N)^t)\)</span>$ which is about 0.0061 for our set of parameters. Our MC approximation is not too bad!</p>
+<p>The histrogram also confirms that <span class="math notranslate nohighlight">\(E[p_t]=p_0\)</span> (i.e. genetically neutral), although by chance the allele freuqency can shoot up to 0.8 or down to 0.2. There will be more on expectations in the Statistics module. The spirit of using repeated simulations to find “answers” is generally branded as Monte-Carlo.</p>
+</section>
+<section id="variance-of-mc-estimates">
+<h3>3.2 Variance of MC estimates<a class="headerlink" href="#variance-of-mc-estimates" title="Link to this heading">#</a></h3>
+<p>Some “large” numbers of repeated simulations are required in MC methods. But the next question is “how large is large?”. In fact, it is valid to use only 10 independent loci to approximate <span class="math notranslate nohighlight">\(Var[p_t]\)</span>, but we prefer having 10,000 repeats for the obvious reasons.</p>
+<p>The results from MC simulation will converge to the “true answer” when the number of independent simulations <span class="math notranslate nohighlight">\(\rightarrow\infty\)</span>. Due to the stochastic nature of simulations, the error variance from MC simulation <span class="math notranslate nohighlight">\(\propto1/(\#sims)\)</span>.</p>
+<p>The following example illustrates such convergence. Here I examine the uncertainly surrounding our <span class="math notranslate nohighlight">\(Var[p_t]\)</span> estimates under different number of independent loci (or sims) <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(n=50, 100, 200, 500, 1000, 2000\)</span>. For each <span class="math notranslate nohighlight">\(n\)</span>, I obtain 1000 <span class="math notranslate nohighlight">\(Var[p_t]\)</span> estimates to look at the uncertainly (variance) among them, and so on. Basically, it is like running a MC on top of another MC.</p>
+<p>I am using the <code>doParallel</code> package to spread this task across my 6 cpu threads.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># THE doParallel PACKAGE</span>
+<span class="nf">require</span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
+<span class="c1"># NUMBErS OF INDEPENDENT rUNS (LOCI)</span>
+<span class="n">num_indep_loci</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">200</span><span class="p">,</span><span class="w"> </span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="m">2000</span><span class="p">)</span>
+<span class="c1"># LOCAL MULTI-COrE CLUSTEr SETUP</span>
+<span class="n">cl</span><span class="o">&lt;-</span><span class="nf">makeCluster</span><span class="p">(</span><span class="m">44</span><span class="p">)</span>
+<span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="c1"># FOr EACH VALUE OF INDEP LOCI</span>
+<span class="n">result</span><span class="o">&lt;-</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="o">=</span><span class="n">cbind</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1"># WE WANT TO GET 1000 Var(p_t) ESTIMATES VIA MC</span>
+<span class="w">    </span><span class="n">temp_result</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">temp_result</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="n">temp</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">num_indep_loci</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="w">        </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">num_indep_loci</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">temp</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">sim_genetic_drift2</span><span class="p">(</span><span class="n">p0</span><span class="o">=</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="o">=</span><span class="m">200</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">10</span><span class="p">)[</span><span class="m">11</span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="n">temp_result</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">var</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">temp_result</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: doParallel
+
+Loading required package: foreach
+
+Loading required package: iterators
+
+Loading required package: parallel
+</pre></div>
+</div>
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1000</li><li>6</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># PLOT THE UNCErTAINTY ArOUND THESE VArIANCE ESTIMATES (i.e. SAMPLE VArIANCE OF 1000 rEPEATED VArIANCE ESTIMTAES)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">num_indep_loci</span><span class="p">,</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">var</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;number of loci used to produce one variance estimate&#39;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;variance (or uncertainty) around the estimate&#39;</span><span class="p">)</span>
+
+<span class="c1"># Or PLOT THE rECIPrOCAL OF THE UNCErTAINTY?</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">num_indep_loci</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">/</span><span class="nf">apply</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">var</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;number of loci used to produce one variance estimate&#39;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;1/variance (or uncertainty) around the estimate&#39;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="nf">lm</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="nf">apply</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">var</span><span class="p">)</span><span class="o">~</span><span class="n">num_indep_loci</span><span class="p">),</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../_images/6e27dcc5c2c417031861c07e8f68e9030eabd8da88bb7519ae5f808f8a08b5d3.png"><img alt="../../_images/6e27dcc5c2c417031861c07e8f68e9030eabd8da88bb7519ae5f808f8a08b5d3.png" src="../../_images/6e27dcc5c2c417031861c07e8f68e9030eabd8da88bb7519ae5f808f8a08b5d3.png" style="width: 420px; height: 420px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/f3cf84a2c7037eb75f736f26159bdfffd19d1a60994cedc2b3fa12f1da2cb8d5.png"><img alt="../../_images/f3cf84a2c7037eb75f736f26159bdfffd19d1a60994cedc2b3fa12f1da2cb8d5.png" src="../../_images/f3cf84a2c7037eb75f736f26159bdfffd19d1a60994cedc2b3fa12f1da2cb8d5.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p>The more repeats the more consistent among the answers. The last plot confirms the relationship that the MC variance <span class="math notranslate nohighlight">\(\propto1/(\#sims)\)</span>.</p>
+</section>
+<section id="persistence-time-of-an-allele">
+<h3>3.3 Persistence time of an allele<a class="headerlink" href="#persistence-time-of-an-allele" title="Link to this heading">#</a></h3>
+<p>We probably have learnt that drift will ultimately drive an allele to fixation/extinction. The time to fixation/extinction is a random variable, depending on <span class="math notranslate nohighlight">\(p_0\)</span> and <span class="math notranslate nohighlight">\(N\)</span>. We can use MC to approximate the time to fixation/extinction, but it requires minor tweaks to our simulator: 1) ask it to run until an allele goes fixed/extinct (and that <span class="math notranslate nohighlight">\(t\)</span> is no longer an input argument), and 2) to return the number of generations elapsed before fixation/extinction. A <code>while()</code> loop may help. Below is my version:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># MODIFY sim_genetic_drift2() TO rUN UNTIL THE LOCUS IS FIXED</span>
+<span class="n">sim_genetic_drift3</span><span class="o">&lt;-</span><span class="kr">function</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">p0</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1"># WE CAN USE UPDATE AND rEUSE THE SAME VArIABLE p</span>
+<span class="w">    </span><span class="n">p</span><span class="o">&lt;-</span><span class="n">p0</span>
+<span class="w">    </span><span class="c1"># KEEP TrACK OF t</span>
+<span class="w">    </span><span class="n">t</span><span class="o">&lt;-</span><span class="m">0</span>
+<span class="w">    </span><span class="c1"># PrOPAGATION. WHILE IT rEMAINS POLYMOrPHIC</span>
+<span class="w">    </span><span class="kr">while</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="o">&gt;</span><span class="m">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="o">&lt;</span><span class="m">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">p</span><span class="o">&lt;-</span><span class="nf">rbinom</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="o">*</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="o">=</span><span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">N</span><span class="p">)</span>
+<span class="w">        </span><span class="n">t</span><span class="o">&lt;-</span><span class="n">t</span><span class="m">+1</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1"># rETUrN t AND EXIT</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># MEAN PErSISTENCE TIME, AND ITS DISTrIBUTION</span>
+<span class="c1"># p0=0.02, N=200</span>
+<span class="c1"># DON&#39;T TrY WITH LArGE N</span>
+<span class="n">persistence_time</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">10000</span><span class="p">)</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">persistence_time</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">        </span><span class="n">persistence_time</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">sim_genetic_drift3</span><span class="p">(</span><span class="n">p0</span><span class="o">=</span><span class="m">0.02</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="o">=</span><span class="m">200</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">persistence_time</span><span class="p">)</span>
+<span class="nf">var</span><span class="p">(</span><span class="n">persistence_time</span><span class="p">)</span>
+<span class="nf">hist</span><span class="p">(</span><span class="n">persistence_time</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">80.0469</div><div class="output text_html">37203.0818085709</div><a class="reference internal image-reference" href="../../_images/0596c29bebe77f2cfc7c25d661eb658051d9e01912428614ced3a27d3ae9c88c.png"><img alt="../../_images/0596c29bebe77f2cfc7c25d661eb658051d9e01912428614ced3a27d3ae9c88c.png" src="../../_images/0596c29bebe77f2cfc7c25d661eb658051d9e01912428614ced3a27d3ae9c88c.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p>From our MC the mean persistence time is approximately 79 generations with a huge variance. The distribution is heavily skewed with a very long tail (in this case the sample mean is not a very indicative summary statistic…). You may compare your MC results with Kimura and Ohta’s (1969) diffusion approximation:
+$<span class="math notranslate nohighlight">\(\bar{t}\approx-4N[p_0*log(p_0)+(1-p_0)*log(1-p_0)]\)</span>$</p>
+</section>
+</section>
+<section id="bonus-about-the-sample-function">
+<h2>4. Bonus: about the <code>sample()</code> function<a class="headerlink" href="#bonus-about-the-sample-function" title="Link to this heading">#</a></h2>
+<p>Below is a non-exhaustive list of what <code>sample()</code> can do:</p>
+<ol class="arabic simple">
+<li><p>Shuffling. The <code>sample()</code> function shuffles the only input argument (usually a vector) and returns you a vector of the same length.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span>
+<span class="nf">sample</span><span class="p">(</span><span class="kc">letters</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>10</li><li>6</li><li>9</li><li>2</li><li>4</li><li>5</li><li>1</li><li>3</li><li>7</li><li>8</li></ol>
+</div><div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'l'</li><li>'c'</li><li>'j'</li><li>'q'</li><li>'z'</li><li>'g'</li><li>'r'</li><li>'s'</li><li>'y'</li><li>'n'</li><li>'v'</li><li>'w'</li><li>'a'</li><li>'i'</li><li>'t'</li><li>'k'</li><li>'m'</li><li>'e'</li><li>'f'</li><li>'u'</li><li>'b'</li><li>'x'</li><li>'d'</li><li>'h'</li><li>'o'</li><li>'p'</li></ol>
+</div></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Sampling without replacement. If we include the <code>size=</code> argument then it samples without replacement from the given vector. Note that the size has to be smaller or equal to the length of the vector.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span>
+<span class="nf">sample</span><span class="p">(</span><span class="kc">letters</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">5</span><span class="p">)</span>
+<span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">11</span><span class="p">)</span><span class="w"> </span><span class="c1"># ErrOr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>5</li><li>4</li><li>2</li><li>8</li></ol>
+</div><div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'c'</li><li>'h'</li><li>'k'</li><li>'w'</li><li>'v'</li></ol>
+</div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">size</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">prob</span><span class="p">):</span> <span class="n">cannot</span> <span class="n">take</span> <span class="n">a</span> <span class="n">sample</span> <span class="n">larger</span> <span class="n">than</span> <span class="n">the</span> <span class="n">population</span> <span class="n">when</span> <span class="s1">&#39;replace = FALSE&#39;</span>
+<span class="ne">Traceback</span>:
+
+<span class="mi">1</span><span class="o">.</span> <span class="n">sample</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">size</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">prob</span><span class="p">)</span>
+<span class="mi">2</span><span class="o">.</span> <span class="o">.</span><span class="n">handleSimpleError</span><span class="p">(</span><span class="n">function</span> <span class="p">(</span><span class="n">cnd</span><span class="p">)</span> 
+ <span class="o">.</span> <span class="p">{</span>
+ <span class="o">.</span>     <span class="n">watcher</span><span class="err">$</span><span class="n">capture_plot_and_output</span><span class="p">()</span>
+ <span class="o">.</span>     <span class="n">cnd</span> <span class="o">&lt;-</span> <span class="n">sanitize_call</span><span class="p">(</span><span class="n">cnd</span><span class="p">)</span>
+ <span class="o">.</span>     <span class="n">watcher</span><span class="err">$</span><span class="n">push</span><span class="p">(</span><span class="n">cnd</span><span class="p">)</span>
+ <span class="o">.</span>     <span class="n">switch</span><span class="p">(</span><span class="n">on_error</span><span class="p">,</span> <span class="k">continue</span> <span class="o">=</span> <span class="n">invokerestart</span><span class="p">(</span><span class="s2">&quot;eval_continue&quot;</span><span class="p">),</span> 
+ <span class="o">.</span>         <span class="n">stop</span> <span class="o">=</span> <span class="n">invokerestart</span><span class="p">(</span><span class="s2">&quot;eval_stop&quot;</span><span class="p">),</span> <span class="n">error</span> <span class="o">=</span> <span class="n">invokerestart</span><span class="p">(</span><span class="s2">&quot;eval_error&quot;</span><span class="p">,</span> 
+ <span class="o">.</span>             <span class="n">cnd</span><span class="p">))</span>
+ <span class="o">.</span> <span class="p">},</span> <span class="s2">&quot;cannot take a sample larger than the population when &#39;replace = FALSE&#39;&quot;</span><span class="p">,</span> 
+ <span class="o">.</span>     <span class="n">base</span><span class="p">::</span><span class="n">quote</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">size</span><span class="p">,</span> <span class="n">replace</span><span class="p">,</span> <span class="n">prob</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Sampling with replacement if <code>replace=T</code> is included. Note that the elements have the same chance of being chosen.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span><span class="w"> </span><span class="c1"># IT IS NOW OK TO SAMPLE 20 ITEMS FrOM A VECTOr OF LENGTH 10 WITH rEPLACEMENT</span>
+<span class="nf">sample</span><span class="p">(</span><span class="kc">letters</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span><span class="w"> </span><span class="c1"># OK BUT CONFUSING</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>8</li><li>8</li><li>2</li><li>5</li><li>6</li><li>4</li><li>7</li><li>4</li><li>3</li><li>2</li><li>9</li><li>4</li><li>4</li><li>5</li><li>5</li><li>8</li><li>5</li><li>1</li><li>6</li><li>9</li></ol>
+</div><div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'f'</li><li>'j'</li><li>'q'</li><li>'u'</li><li>'m'</li><li>'t'</li><li>'w'</li><li>'e'</li><li>'h'</li><li>'c'</li><li>'d'</li></ol>
+</div><div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>10</li><li>2</li><li>2</li><li>8</li><li>4</li><li>10</li><li>5</li><li>9</li><li>5</li><li>1</li></ol>
+</div></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Sampling with replacement, with probabilities specified. Sometimes unequal probabilities are assumed. The <code>prob=</code> argument should have the same length as your input vector (one prob per element), and sum to unity.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0.4</span><span class="p">,</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="n">replace</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span><span class="w"> </span><span class="c1"># LOADS OF 1, BUT NO 8, 9, 10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>6</li><li>5</li><li>1</li><li>4</li><li>1</li><li>6</li><li>7</li><li>1</li><li>2</li><li>6</li><li>3</li><li>1</li><li>5</li><li>1</li><li>7</li><li>5</li><li>1</li><li>4</li><li>4</li><li>7</li></ol>
+</div></div>
+</div>
+<p>Now it is not too difficult to see the equivalence of these two statements:</p>
+<p><code>sample(0:1, size=20, prob=c(0.75, 0.25), replace=T)</code></p>
+<p><code>sample(c(0, 0, 0, 1), size=20, replacement=T)</code></p>
+<p>both are useful in the modelling of random mating / reproduction in the WF model.</p>
+</section>
+<section id="references">
+<h2>5. references<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p>Waples, r. S. (1989). A generalized approach for estimating effective population size from temporal changes in allele frequency. Genetics, 121(2), 379-391.</p>
+<p>Hui, T. Y. J., Brenas, J. H., &amp; Burt, A. (2021). Contemporary N e estimation using temporally spaced data with linked loci. Molecular Ecology resources, 21(7), 2221-2230.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./notebooks/experimental"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">0. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wright-fisher-drift-simulator">1. Wright-Fisher drift simulator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-1">1.1 Version 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-2-frequency-only">1.2 Version 2 (frequency only)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drift-and-population-size">2. Drift and population size</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-methods">3. Monte-Carlo methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-allele-frequency-due-to-drift">3.1 Variance of allele frequency due to drift</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-mc-estimates">3.2 Variance of MC estimates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persistence-time-of-an-allele">3.3 Persistence time of an allele</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-about-the-sample-function">4. Bonus: about the <code>sample()</code> function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">5. references</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1559 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>EnE Modelling and Advanced Data Science Pre-work &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/mqb-prework-exercises';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="EnE Modelling and Advanced Data Science Pre-work: Solutions" href="mqb-prework-solutions.html" />
+    <link rel="prev" title="Advanced Modelling &amp; Statistics Pre-work" href="../part-prework.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-computing.html">Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Biological Computing in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r.html">Biological Computing in R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-basic-stats.html">Basic Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-r.html">Data Management and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exp-design.html">Experimental design and Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Advanced Modelling &amp; Statistics Pre-work</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-eemodelling.html">Ecological &amp; Evolutionary Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="populations.html">Single populations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Advanced Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time-series.html">Time series analysis in R</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Assignments and Assessments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Appendices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MulQuaBio/MQB/master?urlpath=lab/tree/notebooks/mqb-prework-exercises.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MulQuaBio/MQB/blob/master/notebooks/mqb-prework-exercises.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/mqb-prework-exercises.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/mqb-prework-exercises.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>EnE Modelling and Advanced Data Science Pre-work</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">EnE Modelling and Advanced Data Science Pre-work</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-graphs">1. Functions &amp; graphs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculus-limits-differentiation-integration-taylor-series">2. Calculus (limits, differentiation, integration, Taylor series)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Exercise 4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-matrices-eigenvalues-eigenvectors">3. Linear algebra (matrices, eigenvalues/eigenvectors)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Exercise 4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-equations-equilibria-stability-phase-plane-intuition">4. Differential equations (equilibria, stability, phase-plane intuition)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Exercise 3</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#predatorprey-linearisation-2d-phase-plane-intuition-a-simplified-predatorprey-model-near-an-equilibrium-can-be-approximated-by-a-linear-system-frac-d-dt-begin-pmatrix-x-y-end-pmatrix"><strong>Predator–prey linearisation (2D phase plane intuition).</strong><br/>
+A simplified predator–prey model near an equilibrium can be approximated by a linear system
+$$
+\frac{d}{dt}\begin{pmatrix}x\y\end{pmatrix}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Exercise 4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-distributions">5. Probability &amp; distributions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Exercise 4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#optimisation-likelihood">6. Optimisation &amp; likelihood</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Exercise 4</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ene-modelling-and-advanced-data-science-pre-work">
+<h1>EnE Modelling and Advanced Data Science Pre-work<a class="headerlink" href="#ene-modelling-and-advanced-data-science-pre-work" title="Link to this heading">#</a></h1>
+<p><strong>Audience:</strong> Students taking the MQB Mathematical Modelling in E&amp;E and Advanced Data Science sections<br />
+<strong>Tools (optional):</strong> NumPy, Matplotlib, SymPy.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>How to use</p>
+<ul class="simple">
+<li><p>Attempt the questions <em>by hand first</em>.</p></li>
+<li><p>Use the optional Python cells to check algebra, plot functions, or verify numerical results.</p></li>
+<li><p>Check your answers in the <a class="reference internal" href="mqb-prework-solutions.html"><span class="std std-doc">Solutions notebook</span></a>.</p></li>
+</ul>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="functions-graphs">
+<h1>1. Functions &amp; graphs<a class="headerlink" href="#functions-graphs" title="Link to this heading">#</a></h1>
+<p>Focus: plotting, power laws, exponentials/logs, and trigonometric functions.</p>
+<section id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h2>
+<p><strong>Radial disease spread (polynomial in time).</strong><br />
+A fungal disease starts at the centre of an orchard and spreads <em>radially</em> at a constant speed <span class="math notranslate nohighlight">\(v\)</span> (m/day).</p>
+<ol class="arabic simple">
+<li><p>Write the infected radius <span class="math notranslate nohighlight">\(r(t)\)</span> and infected area <span class="math notranslate nohighlight">\(A(t)\)</span> as functions of time <span class="math notranslate nohighlight">\(t\)</span> (days).</p></li>
+<li><p>Show that <span class="math notranslate nohighlight">\(A(t)\)</span> is a polynomial in <span class="math notranslate nohighlight">\(t\)</span>, and state its degree.</p></li>
+<li><p>If you measure time in <strong>weeks</strong> instead, <span class="math notranslate nohighlight">\(t_w=t/7\)</span>, rewrite <span class="math notranslate nohighlight">\(A\)</span> as a function of <span class="math notranslate nohighlight">\(t_w\)</span>.</p></li>
+</ol>
+<p>Take <span class="math notranslate nohighlight">\(v=3\)</span> m/day and compute <span class="math notranslate nohighlight">\(A(2)\)</span>, <span class="math notranslate nohighlight">\(A(4)\)</span>, <span class="math notranslate nohighlight">\(A(8)\)</span> in m<span class="math notranslate nohighlight">\(^2\)</span>.</p>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># m/day</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">v</span><span class="o">*</span><span class="n">t</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 113.09733553,  452.38934212, 1809.55736847])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2">
+<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h2>
+<p><strong>Allometric scaling (power laws).</strong><br />
+Plant traits typically follow scaling relations <span id="id1">[<a class="reference internal" href="../references.html#id2" title="Karl J. Niklas. Plant Allometry: The Scaling of Form and Process. University of Chicago Press, Chicago, 1994.">Niklas, 1994</a>]</span>. Suppose:</p>
+<ul class="simple">
+<li><p>leaf area <span class="math notranslate nohighlight">\(L\)</span> is proportional to stem diameter <span class="math notranslate nohighlight">\(D\)</span> via <span class="math notranslate nohighlight">\(L = k D^{1.84}\)</span></p></li>
+<li><p>spongy mesophyll volume fraction <span class="math notranslate nohighlight">\(S\)</span> is proportional to leaf thickness <span class="math notranslate nohighlight">\(T\)</span> via <span class="math notranslate nohighlight">\(S = c T^{-0.49}\)</span></p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Sketch (qualitatively) how <span class="math notranslate nohighlight">\(L\)</span> changes with <span class="math notranslate nohighlight">\(D\)</span>, and how <span class="math notranslate nohighlight">\(S\)</span> changes with <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
+<li><p>Using log–log axes, explain how you could estimate the exponent from data.</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(k=1\)</span>, compute <span class="math notranslate nohighlight">\(L\)</span> when <span class="math notranslate nohighlight">\(D=1,2,4\)</span>. For <span class="math notranslate nohighlight">\(c=1\)</span>, compute <span class="math notranslate nohighlight">\(S\)</span> when <span class="math notranslate nohighlight">\(T=1,2,4\)</span>.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="n">D</span><span class="o">**</span><span class="mf">1.84</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">T</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.49</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Stem diameter D&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Leaf area L (k=1)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Leaf thickness T&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Spongy mesophyll fraction S (c=1)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6e17d0b7e9d0a365ab4b2e2789f55d06abb5ff01b23c3fc82faa7240e755c184.png" src="../_images/6e17d0b7e9d0a365ab4b2e2789f55d06abb5ff01b23c3fc82faa7240e755c184.png" />
+<img alt="../_images/70db25df030771f7e9c5acab3121a3afbba7165f0b74c3fa529d5600e0aa9813.png" src="../_images/70db25df030771f7e9c5acab3121a3afbba7165f0b74c3fa529d5600e0aa9813.png" />
+</div>
+</div>
+</section>
+<section id="exercise-3">
+<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h2>
+<p><strong>Exponentials, logs, and half-lives.</strong><br />
+A bacterial population is exposed to a toxin; viable cells decline as <span class="math notranslate nohighlight">\(N(t)=N_0(1/2)^{t/h}\)</span>, where <span class="math notranslate nohighlight">\(h\)</span> is the half-life.</p>
+<ol class="arabic simple">
+<li><p>Rewrite this as <span class="math notranslate nohighlight">\(N(t)=N_0 e^{-\mu t}\)</span> and express <span class="math notranslate nohighlight">\(\mu\)</span> in terms of <span class="math notranslate nohighlight">\(h\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(h=6\)</span> hours and <span class="math notranslate nohighlight">\(N_0=10^8\)</span>, compute <span class="math notranslate nohighlight">\(N(3)\)</span>, <span class="math notranslate nohighlight">\(N(6)\)</span>, <span class="math notranslate nohighlight">\(N(12)\)</span>.</p></li>
+<li><p>Explain (in words) what <span class="math notranslate nohighlight">\(\mu\)</span> represents biologically.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">N0</span> <span class="o">=</span> <span class="mf">1e8</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">6.0</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="n">N0</span><span class="o">*</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">t</span><span class="o">/</span><span class="n">h</span><span class="p">)</span>
+<span class="n">N</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([70710678.11865476, 50000000.        , 25000000.        ])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4">
+<h2>Exercise 4<a class="headerlink" href="#exercise-4" title="Link to this heading">#</a></h2>
+<p><strong>Oscillations and seasonality.</strong><br />
+A zooplankton abundance time series shows seasonal oscillations. Model it as
+$<span class="math notranslate nohighlight">\(
+Z(t)=Z_0 + A\cos(\omega t + \phi).
+\)</span>$</p>
+<ol class="arabic simple">
+<li><p>Describe the role of <span class="math notranslate nohighlight">\(Z_0\)</span>, <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(\omega\)</span>, and <span class="math notranslate nohighlight">\(\phi\)</span>.</p></li>
+<li><p>If the period is 12 months, what is <span class="math notranslate nohighlight">\(\omega\)</span> (in radians/month)?</p></li>
+<li><p>Plot <span class="math notranslate nohighlight">\(Z(t)\)</span> over 24 months for <span class="math notranslate nohighlight">\(Z_0=50\)</span>, <span class="math notranslate nohighlight">\(A=20\)</span>, <span class="math notranslate nohighlight">\(\phi=0\)</span> and compare <span class="math notranslate nohighlight">\(\omega\)</span> vs <span class="math notranslate nohighlight">\(2\omega\)</span> (higher frequency).</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">Z0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># months</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">12</span>
+
+<span class="n">Z1</span> <span class="o">=</span> <span class="n">Z0</span> <span class="o">+</span> <span class="n">A</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span>
+<span class="n">Z2</span> <span class="o">=</span> <span class="n">Z0</span> <span class="o">+</span> <span class="n">A</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Z1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;omega&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Z2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;2*omega&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t (months)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Z(t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/36569eef734f50027d8ad56434f678659e8c0e3155fedbc2b3b6c07d868577f6.png" src="../_images/36569eef734f50027d8ad56434f678659e8c0e3155fedbc2b3b6c07d868577f6.png" />
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="calculus-limits-differentiation-integration-taylor-series">
+<h1>2. Calculus (limits, differentiation, integration, Taylor series)<a class="headerlink" href="#calculus-limits-differentiation-integration-taylor-series" title="Link to this heading">#</a></h1>
+<p>Focus: turning biological definitions into derivatives/integrals; approximations.</p>
+<section id="id2">
+<h2>Exercise 1<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p><strong>Limits and per-capita growth.</strong><br />
+A population has size <span class="math notranslate nohighlight">\(N(t)\)</span>. Define the <em>instantaneous per-capita growth rate</em> as
+$<span class="math notranslate nohighlight">\(
+r(t)=\lim_{\Delta t\to 0}\frac{1}{N(t)}\frac{N(t+\Delta t)-N(t)}{\Delta t}.
+\)</span>$</p>
+<ol class="arabic simple">
+<li><p>Show that <span class="math notranslate nohighlight">\(r(t)=\frac{1}{N(t)}\frac{dN}{dt}\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(N(t)=N_0 e^{rt}\)</span>, compute <span class="math notranslate nohighlight">\(r(t)\)</span> and interpret the result.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(N(t)\)</span> is decreasing, what sign would you expect for <span class="math notranslate nohighlight">\(r(t)\)</span>?</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">r_sym</span><span class="p">,</span> <span class="n">N0</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;t r N0&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">N0</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r_sym</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="n">r_of_t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">r_of_t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle r\]</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>Exercise 2<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p><strong>Differentiation and optimisation (resource uptake).</strong><br />
+A microbial uptake rate follows a saturating function
+$<span class="math notranslate nohighlight">\(
+U(r)=\frac{U_{\max} r}{K + r},
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>r$ is resource concentration.</p>
+<ol class="arabic simple">
+<li><p>Compute <span class="math notranslate nohighlight">\(dU/dr\)</span> and show it is positive.</p></li>
+<li><p>Show that <span class="math notranslate nohighlight">\(U(r)\to U_{\max}\)</span> as <span class="math notranslate nohighlight">\(r\to\infty\)</span>.</p></li>
+<li><p>Find <span class="math notranslate nohighlight">\(r\)</span> such that <span class="math notranslate nohighlight">\(U(r)=U_{\max}/2\)</span> and interpret <span class="math notranslate nohighlight">\(K\)</span>.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="n">r</span><span class="p">,</span> <span class="n">Umax</span><span class="p">,</span> <span class="n">K</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;r Umax K&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">Umax</span><span class="o">*</span><span class="n">r</span><span class="o">/</span><span class="p">(</span><span class="n">K</span><span class="o">+</span><span class="n">r</span><span class="p">)</span>
+<span class="n">dU</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">dU</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{K Umax}{\left(K + r\right)^{2}}\]</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>Exercise 3<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p><strong>Integration (total biomass produced).</strong><br />
+Suppose net primary production (NPP) in an ecosystem varies seasonally:
+$<span class="math notranslate nohighlight">\(
+\text{NPP}(t)=a + b\cos(\omega t),
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>t$ is time in years.</p>
+<ol class="arabic simple">
+<li><p>Compute the total production over one year: <span class="math notranslate nohighlight">\(\int_0^1 \text{NPP}(t)\,dt\)</span>.</p></li>
+<li><p>What is the average NPP over the year?</p></li>
+<li><p>Explain why the cosine term integrates to zero over a whole number of periods.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">omega</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;t a b omega&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">NPP</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">NPP</span><span class="p">,</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle a + \frac{b \sin{\left(\omega \right)}}{\omega}\]</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>Exercise 4<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p><strong>Taylor series (logistic growth approximation).</strong><br />
+The logistic growth model is
+$<span class="math notranslate nohighlight">\(
+\frac{dN}{dt}=rN\left(1-\frac{N}{K}\right).
+\)</span>$</p>
+<ol class="arabic simple">
+<li><p>For small <span class="math notranslate nohighlight">\(N/K\)</span>, expand <span class="math notranslate nohighlight">\(1-\frac{N}{K}\)</span> and interpret the approximation.</p></li>
+<li><p>Using a Taylor expansion of <span class="math notranslate nohighlight">\(\ln(1+x)\)</span> around <span class="math notranslate nohighlight">\(x=0\)</span>, show how you would approximate <span class="math notranslate nohighlight">\(\ln\left(1-\frac{N}{K}\right)\)</span> when <span class="math notranslate nohighlight">\(N\ll K\)</span>.</p></li>
+<li><p>Explain (biologically) when this approximation might be justified.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">series</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle x - \frac{x^{2}}{2} + \frac{x^{3}}{3} + O\left(x^{4}\right)\]</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="linear-algebra-matrices-eigenvalues-eigenvectors">
+<h1>3. Linear algebra (matrices, eigenvalues/eigenvectors)<a class="headerlink" href="#linear-algebra-matrices-eigenvalues-eigenvectors" title="Link to this heading">#</a></h1>
+<p>Focus: matrix algebra for biological transitions/constraints; eigen-ideas for long-run behaviour.</p>
+<section id="id6">
+<h2>Exercise 1<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p><strong>Matrix multiplication in population transitions.</strong></p>
+<p>A 2-stage population (juveniles <span class="math notranslate nohighlight">\(J\)</span>, adults <span class="math notranslate nohighlight">\(A\)</span>) evolves as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix} J_{t+1}\\ A_{t+1}\end{pmatrix} =
+\begin{pmatrix} 0 &amp; f\\ s &amp; g\end{pmatrix} \begin{pmatrix} J_t\\ A_t\end{pmatrix}.
+\end{split}\]</div>
+<ol class="arabic simple">
+<li><p>Interpret <span class="math notranslate nohighlight">\(f, s, g\)</span> biologically.</p></li>
+<li><p>Compute <span class="math notranslate nohighlight">\((J_{t+1},A_{t+1})\)</span> for <span class="math notranslate nohighlight">\(f=3\)</span>, <span class="math notranslate nohighlight">\(s=0.2\)</span>, <span class="math notranslate nohighlight">\(g=0.8\)</span> given <span class="math notranslate nohighlight">\((J_t,A_t)=(10,5)\)</span>.</p></li>
+<li><p>Compute the matrix product explicitly (by hand), then verify with Python.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">])</span>
+<span class="n">M</span> <span class="o">@</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([15.,  6.])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h2>Exercise 2<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p><strong>Eigenvalues and long-run growth (Leslie-type model).</strong><br />
+For the matrix <span class="math notranslate nohighlight">\(M=\begin{pmatrix}0&amp;3\\0.2&amp;0.8\end{pmatrix}\)</span>:</p>
+<ol class="arabic simple">
+<li><p>Find the eigenvalues of <span class="math notranslate nohighlight">\(M\)</span>.</p></li>
+<li><p>Which eigenvalue determines the long-run growth rate, and why?</p></li>
+<li><p>Find an eigenvector corresponding to the dominant eigenvalue and interpret it as a stable stage distribution (up to scaling).</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)]])</span>
+<span class="n">M</span><span class="o">.</span><span class="n">eigenvects</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(2/5 - sqrt(19)/5,
+  1,
+  [Matrix([
+   [-sqrt(19) - 2],
+   [            1]])]),
+ (2/5 + sqrt(19)/5,
+  1,
+  [Matrix([
+   [-2 + sqrt(19)],
+   [            1]])])]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id8">
+<h2>Exercise 3<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p><strong>Inverses and solving linear systems (metabolic fluxes).</strong></p>
+<p>Suppose two metabolic fluxes <span class="math notranslate nohighlight">\(x, y\)</span> satisfy:
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+ 3x-7y &amp;= 4\\
+ x+7y &amp;= 10
+\end{aligned}
+\)</span>$</p>
+<ol class="arabic simple">
+<li><p>Write this as <span class="math notranslate nohighlight">\(A\mathbf{z}=\mathbf{b}\)</span>.</p></li>
+<li><p>Compute <span class="math notranslate nohighlight">\(A^{-1}\)</span> and hence <span class="math notranslate nohighlight">\(\mathbf{z}=A^{-1}\mathbf{b}\)</span>.</p></li>
+<li><p>Verify numerically.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">7</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">LUsolve</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">A</span><span class="o">.</span><span class="n">inv</span><span class="p">(),</span> <span class="n">z</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Matrix([
+ [  1/4,  1/4],
+ [-1/28, 3/28]]),
+ Matrix([
+ [  7/2],
+ [13/14]]))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id9">
+<h2>Exercise 4<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p><strong>Complex numbers and oscillations (optional stretch).</strong><br />
+Many linear systems have solutions involving <span class="math notranslate nohighlight">\(e^{(\alpha+i\beta)t}\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Using Euler’s formula, show that <span class="math notranslate nohighlight">\(e^{i\beta t}=\cos(\beta t)+i\sin(\beta t)\)</span>.</p></li>
+<li><p>Explain why complex eigenvalues imply oscillations in real-valued solutions.</p></li>
+<li><p>Consider <span class="math notranslate nohighlight">\(x''+\beta^2 x=0\)</span>. Solve it using the Ansatz <span class="math notranslate nohighlight">\(x(t)=e^{\lambda t}\)</span> and relate <span class="math notranslate nohighlight">\(\lambda\)</span> to <span class="math notranslate nohighlight">\(\pm i\beta\)</span>.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;t beta&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">I</span><span class="o">*</span><span class="n">beta</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="nb">complex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle i \sin{\left(\beta t \right)} + \cos{\left(\beta t \right)}\]</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="differential-equations-equilibria-stability-phase-plane-intuition">
+<h1>4. Differential equations (equilibria, stability, phase-plane intuition)<a class="headerlink" href="#differential-equations-equilibria-stability-phase-plane-intuition" title="Link to this heading">#</a></h1>
+<p>Focus: 1D and 2D dynamical systems used throughout quantitative biology.</p>
+<section id="id10">
+<h2>Exercise 1<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p><strong>Exponential growth ODE.</strong><br />
+A bacterial population grows as <span class="math notranslate nohighlight">\(\frac{dN}{dt}=rN\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Solve for <span class="math notranslate nohighlight">\(N(t)\)</span> given <span class="math notranslate nohighlight">\(N(0)=N_0\)</span>.</p></li>
+<li><p>Define the doubling time <span class="math notranslate nohighlight">\(T_d\)</span> such that <span class="math notranslate nohighlight">\(N(T_d)=2N_0\)</span>. Express <span class="math notranslate nohighlight">\(T_d\)</span> in terms of <span class="math notranslate nohighlight">\(r\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(r=0.4\ \text{h}^{-1}\)</span>, compute <span class="math notranslate nohighlight">\(T_d\)</span>.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Rational</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># 0.4</span>
+<span class="n">Td</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">r</span>
+<span class="nb">float</span><span class="p">(</span><span class="n">Td</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.7328679513998633
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id11">
+<h2>Exercise 2<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p><strong>Logistic growth and equilibria.</strong><br />
+$<span class="math notranslate nohighlight">\(
+\frac{dN}{dt}=rN\left(1-\frac{N}{K}\right).
+\)</span>$</p>
+<ol class="arabic simple">
+<li><p>Find the equilibria.</p></li>
+<li><p>Determine their stability by considering the sign of <span class="math notranslate nohighlight">\(dN/dt\)</span> around each equilibrium.</p></li>
+<li><p>Sketch <span class="math notranslate nohighlight">\(dN/dt\)</span> as a function of <span class="math notranslate nohighlight">\(N\)</span>.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">r</span><span class="p">,</span> <span class="n">K</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">100.0</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+<span class="n">dN</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">N</span><span class="o">/</span><span class="n">K</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dN</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;dN/dt&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8aac32a753fea6dd932ad1fca484c101c6de566c88c15f54a0b7b61e883b7368.png" src="../_images/8aac32a753fea6dd932ad1fca484c101c6de566c88c15f54a0b7b61e883b7368.png" />
+</div>
+</div>
+</section>
+<section id="id12">
+<h2>Exercise 3<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="predatorprey-linearisation-2d-phase-plane-intuition-a-simplified-predatorprey-model-near-an-equilibrium-can-be-approximated-by-a-linear-system-frac-d-dt-begin-pmatrix-x-y-end-pmatrix">
+<h1><strong>Predator–prey linearisation (2D phase plane intuition).</strong><br />
+A simplified predator–prey model near an equilibrium can be approximated by a linear system
+$$
+\frac{d}{dt}\begin{pmatrix}x\y\end{pmatrix}<a class="headerlink" href="#predatorprey-linearisation-2d-phase-plane-intuition-a-simplified-predatorprey-model-near-an-equilibrium-can-be-approximated-by-a-linear-system-frac-d-dt-begin-pmatrix-x-y-end-pmatrix" title="Link to this heading">#</a></h1>
+<p>A\begin{pmatrix}x\y\end{pmatrix},
+\quad
+A=\begin{pmatrix}0&amp;1-2&amp;-0.4\end{pmatrix}.
+$$</p>
+<ol class="arabic simple">
+<li><p>Compute the eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
+<li><p>From the eigenvalues, classify the equilibrium (node/spiral/saddle) and predict whether trajectories oscillate.</p></li>
+<li><p>(Optional) Simulate trajectories for a few initial conditions and plot <span class="math notranslate nohighlight">\(y\)</span> vs <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mf">0.4</span><span class="p">]])</span>
+<span class="n">eigvals</span><span class="p">,</span> <span class="n">eigvecs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">eigvals</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.2+1.4j, -0.2-1.4j])
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id13">
+<h2>Exercise 4<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p><strong>Integrating factor (harvesting / forcing).</strong><br />
+A fish stock <span class="math notranslate nohighlight">\(N(t)\)</span> experiences natural growth and constant harvesting:
+$<span class="math notranslate nohighlight">\(
+\frac{dN}{dt}=rN - H,
+\)</span><span class="math notranslate nohighlight">\(
+with constants \)</span>r&gt;0<span class="math notranslate nohighlight">\(, \)</span>H&gt;0$.</p>
+<ol class="arabic simple">
+<li><p>Solve this ODE using an integrating factor.</p></li>
+<li><p>Find the equilibrium <span class="math notranslate nohighlight">\(N^*\)</span> and interpret when it is biologically feasible.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(N(0)=N_0\)</span>, derive the condition on <span class="math notranslate nohighlight">\(H\)</span> for which the stock never crosses zero (no extinction in the deterministic model).</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">N0</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;t r H N0&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Function</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">)</span>
+<span class="n">ode</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">N</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">t</span><span class="p">),</span> <span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">H</span><span class="p">)</span>
+<span class="n">sp</span><span class="o">.</span><span class="n">dsolve</span><span class="p">(</span><span class="n">ode</span><span class="p">,</span> <span class="n">ics</span><span class="o">=</span><span class="p">{</span><span class="n">N</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="n">N0</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle N{\left(t \right)} = \frac{H}{r} + \frac{\left(- H + N_{0} r\right) e^{r t}}{r}\]</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="probability-distributions">
+<h1>5. Probability &amp; distributions<a class="headerlink" href="#probability-distributions" title="Link to this heading">#</a></h1>
+<p>Focus: expectation/variance and common distributions used in modelling and inference.</p>
+<section id="id14">
+<h2>Exercise 1<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<p><strong>Random variables and expectation (offspring number).</strong><br />
+Let <span class="math notranslate nohighlight">\(X\)</span> be the number of offspring produced by an individual in a season.</p>
+<ol class="arabic simple">
+<li><p>Define <span class="math notranslate nohighlight">\(E[X]\)</span> in terms of <span class="math notranslate nohighlight">\(P(X=x)\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(X\sim\text{Poisson}(\lambda)\)</span>, state <span class="math notranslate nohighlight">\(E[X]\)</span> and <span class="math notranslate nohighlight">\(\mathrm{Var}(X)\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\lambda=1.5\)</span>, compute <span class="math notranslate nohighlight">\(P(X=0)\)</span>, <span class="math notranslate nohighlight">\(P(X\ge 2)\)</span>.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="n">lam</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">P0</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">lam</span><span class="p">)</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="n">lam</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">lam</span><span class="p">)</span>
+<span class="n">Pge2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">P0</span> <span class="o">+</span> <span class="n">P1</span><span class="p">)</span>
+<span class="n">P0</span><span class="p">,</span> <span class="n">Pge2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.22313016014842982, 0.44217459962892547)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id15">
+<h2>Exercise 2<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<p><strong>Binomial sampling (infection prevalence).</strong><br />
+In a sample of <span class="math notranslate nohighlight">\(n\)</span> hosts, each is infected with probability <span class="math notranslate nohighlight">\(p\)</span> independently. Let <span class="math notranslate nohighlight">\(Y\sim\text{Binomial}(n,p)\)</span>.</p>
+<ol class="arabic simple">
+<li><p>State <span class="math notranslate nohighlight">\(E[Y]\)</span> and <span class="math notranslate nohighlight">\(\mathrm{Var}(Y)\)</span>.</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(n=50\)</span>, <span class="math notranslate nohighlight">\(p=0.1\)</span>, compute <span class="math notranslate nohighlight">\(E[Y]\)</span>, <span class="math notranslate nohighlight">\(\mathrm{Var}(Y)\)</span>, and <span class="math notranslate nohighlight">\(P(Y=0)\)</span>.</p></li>
+<li><p>Interpret <span class="math notranslate nohighlight">\(P(Y=0)\)</span> in the context of field surveys.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="mf">0.1</span>
+<span class="n">EY</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">p</span>
+<span class="n">VarY</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span>
+<span class="n">P0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="n">n</span>
+<span class="n">EY</span><span class="p">,</span> <span class="n">VarY</span><span class="p">,</span> <span class="n">P0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5.0, 4.5, 0.00515377520732012)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id16">
+<h2>Exercise 3<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<p><strong>Gaussian measurement error (trait values).</strong><br />
+Suppose measured leaf length <span class="math notranslate nohighlight">\(L_m\)</span> equals true length <span class="math notranslate nohighlight">\(L\)</span> plus error <span class="math notranslate nohighlight">\(\epsilon\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\sim\mathcal{N}(0,\sigma^2)\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Write the density of <span class="math notranslate nohighlight">\(L_m\mid L\)</span>.</p></li>
+<li><p>If you take <span class="math notranslate nohighlight">\(k\)</span> independent replicate measurements and average them, what happens to the variance of the average?</p></li>
+<li><p>Explain why replication improves precision.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="n">Lm</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;Lm L sigma&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="n">sigma</span><span class="p">))</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">Lm</span><span class="o">-</span><span class="n">L</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">pdf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \frac{\sqrt{2} e^{- \frac{\left(- L + Lm\right)^{2}}{2 \sigma^{2}}}}{2 \sqrt{\pi} \sigma}\]</div>
+</div>
+</div>
+</section>
+<section id="id17">
+<h2>Exercise 4<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<p><strong>Joint, marginal, conditional probabilities (two species).</strong><br />
+Two species (<span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>) can each be present (1) or absent (0) in a habitat patch.</p>
+<ol class="arabic simple">
+<li><p>Define a joint distribution <span class="math notranslate nohighlight">\(P(A,B)\)</span> over the four outcomes.</p></li>
+<li><p>Show how to compute the marginal <span class="math notranslate nohighlight">\(P(A=1)\)</span> from <span class="math notranslate nohighlight">\(P(A,B)\)</span>.</p></li>
+<li><p>Define <span class="math notranslate nohighlight">\(P(A=1\mid B=1)\)</span>.</p></li>
+<li><p>Explain (in words) how <span class="math notranslate nohighlight">\(P(A=1\mid B=1)\)</span> relates to co-occurrence and (possible) interaction.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Optional: pick numbers and verify marginals sum correctly</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Example joint distribution table: rows A=0,1; cols B=0,1</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">],</span>
+              <span class="p">[</span><span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">]])</span>
+<span class="n">P</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">P</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">P</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(1.0),
+ np.float64(0.6000000000000001),
+ np.float64(0.5),
+ np.float64(0.8))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="optimisation-likelihood">
+<h1>6. Optimisation &amp; likelihood<a class="headerlink" href="#optimisation-likelihood" title="Link to this heading">#</a></h1>
+<p>Focus: interpreting likelihood spaces and optimisation over parameters (frequent pain points).</p>
+<section id="id18">
+<h2>Exercise 1<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<p><strong>Minimising squared error (metabolic rate scaling).</strong><br />
+You measure metabolic rate <span class="math notranslate nohighlight">\(B\)</span> and body mass <span class="math notranslate nohighlight">\(M\)</span> and hypothesise a power law <span class="math notranslate nohighlight">\(B=aM^b\)</span>. Taking logs gives:
+$<span class="math notranslate nohighlight">\(
+\log B = \log a + b\log M.
+\)</span><span class="math notranslate nohighlight">\(
+Let \)</span>y_i=\log B_i<span class="math notranslate nohighlight">\( and \)</span>x_i=\log M_i<span class="math notranslate nohighlight">\(. Fit the line \)</span>y=\beta_0+\beta_1 x<span class="math notranslate nohighlight">\( by minimising
+\)</span><span class="math notranslate nohighlight">\(
+S(\beta_0,\beta_1)=\sum_{i=1}^n (y_i-\beta_0-\beta_1 x_i)^2.
+\)</span>$</p>
+<ol class="arabic simple">
+<li><p>Take partial derivatives of <span class="math notranslate nohighlight">\(S\)</span> wrt <span class="math notranslate nohighlight">\(\beta_0, \beta_1\)</span> and write the normal equations.</p></li>
+<li><p>Explain how this is an optimisation problem over a 2D parameter space.</p></li>
+<li><p>(Optional) Solve the normal equations for <span class="math notranslate nohighlight">\((\beta_0,\beta_1)\)</span> in terms of sample means.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="n">b0</span><span class="p">,</span> <span class="n">b1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;b0 b1&#39;</span><span class="p">)</span>
+<span class="c1"># symbolic normal equations for generic data would be done by writing sums; see solutions notebook for steps.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id19">
+<h2>Exercise 2<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<p><strong>Likelihood surface (single-parameter Poisson).</strong><br />
+You observe counts of offspring per individual: <span class="math notranslate nohighlight">\(x_1,\dots,x_n\)</span>, and model them as Poisson(<span class="math notranslate nohighlight">\(\lambda\)</span>).</p>
+<ol class="arabic simple">
+<li><p>Write the likelihood <span class="math notranslate nohighlight">\(L(\lambda)\)</span> and log-likelihood <span class="math notranslate nohighlight">\(\ell(\lambda)\)</span>.</p></li>
+<li><p>Differentiate <span class="math notranslate nohighlight">\(\ell(\lambda)\)</span> and find the MLE <span class="math notranslate nohighlight">\(\hat\lambda\)</span>.</p></li>
+<li><p>Explain what the “height” of a 1D likelihood curve represents.</p></li>
+<li><p>For data <span class="math notranslate nohighlight">\([0,1,0,2,1]\)</span>, compute <span class="math notranslate nohighlight">\(\hat\lambda\)</span> and plot <span class="math notranslate nohighlight">\(\ell(\lambda)\)</span> for <span class="math notranslate nohighlight">\(\lambda\in[0.01,4]\)</span>.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">lam_hat</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">lam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="c1"># log-likelihood up to an additive constant (drop -log(x_i!))</span>
+<span class="n">ell</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">lam</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">lam</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">ell</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">lam_hat</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;lambda&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;log-likelihood (up to constant)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">lam_hat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9f65d24a91f2f2fcb6267357e3be9aa315a2e4eb8ec897bdbcea9475c6d47c37.png" src="../_images/9f65d24a91f2f2fcb6267357e3be9aa315a2e4eb8ec897bdbcea9475c6d47c37.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.8)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id20">
+<h2>Exercise 3<a class="headerlink" href="#id20" title="Link to this heading">#</a></h2>
+<p><strong>Two-parameter likelihood and contours (Gaussian mean/variance).</strong><br />
+Suppose trait measurements <span class="math notranslate nohighlight">\(y_1,\dots,y_n\)</span> are i.i.d. Normal(<span class="math notranslate nohighlight">\(\mu,\sigma^2\)</span>).</p>
+<ol class="arabic simple">
+<li><p>Write the log-likelihood <span class="math notranslate nohighlight">\(\ell(\mu,\sigma)\)</span>.</p></li>
+<li><p>State the MLEs <span class="math notranslate nohighlight">\(\hat\mu\)</span> and <span class="math notranslate nohighlight">\(\hat\sigma^2\)</span>.</p></li>
+<li><p>Explain why a 2D likelihood can be visualised via contour lines over <span class="math notranslate nohighlight">\((\mu,\sigma)\)</span>.</p></li>
+<li><p>(Optional) For data <span class="math notranslate nohighlight">\([2.1, 2.4, 1.9, 2.0, 2.3]\)</span>, plot a contour map of <span class="math notranslate nohighlight">\(\ell(\mu,\sigma)\)</span>.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">1.9</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">])</span>
+<span class="n">mu_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+<span class="n">sig_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+<span class="n">MU</span><span class="p">,</span> <span class="n">SIG</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">mu_grid</span><span class="p">,</span> <span class="n">sig_grid</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="c1"># log-likelihood</span>
+<span class="n">LL</span> <span class="o">=</span> <span class="o">-</span><span class="n">n</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">SIG</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(((</span><span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">MU</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="kc">None</span><span class="p">])</span><span class="o">/</span><span class="n">SIG</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="kc">None</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">cs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">MU</span><span class="p">,</span> <span class="n">SIG</span><span class="p">,</span> <span class="n">LL</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;mu&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;sigma&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/19fc927485e4c9ab68c5babb5a8b4e838b53b6fa555f405d55c8a9a126b05402.png" src="../_images/19fc927485e4c9ab68c5babb5a8b4e838b53b6fa555f405d55c8a9a126b05402.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(2.1399999999999997), np.float64(0.18547236990991403))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id21">
+<h2>Exercise 4<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
+<p><strong>Constraints (biologically feasible parameter values).</strong><br />
+In many models parameters must be positive (rates, variances, concentrations).</p>
+<ol class="arabic simple">
+<li><p>Give two examples of biological parameters that are constrained to be <span class="math notranslate nohighlight">\(&gt;0\)</span>.</p></li>
+<li><p>Suppose you are fitting <span class="math notranslate nohighlight">\(N(t)=N_0e^{- \mu t}\)</span> but your optimiser returns <span class="math notranslate nohighlight">\(\mu&lt;0\)</span>. What biological behaviour would that imply?</p></li>
+<li><p>Show how to reparameterise <span class="math notranslate nohighlight">\(\mu=e^\theta\)</span> to enforce positivity, and explain how this changes the optimisation problem.</p></li>
+</ol>
+<p><strong>Optional Python check:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;theta&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">mu</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle e^{\theta}\]</div>
+</div>
+</div>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../part-prework.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Advanced Modelling &amp; Statistics Pre-work</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="mqb-prework-solutions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">EnE Modelling and Advanced Data Science Pre-work: Solutions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">EnE Modelling and Advanced Data Science Pre-work</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-graphs">1. Functions &amp; graphs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculus-limits-differentiation-integration-taylor-series">2. Calculus (limits, differentiation, integration, Taylor series)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Exercise 4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-algebra-matrices-eigenvalues-eigenvectors">3. Linear algebra (matrices, eigenvalues/eigenvectors)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Exercise 4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-equations-equilibria-stability-phase-plane-intuition">4. Differential equations (equilibria, stability, phase-plane intuition)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Exercise 3</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#predatorprey-linearisation-2d-phase-plane-intuition-a-simplified-predatorprey-model-near-an-equilibrium-can-be-approximated-by-a-linear-system-frac-d-dt-begin-pmatrix-x-y-end-pmatrix"><strong>Predator–prey linearisation (2D phase plane intuition).</strong><br/>
+A simplified predator–prey model near an equilibrium can be approximated by a linear system
+$$
+\frac{d}{dt}\begin{pmatrix}x\y\end{pmatrix}</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Exercise 4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-distributions">5. Probability &amp; distributions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Exercise 4</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#optimisation-likelihood">6. Optimisation &amp; likelihood</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Exercise 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Exercise 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Exercise 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Exercise 4</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

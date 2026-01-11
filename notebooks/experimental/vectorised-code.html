@@ -1,0 +1,1022 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Vectorised code - what and why? &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=01a0bdc2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/experimental/vectorised-code';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-computing.html">Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python.html">Biological Computing in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../object-oriented-programming.html">Object-Oriented Programming</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../r.html">Biological Computing in R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-basic-stats.html">Basic Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-r.html">Data Management and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exp-design.html">Experimental design and Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-prework.html">Advanced Modelling &amp; Statistics Pre-work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-eemodelling.html">Ecological &amp; Evolutionary Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../populations.html">Single populations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interactions.html">Species interactions</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-advanced-stats.html">Advanced Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time-series.html">Time series analysis in R</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../microbial-growth.html">Microbial Growth rates in R</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../mle.html">Model Fitting using Maximum Likelihood</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-assignments.html">Assignments and Assessments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-assessment.html">MQB Coursework Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-mini-proj.html">The Computing Miniproject</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-appendices.html">Appendices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MulQuaBio/MQB/master?urlpath=lab/tree/notebooks/experimental/vectorised-code.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MulQuaBio/MQB/blob/master/notebooks/experimental/vectorised-code.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/experimental/vectorised-code.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/experimental/vectorised-code.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Vectorised code - what and why?</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Vectorised code - what and why?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-vectorising-a-simple-calculation-of-2-arrays">Example 1: Vectorising a simple calculation of 2 arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-a-resource-consumer-model-of-bacterial-carbon-uptake">Example 2: A resource-consumer model of Bacterial Carbon Uptake</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consumer-growth-rate">consumer growth rate:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-availability">resource availability:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loop-and-vector-forms-of-these-equations">Loop and vector forms of these equations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-the-loop-and-vectorised-models">Comparing the loop and vectorised models:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warning-this-will-take-time">WARNING: THIS WILL TAKE TIME.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-vectorise">When to vectorise?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#no-free-lunch">“No free lunch!”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-can-you-vectorise">When <em>can</em> you vectorise?</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="vectorised-code-what-and-why">
+<h1>Vectorised code - what and why?<a class="headerlink" href="#vectorised-code-what-and-why" title="Link to this heading">#</a></h1>
+<p>We have now had fairly extensive practise in iteratively creating solutions to problems using for loops. Thus far all our problems have been mathematically quite straightforward, and not very computationally intensive. As you begin to move on from your taught modules and into current research, you may find yourselves solving larger and more complex problems, at which point you will start to discover that for-loops have a fundamental weakness - speed!</p>
+<p>In a nutshell, there are two issues keeping loops slow:</p>
+<ol class="arabic simple">
+<li><p>Producing solutions to a large problem one loop iteration at a time means that our scripts and functions spend a lot of time doing stuff other than actually solving the problem we want them to solve - e.g. shuffling data around between variables in each loop iteration, or storing the result of the current loop’s calculations in a (sometimes temporary) variable.</p></li>
+<li><p>loops (at least in Python) are not generally able to take advantage of the parallel computing capabilities of modern-day computers, and thus must literally compute a solution one loop iteration at a time. Vectorised functions tend to be optimised to spread their computations over multiple processors/threads, which can be much faster!</p></li>
+</ol>
+<p>These issues become especially pronounced in the case of nested loops - which often appear in more spatially-explicit problems or time-dependent ones.</p>
+<p>rather than expecting you to simply take my word for it, the following two examples will showcase the difference in runtime between a loop method and a vectorised method using numpy. The first is a relatively simple (if artificial) problem, intended to demonstrate basically at-a-glace the difference between the two approaches. The second is taken from current research on metabolic models of bacterial communities<sup>[2]</sup>.</p>
+<p>[1] see the <code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code> package for one way around this!</p>
+<p>[2] thanks to Emma Cavan (<a class="reference external" href="https://www.imperial.ac.uk/people/e.cavan/research.html">https://www.imperial.ac.uk/people/e.cavan/research.html</a>) in Samraat’s lab for bringing this model to my attention.</p>
+<section id="example-1-vectorising-a-simple-calculation-of-2-arrays">
+<h2>Example 1: Vectorising a simple calculation of 2 arrays<a class="headerlink" href="#example-1-vectorising-a-simple-calculation-of-2-arrays" title="Link to this heading">#</a></h2>
+<p>Let us imagine we have two simple 1D arrays <span class="math notranslate nohighlight">\(a = (a_1, a_2, ... , a_N)\)</span> and <span class="math notranslate nohighlight">\(b = (b_1, b_2, ... ,b_N)\)</span>, each of length N, and that we want to calculate a new array <span class="math notranslate nohighlight">\(c\)</span> in which each entry is just the product of the two corresponding entries in <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[c = (a_1 \times b_1, a_2 \times b_2, ... , a_N \times b_N)\]</div>
+<p>This operation is called the <em>entrywise</em> product of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
+<p>Below are a loop-based function and a vectorised function to calculate the entrywise product of two 1D arrays of the same length. We will test them both on larger and larger 1D arrays to see how the vectorised approach is faster.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">loop_product</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>   
+    <span class="k">return</span> <span class="n">c</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">vect_product</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">multiply</span></code> function from numpy is a vectorised implementation of the elementwise product that we have explicitly written in the function <code class="docutils literal notranslate"><span class="pre">loop_product</span></code> above it. In general, numpy is an excellent choice for vectorised implementations of functions involving matrix maths (or maths using higher-dimensional analogues of matricies).</p>
+<p>Let’s try comparing the runtimes of <code class="docutils literal notranslate"><span class="pre">loop_product</span></code> and <code class="docutils literal notranslate"><span class="pre">vect_product</span></code> on increasingly large randomly-generated 1D arrays:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
+
+<span class="n">array_lengths</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="mi">10000000</span><span class="p">]</span>
+<span class="n">t_loop</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">t_vect</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">array_lengths</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Set N=</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="k">N</span>)
+    <span class="c1">#randomly generate our 1D arrays of length N</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    
+    <span class="c1"># time loop_product 3 times and save the mean execution time.</span>
+    <span class="n">timer</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;loop_product(a, b)&#39;</span><span class="p">,</span> <span class="nb">globals</span><span class="o">=</span><span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">t_loop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1000</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">timer</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loop method took </span><span class="si">%d</span><span class="s2"> ms on average.&quot;</span> <span class="o">%</span><span class="k">t_loop</span>[-1])
+    
+    <span class="c1"># time vect_product 3 times and save the mean execution time.</span>
+    <span class="n">timer</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;vect_product(a, b)&#39;</span><span class="p">,</span> <span class="nb">globals</span><span class="o">=</span><span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">t_vect</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1000</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">timer</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vectorised method took </span><span class="si">%d</span><span class="s2"> ms on average.&quot;</span> <span class="o">%</span><span class="k">t_vect</span>[-1])
+
+    
+    
+<span class="c1"># compare the timings in a plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">array_lengths</span><span class="p">,</span> <span class="n">t_loop</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;loop method&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">array_lengths</span><span class="p">,</span> <span class="n">t_vect</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;vect method&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Array length&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Execution time (ms)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Set N=1
+Loop method took 0 ms on average.
+Vectorised method took 0 ms on average.
+
+Set N=100
+Loop method took 0 ms on average.
+Vectorised method took 0 ms on average.
+
+Set N=10000
+Loop method took 3 ms on average.
+Vectorised method took 0 ms on average.
+
+Set N=1000000
+Loop method took 358 ms on average.
+Vectorised method took 4 ms on average.
+
+Set N=10000000
+Loop method took 3841 ms on average.
+Vectorised method took 72 ms on average.
+</pre></div>
+</div>
+<img alt="../../_images/32911502be4a711aa7bee5ef5314968203294148b6b69a24b7a3735921fde952.png" src="../../_images/32911502be4a711aa7bee5ef5314968203294148b6b69a24b7a3735921fde952.png" />
+</div>
+</div>
+</section>
+<section id="example-2-a-resource-consumer-model-of-bacterial-carbon-uptake">
+<h2>Example 2: A resource-consumer model of Bacterial Carbon Uptake<a class="headerlink" href="#example-2-a-resource-consumer-model-of-bacterial-carbon-uptake" title="Link to this heading">#</a></h2>
+<p>The above example clearly shows that some operations can be vastly accelerated with vectorised code - but you aren’t going to spend your research projects computing the elementwise products of absurdly long 1D arrays. This example will show how the vectorised approach is applicable to biologically relevant problems and real, ongoing research.</p>
+<p>Do not worry too much about the equations themselves, the</p>
+<p>Imagine we have <span class="math notranslate nohighlight">\(N\)</span> different bacterial species (our consumers) in an environment consisting of <span class="math notranslate nohighlight">\(M\)</span> carbon sources (our resources).</p>
+<section id="consumer-growth-rate">
+<h3>consumer growth rate:<a class="headerlink" href="#consumer-growth-rate" title="Link to this heading">#</a></h3>
+<p>In reality, each species will uptake carbon from the different sources at different rates, as well as respiring and losing carbon to the environment at different rates. This yields a complex relationship between overall per-species growth rate and resource availability, which we can describe with:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4864bcfa-48c9-4bf1-84a7-284b983627e0">
+<span class="eqno">()<a class="headerlink" href="#equation-4864bcfa-48c9-4bf1-84a7-284b983627e0" title="Permalink to this equation">#</a></span>\[\begin{align}
+    \frac{1}{C_i}\frac{dC_i}{dt} = (\sum_{j=1}^M u_{ij} S_j  (1 - {p_{r}}_j - \sum_{k=1}^{M} l_{jk})) - r_{i}
+\end{align}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C = \)</span> vector of bacterial populations</p></li>
+<li><p><span class="math notranslate nohighlight">\(S = \)</span> vector of carbon output from different sources,</p></li>
+<li><p><span class="math notranslate nohighlight">\(u = \)</span> matrix of carbon-uptake rates for each species and carbon source,</p></li>
+<li><p><span class="math notranslate nohighlight">\(p_r = \)</span> vector of respiratory carbon loss,</p></li>
+<li><p><span class="math notranslate nohighlight">\(l = \)</span> matrix of non-respiratory carbon loss,</p></li>
+<li><p><span class="math notranslate nohighlight">\(r = \)</span> vector of maintenance cost of growth.</p></li>
+</ul>
+</section>
+<section id="resource-availability">
+<h3>resource availability:<a class="headerlink" href="#resource-availability" title="Link to this heading">#</a></h3>
+<p>The change in carbon resource avaliblity can be attributed either to abiotic processes (which we represent here through the constant term <span class="math notranslate nohighlight">\(\rho_j\)</span>) or through the activity of the bacterial community which takes up resource <span class="math notranslate nohighlight">\(j\)</span> at the rate <span class="math notranslate nohighlight">\(U_j\)</span> and releases it (via the inefficency of uptake) through the <span class="math notranslate nohighlight">\(L_j\)</span> term:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-bbbf3efb-ac9a-4069-984f-a6603f6281f0">
+<span class="eqno">()<a class="headerlink" href="#equation-bbbf3efb-ac9a-4069-984f-a6603f6281f0" title="Permalink to this equation">#</a></span>\[\begin{align}
+    \frac{dS_j}{dt} = \rho_j - U_j + L_j
+\end{align}\]</div>
+<p>How do the vectors <span class="math notranslate nohighlight">\(U_j\)</span> and <span class="math notranslate nohighlight">\(L_j\)</span> relate to the matricies <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(l\)</span> above? We can get the rates of uptake and release by the community by summing across all <span class="math notranslate nohighlight">\(N\)</span> species in the community and across all <span class="math notranslate nohighlight">\(M\)</span> resources which they release as a result of the <span class="math notranslate nohighlight">\(L_j\)</span> term:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-79d66110-e055-44c5-a76c-5a13f06bc788">
+<span class="eqno">()<a class="headerlink" href="#equation-79d66110-e055-44c5-a76c-5a13f06bc788" title="Permalink to this equation">#</a></span>\[\begin{align}
+    \frac{dS_j}{dt} = \rho_j - 
+                      \sum_{i = 1}^{N} \left( S_j C_i u_{ij}  - \sum_{k = 1}^{N} C_i S_k u_{ik} l_{kj} \right),
+\end{align}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\rho =\)</span> constant vector of carbon resource change due to abiotic processes,</p></li>
+<li><p><span class="math notranslate nohighlight">\(C, S, u, l\)</span> are the same as above.</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight" id="equation-eed5e0ee-5309-4e56-959f-ac704108f958">
+<span class="eqno">()<a class="headerlink" href="#equation-eed5e0ee-5309-4e56-959f-ac704108f958" title="Permalink to this equation">#</a></span>\[\begin{align}
+    \frac{1}{C_i}\frac{dC_i}{dt} = (\sum_{j=1}^M u_{ij} S_j  (1 - {p_{r}}_j - \sum_{k=1}^{M} l_{jk})) - r_{i}
+\end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-1996e04c-03a4-4f98-8d17-1eb45e60841d">
+<span class="eqno">()<a class="headerlink" href="#equation-1996e04c-03a4-4f98-8d17-1eb45e60841d" title="Permalink to this equation">#</a></span>\[\begin{align}
+    \frac{dS_j}{dt} = \rho_j - 
+                      \sum_{i = 1}^{N} \left( S_j C_i u_{ij}  - \sum_{k = 1}^{N} C_i S_k u_{ik} l_{kj} \right),
+\end{align}\]</div>
+</section>
+<section id="loop-and-vector-forms-of-these-equations">
+<h3>Loop and vector forms of these equations:<a class="headerlink" href="#loop-and-vector-forms-of-these-equations" title="Link to this heading">#</a></h3>
+<p>Since <span class="math notranslate nohighlight">\(\frac{dC_i}{dt}\)</span> and <span class="math notranslate nohighlight">\(\frac{dS_j}{dt}\)</span> are defined individually for each consumer <span class="math notranslate nohighlight">\(i\)</span> and each resource <span class="math notranslate nohighlight">\(j\)</span>, and since they consist simply of matrix arithmetic, we could define them using for loops:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dCdt_loop</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">pr</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="n">dC_dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">lsum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">term1</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+            <span class="n">term1</span> <span class="o">+=</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">S</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">pr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">lsum</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">dC_dt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">term1</span> <span class="o">-</span> <span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">dC_dt</span>
+        
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dSdt_loop</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">rho</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="n">dS_dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+        <span class="n">SCu</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+            <span class="n">CSul</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+                <span class="n">CSul</span> <span class="o">+=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">S</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">l</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+            <span class="n">SCu</span> <span class="o">+=</span> <span class="n">S</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">CSul</span>
+        <span class="n">dS_dt</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">rho</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">SCu</span>
+    <span class="k">return</span> <span class="n">dS_dt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It should be immediately clear why this system might be a good candidate for vectorisation - look at those all those nested loops! Now consider that this is just for calculating the change in <span class="math notranslate nohighlight">\(C\)</span> and in <span class="math notranslate nohighlight">\(S\)</span> at each timestep, and you can see how simulating this whole system over many timesteps with the loop approach could get very painful if the number of bacterial species <span class="math notranslate nohighlight">\(N\)</span> and/or carbon sources <span class="math notranslate nohighlight">\(M\)</span> is large.</p>
+<p>Luckily, since all of the above are matrix operations, we can vectorise the functions with Numpy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dCdt_vect</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">pr</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="n">Sl</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span> <span class="o">-</span> <span class="n">pr</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">S</span>
+    <span class="n">uSl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Sl</span> <span class="o">*</span> <span class="n">u</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">r</span>
+    <span class="n">dCdt</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="n">uSl</span>
+    <span class="k">return</span> <span class="n">dCdt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dSdt_vect</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">rho</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">rho</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">((</span><span class="n">C</span> <span class="o">@</span> <span class="n">u</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">S</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;i,k,ik,kj-&gt;j&#39;</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Do not panic if you can’t easily interpret these numpy expressions! This is a relatively complex example and if you aren’t familiar with the relevant linear algebra then it will seem much spookier than it truly is. The point of this example is to show a real-world scenario in which vectorising code will generate much quicker results, hopefully with the idea of motivating you to look into vectorising your own code in your own research.</p>
+</section>
+<section id="comparing-the-loop-and-vectorised-models">
+<h3>Comparing the loop and vectorised models:<a class="headerlink" href="#comparing-the-loop-and-vectorised-models" title="Link to this heading">#</a></h3>
+<p>We will now run two simulations of our system of bacteria and carbon sources. The initial values and all equation parameters will be identical - the only difference will be that one will be run with the loop functions, and the other with the vectorised functions. We will compare the outputs (to make sure they are the same!) and the execution times.</p>
+<p>First we will import some extra functions and set up the simulation parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">odeint</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pie</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="c1"># set up simulation parameters</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">N</span><span class="p">,</span><span class="n">M</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">([</span><span class="n">N</span><span class="p">],</span> <span class="p">(</span><span class="mf">0.3</span><span class="p">))</span>
+
+<span class="n">pr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">([</span><span class="n">M</span><span class="p">],</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">M</span><span class="p">,</span><span class="n">M</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.3</span>
+
+<span class="n">rho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">([</span><span class="n">N</span><span class="p">],</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">)),</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">([</span><span class="n">M</span><span class="p">],</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">))))</span>  <span class="c1"># initial values for C and S</span>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">model_loop</span><span class="p">(</span><span class="n">pops</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">pops</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="p">]</span> <span class="c1"># consumer</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">N</span><span class="p">:</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="p">]</span> <span class="c1"># resources</span>
+    
+    <span class="n">dCdt</span> <span class="o">=</span> <span class="n">dCdt_loop</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">pr</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+    <span class="n">dSdt</span> <span class="o">=</span> <span class="n">dSdt_loop</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">rho</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">dCdt</span><span class="p">,</span> <span class="n">dSdt</span><span class="p">)))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">model_vect</span><span class="p">(</span><span class="n">pops</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">pops</span>
+    
+    <span class="n">C</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="p">]</span> <span class="c1"># consumer</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">N</span><span class="p">:</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="p">]</span> <span class="c1"># resources</span>
+    
+    <span class="n">dCdt</span> <span class="o">=</span> <span class="n">dCdt_vect</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">pr</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+    <span class="n">dSdt</span> <span class="o">=</span> <span class="n">dSdt_vect</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">rho</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">dCdt</span><span class="p">,</span> <span class="n">dSdt</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now run the two simulations:</p>
+</section>
+</section>
+<section id="warning-this-will-take-time">
+<h2>WARNING: THIS WILL TAKE TIME.<a class="headerlink" href="#warning-this-will-take-time" title="Link to this heading">#</a></h2>
+<p>Expect the cell to execute for at least 5 minutes. Go and make a cup of tea while you wait. If it takes longer than 10 minutes then interrupt the cell with the stop button at the top of the notebook window, and try running with N = 50, M = 25 instead.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+
+<span class="c1">## loop model</span>
+<span class="n">starttime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">pops_loop</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">model_loop</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">))</span>
+<span class="n">time_loop</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">starttime</span>
+
+<span class="c1"># vectorised model</span>
+<span class="n">starttime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">pops_vect</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">model_vect</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">))</span>
+<span class="n">time_vect</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">starttime</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loop model took </span><span class="si">%6.3f</span><span class="s2"> s.&quot;</span> <span class="o">%</span><span class="k">time_loop</span>)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vectorised model took </span><span class="si">%6.3f</span><span class="s2"> s.&quot;</span> <span class="o">%</span><span class="k">time_vect</span>)
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_loop</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;resources (loop)&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_loop</span><span class="p">[:,</span><span class="n">N</span><span class="p">],</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;consumers (loop)&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_loop</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="p">],</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_loop</span><span class="p">[:,</span><span class="n">N</span><span class="p">:</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="p">],</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Population density&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;LOOP MODEL&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_vect</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;g--&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;resources (vect)&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_vect</span><span class="p">[:,</span><span class="n">N</span><span class="p">],</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;consumers (vect)&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_vect</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="n">N</span><span class="p">],</span> <span class="s1">&#39;g--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pops_vect</span><span class="p">[:,</span><span class="n">N</span><span class="p">:</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="p">],</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Population density&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;VECTOrISED MODEL&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see from the plots that the outputs of the two models are identical, but the execution time varies dramatically. Imagine we wanted to run these models a large number of times with varying initial conditions and/or parameters, to see how our populations would behave and evolve under different environmental conditions. running just 10 simulations in loop-mode would take close to an hour, whereas in vectorised mode we could run hundreds of simulations in mere minutes.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="when-to-vectorise">
+<h1>When to vectorise?<a class="headerlink" href="#when-to-vectorise" title="Link to this heading">#</a></h1>
+<p>We have seen that vectorising your code can have it running in a fraction of the time it otherwise would - why not always vectorise then?</p>
+<p>Generally, you should follow the same principles as with any code profiling…don’t spend time speeding up code that isn’t slow in the first place, or code which you will probably not need to run more than a small number of times.</p>
+<section id="no-free-lunch">
+<h2>“No free lunch!”<a class="headerlink" href="#no-free-lunch" title="Link to this heading">#</a></h2>
+<p>There are trade-offs to vectorising, most notably memory useage. One downsides of calculating many steps simultaneously is that your computer needs to hold much more in memory in order to do it. If you try to vectorise a problem thats <em>too</em> large, you will probably run into memory errors. One easy example is to re-run example 1 above, but <strong>even bigger</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000000000</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">vect_product</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># if no error, remove a, b, c from memory.</span>
+<span class="k">del</span> <span class="n">a</span>
+<span class="k">del</span> <span class="n">b</span>
+<span class="k">del</span> <span class="n">c</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This will almost certainly return a memory error (i.e. your computer ran out of rAM in which to store the entire of the very large arrays <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> while it was still calculating (if you didnt get an error, try again with an extra 0 in <span class="math notranslate nohighlight">\(N\)</span>).</p>
+<p>Again, this is a rather contrived example - you probably won’t be taking element-wise products of arrays with a billion entries in your research - but more complex problems can easily become too big for memory while still remaining biologically reasonable!<sup>[3]</sup></p>
+</section>
+<section id="when-can-you-vectorise">
+<h2>When <em>can</em> you vectorise?<a class="headerlink" href="#when-can-you-vectorise" title="Link to this heading">#</a></h2>
+<p>Note that not every system is vectorisable! You cannot generally vectorise a loop over time, for example. In our example 2 above, we vectorised everything that happens <em>within</em> a given timestep, but computing the future state of the system using its current state we did not vectorise (in fact <code class="docutils literal notranslate"><span class="pre">odeint</span></code> did this bit for us, but it still had to do it timestep-by-timestep).</p>
+<p>This makes sense - imagine trying to simulate a resource-consumer model like ours above at some timesteps <span class="math notranslate nohighlight">\((t_0, t_1, t_2,...)\)</span>. You can’t start computing the population sizes in any order you like, since the state at each <span class="math notranslate nohighlight">\(t_n\)</span> depends on the state before it – you have to start with <span class="math notranslate nohighlight">\(t_1\)</span>, then <span class="math notranslate nohighlight">\(t_2\)</span>, and so on in numerical order.</p>
+<p>[3] Check out the CMEE course on High Performance Computing to learn about using Imperial’s supercomputing cluster to run extremely large problems.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/experimental"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Vectorised code - what and why?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-vectorising-a-simple-calculation-of-2-arrays">Example 1: Vectorising a simple calculation of 2 arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-a-resource-consumer-model-of-bacterial-carbon-uptake">Example 2: A resource-consumer model of Bacterial Carbon Uptake</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consumer-growth-rate">consumer growth rate:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-availability">resource availability:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loop-and-vector-forms-of-these-equations">Loop and vector forms of these equations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-the-loop-and-vectorised-models">Comparing the loop and vectorised models:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warning-this-will-take-time">WARNING: THIS WILL TAKE TIME.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-vectorise">When to vectorise?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#no-free-lunch">“No free lunch!”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-can-you-vectorise">When <em>can</em> you vectorise?</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1104 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hands-on Evolutionary Modelling II &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=01a0bdc2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/experimental/hands-on-evol-modelling-2';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-computing.html">Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Biological Computing in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r.html">Biological Computing in R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-basic-stats.html">Basic Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-r.html">Data Management and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exp-design.html">Experimental design and Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-prework.html">Advanced Modelling &amp; Statistics Pre-work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-eemodelling.html">Ecological &amp; Evolutionary Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../populations.html">Single populations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interactions.html">Species interactions</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-advanced-stats.html">Advanced Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time-series.html">Time series analysis in R</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../mle.html">Model Fitting using Maximum Likelihood</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-assignments.html">Assignments and Assessments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-assessment.html">MQB Coursework Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-mini-proj.html">The Computing Miniproject</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-appendices.html">Appendices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MulQuaBio/MQB/master?urlpath=lab/tree/notebooks/experimental/hands-on-evol-modelling-2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MulQuaBio/MQB/blob/master/notebooks/experimental/hands-on-evol-modelling-2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/experimental/hands-on-evol-modelling-2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/experimental/hands-on-evol-modelling-2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Hands-on Evolutionary Modelling II</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drift-selection">1. Drift-selection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drift-selection-simulator">1.1 Drift-selection simulator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-the-evolution-of-new-insecticide-resistance-variants-in-anopheles-gambiae">1.2 Case study: the evolution of new insecticide resistance variants in <em>Anopheles gambiae</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drift-migration-model">2. Drift-migration model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-differentiation-and-f-st">2.2 Population differentiation and <span class="math notranslate nohighlight">\(F_{ST}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-little-touch-on-coalescent">3. A little touch on coalescent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drift-recombination-model">4. Drift-recombination model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">5. references</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hands-on-evolutionary-modelling-ii">
+<h1>Hands-on Evolutionary Modelling II<a class="headerlink" href="#hands-on-evolutionary-modelling-ii" title="Link to this heading">#</a></h1>
+<p>21/01/2025 Tin-Yu Hui</p>
+<p>This notebook extends the WF model to incorporate selection/migration/recombination (one at a time, of course). Some examples, such as the spread of insecticide resistance allele and equilibrium population differentiation, are particularly interesting.</p>
+<section id="drift-selection">
+<h2>1. Drift-selection<a class="headerlink" href="#drift-selection" title="Link to this heading">#</a></h2>
+<section id="drift-selection-simulator">
+<h3>1.1 Drift-selection simulator<a class="headerlink" href="#drift-selection-simulator" title="Link to this heading">#</a></h3>
+<p>Assumptions: We assume allele “1” is under selection. The gametic frequency is no longer identical to the current allele frequency because individuals carrying different alleles (or genotypes) will now have different fitness, thus have biased contribution to the gamete pool.</p>
+<p>Given this setting the relative fitness for the three genotypes are:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>00</p></th>
+<th class="head"><p>01</p></th>
+<th class="head"><p>11</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1-h*s</p></td>
+<td><p>1-s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The key is to work out the gametic frequency after selection (exercise).</p>
+<p>Parameters: Selection coefficient <span class="math notranslate nohighlight">\(s\)</span> (against “11”). Dominance <span class="math notranslate nohighlight">\(h\)</span>. Both should be between 0 and 1. <span class="math notranslate nohighlight">\(N\)</span>, <span class="math notranslate nohighlight">\(p_0\)</span>, <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>Output(s): same as <code>sim_genetic_drift()</code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sim_drift_selection</span><span class="o">&lt;-</span><span class="kr">function</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">p0</span><span class="o">=</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="o">=</span><span class="m">0.2</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1"># LET US WrITE A FUNCTION WITHIN A FUNCTION. A FUNCTION TO CALCULATE GENOTYPIC COUNT FrOM A MATrIX</span>
+<span class="w">    </span><span class="n">cal.gt</span><span class="o">&lt;-</span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">y</span><span class="o">&lt;-</span><span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="p">,]</span><span class="o">+</span><span class="n">x</span><span class="p">[</span><span class="m">2</span><span class="p">,]</span>
+<span class="w">        </span><span class="c1"># rETUrN COUNTS OF 00, 01, 11</span>
+<span class="w">        </span><span class="kr">return</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">y</span><span class="o">==</span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">y</span><span class="o">==</span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">y</span><span class="o">==</span><span class="m">2</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1"># THE BIG LIST OF MATrICES (TO BE FILLED IN LATEr)</span>
+<span class="w">    </span><span class="n">population</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">length</span><span class="p">(</span><span class="n">population</span><span class="p">)</span><span class="o">&lt;-</span><span class="n">t</span><span class="m">+1</span>
+<span class="w">    </span><span class="c1"># GIVE NAMES TO THE ELEMENTS</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">t</span><span class="m">+1</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nf">names</span><span class="p">(</span><span class="n">population</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">paste</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;generation_&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="m">-1</span><span class="p">),</span><span class="w"> </span><span class="n">collapse</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1"># A VECTOr FOr ALLELE FrEQ</span>
+<span class="w">    </span><span class="n">allele.freq</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="m">+1</span><span class="p">)</span>
+<span class="w">    </span><span class="c1"># INITIALISE</span>
+<span class="w">    </span><span class="c1"># NUMBEr OF &quot;0&quot; ALLELE AT THE STArT, GOVErNED BY p0</span>
+<span class="w">    </span><span class="n">k</span><span class="o">&lt;-</span><span class="nf">round</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">N</span><span class="o">*</span><span class="n">p0</span><span class="p">)</span>
+<span class="w">    </span><span class="n">population</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">),</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="n">k</span><span class="p">))),</span><span class="w"> </span><span class="n">nr</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="w">    </span><span class="c1"># THE INITIAL ALLELE FrEQ</span>
+<span class="w">    </span><span class="n">allele.freq</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">sum</span><span class="p">(</span><span class="n">population</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">==</span><span class="m">0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">N</span><span class="p">)</span>
+<span class="w">    </span><span class="c1"># FITNESS FOr THE THrEE GENOTYPES</span>
+<span class="w">    </span><span class="n">w</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">-</span><span class="n">h</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">-</span><span class="n">s</span><span class="p">)</span>
+<span class="w">    </span><span class="c1"># PrOPAGATION</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">t</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1"># CALCULATE NEW GAMETIC FrEQ, BUT THIS TIME rEQUIrES GENOTYPIC INFO</span>
+<span class="w">        </span><span class="n">gt</span><span class="o">&lt;-</span><span class="nf">cal.gt</span><span class="p">(</span><span class="n">population</span><span class="p">[[</span><span class="n">i</span><span class="p">]])</span>
+<span class="w">        </span><span class="n">after_selection</span><span class="o">&lt;-</span><span class="n">gt</span><span class="o">*</span><span class="n">w</span>
+<span class="w">        </span><span class="n">p</span><span class="o">&lt;-</span><span class="p">(</span><span class="n">gt</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="m">+0.5</span><span class="o">*</span><span class="n">gt</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="m">2</span><span class="p">])</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">after_selection</span><span class="p">)</span>
+<span class="w">        </span><span class="n">population</span><span class="p">[[</span><span class="n">i</span><span class="m">+1</span><span class="p">]]</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">sample</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="o">*</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">-</span><span class="n">p</span><span class="p">),</span><span class="w"> </span><span class="n">replace</span><span class="o">=</span><span class="bp">T</span><span class="p">),</span><span class="w"> </span><span class="n">nr</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="w">        </span><span class="c1"># UPDATE NEW FrEQ</span>
+<span class="w">        </span><span class="n">allele.freq</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">sum</span><span class="p">(</span><span class="n">population</span><span class="p">[[</span><span class="n">i</span><span class="m">+1</span><span class="p">]]</span><span class="o">==</span><span class="m">0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">N</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1"># rETUrN A BIG LIST, EXIT</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">population</span><span class="o">=</span><span class="n">population</span><span class="p">,</span><span class="w"> </span><span class="n">allele.freq</span><span class="o">=</span><span class="n">allele.freq</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST rUN</span>
+<span class="nf">sim_drift_selection</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><dl>
+	<dt>$population</dt>
+		<dd><dl>
+	<dt>$generation_0</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 10 of type dbl</caption>
+<tbody>
+	<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+	<tr><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$generation_1</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 10 of type int</caption>
+<tbody>
+	<tr><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+	<tr><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$generation_2</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 10 of type int</caption>
+<tbody>
+	<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+	<tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$generation_3</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 10 of type int</caption>
+<tbody>
+	<tr><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+	<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$generation_4</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 10 of type int</caption>
+<tbody>
+	<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+	<tr><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$generation_5</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 10 of type int</caption>
+<tbody>
+	<tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+	<tr><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd>
+	<dt>$allele.freq</dt>
+		<dd><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0.5</li><li>0.65</li><li>0.6</li><li>0.45</li><li>0.65</li><li>0.5</li></ol>
+</dd>
+</dl>
+</div></div>
+</div>
+<p>A directional change in allele frequency is expected if the locus is under selection (i.e. <span class="math notranslate nohighlight">\(E[p_t]\not=p_0\)</span>). Let us visiaulise some trajectories of the allele frequency of “0” when <span class="math notranslate nohighlight">\(N=100\)</span>, <span class="math notranslate nohighlight">\(s=0.2\)</span>, and <span class="math notranslate nohighlight">\(h=0.5\)</span>. Here <span class="math notranslate nohighlight">\(s&gt;0\)</span> means allele “1” is selected against.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># N=100, s=0.1, h=0.5, p0=0.05</span>
+<span class="c1"># 20 rEPLICATES</span>
+<span class="n">result</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="n">nc</span><span class="o">=</span><span class="m">31</span><span class="p">,</span><span class="w"> </span><span class="n">nr</span><span class="o">=</span><span class="m">20</span><span class="p">)</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1"># rUN ONE SIM, rECOrD THE ALLELE FrEQ OF &quot;0&quot;</span>
+<span class="w">    </span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">&lt;-</span><span class="nf">sim_drift_selection</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="o">=</span><span class="m">0.2</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="o">=</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">p0</span><span class="o">=</span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">30</span><span class="p">)</span><span class="o">$</span><span class="n">allele.freq</span>
+<span class="p">}</span>
+<span class="c1"># PLOT</span>
+<span class="nf">matplot</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">result</span><span class="p">),</span><span class="w"> </span><span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;generations&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;allele frequency of &quot;0&quot;&#39;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s">&#39;grey&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">40</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../_images/4a9f7a69cf2c0f6f916adf69114d5e6c90f413af67c46000b9af2daefe51989e.png"><img alt="../../_images/4a9f7a69cf2c0f6f916adf69114d5e6c90f413af67c46000b9af2daefe51989e.png" src="../../_images/4a9f7a69cf2c0f6f916adf69114d5e6c90f413af67c46000b9af2daefe51989e.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p>It is quite clear that the frequency of “0” is expected to go up due to selection, but it needs to overcome the effect of drift before it can firmly establish in the population.</p>
+</section>
+<section id="case-study-the-evolution-of-new-insecticide-resistance-variants-in-anopheles-gambiae">
+<h3>1.2 Case study: the evolution of new insecticide resistance variants in <em>Anopheles gambiae</em><a class="headerlink" href="#case-study-the-evolution-of-new-insecticide-resistance-variants-in-anopheles-gambiae" title="Link to this heading">#</a></h3>
+<p>Kientega et al. (2024) conducted a longitudinal study on the evolution on some known Ir target genes from the malaria vectors in Burkina Faso. They found an “increasing gene amplification signal in the ace1 locus, from 32.65% in 2012 to up to 91.67% in 2017”, which was “was corroborated by the increase in the insecticide resistance associated with ace1-G280S variant”.</p>
+<p><img alt="image.png" src="../../_images/e448cd1c-f201-4366-844b-4763aff7dbcc.png" /></p>
+<p>This justifies the urgent need to develop new and sustainable genetic technologies for vector control.</p>
+</section>
+</section>
+<section id="drift-migration-model">
+<h2>2. Drift-migration model<a class="headerlink" href="#drift-migration-model" title="Link to this heading">#</a></h2>
+<p>It is easy to extend the drift model to more than one population. Generally speaking, a migration matrix is required to specify connectivity, and the gametic frequency of a population is a linear conbination of the frequencies across all populations. In the simplest case with two populations A and B, then the gametic frequency in A will be <span class="math notranslate nohighlight">\((1-m_A)*p_A+m_A*p_B\)</span>, where <span class="math notranslate nohighlight">\(m_A\)</span> is the immigration rate from B into A per generation, and <span class="math notranslate nohighlight">\(p_A\)</span> and <span class="math notranslate nohighlight">\(p_B\)</span> are their current allele frequencies. See Wang &amp; Whitlock (2003) for details.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sim_drift_migration</span><span class="o">&lt;-</span><span class="kr">function</span><span class="p">(</span><span class="n">p0_A</span><span class="o">=</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">p0_B</span><span class="o">=</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">N_A</span><span class="p">,</span><span class="w"> </span><span class="n">N_B</span><span class="p">,</span><span class="w"> </span><span class="n">m_A</span><span class="p">,</span><span class="w"> </span><span class="n">m_B</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="c1"># AS WE HAVE TWO POPULATAIONS WE NEED TWO LISTS TO STOrE THE ALLELIC CONFIGUrATIONS</span>
+<span class="c1">#  FrOM GEN 0 TO t, HENCE LENGTH (t+1)</span>
+<span class="n">population.A</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+<span class="n">population.B</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+<span class="nf">length</span><span class="p">(</span><span class="n">population.A</span><span class="p">)</span><span class="o">&lt;-</span><span class="n">t</span><span class="m">+1</span>
+<span class="nf">length</span><span class="p">(</span><span class="n">population.B</span><span class="p">)</span><span class="o">&lt;-</span><span class="n">t</span><span class="m">+1</span>
+<span class="c1"># (OPTIONAL) GIVE NAMES TO THE ELEMENTS OF population</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">population.A</span><span class="p">)</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="m">+1</span><span class="p">)</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">population.B</span><span class="p">)</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="m">+1</span><span class="p">)</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">t</span><span class="m">+1</span><span class="p">))</span>
+<span class="w">	</span><span class="p">{</span>
+<span class="w">	</span><span class="nf">names</span><span class="p">(</span><span class="n">population.A</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">paste</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;generation&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="m">-1</span><span class="p">),</span><span class="w"> </span><span class="n">collapse</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="w">	</span><span class="nf">names</span><span class="p">(</span><span class="n">population.B</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">paste</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;generation&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="m">-1</span><span class="p">),</span><span class="w"> </span><span class="n">collapse</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="w">	</span><span class="p">}</span>
+<span class="c1"># TWO VECTOrS FOr TWO ALLELE FrEQUENCIES OVEr TIME</span>
+<span class="n">allele.freq.A</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="m">+1</span><span class="p">)</span>
+<span class="n">allele.freq.B</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="m">+1</span><span class="p">)</span>
+<span class="c1"># INITIALISATION. WE NEED TO INITIALISE BOTH POPULATIONS. SAME AS BEFOrE. </span>
+<span class="c1"># INITIALISE POPULATION A AND ITS FrEQ</span>
+<span class="n">k</span><span class="o">&lt;-</span><span class="nf">ceiling</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">N_A</span><span class="o">*</span><span class="n">p0_A</span><span class="p">)</span>
+<span class="n">population.A</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">),</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="o">*</span><span class="n">N_A</span><span class="o">-</span><span class="n">k</span><span class="p">))),</span><span class="w"> </span><span class="n">nr</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="n">allele.freq.A</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">sum</span><span class="p">(</span><span class="n">population.A</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">==</span><span class="m">0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">N_A</span><span class="p">)</span>
+<span class="c1"># DO THE SAME FOr POPULATION B. BEWArE OF TYPO</span>
+<span class="n">k</span><span class="o">&lt;-</span><span class="nf">ceiling</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">N_B</span><span class="o">*</span><span class="n">p0_B</span><span class="p">)</span>
+<span class="n">population.B</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">sample</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">),</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="o">*</span><span class="n">N_B</span><span class="o">-</span><span class="n">k</span><span class="p">))),</span><span class="w"> </span><span class="n">nr</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="n">allele.freq.B</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">sum</span><span class="p">(</span><span class="n">population.B</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">==</span><span class="m">0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">N_B</span><span class="p">)</span>
+<span class="c1"># PrOPAGATION</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">t</span><span class="p">)</span>
+<span class="w">	</span><span class="p">{</span>
+<span class="w">	</span><span class="c1"># THE GAMETE FrEQ ISN&#39;T THE SAME AS ALLELE FrEQ AS WE NEED TO TAKE MIGrATION INTO ACCOUNT</span>
+<span class="w">	</span><span class="c1"># THE GAMETE FrEQ FOr POPULATION A IS (1-m_A) OF EXISTING ALLELE FrEQ IN THE SAME POPULATION, PLUS m_A OF ALLELE FrEQ IN POPULATION B (THOSE WHO MOVED FrOM B TO A). </span>
+<span class="w">	</span><span class="n">gamete.freq.A</span><span class="o">&lt;-</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">m_A</span><span class="p">)</span><span class="o">*</span><span class="n">allele.freq.A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">m_A</span><span class="o">*</span><span class="n">allele.freq.B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="w">	</span><span class="n">gamete.freq.B</span><span class="o">&lt;-</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">m_B</span><span class="p">)</span><span class="o">*</span><span class="n">allele.freq.B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">m_B</span><span class="o">*</span><span class="n">allele.freq.A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="w">	</span><span class="c1"># THEN WE CAN SAMPLE THE NEXT GEN WITH THE GAMETE FrEQ AFTEr MIGrATION</span>
+<span class="w">	</span><span class="n">population.A</span><span class="p">[[</span><span class="n">i</span><span class="m">+1</span><span class="p">]]</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">sample</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="o">*</span><span class="n">N_A</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">gamete.freq.A</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">-</span><span class="n">gamete.freq.A</span><span class="p">),</span><span class="w"> </span><span class="n">replace</span><span class="o">=</span><span class="bp">T</span><span class="p">),</span><span class="w"> </span><span class="n">nr</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="w">	</span><span class="n">population.B</span><span class="p">[[</span><span class="n">i</span><span class="m">+1</span><span class="p">]]</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">sample</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="o">*</span><span class="n">N_B</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">gamete.freq.B</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">-</span><span class="n">gamete.freq.B</span><span class="p">),</span><span class="w"> </span><span class="n">replace</span><span class="o">=</span><span class="bp">T</span><span class="p">),</span><span class="w"> </span><span class="n">nr</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="w">	</span><span class="c1"># CALCULATE THE NEW ALLELE FrEQ</span>
+<span class="w">	</span><span class="n">allele.freq.A</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">sum</span><span class="p">(</span><span class="n">population.A</span><span class="p">[[</span><span class="n">i</span><span class="m">+1</span><span class="p">]]</span><span class="o">==</span><span class="m">0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">N_A</span><span class="p">)</span>
+<span class="w">	</span><span class="n">allele.freq.B</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">sum</span><span class="p">(</span><span class="n">population.B</span><span class="p">[[</span><span class="n">i</span><span class="m">+1</span><span class="p">]]</span><span class="o">==</span><span class="m">0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">N_B</span><span class="p">)</span>
+<span class="w">	</span><span class="p">}</span>
+<span class="c1"># rETUrN</span>
+<span class="kr">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">population.A</span><span class="o">=</span><span class="n">population.A</span><span class="p">,</span><span class="w"> </span><span class="n">population.B</span><span class="o">=</span><span class="n">population.B</span><span class="p">,</span><span class="w"> </span><span class="n">allele.freq.A</span><span class="o">=</span><span class="n">allele.freq.A</span><span class="p">,</span><span class="w"> </span><span class="n">allele.freq.B</span><span class="o">=</span><span class="n">allele.freq.B</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="population-differentiation-and-f-st">
+<h3>2.2 Population differentiation and <span class="math notranslate nohighlight">\(F_{ST}\)</span><a class="headerlink" href="#population-differentiation-and-f-st" title="Link to this heading">#</a></h3>
+<p>Structured or sub-divided populations maintain certain levels of population differentiation. One common measure is <span class="math notranslate nohighlight">\(F_{ST}\)</span>, which can be calculated from the squared difference in allele frequencies between two populations:</p>
+<div class="math notranslate nohighlight">
+\[F_{ST}=\frac{(p_A-p_B)^2}{\bar{p}*(1-\bar{p})}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{p}\)</span> is the pooled frequency. We can calcualte one <span class="math notranslate nohighlight">\(F_{ST}\)</span> per locus, and take the average across multiple loci as the overall value. Two populations are completely isolated if <span class="math notranslate nohighlight">\(F_{ST}\rightarrow1\)</span>. Conversely, <span class="math notranslate nohighlight">\(F_{ST}\rightarrow0\)</span> means the two populations are well-mixed (thus can be treated as one).</p>
+<p>Below I compare the <span class="math notranslate nohighlight">\(F_{ST}\)</span> under two scenarios: migration rates (both ways) of 0.05 and 0.1. The population sizes are identical. 2000 independent loci are simulated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># PAIrWISE FST WITH 2000 LOCI, PArALLELISED</span>
+<span class="nf">require</span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
+<span class="n">cl</span><span class="o">&lt;-</span><span class="nf">makeCluster</span><span class="p">(</span><span class="m">44</span><span class="p">)</span>
+<span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="c1"># FIrST SCENArIO. MIGrATION rATE 0.05</span>
+<span class="n">result_m0.05</span><span class="o">&lt;-</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">2000</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="o">=</span><span class="s">&#39;rbind&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1"># SIM THE TWO POPULATIONS</span>
+<span class="w">    </span><span class="n">temp</span><span class="o">&lt;-</span><span class="nf">sim_drift_migration</span><span class="p">(</span><span class="n">p0_A</span><span class="o">=</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">p0_B</span><span class="o">=</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">N_A</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">N_B</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="n">m_A</span><span class="o">=</span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="n">m_B</span><span class="o">=</span><span class="m">0.05</span><span class="p">)</span>
+<span class="w">    </span><span class="c1"># AVErAGE OF TWO ALLELE FrEQ</span>
+<span class="w">    </span><span class="n">z</span><span class="o">&lt;-</span><span class="p">(</span><span class="n">temp</span><span class="o">$</span><span class="n">allele.freq.A</span><span class="o">+</span><span class="n">temp</span><span class="o">$</span><span class="n">allele.freq.B</span><span class="p">)</span><span class="o">/</span><span class="m">2</span>
+<span class="w">    </span><span class="c1"># FST, CHECK FOrMULA</span>
+<span class="w">    </span><span class="n">FST</span><span class="o">&lt;-</span><span class="p">(</span><span class="n">temp</span><span class="o">$</span><span class="n">allele.freq.A</span><span class="o">-</span><span class="n">temp</span><span class="o">$</span><span class="n">allele.freq.B</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="p">(</span><span class="n">z</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">FST</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1"># SECOND SCENArIO. MIGrATION rATE 0.1</span>
+<span class="n">result_m0.1</span><span class="o">&lt;-</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">2000</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="o">=</span><span class="s">&#39;rbind&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1"># SIM THE TWO POPULATIONS</span>
+<span class="w">    </span><span class="n">temp</span><span class="o">&lt;-</span><span class="nf">sim_drift_migration</span><span class="p">(</span><span class="n">p0_A</span><span class="o">=</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">p0_B</span><span class="o">=</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">N_A</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">N_B</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="n">m_A</span><span class="o">=</span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="n">m_B</span><span class="o">=</span><span class="m">0.1</span><span class="p">)</span>
+<span class="w">    </span><span class="c1"># AVErAGE OF TWO ALLELE FrEQ</span>
+<span class="w">    </span><span class="n">z</span><span class="o">&lt;-</span><span class="p">(</span><span class="n">temp</span><span class="o">$</span><span class="n">allele.freq.A</span><span class="o">+</span><span class="n">temp</span><span class="o">$</span><span class="n">allele.freq.B</span><span class="p">)</span><span class="o">/</span><span class="m">2</span>
+<span class="w">    </span><span class="c1"># FST, CHECK FOrMULA</span>
+<span class="w">    </span><span class="n">FST</span><span class="o">&lt;-</span><span class="p">(</span><span class="n">temp</span><span class="o">$</span><span class="n">allele.freq.A</span><span class="o">-</span><span class="n">temp</span><span class="o">$</span><span class="n">allele.freq.B</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">/</span><span class="p">(</span><span class="n">z</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">FST</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: doParallel
+
+Loading required package: foreach
+
+Loading required package: iterators
+
+Loading required package: parallel
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># PLOT THE AVErAGE FST OVEr TIME</span>
+<span class="nf">plot</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="n">result_m0.05</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">),</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;generations&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;FST&#39;</span><span class="p">)</span>
+<span class="nf">points</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="n">result_m0.1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">),</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;generations&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;FST&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+<span class="nf">legend</span><span class="p">(</span><span class="s">&#39;bottomright&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;N=1000, m=0.05&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;N=1000, m=0.1&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../_images/88e4f4931cb205397ae0973d5f9b4e5d04c82685a4961101d35df8aced54ad85.png"><img alt="../../_images/88e4f4931cb205397ae0973d5f9b4e5d04c82685a4961101d35df8aced54ad85.png" src="../../_images/88e4f4931cb205397ae0973d5f9b4e5d04c82685a4961101d35df8aced54ad85.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p>The simulation begins with <span class="math notranslate nohighlight">\(F_{ST}=0\)</span>, resembling the scenario of population fragmentation. Their frequencies begin to diverge as they split and undergo local WF reproduction. Such divergence is maintained by the exchange of migrants and eventually reaches an equilibrium. The time to equilibrium and the equilibrium value are functions of <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(N\)</span>. Lower migration rate yields larger <span class="math notranslate nohighlight">\(F_{ST}\)</span>, and it also takes longer to reach its equilibrium.</p>
+<p>In fact the equilibrium <span class="math notranslate nohighlight">\(F_{ST}\)</span> goes like <span class="math notranslate nohighlight">\(1/(1+4Nm)\)</span> (???).</p>
+</section>
+</section>
+<section id="a-little-touch-on-coalescent">
+<h2>3. A little touch on coalescent<a class="headerlink" href="#a-little-touch-on-coalescent" title="Link to this heading">#</a></h2>
+<p>Let us assume we have 10 haploid parents labelled as A-J. These parents may carry either the “0” or “1” allele, but we do not care for now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">parents</span><span class="o">&lt;-</span><span class="n">LETTErS</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">]</span>
+<span class="n">parents</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'A'</li><li>'B'</li><li>'C'</li><li>'D'</li><li>'E'</li><li>'F'</li><li>'G'</li><li>'H'</li><li>'I'</li><li>'J'</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># USE rANDOM SEED TO GET THE SAME rANDOM DrAWS. WOrK FOr &gt;=r-4.0</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">12345</span><span class="p">)</span>
+<span class="n">offspring</span><span class="o">&lt;-</span><span class="nf">sample</span><span class="p">(</span><span class="n">parents</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<span class="n">offspring</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'C'</li><li>'J'</li><li>'H'</li><li>'J'</li><li>'H'</li><li>'B'</li><li>'F'</li><li>'F'</li><li>'G'</li><li>'J'</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">col</span><span class="o">&lt;-</span><span class="nf">rainbow</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">),</span><span class="w"> </span><span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1.2</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;individuals&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;generation&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">yaxt</span><span class="o">=</span><span class="s">&#39;n&#39;</span><span class="p">)</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span><span class="nf">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="m">1.1</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="o">=</span><span class="n">LETTErS</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="n">i</span><span class="p">])}</span>
+<span class="nf">axis</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">at</span><span class="o">=</span><span class="m">0</span><span class="o">:</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">labels</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;current gen&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;parental gen&#39;</span><span class="p">))</span>
+<span class="nf">points</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="nf">match</span><span class="p">(</span><span class="n">offspring</span><span class="p">,</span><span class="w"> </span><span class="n">LETTErS</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">])],</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="nf">arrows</span><span class="p">(</span><span class="nf">match</span><span class="p">(</span><span class="n">offspring</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">LETTErS</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">]),</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="nf">match</span><span class="p">(</span><span class="n">offspring</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">LETTErS</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">])],</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../_images/3bcd8ef69b5599db9c2a2bbd556eb46227ca391000db0f188c157886998514f0.png"><img alt="../../_images/3bcd8ef69b5599db9c2a2bbd556eb46227ca391000db0f188c157886998514f0.png" src="../../_images/3bcd8ef69b5599db9c2a2bbd556eb46227ca391000db0f188c157886998514f0.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p>The diagram shows the relationship between the two generations. The first offspring is a descendant of parent C, and parent J and F have more than one offspring. We also notice that some parents (A, D, E, I) make no contribution to the genetics of the subsequent generations. It is said that their lineages are lost.</p>
+<p>We can repeat the same for parents (B, C, F, G, H, J) to find their parents, and so on. Going backward in time, there can only be fewer and fewer (great-)^n-grandparents, until all current individuals descend from a single ancestor.</p>
+<p>You can easily code your coalescent simulator by sampling parents (which is equivalent to sampling offspring!). You will notice that waiting time between two coalescent events (i.e. when two lineages join together) increases when there are very of them left. See Hartl &amp; Clark or Kingman (1980).</p>
+<p>In forward simulation, we need to simulate the entire population (with <span class="math notranslate nohighlight">\(N\)</span> individuals) even our focus is on a small subset of samples <span class="math notranslate nohighlight">\(s&lt;&lt;N\)</span>. We also waste a lot of time simulating lineages/individuals that do not contribute to the final generation (e.g. parent A in the example above). The backward simulation provides a quick solution to build the genealogy only for the given sample size, and is the basis for many backward genomic simulators, like ms and msprime.</p>
+<p>Once the genealogy tree is built, mutations are added onto the tree branches to create alleles (polymorphism) under drift-mutation equilibrium. The tree also “evolves” along a chromosome in multi-locus scenario as recombination breaks down lineages and changes its shape.</p>
+</section>
+<section id="drift-recombination-model">
+<h2>4. Drift-recombination model<a class="headerlink" href="#drift-recombination-model" title="Link to this heading">#</a></h2>
+<p>recombination is an evolutionary force to create new haplotypes. It concerns the interaction between loci (usually along the same chromosome).</p>
+<p>Again I am only going to sketch the idea here. Suppose we have a two-locus, two-allele system along a chromosome. Alleles A and a are found on the first locus, B and b on the second. There are four combinations, or haplotypes: AB, Ab, aB, ab.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>A</p></th>
+<th class="head"><p>a</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>B</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_{AB}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_{aB}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>b</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_{Ab}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(p_{ab}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Given the relative proportion of the four haplotypes, we can calculate the linkage disequilibrium (LD) coefficient <span class="math notranslate nohighlight">\(D\)</span>:
+$<span class="math notranslate nohighlight">\(D=p_{AB}*p_{ab}-p_{aB}*p_{Ab}\)</span>$</p>
+<p>where <span class="math notranslate nohighlight">\(p_{AB}\)</span> is the relative proportion of haplotype AB in the current population. An alternative formula for <span class="math notranslate nohighlight">\(D\)</span> will be the difference between <span class="math notranslate nohighlight">\(p_{AB}\)</span> and the product of the marginal frequencies of A and B. If <span class="math notranslate nohighlight">\(D=0\)</span> then the pair is said to be in linkage equilibrium (LE), otherwise they are in LD.</p>
+<p>If the two loci are physically linked (e.g. nearby loci on the same chromosome) then the alleles on the first locus will affect the choice of another. Before we proceed, let me introduce another parameter, the recombination rate <span class="math notranslate nohighlight">\(c\)</span>. When <span class="math notranslate nohighlight">\(c=0\)</span> it means the two loci never recombine, and they always transmit together. When <span class="math notranslate nohighlight">\(c=0.5\)</span>, it means there are 50% chance that the two recombine, providing a good possiblility of creating new haplotypes. In other words, <span class="math notranslate nohighlight">\(c\)</span> describes how tight the linkage is (see also genetic distance).</p>
+<p>In order to calculate the gametic frequency of AB, we must find the proportion of AB gametes under all 4+3+2+1=10 diploid haplotypic combinations. For instance, if a parent carries two copies of AB, then it must produce AB gamete with probability 1 regardless of <span class="math notranslate nohighlight">\(c\)</span>. Similarly, it is impossible for a parent who carries two ab to transmit AB gametes. Usually the trouble lies with the double heterozyotes. If a parent carries Ab on one strand and aB on another, it cannot produce AB gametes unless there is recombination. Therefore, the chance of transmitting an AB gamete is 0.5*<span class="math notranslate nohighlight">\(c\)</span>. That <span class="math notranslate nohighlight">\(c\)</span> is the probability of recombination, and the 0.5 comes from the prospect that it can still transmit the other ab gamete after recombination. The table below summarises all the haplotyic combinations and their probability of creating AB gametes:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p></p></th>
+<th class="head text-right"><p>AB</p></th>
+<th class="head text-right"><p>Ab</p></th>
+<th class="head text-right"><p>aB</p></th>
+<th class="head text-right"><p>ab</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p><strong>AB</strong></p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>—</p></td>
+<td class="text-right"><p>—</p></td>
+<td class="text-right"><p>—</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><strong>Ab</strong></p></td>
+<td class="text-right"><p>0.5</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>—</p></td>
+<td class="text-right"><p>—</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p><strong>aB</strong></p></td>
+<td class="text-right"><p>0.5</p></td>
+<td class="text-right"><p>0.5*<span class="math notranslate nohighlight">\(c\)</span></p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>—</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><strong>ab</strong></p></td>
+<td class="text-right"><p>0.5*(1-<span class="math notranslate nohighlight">\(c\)</span>)</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Combining all these information, we can calculate the gametic frequency of AB in the gamete pool (exercise):
+$<span class="math notranslate nohighlight">\(gametic\ freq\ AB=p_{AB}-c*D\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(gametic\ freq\ Ab=p_{Ab}+c*D\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(gametic\ freq\ aB=p_{aB}+c*D\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(gametic\ freq\ ab=p_{ab}-c*D\)</span>$</p>
+<p>New offspring are formed by sampling gametes from a multinomial distribution, with probabilities governed by the gametic frequencies.</p>
+<p>With drift and recombination, <span class="math notranslate nohighlight">\(E[D]=0\)</span> over time but there is an equilibrium value for <span class="math notranslate nohighlight">\(Var[D]&gt;0\)</span>. See Hill and robertson (1968) for LD decay. Such idea was generalised in Hui, Brenas, Burt (2021) on the correlation of allele frequencies.</p>
+</section>
+<section id="references">
+<h2>5. references<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p>Kientega, M., Clarkson, C. S., Traoré, N., Hui, T. Y. J., O’Loughlin, S., Millogo, A. A., … &amp; Diabaté, A. (2024). Whole-genome sequencing of major malaria vectors reveals the evolution of new insecticide resistance variants in a longitudinal study in Burkina Faso. Malaria Journal, 23(1), 280.</p>
+<p>Kingman, J. F. C. (1982). The coalescent. Stochastic processes and their applications, 13(3), 235-248.</p>
+<p>Hill, W. G., &amp; robertson, A. (1968). Linkage disequilibrium in finite populations. Theoretical and applied genetics, 38, 226-231.</p>
+<p>Hui, T. Y. J., Brenas, J. H., &amp; Burt, A. (2021). Contemporary N e estimation using temporally spaced data with linked loci. Molecular Ecology resources, 21(7), 2221-2230.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./notebooks/experimental"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drift-selection">1. Drift-selection</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drift-selection-simulator">1.1 Drift-selection simulator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-the-evolution-of-new-insecticide-resistance-variants-in-anopheles-gambiae">1.2 Case study: the evolution of new insecticide resistance variants in <em>Anopheles gambiae</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drift-migration-model">2. Drift-migration model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-differentiation-and-f-st">2.2 Population differentiation and <span class="math notranslate nohighlight">\(F_{ST}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-little-touch-on-coalescent">3. A little touch on coalescent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drift-recombination-model">4. Drift-recombination model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">5. references</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

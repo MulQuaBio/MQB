@@ -1,0 +1,1313 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Databases &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/appendix-databases';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Analysis in Python (Optional)" href="../appendices/data-python.html" />
+    <link rel="prev" title="Introduction to Jupyter" href="appendix-jupy-intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-computing.html">Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Biological Computing in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r.html">Biological Computing in R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-basic-stats.html">Basic Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-r.html">Data Management and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exp-design.html">Experimental design and Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Advanced Modelling &amp; Statistics Pre-work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-eemodelling.html">Ecological &amp; Evolutionary Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="populations.html">Single populations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Advanced Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time-series.html">Time series analysis in R</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Assignments and Assessments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Appendices</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MulQuaBio/MQB/master?urlpath=lab/tree/notebooks/appendix-databases.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MulQuaBio/MQB/blob/master/notebooks/appendix-databases.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/appendix-databases.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/appendix-databases.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Databases <span class="tocSkip"></span></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-databases">relational databases</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sqlite">SQLite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sqlite-with-python">SQLite with Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-and-resources">readings and resources</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="databases">
+<h1>Databases <span class="tocSkip"></span><a class="headerlink" href="#databases" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Many of you will deal with complex data — and often, lots of it. Ecological and Evolutionary data are particularly complex because they contain large numbers of attributes, often measured in very different scales and units for individual taxa, populations, etc. In this scenario, storing the data in a database makes a lot of sense! You can
+easily include the database in your analysis workflow — indeed, that’s why people use databases. And you can use Python (and r) to build, manipulate and use your database.</p>
+<section id="relational-databases">
+<h3>relational databases<a class="headerlink" href="#relational-databases" title="Link to this heading">#</a></h3>
+<p>A <em>relational</em> database is a collection of interlinked (<em>related</em>) tables that altogether store a complex dataset
+in a logical, computer-readable format. Dividing a dataset into multiple tables minimizes redundancies. For example, if your data were sampled from three sites — then, rather than repeating the site name and description in each row in a text file, you could just specify a numerical “key” that directs to another table containing the sampling site name and description.</p>
+<p>Finally, if you have many rows in your data file, the type of sequential access we have been using in our <code class="docutils literal notranslate"><span class="pre">python</span></code> and <code class="docutils literal notranslate"><span class="pre">R</span></code> scripts is inefficient — you should be able to instantly access any row regardless of its position</p>
+<p>Data columns in a database are usually called <em>fields</em>, while the rows are the <em>records</em>. Here are a few things to
+keep in mind about databases:</p>
+<ul class="simple">
+<li><p>Each field typically contains only one data type (e.g., integers, floats, strings)</p></li>
+<li><p>Each record is a “data point”, composed of different values, one for each field — somewhat like a Python tuple</p></li>
+<li><p>Some fields are special, and are called <em>keys</em>:</p>
+<ul>
+<li><p>The <em>primary key</em> uniquely defines a record in a table (e.g., each row is identified by a unique number)</p></li>
+<li><p>To allow fast retrieval, some fields (and typically all the keys) are indexed — a copy of certain columns that can be searched very efficiently.</p></li>
+<li><p><em>Foreign keys</em> are keys in a table that are primary keys in another table and define relationships between the tables</p></li>
+</ul>
+</li>
+</ul>
+<p>The key to designing a database is to minimize redundancy and dependency without losing the logical consistency of tables — this is called <em>normalization</em> (arguably more of an art than a science!)</p>
+<p>Let’s look at a simple example.</p>
+<p>Imagine you recorded body sizes of species from different field sites in a single text file (e.g., a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file) with the following fields:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Field</p></th>
+<th class="head text-left"><p>Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ID</span></code></p></td>
+<td class="text-left"><p>Unique ID for the record</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SiteName</span></code></p></td>
+<td class="text-left"><p>Name of the site</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SiteLong</span></code></p></td>
+<td class="text-left"><p>Longitude of the site</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SiteLat</span></code></p></td>
+<td class="text-left"><p>Latitude of the site</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SamplingDate</span></code></p></td>
+<td class="text-left"><p>Date of the sample</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SamplingHour</span></code></p></td>
+<td class="text-left"><p>Hour of the sampling</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SamplingAvgTemp</span></code></p></td>
+<td class="text-left"><p>Average air temperature on the sampling day</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SamplingWaterTemp</span></code></p></td>
+<td class="text-left"><p>Temperature of the water</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SamplingPH</span></code></p></td>
+<td class="text-left"><p>PH of the water</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SpeciesCommonName</span></code></p></td>
+<td class="text-left"><p>Species of the sampled individual</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SpeciesLatinBinom</span></code></p></td>
+<td class="text-left"><p>Latin binomial of the species</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">BodySize</span></code></p></td>
+<td class="text-left"><p>Width of the individual</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">BodyWeight</span></code></p></td>
+<td class="text-left"><p>Weight of the individual</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>It would be logical to divide the data into four tables:</p>
+<p><em>Site table</em>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Field</p></th>
+<th class="head text-left"><p>Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SiteID</span></code></p></td>
+<td class="text-left"><p>ID for the site</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SiteName</span></code></p></td>
+<td class="text-left"><p>Name of the site</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SiteLong</span></code></p></td>
+<td class="text-left"><p>Longitude of the site</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SiteLat</span></code></p></td>
+<td class="text-left"><p>Latitude of the site</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Sample table</em>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Field</p></th>
+<th class="head text-left"><p>Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SamplingID</span></code></p></td>
+<td class="text-left"><p>ID for the sampling date</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SamplingDate</span></code></p></td>
+<td class="text-left"><p>Date of the sample</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SamplingHour</span></code></p></td>
+<td class="text-left"><p>Hour of the sample</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SamplingAvgTemp</span></code></p></td>
+<td class="text-left"><p>Average air temperature</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SamplingWaterTemp</span></code></p></td>
+<td class="text-left"><p>Temperature of the water</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SamplingPH</span></code></p></td>
+<td class="text-left"><p>PH of the water</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Species table</em>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Field</p></th>
+<th class="head text-left"><p>Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SpeciesID</span></code></p></td>
+<td class="text-left"><p>ID for the species</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SpeciesCommonName</span></code></p></td>
+<td class="text-left"><p>Species name</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SpeciesLatinBinom</span></code></p></td>
+<td class="text-left"><p>Latin binomial of the species</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Individual table</em>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Field</p></th>
+<th class="head text-left"><p>Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">IndividualID</span></code></p></td>
+<td class="text-left"><p>ID for the individual sampled</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SpeciesID</span></code></p></td>
+<td class="text-left"><p>ID for the species</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SamplingID</span></code></p></td>
+<td class="text-left"><p>ID for the sampling day</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SiteID</span></code></p></td>
+<td class="text-left"><p>ID for the site</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">BodySize</span></code></p></td>
+<td class="text-left"><p>Width of the individual</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">BodyWeight</span></code></p></td>
+<td class="text-left"><p>Weight of the individual</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In each table, the first ID field is the primary key. The last table contains three foreign keys because each individual is associated with one species, one sampling day and one sampling site.</p>
+<p>These structural features of a database are called its <em>schema</em>.</p>
+</section>
+</section>
+<section id="sqlite">
+<h2>SQLite<a class="headerlink" href="#sqlite" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">SQLite</span></code> is a simple (and very popular) SQL (Structured Query Language)-based solution for managing localized, personal databases. I can safely bet that most, if not all of you unknowingly (or knowingly!) use <code class="docutils literal notranslate"><span class="pre">SQLite</span></code> — it is used by MacOSX, Firefox, Acrobat reader,iTunes, Skype, iPhone, etc. SQLite is also the database “engine” underlying your <a class="reference external" href="http://silwoodmasters.co.uk">Silwood Masters Web App</a></p>
+<p>We can easily use SQLite through Python scripts. First, install SQLite by typing in the Ubuntu terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>sqlite3<span class="w"> </span>libsqlite3-dev
+</pre></div>
+</div>
+<p>Also, make sure that you have the necessary package for Python by typing <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sqlite3</span></code> in the Python or ipython shell. Finally, you may install a GUI for SQLite3 :</p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">sqliteman</span></code></p>
+<p>Now type <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code> in the Ubuntu terminal to check if SQLite successfully launches.</p>
+<p>SQLite has very few data types (and lacks a boolean and a date type):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Field Data Type</p></th>
+<th class="head text-left"><p>Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></td>
+<td class="text-left"><p>The value is a NULL value</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">INTEGEr</span></code></p></td>
+<td class="text-left"><p>The value is a signed integer, stored in up to or 8 bytes</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">rEAL</span></code></p></td>
+<td class="text-left"><p>The value is a floating point value, stored as in 8 bytes</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></td>
+<td class="text-left"><p>The value is a text string</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">BLOB</span></code></p></td>
+<td class="text-left"><p>The value is a blob of data, stored exactly as it was input (useful for binary types, such as bitmap images or pdfs)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Typically, you will build a database by importing csv data — be aware that:</p>
+<ul class="simple">
+<li><p>Headers: the csv should have no headers</p></li>
+<li><p>Separators: if the comma is the separator, each record should not contain any other commas</p></li>
+<li><p>Quotes: there should be no quotes in the data</p></li>
+<li><p>Newlines: there should be no newlines</p></li>
+</ul>
+<p>Now build your first database in SQLite! We will use as example a global dataset on metabolic traits called <em>biotraits</em> that we are currently developing in our lab (should be in your <code class="docutils literal notranslate"><span class="pre">Data</span></code> directory). This dataset contains 164 columns (fields). Thermal response curves for different traits and species are stored in rows. This means
+that site description or taxonomy are repeated as many times as temperatures are measured in the curve. You can imagine how much redundacy can be here!!!</p>
+<p>For this reason, it is easier to migrate the dataset to SQL and split it into several tables:</p>
+<ul class="simple">
+<li><p><em>tcp</em>: Includes the thermal curve performance for each species and trait (as many rows per trait and species as temperatures have been measured within the tcp)</p></li>
+<li><p><em>trait_info</em>: Contains site description and conditions under the traits were measured (one row per thermal curve)</p></li>
+<li><p>consumer: consumer description including taxonomy (one row per thermal
+curve).</p></li>
+<li><p>resource: resource description including taxonomy (one row per thermal
+curve).</p></li>
+<li><p>Size: Size data for each species (one row per thermal curve)</p></li>
+</ul>
+<p>DataSource: Contains information about the data source (citation, contributors) (one row per thermal curve).</p>
+<p>So all these tables compose the <em>biotraits</em> <code class="docutils literal notranslate"><span class="pre">schema</span></code>.</p>
+<p>In an Linux/unix terminal, navigate to your <code class="docutils literal notranslate"><span class="pre">data</span></code> directory:</p>
+<p>Now, launch a new database using sqlite:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sqlite3<span class="w"> </span>biotraits.db
+</pre></div>
+</div>
+<p>This should return something like:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">SQLite</span><span class="w"> </span><span class="k">version</span><span class="w"> </span><span class="mi">3</span><span class="p">.</span><span class="mi">11</span><span class="p">.</span><span class="mi">0</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">15</span><span class="w"> </span><span class="mi">17</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">24</span>
+<span class="n">Enter</span><span class="w"> </span><span class="ss">&quot;.help&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">usage</span><span class="w"> </span><span class="n">hints</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>This creates an empty database in your <code class="docutils literal notranslate"><span class="pre">data</span></code> directory.</p>
+<p>You should now see the sqlite cursor (<code class="docutils literal notranslate"><span class="pre">sqlite&gt;</span></code>), and will be entering your commands there.</p>
+<p>Now we need to create a table with some fields. Let’s start with the <em>trait_info</em> table (enter these one line at  a time, without the <code class="docutils literal notranslate"><span class="pre">...&gt;</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sqlite&gt;<span class="w"> </span>CrEATE<span class="w"> </span>TABLE<span class="w"> </span>trait_info<span class="w"> </span><span class="o">(</span>Numbers<span class="w"> </span>integer<span class="w"> </span>primary<span class="w"> </span>key,
+<span class="w">   </span>...&gt;<span class="w">                                 </span>OriginalID<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                                 </span>FinalID<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                                 </span>OriginalTraitName<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                                 </span>OriginalTraitDef<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                                 </span>replicates<span class="w"> </span>integer,
+<span class="w">   </span>...&gt;<span class="w">                                 </span>Habitat<span class="w">  </span>integer,<span class="w">               </span>
+<span class="w">   </span>...&gt;<span class="w">                                 </span>Climate<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                                 </span>Location<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                                 </span>LocationType<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                                 </span>LocationDate<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                                 </span>CoordinateType<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                                 </span>Latitude<span class="w"> </span>integer,
+<span class="w">   </span>...&gt;<span class="w">                                 </span>Longitude<span class="w"> </span>integer<span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Note that I am writing all SQL commands in upper case, but it is not necessary. I am using upper case here because SQL syntax is long and clunky, and it quickly becomes hard to spot (and edit) commands in long strings of complex queries.</p>
+<p>Now let’s import the dataset:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sqlite&gt;</span> <span class="pre">.mode</span> <span class="pre">csv</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">sqlite&gt;</span> <span class="pre">.import</span> <span class="pre">trait_info.csv</span> <span class="pre">trait_info</span></code></p>
+<p>So we built a table and imported a csv file into it. Now we can ask
+SQLite to show all the tables we currently have:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sqlite&gt;</span> <span class="pre">.tables</span></code></p>
+<p>Let’s run our first <em>Query</em> (note that you need a semicolon
+to end a command):</p>
+<p><code class="docutils literal notranslate"><span class="pre">sqlite&gt;</span> <span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FrOM</span> <span class="pre">trait_info</span> <span class="pre">LIMIT</span> <span class="pre">5;</span></code></p>
+<p>Let’s turn on some nicer formatting:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sqlite&gt;</span> <span class="pre">.mode</span> <span class="pre">column</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">sqlite&gt;</span> <span class="pre">.header</span> <span class="pre">ON</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">sqlite&gt;</span> <span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FrOM</span> <span class="pre">trait_info</span> <span class="pre">LIMIT</span> <span class="pre">5;</span></code></p>
+<p>You should see something like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Numbers<span class="w">  </span>OriginalID<span class="w">  </span>FinalID<span class="w">     </span>OriginalTraitName<span class="w">           </span>...<span class="w"> </span>
+-------<span class="w">  </span>----------<span class="w">  </span>----------<span class="w">  </span>-------------------------<span class="w">   </span>...
+<span class="m">1</span><span class="w">        </span><span class="m">1</span><span class="w">           </span>MTD1<span class="w">        </span>resource<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">   </span>...
+<span class="m">4</span><span class="w">        </span><span class="m">2</span><span class="w">           </span>MTD2<span class="w">        </span>resource<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">   </span>...
+<span class="m">6</span><span class="w">        </span><span class="m">3</span><span class="w">           </span>MTD3<span class="w">        </span>resource<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">   </span>...
+<span class="m">9</span><span class="w">        </span><span class="m">4</span><span class="w">           </span>MTD4<span class="w">        </span>resource<span class="w"> </span>Mass<span class="w"> </span>Consumption<span class="w">   </span>...
+<span class="m">12</span><span class="w">       </span><span class="m">5</span><span class="w">           </span>MTD5<span class="w">        </span>resource<span class="w"> </span>Mass<span class="w"> </span>Consumption<span class="w">   </span>...
+</pre></div>
+</div>
+<p>The main statement to select records from a table is
+<code class="docutils literal notranslate"><span class="pre">SELECT</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sqlite&gt;</span> <span class="pre">.width</span> <span class="pre">40</span>&#160; <span class="pre">##</span> <span class="pre">NOTE:</span> <span class="pre">Control</span> <span class="pre">the</span> <span class="pre">width</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">sqlite&gt;</span> <span class="pre">SELECT</span> <span class="pre">DISTINCT</span> <span class="pre">OriginalTraitName</span> <span class="pre">FrOM</span> <span class="pre">trait_info;</span> <span class="pre">#</span> <span class="pre">returns</span> <span class="pre">unique</span> <span class="pre">values</span></code></p>
+<p>Which gives:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>OriginalTraitName<span class="w">                       </span>
+----------------------------------------
+resource<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">               </span>
+resource<span class="w"> </span>Mass<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">          </span>
+Mass-Specific<span class="w"> </span>Mass<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">     </span>
+Voluntary<span class="w"> </span>Body<span class="w"> </span>Velocity<span class="w">                 </span>
+Forward<span class="w"> </span>Attack<span class="w"> </span>Distance<span class="w">                 </span>
+Foraging<span class="w"> </span>Velocity<span class="w">                       </span>
+resource<span class="w"> </span>reaction<span class="w"> </span>Distance<span class="w">                   </span>
+....
+</pre></div>
+</div>
+<p>Now try these:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>DISTINCT<span class="w"> </span>Habitat<span class="w"> </span>FrOM<span class="w"> </span>trait_info
+<span class="w">   </span>...&gt;<span class="w"> </span>WHErE<span class="w"> </span><span class="nv">OriginalTraitName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;resource Consumption rate&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1"># Sets a condition`</span>
+
+Habitat<span class="w">                                 </span>
+----------------------------------------
+freshwater<span class="w">                              </span>
+marine<span class="w">                                  </span>
+terrestrial<span class="w"> </span>
+
+sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>COUNT<span class="w"> </span><span class="o">(</span>*<span class="o">)</span><span class="w"> </span>FrOM<span class="w"> </span>trait_info<span class="p">;</span><span class="w">  </span><span class="c1"># returns number of rows</span>
+
+Count<span class="w"> </span><span class="o">(</span>*<span class="o">)</span><span class="w">           </span>
+--------------------
+<span class="m">2336</span>
+
+sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>Habitat,<span class="w"> </span>COUNT<span class="o">(</span>OriginalTraitName<span class="o">)</span><span class="w"> </span><span class="c1"># returns number of rows for each group</span>
+<span class="w">   </span>...&gt;<span class="w"> </span>FrOM<span class="w"> </span>trait_info<span class="w"> </span>GrOUP<span class="w"> </span>BY<span class="w"> </span>Habitat<span class="p">;</span>
+
+Habitat<span class="w">     </span>COUNT<span class="o">(</span>OriginalTraitName<span class="o">)</span>
+----------<span class="w">  </span>------------------------
+NA<span class="w">          </span><span class="m">16</span><span class="w">                      </span>
+freshwater<span class="w">  </span><span class="m">609</span><span class="w">                     </span>
+marine<span class="w">      </span><span class="m">909</span><span class="w">                     </span>
+terrestria<span class="w">  </span><span class="m">802</span><span class="w">   </span>
+
+sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>COUNT<span class="o">(</span>DISTINCT<span class="w"> </span>OriginalTraitName<span class="o">)</span><span class="w"> </span><span class="c1"># returns number of unique values</span>
+<span class="w">   </span>...&gt;<span class="w"> </span>FrOM<span class="w"> </span>trait_info<span class="p">;</span>
+
+COUNT<span class="o">(</span>DISTINCT<span class="w"> </span>OriginalTraitName<span class="o">)</span>
+---------------------------------
+<span class="m">220</span><span class="w">   </span>
+
+sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>COUNT<span class="o">(</span>DISTINCT<span class="w"> </span>OriginalTraitName<span class="o">)</span><span class="w"> </span>TraitCount<span class="w"> </span><span class="c1"># Assigns alias to the variable</span>
+<span class="w">   </span>...&gt;<span class="w"> </span>FrOM<span class="w"> </span>trait_info<span class="p">;</span>
+
+TraitCount
+----------
+
+sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>Habitat,
+<span class="w">   </span>...&gt;<span class="w"> </span>COUNT<span class="o">(</span>DISTINCT<span class="w"> </span>OriginalTraitName<span class="o">)</span><span class="w"> </span>AS<span class="w"> </span>TN
+<span class="w">   </span>...&gt;<span class="w"> </span>FrOM<span class="w"> </span>trait_info<span class="w"> </span>GrOUP<span class="w"> </span>BY<span class="w"> </span>Habitat<span class="p">;</span>
+
+Habitat<span class="w">     </span>TN<span class="w">        </span>
+----------<span class="w">  </span>----------
+NA<span class="w">          </span><span class="m">7</span><span class="w">         </span>
+freshwater<span class="w">  </span><span class="m">82</span><span class="w">        </span>
+marine<span class="w">      </span><span class="m">95</span><span class="w">        </span>
+terrestria<span class="w">  </span><span class="m">96</span><span class="w">     </span>
+
+sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>*<span class="w"> </span><span class="c1"># WHAT TO SELECT</span>
+<span class="w">   </span>...&gt;<span class="w"> </span>FrOM<span class="w"> </span>trait_info<span class="w"> </span><span class="c1"># FrOM WHErE</span>
+<span class="w">   </span>...&gt;<span class="w"> </span>WHErE<span class="w"> </span><span class="nv">Habitat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;marine&quot;</span><span class="w"> </span><span class="c1"># CONDITIONS</span>
+<span class="w">   </span>...&gt;<span class="w"> </span>AND<span class="w"> </span><span class="nv">OriginalTraitName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;resource Consumption rate&quot;</span><span class="p">;</span>
+
+Numbers<span class="w">     </span>OriginalID<span class="w">  </span>FinalID<span class="w">     </span>OriginalTraitName<span class="w">          </span>...
+----------<span class="w">  </span>----------<span class="w">  </span>----------<span class="w">  </span>-------------------------<span class="w">  </span>...
+<span class="m">778</span><span class="w">         </span><span class="m">308</span><span class="w">         </span>MTD99<span class="w">       </span>resource<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">  </span>...
+<span class="m">798</span><span class="w">         </span><span class="m">310</span><span class="w">         </span>MTD101<span class="w">      </span>resource<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">  </span>...
+<span class="m">806</span><span class="w">         </span><span class="m">311</span><span class="w">         </span>MTD102<span class="w">      </span>resource<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">  </span>...
+<span class="m">993</span><span class="w">         </span><span class="m">351</span><span class="w">         </span>MTD113<span class="w">      </span>resource<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">  </span>...
+</pre></div>
+</div>
+<p>The structure of the <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> command is as follows (<em>Note: <strong>all</strong> characters are case <strong>in</strong>sensitive</em>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SELECT<span class="w"> </span><span class="o">[</span>DISTINCT<span class="o">]</span><span class="w"> </span>field
+FrOM<span class="w"> </span>table
+WHErE<span class="w"> </span>predicate
+GrOUP<span class="w"> </span>BY<span class="w"> </span>field
+HAVING<span class="w"> </span>predicate
+OrDEr<span class="w"> </span>BY<span class="w"> </span>field
+LIMIT<span class="w"> </span>number
+<span class="p">;</span>
+</pre></div>
+</div>
+<p>Let’s try some more elaborate queries:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>Numbers<span class="w"> </span>FrOM<span class="w"> </span>trait_info<span class="w"> </span>LIMIT<span class="w"> </span><span class="m">5</span><span class="p">;</span>
+
+Numbers<span class="w">   </span>
+----------
+<span class="m">1</span><span class="w">         </span>
+<span class="m">4</span><span class="w">         </span>
+<span class="m">6</span><span class="w">         </span>
+<span class="m">9</span><span class="w">         </span>
+<span class="m">12</span><span class="w">      </span>
+
+sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>Numbers<span class="w"> </span>
+<span class="w">   </span>...&gt;<span class="w"> </span>FrOM<span class="w"> </span>trait_info
+<span class="w">   </span>...&gt;<span class="w"> </span>WHErE<span class="w"> </span>Numbers<span class="w"> </span>&gt;<span class="w"> </span><span class="m">100</span><span class="w"> </span>
+<span class="w">   </span>...&gt;<span class="w"> </span>AND<span class="w"> </span>Numbers<span class="w"> </span>&lt;<span class="w"> </span><span class="m">200</span><span class="p">;</span>
+
+Numbers<span class="w">   </span>
+----------
+<span class="m">107</span><span class="w">       </span>
+<span class="m">110</span><span class="w">       </span>
+<span class="m">112</span><span class="w">       </span>
+<span class="m">115</span><span class="w">         </span>
+
+sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>Numbers<span class="w"> </span>
+<span class="w">   </span>...&gt;<span class="w"> </span>FrOM<span class="w"> </span>trait_info
+<span class="w">   </span>...&gt;<span class="w"> </span>WHErE<span class="w"> </span><span class="nv">Habitat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;freshwater&quot;</span>
+<span class="w">   </span>...&gt;<span class="w"> </span>AND<span class="w"> </span>Number<span class="w"> </span>&gt;<span class="w"> </span><span class="m">700</span>
+<span class="w">   </span>...&gt;<span class="w"> </span>AND<span class="w"> </span>Number<span class="w"> </span>&lt;<span class="w"> </span><span class="m">800</span><span class="p">;</span>
+
+Numbers<span class="w">   </span>
+----------
+<span class="m">704</span><span class="w">       </span>
+<span class="m">708</span><span class="w">       </span>
+<span class="m">712</span><span class="w">       </span>
+<span class="m">716</span><span class="w">       </span>
+<span class="m">720</span><span class="w">       </span>
+<span class="m">725</span><span class="w">       </span>
+<span class="m">730</span><span class="w">       </span>
+<span class="m">735</span><span class="w">       </span>
+<span class="m">740</span><span class="w">       </span>
+<span class="m">744</span><span class="w">       </span>
+<span class="m">748</span><span class="w">       </span>
+</pre></div>
+</div>
+<p>You can also match records using something like regular expressions. In SQL, when we use the command <code class="docutils literal notranslate"><span class="pre">LIKE</span></code>, the percent % symbol matches any sequence of zero or more characters and the underscore matches any single character. Similarly, <code class="docutils literal notranslate"><span class="pre">GLOB</span></code> uses the asterisk and the underscore.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>DISTINCT<span class="w"> </span>OriginalTraitName
+<span class="w">   </span>...&gt;<span class="w"> </span>FrOM<span class="w"> </span>trait_info
+<span class="w">   </span>...&gt;<span class="w"> </span>WHErE<span class="w"> </span>OriginalTraitName<span class="w"> </span>LIKE<span class="w"> </span><span class="s2">&quot;_esource Consumption rate&quot;</span><span class="p">;</span>
+
+OriginalTraitName<span class="w">        </span>
+-------------------------
+resource<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">          </span>
+
+sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>DISTINCT<span class="w"> </span>OriginalTraitName
+<span class="w">   </span>...&gt;<span class="w"> </span>FrOM<span class="w"> </span>trait_info
+<span class="w">   </span>...&gt;<span class="w"> </span>WHErE<span class="w"> </span>OriginalTraitName<span class="w"> </span>LIKE<span class="w"> </span><span class="s2">&quot;resource%&quot;</span><span class="p">;</span>
+
+OriginalTraitName<span class="w">                       </span>
+----------------------------------------
+resource<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">               </span>
+resource<span class="w"> </span>Mass<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">          </span>
+resource<span class="w"> </span>reaction<span class="w"> </span>Distance<span class="w">              </span>
+resource<span class="w"> </span>Habitat<span class="w"> </span>Encounter<span class="w"> </span>rate<span class="w">         </span>
+resource<span class="w"> </span>Consumption<span class="w"> </span>Probability<span class="w">        </span>
+resource<span class="w"> </span>Mobility<span class="w"> </span>Selection<span class="w">             </span>
+resource<span class="w"> </span>Size<span class="w"> </span>Selection<span class="w">                 </span>
+resource<span class="w"> </span>Size<span class="w"> </span>Capture<span class="w"> </span>Intent<span class="w"> </span>Acceptance<span class="w"> </span>
+resource<span class="w"> </span>Encounter<span class="w"> </span>rate<span class="w">                 </span>
+resource<span class="w"> </span>Escape<span class="w"> </span>response<span class="w"> </span>Probability<span class="w"> </span>
+
+sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>DISTINCT<span class="w"> </span>OriginalTraitName
+<span class="w">   </span>...&gt;<span class="w"> </span>FrOM<span class="w"> </span>trait_info
+<span class="w">   </span>...&gt;<span class="w"> </span>WHErE<span class="w"> </span>OriginalTraitName<span class="w"> </span>GLOB<span class="w"> </span><span class="s2">&quot;resource*&quot;</span><span class="p">;</span>
+
+
+OriginalTraitName<span class="w">                       </span>
+----------------------------------------
+resource<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">               </span>
+resource<span class="w"> </span>Mass<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">          </span>
+resource<span class="w"> </span>reaction<span class="w"> </span>Distance<span class="w">              </span>
+resource<span class="w"> </span>Habitat<span class="w"> </span>Encounter<span class="w"> </span>rate<span class="w">         </span>
+resource<span class="w"> </span>Consumption<span class="w"> </span>Probability<span class="w">        </span>
+resource<span class="w"> </span>Mobility<span class="w"> </span>Selection<span class="w">             </span>
+resource<span class="w"> </span>Size<span class="w"> </span>Selection<span class="w">                 </span>
+resource<span class="w"> </span>Size<span class="w"> </span>Capture<span class="w"> </span>Intent<span class="w"> </span>Acceptance<span class="w"> </span>
+resource<span class="w"> </span>Encounter<span class="w"> </span>rate<span class="w">                 </span>
+resource<span class="w"> </span>Escape<span class="w"> </span>response<span class="w"> </span>Probability<span class="w"> </span>
+
+<span class="c1"># NOTE THAT GLOB IS CASE SENSITIVE, WHILE LIKE IS NOT</span>
+
+sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>DISTINCT<span class="w"> </span>OriginalTraitName
+<span class="w">   </span>...&gt;<span class="w"> </span>FrOM<span class="w"> </span>trait_info
+<span class="w">   </span>...&gt;<span class="w"> </span>WHErE<span class="w"> </span>OriginalTraitName<span class="w"> </span>LIKE<span class="w"> </span><span class="s2">&quot;resource%&quot;</span><span class="p">;</span>
+
+OriginalTraitName<span class="w">                       </span>
+----------------------------------------
+resource<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">               </span>
+resource<span class="w"> </span>Mass<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">          </span>
+resource<span class="w"> </span>reaction<span class="w"> </span>Distance<span class="w">              </span>
+resource<span class="w"> </span>Habitat<span class="w"> </span>Encounter<span class="w"> </span>rate<span class="w">         </span>
+resource<span class="w"> </span>Consumption<span class="w"> </span>Probability<span class="w">        </span>
+resource<span class="w"> </span>Mobility<span class="w"> </span>Selection<span class="w">             </span>
+resource<span class="w"> </span>Size<span class="w"> </span>Selection<span class="w">                 </span>
+resource<span class="w"> </span>Size<span class="w"> </span>Capture<span class="w"> </span>Intent<span class="w"> </span>Acceptance<span class="w"> </span>
+resource<span class="w"> </span>Encounter<span class="w"> </span>rate<span class="w">                 </span>
+resource<span class="w"> </span>Escape<span class="w"> </span>response<span class="w"> </span>Probability<span class="w"> </span>
+</pre></div>
+</div>
+<p>We can also order by any column:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>OriginalTraitName,<span class="w"> </span>Habitat<span class="w"> </span>FrOM<span class="w"> </span>
+<span class="w">   </span>...&gt;<span class="w">  </span>trait_info<span class="w"> </span>LIMIT<span class="w"> </span><span class="m">5</span><span class="p">;</span>
+
+OriginalTraitName<span class="w">          </span>Habitat<span class="w">   </span>
+-------------------------<span class="w">  </span>----------
+resource<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">  </span>freshwater
+resource<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">  </span>freshwater
+resource<span class="w"> </span>Consumption<span class="w"> </span>rate<span class="w">  </span>freshwater
+resource<span class="w"> </span>Mass<span class="w"> </span>Consumption<span class="w">  </span>freshwater
+resource<span class="w"> </span>Mass<span class="w"> </span>Consumption<span class="w">  </span>freshwater
+
+sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>OriginalTraitName,<span class="w"> </span>Habitat<span class="w"> </span>FrOM<span class="w"> </span>
+<span class="w">   </span>...&gt;<span class="w"> </span>trait_info<span class="w"> </span>OrDEr<span class="w"> </span>BY<span class="w"> </span>OriginalTraitName<span class="w"> </span>LIMIT<span class="w"> </span><span class="m">5</span><span class="p">;</span>
+
+OriginalTraitName<span class="w">           </span>Habitat<span class="w">   </span>
+--------------------------<span class="w">  </span>----------
+<span class="m">48</span>-hr<span class="w"> </span>Hatching<span class="w"> </span>Probability<span class="w">  </span>marine<span class="w">    </span>
+Asexual<span class="w"> </span>reproduction<span class="w"> </span>rate<span class="w">   </span>marine<span class="w">    </span>
+Attack<span class="w"> </span>Body<span class="w"> </span>Acceleration<span class="w">    </span>marine<span class="w">    </span>
+Attack<span class="w"> </span>Body<span class="w"> </span>Velocity<span class="w">        </span>marine<span class="w">    </span>
+Attack<span class="w"> </span>Body<span class="w"> </span>Velocity<span class="w">        </span>marine<span class="w">  </span>
+</pre></div>
+</div>
+<p>Until now we have just queried data from one single table, but as we
+have seen, the point of storing a database in SQL is that we can use
+multiple tables minimizing redundancies within them. And of course,
+querying data from those different tables at the same time will be
+necessary at some point.</p>
+<p>Let’s import then one more table to our database:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sqlite&gt;<span class="w"> </span>CrEATE<span class="w"> </span>TABLE<span class="w"> </span>consumer<span class="w"> </span><span class="o">(</span>Numbers<span class="w"> </span>integer<span class="w"> </span>primary<span class="w"> </span>key,
+<span class="w">  </span>...&gt;<span class="w">                                </span>OriginalID<span class="w"> </span>text,
+<span class="w">  </span>...&gt;<span class="w">                                </span>FinalID<span class="w"> </span>text,
+<span class="w">  </span>...&gt;<span class="w">                                </span>consumer<span class="w"> </span>text,
+<span class="w">  </span>...&gt;<span class="w">                                </span>ConCommon<span class="w"> </span>text,
+<span class="w">  </span>...&gt;<span class="w">                                </span>ConKingdom<span class="w"> </span>text,
+<span class="w">  </span>...&gt;<span class="w">                                </span>ConPhylum<span class="w"> </span>text,
+<span class="w">  </span>...&gt;<span class="w">                                </span>ConClass<span class="w"> </span>text,
+<span class="w">  </span>...&gt;<span class="w">                                </span>ConOrder<span class="w"> </span>text,
+<span class="w">  </span>...&gt;<span class="w">                                </span>ConFamily<span class="w"> </span>text,
+<span class="w">  </span>...&gt;<span class="w">                                </span>ConGenus<span class="w"> </span>text,
+<span class="w">  </span>...&gt;<span class="w">                                </span>ConSpecies<span class="w"> </span>text<span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sqlite&gt;<span class="w"> </span>.import<span class="w"> </span>consumer.csv<span class="w"> </span>consumer
+</pre></div>
+</div>
+<p>Now we have two tables in our database:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sqlite&gt;<span class="w"> </span>.tables
+consumer<span class="w">   </span>trait_info
+</pre></div>
+</div>
+<p>These tables are connected by two different keys: <code class="docutils literal notranslate"><span class="pre">OriginalID</span></code> and <code class="docutils literal notranslate"><span class="pre">FinalID</span></code>. These are unique IDs for each thermal curve. For each <code class="docutils literal notranslate"><span class="pre">FinalID</span></code> we can get the trait name (<code class="docutils literal notranslate"><span class="pre">OriginalTraitName</span></code>) from the <code class="docutils literal notranslate"><span class="pre">trait_info</span></code> table and the corresponding species name (<code class="docutils literal notranslate"><span class="pre">ConSpecies</span></code>) from the <code class="docutils literal notranslate"><span class="pre">consumer</span></code> table.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>A1.FinalID,<span class="w"> </span>A1.consumer,<span class="w"> </span>A2.FinalID,<span class="w">  </span>A2.OriginalTraitName
+<span class="w">   </span>...&gt;<span class="w"> </span>FrOM<span class="w"> </span>consumer<span class="w"> </span>A1,<span class="w"> </span>trait_info<span class="w"> </span>A2
+<span class="w">   </span>...&gt;<span class="w"> </span>WHErE<span class="w"> </span>A1.FinalID<span class="o">=</span>A2.FinalID<span class="w"> </span>LIMIT<span class="w"> </span><span class="m">8</span><span class="p">;</span>
+
+FinalID<span class="w">     </span>consumer<span class="w">               </span>FinalID<span class="w">     </span>OriginalTraitName<span class="w">        </span>
+----------<span class="w">  </span>---------------------<span class="w">  </span>----------<span class="w">  </span>-------------------------
+MTD1<span class="w">        </span>Chaoborus<span class="w"> </span>trivittatus<span class="w">  </span>MTD1<span class="w">        </span>resource<span class="w"> </span>Consumption<span class="w"> </span>rate
+MTD2<span class="w">        </span>Chaoborus<span class="w"> </span>trivittatus<span class="w">  </span>MTD2<span class="w">        </span>resource<span class="w"> </span>Consumption<span class="w"> </span>rate
+MTD3<span class="w">        </span>Chaoborus<span class="w"> </span>americanus<span class="w">   </span>MTD3<span class="w">        </span>resource<span class="w"> </span>Consumption<span class="w"> </span>rate
+MTD4<span class="w">        </span>Stizostedion<span class="w"> </span>vitreum<span class="w">   </span>MTD4<span class="w">        </span>resource<span class="w"> </span>Mass<span class="w"> </span>Consumption
+MTD5<span class="w">        </span>Macrobrachium<span class="w"> </span>rosenbe<span class="w">  </span>MTD5<span class="w">        </span>resource<span class="w"> </span>Mass<span class="w"> </span>Consumption
+MTD6<span class="w">        </span>ranatra<span class="w"> </span>dispar<span class="w">         </span>MTD6<span class="w">        </span>resource<span class="w"> </span>Consumption<span class="w"> </span>rate
+MTD7<span class="w">        </span>Ceriodaphnia<span class="w"> </span>reticula<span class="w">  </span>MTD7<span class="w">        </span>Mass-Specific<span class="w"> </span>Mass<span class="w"> </span>Consum
+MTD8<span class="w">        </span>Polyphemus<span class="w"> </span>pediculus<span class="w">   </span>MTD8<span class="w">        </span>Voluntary<span class="w"> </span>Body<span class="w"> </span>Velocity<span class="w"> </span>
+
+<span class="c1"># In the same way we assign alias to variables, we can use them for tables.</span>
+</pre></div>
+</div>
+<p>This example seems easy because both tables have the same number of rows. But the query is still as simple when we have tables with different rows.</p>
+<p>Let’s import the tcp table:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sqlite&gt;<span class="w"> </span>CrEATE<span class="w"> </span>TABLE<span class="w"> </span>tcp<span class="w"> </span><span class="o">(</span>Numbers<span class="w"> </span>integer<span class="w"> </span>primary<span class="w"> </span>key,
+<span class="w">   </span>...&gt;<span class="w">                           </span>OriginalID<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                           </span>FinalID<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                           </span>OriginalTraitValue<span class="w"> </span>integer,
+<span class="w">   </span>...&gt;<span class="w">                           </span>OriginalTraitUnit<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                           </span>LabGrowthTemp<span class="w"> </span>integer,
+<span class="w">   </span>...&gt;<span class="w">                           </span>LabGrowthTempUnit<span class="w"> </span>text,<span class="w">   </span>
+<span class="w">   </span>...&gt;<span class="w">                           </span>ConTemp<span class="w"> </span>integer,
+<span class="w">   </span>...&gt;<span class="w">                           </span>ConTempUnit<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                           </span>ConTempMethod<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                           </span>ConAcc<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                           </span>ConAccTemp<span class="w"> </span>integer<span class="o">)</span><span class="p">;</span>
+
+sqlite&gt;<span class="w"> </span>.import<span class="w"> </span>tcp.csv<span class="w"> </span>tcp
+sqlite&gt;<span class="w"> </span>.tables
+consumer<span class="w">   </span>tcp<span class="w">        </span>trait_info
+</pre></div>
+</div>
+<p>Now imagine we want to query the thermal performance curves that we have stored for the species Mytilus edulis. Using the FinalID to match the tables, the query can be as simple as:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sqlite&gt;<span class="w"> </span>CrEATE<span class="w"> </span>TABLE<span class="w"> </span>tcp<span class="w"> </span><span class="o">(</span>Numbers<span class="w"> </span>integer<span class="w"> </span>primary<span class="w"> </span>key,
+<span class="w">   </span>...&gt;<span class="w">                           </span>OriginalID<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                           </span>FinalID<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                           </span>OriginalTraitValue<span class="w"> </span>integer,
+<span class="w">   </span>...&gt;<span class="w">                           </span>OriginalTraitUnit<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                           </span>LabGrowthTemp<span class="w"> </span>integer,
+<span class="w">   </span>...&gt;<span class="w">                           </span>LabGrowthTempUnit<span class="w"> </span>text,<span class="w">   </span>
+<span class="w">   </span>...&gt;<span class="w">                           </span>ConTemp<span class="w"> </span>integer,
+<span class="w">   </span>...&gt;<span class="w">                           </span>ConTempUnit<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                           </span>ConTempMethod<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                           </span>ConAcc<span class="w"> </span>text,
+<span class="w">   </span>...&gt;<span class="w">                           </span>ConAccTemp<span class="w"> </span>integer<span class="o">)</span><span class="p">;</span>
+
+sqlite&gt;<span class="w"> </span>.import<span class="w"> </span>tcp.csv<span class="w"> </span>tcp
+sqlite&gt;<span class="w"> </span>.tables
+consumer<span class="w">   </span>tcp<span class="w">        </span>trait_info
+
+<span class="w">                       </span>
+
+sqlite&gt;<span class="w"> </span>SELECT<span class="w"> </span>A1.ConTemp,<span class="w"> </span>A1.OriginalTraitValue,<span class="w"> </span>A2.OriginalTraitName,<span class="w"> </span>A3.consumer
+<span class="w">   </span>...&gt;<span class="w"> </span>FrOM<span class="w"> </span>tcp<span class="w"> </span>A1,<span class="w"> </span>trait_info<span class="w"> </span>A2,<span class="w"> </span>consumer<span class="w"> </span>A3
+<span class="w">   </span>...&gt;<span class="w"> </span>WHErE<span class="w"> </span>A1.FinalID<span class="o">=</span>A2.FinalID<span class="w"> </span>AND<span class="w"> </span>A3.ConSpecies<span class="o">=</span><span class="s2">&quot;Mytilus edulis&quot;</span><span class="w"> </span>AND<span class="w"> </span>A3.FinalID<span class="o">=</span>A2.FinalID<span class="w"> </span>LIMIT<span class="w"> </span><span class="m">8</span>
+
+ConTemp<span class="w">     </span>OriginalTraitValue<span class="w">    </span>OriginalTraitName<span class="w">               </span>consumer<span class="w">            </span>
+----------<span class="w">  </span>--------------------<span class="w">  </span>------------------------------<span class="w">  </span>--------------------
+<span class="m">25</span><span class="w">          </span><span class="m">2</span>.707075<span class="w">              </span>Filtration<span class="w"> </span>rate<span class="w">                 </span>Mytilus<span class="w"> </span>edulis<span class="w">      </span>
+<span class="m">20</span><span class="w">          </span><span class="m">3</span>.40721<span class="w">               </span>Filtration<span class="w"> </span>rate<span class="w">                 </span>Mytilus<span class="w"> </span>edulis<span class="w">      </span>
+<span class="m">5</span><span class="w">           </span><span class="m">3</span>.419455<span class="w">              </span>Filtration<span class="w"> </span>rate<span class="w">                 </span>Mytilus<span class="w"> </span>edulis<span class="w">      </span>
+<span class="m">15</span><span class="w">          </span><span class="m">3</span>.711165<span class="w">              </span>Filtration<span class="w"> </span>rate<span class="w">                 </span>Mytilus<span class="w"> </span>edulis<span class="w">      </span>
+<span class="m">10</span><span class="w">          </span><span class="m">3</span>.875465<span class="w">              </span>Filtration<span class="w"> </span>rate<span class="w">                 </span>Mytilus<span class="w"> </span>edulis<span class="w">      </span>
+<span class="m">5</span><span class="w">           </span><span class="m">0</span>.34<span class="w">                  </span>In<span class="w"> </span>Vitro<span class="w"> </span>Gill<span class="w"> </span>Particle<span class="w"> </span>Transpo<span class="w">  </span>Mytilus<span class="w"> </span>edulis<span class="w">      </span>
+<span class="m">10</span><span class="w">          </span><span class="m">0</span>.46<span class="w">                  </span>In<span class="w"> </span>Vitro<span class="w"> </span>Gill<span class="w"> </span>Particle<span class="w"> </span>Transpo<span class="w">  </span>Mytilus<span class="w"> </span>edulis<span class="w">      </span>
+<span class="m">15</span><span class="w">          </span><span class="m">0</span>.595<span class="w">                 </span>In<span class="w"> </span>Vitro<span class="w"> </span>Gill<span class="w"> </span>Particle<span class="w"> </span>Transpo<span class="w">  </span>Mytilus<span class="w"> </span>edulis
+</pre></div>
+</div>
+<p>So on and so forth (joining tables etc. would come next…). But if you want to keep practicing and learn more about sqlite commands, this is a very useful site: <a class="reference external" href="http://www.sqlite.org/sessions/sqlite.html">http://www.sqlite.org/sessions/sqlite.html</a>. You can
+store your queries and database management commands in an <code class="docutils literal notranslate"> <span class="pre">.sql</span></code> file (<code class="docutils literal notranslate"><span class="pre">geany</span></code> will take care of syntax highlighting etc.)</p>
+</section>
+<section id="sqlite-with-python">
+<h2>SQLite with Python<a class="headerlink" href="#sqlite-with-python" title="Link to this heading">#</a></h2>
+<p>It is easy to access, update and manage SQLite databases with Python (you will find this script file in the <code class="docutils literal notranslate"><span class="pre">code</span></code> directory):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;:memory:&quot;</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CrEATE TABLE tt (Val TEXT)&quot;</span><span class="p">)</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,),</span> <span class="p">(</span><span class="s1">&#39;ab&#39;</span><span class="p">,),</span> <span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">,),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,)]</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">&quot;INSErT INTO tt VALUES (?)&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FrOM tt WHErE Val LIKE &#39;a%&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can create a database in memory, without using the disk — thus you can create and discard an SQLite database within your workflow!</p>
+</section>
+<section id="readings-and-resources">
+<h2>readings and resources<a class="headerlink" href="#readings-and-resources" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>“The Definitive Guide to SQLite” is a pretty complete guide to SQLite and freely available from <a class="reference external" href="http://sd.blackball.lv/library/The_Definitive_Guide_to_SQLite_2nd_edition.pdf">here</a></p></li>
+<li><p>For databses in general, try the <a class="reference external" href="https://www.coursera.org/course/db">Stanford Introduction to Databases course</a></p></li>
+<li><p>A set of sqlite tutorials in Jupyter: <a class="github reference external" href="https://github.com/royalosyin/Practice-SQL-with-SQLite-and-Jupyter-Notebook">royalosyin/Practice-SQL-with-SQLite-and-Jupyter-Notebook</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="appendix-jupy-intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Jupyter</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../appendices/data-python.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Analysis in Python (Optional)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-databases">relational databases</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sqlite">SQLite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sqlite-with-python">SQLite with Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-and-resources">readings and resources</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

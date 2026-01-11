@@ -1,0 +1,929 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>High Performance Computing ` &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=01a0bdc2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/experimental/appendix-hpc';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-computing.html">Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Biological Computing in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r.html">Biological Computing in R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-basic-stats.html">Basic Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-r.html">Data Management and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exp-design.html">Experimental design and Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-prework.html">Advanced Modelling &amp; Statistics Pre-work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-eemodelling.html">Ecological &amp; Evolutionary Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../populations.html">Single populations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interactions.html">Species interactions</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-advanced-stats.html">Advanced Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time-series.html">Time series analysis in R</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../mle.html">Model Fitting using Maximum Likelihood</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-assignments.html">Assignments and Assessments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-assessment.html">MQB Coursework Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-mini-proj.html">The Computing Miniproject</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-appendices.html">Appendices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MulQuaBio/MQB/master?urlpath=lab/tree/notebooks/experimental/appendix-hpc.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MulQuaBio/MQB/blob/master/notebooks/experimental/appendix-hpc.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/experimental/appendix-hpc.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/experimental/appendix-hpc.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>High Performance Computing <span class="tocSkip">`</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-parallel-processing">Local parallel processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#threading-vs-multiprocessing">Threading vs. multiprocessing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-python-scripts-on-ic-hpc">running Python scripts on IC HPC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-scripts-for-running-on-the-hpc">Preparing the scripts for running on the HPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copying-scripts-from-your-computer-to-the-hpc-server">Copying scripts from your computer to the HPC server</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-scripts">running the scripts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-python-script-to-submit-jobs">Using a Python script to submit jobs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-environments">Conda Environments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">Intro</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-conda-environments">Introducing: conda environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-time-conda-setup">First time conda setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-new-conda-environment">Creating a new conda environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activating-a-conda-environment">Activating a conda environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-in-conda">Installing packages in conda</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-aliases">Bash aliases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#login">Login</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-run-status">Check run status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#auto-check-run-status">Auto-check run status</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">readings &amp; resources</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <!--NAVIGATION-->
+<p>| <a class="reference internal" href="#Index.ipynb"><span class="xref myst">Main Contents</span></a>|</p>
+<section class="tex2jax_ignore mathjax_ignore" id="high-performance-computing">
+<h1>High Performance Computing <span class="tocSkip">`<a class="headerlink" href="#high-performance-computing" title="Link to this heading">#</a></h1>
+<h1>Contents<span class="tocSkip"></span></h1>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Local-parallel-processing" data-toc-modified-id="Local-parallel-processing-1">Local parallel processing</a></span><ul class="toc-item"><li><span><a href="#Threading-vs.-multiprocessing" data-toc-modified-id="Threading-vs.-multiprocessing-1.1">Threading vs. multiprocessing</a></span></li></ul></li><li><span><a href="#running-Python-scripts-on-IC-HPC" data-toc-modified-id="running-Python-scripts-on-IC-HPC-2">running Python scripts on IC HPC</a></span><ul class="toc-item"><li><span><a href="#Preparing-the-scripts-for-running-on-the-HPC" data-toc-modified-id="Preparing-the-scripts-for-running-on-the-HPC-2.1">Preparing the scripts for running on the HPC</a></span></li><li><span><a href="#Copying-scripts-from-your-computer-to-the-HPC-server" data-toc-modified-id="Copying-scripts-from-your-computer-to-the-HPC-server-2.2">Copying scripts from your computer to the HPC server</a></span></li><li><span><a href="#running-the-scripts" data-toc-modified-id="running-the-scripts-2.3">running the scripts</a></span></li><li><span><a href="#Using-a-Python-script-to-submit-jobs" data-toc-modified-id="Using-a-Python-script-to-submit-jobs-2.4">Using a Python script to submit jobs</a></span></li></ul></li><li><span><a href="#readings-&amp;-resources" data-toc-modified-id="readings-&amp;-resources-3">readings &amp; resources</a></span></li></ul></div><p>This chapter introduces you to HPC in Python, including use of the <a class="reference external" href="https://wiki.imperial.ac.uk/display/HPC/High+Performance+Computing">Imperial College HPC</a>.</p>
+<section id="local-parallel-processing">
+<h2>Local parallel processing<a class="headerlink" href="#local-parallel-processing" title="Link to this heading">#</a></h2>
+<p>Note that there are a number of ways in which you can develop HPC implementations for your code locally (on your own computer). We will not cover these, but here is a list of particularly useful approaches/tools:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ipython.org/ipython-doc/3/parallel">Ipython <code class="docutils literal notranslate"><span class="pre">parallel</span></code></a></p></li>
+<li><p>Multi-threading, using the <a class="reference external" href="https://docs.python.org/3/library/threading.html"><code class="docutils literal notranslate"><span class="pre">threading</span></code> package</a></p></li>
+<li><p>Using multiple processors with the <a class="reference external" href="https://docs.python.org/2/library/multiprocessing.html"><code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code> package</a></p></li>
+</ul>
+<section id="threading-vs-multiprocessing">
+<h3>Threading vs. multiprocessing<a class="headerlink" href="#threading-vs-multiprocessing" title="Link to this heading">#</a></h3>
+<p>The difference between threading and multiprocessing is that threads share the same memory allocation, while processes have separate memory allocations. This makes it a harder to share information between processes with multiprocessing, but this is till a useful approach for quick and dirty parallelization. When better communication between processes is required, sophisticated solutions such as MPI and OpenMP may be needed. The MPI (Message Passing Interface) standard/protocol can be used in Python to parallelize your code over multiple processors through the [<code class="docutils literal notranslate"><span class="pre">mpi4py</span></code> package]
+(<a class="reference external" href="http://mpi4py.scipy.org/docs/usrman/index.html">http://mpi4py.scipy.org/docs/usrman/index.html</a>). You can also parallelize numpy array loops with <a class="reference external" href="http://www.perrygeo.com/parallelizing-numpy-array-loops-with-cython-and-mpi.html"><code class="docutils literal notranslate"><span class="pre">cython</span></code> and OpenMP</a>.</p>
+</section>
+</section>
+<section id="running-python-scripts-on-ic-hpc">
+<h2>running Python scripts on IC HPC<a class="headerlink" href="#running-python-scripts-on-ic-hpc" title="Link to this heading">#</a></h2>
+<p><em>These instructions also apply, with suitable modifications, for r scripts.</em></p>
+<section id="preparing-the-scripts-for-running-on-the-hpc">
+<h3>Preparing the scripts for running on the HPC<a class="headerlink" href="#preparing-the-scripts-for-running-on-the-hpc" title="Link to this heading">#</a></h3>
+<p>The script you will run needs a sha-bang (telling it what shell to run, usually bash), you need to allocate resources to PBS (such as walltime, number of processors, and memory , using the <code class="docutils literal notranslate"><span class="pre">#PBS</span></code> directive), and tell it what Python script to run. The bash script could
+look something like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#lines declaring parameters to request from HPC:</span>
+
+<span class="c1">## tell the batch manager to limit the walltime for the job to given hh:mm:ss</span>
+<span class="c1">#PBS -l walltime=06:30:00 </span>
+
+<span class="c1">## tell the batch manager to use 1 node with 1 cpu (total 1*1 cpus) and 4000mb of memory per node</span>
+<span class="c1">#PBS -l select=1:ncpus=1:mem=4000mb</span>
+<span class="c1">## *NOTE: serial jobs do not require a number of cpus*</span>
+
+<span class="c1">## Name your job (optional, but can be convenient)</span>
+<span class="c1">#PBS -N Py_test_1</span>
+
+<span class="c1">## setup to get an email when scripts starts and ends (or aborts) </span>
+<span class="c1">#PBS -m abe </span>
+<span class="c1">## Look up man qsub for what the options a,b,e do</span>
+
+<span class="c1">## Specify email address (multiple addresses can be set; look up man qsub)</span>
+<span class="c1">#PBS -M your.email@imperial.ac.uk</span>
+
+<span class="c1"># Load python as engine; default is 2.7.3 change version from 2.7.3 if </span>
+<span class="c1">## needed (python 3 is supported)</span>
+module<span class="w"> </span>load<span class="w"> </span>python/2.7.3
+
+<span class="c1"># general tools</span>
+module<span class="w"> </span>load<span class="w"> </span>intel-suite
+<span class="c1">## Intel math kernel must be loaded at run time for compiling etc. </span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;python is about to run&quot;</span>
+
+python<span class="w"> </span>&lt;<span class="w"> </span><span class="nv">$WOrK</span>/TestPyHPC/MyHPCScript.py
+<span class="c1">## tells the batch manager to execute MyHPCScript.py in </span>
+<span class="c1">## TestPyHPC using python</span>
+
+<span class="c1"># mv the output file result*</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Moving output files&quot;</span>
+mv<span class="w"> </span>result*<span class="w"> </span><span class="nv">$WOrK</span>/TestPyHPC/output/
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;python has finished running&quot;</span>
+</pre></div>
+</div>
+<p>Or, you can do something like this to move all files one-by-one to avoid exceeding memory allocation (<code class="docutils literal notranslate"><span class="pre">.p</span></code> indicates that you used <code class="docutils literal notranslate"><span class="pre">pickle</span></code> to dump results):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>f<span class="w"> </span><span class="k">in</span><span class="w"> </span>*.p<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Processing </span><span class="nv">$f</span><span class="s2">...&quot;</span>
+<span class="w">    </span>mv<span class="w"> </span><span class="nv">$f</span><span class="w"> </span><span class="nv">$WOrK</span>/TestPyHPC/output/
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>Note that to use Python 3, you will need <a class="reference external" href="https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/support/applications/Python">Anaconda</a>.</p>
+<p>NOTE: Most of the cx1 nodes have multiple cores, so there’s no fixed memory assigned to each core. If you use more memory than your request on your <code class="docutils literal notranslate"><span class="pre">#PBS</span></code> directive, your job is likely to be terminated. If you request more memory than is available, the job will remain queued until sufficient memory is free for the job to run.</p>
+<p>Your HPC enabled Python code could look like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Created on Wed Nov 02 16:20:48 2017</span>
+
+<span class="sd">@author: Samraat Pawar</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span> <span class="c1"># to get environment variables</span>
+
+<span class="n">home</span> <span class="o">&lt;-</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;HOME&#39;</span><span class="p">)</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PBS_ArrAY_INDEX&quot;</span><span class="p">))</span>
+
+<span class="c1">####Functions block start ####</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">do_simulation</span><span class="p">(</span><span class="n">ar1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">etc</span><span class="p">):</span>
+	<span class="n">results</span> <span class="o">=</span> <span class="o">...</span>
+	<span class="k">return</span> <span class="n">results</span>
+<span class="c1">#### Functions block end ####</span>
+
+<span class="n">do_simulation</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">save</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="s1">&#39;home/MyProject/results_HPC.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note the lines in this Python code where you the environment so that it knows the working directory and where to output files.</p>
+</section>
+<section id="copying-scripts-from-your-computer-to-the-hpc-server">
+<h3>Copying scripts from your computer to the HPC server<a class="headerlink" href="#copying-scripts-from-your-computer-to-the-hpc-server" title="Link to this heading">#</a></h3>
+<p>Then, secure copy bash script file to <code class="docutils literal notranslate"><span class="pre">\$HOME</span></code> on HPC server using scp:</p>
+<p><code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">source</span> <span class="pre">host:destination</span></code></p>
+<p>Fore example,</p>
+<p><code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">script.sh</span> <span class="pre">user&#64;login.cx1.hpc.ic.ac.uk:/home/user/whatever/script.sh</span></code></p>
+</section>
+<section id="running-the-scripts">
+<h3>running the scripts<a class="headerlink" href="#running-the-scripts" title="Link to this heading">#</a></h3>
+<p>Open a secure shell (ssh):</p>
+<p><code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">user&#64;login.cx1.hpc.ic.ac.uk</span></code></p>
+<p>where <code class="docutils literal notranslate"><span class="pre">user</span></code> is your ICL username. You will then be prompted to enter your (ICL) password. Once on the HPC server, check for available modules:</p>
+<p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code></p>
+<p>Your job then needs to be queued using <code class="docutils literal notranslate"><span class="pre">qsub</span></code> (PBS):</p>
+<p><code class="docutils literal notranslate"><span class="pre">qsub</span> <span class="pre">-j</span> <span class="pre">eo</span> <span class="pre">script.sh</span></code></p>
+<p>where <code class="docutils literal notranslate"><span class="pre">-j</span> <span class="pre">eo</span></code> is an option to join both output and error into one file. running the script w ll produce a job output (anything that is printed in the shell terminal (e.g. <code class="docutils literal notranslate"><span class="pre">echo</span></code>)), an  an error file (related to whether the script was successful or not), in the form
+of <code class="docutils literal notranslate"><span class="pre">{scriptname}.o{job</span> <span class="pre">id}</span></code> and <code class="docutils literal notranslate"><span class="pre">{scriptname}.e{jobid}.</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">qstat</span></code> command provides information on the job being submitted (which queue (short, medium, long), status, etc.) as well as information on all queues available (-q, -Q).</p>
+</section>
+<section id="using-a-python-script-to-submit-jobs">
+<h3>Using a Python script to submit jobs<a class="headerlink" href="#using-a-python-script-to-submit-jobs" title="Link to this heading">#</a></h3>
+<p>PBS also allows you to submit jobs using a Python (instead of shell) script. Look up the <code class="docutils literal notranslate"><span class="pre">qsub</span></code> manual (<code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">qsub</span></code>) in the HPC terminal, or <a class="reference external" href="https://gist.github.com/nobias/5b2373258e595e5242d5">see this</a>.</p>
+<p>For example, the Python job script named “<a class="reference external" href="http://MyHPCPy.py">MyHPCPy.py</a>” for a job named “HelloJob” prints “Hello”:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#PBS -l select=1:ncpus=3:mem=1gb</span>
+<span class="c1">#PBS -N HelloJob</span>
+<span class="nb">print</span> <span class="s2">&quot;Hello&quot;</span>
+</pre></div>
+</div>
+<p>To run a Python job script you would do the same a for a bash job script above:</p>
+<p><code class="docutils literal notranslate"><span class="pre">qsub</span> <span class="pre">MyHPCPy.py</span></code></p>
+</section>
+</section>
+<section id="conda-environments">
+<h2>Conda Environments<a class="headerlink" href="#conda-environments" title="Link to this heading">#</a></h2>
+<p>The Imperial HPC system is easiest to manage when you are using <a class="reference external" href="https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/support/applications/conda/">conda</a>. Conda is a package management and virtual environment system, similar to <code class="docutils literal notranslate"><span class="pre">venv</span></code> in native python.</p>
+<section id="intro">
+<h3>Intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h3>
+<p>There are many advantages to using a package management system in Python, but to explain it best, let’s give an example:
+Say you are a sith lord working on two projects at the same time. You started the first one called <code class="docutils literal notranslate"><span class="pre">rotJ.py</span></code> a while back, and you were using the package <code class="docutils literal notranslate"><span class="pre">force</span></code> version 0.6. <code class="docutils literal notranslate"><span class="pre">force</span> <span class="pre">0.6</span></code> contains some useful functions to make your code work, including one called <code class="docutils literal notranslate"><span class="pre">force_strength()</span></code> which took one argument, the subject you were testing. This was a massive project containing thousands of lines of code, with calls to <code class="docutils literal notranslate"><span class="pre">force_strength()</span></code> all over.</p>
+<p>Later on you started a new project, called <code class="docutils literal notranslate"><span class="pre">tPM.py</span></code>. Since you started on <code class="docutils literal notranslate"><span class="pre">rotJ.py</span></code>, <code class="docutils literal notranslate"><span class="pre">force</span></code> has now been updated to version 1.1, which introduced a new way to calculate <code class="docutils literal notranslate"><span class="pre">force_strength()</span></code>. Now the subject is required to have a midichlorians count passed along with the subject reference itself. This greatly speeds up calculations involving force, but it also entirely breaks anything designed to work using the old version. Here’s some dummy code for the two projects, just to illustrate.</p>
+<p><strong><a class="reference external" href="http://rotJ.py">rotJ.py</a></strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># rotJ.py</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">force</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lore</span><span class="w"> </span><span class="kn">import</span> <span class="n">luke</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">force</span><span class="o">.</span><span class="n">force_strength</span><span class="p">(</span><span class="n">luke</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong><a class="reference external" href="http://tPM.py">tPM.py</a></strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># tPM.py</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">force</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lore</span><span class="w"> </span><span class="kn">import</span> <span class="n">annikin</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">force</span><span class="o">.</span><span class="n">detect_midichlorians</span><span class="p">(</span><span class="n">annikin</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">&quot;dark&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">force</span><span class="o">.</span><span class="n">force_strength</span><span class="p">(</span><span class="n">annikin</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Now, we’ve hit a serious issue. As we updated to <code class="docutils literal notranslate"><span class="pre">force</span></code> version 1.1, <code class="docutils literal notranslate"><span class="pre">force_strength()</span></code> now takes 2 required arguments. When we run <code class="docutils literal notranslate"><span class="pre">rotJ.py</span></code> we get the following error:
+<code class="docutils literal notranslate"><span class="pre">TypeError:</span> <span class="pre">force.force_strength()</span> <span class="pre">missing</span> <span class="pre">1</span> <span class="pre">required</span> <span class="pre">positional</span> <span class="pre">argument:</span> <span class="pre">'midichlorians'</span></code></p>
+<p>But if we downgrade to <code class="docutils literal notranslate"><span class="pre">force</span></code> v0.6, we lose all the benefits of the new method to detect force (which was providing a 500% speedup to our code!)</p>
+<p>So what can we do? How can have two versions of the same module at once?</p>
+</section>
+<section id="introducing-conda-environments">
+<h3>Introducing: conda environments<a class="headerlink" href="#introducing-conda-environments" title="Link to this heading">#</a></h3>
+<p>Conda environments allow us to have multiple environments of Python present on a system, each with their own package versions and dependencies independent of any other installation. With the right setup we can run development for both of these projects simaltaneously, switching between the two environments with a simple command (detailed later).</p>
+</section>
+<section id="first-time-conda-setup">
+<h3>First time conda setup<a class="headerlink" href="#first-time-conda-setup" title="Link to this heading">#</a></h3>
+<p>First of all we need to set up conda on the HPC. Login to the HPC as usual and enter the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>anaconda3/personal
+anaconda-setup
+</pre></div>
+</div>
+<p>This will set up conda (as part of anaconda) for the first time. Any other time you wish to use conda, just run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">anaconda3/personal</span></code> when you log in to the HPC.</p>
+</section>
+<section id="creating-a-new-conda-environment">
+<h3>Creating a new conda environment<a class="headerlink" href="#creating-a-new-conda-environment" title="Link to this heading">#</a></h3>
+<p>The power of conda resides in its modular environments.</p>
+<p>To set up a new Python 3.6 environment named <strong>prequel_trilogy</strong>, enter:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>prequel_trilogy<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6
+</pre></div>
+</div>
+<p>You can view which environments are present using <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>-bash-4.2$ conda env list
+
+# conda environments:
+#
+prequel_trilogy          /home/username/anaconda3/envs/prequel_trilogy
+root                  *  /home/username/anaconda3
+
+</pre></div>
+</div>
+<p>right now the <code class="docutils literal notranslate"><span class="pre">*</span></code> shows that the root environment is active, however we would like to install a few packages in our new environment.</p>
+</section>
+<section id="activating-a-conda-environment">
+<h3>Activating a conda environment<a class="headerlink" href="#activating-a-conda-environment" title="Link to this heading">#</a></h3>
+<p>To work using a conda environment, you must first activate it. In our case we should activate prequel_trilogy using the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">activate</span> <span class="n">prequel_trilogy</span>
+</pre></div>
+</div>
+<p>This does some fancy magic in the background, and makes it so the <code class="docutils literal notranslate"><span class="pre">python</span></code> command now points to the installation of Python present in the new conda environment. As a reminder to you, conda preappends the string <code class="docutils literal notranslate"><span class="pre">(prequel_trilogy)</span></code> to your bash prompt to remind you which conda env you are now using.</p>
+<p><code class="docutils literal notranslate"><span class="pre">(prequel_trilogy)</span> <span class="pre">-bash-4.2$</span> <span class="pre">cd</span> <span class="pre">$HOME</span></code></p>
+</section>
+<section id="installing-packages-in-conda">
+<h3>Installing packages in conda<a class="headerlink" href="#installing-packages-in-conda" title="Link to this heading">#</a></h3>
+<p>Once you have activated your conda environment, you may well need to install other Python packages.
+First of all it’s probably a good idea to search and see if conda has the package you require in its repository using the command <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">search</span> <span class="pre">package</span></code> where <code class="docutils literal notranslate"><span class="pre">package</span></code> is the module you want. This will often take a good while and spit out a lot of information to the terminal. To combat this we can use some little bash tricks to make things more managable. For example, we know that we are running Python 3.6 in the conda env, so let’s do some filtering with <code class="docutils literal notranslate"><span class="pre">grep</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">search</span> <span class="pre">pandas</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">py36</span> <span class="pre">--color=none</span></code></p>
+<p>Once you have located a package, run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code> to install it:</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">pandas</span></code></p>
+<p>Note that we can also specify versions using the modification:
+<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">pandas=1.2</span></code></p>
+</section>
+</section>
+<section id="bash-aliases">
+<h2>Bash aliases<a class="headerlink" href="#bash-aliases" title="Link to this heading">#</a></h2>
+<p>As with most things you do on linux, there is great scope for bash scripting to make your life a lot easier. Below I’ve provided a few alias commands you can put in your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>/<code class="docutils literal notranslate"><span class="pre">.bash_aliases</span></code> file to speed up your workflow. This isn’t the furthest that you can take it though. For instance it’d be rather great to have just one command called <code class="docutils literal notranslate"><span class="pre">hpc</span></code> which would change what it did depending on the arguments given. Maybe you could find a way to make the command <code class="docutils literal notranslate"><span class="pre">hpc</span></code> on its own log you straight in to the cluster, whilst <code class="docutils literal notranslate"><span class="pre">hpc</span> <span class="pre">send</span> <span class="pre">path/to/file</span></code> could upload to your hpc home directory. Maybe <code class="docutils literal notranslate"><span class="pre">hpc</span> <span class="pre">submit</span></code> could submit a job straight from your local command line without ever requiring a login. All of these things <strong>could</strong> be useful, but of course that does depend on whether you are regularly working with the HPC or not.</p>
+<p><em>remember to replace USErNAME with your own hpc username</em></p>
+<section id="login">
+<h3>Login<a class="headerlink" href="#login" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">alias</span> <span class="pre">hpc='ssh</span> <span class="pre">USErNAME&#64;login.cx1.hpc.ic.ac.uk'</span></code></p>
+</section>
+<section id="check-run-status">
+<h3>Check run status<a class="headerlink" href="#check-run-status" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">alias</span> <span class="pre">hpcheck='hpc</span> <span class="pre">&quot;(/opt/pbs/bin/qstat)&quot;'</span></code></p>
+</section>
+<section id="auto-check-run-status">
+<h3>Auto-check run status<a class="headerlink" href="#auto-check-run-status" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">alias</span> <span class="pre">hpwatch='watch</span> <span class="pre">-n</span> <span class="pre">20</span> <span class="pre">-d=cumulative</span> <span class="pre">&quot;ssh</span> <span class="pre">USErNAME&#64;login.cx1.hpc.ic.ac.uk</span> <span class="pre">\'(/opt/pbs/bin/qstat)\'&quot;'</span></code></p>
+</section>
+</section>
+<section id="readings-resources">
+<h2>readings &amp; resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The <a class="reference external" href="https://wiki.imperial.ac.uk/display/HPC/Command+line">ICL HPC wiki is a very useful resource</a></p></li>
+<li><p>When working with conda, it’s always good to consult the <a class="reference external" href="https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/rcs/support/applications/conda/">ICL HPC conda page</a> and the <a class="reference external" href="https://conda.io/docs/_downloads/conda-cheatsheet.pdf">conda cheatsheet</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/experimental"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-parallel-processing">Local parallel processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#threading-vs-multiprocessing">Threading vs. multiprocessing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-python-scripts-on-ic-hpc">running Python scripts on IC HPC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-scripts-for-running-on-the-hpc">Preparing the scripts for running on the HPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copying-scripts-from-your-computer-to-the-hpc-server">Copying scripts from your computer to the HPC server</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-scripts">running the scripts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-python-script-to-submit-jobs">Using a Python script to submit jobs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-environments">Conda Environments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">Intro</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-conda-environments">Introducing: conda environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-time-conda-setup">First time conda setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-new-conda-environment">Creating a new conda environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activating-a-conda-environment">Activating a conda environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-in-conda">Installing packages in conda</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-aliases">Bash aliases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#login">Login</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-run-status">Check run status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#auto-check-run-status">Auto-check run status</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">readings &amp; resources</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

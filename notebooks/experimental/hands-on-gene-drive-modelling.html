@@ -1,0 +1,1242 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hands-on Gene Drive Modelling &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=01a0bdc2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/experimental/hands-on-gene-drive-modelling';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-computing.html">Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Biological Computing in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r.html">Biological Computing in R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-basic-stats.html">Basic Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data-r.html">Data Management and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exp-design.html">Experimental design and Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-prework.html">Advanced Modelling &amp; Statistics Pre-work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-eemodelling.html">Ecological &amp; Evolutionary Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../populations.html">Single populations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interactions.html">Species interactions</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-advanced-stats.html">Advanced Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time-series.html">Time series analysis in R</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../mle.html">Model Fitting using Maximum Likelihood</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-assignments.html">Assignments and Assessments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-assessment.html">MQB Coursework Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-mini-proj.html">The Computing Miniproject</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part-appendices.html">Appendices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MulQuaBio/MQB/master?urlpath=lab/tree/notebooks/experimental/hands-on-gene-drive-modelling.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MulQuaBio/MQB/blob/master/notebooks/experimental/hands-on-gene-drive-modelling.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/experimental/hands-on-gene-drive-modelling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/experimental/hands-on-gene-drive-modelling.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Hands-on Gene Drive Modelling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-of-a-basic-gene-drive-simulator">1. Features of a basic gene drive simulator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-1-drift">1.1 force #1: drift</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-2-drive">1.2 force #2: drive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-3-selection">1.3 force #3: selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-4-population-dynamics">1.4 force #4: Population dynamics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-coding-considerations">2. Some coding considerations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-arguments">2.1 Input arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">2.2 Data types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialisation">2.3 Initialisation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propagation">2.4 Propagation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">2.5 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-stopping-criterion">2.6 Other stopping criterion?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gene-drive-simulator">3. The gene drive simulator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-set-and-suggested-soluations">4. Problem set and suggested soluations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up">4.1 Warm-up</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-strategy">4.2 release strategy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-design">4.3 Construct design</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-population-profiles">4.4 Effect of population profiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-tg-frequency">4.5 Equilibrium TG frequency</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-the-doparallel-package">Extra: The <code>doParallel</code> package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">5. references</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hands-on-gene-drive-modelling">
+<h1>Hands-on Gene Drive Modelling<a class="headerlink" href="#hands-on-gene-drive-modelling" title="Link to this heading">#</a></h1>
+<p>21/01/2025 Tin-Yu Hui</p>
+<section id="features-of-a-basic-gene-drive-simulator">
+<h2>1. Features of a basic gene drive simulator<a class="headerlink" href="#features-of-a-basic-gene-drive-simulator" title="Link to this heading">#</a></h2>
+<p>Let us craft our gene drive simulator. It is a complex system involving various ecological/evolutionary forces. It will look less haunting if we tackle them one by one:</p>
+<section id="force-1-drift">
+<h3>1.1 force #1: drift<a class="headerlink" href="#force-1-drift" title="Link to this heading">#</a></h3>
+<p>We continue to assume random mating and sampling of gametes. The <code>sample()</code> function remains useful, but <span class="math notranslate nohighlight">\(N\)</span> is expected to change over time.</p>
+</section>
+<section id="force-2-drive">
+<h3>1.2 force #2: drive<a class="headerlink" href="#force-2-drive" title="Link to this heading">#</a></h3>
+<p>In this one-locus, two-allele system, allele “0” is the wildtype (WT) and “1” is the artificially introduced transgene (TG). Before any releases of gene drive, all mosquitoes carry “00” homozygotes.</p>
+<p>The super-Mendelian inheritance of TG means there are more TG gametes being produced by the heterozygote parents. We assume a heterozygote parent produces gamete “0” with proportion <span class="math notranslate nohighlight">\((1-d)\)</span>, and gamete “1” with <span class="math notranslate nohighlight">\(d\)</span>, <span class="math notranslate nohighlight">\(d&gt;0.5\)</span>. We call <span class="math notranslate nohighlight">\(d\)</span> the transmission rate. This allows TG to spread under a low initial frequency.</p>
+<p>Note: <span class="math notranslate nohighlight">\(d=0.5\)</span> for Mendelian inheritance.</p>
+</section>
+<section id="force-3-selection">
+<h3>1.3 force #3: selection<a class="headerlink" href="#force-3-selection" title="Link to this heading">#</a></h3>
+<p>The increase in TG frequency does not necessary result in a population decline unless there is a fitness cost. The model assumes TG “11” homozogytes do not survive and will not develop into adults. Their relative fitness is 0. The WT “00” homozygotes have a relative fitness of 1. We assume the heterozygotes are just as fit as the WT homozygotes (<span class="math notranslate nohighlight">\(h=0\)</span>).</p>
+</section>
+<section id="force-4-population-dynamics">
+<h3>1.4 force #4: Population dynamics<a class="headerlink" href="#force-4-population-dynamics" title="Link to this heading">#</a></h3>
+<p>The population size seems to be monotonically decreasing as the “11” homozygotes are lethal. This will make our simulator quite boring and unrealistic. Here we introduce the Beverton-Holt model to model the lack of intra-specific competition during low densities:</p>
+<div class="math notranslate nohighlight">
+\[N_{t+1}=\frac{r_0N_t}{1+N_t/M}\]</div>
+<p>The model regulates <span class="math notranslate nohighlight">\(N_t\)</span> over time by introducing two additional parameters: <span class="math notranslate nohighlight">\(r_0\)</span> and <span class="math notranslate nohighlight">\(M\)</span>. <span class="math notranslate nohighlight">\(r_0\)</span> is the natural growth rate and <span class="math notranslate nohighlight">\((r_0-1)M\)</span> is the carrying capacity. You may notice it is the discrete version of logistic growth.</p>
+</section>
+</section>
+<section id="some-coding-considerations">
+<h2>2. Some coding considerations<a class="headerlink" href="#some-coding-considerations" title="Link to this heading">#</a></h2>
+<p>Before we proceed, let us study the aggregated effects of drive and selection on gametic frequencies. Conbining both forces, we learn that “00” homozygotes produce “0” gametes with probability 1. Heterozygotes produce “0” gametes with probability <span class="math notranslate nohighlight">\((1-d)\)</span>, and “1” gametes with <span class="math notranslate nohighlight">\(d\)</span>. “11” homozygotes from the parental generation contribute nothing.</p>
+<p>Let <span class="math notranslate nohighlight">\(x_{00}, x_{01}, x_{11}\)</span> be the number of individuals carrying the three genotypes at the parental generation. Then the gametic frequencies in the gametic pool will be:
+$<span class="math notranslate nohighlight">\(WT\ gametic\ freq=\frac{x_{00}*1+x_{01}*(1-d)}{x_{00}+x_{01}}\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[TG\ gametic\ freq=\frac{x_{01}*d}{x_{00}+x_{01}}\]</div>
+<section id="input-arguments">
+<h3>2.1 Input arguments<a class="headerlink" href="#input-arguments" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(q_0\)</span>: initial TG frequency (releasing frequency).</p>
+<p><span class="math notranslate nohighlight">\(t\)</span>: number of generations</p>
+<p><span class="math notranslate nohighlight">\(d\)</span>: transmission rate of the TG allele</p>
+<p><span class="math notranslate nohighlight">\(N_0\)</span>: initial population size, as it is no longer constant</p>
+<p><span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(r_0\)</span>: the two extra parameters for the BH model for population size regulation</p>
+</section>
+<section id="data-types">
+<h3>2.2 Data types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h3>
+<p>The data types and storages are similar to the drift model. In addition, we would like to learn about the changing population size. Besides, it is more convinient to track the TG frequency.</p>
+</section>
+<section id="initialisation">
+<h3>2.3 Initialisation<a class="headerlink" href="#initialisation" title="Link to this heading">#</a></h3>
+<p>At the beginning some heterozygote mosquitoes are released to a population full of WT homozygotes.</p>
+</section>
+<section id="propagation">
+<h3>2.4 Propagation<a class="headerlink" href="#propagation" title="Link to this heading">#</a></h3>
+<p>New population size? New gametic frequencies? <code>sample()</code>? Calculate genotypic frequencies? What should we record?</p>
+</section>
+<section id="outputs">
+<h3>2.5 Outputs<a class="headerlink" href="#outputs" title="Link to this heading">#</a></h3>
+<p>???</p>
+</section>
+<section id="other-stopping-criterion">
+<h3>2.6 Other stopping criterion?<a class="headerlink" href="#other-stopping-criterion" title="Link to this heading">#</a></h3>
+<p>Are there any conditions that will cause our simulation to stop prematurely?</p>
+</section>
+</section>
+<section id="the-gene-drive-simulator">
+<h2>3. The gene drive simulator<a class="headerlink" href="#the-gene-drive-simulator" title="Link to this heading">#</a></h2>
+<p>Below are some considerations:</p>
+<ol class="arabic simple">
+<li><p>At the beginning I want to make sure <span class="math notranslate nohighlight">\(q_0\)</span> is between 0 and 0.5, and <span class="math notranslate nohighlight">\(d\)</span> is between 0.5 and 1. If they are violated then the function will <code>stop()</code> and exit with the message inside the round brackets.</p></li>
+<li><p>I define two inner functions within the gene drive simulator. <code>bh()</code> calculates the new population size, <code>count_genotype()</code> counts and returns the number of “00”, “01”, “11” genotypes. Note that these two functions are only callable within the main function. If you want to use them elsewhere then take it out.</p></li>
+<li><p>As we are releasing heterozygote mosquitoes, there should be <span class="math notranslate nohighlight">\(2*N_0*q_0\)</span> of them at the beginning. The <code>ceil()</code> function rounds the number up. The rest are all “00”.</p></li>
+<li><p>Inside the <code>for()</code> loop, the first task is to calculate the new population size with <code>bh()</code>. Only existing “00” and “01” individuals are included as “11” are thought to be dead (thus do not take up any resources).</p></li>
+<li><p>I include two early exit clauses: when the population size drops to &lt;=1, and when there is no more TG alleles.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sim_gene_drive</span><span class="o">&lt;-</span><span class="kr">function</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="m">0.6</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">N0</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">r0</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="o">=</span><span class="m">500</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1"># SOME CHECKS ON THE INPUT PArAMETErS (OPTIONAL)</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">q0</span><span class="o">&lt;=</span><span class="m">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">q0</span><span class="o">&gt;</span><span class="m">0.5</span><span class="p">)</span>
+<span class="w">    	</span><span class="p">{</span><span class="nf">stop</span><span class="p">(</span><span class="s">&#39;PLEASE MAKE SUrE THAT 0&lt;q0&lt;0.5!&#39;</span><span class="p">)}</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="o">&lt;=</span><span class="m">0.5</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">d</span><span class="o">&gt;=</span><span class="m">1</span><span class="p">)</span>
+<span class="w">    	</span><span class="p">{</span><span class="nf">stop</span><span class="p">(</span><span class="s">&#39;PLEASE MAKE SUrE THAT 0.5&lt;d&lt;1!&#39;</span><span class="p">)}</span>
+<span class="w">    	</span><span class="c1"># INNEr FUNCTIONS. THESE INNEr FUNCTIONS ArE ONLY VISIBLE WITHIN sim_gene_drive()</span>
+<span class="w">    	</span><span class="c1"># 1) THE BEVErTON-HOLT MODEL. ceiling() TO rOUND UP. rETUrN NEW POPULATION SIZE. </span>
+<span class="w">    	</span><span class="n">bh</span><span class="o">&lt;-</span><span class="kr">function</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">r0</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="p">)</span>
+<span class="w">    	</span><span class="p">{</span><span class="kr">return</span><span class="p">(</span><span class="nf">ceiling</span><span class="p">(</span><span class="n">r0</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="n">N</span><span class="o">/</span><span class="n">M</span><span class="p">)))}</span>
+<span class="w">    	</span><span class="c1"># 2) rETUrN THE COUNTS FOr 00, 01, 11 GENOTYPES</span>
+<span class="w">    	</span><span class="n">count_genotype</span><span class="o">&lt;-</span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">    	</span><span class="p">{</span>
+<span class="w">        	</span><span class="n">temp</span><span class="o">&lt;-</span><span class="nf">apply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span>
+<span class="w">        	</span><span class="kr">return</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">temp</span><span class="o">==</span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">temp</span><span class="o">==</span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">temp</span><span class="o">==</span><span class="m">2</span><span class="p">)))</span>
+<span class="w">    	</span><span class="p">}</span>
+<span class="w">    </span><span class="c1"># INITIALISE</span>
+<span class="w">    </span><span class="c1"># CrEATE A LIST TO STOrE ALL THE ALLEIC CONFIGUrATIONS</span>
+<span class="w">    </span><span class="n">population</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">()</span>
+<span class="w">    </span><span class="nf">length</span><span class="p">(</span><span class="n">population</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">(</span><span class="n">t</span><span class="m">+1</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">t</span><span class="m">+1</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span><span class="nf">names</span><span class="p">(</span><span class="n">population</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">paste</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;generation&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="m">-1</span><span class="p">),</span><span class="w"> </span><span class="n">collapse</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)}</span>
+<span class="w">    </span><span class="c1"># ALSO CrEATE TWO VECTOrS TO STOrE THE POPULATION SIZES AND THE FrEQ OF TG OVEr TIME</span>
+<span class="w">    </span><span class="n">population.size</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="m">+1</span><span class="p">)</span>
+<span class="w">    </span><span class="n">TG.freq</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="m">+1</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1"># INITIAL POPULATION SIZE AND TG FrEQ</span>
+<span class="w">    </span><span class="n">population.size</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&lt;-</span><span class="n">N0</span>
+<span class="w">    </span><span class="n">TG.freq</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">&lt;-</span><span class="n">q0</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1"># WE WILL rELEASE k TrANSGENIC MOSQUITOES, WHO CArrY 01 HETErOZYGOTE</span>
+<span class="w">    </span><span class="c1"># WHICH MEANS AT GEN 0 THErE ArE (N0-k) WT MOSQUITOES WITH 00 HOMOZYGOTES</span>
+<span class="w">    </span><span class="n">k</span><span class="o">&lt;-</span><span class="nf">ceiling</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">N0</span><span class="o">*</span><span class="n">q0</span><span class="p">)</span>
+<span class="w">    </span><span class="n">population</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">&lt;-</span><span class="nf">cbind</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="n">nr</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">nc</span><span class="o">=</span><span class="n">N0</span><span class="o">-</span><span class="n">k</span><span class="p">),</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">nr</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">nc</span><span class="o">=</span><span class="n">k</span><span class="p">))</span>
+<span class="w">    </span><span class="c1"># CALCULATE THE GENOTYPE COUNTS (WE&#39;LL rEUSE THE VECTOr genotype IN THE FOr LOOP)</span>
+<span class="w">    </span><span class="n">genotype</span><span class="o">&lt;-</span><span class="nf">count_genotype</span><span class="p">(</span><span class="n">population</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span>
+<span class="w">    </span><span class="c1"># PrOPAGATION</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">t</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    	</span><span class="c1"># CALCULATE THE NEW POPULATION SIZE. ONLY genotype[1]+genotype[2] WILL SUrVIVE TILL ADULTHOOD </span>
+<span class="w">    	</span><span class="n">population.size</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">bh</span><span class="p">(</span><span class="n">genotype</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">+</span><span class="n">genotype</span><span class="p">[</span><span class="m">2</span><span class="p">],</span><span class="w"> </span><span class="n">r0</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="p">)</span><span class="w">	</span>
+<span class="w">    	</span><span class="c1"># EArLY EXIT CONDITION 1, IF POPULATION SIZE DrOP TO 1</span>
+<span class="w">    	</span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">population.size</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="o">&lt;=</span><span class="m">1</span><span class="p">)</span>
+<span class="w">    	</span><span class="p">{</span>
+<span class="w">    		</span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;Oops! The population crashed after generation &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="m">-1</span><span class="p">),</span><span class="w"> </span><span class="n">collapse</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">))</span>
+<span class="w">    		</span><span class="kr">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">population</span><span class="o">=</span><span class="n">population</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">population.size</span><span class="o">=</span><span class="n">population.size</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="n">i</span><span class="p">],</span><span class="w"> </span>
+<span class="w">    			</span><span class="n">TG.freq</span><span class="o">=</span><span class="n">TG.freq</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="n">i</span><span class="p">]))</span>
+<span class="w">    	</span><span class="p">}</span>
+<span class="w">    	</span><span class="c1"># EArLY EXIT CONDITION 2, IF THErE IS NO MOrE TG ALLELE</span>
+<span class="w">    	</span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">genotype</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">+</span><span class="n">genotype</span><span class="p">[</span><span class="m">3</span><span class="p">]</span><span class="o">==</span><span class="m">0</span><span class="p">)</span>
+<span class="w">    	</span><span class="p">{</span>
+<span class="w">    		</span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;Oops! TG allele went extinct at generation &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="m">-1</span><span class="p">),</span><span class="w"> </span><span class="n">collapse</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">))</span>
+<span class="w">    		</span><span class="kr">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">population</span><span class="o">=</span><span class="n">population</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">population.size</span><span class="o">=</span><span class="n">population.size</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="n">i</span><span class="p">],</span><span class="w"> </span>
+<span class="w">    			</span><span class="n">TG.freq</span><span class="o">=</span><span class="n">TG.freq</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="n">i</span><span class="p">]))</span>
+<span class="w">    	</span><span class="p">}</span>
+<span class="w">    	</span><span class="c1"># CALCULATE TG GAMETIC FrEQ</span>
+<span class="w">    	</span><span class="n">TG.gametic.freq</span><span class="o">&lt;-</span><span class="n">d</span><span class="o">*</span><span class="n">genotype</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">genotype</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">+</span><span class="n">genotype</span><span class="p">[</span><span class="m">2</span><span class="p">])</span>
+<span class="w">    	</span><span class="c1"># SAMPLE THE NEXT GENErATION</span>
+<span class="w">    	</span><span class="n">population</span><span class="p">[[</span><span class="n">i</span><span class="m">+1</span><span class="p">]]</span><span class="o">&lt;-</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">sample</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="o">*</span><span class="n">population.size</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">],</span><span class="w"> </span>
+<span class="w">    				</span><span class="n">prob</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">TG.gametic.freq</span><span class="p">,</span><span class="w"> </span><span class="n">TG.gametic.freq</span><span class="p">),</span><span class="w"> </span><span class="n">replace</span><span class="o">=</span><span class="bp">T</span><span class="p">),</span><span class="w"> </span><span class="n">nr</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="w">    	</span><span class="c1"># CALCULATE NEW GENOTYPE COUNTS AND TG FrEQ</span>
+<span class="w">    	</span><span class="n">genotype</span><span class="o">&lt;-</span><span class="nf">count_genotype</span><span class="p">(</span><span class="n">population</span><span class="p">[[</span><span class="n">i</span><span class="m">+1</span><span class="p">]])</span>
+<span class="w">    	</span><span class="n">TG.freq</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="o">&lt;-</span><span class="p">(</span><span class="m">0.5</span><span class="o">*</span><span class="n">genotype</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">+</span><span class="n">genotype</span><span class="p">[</span><span class="m">3</span><span class="p">])</span><span class="o">/</span><span class="n">population.size</span><span class="p">[</span><span class="n">i</span><span class="m">+1</span><span class="p">]</span><span class="w">	</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1"># OUTPUTS. rETUrN A BIG LIST OF EVErYTHING</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">population</span><span class="o">=</span><span class="n">population</span><span class="p">,</span><span class="w"> </span><span class="n">population.size</span><span class="o">=</span><span class="n">population.size</span><span class="p">,</span><span class="w"> </span><span class="n">TG.freq</span><span class="o">=</span><span class="n">TG.freq</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST rUN</span>
+<span class="nf">sim_gene_drive</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="m">0.6</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><dl>
+	<dt>$population</dt>
+		<dd><dl>
+	<dt>$generation0</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 500 of type dbl</caption>
+<tbody>
+	<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$generation1</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 500 of type int</caption>
+<tbody>
+	<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$generation2</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 500 of type int</caption>
+<tbody>
+	<tr><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$generation3</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 499 of type int</caption>
+<tbody>
+	<tr><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+</tbody>
+</table>
+</dd>
+	<dt>$generation4</dt>
+		<dd><table class="dataframe">
+<caption>A matrix: 2 × 499 of type int</caption>
+<tbody>
+	<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd>
+	<dt>$population.size</dt>
+		<dd><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>500</li><li>500</li><li>500</li><li>499</li><li>499</li></ol>
+</dd>
+	<dt>$TG.freq</dt>
+		<dd><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0.05</li><li>0.056</li><li>0.069</li><li>0.0861723446893788</li><li>0.103206412825651</li></ol>
+</dd>
+</dl>
+</div></div>
+</div>
+</section>
+<section id="problem-set-and-suggested-soluations">
+<h2>4. Problem set and suggested soluations<a class="headerlink" href="#problem-set-and-suggested-soluations" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># LOAD SOME PACKAGES</span>
+<span class="nf">require</span><span class="p">(</span><span class="n">compiler</span><span class="p">)</span>
+<span class="nf">require</span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: compiler
+
+Loading required package: doParallel
+
+Loading required package: foreach
+
+Loading required package: iterators
+
+Loading required package: parallel
+</pre></div>
+</div>
+</div>
+</div>
+<section id="warm-up">
+<h3>4.1 Warm-up<a class="headerlink" href="#warm-up" title="Link to this heading">#</a></h3>
+<p>Q)
+This is a typical warm-up exercise to look at the distributions of the TG frequency and population size after 50 generations. Following the spirit of Monte-Carlo methods, we simulate multiple replicates (5000, say, or fewer runs if your laptop struggles) and look at the sample mean and variance etc. We use <span class="math notranslate nohighlight">\(q_0=0.05\)</span>, <span class="math notranslate nohighlight">\(d=0.6\)</span>, <span class="math notranslate nohighlight">\(t=50\)</span>, <span class="math notranslate nohighlight">\(N0=500\)</span>, <span class="math notranslate nohighlight">\(M=500\)</span>, <span class="math notranslate nohighlight">\(r_0=2\)</span> as our parameter values.</p>
+<p>A)
+Below are two identical implementations: the first uses the single-core <code>for()</code> loop to repeat the 5000 runs, then the multi-core <code>foreach()</code> loop from the package <code>doParallel</code>. As we proceed, problems are becoming computationally too demanding that only the multi-core version is provided. You may record the computing time by running <code>proc.time()</code> before and after a block of codes. See the bottom of this notebook on <code>doParallel</code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># SINGLE-COrE FOr LOOP. IT TAKES TIME</span>
+<span class="n">t1</span><span class="o">&lt;-</span><span class="nf">proc.time</span><span class="p">()</span>
+<span class="n">result_q</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">5000</span><span class="p">)</span>
+<span class="n">result_N</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">result_q</span><span class="p">))</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">result_q</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">temp</span><span class="o">&lt;-</span><span class="nf">sim_gene_drive</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="m">0.6</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="n">N0</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">r0</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="w">    </span><span class="n">result_q</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;-</span><span class="n">temp</span><span class="o">$</span><span class="n">TG.freq</span><span class="p">[</span><span class="m">51</span><span class="p">]</span>
+<span class="w">    </span><span class="n">result_N</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;-</span><span class="n">temp</span><span class="o">$</span><span class="n">population.size</span><span class="p">[</span><span class="m">51</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="c1"># rEPOrT COMPUTING TIME</span>
+<span class="n">t2</span><span class="o">&lt;-</span><span class="nf">proc.time</span><span class="p">()</span>
+<span class="n">t2</span><span class="o">-</span><span class="n">t1</span>
+<span class="nf">rm</span><span class="p">(</span><span class="n">t1</span><span class="p">);</span><span class="w"> </span><span class="nf">rm</span><span class="p">(</span><span class="n">t2</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   user  system elapsed 
+ 200.79    0.29  201.43 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># SUMMArY STATISTICS</span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">result_q</span><span class="p">)</span>
+<span class="nf">sd</span><span class="p">(</span><span class="n">result_q</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">result_N</span><span class="p">)</span>
+<span class="nf">sd</span><span class="p">(</span><span class="n">result_N</span><span class="p">)</span>
+
+<span class="c1"># PLOTS</span>
+<span class="nf">hist</span><span class="p">(</span><span class="n">result_q</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;final TG freq after 50 generations&#39;</span><span class="p">)</span>
+<span class="nf">hist</span><span class="p">(</span><span class="n">result_N</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;final population size after 50 generations&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.197171118916055</div><div class="output text_html">0.0271428462412576</div><div class="output text_html">480.4756</div><div class="output text_html">5.4109574321063</div><a class="reference internal image-reference" href="../../_images/6374b86b0fab7f9e1c1ebacb420640b7e5cd662b645a0c8212ef030e9ca093d3.png"><img alt="../../_images/6374b86b0fab7f9e1c1ebacb420640b7e5cd662b645a0c8212ef030e9ca093d3.png" src="../../_images/6374b86b0fab7f9e1c1ebacb420640b7e5cd662b645a0c8212ef030e9ca093d3.png" style="width: 420px; height: 420px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/dc4e2e243e97322b69ab35e02c8f1ba1dd8b1a6f8eda5509ffd431f14f1d574e.png"><img alt="../../_images/dc4e2e243e97322b69ab35e02c8f1ba1dd8b1a6f8eda5509ffd431f14f1d574e.png" src="../../_images/dc4e2e243e97322b69ab35e02c8f1ba1dd8b1a6f8eda5509ffd431f14f1d574e.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p>The second implementation with the parallelised <code>foreach()</code> loop. My workstation has 44 cores which also doubles up as an electric heater…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># SAMPLE ANALYSIS BUT WITH MULTI-COrE foreach LOOP</span>
+<span class="c1"># FrOM PACKAGE doParallel</span>
+<span class="c1"># makeCluster(n), n MUST NOT EXCEED THE NUMBEr OF CPU COrES OF YOUr PC. </span>
+<span class="n">t1</span><span class="o">&lt;-</span><span class="nf">proc.time</span><span class="p">()</span>
+<span class="n">cl</span><span class="o">&lt;-</span><span class="nf">makeCluster</span><span class="p">(</span><span class="m">44</span><span class="p">)</span>
+<span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="n">result</span><span class="o">&lt;-</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">5000</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="o">=</span><span class="s">&#39;rbind&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">temp</span><span class="o">&lt;-</span><span class="nf">sim_gene_drive</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="m">0.6</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="n">N0</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">r0</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">temp</span><span class="o">$</span><span class="n">TG.freq</span><span class="p">[</span><span class="m">51</span><span class="p">],</span><span class="w"> </span><span class="n">temp</span><span class="o">$</span><span class="n">population.size</span><span class="p">[</span><span class="m">51</span><span class="p">]))</span>
+<span class="p">}</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="n">result_q</span><span class="o">&lt;-</span><span class="n">result</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span>
+<span class="n">result_N</span><span class="o">&lt;-</span><span class="n">result</span><span class="p">[,</span><span class="m">2</span><span class="p">]</span>
+<span class="c1"># rEPOrT COMPUTING TIME</span>
+<span class="n">t2</span><span class="o">&lt;-</span><span class="nf">proc.time</span><span class="p">()</span>
+<span class="n">t2</span><span class="o">-</span><span class="n">t1</span>
+<span class="nf">rm</span><span class="p">(</span><span class="n">t1</span><span class="p">);</span><span class="w"> </span><span class="nf">rm</span><span class="p">(</span><span class="n">t2</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   user  system elapsed 
+   4.18    1.00   11.86 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># SUMMArY STATISTICS, SHOULD BE SIMILAr</span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">result_q</span><span class="p">)</span>
+<span class="nf">sd</span><span class="p">(</span><span class="n">result_q</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">result_N</span><span class="p">)</span>
+<span class="nf">sd</span><span class="p">(</span><span class="n">result_N</span><span class="p">)</span>
+<span class="c1"># PLOTS</span>
+<span class="nf">hist</span><span class="p">(</span><span class="n">result_q</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;final TG freq after 50 generations&#39;</span><span class="p">)</span>
+<span class="nf">hist</span><span class="p">(</span><span class="n">result_N</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;final population size after 50 generations&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.197891697587685</div><div class="output text_html">0.0270901826730958</div><div class="output text_html">480.337</div><div class="output text_html">5.48316003859105</div><a class="reference internal image-reference" href="../../_images/3fb99543f21fb6339ad5a3ebe8a58caeef9f443c279a66ebcf606b2c7f013c74.png"><img alt="../../_images/3fb99543f21fb6339ad5a3ebe8a58caeef9f443c279a66ebcf606b2c7f013c74.png" src="../../_images/3fb99543f21fb6339ad5a3ebe8a58caeef9f443c279a66ebcf606b2c7f013c74.png" style="width: 420px; height: 420px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/de13db72ebbeec0bc1ec63be9d0041597f8b7ee253cc5f1f63bf63bb4a87def6.png"><img alt="../../_images/de13db72ebbeec0bc1ec63be9d0041597f8b7ee253cc5f1f63bf63bb4a87def6.png" src="../../_images/de13db72ebbeec0bc1ec63be9d0041597f8b7ee253cc5f1f63bf63bb4a87def6.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p>In terms of the results, the final TG frequency is higher than <span class="math notranslate nohighlight">\(q_0\)</span> meaning it is spreading! But it has a very minor impact on the population size (average=480, a slight reduction from the carrying capacity of 500). After all it is a relatively weak drive with <span class="math notranslate nohighlight">\(d=0.6\)</span>.</p>
+<p>There is also a noticable gain in performance with the <code>foreach()</code> loop. The computing time was shortened to 4sec from 190sec (~48x faster) when the 5000 independent simulations were spread across 44 cpu cores. The elapsed time (the actual time between hitting the enter button and seeing the results on your screen) was however a bit longer at 12sec because of the overhead (e.g. creating workers nodes, passing variables, retriving results, etc). You can submit this to the HPC as an array job, but it is probably an overkill.</p>
+</section>
+<section id="release-strategy">
+<h3>4.2 release strategy<a class="headerlink" href="#release-strategy" title="Link to this heading">#</a></h3>
+<p>Q) Although the TG allele is expected to spread it is still prone to loss due to drift. Below I investigate a range of releasing frequency from 0.1% to 3.1%, and study their survival probability in 20 generations. Survival is approximated by the proportion of runs with non-zero TG frequency at the end the 20th generation. For each value of releasing frequency I have 5000 independent runs.</p>
+<p>It takes some time to run… Go and get some coffee and biscuits…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># STUDY A rANGE OF INITIAL rELEASING STrATEGY</span>
+<span class="n">initial_freq</span><span class="o">&lt;-</span><span class="nf">seq</span><span class="p">(</span><span class="m">0.001</span><span class="p">,</span><span class="w"> </span><span class="m">0.031</span><span class="p">,</span><span class="w"> </span><span class="m">0.002</span><span class="p">)</span>
+<span class="n">cl</span><span class="o">&lt;-</span><span class="nf">makeCluster</span><span class="p">(</span><span class="m">44</span><span class="p">)</span>
+<span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="n">result</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">initial_freq</span><span class="p">))</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">initial_freq</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1"># SO YOU CAN PUT A foreach LOOP WITHIN A for LOOP, Or VICE-VErSA</span>
+<span class="w">    </span><span class="n">temp_result</span><span class="o">&lt;-</span><span class="nf">foreach</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">5000</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">temp</span><span class="o">&lt;-</span><span class="nf">sim_gene_drive</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="n">initial_freq</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="m">0.6</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">N0</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">r0</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="w">        </span><span class="c1"># LOOK AT THE FINAL TG FrEQ</span>
+<span class="w">        </span><span class="kr">return</span><span class="p">(</span><span class="n">temp</span><span class="o">$</span><span class="n">TG.freq</span><span class="p">[</span><span class="nf">length</span><span class="p">(</span><span class="n">temp</span><span class="o">$</span><span class="n">TG.freq</span><span class="p">)])</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1"># SEE HOW MANY rUNS (OUT OF 5000) HAVE NON-ZErO FINAL TG FrEQ. AND THIS IS THE SUrVIVAL PrOB. </span>
+<span class="w">    </span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">sum</span><span class="p">(</span><span class="n">temp_result</span><span class="o">&gt;</span><span class="m">0</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="c1"># PLOT, WITH rED 99% LINES</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">initial_freq</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="o">/</span><span class="m">5000</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;initial TG freq&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;survival prob after 20 generations&#39;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="m">0.99</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../_images/1a6ceb73d67937ded3bf3a5e2c91ac14a53d9bacab501d5aacacbccb66beb82c.png"><img alt="../../_images/1a6ceb73d67937ded3bf3a5e2c91ac14a53d9bacab501d5aacacbccb66beb82c.png" src="../../_images/1a6ceb73d67937ded3bf3a5e2c91ac14a53d9bacab501d5aacacbccb66beb82c.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p>A) For ultra-low releasing freq of 0.1% (=releasing 1 heterozygote mosquito to a WT population of 499) the surivial is bad (~30%), and it is not a risk we want to take. If 99% is our confidence threshold then the initial frequency should be at least 2%. We need to make sure our insectaries have the required resources and capacities to raise that number of TG mosquitoes. And how do we estimate the population size of a wild mosquito population?</p>
+</section>
+<section id="construct-design">
+<h3>4.3 Construct design<a class="headerlink" href="#construct-design" title="Link to this heading">#</a></h3>
+<p>Q) The transmission rate <span class="math notranslate nohighlight">\(d\)</span> is a key parameter of a gene-drive construct (alongside factors such as fitness cost of the heterozygotes). What is the mimimum <span class="math notranslate nohighlight">\(d\)</span> required if we want to reduce the population size by 80%?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># STUDY A rANGE OF d</span>
+<span class="n">d</span><span class="o">&lt;-</span><span class="nf">seq</span><span class="p">(</span><span class="m">0.74</span><span class="p">,</span><span class="w"> </span><span class="m">0.92</span><span class="p">,</span><span class="w"> </span><span class="m">0.02</span><span class="p">)</span>
+<span class="n">cl</span><span class="o">&lt;-</span><span class="nf">makeCluster</span><span class="p">(</span><span class="m">44</span><span class="p">)</span>
+<span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="n">result</span><span class="o">&lt;-</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">d</span><span class="p">),</span><span class="w"> </span><span class="n">.combine</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">temp_result</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">5000</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">temp_result</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="n">temp</span><span class="o">&lt;-</span><span class="nf">sim_gene_drive</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="m">0.03</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="n">N0</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">r0</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="w">    </span><span class="n">temp_result</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">&lt;-</span><span class="n">temp</span><span class="o">$</span><span class="n">population.size</span><span class="p">[</span><span class="nf">length</span><span class="p">(</span><span class="n">temp</span><span class="o">$</span><span class="n">population.size</span><span class="p">)]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">temp_result</span><span class="p">))</span>
+<span class="p">}</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="c1"># PLOT</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;final population size after 30 gens&#39;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../_images/2da18d2a16e1ed64b26e9881c06bac3059bfd214b0da72e402b80cc0ca9e29ab.png"><img alt="../../_images/2da18d2a16e1ed64b26e9881c06bac3059bfd214b0da72e402b80cc0ca9e29ab.png" src="../../_images/2da18d2a16e1ed64b26e9881c06bac3059bfd214b0da72e402b80cc0ca9e29ab.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p>A) Here we look at the population size after 30 generations against a range of <span class="math notranslate nohighlight">\(d\)</span>. A conservative releasing freq of 3% is chosen based on the previous analysis. The plot agrees with our expectation that a stronger drive gives better suppression. If the aim is to reduce the population size (with respect to this particular population profile) by 80%, a minimum strength of <span class="math notranslate nohighlight">\(d=0.84\)</span> is required. Luckily many of our candidate drives come with <span class="math notranslate nohighlight">\(d&gt;0.90\)</span>.</p>
+</section>
+<section id="effect-of-population-profiles">
+<h3>4.4 Effect of population profiles<a class="headerlink" href="#effect-of-population-profiles" title="Link to this heading">#</a></h3>
+<p>Q) Consider the following two populations: <span class="math notranslate nohighlight">\(r_0=2\)</span> with <span class="math notranslate nohighlight">\(M=500\)</span>, and <span class="math notranslate nohighlight">\(r_0=6\)</span> with <span class="math notranslate nohighlight">\(M=100\)</span>. While they share the same carrying capacity <span class="math notranslate nohighlight">\((r_0-1)*M\)</span>, the latter has a much higher intrinsic growth rate. Do we expect the gene drive to behave the same in these two populations?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">cl</span><span class="o">&lt;-</span><span class="nf">makeCluster</span><span class="p">(</span><span class="m">44</span><span class="p">)</span>
+<span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="c1"># POPULATION A. r0=2, M=500</span>
+<span class="n">result_A</span><span class="o">&lt;-</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">5000</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="o">=</span><span class="s">&#39;rbind&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">temp</span><span class="o">&lt;-</span><span class="nf">sim_gene_drive</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="m">0.03</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="m">0.75</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="n">N0</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">r0</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">temp</span><span class="o">$</span><span class="n">population.size</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1"># POPULATION B. r0=6, M=100</span>
+<span class="n">result_B</span><span class="o">&lt;-</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">5000</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="o">=</span><span class="s">&#39;rbind&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">temp</span><span class="o">&lt;-</span><span class="nf">sim_gene_drive</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="m">0.03</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="m">0.75</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="n">N0</span><span class="o">=</span><span class="m">500</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="o">=</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">r0</span><span class="o">=</span><span class="m">6</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">temp</span><span class="o">$</span><span class="n">population.size</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="c1"># PLOT POPULATION SIZE OVEr TIME</span>
+<span class="nf">plot</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="n">result_A</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">),</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">300</span><span class="p">,</span><span class="m">500</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;population size&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;generations&#39;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="n">result_B</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">),</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+<span class="nf">legend</span><span class="p">(</span><span class="s">&#39;topright&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;d=0.75&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;r0=2, M=500&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;r0=6, M=100&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../_images/89018fd3ece78f9760cf75d4b3f166ff4bb4d0ce2a493f9a872028bc612daf2a.png"><img alt="../../_images/89018fd3ece78f9760cf75d4b3f166ff4bb4d0ce2a493f9a872028bc612daf2a.png" src="../../_images/89018fd3ece78f9760cf75d4b3f166ff4bb4d0ce2a493f9a872028bc612daf2a.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p>A) The population with a higher <span class="math notranslate nohighlight">\(r_0\)</span> gives a stronger “counterforce” to our intervention, yielding a higher equilibrium population size.</p>
+<p>Understanding the mosquito population dynamics is key to any vector control programmes.</p>
+</section>
+<section id="equilibrium-tg-frequency">
+<h3>4.5 Equilibrium TG frequency<a class="headerlink" href="#equilibrium-tg-frequency" title="Link to this heading">#</a></h3>
+<p>The driving component is lifting the TG frequency up from its initial value via super-Mendelian inheritence, but simultaneously the TG homozygotes keep disappearing (with fitness of 0) from the population. We do not think the TG allele will become fixed - there may exist an intermediate value that the TF frequency fluctuates about.</p>
+<p>Below I run several simulations with different releasing frequency, with <span class="math notranslate nohighlight">\(d=0.6\)</span> and <span class="math notranslate nohighlight">\(d=0.7\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># d=0.6</span>
+<span class="n">cl</span><span class="o">&lt;-</span><span class="nf">makeCluster</span><span class="p">(</span><span class="m">44</span><span class="p">)</span>
+<span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="n">initial_freq</span><span class="o">&lt;-</span><span class="nf">seq</span><span class="p">(</span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="m">0.45</span><span class="p">,</span><span class="w"> </span><span class="m">0.01</span><span class="p">)</span>
+<span class="n">result</span><span class="o">&lt;-</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">initial_freq</span><span class="p">),</span><span class="w"> </span><span class="n">.combine</span><span class="o">=</span><span class="s">&#39;rbind&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">temp</span><span class="o">&lt;-</span><span class="nf">sim_gene_drive</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="n">initial_freq</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="m">0.6</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="n">N0</span><span class="o">=</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">r0</span><span class="o">=</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="o">=</span><span class="m">500</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">temp</span><span class="o">$</span><span class="n">TG.freq</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+
+<span class="nf">matplot</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">result</span><span class="p">),</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;generations&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;TG freq&#39;</span><span class="p">)</span>
+<span class="nf">legend</span><span class="p">(</span><span class="s">&#39;topright&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="s">&#39;d=0.6&#39;</span><span class="p">)</span>
+
+<span class="c1"># d=0.7</span>
+<span class="n">cl</span><span class="o">&lt;-</span><span class="nf">makeCluster</span><span class="p">(</span><span class="m">44</span><span class="p">)</span>
+<span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="n">initial_freq</span><span class="o">&lt;-</span><span class="nf">seq</span><span class="p">(</span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="m">0.45</span><span class="p">,</span><span class="w"> </span><span class="m">0.01</span><span class="p">)</span>
+<span class="n">result</span><span class="o">&lt;-</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">initial_freq</span><span class="p">),</span><span class="w"> </span><span class="n">.combine</span><span class="o">=</span><span class="s">&#39;rbind&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">temp</span><span class="o">&lt;-</span><span class="nf">sim_gene_drive</span><span class="p">(</span><span class="n">q0</span><span class="o">=</span><span class="n">initial_freq</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">d</span><span class="o">=</span><span class="m">0.7</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="n">N0</span><span class="o">=</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">r0</span><span class="o">=</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="o">=</span><span class="m">500</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">temp</span><span class="o">$</span><span class="n">TG.freq</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+
+<span class="nf">matplot</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">result</span><span class="p">),</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&#39;l&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&#39;generations&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;TG freq&#39;</span><span class="p">)</span>
+<span class="nf">legend</span><span class="p">(</span><span class="s">&#39;topright&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="o">=</span><span class="s">&#39;d=0.7&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../_images/c3d3e120a5043c3243755ac21823dcffa593e13f40e8206d72ca916d4ab02ea2.png"><img alt="../../_images/c3d3e120a5043c3243755ac21823dcffa593e13f40e8206d72ca916d4ab02ea2.png" src="../../_images/c3d3e120a5043c3243755ac21823dcffa593e13f40e8206d72ca916d4ab02ea2.png" style="width: 420px; height: 420px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/3c27b28226bfccd0d3aefb4dfaf63d2b7b36db05e93f3e7dd6ecf5050f83c964.png"><img alt="../../_images/3c27b28226bfccd0d3aefb4dfaf63d2b7b36db05e93f3e7dd6ecf5050f83c964.png" src="../../_images/3c27b28226bfccd0d3aefb4dfaf63d2b7b36db05e93f3e7dd6ecf5050f83c964.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p>It appears that they all converge to a particular value after some generations. In fact, there exist an equilibrium which is independent from the intial condition (but solely dependent on <span class="math notranslate nohighlight">\(d\)</span>, exercise).</p>
+<p>This version of gene drive simulator is based on the model by Dederec et al. (2008). See also Burt (2003). North et al. (2020) built a much bigger model to study the spatial spread of the gene drive. The molecular features of our current candidate drive can be found here (Kyrou et al., 2018).</p>
+<p>I thank Alex Auyang for running the practical.</p>
+</section>
+</section>
+<section id="extra-the-doparallel-package">
+<h2>Extra: The <code>doParallel</code> package<a class="headerlink" href="#extra-the-doparallel-package" title="Link to this heading">#</a></h2>
+<p>The built-in <code>for()</code> is single-threaded. We can parallelise it with a <code>foreach()</code> loop if the tasks are independent, which is usually the case in MC simulations. random number generation is automatically “handled” by the package which is a huge advantage over HPC where it is your responsiblity to make sure the nodes are using different random seeds/states.</p>
+<p>Below is small example on finding the distribution of the sum of 30 chi-square random numbers. First is the traditional <code>for()</code> implementation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># FOr LOOP</span>
+<span class="n">result</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">)</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">temp</span><span class="o">&lt;-</span><span class="nf">rchisq</span><span class="p">(</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="w">    </span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&lt;-</span><span class="nf">sum</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To parallelise this block of code, we first load the <code>doParallel</code> package and make a local cluster with a specific number of nodes. Then replace <code>for()</code> by <code>foreach()</code>, and add <code>%dopar%</code>. Note that there are other minor changes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># PArALLELISED VErSION doParallel package</span>
+<span class="c1"># LOAD THE PACKAGE</span>
+<span class="nf">require</span><span class="p">(</span><span class="n">doParallel</span><span class="p">)</span>
+<span class="c1"># CrEATE A LOCAL “CLUSTEr” OBEJECT cl. THE NUMBEr INSIDE THE BrACKET MUST NOT EXCEED YOUr CPU COrE COUNTS. rEGISTEr THE CLUSTEr BEFOrE USE. </span>
+<span class="n">cl</span><span class="o">&lt;-</span><span class="nf">makeCluster</span><span class="p">(</span><span class="m">6</span><span class="p">)</span>
+<span class="nf">registerDoParallel</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<span class="c1"># USE THE foreach LOOP WITH %dopar%</span>
+<span class="c1"># .combine IS AN ArGUMENT SPECIFYING HOW rESULTS FrOM DIFFErENT rUNS ArE COMBINED. POSSIBLE WAYS ArE c, cbind, rbind. DEFAULT IS A LIST. </span>
+<span class="n">result</span><span class="o">&lt;-</span><span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">.combine</span><span class="o">=</span><span class="s">&#39;c&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%dopar%</span>
+<span class="p">{</span>
+<span class="n">temp</span><span class="o">&lt;-</span><span class="nf">rchisq</span><span class="p">(</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="kr">return</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span>
+<span class="p">}</span>
+<span class="c1"># STOP THE CLUSTEr AFTEr USE</span>
+<span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Do not forget to stop the local cluster after use. The performance gain is problem-specific but generally it is more significant in heavier tasks.</p>
+<p>BTW: Packages <code>doParallel</code> and <code>parallel</code> appear to be identical. Can somebody confirm it?</p>
+</section>
+<section id="references">
+<h2>5. references<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p>Burt, A. (2003). Site-specific selfish genes as tools for the control and genetic engineering of natural populations. Proceedings of the royal Society of London. Series B: Biological Sciences, 270(1518), 921-928.</p>
+<p>Deredec, A., Burt, A., &amp; Godfray, H. C. J. (2008). The population genetics of using homing endonuclease genes in vector and pest management. Genetics, 179(4), 2013-2026.</p>
+<p>North, A. r., Burt, A., &amp; Godfray, H. C. J. (2020). Modelling the suppression of a malaria vector using a CrISPr-Cas9 gene drive to reduce female fertility. BMC biology, 18, 1-14.</p>
+<p>Kyrou, K., Hammond, A. M., Galizi, r., Kranjc, N., Burt, A., Beaghton, A. K., … &amp; Crisanti, A. (2018). A CrISPr–Cas9 gene drive targeting doublesex causes complete population suppression in caged Anopheles gambiae mosquitoes. Nature biotechnology, 36(11), 1062-1066.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./notebooks/experimental"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-of-a-basic-gene-drive-simulator">1. Features of a basic gene drive simulator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-1-drift">1.1 force #1: drift</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-2-drive">1.2 force #2: drive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-3-selection">1.3 force #3: selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-4-population-dynamics">1.4 force #4: Population dynamics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-coding-considerations">2. Some coding considerations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-arguments">2.1 Input arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">2.2 Data types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialisation">2.3 Initialisation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propagation">2.4 Propagation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">2.5 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-stopping-criterion">2.6 Other stopping criterion?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gene-drive-simulator">3. The gene drive simulator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-set-and-suggested-soluations">4. Problem set and suggested soluations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up">4.1 Warm-up</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-strategy">4.2 release strategy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-design">4.3 Construct design</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-population-profiles">4.4 Effect of population profiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-tg-frequency">4.5 Equilibrium TG frequency</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-the-doparallel-package">Extra: The <code>doParallel</code> package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">5. references</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

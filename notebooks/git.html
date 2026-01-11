@@ -1,0 +1,2348 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Version control with Git &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/git';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Scientific documents with \(\LaTeX\)" href="latex.html" />
+    <link rel="prev" title="Shell scripting" href="shell-scripting.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-computing.html">Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Biological Computing in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r.html">Biological Computing in R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-basic-stats.html">Basic Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-r.html">Data analysis in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exp-design.html">Experimental design and Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Advanced Modelling &amp; Statistics Pre-work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-eemodelling.html">Ecological &amp; Evolutionary Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="populations.html">Single populations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Advanced Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time-series.html">Time series analysis in R</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Assignments and Assessments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Appendices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MulQuaBio/MQB/master?urlpath=lab/tree/notebooks/git.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MulQuaBio/MQB/blob/master/notebooks/git.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/git.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/git.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Version control with Git</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-version-control">Why version control?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-git">Why Git?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-get-started">Let’s get started!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-configuring-git">Installing and configuring Git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-repository">Your first repository</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-good-commit-messages">Writing Good Commit Messages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commits">Commits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-git-stores-data">How git Stores Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-git-commands">Basic git commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-remote-repository">Your remote repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-command-sequence-for-connecting-to-remotes">General command sequence for connecting to remotes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branching">Branching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">Key concepts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-workflow-and-command-structure">repository, workflow and command structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Commits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branch">Branch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hash">Hash</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-git-commands">Common Git commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-readme-file">The readme file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#essential-readme-components">Essential readme Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-components-for-group-projects">Additional Components for Group Projects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-components">Optional Components</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ignoring-files">Ignoring Files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-and-file-patterns-for-gitignoring">Directory and file patterns for gitignoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitignore-ng-after-commit-ing"><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>-ng after <code class="docutils literal notranslate"><span class="pre">commit</span></code>-ing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-remote-repositories">Working with remote repositories</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-a-remote-git-repository">Set up a remote Git repository</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-binary-files">Dealing with binary files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-large-files">Dealing with large files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-commit-git-hook">Pre-Commit Git Hook</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-files">removing files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#un-tracking-files">Un-tracking files</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-history-of-the-repository">Accessing history of the repository</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reverting-to-a-previous-version">reverting to a previous version</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-git-commands-on-a-different-directory">running Git commands on a different directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-git-commands-on-multiple-repositories-at-once">running Git commands on multiple repositories at once</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-git-through-a-gui">Using Git through a GUI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborative-git-workflows-for-group-work">Collaborative Git Workflows for Group Work</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-for-collaboration">Setting Up for Collaboration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branch-based-development">Branch-Based Development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meaningful-commit-messages-for-collaboration">Meaningful Commit Messages for Collaboration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syncing-with-the-team">Syncing with the Team</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-merge-conflicts">Handling Merge Conflicts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-review-and-merging">Code review and Merging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution-documentation">Contribution Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-for-group-work">Best Practices for Group Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-resolution">Conflict resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-workflow-summary">Example Workflow Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-reference-to-assessment">Cross-reference to Assessment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-friendly-concluding-note-on-git">A friendly concluding note on Git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals">Practicals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">readings &amp; resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general">General</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">Markdown</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#committing-practices">Committing practices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitignore">.gitignore</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Branching</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="version-control-with-git">
+<h1>Version control with Git<a class="headerlink" href="#version-control-with-git" title="Link to this heading">#</a></h1>
+<div class="admonition-learning-goals-common-pitfalls admonition">
+<p class="admonition-title">Learning goals + common pitfalls</p>
+<p><strong>By the end of this chapter you should be able to:</strong></p>
+<ul class="simple">
+<li><p>Explain the difference between the <em>working tree</em>, <em>staging area (index)</em>, and <em>repository</em></p></li>
+<li><p>Create a repo, make commits, and connect/push to a remote (e.g. GitHub)</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> to understand what will be committed</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> <em>before</em> your first commit to avoid tracking generated files</p></li>
+</ul>
+<p><strong>Common pitfalls to watch for:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-am</span> <span class="pre">...</span></code> does <strong>not</strong> include new/untracked files (you still need <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> first)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">*</span></code> can miss dotfiles and behaves differently than you might expect; prefer <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code> or <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">.</span></code></p></li>
+<li><p>Don’t commit large data/output files; keep code + small inputs under version control</p></li>
+</ul>
+</div>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Version control (also called revision control or source control) is the management and tracking of changes to code and other project files over time.</p>
+<p>Any project (a collection of files in directories) under version control has changes/additions/deletions recorded so you can recover specific versions later.</p>
+<p>Version control is also the technology embedded in the versioning of many word processors and spreadsheet applications (e.g., Google Docs, Overleaf).</p>
+<hr class="docutils" />
+<figure class="align-default" id="vc-overview">
+<a class="reference internal image-reference" href="../_images/VC.png"><img alt="Version control" src="../_images/VC.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text"><strong>An overview of how version control works.</strong> Some of the project mainline’s branches may eventually be merged back into the mainline if they are successful in achieving some objective that is worth integrating into the mainline.</span><a class="headerlink" href="#vc-overview" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="why-version-control">
+<h2>Why version control?<a class="headerlink" href="#why-version-control" title="Link to this heading">#</a></h2>
+<p>With version control of biological computing projects, you can:</p>
+<ul class="simple">
+<li><p>record all changes made to a set of files and directories, including text (usually ASCII) data files, so that you can access any previous version of the files</p></li>
+<li><p>“roll back” data, code, documents that are in plain text format (other file formats can also be versioned; see <a class="reference internal" href="#dealing-with-binary-files">section on binary files</a> below).</p></li>
+<li><p>collaborate more easily with others on developing new code or writing documents – branch (and merge) projects</p></li>
+<li><p>back up your project (but Git is not backup software - see <a class="reference internal" href="#dealing-with-binary-files">sections on binary and large files</a> below).</p></li>
+</ul>
+<hr class="docutils" />
+<figure class="align-default" id="mess-happens-without-vc">
+<a class="reference internal image-reference" href="../_images/cvs.png"><img alt="Mess without Version Control" src="../_images/cvs.png" style="width: 350px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text"><strong>This will very likely happen if you don’t use version control.</strong> <br> (Source: <a class="reference external" href="http://maktoons.blogspot.com/2009/06/if-dont-use-version-control-system.html">maktoons.blogspot.com</a>).</span><a class="headerlink" href="#mess-happens-without-vc" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="why-git">
+<h2>Why Git?<a class="headerlink" href="#why-git" title="Link to this heading">#</a></h2>
+<p>We will use Git, developed by Linus Torvalds (the “Lin” in Linux). It is a distributed version control system designed to handle projects of all sizes quickly and efficiently, and it supports collaboration without overwriting each other’s work.</p>
+<p>The main advantages of Git are:</p>
+<ul class="simple">
+<li><p>Distributed system: every developer has a complete copy of the project, including its history</p></li>
+<li><p>Efficiency: fast performance for both local and remote operations</p></li>
+<li><p>Data integrity: every commit snapshot is checksummed</p></li>
+<li><p>Flexibility: supports non-linear development workflows through branching and merging</p></li>
+<li><p>Collaboration: enables teamwork by allowing multiple people to work on different parts (typically on separate branches) simultaneously</p></li>
+</ul>
+</section>
+<section id="let-s-get-started">
+<h2>Let’s get started!<a class="headerlink" href="#let-s-get-started" title="Link to this heading">#</a></h2>
+<p>In Git, each user stores a complete local copy of the project, including its history and all versions (the “repository”). This reduces reliance on a central server (a “remote”).</p>
+<p>The Git repository is a directory that contains your project’s files and the entire history of changes made to those files. Here is a graphical outline of the Git repository, workflow and command structure:</p>
+<hr class="docutils" />
+<figure class="align-default" id="git-workflow">
+<a class="reference internal image-reference" href="../_images/git.png"><img alt="Git Workflow" src="../_images/git.png" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text"><strong>The Git repository, workflow and command structure.</strong> The “workspace” is your working directory: the files and folders you see and edit. The “index” is your <em>staging area</em>: a place to group changes you want to commit together. The “local repository” contains the database of all objects (commits, files (“blobs”), directories (“trees”), etc.) and their metadata. This history lives inside the hidden <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory within your project folder.</span><a class="headerlink" href="#git-workflow" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>There are several core Git concepts and commands that you need to understand. But first things first: let’s install <code class="docutils literal notranslate"><span class="pre">git</span></code> and set up your first Git repository!</p>
+</section>
+<section id="installing-and-configuring-git">
+<h2>Installing and configuring Git<a class="headerlink" href="#installing-and-configuring-git" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is a JupyterLite notebook. Code cells here will not work for this particular chapter. Follow the instructions and run the commands in your terminal/console.</p>
+</div>
+<p>But first things first: install Git and set up your first repository.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Installing Git on your machine</strong> (if you do not have <code class="docutils literal notranslate"><span class="pre">git</span></code> installed already):</p>
+<ul class="simple">
+<li><p>On <strong>Linux</strong>, use a package manager (e.g., <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">git</span></code> on Ubuntu).</p></li>
+<li><p>On <strong>Mac</strong>, install Homebrew first (if you haven’t already) and then run <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">git</span></code>.</p></li>
+<li><p>On <strong>Windows</strong>, install Git from <a class="reference external" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>. You can also install <a class="reference external" href="https://desktop.github.com/">GitHub Desktop</a>, which includes Git as well.</p></li>
+</ul>
+</div>
+<p>Let’s install and configure <code class="docutils literal notranslate"><span class="pre">git</span></code> and create a repository.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In what follows, I will sometimes show the expected output from a command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```bash
+pwd
+```
+
+```
+/home/YourUserName
+```
+</pre></div>
+</div>
+</div>
+</section>
+<section id="your-first-repository">
+<h2>Your first repository<a class="headerlink" href="#your-first-repository" title="Link to this heading">#</a></h2>
+<p>Time to bring your TMQB coursework under version control. First, let’s navigate to it:</p>
+<p>Then initialize your local Git repository:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initialised empty git repository in /home/mhasoba/Documents/CMEECourseWork/.git/
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create your readme file (as a <a class="reference external" href="https://en.wikipedia.org/wiki/Markdown">markdown</a> document, so with the <code class="docutils literal notranslate"><span class="pre">.md</span></code> extension):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;My CMEE Coursework repository&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>readme.md
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check again <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--list</span></code> to see if anything has changed.</p>
+<p>Check the files and directories that have been created:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ll<span class="w"> </span><span class="c1">#same as &quot;ls -al&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note the hidden <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory! (More on this below).</p>
+</div>
+<p>Add the readme (AKA “stage” it for for a Git commit):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>readme.md
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check the current status of your repository:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+	<span class=" -Color -Color-Green">new file:   readme.md</span>
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+	<span class=" -Color -Color-Red">week1/</span>
+	<span class=" -Color -Color-Red">week2/</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This tells you that there are local changes that need to be committed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Added readme file.&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[main (root-commit) b2a73ef] Added readme file.
+ 1 file changed, 1 insertion(+)
+ create mode 100644 readme.md
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In git commands, you can also combine flags like in base UNIX commands; so you can both, add (<code class="docutils literal notranslate"><span class="pre">-a</span></code> flag) and commit (<code class="docutils literal notranslate"><span class="pre">-m</span></code> flag) at one go, with <code class="docutils literal notranslate"><span class="pre">-am</span></code>.</p>
+</div>
+<p>Check status again:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On branch main
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+	<span class=" -Color -Color-Red">week1/</span>
+	<span class=" -Color -Color-Red">week2/</span>
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>What does it say now?</em> - Compare with the above output of <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>.</p>
+<p>You can also add changes matching a particular pattern.</p>
+<p>For example</p>
+<p>For example, to stage all <code class="docutils literal notranslate"><span class="pre">.txt</span></code> files (pattern-based), you can do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>--<span class="w"> </span><span class="s1">&#39;*.txt&#39;</span>
+</pre></div>
+</div>
+<p>Quoting the pattern means <strong>Git</strong> interprets it (not your shell), which is more predictable across different shells.</p>
+<p>Next you can commit the rest of these files inside your current coursework (e.g., <code class="docutils literal notranslate"><span class="pre">week</span> <span class="pre">1</span></code>) with another message, just like you did for <code class="docutils literal notranslate"><span class="pre">readme</span></code> above:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Before making your first commit, please read the section about “<strong>Ignoring files</strong>” below.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Full first commit of new project&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On branch main
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+	<span class=" -Color -Color-Red">week1/</span>
+	<span class=" -Color -Color-Red">week2/</span>
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On branch main
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+	<span class=" -Color -Color-Red">week1/</span>
+	<span class=" -Color -Color-Red">week2/</span>
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<figure class="align-default" id="git-commit">
+<a class="reference internal image-reference" href="../_images/git_xkcd.png"><img alt="XKCD committing" src="../_images/git_xkcd.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text"><strong>Make meaningful comments in your Git commit.</strong> Please don’t neglect to make each commit message meaningful. And use this mantra: “commit often, comment always”. The correct meaning of “often” in this context comes with experience.<br> (Source: <a class="reference external" href="https://m.xkcd.com/1296/">XKCD</a>)</span><a class="headerlink" href="#git-commit" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<hr class="docutils" />
+<section id="writing-good-commit-messages">
+<h3>Writing Good Commit Messages<a class="headerlink" href="#writing-good-commit-messages" title="Link to this heading">#</a></h3>
+<p>A good commit message helps you and others understand what changed and why. Follow these guidelines:</p>
+<p><strong>Structure:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>First line (subject)</strong>: Short summary (50 characters or less)</p></li>
+<li><p><strong>Blank line</strong></p></li>
+<li><p><strong>Body</strong> (optional): Detailed explanation of what and why</p></li>
+</ol>
+<p><strong>Best Practices:</strong></p>
+<ul class="simple">
+<li><p>Use the <strong>imperative mood</strong>: “Add feature” not “Added feature” or “Adds feature”</p></li>
+<li><p>Be <strong>specific</strong>: “Fix data import bug for CSV files” not “Fix bug”</p></li>
+<li><p>Explain <strong>why</strong>, not just what: “Add data validation to prevent negative values”</p></li>
+<li><p>For <strong>group work</strong>: Include your initials (e.g., “JS: Add plotting functions”)</p></li>
+<li><p><strong>Capitalize</strong> the first word</p></li>
+<li><p><strong>No period</strong> at the end of the subject line</p></li>
+</ul>
+<p><strong>Examples:</strong></p>
+<p>✅ Good:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Add</span> <span class="n">function</span> <span class="n">to</span> <span class="n">calculate</span> <span class="n">species</span> <span class="n">richness</span>
+
+<span class="n">This</span> <span class="n">function</span> <span class="n">takes</span> <span class="n">a</span> <span class="n">community</span> <span class="n">matrix</span> <span class="ow">and</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">number</span>
+<span class="n">of</span> <span class="n">species</span> <span class="n">per</span> <span class="n">site</span><span class="o">.</span> <span class="n">Includes</span> <span class="n">handling</span> <span class="k">for</span> <span class="n">missing</span> <span class="n">data</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">JS</span><span class="p">:</span> <span class="n">Fix</span> <span class="n">temperature</span> <span class="n">conversion</span> <span class="n">bug</span>
+
+<span class="n">Corrected</span> <span class="n">Fahrenheit</span> <span class="n">to</span> <span class="n">Celsius</span> <span class="n">formula</span> <span class="p">(</span><span class="n">was</span> <span class="n">using</span> <span class="n">addition</span>
+<span class="n">instead</span> <span class="n">of</span> <span class="n">subtraction</span><span class="p">)</span><span class="o">.</span> <span class="n">Closes</span> <span class="c1">#23.</span>
+</pre></div>
+</div>
+<p>❌ Poor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">updated</span> <span class="n">stuff</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fixed</span> <span class="n">it</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Linking Commits to Issues</strong>: reference issue numbers in commit messages (e.g., “Fixes #42”) to automatically link commits to gitHub issues and close them when merged.</p>
+</div>
+</section>
+<section id="commits">
+<h3>Commits<a class="headerlink" href="#commits" title="Link to this heading">#</a></h3>
+<p>A commit is a snapshot of your repository at a specific point in time. Each commit records:</p>
+<ul class="simple">
+<li><p>The changes made (differences from the previous commit).</p></li>
+<li><p>Metadata such as the author, date, and a commit message.</p></li>
+<li><p>A unique hash that identifies the commit.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The unique hash (SHA-1 checksum) in git is a 40-character <a class="reference external" href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal string</a>. It looks like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">e83c5163316f89bfbde7d9ab23ca2e25604af290</span></code></p>
+<p>(You will soon see examples of this below)</p>
+<p>It is generated by applying the SHA-1 (Secure Hash Algorithm 1) cryptographic function to the contents and metadata of a Git object. <em>OK, that was some serious Gobbledygook!</em> All you need to know is that this hash acts as a unique identifier for all commits, files, directories, and other objects within a Git repo so that you can track specific snapshots of the repo.</p>
+</div>
+</section>
+</section>
+<section id="how-git-stores-data">
+<h2>How git Stores Data<a class="headerlink" href="#how-git-stores-data" title="Link to this heading">#</a></h2>
+<p>git doesn’t store data as a series of changes or differences, but as a series of snapshots of the <em>entire repository</em>. When you make a <code class="docutils literal notranslate"><span class="pre">commit</span></code>, git stores a reference to the staged snapshot and a pointer to the commit that came immediately before it.</p>
+<p>git uses four types of <em>Objects</em> to store data:</p>
+<ul class="simple">
+<li><p><em>Blobs:</em> Stores file data.</p></li>
+<li><p><em>Trees:</em> represents directories and contains pointers to blobs and other trees.</p></li>
+<li><p><em>Commits:</em> Points to a tree object (snapshot of the working directory), parent commits, and includes metadata.</p></li>
+<li><p><em>Tags:</em> Points to another object (usually a commit) and includes metadata.</p></li>
+</ul>
+<p>These objects are stored in the <code class="docutils literal notranslate"><span class="pre">.git/objects</span></code> directory and are identified by their SHA-1 hash.</p>
+</section>
+<section id="basic-git-commands">
+<h2>Basic git commands<a class="headerlink" href="#basic-git-commands" title="Link to this heading">#</a></h2>
+<p>Here are some fundamentally important git commands (please make sure you read more about them):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Command</p></th>
+<th class="head text-left"><p>What it does</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code></p></td>
+<td class="text-left"><p>Initialize a new repository</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code></p></td>
+<td class="text-left"><p>Download a repository from a remote server</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code></p></td>
+<td class="text-left"><p>Show the current status</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code></p></td>
+<td class="text-left"><p>Show differences between commits</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">blame</span></code></p></td>
+<td class="text-left"><p>Blame somebody for the changes!</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code></p></td>
+<td class="text-left"><p>Show commit history</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code></p></td>
+<td class="text-left"><p>Commit changes to current branch</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span></code></p></td>
+<td class="text-left"><p>Show branches</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">name</span></code></p></td>
+<td class="text-left"><p>Create new branch</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">name</span></code></p></td>
+<td class="text-left"><p>Switch to a different commit/branch called <code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code></p></td>
+<td class="text-left"><p>Gather commits info from a remote branch to your current local branch without merging them</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code></p></td>
+<td class="text-left"><p>Merge two or more versions of one or more files</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code></p></td>
+<td class="text-left"><p>Upload from remote repository (this is effectively the same as <code class="docutils literal notranslate"><span class="pre">fetch</span></code> followed by <code class="docutils literal notranslate"><span class="pre">merge</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code></p></td>
+<td class="text-left"><p>Send changes to remote repository</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>There are more git commands which you will also learn, but it is important that you familiarize yourself with these ones in particular first.</p>
+<p>The most common sequence of your git work and commands will be:</p>
+<ul class="simple">
+<li><p><em>Edit Files:</em> Modify files in your working directory.</p></li>
+<li><p><em>Stage Changes:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;file&gt;</span></code> to add changes to the staging area.</p></li>
+<li><p><em>Committ Changes:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;commit</span> <span class="pre">message&quot;</span></code> to save changes to the repository.</p></li>
+</ul>
+<p>But before you do that, you will always want to</p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> to see the status of your working directory and staging area.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> to view the commit history.</p></li>
+</ul>
+<!-- ### Collaboration Workflow
+- **Forking:** Creating a personal copy of someone else's repository.
+- **Pull requests/Merge requests:** Proposing changes to be merged into another repository.
+- **Code reviews:** Collaborators review code changes before they are merged.
+ --><section id="your-remote-repository">
+<h3>Your remote repository<a class="headerlink" href="#your-remote-repository" title="Link to this heading">#</a></h3>
+<p>Remote repositories are versions of your project hosted on the internet (or another network). Common platforms include GitHub, GitLab, and Bitbucket.
+Nothing has been sent to the remote server yet (more on the remote server below).
+So let’s go to your online Git service (e.g., GitHub) and set up.</p>
+<p>Note that GitHub and Bitbucket both give you unlimited free private repositories if you register with an academic email. Not a big deal if you will not be writing private code, handy if you are (<em>can you think of examples when you would need to write private code?</em>).</p>
+<p>So let’s proceed with connecting your local Git repository to your remote server:</p>
+<ul class="simple">
+<li><p>Login to your GitHub or Bitbucket account</p></li>
+<li><p>Set up your <code class="docutils literal notranslate"><span class="pre">ssh</span></code>-based access. SSH (<code class="docutils literal notranslate"><span class="pre">S</span></code>ecure <code class="docutils literal notranslate"><span class="pre">S</span></code>ocket <code class="docutils literal notranslate"><span class="pre">Sh</span></code>ell) is a protocol that allows you to connect to and interact with remote servers. Here are two sets of guidelines (you can use whichever seems easier to you, irrespective of whether you are using GitHub or Bitbucket):</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">GitHub</a></p></li>
+<li><p><a class="reference external" href="https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html">Bitbucket</a> (most of you will want the “Set up SSH on macOS/Linux” option)</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When accessing remote git repositories, you have the option to use either HTTPS or SSH protocols. Both methods have their own advantages and disadvantages, and the better choice depends on your specific needs and circumstances.</p>
+<ul class="simple">
+<li><p><strong>In general, use SSH if:</strong></p>
+<ul>
+<li><p>You interact with git repositories frequently.</p></li>
+<li><p>You prefer a secure, key-based authentication method.</p></li>
+<li><p>You’re setting up automated scripts or development workflows.</p></li>
+</ul>
+</li>
+<li><p><strong>Use HTTPS if:</strong></p>
+<ul>
+<li><p>You’re in a restrictive network environment where SSH is blocked.</p></li>
+<li><p>You prefer a simpler setup without managing SSH keys.</p></li>
+<li><p>You’re accessing repositories infrequently or from different machines.</p></li>
+</ul>
+</li>
+</ul>
+<p>We will use SSH because it is generally better for regular code development due to its security and convenience after the initial setup. You may need to use HTTPS in situations where network restrictions apply.</p>
+</div>
+<ul class="simple">
+<li><p>Next, create a new repository on your remote service with the same name as your local project (e.g., <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code>), and push your new project to this newly created remote Git repository. Instructions for this step are here:</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github">GitHub</a></p></li>
+<li><p><em>Note that you have already done the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> step, so no need to repeat those bits.</em></p></li>
+</ul>
+</li>
+</ul>
+<p>You are done. Now you can really start to use Git!</p>
+<p>The first step after having created your remote repository and added your ssh key to it, is to link the remote to your local repo (as the instructions in web pages linked above will already have told you).
+The command will look like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:YourgithubUsername/CMEECourseWork.git
+</pre></div>
+</div>
+<p>Then list the UrLs of the remote repositories associated with your local Git repository</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>-v
+</pre></div>
+</div>
+<p>The output would look like this</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>origin<span class="w">  </span>git@github.com:YourgithubUsername/CMEECourseWork.git<span class="w"> </span><span class="o">(</span>fetch<span class="o">)</span>
+origin<span class="w">  </span>git@github.com:YourgithubUsername/CMEECourseWork.git<span class="w"> </span><span class="o">(</span>push<span class="o">)</span>
+</pre></div>
+</div>
+<p>The output provides both <em>fetch</em> and <em>push</em> UrLs for each remote, showing where Git pulls updates from and where it pushes updates to. This is helpful for understanding which remote repository is set as the target for various Git commands.</p>
+<p>In the above example output:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">origin</span></code> is the name of the remote (the default name for the main remote when cloning the repository).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://github.com/username/repo-name.git</span></code> is the UrL for the remote repository on gitHub.</p></li>
+<li><p>In this case <code class="docutils literal notranslate"><span class="pre">fetch</span></code> and <code class="docutils literal notranslate"><span class="pre">push</span></code> have that the same UrL for both fetching updates and pushing commits.</p></li>
+</ul>
+<p>No you can <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> all your local commits:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+<p>This pushes the (committed) changes in your local repository up to the remote repository you specified as the <code class="docutils literal notranslate"><span class="pre">origin</span></code>. Note that <code class="docutils literal notranslate"><span class="pre">main</span></code> refers to the branch (you currently only have one). Until recently, the default was <code class="docutils literal notranslate"><span class="pre">master</span></code>, so you may see that on older repositories. More on branching below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only when you <code class="docutils literal notranslate"><span class="pre">push</span></code> or <code class="docutils literal notranslate"><span class="pre">fetch</span></code> do you need an internet connection, because before that you are only archiving in a local (hidden) repository (that sits in a hidden <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory within your project).</p>
+</div>
+<!-- You can rename your remote `origin` to a more meaningful name (e.g., `github_CMEECourseWork`) using the `git remote rename` command. See: https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#renaming-a-remote-repository -->
+</section>
+<section id="general-command-sequence-for-connecting-to-remotes">
+<h3>General command sequence for connecting to remotes<a class="headerlink" href="#general-command-sequence-for-connecting-to-remotes" title="Link to this heading">#</a></h3>
+<p>Here is a general sequence of commands for connecting a new remote:</p>
+<ul class="simple">
+<li><p><em>Add the remote:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">add</span> <span class="pre">&lt;name&gt;</span> <span class="pre">&lt;url&gt;</span></code> to connect your local repository to a remote one.</p></li>
+<li><p><em>Fetch changes:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span> <span class="pre">&lt;remote&gt;</span></code> to download commits, files, and references from a remote repository.</p></li>
+<li><p><em>Pull changes:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> to fetch and integrate changes from a remote repository into your current branch.</p></li>
+<li><p><em>Push changes:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">&lt;remote&gt;</span> <span class="pre">&lt;branch&gt;</span></code> to upload your commits to a remote repository.</p></li>
+</ul>
+</section>
+</section>
+<section id="branching">
+<h2>Branching<a class="headerlink" href="#branching" title="Link to this heading">#</a></h2>
+<p>Imagine you want to try something out, but you are not sure it will work well.</p>
+<p>For example, say you want to rewrite the <em>Introduction</em> of your <a class="reference internal" href="latex.html"><span class="std std-doc"><span class="math notranslate nohighlight">\(\LaTeX\)</span></span></a> paper using a different angle, or you want to see whether switching to a new library or package for a piece of code improves speed. What you then need is branching, which creates a project copy in which you can experiment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch<span class="w"> </span>anexperiment
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  anexperiment
+* <span class=" -Color -Color-Green">main</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Git tells you that you have two branches.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are not seeing this specific output (with two branches) at this stage of your git chapter work, scroll back and re-check / rerun the above sequence of commands again!</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>anexperiment
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Switched to branch &#39;anexperiment&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* <span class=" -Color -Color-Green">anexperiment</span>
+  main
+</pre></div>
+</div>
+</div>
+</div>
+<p>Git tells you that you have successfully switched to the new branch</p>
+<p>Or if you want to create and switch to a new branch immediately, you can use the <code class="docutils literal notranslate"><span class="pre">-b</span></code> flag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>anexperiment
+</pre></div>
+</div>
+<p>Now make a change (update the readme to record the new naughty thing you have started doing!):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;I am going to try this new naughty thing on this experimental branch!&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>readme.md
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>readme.md
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>My CMEE Coursework repository
+I am going to try this new naughty thing on this experimental branch!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">&quot;Testing experimental branch&quot;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-am</span></code> flag performs the <em>commit</em> with a message while also <em>automatically staging</em> certain changes before committing.</p>
+<p>Specifically, the <code class="docutils literal notranslate"><span class="pre">a</span></code> part of the flag  stages all changes to tracked files (files that have already been committed at least once). This flag <em>does not</em> stage new, untracked files; you must use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> to stage those separately.</p>
+<p>Now if you decide to merge the new branch after modifying it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>M	readme.md
+Switched to branch &#39;main&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>merge<span class="w"> </span>anexperiment
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Already up-to-date.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>readme.md
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>My CMEE Coursework repository
+I am going to try this new naughty thing on this experimental branch!
+</pre></div>
+</div>
+</div>
+</div>
+<p>Unless there are conflicts, i.e., some other files that you changed locally had diverged from those files in the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch in the meantime (say, due to new changes pushed by another collaborator), you are done, and you can delete the branch:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>anexperiment
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Deleted branch anexperiment (was 3fbab16).
+</pre></div>
+</div>
+</div>
+</div>
+<p>If instead you are not satisfied with the result, and you want to
+abandon the branch:</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-D</span> <span class="pre">anexperiment</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If there are conflicts between branches, git will notify you. You’ll need to resolve these conflicts manually in the files and then stage the resolved files with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>, followed by a <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> to complete the merge.</p>
+</div>
+<p>Obvously, we have been just messing around, so you don’t really want the readme of your <code class="docutils literal notranslate"><span class="pre">main</span></code> branch to say what it is currently saying!</p>
+<p>To fix this, you now have two options: edit the readme back to the state you wanted (and then <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">commit</span></code> and <code class="docutils literal notranslate"><span class="pre">push</span></code>), or use the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--hard</span></code> command. However, use the latter with caution. Before you do anything to reverse the merge, read about resetting and revertinf below.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When you want to test something out, always branch! reverting changes, especially in code, is typically painful. Merging can be tricky, especially if multiple people have simultaneously worked on a particular document. In the worst-case scenario, you may want to delete the local copy and re-clone the remote repository.</p>
+</div>
+<hr class="docutils" />
+<figure class="align-default" id="git-xkcd-2">
+<a class="reference internal image-reference" href="../_images/git_xkcd_1.png"><img alt="Git desperation" src="../_images/git_xkcd_1.png" style="width: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text"><strong>Try not to do this.</strong> But most of us mortals will have, at some point! <br> (Source: <a class="reference external" href="https://xkcd.com/1597/">XKCD</a>)</span><a class="headerlink" href="#git-xkcd-2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<hr class="docutils" />
+<!-- ```{tip}
+"Tags" are references that point to specific commits, typically used to mark release points like `v1.0`, `v2.0`, etc.
+```
+ --><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can perform git branching and merging entirely within a local repository without needing a remote.</p>
+</div>
+</section>
+<section id="key-concepts">
+<h2>Key concepts<a class="headerlink" href="#key-concepts" title="Link to this heading">#</a></h2>
+<p>Here are some of the key concepts in the working of Git:</p>
+<section id="repository-workflow-and-command-structure">
+<h3>repository, workflow and command structure<a class="headerlink" href="#repository-workflow-and-command-structure" title="Link to this heading">#</a></h3>
+<p><strong>repository, workflow and command structure.</strong> - The “workspace” is your working directory - the actual files and folders you see and edit. The “index” is your <em>staging area</em> (more on this below) - a place where you can group changes you want to <code class="docutils literal notranslate"><span class="pre">commit</span></code> together. The “local repository” contains the database of all objects (commits, files (“blobs”), directories (“trees”), etc.) in your repository along with their metadata. The index and the actual data (the objects) associated with each repo snapshot you commit are all inside a hidden directory named <code class="docutils literal notranslate"><span class="pre">.git</span></code> that sits within your project directory.</p>
+<figure class="margin align-center" id="id3">
+<img alt="git_data_transport" src="../_images/git_data_transport.svg" />
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">The different components of a git repository and the commands used to move data between them. <a class="reference external" href="https://commons.wikimedia.org/wiki/File:git_data_flow_simplified.svg">Source</a>.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>All Git commands must be issued from inside the directory (repository) that you have initialized using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code>, and within which the hidden <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory resides.</p>
+</section>
+<section id="id1">
+<h3>Commits<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p><strong>Commits.</strong> A <em>commit</em> is an action or rather, snapshot that records changes to the repository. Each commit typically represents a set of related changes (e.g., bug fixes, a new feature, documentation updates), and is associated with a unique ID (we will see this later), an Author, and a timestamp. This allows you to revert to these individual snapshots and track the history of your project.
+Git, as opposed to many other version control software you may have encountered (e.g., Word’s “track changes”), tracks <em>every version of every file as discrete “snapshots”</em>, rather than just the changes or “diffs”. Git’s snapshot-based approach makes operations like switching between branches or merging changes faster and more reliable. It also allows you to efficiently restore any previous version of the project. Here’s a <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-What-is-Git">nice visualisation</a> of how commits and snapshots work.</p>
+</section>
+<section id="branch">
+<h3>Branch<a class="headerlink" href="#branch" title="Link to this heading">#</a></h3>
+<p><strong>Branch.</strong> A “branch” is an independent line of development in a project repository. The default branch is typically called <code class="docutils literal notranslate"><span class="pre">main</span></code> (or <code class="docutils literal notranslate"><span class="pre">master</span></code> for backwards compatibility in older versions of Git).
+New branches can be created at any point in the project’s history (we will learn about this later). Branches enable multiple lines of development in a repository, such as working on new features or bug fixes without affecting the stable <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. When a branch is ready, it is “merged” back to <code class="docutils literal notranslate"><span class="pre">main</span></code> branch or another branch.</p>
+</section>
+<section id="hash">
+<h3>Hash<a class="headerlink" href="#hash" title="Link to this heading">#</a></h3>
+<p><strong>Hash.</strong> A <em>commit hash</em> is a 40-character unique identifier for a commit (You will see these later — they look like: <code class="docutils literal notranslate"><span class="pre">d94cd91</span></code>). It is generated by applying the SHA-1 (Secure Hash Algorithm 1) cryptographic function to the contents and metadata of a Git object. <em>OK, that was some serious Gobbledygook!</em> All you need to know is that this hash acts as a unique identifier for all commits, files, directories, and other objects within a Git repo so that you can track specific snapshots of the repo.</p>
+</section>
+</section>
+<section id="common-git-commands">
+<h2>Common Git commands<a class="headerlink" href="#common-git-commands" title="Link to this heading">#</a></h2>
+<p>Here’s a list of the most common <code class="docutils literal notranslate"><span class="pre">git</span></code> commands:</p>
+<ul class="simple">
+<li><p><em>Status check:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> to see the current state of the repository.</p></li>
+<li><p><em>Stage changes:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;file&gt;</span></code> to stage files for commit.</p></li>
+<li><p><em>Commit Changes:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;commit</span> <span class="pre">message&quot;</span></code> to save changes to the repository.</p></li>
+<li><p><em>View history:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> to view commit history.</p></li>
+<li><p><em>Create a branch:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">&lt;branch_name&gt;</span></code> to create a new branch.</p></li>
+<li><p><em>Switch branch:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;branch_name&gt;</span></code> to switch to a different branch.</p></li>
+<li><p><em>Merge branches:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">&lt;branch_name&gt;</span></code> to merge changes from one branch to another.</p></li>
+<li><p><em>Clone repository:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">&lt;URL&gt;</span></code> to copy a repository from a remote server.</p></li>
+<li><p><em>Push changes:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> to upload local changes to a remote repository.</p></li>
+<li><p><em>Pull changes:</em> Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> to fetch and merge changes from a remote repository.</p></li>
+</ul>
+</section>
+<section id="the-readme-file">
+<h2>The readme file<a class="headerlink" href="#the-readme-file" title="Link to this heading">#</a></h2>
+<p>A readme (like the <code class="docutils literal notranslate"><span class="pre">readme.md</span></code> that you created in your Git repo above) is a text file that introduces and explains a project. It contains information that is required to understand what the project is about and how to use or run it.</p>
+<p>While readmes can be written in any text file format, Markdown (saved as an <code class="docutils literal notranslate"><span class="pre">.md</span></code> file) is most commonly used, as it allows you to add simple text formatting easily. Two other formats that you might most often see are plain text and <a class="reference external" href="https://en.wikipedia.org/wiki/reStructuredText">reStructuredText</a> (saved as an <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file, common in Python projects).</p>
+<section id="essential-readme-components">
+<h3>Essential readme Components<a class="headerlink" href="#essential-readme-components" title="Link to this heading">#</a></h3>
+<p>You can find many readme file suggestions (and templates) online. Essentially, it should ideally have the following features/content:</p>
+<ul class="simple">
+<li><p><strong>Project name / title</strong>: Clear, descriptive name for your project</p></li>
+<li><p><strong>Brief description</strong>: What your project does and/or is for. Provide context and add links to any references to help new visitors understand the purpose and scope</p></li>
+<li><p><strong>Languages</strong>: List language(s) and their versions used in the project (e.g., Python 3.11, r 4.3.0)</p></li>
+<li><p><strong>Dependencies</strong>: What special packages (which are not part of standard libraries of the language(s) used) might be needed for a new user to run your project. Include version numbers if specific versions are required</p></li>
+<li><p><strong>Installation</strong>: Guidelines for installing the project (if applicable), including dependencies. Provide step-by-step instructions for setting up the environment</p></li>
+<li><p><strong>Project structure</strong>: Brief overview of the repository organization (main directories and their purposes)</p></li>
+<li><p><strong>Usage</strong>: How to run/use the project. Include command-line examples or code snippets. Explain what specific key files do (no need to list every file, such as data or experimental ones like those in <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>)</p></li>
+<li><p><strong>Author name and contact</strong>: List all contributors with their roles (especially important for group projects)</p></li>
+</ul>
+</section>
+<section id="additional-components-for-group-projects">
+<h3>Additional Components for Group Projects<a class="headerlink" href="#additional-components-for-group-projects" title="Link to this heading">#</a></h3>
+<p>For group coursework, your readme should also include:</p>
+<ul class="simple">
+<li><p><strong>Team members</strong>: Names and contributions of each team member (with link to <code class="docutils literal notranslate"><span class="pre">CONTrIBUTIONS.md</span></code> for details)</p></li>
+<li><p><strong>Division of work</strong>: High-level overview of who worked on which components (detailed documentation belongs in <code class="docutils literal notranslate"><span class="pre">CONTrIBUTIONS.md</span></code>)</p></li>
+<li><p><strong>How to run tests</strong>: If you have unit tests, explain how to execute them</p></li>
+<li><p><strong>Known issues</strong>: Any bugs or limitations that users should be aware of</p></li>
+</ul>
+</section>
+<section id="optional-components">
+<h3>Optional Components<a class="headerlink" href="#optional-components" title="Link to this heading">#</a></h3>
+<p>In addition, you may want to include (but not necessary for your current coursework):</p>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="https://en.wikipedia.org/wiki/Software_license">License</a></strong>: Specifies how others can use your code</p></li>
+<li><p><strong>Acknowledgments</strong>: Credit external code, datasets, or assistance</p></li>
+<li><p><strong>Contributing guidelines</strong>: Instructions for others who want to contribute</p></li>
+<li><p><strong>Badges</strong>: Status indicators (build status, test coverage, etc.)</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>readme Best Practices:</strong></p>
+<ul class="simple">
+<li><p>Keep it concise but comprehensive</p></li>
+<li><p>Use clear headings and formatting</p></li>
+<li><p>Include code examples where helpful</p></li>
+<li><p>Keep it updated as your project evolves</p></li>
+<li><p>Test that all instructions actually work on a fresh system</p></li>
+<li><p>For group projects: Ensure readme accurately reflects all team members’ contributions</p></li>
+</ul>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Assessment requirement</strong>: For group projects, your readme must clearly identify all team members and link to your <code class="docutils literal notranslate"><span class="pre">CONTrIBUTIONS.md</span></code> file. reviewers will check that your readme is informative and professionally formatted.</p>
+</div>
+<p><strong>Further resources</strong>: Search online for “readme best practices” or “readme templates” for additional guidance and examples.</p>
+</section>
+</section>
+<section id="ignoring-files">
+<h2>Ignoring Files<a class="headerlink" href="#ignoring-files" title="Link to this heading">#</a></h2>
+<p>You will have some files you don’t want to track (log files, temporary files, executables, etc). You can ignore entire classes of files with <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>.</p>
+<p><span class="math notranslate nohighlight">\(\star\)</span> Let’s try it (make sure you are in your coursework directory (e.g., <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code>)):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;*~ \n*.tmp&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>.gitignore
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>.gitignore
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*~ 
+*.tmp
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.gitignore
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>touch<span class="w"> </span>temporary.tmp
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, stage your changes. Prefer one of these:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code> (stages <em>all</em> changes, including deletions, recursively)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">.</span></code> (stages changes under the current directory)</p></li>
+</ul>
+<p>Avoid <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">*</span></code> because it can miss dotfiles and its shell expansion can behave unexpectedly.</p>
+<p>You can also create a global gitignore file that lists rules for files to be ignored <a class="reference external" href="https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files">in every Git repository on your computer</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Templates for .gitignore</strong>: You can find standard <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> templates online. For example, search for “.gitignore templates”.</p>
+</div>
+<section id="directory-and-file-patterns-for-gitignoring">
+<h3>Directory and file patterns for gitignoring<a class="headerlink" href="#directory-and-file-patterns-for-gitignoring" title="Link to this heading">#</a></h3>
+<p>It’s important that you use the correct <em>patterns</em> for what to ignore in your <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>, to make sure that all the correct directories and files are being excluded. Note that you can put additonal <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> files in sub-directories if you need more fine-grained control over what is to be ignored, bt it is not necessary, because Git-ignoring works recursively (including thorugh sub-directories) as long as you include the correct pattern.</p>
+<p>Here are the basic patterns (rules) :</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Pattern</p></th>
+<th class="head text-left"><p>gitignore result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">#comment</span></code></p></td>
+<td class="text-left"><p>This is a comment - this gitignore entry will be ignored (avoid having any file or directory with <code class="docutils literal notranslate"><span class="pre">#</span></code> in its name!)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td class="text-left"><p>Every file Or directory (because lack of trailing <code class="docutils literal notranslate"><span class="pre">/</span></code>) named <code class="docutils literal notranslate"><span class="pre">target</span></code> is ignored, recursively</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">target/</span></code></p></td>
+<td class="text-left"><p>Every directory (due to the trailing <code class="docutils literal notranslate"><span class="pre">/</span></code>) named <code class="docutils literal notranslate"><span class="pre">target</span></code> is ignored, recursively</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">/target</span></code></p></td>
+<td class="text-left"><p>Every file Or directory named <code class="docutils literal notranslate"><span class="pre">target</span></code> in the top-most directory (due to the leading <code class="docutils literal notranslate"><span class="pre">/</span></code>) is ignored only there (not recursively)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">/target/</span></code></p></td>
+<td class="text-left"><p>Every directory named target in the top-most directory (because of the leading and trailing <code class="docutils literal notranslate"><span class="pre">/</span></code>) is ignored only there (not recursively)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">*.extension</span></code></p></td>
+<td class="text-left"><p>Every file or directory ending with the extension <code class="docutils literal notranslate"><span class="pre">.extension</span></code> is ignored, recursively</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">*.py[co]</span></code></p></td>
+<td class="text-left"><p>Every file or directory ending in <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> or <code class="docutils literal notranslate"><span class="pre">.pyo</span></code> is ignored (but not <code class="docutils literal notranslate"><span class="pre">.py</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>There are additonal patterns - please see the readings and resources section.</p>
+</section>
+<section id="gitignore-ng-after-commit-ing">
+<h3><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>-ng after <code class="docutils literal notranslate"><span class="pre">commit</span></code>-ing<a class="headerlink" href="#gitignore-ng-after-commit-ing" title="Link to this heading">#</a></h3>
+<p>If you find that a file or directory belonging to a pattern that you incuded in your <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> fails to be ignored (still comes under version control), it most likely means that you gitignored it AFTEr committing and pushing it. In this scenario, you need to use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>&lt;file&gt;
+</pre></div>
+</div>
+<p>for a file, and</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>--cached<span class="w"> </span>&lt;folder&gt;
+</pre></div>
+</div>
+<p>for a directory.</p>
+<p>While these commands will not remove the physical file from your local repository, it will remove the files from other locals on their next <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>.</p>
+<p>An alternative, safer technique (though one which is definitely more work to maintain) is a whitelist-based approach. This is not necessarily a better or worse way to do things, you are in the end trading your time and effort for increased safety and cleanliness of your repository.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>*.*
+!.gitignore
+!*.R
+!*.py
+!*.sh
+!*.tex
+!*.bib
+!*.txt
+!*.md
+!Week1/results/myfirstlatexdoc.tex
+</pre></div>
+</div>
+<p>Your feedback will be in .txt files, so don’t ignore these!</p>
+</section>
+</section>
+<section id="working-with-remote-repositories">
+<h2>Working with remote repositories<a class="headerlink" href="#working-with-remote-repositories" title="Link to this heading">#</a></h2>
+<p>Remote repositories are versions of your project hosted on the internet or another network. Common platforms include GitHub, GitLab, and Bitbucket.</p>
+<section id="set-up-a-remote-git-repository">
+<h3>Set up a remote Git repository<a class="headerlink" href="#set-up-a-remote-git-repository" title="Link to this heading">#</a></h3>
+<p>So let’s go to your online Git service (e.g., GitHub) and set up. Note that GitHub and Bitbucket both give you unlimited free private repositories if you register with an academic email. Not a big deal if you will not be writing private code, handy if you are (<em>can you think of examples when you would need to write private code?</em>).</p>
+<ul class="simple">
+<li><p>Login to your GitHub or Bitbucket account</p></li>
+<li><p>Follow the instructions to set up an SSH key to enable cryptography-based interfacing with your remote Git repository</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">GitHub</a></p></li>
+<li><p><a class="reference external" href="https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html">Bitbucket</a></p></li>
+</ul>
+</li>
+</ul>
+<p>An alternative, safer technique (though one which is definitely more work to maintain) is a whitelist-based approach. This is not necessarily a better or worse way to do things, you are in the end trading your time and effort for increased safety and cleanliness of your repository.</p>
+<ul class="simple">
+<li><p>Create your remote Git repository:</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository">GitHub</a></p></li>
+<li><p><a class="reference external" href="https://confluence.atlassian.com/bitbucket/create-a-git-repository-759857290.html">Bitbucket</a></p></li>
+</ul>
+</li>
+<li><p>Now, following the instructions:</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github">GitHub</a></p></li>
+<li><p><a class="reference external" href="https://confluence.atlassian.com/bitbucket/push-updates-to-a-repo-221449503.html">Bitbucket</a></p></li>
+</ul>
+</li>
+</ul>
+<p>The first step after having created your remote repository and added your ssh key to it, is to link the remote to your local repo (as the instructions in web pages linked above will already have told you).</p>
+</section>
+</section>
+<section id="dealing-with-binary-files">
+<h2>Dealing with binary files<a class="headerlink" href="#dealing-with-binary-files" title="Link to this heading">#</a></h2>
+<p>A binary file is computer-readable but not human-readable, that is, it cannot be read by opening them in a text viewer. Examples of binary files include compiled executables, zip files, images, word documents and videos. In contrast, text files are stored in a form (usually ASCII) that is human-readable by opening in a text reader (e.g., gedit). Without some Git extensions and configurations (coming up next), binary files cannot be properly version-controlled because each version of the entire file is saved <em>as is</em> in a hidden directory in the repository (<code class="docutils literal notranslate"><span class="pre">.git</span></code>).
+However, with some more effort, Git can be made to work for binary formats like <code class="docutils literal notranslate"><span class="pre">*.docx</span></code> or image formats such as <code class="docutils literal notranslate"><span class="pre">*.jpeg</span></code>, but it is harder to compare versions; have a look at <a class="reference external" href="https://git-scm.com/docs/gitattributes">this</a> and <a class="reference external" href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes">this</a><sup><a class="reference internal" href="#git-word">1</a></sup>, and also, <a class="reference external" href="https://opensource.com/life/16/8/how-manage-binary-blobs-Git-part-7">this</a>.</p>
+</section>
+<section id="dealing-with-large-files">
+<h2>Dealing with large files<a class="headerlink" href="#dealing-with-large-files" title="Link to this heading">#</a></h2>
+<p>As such, Git was designed for version control of workflows and software projects, <em>not</em> large files (say, &gt;100mb) (which may be plain-text or binary). Binary files are particularly problematic because each version of the file is saved <em>as is</em> in <code class="docutils literal notranslate"><span class="pre">.git</span></code>, when you have a large number of versions it means that there are the same number of binary files in the hidden directory (for example 100 <span class="math notranslate nohighlight">\(\times\)</span> &gt;100mb files!).
+<em>So please do not keep large files (especially binary files) under version control</em><sup><a class="reference internal" href="#git-largefiles">2</a></sup>. For example, if you are doing GIS work, you may have to handle large raster image files. Do not bring such files under version control. We suggest that you include files larger than some size in your <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>. For example, you can use the following bash command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">.</span> <span class="pre">-size</span> <span class="pre">+100M</span> <span class="pre">|</span> <span class="pre">cat</span> <span class="pre">&gt;&gt;</span> <span class="pre">.gitignore</span></code></p>
+<p>The 100M means 100 mb – you can reset it to whatever you want.</p>
+<p><em>Then what about code that needs large files?</em> For this, the best approach is write code that scales up with data size. If it works on a 1 mb file, it should also work on a 1000 mb file! If you have written such code, then you can include a smaller file as a MWE (minimum working example).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><em>And how do you back up your large data files?</em> remember, version control software like git are not meant for backing up data. The solution is to back up separately, either to an external hard drive or a cloud service. <code class="docutils literal notranslate"><span class="pre">rsync</span></code> is a great Linux utility for making such backups. Look it up on the ‘net!</p>
+</div>
+<p>You may also explore alternatives such as <code class="docutils literal notranslate"><span class="pre">git-annex</span></code> (e.g., <a class="reference external" href="https://Git-annex.branchable.com">see this</a>), and <code class="docutils literal notranslate"><span class="pre">git-lfs</span></code> (e.g., <a class="reference external" href="https://www.atlassian.com/Git/tutorials/Git-lfs">see this</a>).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Checking size of your git repo</strong>: You have two options in Linux/UNIX to check the size of your git repo. You can use (<code class="docutils literal notranslate"><span class="pre">cd</span></code> to your repo first) <code class="docutils literal notranslate"><span class="pre">du</span> <span class="pre">-sh</span> <span class="pre">.git</span></code>, or for more detailed information about what’s using the space, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">count-objects</span> <span class="pre">-vH</span></code> (this will work across platforms as this is a git command).</p>
+</div>
+<section id="pre-commit-git-hook">
+<h3>Pre-Commit Git Hook<a class="headerlink" href="#pre-commit-git-hook" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://github.com/pre-commit/pre-commit"><code class="docutils literal notranslate"><span class="pre">pre-commit</span></code></a> is a framework that manages the installation and execution of pre-commit hooks across multiple programming languages (including Python and r). These hooks are scripts that run automatically <strong>every time</strong> a <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> is made, aborting the commit if the script fails. These can be used to enforce standards in code format and style.</p>
+<p><em>So, how would this be useful in practice?</em><br></p>
+<p>To avoid the occurrence of a <u>bloated Git history</u>, i.e. by mistakenly <u>committing a large file</u> to your repository, a good option is to use the <code class="docutils literal notranslate"><span class="pre">check-added-large-files</span></code> hook from the <a class="reference external" href="https://github.com/pre-commit/pre-commit-hooks?tab=readme-ov-file#check-added-large-files"><code class="docutils literal notranslate"><span class="pre">pre-commit-hooks</span></code></a> package.</p>
+<p>This will abort a commit if the file size is too large (default size limit = 500kB).</p>
+<p><u>Here’s how you can install and configure <code class="docutils literal notranslate"><span class="pre">check-added-large-files</span></code> on Linux:</u></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pre-commit</span></code></p></li>
+<li><p>Create new configuration file <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> for configuring the <code class="docutils literal notranslate"><span class="pre">check-added-large-files</span></code> hook; its contents should look like:</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># .pre-commit-config.yaml</span>
+<span class="nt">repos</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/pre-commit/pre-commit-hooks</span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v5.0.0</span><span class="w">  </span><span class="c1"># or use the latest version</span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">check-added-large-files</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;--maxkb=500&#39;</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># optional: set a custom size limit in KB</span>
+</pre></div>
+</div>
+<p>Here,</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">repo</span></code> is the gitHub repository where the <code class="docutils literal notranslate"><span class="pre">pre-commit-hooks</span></code> package is hosted.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rev</span></code> is the version of the <code class="docutils literal notranslate"><span class="pre">pre-commit-hooks</span></code> repository to use. You can specify a tag (like <code class="docutils literal notranslate"><span class="pre">v5.0.0</span></code>) or use <code class="docutils literal notranslate"><span class="pre">main</span></code> for the latest version, though pinning to a specific version is best for stability.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hooks</span></code> are a list of hooks to configure:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: Specifies the hook to use, in this case, <code class="docutils literal notranslate"><span class="pre">check-added-large-files</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code>: Optional argument to set the maximum file size limit (in KB). By default, it is 500 KB, but you can adjust this as needed with <code class="docutils literal notranslate"><span class="pre">--maxkb=&lt;size_in_kb&gt;</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<p>This configuration will ensure that no added files exceed the specified size limit before a commit is allowed.</p>
+<p><em>Note</em>: By default, only files that have been staged for addition to the repository via <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> will be checked by the <code class="docutils literal notranslate"><span class="pre">check-added-large-files</span></code> hook.
+To allow the hook to check all files in the repo (both staged and unstaged), add <code class="docutils literal notranslate"><span class="pre">--enforce-all</span></code> as an argument by modifying the above configuration yaml file with</p>
+<p><code class="docutils literal notranslate"><span class="pre">args:</span> <span class="pre">['--maxkb=1000',</span> <span class="pre">'--enforce-all']</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> file should be stored in the root directory of your repository. This allows <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> to detect the configuration automatically when you run the <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">install</span></code> command, which sets up the hooks for the specific repository. Once set up, <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> will refer to this configuration file each time you attempt to make a commit.</p>
+<p>To set up the hooks <em>after</em> creating this file, run the following command in the <strong>root</strong> of your repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>install
+</pre></div>
+</div>
+<p>This installs the hooks locally, ensuring they run on every commit.</p>
+</section>
+</section>
+<section id="removing-files">
+<h2>removing files<a class="headerlink" href="#removing-files" title="Link to this heading">#</a></h2>
+<p>To remove a file (i.e., stop version controlling it) use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rm</span></code>:
+(Note that in this section, the default branch name is set to <code class="docutils literal notranslate"><span class="pre">master</span></code>. gitHub now sets its default branch to <code class="docutils literal notranslate"><span class="pre">main</span></code>.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Text in a file to remove&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>FileTorem.txt
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>FileTorem.txt
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;added a new file that we&#39;ll remove later&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[master 706f40d] added a new file that we&#39;ll remove later
+ 2 files changed, 3 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 FileTorem.txt
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>rm<span class="w"> </span>FileTorem.txt
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rm &#39;FileTorem.txt&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;removed the file&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[master 284c62e] removed the file
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 FileTorem.txt
+</pre></div>
+</div>
+</div>
+</div>
+<p>I typically just make all my changes and then just use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code> for the whole directory (and it’s subdirectories; <code class="docutils literal notranslate"><span class="pre">-A</span></code> is recursive).</p>
+<section id="un-tracking-files">
+<h3>Un-tracking files<a class="headerlink" href="#un-tracking-files" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> will prevent untracked files from being added to the set of files tracked by Git. However, Git will continue to track any files that are already being tracked. To stop tracking a file you need to remove it from the index. This can be achieved with this command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>&lt;file&gt;
+</pre></div>
+</div>
+<p>The removal of the file from the head revision will happen on the next commit.</p>
+</section>
+</section>
+<section id="accessing-history-of-the-repository">
+<h2>Accessing history of the repository<a class="headerlink" href="#accessing-history-of-the-repository" title="Link to this heading">#</a></h2>
+<p>To see particular changes introduced, read the repo’s log :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log
+</pre></div>
+</div>
+<p>For a more detailed version, add <code class="docutils literal notranslate"><span class="pre">-p</span></code> at the end.</p>
+<section id="reverting-to-a-previous-version">
+<h3>reverting to a previous version<a class="headerlink" href="#reverting-to-a-previous-version" title="Link to this heading">#</a></h3>
+<p>If things go horribly wrong with new changes, you can revert to the previous, “pristine” state:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># WARNING: this discards uncommitted work in tracked files</span>
+git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>HEAD
+
+<span class="c1"># Optional: also remove untracked files and directories</span>
+git<span class="w"> </span>clean<span class="w"> </span>-fd
+</pre></div>
+</div>
+<p>If instead you want to move back in time (temporarily), first find the
+“hash” for the commit you want to revert to, and then check-out:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<p>And then,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log
+</pre></div>
+</div>
+<p>Then, you can</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>*version<span class="w"> </span>number*
+</pre></div>
+</div>
+<p>e.g, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">95f7d0</span></code></p>
+<p>Now you can play around. However, if you do want to commit changes, you create a “branch” (see below). To go back to the future, type</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+</pre></div>
+</div>
+</section>
+</section>
+<section id="running-git-commands-on-a-different-directory">
+<h2>running Git commands on a different directory<a class="headerlink" href="#running-git-commands-on-a-different-directory" title="Link to this heading">#</a></h2>
+<p>Since <code class="docutils literal notranslate"><span class="pre">git</span></code> version 1.8.5, you can run Git directly on a different directory than the current one using absolute or relative paths. For example, using a relative path, you can do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>-C<span class="w"> </span>../SomeDir/<span class="w"> </span>status
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Cloning the MulQuaBio repository</strong>: You can clone the main repository of this book on your computer and regularly git pull it to keep it updated. That way the these notes and the associated code and data files are easily and locally available on your computer. <strong>DO NOT</strong> clone the repository into your own coursework repository though!</p>
+</div>
+<section id="running-git-commands-on-multiple-repositories-at-once">
+<h3>running Git commands on multiple repositories at once<a class="headerlink" href="#running-git-commands-on-multiple-repositories-at-once" title="Link to this heading">#</a></h3>
+<p>For Git pulling in multiple subdirectories (each a separate repository), here is an example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">.</span> <span class="pre">-mindepth</span> <span class="pre">1</span> <span class="pre">-maxdepth</span> <span class="pre">1</span> <span class="pre">-type</span> <span class="pre">d</span> <span class="pre">-print</span> <span class="pre">-exec</span> <span class="pre">git</span> <span class="pre">-C</span> <span class="pre">{}</span> <span class="pre">pull</span> <span class="pre">\;</span></code></p>
+<p>Breaking down these commands one by one,</p>
+<p><code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">.</span></code> searches the current directory</p>
+<p><code class="docutils literal notranslate"><span class="pre">-type</span> <span class="pre">d</span></code> finds directories, not files</p>
+<p><code class="docutils literal notranslate"><span class="pre">-mindepth</span> <span class="pre">1</span></code> sets min search depth to one sub-directory</p>
+<p><code class="docutils literal notranslate"><span class="pre">-maxdepth</span> <span class="pre">1</span></code> sets max search depth to one sub-directory</p>
+<p><code class="docutils literal notranslate"><span class="pre">-exec</span> <span class="pre">git</span> <span class="pre">-C</span> <span class="pre">{}</span> <span class="pre">pull</span> <span class="pre">\</span> </code> runs a custom Git command one on every Git repo found</p>
+</section>
+</section>
+<section id="using-git-through-a-gui">
+<h2>Using Git through a GUI<a class="headerlink" href="#using-git-through-a-gui" title="Link to this heading">#</a></h2>
+<p>There are many nice Git GUI’s (Graphical User Interfaces) out there, such as <a class="reference external" href="https://www.gitkraken.com/">gitKraken</a>. Or if you are using a code editor like Visual Studio Code, there are nice extensions that will give you considerable GUI functionality.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Checking git status</strong>: Always run the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>command on a repository before pulling/fetching from, or pushing to a remote repository!</p>
+</div>
+</section>
+<section id="collaborative-git-workflows-for-group-work">
+<h2>Collaborative Git Workflows for Group Work<a class="headerlink" href="#collaborative-git-workflows-for-group-work" title="Link to this heading">#</a></h2>
+<p>When working on group projects, Git enables effective collaboration through structured workflows. This section covers best practices for team-based development, which are particularly important for coursework assessments.</p>
+<section id="setting-up-for-collaboration">
+<h3>Setting Up for Collaboration<a class="headerlink" href="#setting-up-for-collaboration" title="Link to this heading">#</a></h3>
+<p><strong>repository Setup:</strong></p>
+<ol class="arabic simple">
+<li><p>One team member creates the repository on gitHub/Bitbucket</p></li>
+<li><p>Add collaborators with <strong>write access</strong> (push privileges)</p></li>
+<li><p>All team members clone the repository to their local machines</p></li>
+<li><p>Agree on a workflow and naming conventions before starting</p></li>
+</ol>
+<p><strong>Initial Configuration:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clone the group repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>git@github.com:username/group-project.git
+<span class="nb">cd</span><span class="w"> </span>group-project
+
+<span class="c1"># Verify you&#39;re on the main branch</span>
+git<span class="w"> </span>status
+
+<span class="c1"># Pull the latest changes before starting work</span>
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+</section>
+<section id="branch-based-development">
+<h3>Branch-Based Development<a class="headerlink" href="#branch-based-development" title="Link to this heading">#</a></h3>
+<p>Using branches allows team members to work independently without interfering with each other’s code.</p>
+<p><strong>Create a Feature Branch:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create and switch to a new branch</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/data-analysis-js
+
+<span class="c1"># Or create a branch for a specific module</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>module/statistical-models
+</pre></div>
+</div>
+<p><strong>Branch Naming Conventions:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">feature/description</span></code> - For new features (e.g., <code class="docutils literal notranslate"><span class="pre">feature/plotting-functions</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bugfix/description</span></code> - For fixing bugs (e.g., <code class="docutils literal notranslate"><span class="pre">bugfix/correct-calculation</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">module/name</span></code> - For specific project modules (e.g., <code class="docutils literal notranslate"><span class="pre">module/data-cleaning</span></code>)</p></li>
+<li><p>Consider including your initials for clarity (e.g., <code class="docutils literal notranslate"><span class="pre">feature/analysis-jsmith</span></code>)</p></li>
+</ul>
+<p><strong>Work on Your Branch:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make changes to your files</span>
+<span class="c1"># Stage and commit regularly</span>
+git<span class="w"> </span>add<span class="w"> </span>myfile.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;JS: Add data cleaning functions&quot;</span>
+
+<span class="c1"># Push your branch to the remote repository</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/data-analysis-js
+</pre></div>
+</div>
+</section>
+<section id="meaningful-commit-messages-for-collaboration">
+<h3>Meaningful Commit Messages for Collaboration<a class="headerlink" href="#meaningful-commit-messages-for-collaboration" title="Link to this heading">#</a></h3>
+<p>Good commit messages are essential for tracking individual contributions and understanding project history.</p>
+<p><strong>Commit Message Best Practices:</strong></p>
+<ul class="simple">
+<li><p>Use the <strong>imperative mood</strong>: “Add feature” not “Added feature”</p></li>
+<li><p>Be <strong>specific and descriptive</strong>: “Add linear regression function” not “Update code”</p></li>
+<li><p>Include <strong>context</strong>: Explain <em>why</em>, not just <em>what</em></p></li>
+<li><p>For group work: <strong>Prefix with initials</strong> to track contributions (e.g., “JS: Fix data import bug”)</p></li>
+<li><p>Keep the first line under 50 characters; add details in subsequent lines if needed</p></li>
+</ul>
+<p><strong>Examples of Good vs Poor Commit Messages:</strong></p>
+<p>❌ Poor:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;fixed stuff&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;updated file&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;asdfgh&quot;</span>
+</pre></div>
+</div>
+<p>✅ Good:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;JS: Add function to calculate species diversity&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;AM: Fix bug in temperature conversion (Celsius to Kelvin)&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;TK: Add unit tests for data validation functions&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="syncing-with-the-team">
+<h3>Syncing with the Team<a class="headerlink" href="#syncing-with-the-team" title="Link to this heading">#</a></h3>
+<p>regularly synchronize your work with the main branch to avoid conflicts.</p>
+<p><strong>Before Starting Work:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Switch to main and pull latest changes</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+
+<span class="c1"># Switch back to your feature branch</span>
+git<span class="w"> </span>checkout<span class="w"> </span>feature/your-feature
+
+<span class="c1"># Merge main into your branch to stay updated</span>
+git<span class="w"> </span>merge<span class="w"> </span>main
+</pre></div>
+</div>
+<p><strong>Daily Workflow:</strong></p>
+<ol class="arabic simple">
+<li><p>Pull from main at the start of each work session</p></li>
+<li><p>Work on your feature branch</p></li>
+<li><p>Commit regularly with meaningful messages</p></li>
+<li><p>Push your branch to the remote repository</p></li>
+<li><p>Before finishing, merge main into your branch again to catch any new changes</p></li>
+</ol>
+</section>
+<section id="handling-merge-conflicts">
+<h3>Handling Merge Conflicts<a class="headerlink" href="#handling-merge-conflicts" title="Link to this heading">#</a></h3>
+<p>Merge conflicts occur when two people modify the same lines of code. They are inevitable in collaborative work but can be resolved systematically.</p>
+<p><strong>When Conflicts Occur:</strong></p>
+<p>Git will notify you of conflicts when you try to merge or pull:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Auto-merging<span class="w"> </span>analysis.R
+CONFLICT<span class="w"> </span><span class="o">(</span>content<span class="o">)</span>:<span class="w"> </span>Merge<span class="w"> </span>conflict<span class="w"> </span><span class="k">in</span><span class="w"> </span>analysis.R
+Automatic<span class="w"> </span>merge<span class="w"> </span>failed<span class="p">;</span><span class="w"> </span>fix<span class="w"> </span>conflicts<span class="w"> </span>and<span class="w"> </span><span class="k">then</span><span class="w"> </span>commit<span class="w"> </span>the<span class="w"> </span>result.
+</pre></div>
+</div>
+<p><strong>Identifying Conflicts:</strong></p>
+<p>Open the conflicted file. Git marks conflicts like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+# Your changes
+result &lt;- mean(data$temperature)
+=======
+# Their changes  
+result &lt;- median(data$temperature)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; main
+</pre></div>
+</div>
+<p><strong>resolving Conflicts:</strong></p>
+<ol class="arabic">
+<li><p><strong>Communicate with your team</strong>: Discuss which version to keep or how to combine them</p></li>
+<li><p><strong>Edit the file</strong>: remove the conflict markers (<code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">=======</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span></code>) and keep the correct code</p></li>
+<li><p><strong>Test the resolution</strong>: Make sure the code works</p></li>
+<li><p><strong>Stage and commit</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>analysis.R
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;JS: resolve merge conflict in temperature calculation&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p><strong>Minimizing Conflicts:</strong></p>
+<ul class="simple">
+<li><p><strong>Divide work clearly</strong>: Assign different files or functions to different team members</p></li>
+<li><p><strong>Pull frequently</strong>: Sync with main regularly</p></li>
+<li><p><strong>Communicate</strong>: Use issues or comments to coordinate who’s working on what</p></li>
+<li><p><strong>Small, frequent commits</strong>: Easier to resolve conflicts in small changes</p></li>
+</ul>
+</section>
+<section id="code-review-and-merging">
+<h3>Code review and Merging<a class="headerlink" href="#code-review-and-merging" title="Link to this heading">#</a></h3>
+<p>Before merging your work into the main branch, have teammates review your code.</p>
+<p><strong>Using Pull requests (gitHub) / Merge requests (gitLab):</strong></p>
+<ol class="arabic">
+<li><p><strong>Push your branch</strong> to the remote:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/your-feature
+</pre></div>
+</div>
+</li>
+<li><p><strong>Create a Pull request</strong> on gitHub:</p>
+<ul class="simple">
+<li><p>Go to your repository on gitHub</p></li>
+<li><p>Click “Pull requests” → “New pull request”</p></li>
+<li><p>Select your feature branch to merge into main</p></li>
+<li><p>Add a description of your changes</p></li>
+<li><p>request review from team members</p></li>
+</ul>
+</li>
+<li><p><strong>review Process</strong>:</p>
+<ul class="simple">
+<li><p>Teammates review the code</p></li>
+<li><p>Discuss changes in comments</p></li>
+<li><p>Make requested modifications</p></li>
+<li><p>Push updates to the same branch (automatically updates the Pr)</p></li>
+</ul>
+</li>
+<li><p><strong>Merge</strong> when approved:</p>
+<ul>
+<li><p>Click “Merge pull request” on gitHub</p></li>
+<li><p>Delete the feature branch after merging</p></li>
+<li><p>Pull the updated main branch locally:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Code review Benefits</strong>: Code review isn’t just for catching bugs—it helps team members understand all parts of the project, ensures code quality, and provides documentation of who contributed what.</p>
+</div>
+</section>
+<section id="contribution-documentation">
+<h3>Contribution Documentation<a class="headerlink" href="#contribution-documentation" title="Link to this heading">#</a></h3>
+<p>For coursework assessments, you must document individual contributions.</p>
+<p><strong>required: <a class="reference external" href="http://CONTrIBUTIONS.md">CONTrIBUTIONS.md</a> File</strong></p>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">CONTrIBUTIONS.md</span></code> file in your repository documenting:</p>
+<ul class="simple">
+<li><p>Who worked on which components</p></li>
+<li><p>Individual code contributions</p></li>
+<li><p>Collaboration and communication efforts</p></li>
+<li><p>Code review participation</p></li>
+</ul>
+<p>See the <a class="reference internal" href="appendix-assessment.html#group-work-execution"><span class="std std-ref">Group work execution</span></a> section in the Assessment chapter for detailed requirements and use the provided template.</p>
+<p><strong>Tracking Contributions Through Git:</strong></p>
+<p>Your Git history provides evidence of individual work:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># View commits by author</span>
+git<span class="w"> </span>log<span class="w"> </span>--author<span class="o">=</span><span class="s2">&quot;Jane Smith&quot;</span>
+
+<span class="c1"># View detailed statistics</span>
+git<span class="w"> </span>shortlog<span class="w"> </span>-sn
+
+<span class="c1"># See who modified each line of a file</span>
+git<span class="w"> </span>blame<span class="w"> </span>filename.py
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Assessment Note</strong>: Your git commit history will be reviewed as part of individual assessment. Make sure to:</p>
+<ul class="simple">
+<li><p>Commit your own work under your own name</p></li>
+<li><p>Use meaningful commit messages</p></li>
+<li><p>Push regularly to demonstrate ongoing contribution</p></li>
+<li><p>Maintain accurate <a class="reference external" href="http://CONTrIBUTIONS.md">CONTrIBUTIONS.md</a> documentation</p></li>
+</ul>
+<p>Individual marks account for 40% of group project grades, based on your documented contributions. See the Assessment chapter for full details.</p>
+</div>
+</section>
+<section id="best-practices-for-group-work">
+<h3>Best Practices for Group Work<a class="headerlink" href="#best-practices-for-group-work" title="Link to this heading">#</a></h3>
+<p><strong>Communication:</strong></p>
+<ul class="simple">
+<li><p>Use gitHub Issues or project management tools to track tasks</p></li>
+<li><p>Comment on commits and pull requests</p></li>
+<li><p>Hold regular team meetings to coordinate work</p></li>
+<li><p>Discuss major decisions before implementing them</p></li>
+</ul>
+<p><strong>Organization:</strong></p>
+<ul class="simple">
+<li><p>Agree on code style and formatting (consider using linting tools)</p></li>
+<li><p>Use consistent file and variable naming conventions</p></li>
+<li><p>Document your code with clear comments</p></li>
+<li><p>Write readme files for each module or component</p></li>
+</ul>
+<p><strong>Version Control Hygiene:</strong></p>
+<ul class="simple">
+<li><p>Never commit directly to main without review</p></li>
+<li><p>Keep branches short-lived (merge frequently)</p></li>
+<li><p>Delete branches after merging</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> to exclude unnecessary files</p></li>
+<li><p>run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> before every commit and push</p></li>
+</ul>
+<p><strong>Pre-commit Hooks for Team Consistency:</strong></p>
+<p>Set up pre-commit hooks to enforce standards across all team members:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># .pre-commit-config.yaml</span>
+<span class="nt">repos</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/pre-commit/pre-commit-hooks</span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v4.4.0</span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">check-added-large-files</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;--maxkb=500&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trailing-whitespace</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">end-of-file-fixer</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">check-yaml</span>
+<span class="w">      </span>
+<span class="w">  </span><span class="c1"># For python projects</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/psf/black</span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">23.1.0</span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">black</span>
+<span class="w">        </span>
+<span class="w">  </span><span class="c1"># For r projects  </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/lorenzwalthert/precommit</span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.3.2</span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">style-files</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lintr</span>
+</pre></div>
+</div>
+<p>This ensures all team members follow the same code formatting and quality standards.</p>
+</section>
+<section id="conflict-resolution">
+<h3>Conflict resolution<a class="headerlink" href="#conflict-resolution" title="Link to this heading">#</a></h3>
+<p>If disagreements arise within the team about technical decisions or contributions:</p>
+<ol class="arabic simple">
+<li><p><strong>Document the issue</strong>: Write it down clearly</p></li>
+<li><p><strong>Discuss as a team</strong>: Try to reach consensus</p></li>
+<li><p><strong>Consult your supervisor</strong>: If unresolved, seek guidance from course instructors</p></li>
+<li><p><strong>Use the peer assessment process</strong>: The formal peer assessment (see Assessment chapter) provides a mechanism for addressing contribution imbalances</p></li>
+</ol>
+<p>For serious issues with team dynamics or non-contributing members, contact your course coordinator early—don’t wait until the deadline.</p>
+</section>
+<section id="example-workflow-summary">
+<h3>Example Workflow Summary<a class="headerlink" href="#example-workflow-summary" title="Link to this heading">#</a></h3>
+<p>Here’s a complete workflow for a typical group work session:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Start of work session - get latest changes</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+
+<span class="c1"># 2. Create or switch to your feature branch</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/my-analysis
+
+<span class="c1"># 3. Work on your code, commit regularly</span>
+<span class="c1"># ... edit files ...</span>
+git<span class="w"> </span>add<span class="w"> </span>analysis.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;JS: Add species diversity calculation&quot;</span>
+
+<span class="c1"># 4. Sync with main to avoid conflicts</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+git<span class="w"> </span>checkout<span class="w"> </span>feature/my-analysis
+git<span class="w"> </span>merge<span class="w"> </span>main
+<span class="c1"># resolve any conflicts if they occur</span>
+
+<span class="c1"># 5. Push your branch</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/my-analysis
+
+<span class="c1"># 6. Create pull request on gitHub for team review</span>
+
+<span class="c1"># 7. After approval, merge and cleanup</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>feature/my-analysis<span class="w">  </span><span class="c1"># Delete local branch</span>
+</pre></div>
+</div>
+</section>
+<section id="cross-reference-to-assessment">
+<h3>Cross-reference to Assessment<a class="headerlink" href="#cross-reference-to-assessment" title="Link to this heading">#</a></h3>
+<p>All collaborative Git practices described here support the assessment criteria outlined in the <a class="reference internal" href="appendix-assessment.html"><span class="std std-doc">Assessment chapter</span></a>. Key points:</p>
+<ul class="simple">
+<li><p><strong>Group work quality</strong> (60% of group project marks): Measured by code quality, documentation, testing, and Git repository organization</p></li>
+<li><p><strong>Individual contributions</strong> (40% of group project marks): Tracked through Git history, <a class="reference external" href="http://CONTrIBUTIONS.md">CONTrIBUTIONS.md</a>, and peer assessment</p></li>
+<li><p><strong>repository requirements</strong>: Proper <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>, meaningful readme, clean commit history</p></li>
+<li><p><strong>Peer assessment</strong>: Formal process to evaluate team member contributions</p></li>
+</ul>
+<p>Effective use of Git not only helps you collaborate but also provides the documentation needed for fair individual assessment.</p>
+</section>
+</section>
+<section id="a-friendly-concluding-note-on-git">
+<h2>A friendly concluding note on Git<a class="headerlink" href="#a-friendly-concluding-note-on-git" title="Link to this heading">#</a></h2>
+<p>Git can feel hard and unintuitive. It is likely that at some point you will make a mistake and lose some work as a consequence.</p>
+<p><em>THIS IS NOrMAL</em></p>
+<p>Don’t worry about it, this has happened to pretty much everyone who has ever used Git.</p>
+<p>When things like this do happen though, it is imperative that you work out <em>what</em> went wrong so you can make sure it doesn’t happen again.</p>
+<p>Questions to ask yourself include:</p>
+<ul class="simple">
+<li><p>Did I use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> to check what I was adding?</p></li>
+<li><p>Did I commit regularly enough, whenever I had completed a logical section of work?</p></li>
+<li><p>Did I make sure to only commit code rather than committing data files and outputs too?</p></li>
+<li><p>Did I make sure to gitignore the things I needed to?</p></li>
+</ul>
+<p>When you get used to working with Git, it becomes as natural as juggling chainsaws: i.e. it will always feel a bit odd and strange but it won’t be as scary as it once was.</p>
+<p><strong>Next Steps:</strong></p>
+<ul class="simple">
+<li><p><strong>Learn Commands:</strong> Familiarize yourself with common Git commands.</p></li>
+<li><p><strong>Explore Branching:</strong> Practice creating, switching, and merging branches.</p></li>
+<li><p><strong>Use Hosting Services:</strong> Try using platforms like gitHub to collaborate with others.</p></li>
+<li><p><strong>Advanced Features:</strong> Delve into rebasing, cherry-picking, and submodules for more complex workflows.</p></li>
+</ul>
+</section>
+<section id="practicals">
+<h2>Practicals<a class="headerlink" href="#practicals" title="Link to this heading">#</a></h2>
+<section id="instructions">
+<h3>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h3>
+<p><em>Don’t modify anything (or refer to any files) in your local copy of the Git repository of these notes (on github). Copy whatever you need from the main repository to your own repository.</em></p>
+<p><em>Git commit and push every time you do some significant amount of coding work (after testing it), and then again before the given deadline (this will be announced in class).</em> This includes <code class="docutils literal notranslate"><span class="pre">unixPrac1.txt</span></code> from the <a class="reference internal" href="unix.html"><span class="std std-doc">unix Chapter</span></a>.</p>
+<p><strong>Push your Git repository</strong></p>
+<ul class="simple">
+<li><p>The only practical submission for Git is pushing your coursework Git repository, <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> and <code class="docutils literal notranslate"><span class="pre">readme</span></code> files included. Make sure your <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> has meaningful exclusions, and your <code class="docutils literal notranslate"><span class="pre">readme</span></code> has useful information (as explained in the <a class="reference internal" href="#the-readme-file">section above</a>). Also search online “readme good practices” or something like that to find additional tips/info.</p></li>
+<li><p>Also, invite your assessor to your coursework repository (e.g, <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code>) repository with <em>write privileges</em> (AKA <em>push</em> privilege in gitHub). The current assessor is <a class="reference external" href="mailto:s&#46;pawar&#37;&#52;&#48;imperial&#46;ac&#46;uk">s<span>&#46;</span>pawar<span>&#64;</span>imperial<span>&#46;</span>ac<span>&#46;</span>uk</a> (or “mhasoba” on both bitbucket and github).</p></li>
+</ul>
+</section>
+</section>
+<section id="readings-resources">
+<h2>readings &amp; resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
+<section id="general">
+<h3>General<a class="headerlink" href="#general" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Excellent book on Git: <a class="reference external" href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></p></li>
+<li><p>Look up the Bitbucket Git resources: <a class="reference external" href="https://www.atlassian.com/git">https://www.atlassian.com/git</a></p></li>
+<li><p>Interactive tutorial: <a class="reference external" href="https://learngitbranching.js.org/">https://learngitbranching.js.org/</a></p></li>
+</ul>
+</section>
+<section id="markdown">
+<h3>Markdown<a class="headerlink" href="#markdown" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A cheatsheet for GitHub-flavored Markdown: <a class="github reference external" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">adam-p/markdown-here</a></p></li>
+</ul>
+</section>
+<section id="committing-practices">
+<h3>Committing practices<a class="headerlink" href="#committing-practices" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Some tips for good commit practices: <a class="reference external" href="https://chris.beams.io/posts/git-commit/">https://chris.beams.io/posts/git-commit/</a></p></li>
+</ul>
+</section>
+<section id="gitignore">
+<h3>.gitignore<a class="headerlink" href="#gitignore" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Guidelines for the <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file: <a class="reference external" href="https://labs.consol.de/development/git/2017/02/22/gitignore.html">https://labs.consol.de/development/git/2017/02/22/gitignore.html</a></p></li>
+<li><p>GitHub docs: <a class="reference external" href="https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files">https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files</a></p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>Branching<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Guidelines for branching: <a class="reference external" href="https://gist.github.com/digitaljhelms/4287848">https://gist.github.com/digitaljhelms/4287848</a></p></li>
+<li><p>GitKraken’s tips for collaborating effectively on GitHub: <a class="reference external" href="https://www.gitkraken.com/blog/collaborate-on-github">https://www.gitkraken.com/blog/collaborate-on-github</a></p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Footnotes</strong></p>
+<p id="git-word">1: There you will find the following phrase: “…one of the most annoying problems known to humanity: version-controlling Microsoft Word documents.”. LOL!</p>
+<p id="git-largefiles">2: None of the computing weeks assessments will require you to use such large files anyway</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bash"
+        },
+        kernelOptions: {
+            name: "bash",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bash'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="shell-scripting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Shell scripting</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="latex.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-version-control">Why version control?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-git">Why Git?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-get-started">Let’s get started!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-configuring-git">Installing and configuring Git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-repository">Your first repository</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-good-commit-messages">Writing Good Commit Messages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commits">Commits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-git-stores-data">How git Stores Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-git-commands">Basic git commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-remote-repository">Your remote repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-command-sequence-for-connecting-to-remotes">General command sequence for connecting to remotes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branching">Branching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">Key concepts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-workflow-and-command-structure">repository, workflow and command structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Commits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branch">Branch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hash">Hash</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-git-commands">Common Git commands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-readme-file">The readme file</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#essential-readme-components">Essential readme Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-components-for-group-projects">Additional Components for Group Projects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-components">Optional Components</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ignoring-files">Ignoring Files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-and-file-patterns-for-gitignoring">Directory and file patterns for gitignoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitignore-ng-after-commit-ing"><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>-ng after <code class="docutils literal notranslate"><span class="pre">commit</span></code>-ing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-remote-repositories">Working with remote repositories</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-a-remote-git-repository">Set up a remote Git repository</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-binary-files">Dealing with binary files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-large-files">Dealing with large files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-commit-git-hook">Pre-Commit Git Hook</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-files">removing files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#un-tracking-files">Un-tracking files</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-history-of-the-repository">Accessing history of the repository</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reverting-to-a-previous-version">reverting to a previous version</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-git-commands-on-a-different-directory">running Git commands on a different directory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-git-commands-on-multiple-repositories-at-once">running Git commands on multiple repositories at once</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-git-through-a-gui">Using Git through a GUI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborative-git-workflows-for-group-work">Collaborative Git Workflows for Group Work</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-for-collaboration">Setting Up for Collaboration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branch-based-development">Branch-Based Development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meaningful-commit-messages-for-collaboration">Meaningful Commit Messages for Collaboration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syncing-with-the-team">Syncing with the Team</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-merge-conflicts">Handling Merge Conflicts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-review-and-merging">Code review and Merging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution-documentation">Contribution Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-for-group-work">Best Practices for Group Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-resolution">Conflict resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-workflow-summary">Example Workflow Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-reference-to-assessment">Cross-reference to Assessment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-friendly-concluding-note-on-git">A friendly concluding note on Git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals">Practicals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">readings &amp; resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general">General</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">Markdown</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#committing-practices">Committing practices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitignore">.gitignore</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Branching</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
