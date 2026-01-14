@@ -1,0 +1,229 @@
+\documentclass[xcolor=x11names,compress]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\graphicspath{{graphics/}}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{color,colortbl}
+\usepackage{framed}
+\usepackage{textcomp, setspace} %Needed for customization of ``listings''
+% package
+\usepackage[procnames]{listings} % to display code; don't forget [fragile]
+% option after \begin{frame}
+\input{inputs/rgb}
+\definecolor{shadecolor}{rgb}{1,.9,.3}
+
+\usepackage [autostyle]{csquotes}
+\MakeOuterQuote{"}
+
+\lstset{
+    backgroundcolor=\color{shadecolor},
+    tabsize=4,
+    rulecolor=,
+    language=python,
+        basicstyle=\ttfamily\setstretch{1},
+        upquote=true,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.133,0.545,0.133},
+        stringstyle=\color[rgb]{0.627,0.126,0.941},
+        numbers=left, 
+        numberstyle=\tiny, 
+        stepnumber=2, 
+        numbersep=5pt
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetheme{Madrid}
+\usecolortheme{seahorse}
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+% \usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape, series = \bfseries}
+\setbeamertemplate{frametitle}[default][center]
+\setbeamertemplate{headline}{} %suppress headline (navigation pane)
+
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.2ex,dp=1ex,center]{author in head/foot}
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=2.2ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{3em}
+  \end{beamercolorbox}}
+  \begin{beamercolorbox}[wd=.05\paperwidth,ht=2.2ex,dp=1ex,center]{}
+     \insertframenumber{} / \inserttotalframenumber\hspace*{-3ex}
+  \end{beamercolorbox}
+}
+
+\newcommand{\bcols}{\begin{columns}}
+\newcommand{\ecols}{\end{columns}}
+\newcommand{\bcol}[1]{\begin{column}{#1}}
+\newcommand{\ecol}{\end{column}}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
+  \hbox{}\nobreak\hfil(#1)%
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quote}}
+  {\signed{\usebox\mybox}\end{quote}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Understanding Model Trade-offs in Ecology and Evolution (Based on Levins (1966))}
+\subtitle{\it A MulQuaBio Lecture}
+% \author{}  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Overview}
+\begin{itemize}
+    \item Models help simplify ecological and evolutionary complexity
+    \item Levins (1966) identified a key trade-off:
+    \item \textbf{Generality vs. Realism vs. Precision}
+    \item You can’t maximize all three at once
+    \item Let’s break these down with examples from ecology and evolution
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Generality}
+\small
+\begin{itemize}
+    \item \textbf{What is it?} — How broadly the model applies across systems
+    \item \textbf{Simple definition:} “Works for many species/situations”
+    \item \textbf{Ecological example:} Logistic growth model
+    \begin{itemize}
+        \item \( \frac{dN}{dt} = rN(1 - \frac{N}{K}) \)
+        \item Applies to many populations, regardless of species
+        \item Ignores age, environment, interactions
+    \end{itemize}
+    \item \textbf{Evolutionary example:} Hardy--Weinberg model (null expectation)
+    \begin{itemize}
+        \item Genotype frequencies: $p^2$, $2pq$, $q^2$ (with $p + q = 1$)
+        \item Applies broadly as a baseline across many diploid populations
+        \item Ignores selection, drift, structure, mutation, migration
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Realism}
+\small
+\begin{itemize}
+    \item \textbf{What is it?} — How accurately the model reflects biological detail
+    \item \textbf{Simple definition:} “Captures the messy real world”
+    \item \textbf{Ecological example:} Spatially explicit individual-based predator--prey model
+    \begin{itemize}
+        \item Includes movement, behavior, stochasticity
+        \item Can match a particular system well
+        \item But highly specific and hard to generalize
+    \end{itemize}
+    \item \textbf{Evolutionary example:} Forward-time simulation with explicit genotypes and selection
+    \begin{itemize}
+        \item Tracks individuals, inheritance, recombination, and selection on traits
+        \item Realistic mechanisms, but parameter-hungry
+        \item Often used for “what if” scenarios rather than universal laws
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Precision}
+\small
+\begin{itemize}
+    \item \textbf{What is it?} — How exact or quantitative the model predictions are
+    \item \textbf{Simple definition:} “Makes sharp forecasts”
+    \item \textbf{Ecological example:} Short-term population forecast (state-space model)
+    \begin{itemize}
+        \item With good data, can produce tight prediction intervals for $N_{t+1}$
+        \item Useful for management, but often system- and time-window-specific
+    \end{itemize}
+    \item \textbf{Evolutionary example:} Trait evolution under directional selection (quantitative genetics)
+    \begin{itemize}
+        \item Predicts a response like $R = h^2 S$ given heritability $h^2$ and selection differential $S$
+        \item Can be very precise when assumptions hold and parameters are well estimated
+        \item Precision does not guarantee accuracy if assumptions break (e.g., changing environments, non-additive genetics)
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Realism vs. precision (and accuracy)}
+\begin{itemize}
+    \item \textbf{Realism} asks: \emph{Are the ecological and evolutionary mechanisms/assumptions biologically faithful?}
+    \begin{itemize}
+        \item High realism can still be wrong if key processes are missing or mis-specified.
+    \end{itemize}
+
+    \item \textbf{Precision} asks: \emph{Are the predictions tightly constrained (low uncertainty)?}
+    \begin{itemize}
+        \item High precision can still be misleading if it is consistently ``off''.
+    \end{itemize}
+
+    \item \textbf{Accuracy} asks: \emph{How close are predictions to the truth (on average)?}
+    \begin{itemize}
+        \item Intuition: \textbf{accuracy} depends on both \textbf{bias} (systematic error) and \textbf{variance} (scatter).
+        \item A model can be \textbf{precise but inaccurate} (low variance, high bias) or \textbf{realistic but imprecise} (low bias, high variance).
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Why trade-offs matter}
+\begin{itemize}
+    \item You must sacrifice one:
+    \begin{itemize}
+        \item Want realism + precision? Lose generality
+        \item Want general + precise? Lose realism
+        \item Want general + realistic? Lose precision
+    \end{itemize}
+    \item \textbf{There's no free lunch in modelling!}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Summary table}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Goal} & \textbf{Simple definition} & \textbf{Example} & \textbf{Main trade-off} \\
+\midrule
+Generality & Applies to many systems & Ecology: logistic growth; evolution: Hardy--Weinberg & Ignores detail \\
+Realism & Includes real-world complexity & Ecology: spatial IBM; evolution: forward simulation & Hard to generalize \\
+Precision & Sharp numerical predictions & Ecology: short-term forecast; evolution: $R = h^2 S$ & Often assumption-sensitive \\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{Student discussion points}
+\begin{itemize}
+    \item Can you think of an example from your field where a model prioritizes one goal over the others?
+    \item Are modern models (e.g., simulations, machine learning) changing this trade-off?
+    \item When is it \emph{better} to be less realistic or less precise?
+    \item Is generality always desirable in ecology and evolution?
+    \item How might a model cluster approach help manage these trade-offs?
+\end{itemize}
+\end{frame}
+
+\end{document}
