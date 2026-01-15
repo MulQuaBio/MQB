@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=01a0bdc2" />
@@ -224,7 +224,10 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../part-eemodelling.html">Ecological &amp; Evolutionary Modelling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../populations.html">Single populations</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../populations.html">Single Populations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../single-populations-practicals.html">Practical Work 1 — Problems &amp; Fully Worked Solutions</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../interactions.html">Species interactions</a></li>
 
 
@@ -233,7 +236,6 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../part-advanced-stats.html">Advanced Data Analyses and Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glms.html">Generalised Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../time-series.html">Time series analysis in R</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../microbial-growth.html">Microbial Growth rates in R</a></li>
@@ -661,8 +663,8 @@ Vectorised method took 72 ms on average.
 <section id="consumer-growth-rate">
 <h3>consumer growth rate:<a class="headerlink" href="#consumer-growth-rate" title="Link to this heading">#</a></h3>
 <p>In reality, each species will uptake carbon from the different sources at different rates, as well as respiring and losing carbon to the environment at different rates. This yields a complex relationship between overall per-species growth rate and resource availability, which we can describe with:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4864bcfa-48c9-4bf1-84a7-284b983627e0">
-<span class="eqno">()<a class="headerlink" href="#equation-4864bcfa-48c9-4bf1-84a7-284b983627e0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c49b1401-6ddd-4db0-b451-67a198557d8c">
+<span class="eqno">()<a class="headerlink" href="#equation-c49b1401-6ddd-4db0-b451-67a198557d8c" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{1}{C_i}\frac{dC_i}{dt} = (\sum_{j=1}^M u_{ij} S_j  (1 - {p_{r}}_j - \sum_{k=1}^{M} l_{jk})) - r_{i}
 \end{align}\]</div>
 <p>where:</p>
@@ -678,13 +680,13 @@ Vectorised method took 72 ms on average.
 <section id="resource-availability">
 <h3>resource availability:<a class="headerlink" href="#resource-availability" title="Link to this heading">#</a></h3>
 <p>The change in carbon resource avaliblity can be attributed either to abiotic processes (which we represent here through the constant term <span class="math notranslate nohighlight">\(\rho_j\)</span>) or through the activity of the bacterial community which takes up resource <span class="math notranslate nohighlight">\(j\)</span> at the rate <span class="math notranslate nohighlight">\(U_j\)</span> and releases it (via the inefficency of uptake) through the <span class="math notranslate nohighlight">\(L_j\)</span> term:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bbbf3efb-ac9a-4069-984f-a6603f6281f0">
-<span class="eqno">()<a class="headerlink" href="#equation-bbbf3efb-ac9a-4069-984f-a6603f6281f0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-74dfa4d5-d139-4adc-8f3e-c1fcd9c385f9">
+<span class="eqno">()<a class="headerlink" href="#equation-74dfa4d5-d139-4adc-8f3e-c1fcd9c385f9" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dS_j}{dt} = \rho_j - U_j + L_j
 \end{align}\]</div>
 <p>How do the vectors <span class="math notranslate nohighlight">\(U_j\)</span> and <span class="math notranslate nohighlight">\(L_j\)</span> relate to the matricies <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(l\)</span> above? We can get the rates of uptake and release by the community by summing across all <span class="math notranslate nohighlight">\(N\)</span> species in the community and across all <span class="math notranslate nohighlight">\(M\)</span> resources which they release as a result of the <span class="math notranslate nohighlight">\(L_j\)</span> term:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-79d66110-e055-44c5-a76c-5a13f06bc788">
-<span class="eqno">()<a class="headerlink" href="#equation-79d66110-e055-44c5-a76c-5a13f06bc788" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-597745ca-6818-4ef7-aed3-df082b4f23a2">
+<span class="eqno">()<a class="headerlink" href="#equation-597745ca-6818-4ef7-aed3-df082b4f23a2" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dS_j}{dt} = \rho_j - 
                       \sum_{i = 1}^{N} \left( S_j C_i u_{ij}  - \sum_{k = 1}^{N} C_i S_k u_{ik} l_{kj} \right),
 \end{align}\]</div>
@@ -693,12 +695,12 @@ Vectorised method took 72 ms on average.
 <li><p><span class="math notranslate nohighlight">\(\rho =\)</span> constant vector of carbon resource change due to abiotic processes,</p></li>
 <li><p><span class="math notranslate nohighlight">\(C, S, u, l\)</span> are the same as above.</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-eed5e0ee-5309-4e56-959f-ac704108f958">
-<span class="eqno">()<a class="headerlink" href="#equation-eed5e0ee-5309-4e56-959f-ac704108f958" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f7b825cc-0c25-433b-bcd8-e8546b7319ad">
+<span class="eqno">()<a class="headerlink" href="#equation-f7b825cc-0c25-433b-bcd8-e8546b7319ad" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{1}{C_i}\frac{dC_i}{dt} = (\sum_{j=1}^M u_{ij} S_j  (1 - {p_{r}}_j - \sum_{k=1}^{M} l_{jk})) - r_{i}
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-1996e04c-03a4-4f98-8d17-1eb45e60841d">
-<span class="eqno">()<a class="headerlink" href="#equation-1996e04c-03a4-4f98-8d17-1eb45e60841d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cab80332-7cda-452d-9231-b44b60f6b319">
+<span class="eqno">()<a class="headerlink" href="#equation-cab80332-7cda-452d-9231-b44b60f6b319" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dS_j}{dt} = \rho_j - 
                       \sum_{i = 1}^{N} \left( S_j C_i u_{ij}  - \sum_{k = 1}^{N} C_i S_k u_{ik} l_{kj} \right),
 \end{align}\]</div>

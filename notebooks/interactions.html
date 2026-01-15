@@ -65,7 +65,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Advanced Data Analyses and Statistics" href="../part-advanced-stats.html" />
-    <link rel="prev" title="Single populations" href="populations.html" />
+    <link rel="prev" title="Practical Work 1 — Problems &amp; Fully Worked Solutions" href="single-populations-practicals.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -190,7 +190,10 @@
 <li class="toctree-l1"><a class="reference internal" href="shell-scripting.html">Shell scripting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git.html">Version control with Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html">Biological Computing in Python</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="python.html">Biological Computing in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="object-oriented-programming.html">Object-Oriented Programming</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="r.html">Biological Computing in R</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
@@ -221,7 +224,10 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-eemodelling.html">Ecological &amp; Evolutionary Modelling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="populations.html">Single populations</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="populations.html">Single Populations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="single-populations-practicals.html">Practical Work 1 — Problems &amp; Fully Worked Solutions</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Species interactions</a></li>
 
 
@@ -230,9 +236,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Advanced Data Analyses and Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glms.html">Generalised Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="time-series.html">Time series analysis in R</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="microbial-growth.html">Microbial Growth rates in R</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
@@ -529,21 +535,31 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-questions">Discussion Questions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-code">Simulation Code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consumer-resource-model">consumer-resource Model:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-explanation">Detailed explanation:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-insights">Model Insights:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Simulation Code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-lotka-volterra-elv-model">Effective Lotka-Volterra (eLV) model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">reference</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Simulation Code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-modification">Further modification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#including-leakage-in-consumer-dynamics">Including Leakage in consumer Dynamics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updated-consumer-dynamics">Updated consumer Dynamics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#including-leakage-in-resource-dynamics">Including Leakage in resource Dynamics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-form">Final Form</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-and-explanations">Key Features and Explanations:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">A simple example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consumer-resource-model-crm">Consumer-Resource Model (CRM):</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-explanation">Detailed explanation:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-insights">Model Insights:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Simulation Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-lotka-volterra-elv-model">Effective Lotka-Volterra (eLV) model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Simulation Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-the-results-of-crm-and-elv-model">Compare the results of CRM and eLV model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leakage">Leakage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#including-leakage-in-consumer-dynamics">Including Leakage in Consumer Dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#including-leakage-in-resource-dynamics">Including Leakage in Resource Dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-form">Final Form</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-and-explanations">Key Features and Explanations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">A simple example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-the-elv-model-with-leakage">Update the eLV Model with Leakage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-example">Code example</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -738,11 +754,11 @@ B = B_0 M^b,
                                          <span class="n">params</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">]))</span>
 
 <span class="c1"># Plotting</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
 <span class="c1"># Time series plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;resource (r)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;consumer (C)&#39;</span><span class="p">)</span>  <span class="c1"># Changed to dashed line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;resource (r)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;consumer (C)&#39;</span><span class="p">)</span>  <span class="c1"># Changed to dashed line</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>  <span class="c1"># Adjusted font size</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>  <span class="c1"># Adjusted font size</span>
@@ -774,26 +790,38 @@ B = B_0 M^b,
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/4c828627f378beb0b395d44ae96d16fa4c39366a11d2d596a35ceff100407e37.png" src="../_images/4c828627f378beb0b395d44ae96d16fa4c39366a11d2d596a35ceff100407e37.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Final state (t=100.0):
+resource: -0.00
+consumer: 0.00
+
+Theoretical equilibrium point:
+r*: 20.00
+C*: 40.00
+</pre></div>
+</div>
+</div>
 </div>
 </section>
-<section id="consumer-resource-model">
-<h2>consumer-resource Model:<a class="headerlink" href="#consumer-resource-model" title="Link to this heading">#</a></h2>
+<section id="consumer-resource-model-crm">
+<h2>Consumer-Resource Model (CRM):<a class="headerlink" href="#consumer-resource-model-crm" title="Link to this heading">#</a></h2>
 <p>If we want to expand the explanation of MacArthur model, let’s treat prey as a resource and predators as consumers. So, we replace the <span class="math notranslate nohighlight">\(N\)</span> in the model with <span class="math notranslate nohighlight">\(r\)</span>. Also, to avoid any misunderstanding about the parameters, we replaced some notations. Now the model is shown as below:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
-&amp;\frac{dr}{dt} = r r \left(1 - \frac{r}{K}\right) - arC,\\
-&amp;\frac{dC}{dt} = warC - mC.
+&amp;\frac{dR}{dt} = r R \left(1 - \frac{R}{K}\right) - aRC,\\
+&amp;\frac{dC}{dt} = wRC - mC.
 \end{aligned}
 \end{split}\]</div>
 <p>The MacArthur model is typically used to describe interactions between a single consumer population and a single resource population. How can we expand it to multiple resources and multiple consumers? There are following two points we need to consider：</p>
 <ul class="simple">
-<li><p>Multiple resources: Instead of considering just one resource <span class="math notranslate nohighlight">\( r \)</span>, we now consider a set of resources <span class="math notranslate nohighlight">\( r_\alpha \)</span> (for <span class="math notranslate nohighlight">\( \alpha = 1, 2, ..., n \)</span>) that interact with the consumers. Thus, in <span class="math notranslate nohighlight">\( \frac{dC}{dt} \)</span>, the resource term is updated to <span class="math notranslate nohighlight">\(\sum_{\alpha}w_{\alpha}a_{\alpha}r_{\alpha}C\)</span>. Let’s add the index for consumer <span class="math notranslate nohighlight">\(i\)</span>: <span class="math notranslate nohighlight">\(\frac{dC_i}{dt} = \sum_{\alpha}w_{i\alpha}a_{i\alpha}r_{\alpha}C_i - m_iC_i\)</span>.</p></li>
-<li><p>Multiple consumers: Each consumer species <span class="math notranslate nohighlight">\( C_i \)</span> may interact with all of the available resources, consuming them at different rates and with different efficiencies. Thus, in <span class="math notranslate nohighlight">\( \frac{dr}{dt} \)</span>, the consumer term is updated to <span class="math notranslate nohighlight">\(-\sum_{i}a_{i}rC_i\)</span>. Let’s add the index for resource <span class="math notranslate nohighlight">\(\alpha\)</span>: <span class="math notranslate nohighlight">\(\frac{dr_{\alpha}}{dt}=r_{\alpha} r_{\alpha} \left( 1- \frac{r_{\alpha}}{K_{\alpha}}\right)- \sum_{i}a_{i\alpha}r_{\alpha}C_i\)</span></p></li>
+<li><p>Multiple resources: Instead of considering just one resource <span class="math notranslate nohighlight">\( r \)</span>, we now consider a set of resources <span class="math notranslate nohighlight">\( R_\alpha \)</span> (for <span class="math notranslate nohighlight">\( \alpha = 1, 2, ..., n \)</span>) that interact with the consumers. Thus, in <span class="math notranslate nohighlight">\( \frac{dC}{dt} \)</span>, the resource term is updated to <span class="math notranslate nohighlight">\(\sum_{\alpha}w_{\alpha}R_{\alpha}C\)</span>. Let’s add the index for consumer <span class="math notranslate nohighlight">\(i\)</span>: <span class="math notranslate nohighlight">\(\frac{dC_i}{dt} = \sum_{\alpha}w_{i\alpha}R_{\alpha}C_i - m_iC_i\)</span>.</p></li>
+<li><p>Multiple consumers: Each consumer species <span class="math notranslate nohighlight">\( C_i \)</span> may interact with all of the available resources, consuming them at different rates and with different efficiencies. Thus, in <span class="math notranslate nohighlight">\( \frac{dR}{dt} \)</span>, the consumer term is updated to <span class="math notranslate nohighlight">\(-\sum_{i}a_{i}RC_i\)</span>. Let’s add the index for resource <span class="math notranslate nohighlight">\(\alpha\)</span>: <span class="math notranslate nohighlight">\(\frac{dR_{\alpha}}{dt}=r_{\alpha} R_{\alpha} \left( 1- \frac{R_{\alpha}}{K_{\alpha}}\right)- \sum_{i}a_{i\alpha}R_{\alpha}C_i\)</span></p></li>
 </ul>
 <p>Let’s conbine it write it together:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}  \begin{aligned}&amp;\frac{dr_\alpha}{dt}=r_\alpha(1-\frac{r_\alpha}{K_\alpha})r_\alpha-\sum_ia_{i\alpha}r_\alpha C_i,\\&amp;\frac{dC_i}{dt}=C_i\left[\sum_\alpha w_{i\alpha} a_{i\alpha}r_\alpha-m_i\right]\end{aligned}  \end{split}\]</div>
+\[\begin{split}  \begin{aligned}&amp;\frac{dR_\alpha}{dt}=r_\alpha(1-\frac{R_\alpha}{K_\alpha})R_\alpha-\sum_ia_{i\alpha}R_\alpha C_i,\\&amp;\frac{dC_i}{dt}=C_i\left[\sum_\alpha w_{i\alpha} R_\alpha-m_i\right]\end{aligned}  \end{split}\]</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( r_\alpha \)</span>: Maximum growth rate of resource <span class="math notranslate nohighlight">\( \alpha \)</span>.</p></li>
@@ -802,45 +830,44 @@ B = B_0 M^b,
 <li><p><span class="math notranslate nohighlight">\( w_{i\alpha} \)</span>: Conversion efficiency, indicating how efficiently resource <span class="math notranslate nohighlight">\( \alpha \)</span> supports consumer <span class="math notranslate nohighlight">\( i \)</span>‘s growth.</p></li>
 <li><p><span class="math notranslate nohighlight">\( m_i \)</span>: mortality rate of consumer <span class="math notranslate nohighlight">\( i \)</span>, representing natural death and other forms of population loss.</p></li>
 </ul>
-</section>
 <section id="detailed-explanation">
-<h2>Detailed explanation:<a class="headerlink" href="#detailed-explanation" title="Link to this heading">#</a></h2>
-<p>resource Dynamics (<span class="math notranslate nohighlight">\( \frac{dr_\alpha}{dt} \)</span>):</p>
+<h3>Detailed explanation:<a class="headerlink" href="#detailed-explanation" title="Link to this heading">#</a></h3>
+<p>Resource Dynamics (<span class="math notranslate nohighlight">\( \frac{dR_\alpha}{dt} \)</span>):</p>
 <ul class="simple">
-<li><p>The first term <span class="math notranslate nohighlight">\( r_\alpha r_\alpha \left(1 - \frac{r_\alpha}{K_\alpha}\right) \)</span> describes the logistic growth of resource <span class="math notranslate nohighlight">\( \alpha \)</span>. It models the growth of resources up to a maximum carrying capacity <span class="math notranslate nohighlight">\( K_\alpha \)</span>, where growth rate <span class="math notranslate nohighlight">\( r_\alpha \)</span> diminishes as <span class="math notranslate nohighlight">\( r_\alpha \)</span> approaches <span class="math notranslate nohighlight">\( K_\alpha \)</span>.</p></li>
-<li><p>The second term <span class="math notranslate nohighlight">\( - \sum_i a_{i\alpha} r_\alpha C_i \)</span> represents the consumption of resource <span class="math notranslate nohighlight">\( \alpha \)</span> by all consumers <span class="math notranslate nohighlight">\( i \)</span>. It reflects the depletion of resources due to consumption by consumers.</p></li>
+<li><p>The first term <span class="math notranslate nohighlight">\( r_\alpha R_\alpha \left(1 - \frac{R_\alpha}{K_\alpha}\right) \)</span> describes the logistic growth of resource <span class="math notranslate nohighlight">\( \alpha \)</span>. <span class="math notranslate nohighlight">\( r_\alpha\)</span> is the intrinsic growth rate of resource <span class="math notranslate nohighlight">\( \alpha \)</span>. This term models the growth of resources up to a maximum carrying capacity <span class="math notranslate nohighlight">\( K_\alpha \)</span>, where density-dependent effects reduce the per-capita growth rate as resource abundance <span class="math notranslate nohighlight">\( R_\alpha \)</span> approaches the carrying capacity <span class="math notranslate nohighlight">\( K_\alpha \)</span>.</p></li>
+<li><p>The second term <span class="math notranslate nohighlight">\( - \sum_i a_{i\alpha} R_\alpha C_i \)</span> represents the consumption of resource <span class="math notranslate nohighlight">\( \alpha \)</span> by all consumers (sum of <span class="math notranslate nohighlight">\(i\)</span>). It reflects the depletion of resources due to consumption by all consumers.</p></li>
 </ul>
-<p>consumer Dynamics (<span class="math notranslate nohighlight">\( \frac{dC_i}{dt} \)</span>):</p>
+<p>Consumer Dynamics (<span class="math notranslate nohighlight">\( \frac{dC_i}{dt} \)</span>):</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( C_i \left[\sum_\alpha w_{i\alpha} a_{i\alpha} r_\alpha - m_i\right] \)</span> governs the change in consumer <span class="math notranslate nohighlight">\( i \)</span>‘s population.</p></li>
-<li><p><span class="math notranslate nohighlight">\( \sum_\alpha w_{i\alpha} a_{i\alpha} r_\alpha \)</span> calculates the net growth rate of consumer <span class="math notranslate nohighlight">\( i \)</span> considering all resources <span class="math notranslate nohighlight">\( \alpha \)</span> it consumes, weighted by <span class="math notranslate nohighlight">\( w_{i\alpha} \)</span>, which represents the efficiency of resource <span class="math notranslate nohighlight">\( \alpha \)</span> in supporting consumer <span class="math notranslate nohighlight">\( i \)</span>‘s growth.</p></li>
+<li><p><span class="math notranslate nohighlight">\( C_i \left[\sum_\alpha w_{i\alpha} R_\alpha - m_i\right] \)</span> governs the change in consumer <span class="math notranslate nohighlight">\( i \)</span>‘s population.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \sum_\alpha w_{i\alpha} R_\alpha \)</span> calculates the net growth rate of consumer <span class="math notranslate nohighlight">\( i \)</span> considering all resources (sum of <span class="math notranslate nohighlight">\( \alpha \)</span>) it consumes, weighted by <span class="math notranslate nohighlight">\( w_{i\alpha} \)</span>, which represents the efficiency of resource <span class="math notranslate nohighlight">\( \alpha \)</span> in supporting consumer <span class="math notranslate nohighlight">\( i \)</span>‘s growth.</p></li>
 <li><p><span class="math notranslate nohighlight">\( m_i \)</span> represents the mortality rate of consumer <span class="math notranslate nohighlight">\( i \)</span>, affecting its population dynamics by reducing <span class="math notranslate nohighlight">\( C_i \)</span>.</p></li>
 </ul>
 </section>
 <section id="model-insights">
-<h2>Model Insights:<a class="headerlink" href="#model-insights" title="Link to this heading">#</a></h2>
+<h3>Model Insights:<a class="headerlink" href="#model-insights" title="Link to this heading">#</a></h3>
 <p>Metabolic Basis: The model integrates metabolic rates (through <span class="math notranslate nohighlight">\( a_{i\alpha} \)</span>, <span class="math notranslate nohighlight">\( w_{i\alpha} \)</span>, <span class="math notranslate nohighlight">\( m_i \)</span>) to predict consumer-resource interactions. These parameters link individual-level processes (metabolism, consumption) to population-level outcomes (population dynamics, ecological stability).</p>
 <p>Environmental Effects: Changes in environmental factors (like temperature, resource availability) influence <span class="math notranslate nohighlight">\( r_\alpha \)</span>, <span class="math notranslate nohighlight">\( K_\alpha \)</span>, <span class="math notranslate nohighlight">\( a_{i\alpha} \)</span>, and <span class="math notranslate nohighlight">\( w_{i\alpha} \)</span>, thereby affecting the stability and dynamics of ecological systems.</p>
 <p>Predictive Power: By simulating these interactions, the model can predict population cycles, community structure, and the impact of environmental changes on ecosystems.</p>
 </section>
 <section id="a-simple-example">
-<h2>A simple example<a class="headerlink" href="#a-simple-example" title="Link to this heading">#</a></h2>
+<h3>A simple example<a class="headerlink" href="#a-simple-example" title="Link to this heading">#</a></h3>
 <p>Let’s assume that there are two resources and two consumers.</p>
 <p>For resource 1:</p>
 <div class="math notranslate nohighlight">
-\[\frac{dr_1}{dt}=r_1\left(1-\frac{r_1}{K_1}\right)r_1-\left(a_{11}r_1 C_1 +a_{21}r_1 C_2\right)\]</div>
+\[\frac{dR_1}{dt}=r_1\left(1-\frac{R_1}{K_1}\right)R_1-\left(a_{11}R_1 C_1 +a_{21}R_1 C_2\right)\]</div>
 <p>For resource 2:</p>
 <div class="math notranslate nohighlight">
-\[\frac{dr_2}{dt}=r_2\left(1-\frac{r_2}{K_2}\right)r_2-\left(a_{12}r_2 C_1 +a_{22}r_2 C_2\right)\]</div>
+\[\frac{dR_2}{dt}=r_2\left(1-\frac{R_2}{K_2}\right)R_2-\left(a_{12}R_2 C_1 +a_{22}R_2 C_2\right)\]</div>
 <p>For consumer 1:</p>
 <div class="math notranslate nohighlight">
-\[\frac{dC_1}{dt}=C_1\left(w_{11} a_{11}r_1+w_{12} a_{12}r_2-m_1\right) \]</div>
+\[\frac{dC_1}{dt}=C_1\left(w_{11} R_1+w_{12} R_2-m_1\right) \]</div>
 <p>For consumer 2:</p>
 <div class="math notranslate nohighlight">
-\[\frac{dC_2}{dt}=C_2\left(w_{21} a_{21}r_1+w_{22} a_{22}r_2-m_2\right) \]</div>
+\[\frac{dC_2}{dt}=C_2\left(w_{21} R_1+w_{22} R_2-m_2\right) \]</div>
 </section>
 <section id="id2">
-<h2>Simulation Code<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h3>Simulation Code<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>Let simulate the model by Python! The parameters are given as below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -914,19 +941,19 @@ B = B_0 M^b,
 <span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">state0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">params</span><span class="p">,))</span>
 
 <span class="c1"># Plotting</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
 <span class="c1"># Time series plot</span>
-<span class="c1"># plt.plot(t, solution[:, 0], &#39;g-&#39;, linewidth=1.5, label=&#39;resource 1&#39;)  </span>
-<span class="c1"># plt.plot(t, solution[:, 1], &#39;r-&#39;, linewidth=1.5, label=&#39;resource 2&#39;)  </span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;consumer 1&#39;</span><span class="p">)</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;y--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;consumer 2&#39;</span><span class="p">)</span> 
+<span class="c1"># plt.plot(t, solution[:, 0], &#39;g--&#39;, linewidth=3, label=&#39;resource 1&#39;)  </span>
+<span class="c1"># plt.plot(t, solution[:, 1], &#39;r--&#39;, linewidth=3, label=&#39;resource 2&#39;)  </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;consumer 1&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;y-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;consumer 2&#39;</span><span class="p">)</span> 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>  <span class="c1"># Adjust font size</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>  <span class="c1"># Adjust font size</span>
 <span class="c1"># plt.title(&#39;consumer-resource Population Dynamics&#39;, fontsize=14)  # Adjust font size</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;consumer Dynamics&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>  <span class="c1"># Adjust font size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Consumer Dynamics&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>  <span class="c1"># Adjust font size</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -934,19 +961,30 @@ B = B_0 M^b,
 <span class="c1"># Print final state</span>
 <span class="n">final_state</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Final state (t=</span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">):&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;resource 1: </span><span class="si">{</span><span class="n">final_state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;resource 2: </span><span class="si">{</span><span class="n">final_state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;consumer 1: </span><span class="si">{</span><span class="n">final_state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;consumer 2: </span><span class="si">{</span><span class="n">final_state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final population of Resource 1: </span><span class="si">{</span><span class="n">final_state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final population of Resource 2: </span><span class="si">{</span><span class="n">final_state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final population of Consumer 1: </span><span class="si">{</span><span class="n">final_state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final population of Consumer 2: </span><span class="si">{</span><span class="n">final_state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7a05a87f99c110f0953fbd7322cf5a4b4d1ed65d188795a830bcbc4a0b786b43.png" src="../_images/7a05a87f99c110f0953fbd7322cf5a4b4d1ed65d188795a830bcbc4a0b786b43.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Final state (t=200.0):
+Final population of Resource 1: 15.38
+Final population of Resource 2: 15.38
+Final population of Consumer 1: 21.54
+Final population of Consumer 2: 41.54
 </pre></div>
 </div>
 </div>
 </div>
 </section>
+</section>
 <section id="effective-lotka-volterra-elv-model">
 <h2>Effective Lotka-Volterra (eLV) model<a class="headerlink" href="#effective-lotka-volterra-elv-model" title="Link to this heading">#</a></h2>
-<p>Now, we can obtain the dynamic of multiple resources and multiple consumers, but how to determine the interactions between different consumers? It is not difficult to find that the consumer-resource model is actually very similar to the Lotka-Volterra (LV) model (which has been introduced in other chapters), and for the LV model, we can calculate it in the form of effective Lotka-Volterra (eLV) to analyze the interaction between <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(x_j\)</span>. If you are interested in the proof, please refer to the references.</p>
-<p>Lotka-Volterra (LV) model:</p>
+<p>While we can simulate the dynamics of multiple consumers and resources using a consumer-resource model, we cannot intuitively understand the interactions between consumers. It is evident that consumers compete for shared resources within the system, thus the interactions between consumer pairs are mediated by resources. If we can mathematically eliminate the resource term, we can directly obtain the connections between consumers. But how to determine the interactions between different consumers? It is not difficult to find that the consumer-resource model is actually very similar to the Lotka-Volterra (LV) model (which has been introduced in other chapters), and for the LV model, we can calculate it in the form of effective Lotka-Volterra (eLV) to analyze the interaction between <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(x_j\)</span>. If you are interested in the proof, please refer to the references.</p>
+<p>Classic Lotka-Volterra (LV) model:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned} &amp;\frac{dx}{dt} = \alpha x - \beta xy,\\ &amp;\frac{dy}{dt} = \delta xy - \gamma y. \end{aligned}\end{split}\]</div>
 <p>Effective Lotka-Volterra (eLV) model:</p>
@@ -955,149 +993,291 @@ B = B_0 M^b,
 <p>where, <span class="math notranslate nohighlight">\(r_i\)</span> is the growth rate coefficient and <span class="math notranslate nohighlight">\(\alpha_{ij}\)</span> is the effective interaction coefficient. Similarly, we can calculate the consumer-resource model in the form of eLV:</p>
 <div class="math notranslate nohighlight">
 \[\frac{dC_i}{dt} = C_i \left(   r_i + \sum_j \alpha_{ij} C_j \right),\]</div>
-<p>where, <span class="math notranslate nohighlight">\(\alpha_{ij}=- \sum_{\alpha} \frac{w_{i\alpha} a_{i\alpha} K_\alpha a_{j\alpha}}{r_\alpha}\)</span>, <span class="math notranslate nohighlight">\(r_i = \sum_\alpha w_{i\alpha} a_{i\alpha} K_\alpha - m_i\)</span>.</p>
-</section>
-<section id="reference">
-<h2>reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h2>
+<p>where, <span class="math notranslate nohighlight">\(r_i = \sum_\alpha w_{i\alpha} K_\alpha - m_i\)</span>, and <span class="math notranslate nohighlight">\(\alpha_{ij} = -\sum_\alpha \frac{w_{i\alpha} a_{j\alpha} K_\alpha}{r_\alpha}\)</span>. Please read the References if you are interested in the derivation.</p>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://doi.org/10.1016/0040-5809(70)90039-0">Species packing and competitive equilibrium for many species</a></p>
 <p><a class="reference external" href="https://doi.org/10.1038/s41598-020-60130-2">A minimal model for microbial biodiversity can reproduce experimentally observed ecological patterns</a></p>
 </section>
 <section id="id3">
-<h2>Simulation Code<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>Let simulate the model by Python! The parameters are given as below.</p>
+<h3>Simulation Code<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Let’s simulate the model by Python! The parameters are given as below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">odeint</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="c1"># Define parameters</span>
+<span class="c1"># --- 1. Parameter settings ---</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;r&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">]),</span>  <span class="c1"># resource growth rates</span>
-    <span class="s1">&#39;K&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">120.0</span><span class="p">]),</span>  <span class="c1"># Carrying capacities</span>
-    <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="s1">&#39;r_vec&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">]),</span>       <span class="c1"># Intrinsic growth rates of resources</span>
+    <span class="s1">&#39;K_vec&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">120.0</span><span class="p">]),</span>   <span class="c1"># Carrying capacities of resources</span>
+    <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>                      <span class="c1"># Consumption rate matrix (for resource equations)</span>
         <span class="p">[</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>
         <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">]</span>
     <span class="p">]),</span>
-    <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-        <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
-        <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+    <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>                      <span class="c1"># Contribution matrix (for consumer equations)</span>
+        <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">],</span>  <span class="c1"># Corresponds to w_ia * a_ia in the original formulation</span>
+        <span class="p">[</span><span class="mf">0.003</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">]</span>
     <span class="p">]),</span>
-    <span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>  <span class="c1"># consumer mortality rates</span>
+    <span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>            <span class="c1"># Mortality rates</span>
 <span class="p">}</span>
 
-<span class="c1"># Compute Effective Interaction Coefficients (alpha_ij) and Growth rates (r_i)</span>
-<span class="n">r_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="nb">sum</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span> <span class="n">alpha</span><span class="p">]</span> <span class="o">*</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span> <span class="n">alpha</span><span class="p">]</span> <span class="o">*</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;K&#39;</span><span class="p">][</span><span class="n">alpha</span><span class="p">]</span> <span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">-</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="p">])</span>
+<span class="c1"># --- 2. Calculate Effective Lotka-Volterra parameters ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_elv_params</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="c1"># Effective growth rate: r_i = sum_alpha(w_ia * K_alpha) - m_i</span>
+    <span class="n">r_eff</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="o">@</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;K_vec&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># Interaction matrix: alpha_ij = -sum_alpha(w_ia * a_ja * K_alpha / r_alpha)</span>
+    <span class="n">num_consumers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">])</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_consumers</span><span class="p">,</span> <span class="n">num_consumers</span><span class="p">))</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_consumers</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_consumers</span><span class="p">):</span>
+            <span class="c1"># Core correction: i uses w (contribution), j uses a (consumption)</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,:]</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">,:]</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;K_vec&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;r_vec&#39;</span><span class="p">]</span>
+            <span class="n">alpha</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+            
+    <span class="k">return</span> <span class="n">r_eff</span><span class="p">,</span> <span class="n">alpha</span>
 
-<span class="n">alpha_ij</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="p">[</span><span class="o">-</span><span class="nb">sum</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span> <span class="n">alpha</span><span class="p">]</span> <span class="o">*</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span> <span class="n">alpha</span><span class="p">]</span> <span class="o">*</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;K&#39;</span><span class="p">][</span><span class="n">alpha</span><span class="p">]</span> <span class="o">*</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">,</span> <span class="n">alpha</span><span class="p">]</span> <span class="o">/</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">][</span><span class="n">alpha</span><span class="p">]</span> <span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="p">])</span>
+<span class="c1"># --- 3. Effective Lotka-Volterra Model (ELV Model) ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">elv_model</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r_eff</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+    <span class="c1"># dC_i/dt = C_i * (r_i + sum_j(alpha_ij * C_j))</span>
+    <span class="k">return</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span><span class="n">r_eff</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">@</span> <span class="n">C</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Growth rates (r_i):&quot;</span><span class="p">,</span> <span class="n">r_i</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Effective Interaction Coefficients (alpha_ij):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">alpha_ij</span><span class="p">)</span>
+<span class="c1"># --- 4. Perform simulation ---</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>  <span class="c1"># Time points</span>
+<span class="n">C0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">])</span>    <span class="c1"># Initial consumer abundances</span>
 
-<span class="c1"># Define ELV model</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">elv_model</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
-    <span class="n">C1</span><span class="p">,</span> <span class="n">C2</span> <span class="o">=</span> <span class="n">C</span>
-    <span class="n">dC1dt</span> <span class="o">=</span> <span class="n">C1</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">C1</span> <span class="o">+</span> <span class="n">alpha</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">C2</span><span class="p">)</span>
-    <span class="n">dC2dt</span> <span class="o">=</span> <span class="n">C2</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">C1</span> <span class="o">+</span> <span class="n">alpha</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">C2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">dC1dt</span><span class="p">,</span> <span class="n">dC2dt</span><span class="p">]</span>
+<span class="c1"># Calculate ELV parameters</span>
+<span class="n">r_eff</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="n">calculate_elv_params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
 
-<span class="c1"># Initial conditions</span>
-<span class="n">C0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">]</span>
+<span class="c1"># Simulate ELV model</span>
+<span class="n">C_elv</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">elv_model</span><span class="p">,</span> <span class="n">C0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">r_eff</span><span class="p">,</span> <span class="n">alpha</span><span class="p">))</span>
 
-<span class="c1"># Time range</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="c1"># --- 5. Plot ELV dynamics ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_elv</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Consumer 1 (eLV Model)&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_elv</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;y-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Consumer 2 (eLV Model)&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="c1"># Solve ODEs</span>
-<span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">elv_model</span><span class="p">,</span> <span class="n">C0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">r_i</span><span class="p">,</span> <span class="n">alpha_ij</span><span class="p">))</span>
-
-<span class="c1"># Plot results</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;consumer 1&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;y--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;consumer 2&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;consumer Dynamics under ELV Model&#39;</span><span class="p">)</span>
-<span class="c1"># plt.grid()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Consumer Abundance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Dynamics of Effective Lotka-Volterra Model (eLVM)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/4d92336405b6d85d4343b2daffe74f37c8c61642efdc467aa06b295622065f2d.png" src="../_images/4d92336405b6d85d4343b2daffe74f37c8c61642efdc467aa06b295622065f2d.png" />
+</div>
 </div>
 </section>
-<section id="further-modification">
-<h2>Further modification<a class="headerlink" href="#further-modification" title="Link to this heading">#</a></h2>
-<p>Leakage represents inefficiencies or resource recycling processes that occur in ecological systems. To incorporate leakage into the consumer-resource model, we need to account for the fraction of resources consumed by a consumer that is not fully converted into biomass for the consumer but instead “leaks” back into the resource pool or into another resource.</p>
 </section>
+<section id="compare-the-results-of-crm-and-elv-model">
+<h2>Compare the results of CRM and eLV model<a class="headerlink" href="#compare-the-results-of-crm-and-elv-model" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">odeint</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># --- 1. Parameter Settings ---</span>
+<span class="c1"># Define all model parameters in a dictionary</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;r_vec&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">]),</span>       <span class="c1"># Intrinsic growth rates of resources</span>
+    <span class="s1">&#39;K_vec&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">120.0</span><span class="p">]),</span>   <span class="c1"># Carrying capacities of resources</span>
+    <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>                      <span class="c1"># Consumption rate matrix (for resource equations)</span>
+        <span class="p">[</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>                    <span class="c1"># Consumer 1&#39;s consumption rates for resources 1 &amp; 2</span>
+        <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">]</span>                     <span class="c1"># Consumer 2&#39;s consumption rates for resources 1 &amp; 2</span>
+    <span class="p">]),</span>
+    <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>                      <span class="c1"># Contribution matrix (for consumer equations)</span>
+        <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">],</span>                   <span class="c1"># Resource 1&#39;s contribution to consumer 1 &amp; 2</span>
+        <span class="p">[</span><span class="mf">0.003</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">]</span>                    <span class="c1"># Resource 2&#39;s contribution to consumer 1 &amp; 2</span>
+    <span class="p">]),</span>
+    <span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>            <span class="c1"># Mortality rates of consumers</span>
+<span class="p">}</span>
+
+<span class="c1"># --- 2. Original Consumer-Resource Model (C-R Model) ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">cr_model</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Original consumer-resource dynamics.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        state: Vector of state variables [R1, R2, C1, C2]</span>
+<span class="sd">        t: Time (for compatibility with odeint)</span>
+<span class="sd">        p: Dictionary of parameters</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        dydt: Derivatives [dR1/dt, dR2/dt, dC1/dt, dC2/dt]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Split state into resources and consumers</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">state</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>   <span class="c1"># Resource abundances</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>   <span class="c1"># Consumer abundances</span>
+    
+    <span class="c1"># Resource dynamics: logistic growth minus consumption</span>
+    <span class="c1"># dR/dt = r*R*(1-R/K) - R * sum(a_i * C_i)</span>
+    <span class="n">dRdt</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;r_vec&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">R</span><span class="o">/</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;K_vec&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">C</span><span class="p">)</span>
+    
+    <span class="c1"># Consumer dynamics: gain from resources minus mortality</span>
+    <span class="c1"># dC/dt = C * (sum(w_ia * R_a) - m_i)</span>
+    <span class="n">dCdt</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="o">@</span> <span class="n">R</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">])</span>
+    
+    <span class="c1"># Concatenate derivatives</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">dRdt</span><span class="p">,</span> <span class="n">dCdt</span><span class="p">])</span>
+
+<span class="c1"># --- 3. Calculate Corrected ELV Parameters ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_elv_params</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute effective parameters for the Equivalent Lotka-Volterra model.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        p: Dictionary of original model parameters</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        r_eff: Effective growth rates for ELV model</span>
+<span class="sd">        alpha: Effective interaction matrix for ELV model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Effective intrinsic growth rates:</span>
+    <span class="c1"># r_i = sum_alpha(w_ia * K_alpha) - m_i</span>
+    <span class="n">r_eff</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="o">@</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;K_vec&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># Compute the interaction matrix alpha</span>
+    <span class="n">num_consumers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">])</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_consumers</span><span class="p">,</span> <span class="n">num_consumers</span><span class="p">))</span>
+    
+    <span class="c1"># Calculate competition coefficients:</span>
+    <span class="c1"># alpha_ij = - sum_alpha(w_ia * a_ja * K_alpha / r_alpha)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_consumers</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_consumers</span><span class="p">):</span>
+            <span class="c1"># Key correction: consumer i&#39;s w (benefit) with consumer j&#39;s a (consumption)</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,:]</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">,:]</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;K_vec&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;r_vec&#39;</span><span class="p">]</span>
+            <span class="n">alpha</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+            
+    <span class="k">return</span> <span class="n">r_eff</span><span class="p">,</span> <span class="n">alpha</span>
+
+<span class="c1"># --- 4. Effective Lotka-Volterra Model (ELV Model) ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">elv_model</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r_eff</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Equivalent Lotka-Volterra model for consumer dynamics.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        C: Consumer abundances [C1, C2]</span>
+<span class="sd">        t: Time (for compatibility with odeint)</span>
+<span class="sd">        r_eff: Effective growth rates</span>
+<span class="sd">        alpha: Effective interaction matrix</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        dC/dt: Consumer derivatives</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># dC/dt = C * (r_eff + alpha @ C)</span>
+    <span class="k">return</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span><span class="n">r_eff</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">@</span> <span class="n">C</span><span class="p">)</span>
+
+<span class="c1"># --- 5. Run Simulations ---</span>
+<span class="c1"># Time array for simulation</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+
+<span class="c1"># Initial state: [R1, R2, C1, C2]</span>
+<span class="n">state0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">120.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">]</span>
+
+<span class="c1"># Simulate original consumer-resource model</span>
+<span class="n">sol_cr</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">cr_model</span><span class="p">,</span> <span class="n">state0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">params</span><span class="p">,))</span>
+<span class="n">C_cr</span> <span class="o">=</span> <span class="n">sol_cr</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:]</span>  <span class="c1"># Extract consumer dynamics</span>
+
+<span class="c1"># Calculate ELV parameters and simulate</span>
+<span class="n">r_eff</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="n">calculate_elv_params</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="n">C_elv</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">elv_model</span><span class="p">,</span> <span class="n">state0</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">r_eff</span><span class="p">,</span> <span class="n">alpha</span><span class="p">))</span>
+
+<span class="c1"># --- 6. Plot Comparison ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Plot original model results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_cr</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C1 (CRM)&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_cr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C2 (CRM)&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="c1"># Plot ELV approximation results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_elv</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C1 (eLV)&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_elv</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;C2 (eLV)&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Consumer Abundance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Corrected Comparison: Consumer-Resource vs Equivalent Lotka-Volterra Model&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/007bf39850fe0ec2e7765a9d721f7e50febe1f87f7d788142ab38d2a583bdff6.png" src="../_images/007bf39850fe0ec2e7765a9d721f7e50febe1f87f7d788142ab38d2a583bdff6.png" />
+</div>
+</div>
+<p>It is clear that the eLV model is simpler than CRM, but eLV model can accurately reproduce the equilibrium state of CRM. Therefore, we can use the eLV model to analyze the interactions between consumers after the system reaches the equilibrium.</p>
+</section>
+<section id="leakage">
+<h2>Leakage<a class="headerlink" href="#leakage" title="Link to this heading">#</a></h2>
+<p>Leakage represents inefficiencies or resource recycling processes that occur in ecological systems. To incorporate leakage into the consumer-resource model, we need to account for the fraction of resources consumed by a consumer that is not fully converted into biomass for the consumer but instead “leaks” back into the resource pool or into another resource. Clearly, the leakage will further enhance interaction among consumers.</p>
 <section id="including-leakage-in-consumer-dynamics">
-<h2>Including Leakage in consumer Dynamics<a class="headerlink" href="#including-leakage-in-consumer-dynamics" title="Link to this heading">#</a></h2>
+<h3>Including Leakage in Consumer Dynamics<a class="headerlink" href="#including-leakage-in-consumer-dynamics" title="Link to this heading">#</a></h3>
 <p>Leakage is incorporated by assuming that:</p>
 <ul class="simple">
-<li><p>A portion of the consumed resource <span class="math notranslate nohighlight">\(r_\alpha \)</span> by consumer <span class="math notranslate nohighlight">\( C_i \)</span> is not converted into biomass but is instead “leaked” into other resource pools <span class="math notranslate nohighlight">\( r_\beta \)</span>, where <span class="math notranslate nohighlight">\( \alpha \neq \beta \)</span>.</p></li>
-<li><p>The leakage is defined by a leakage matrix <span class="math notranslate nohighlight">\( l^i_{\alpha \beta} \)</span>, where <span class="math notranslate nohighlight">\( l^i_{\alpha \beta} \)</span> represents the fraction of resource <span class="math notranslate nohighlight">\( r_\alpha \)</span> consumed by consumer <span class="math notranslate nohighlight">\( C_i \)</span> that leaks into resource <span class="math notranslate nohighlight">\( r_\beta \)</span>.</p></li>
+<li><p>A portion of the consumed resource <span class="math notranslate nohighlight">\(R_\alpha \)</span> by consumer <span class="math notranslate nohighlight">\( C_i \)</span> is not converted into biomass but is instead “leaked” into other resource pools <span class="math notranslate nohighlight">\( R_\beta \)</span>, where <span class="math notranslate nohighlight">\( \alpha \neq \beta \)</span>.</p></li>
+<li><p>The leakage is defined by a leakage matrix <span class="math notranslate nohighlight">\( l^i_{\alpha \beta} \)</span>, where <span class="math notranslate nohighlight">\( l^i_{\alpha \beta} \)</span> represents the fraction of resource <span class="math notranslate nohighlight">\( R_\alpha \)</span> consumed by consumer <span class="math notranslate nohighlight">\( C_i \)</span> that leaks into resource <span class="math notranslate nohighlight">\( R_\beta \)</span>. We can also view <span class="math notranslate nohighlight">\( l^i_{\alpha \beta} \)</span> as the ability of consumer <span class="math notranslate nohighlight">\(i\)</span> to transform resource <span class="math notranslate nohighlight">\(\alpha\)</span> into resource <span class="math notranslate nohighlight">\(\beta\)</span>.</p></li>
 </ul>
 <p>Thus, the effective resource contribution to the growth of consumer <span class="math notranslate nohighlight">\( C_i \)</span> becomes:</p>
 <div class="math notranslate nohighlight">
 \[
-u_{i\alpha} (1 - \sum_\beta l^i_{\alpha \beta}) r_\alpha,
+u_{i\alpha} (1 - \sum_\beta l^i_{\alpha \beta}) R_\alpha,
 \]</div>
-<p>where <span class="math notranslate nohighlight">\( u_{i\alpha} \)</span> replaces <span class="math notranslate nohighlight">\( w_{i\alpha} a_{i\alpha} \)</span> to represent the combined uptake and conversion efficiency of <span class="math notranslate nohighlight">\( C_i \)</span> for resource <span class="math notranslate nohighlight">\( r_\alpha \)</span>. The term <span class="math notranslate nohighlight">\( (1 - \sum_\beta l^i_{\alpha \beta}) \)</span> ensures that only the fraction of the resource not leaked contributes to the consumer’s growth.</p>
-</section>
-<section id="updated-consumer-dynamics">
-<h2>Updated consumer Dynamics<a class="headerlink" href="#updated-consumer-dynamics" title="Link to this heading">#</a></h2>
+<p>where <span class="math notranslate nohighlight">\( u_{i\alpha} \)</span> replaces <span class="math notranslate nohighlight">\( w_{i\alpha}\)</span> to describe uptake rate of <span class="math notranslate nohighlight">\( C_i \)</span> for resource <span class="math notranslate nohighlight">\( r_\alpha \)</span>. The term <span class="math notranslate nohighlight">\( (1 - \sum_\beta l^i_{\alpha \beta}) \)</span> ensures that only the fraction of the resource not leaked contributes to the consumer’s growth.</p>
 <p>With leakage included, the consumer dynamics become:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{dC_i}{dt} = C_i \left( \sum_\alpha u_{i\alpha} (1 - \sum_\beta l^i_{\alpha \beta}) r_\alpha - m_i \right).
+\frac{dC_i}{dt} = C_i \left( \sum_\alpha u_{i\alpha} (1 - \sum_\beta l^i_{\alpha \beta}) R_\alpha - m_i \right).
 \]</div>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( \sum_\alpha u_{i\alpha} (1 - \sum_\beta l^i_{\alpha \beta}) r_\alpha \)</span>: The effective growth rate of consumer <span class="math notranslate nohighlight">\( C_i \)</span>, considering the resource uptake <span class="math notranslate nohighlight">\( u_{i\alpha} r_\alpha \)</span> minus the leaked fraction <span class="math notranslate nohighlight">\( \sum_\beta l^i_{\alpha \beta} \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \sum_\alpha u_{i\alpha} (1 - \sum_\beta l^i_{\alpha \beta}) R_\alpha \)</span>: The effective growth rate of consumer <span class="math notranslate nohighlight">\( C_i \)</span>, considering the resource uptake <span class="math notranslate nohighlight">\( u_{i\alpha} R_\alpha \)</span> minus the leaked fraction <span class="math notranslate nohighlight">\( \sum_\beta l^i_{\alpha \beta} \)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\( m_i \)</span>: mortality rate of consumer <span class="math notranslate nohighlight">\( C_i \)</span>.</p></li>
 </ul>
 </section>
 <section id="including-leakage-in-resource-dynamics">
-<h2>Including Leakage in resource Dynamics<a class="headerlink" href="#including-leakage-in-resource-dynamics" title="Link to this heading">#</a></h2>
+<h3>Including Leakage in Resource Dynamics<a class="headerlink" href="#including-leakage-in-resource-dynamics" title="Link to this heading">#</a></h3>
 <p>When leakage is included, we must account for two effects:</p>
 <ul class="simple">
-<li><p>Depletion by Consumption: resource <span class="math notranslate nohighlight">\( r_\alpha \)</span> is still depleted by consumer <span class="math notranslate nohighlight">\( C_i \)</span> at a rate <span class="math notranslate nohighlight">\( C_i u_{i\alpha} r_\alpha \)</span>.</p></li>
-<li><p>return via Leakage: A fraction of other consumed resources <span class="math notranslate nohighlight">\( r_\beta \)</span> (where <span class="math notranslate nohighlight">\( \beta \neq \alpha \)</span>) leaks into <span class="math notranslate nohighlight">\( r_\alpha \)</span> at a rate proportional to <span class="math notranslate nohighlight">\( l^i_{\beta \alpha} \)</span>. The total leakage into <span class="math notranslate nohighlight">\( r_\alpha \)</span> is given by:</p></li>
+<li><p>Depletion by Consumption: resource <span class="math notranslate nohighlight">\( R_\alpha \)</span> is still depleted by consumer <span class="math notranslate nohighlight">\( C_i \)</span> at a rate <span class="math notranslate nohighlight">\( C_i u_{i\alpha} R_\alpha \)</span>.</p></li>
+<li><p>Return via Leakage: A fraction of other consumed resources <span class="math notranslate nohighlight">\( R_\beta \)</span> (where <span class="math notranslate nohighlight">\( \beta \neq \alpha \)</span>) leaks into <span class="math notranslate nohighlight">\( R_\alpha \)</span> at a rate proportional to <span class="math notranslate nohighlight">\( l^i_{\beta \alpha} \)</span>. This will supplement the resource <span class="math notranslate nohighlight">\(\alpha\)</span>. The total leakage into <span class="math notranslate nohighlight">\( R_\alpha \)</span> is given by:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-\sum_\beta C_i u_{i\beta} r_\beta l^i_{\beta \alpha},
+\sum_\beta C_i u_{i\beta} R_\beta l^i_{\beta \alpha},
 \]</div>
 <p>where <span class="math notranslate nohighlight">\( \beta \)</span> runs over all other resources.</p>
 <p>Combining these effects, the resource dynamics become:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{dr_\alpha}{dt} = \rho_\alpha (r) - \sum_{i} \left( C_i u_{i\alpha} r_\alpha - \sum_{\beta} C_i u_{i\beta} r_\beta l^i_{\beta \alpha} \right).
+\frac{dR_\alpha}{dt} = \rho_\alpha (R_{\alpha}) - \sum_{i} \left( C_i u_{i\alpha} R_\alpha - \sum_{\beta} C_i u_{i\beta} R_\beta l^i_{\beta \alpha} \right).
 \]</div>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( \rho_\alpha (r) \)</span>: Growth rate of resource <span class="math notranslate nohighlight">\( r_\alpha \)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\( - \sum_i C_i u_{i\alpha} r_\alpha \)</span>: Depletion of resource <span class="math notranslate nohighlight">\( r_\alpha \)</span> due to consumption by all consumers.</p></li>
-<li><p><span class="math notranslate nohighlight">\( + \sum_i \sum_\beta C_i u_{i\beta} r_\beta l^i_{\beta \alpha} \)</span>: Gain in <span class="math notranslate nohighlight">\( r_\alpha \)</span> from leakage contributions of other resources <span class="math notranslate nohighlight">\( r_\beta \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \rho_\alpha (R_{\alpha}) \)</span>: To simplify equations, we use a function <span class="math notranslate nohighlight">\( \rho (\cdot)\)</span> to replace the intrinsic dynamic of resource <span class="math notranslate nohighlight">\( R_\alpha \)</span>. (If we refer back to the previous sections, <span class="math notranslate nohighlight">\( \rho_\alpha (R_{\alpha}) \)</span> should be <span class="math notranslate nohighlight">\(r_\alpha(1-\frac{R_\alpha}{K_\alpha})R_\alpha\)</span>, but by symbolizing it, we can use a simpler equation to describe the intrinsic changes in resources.)</p></li>
+<li><p><span class="math notranslate nohighlight">\( - \sum_i C_i u_{i\alpha} R_\alpha \)</span>: Depletion of resource <span class="math notranslate nohighlight">\( r_\alpha \)</span> due to consumption by all consumers.</p></li>
+<li><p><span class="math notranslate nohighlight">\( + \sum_i \sum_\beta C_i u_{i\beta} R_\beta l^i_{\beta \alpha} \)</span>: Gain in <span class="math notranslate nohighlight">\( R_\alpha \)</span> from leakage contributions of other resources <span class="math notranslate nohighlight">\( R_\beta \)</span>.</p></li>
 </ul>
 </section>
 <section id="final-form">
-<h2>Final Form<a class="headerlink" href="#final-form" title="Link to this heading">#</a></h2>
+<h3>Final Form<a class="headerlink" href="#final-form" title="Link to this heading">#</a></h3>
 <p>By combining the updated consumer and resource dynamics, the final model with leakage becomes:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{aligned}&amp; \frac{dC_i}{dt} = C_i \left( \sum_\alpha u_{i\alpha}(1-\sum_\beta l^i_{\alpha \beta})r_\alpha - m_i \right),\\&amp; \frac{dr_\alpha}{dt} = \rho_\alpha (r) - \sum_{i} \left(C_i u_{i\alpha} r_\alpha - \sum_{\beta} C_i u_{i\beta} r_\beta l^i_{\beta \alpha} \right) .\end{aligned}
+\begin{aligned}&amp; \frac{dC_i}{dt} = C_i \left( \sum_\alpha u_{i\alpha}(1-\sum_\beta l^i_{\alpha \beta})R_\alpha - m_i \right),\\&amp; \frac{dR_\alpha}{dt} = \rho_\alpha (R_\alpha) - \sum_{i} \left(C_i u_{i\alpha} R_\alpha - \sum_{\beta} C_i u_{i\beta} R_\beta l^i_{\beta \alpha} \right) .\end{aligned}
 \end{split}\]</div>
+<p>Generally, leakages are more common in microbial community dynamics, therefore we refer to this CRM as Microbial Consumer-Resource Model (MiCRM).</p>
 </section>
 <section id="key-features-and-explanations">
-<h2>Key Features and Explanations:<a class="headerlink" href="#key-features-and-explanations" title="Link to this heading">#</a></h2>
+<h3>Key Features and Explanations:<a class="headerlink" href="#key-features-and-explanations" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Leakage Matrix <span class="math notranslate nohighlight">\( l^i_{\alpha \beta} \)</span>:</p>
-<p><span class="math notranslate nohighlight">\( l^i_{\alpha \beta} \)</span> determines how much of resource <span class="math notranslate nohighlight">\( r_\alpha \)</span> consumed by <span class="math notranslate nohighlight">\( C_i \)</span> is leaked into resource <span class="math notranslate nohighlight">\( r_\beta \)</span>. It is critical for describing resource recycling and feedback loops in ecosystems.</p>
+<p><span class="math notranslate nohighlight">\( l^i_{\alpha \beta} \)</span> determines how much of resource <span class="math notranslate nohighlight">\( R_\alpha \)</span> consumed by <span class="math notranslate nohighlight">\( C_i \)</span> is leaked into resource <span class="math notranslate nohighlight">\( R_\beta \)</span>. It is critical for describing resource recycling and feedback loops in ecosystems.</p>
 </li>
 <li><p>consumer Dynamics:</p>
 <p>consumer growth is reduced by leakage, as only a fraction of the consumed resources <span class="math notranslate nohighlight">\( (1 - \sum_\beta l^i_{\alpha \beta}) \)</span> contributes to the consumer’s biomass.</p>
@@ -1112,83 +1292,380 @@ u_{i\alpha} (1 - \sum_\beta l^i_{\alpha \beta}) r_\alpha,
 <p>This extended model provides a more realistic representation of ecological systems by incorporating inefficiencies and feedbacks in resource consumption.</p>
 </section>
 <section id="id4">
-<h2>A simple example<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>Let’s add leakage for above “2 consumers - 2 resources” model and simulate the model by Python! The parameters are given as below.</p>
+<h3>A simple example<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Let’s add leakage for above “2 consumers - 2 resources” model and simulate the model by Python! The parameters are given as below. Please note that in the code below, we consider resources to be a constant input to the system to simplify computation; that is, <span class="math notranslate nohighlight">\(\rho\)</span> is a constant, and we no longer use the logistic model as before.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">odeint</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="c1"># Parameters</span>
+<span class="c1"># --- 1. Parameter Settings ---</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;r&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">]),</span>
-    <span class="s1">&#39;K&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">120.0</span><span class="p">]),</span>
-    <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-        <span class="p">[</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>
-        <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">]</span>
+    <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>  <span class="c1"># Number of consumers</span>
+    <span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>  <span class="c1"># Number of resources</span>
+    
+    <span class="c1"># Consumer parameters</span>
+    <span class="s1">&#39;u&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>      <span class="c1"># Uptake rates (N x M)</span>
+        <span class="p">[</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>    <span class="c1"># Consumer 1&#39;s uptake of resources 1 and 2</span>
+        <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">]</span>     <span class="c1"># Consumer 2&#39;s uptake of resources 1 and 2</span>
     <span class="p">]),</span>
-    <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-        <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
-        <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
-    <span class="p">]),</span>
-    <span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+    <span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]),</span>  <span class="c1"># Mortality rates of consumers</span>
+    
+    <span class="c1"># Resource parameters (constant input)</span>
+    <span class="s1">&#39;rho&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">]),</span>  <span class="c1"># Constant resource input rates</span>
+    
+    <span class="c1"># Leakage parameters (N x M x M)</span>
+    <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="c1"># Consumer 1&#39;s leakage matrix</span>
+        <span class="p">[[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">],</span>   <span class="c1"># From resource 1: 10% to R1, 5% to R2 (total 15%)</span>
+         <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]],</span>  <span class="c1"># From resource 2: 3% to R1, 10% to R2 (total 13%)</span>
+        
+        <span class="c1"># Consumer 2&#39;s leakage matrix  </span>
+        <span class="p">[[</span><span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">],</span>  <span class="c1"># From resource 1: 8% to R1, 4% to R2 (total 12%)</span>
+         <span class="p">[</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">]]</span>  <span class="c1"># From resource 2: 2% to R1, 8% to R2 (total 10%)</span>
+    <span class="p">])</span>
 <span class="p">}</span>
 
-<span class="c1"># Leakage tensor l^i_{alpha beta}</span>
-<span class="n">l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-    <span class="p">[[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]],</span>  <span class="c1"># Leakage for consumer 1</span>
-    <span class="p">[[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]]</span>   <span class="c1"># Leakage for consumer 2</span>
-<span class="p">])</span>
-
-<span class="c1"># Model equations</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">dXdt</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
-    <span class="n">C</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># consumer populations</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>  <span class="c1"># resource populations</span>
+<span class="c1"># --- 2. Leakage Consumer-Resource Model ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">MiCRM_ode</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Consumer-resource model with leakage and constant resource input.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        y: State vector [C1, C2, ..., R1, R2, ...]</span>
+<span class="sd">        t: Time</span>
+<span class="sd">        p: Dictionary of parameters</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        dydt: Derivatives [dC1/dt, dC2/dt, ..., dR1/dt, dR2/dt, ...]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">]</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="n">N</span><span class="p">]</span>   <span class="c1"># Consumer abundances</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">N</span><span class="p">:]</span>   <span class="c1"># Resource abundances</span>
     
-    <span class="n">r</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">]</span>
-    <span class="n">K</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;K&#39;</span><span class="p">]</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>
-    <span class="n">w</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">]</span>
+    <span class="c1"># Initialize derivatives</span>
+    <span class="n">dCdt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">dRdt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
     
-    <span class="n">u</span> <span class="o">=</span> <span class="n">w</span> <span class="o">*</span> <span class="n">a</span>  <span class="c1"># Interaction strengths</span>
+    <span class="c1"># Calculate consumer dynamics</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">effective_uptake</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+            <span class="c1"># Fraction of resource alpha that consumer i actually assimilates</span>
+            <span class="n">assimilated_fraction</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="p">:])</span>
+            <span class="n">effective_uptake</span> <span class="o">+=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span> <span class="n">alpha</span><span class="p">]</span> <span class="o">*</span> <span class="n">assimilated_fraction</span> <span class="o">*</span> <span class="n">R</span><span class="p">[</span><span class="n">alpha</span><span class="p">]</span>
+        <span class="n">dCdt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">effective_uptake</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+    
+    <span class="c1"># Calculate resource dynamics</span>
+    <span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+        <span class="c1"># Constant resource input</span>
+        <span class="n">rho_alpha</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">][</span><span class="n">alpha</span><span class="p">]</span>
+        <span class="n">dRdt</span><span class="p">[</span><span class="n">alpha</span><span class="p">]</span> <span class="o">=</span> <span class="n">rho_alpha</span>
+        
+        <span class="c1"># Direct consumption by consumers (negative term)</span>
+        <span class="n">consumption</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+            <span class="n">consumption</span> <span class="o">+=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">R</span><span class="p">[</span><span class="n">alpha</span><span class="p">]</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span> <span class="n">alpha</span><span class="p">]</span>
+        <span class="n">dRdt</span><span class="p">[</span><span class="n">alpha</span><span class="p">]</span> <span class="o">-=</span> <span class="n">consumption</span>
+        
+        <span class="c1"># Leakage from other resources (positive term)</span>
+        <span class="n">leakage</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">beta</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+                <span class="n">leakage</span> <span class="o">+=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">R</span><span class="p">[</span><span class="n">beta</span><span class="p">]</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span> <span class="n">beta</span><span class="p">]</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">alpha</span><span class="p">]</span>
+        <span class="n">dRdt</span><span class="p">[</span><span class="n">alpha</span><span class="p">]</span> <span class="o">+=</span> <span class="n">leakage</span>
+    
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">dCdt</span><span class="p">,</span> <span class="n">dRdt</span><span class="p">])</span>
 
-    <span class="c1"># consumer dynamics</span>
-    <span class="n">dCdt</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">r</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span>
+<span class="c1"># --- 3. Run Simulation ---</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">state0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">120.0</span><span class="p">]])</span>  <span class="c1"># [C1, C2, R1, R2]</span>
+<span class="n">solution</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">MiCRM_ode</span><span class="p">,</span> <span class="n">state0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">params</span><span class="p">,))</span>
 
-    <span class="c1"># resource dynamics</span>
-    <span class="n">drdt</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">r</span> <span class="o">/</span> <span class="n">K</span><span class="p">)</span> <span class="o">*</span> <span class="n">r</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">C</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="n">r</span> <span class="o">-</span> 
-                                        <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">C</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">l</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># Extract results</span>
+<span class="n">C1</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># Consumer 1</span>
+<span class="n">C2</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># Consumer 2</span>
+<span class="n">R1</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># Resource 1</span>
+<span class="n">R2</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># Resource 2</span>
 
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">dCdt</span><span class="p">,</span> <span class="n">drdt</span><span class="p">])</span>
+<span class="c1"># --- 4. Plot Time Dynamics ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
-<span class="c1"># Initial conditions</span>
-<span class="n">X0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">])</span>
-
-<span class="c1"># Time points</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
-
-<span class="c1"># Solve ODEs</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">dXdt</span><span class="p">,</span> <span class="n">X0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span>
-
-<span class="c1"># Plot results</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;consumer 1&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;consumer 2&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;resource 1&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;resource 2&#39;</span><span class="p">)</span>
-
+<span class="c1"># Plot consumer dynamics</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C1</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Consumer 1&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Consumer 2&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population/resource Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Abundance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Consumer Dynamics of MiCRM&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;consumer-resource Model Dynamics&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="c1"># Plot resource dynamics</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">R1</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Resource 1&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">R2</span><span class="p">,</span> <span class="s1">&#39;m-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Resource 2&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Abundance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Resource Dynamics of MiCRM&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/2c14b15804aaa44e42b45e98510265ad44d70fec61e88ed1162f4b944dfe0c8d.png" src="../_images/2c14b15804aaa44e42b45e98510265ad44d70fec61e88ed1162f4b944dfe0c8d.png" />
 </div>
+</div>
+</section>
+</section>
+<section id="update-the-elv-model-with-leakage">
+<h2>Update the eLV Model with Leakage<a class="headerlink" href="#update-the-elv-model-with-leakage" title="Link to this heading">#</a></h2>
+<p>The form of the eLV model is still as follows:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dC_i}{dt} = C_i \left(   r_i + \sum_j \alpha_{ij} C_j \right),\]</div>
+<p>but the expressions for <span class="math notranslate nohighlight">\(r_i\)</span> and <span class="math notranslate nohighlight">\(\alpha_{ij}\)</span> derived from MiCRM have changed as:</p>
+<div class="math notranslate nohighlight">
+\[\alpha_{ij} = \sum_\gamma u_{i \gamma}(1 - \sum_\beta l^i_{\gamma\beta}) \frac{\partial \hat{R}_\gamma}{\partial C_j},\]</div>
+<div class="math notranslate nohighlight">
+\[r_i = - \sum_j \alpha_{ij} \hat{C}_j.\]</div>
+<p>We can easily see that after taking leakage into account, the eLV model becomes rather complex, which requires us to know the equilibrium point of the system in advance. Therefore, in practical simulation, we need to first solve the MiCRM to obtain the equilibrium point before calculating the parameters <span class="math notranslate nohighlight">\(r_i\)</span> and <span class="math notranslate nohighlight">\(alpha_{ij}\)</span> in the eLV model.</p>
+<section id="code-example">
+<h3>Code example<a class="headerlink" href="#code-example" title="Link to this heading">#</a></h3>
+<p>We consider a system with “two consumers and two resources” and a constant external resource supply (<span class="math notranslate nohighlight">\(\rho\)</span> is no longer a logistic model, but a constant).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">odeint</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># ===================== 1. PARAMETER DEFINITION =====================</span>
+<span class="c1"># Dimensions: N = number of consumers, M = number of resources</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span>
+
+<span class="c1"># Define all parameters in a single dictionary</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>  <span class="c1"># Number of consumers</span>
+    <span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>  <span class="c1"># Number of resources</span>
+    
+    <span class="c1"># Consumer parameters</span>
+    <span class="s1">&#39;u&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>      <span class="c1"># Uptake rates (N x M)</span>
+        <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">],</span>   <span class="c1"># Consumer 1: mainly eats resource 1</span>
+        <span class="p">[</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">]</span>    <span class="c1"># Consumer 2: mainly eats resource 2</span>
+    <span class="p">]),</span>
+    <span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]),</span>  <span class="c1"># Mortality rates of consumers</span>
+    
+    <span class="c1"># Resource parameters (constant input)</span>
+    <span class="s1">&#39;rho&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">]),</span>  <span class="c1"># Constant resource input rates</span>
+    
+    <span class="c1"># Leakage parameters (N x M x M)</span>
+    <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="c1"># Consumer 1&#39;s leakage matrix</span>
+        <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span>   <span class="c1"># From resource 1: 0% to R1, 40% to R2</span>
+         <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]],</span>  <span class="c1"># From resource 2: 0% to R1, 0% to R2</span>
+        
+        <span class="c1"># Consumer 2&#39;s leakage matrix  </span>
+        <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>   <span class="c1"># From resource 1: 0% to R1, 0% to R2</span>
+         <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>   <span class="c1"># From resource 2: 30% to R1, 0% to R2</span>
+    <span class="p">])</span>
+<span class="p">}</span>
+
+<span class="c1"># ===================== 2. DEFINE MiCRM =====================</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">micrm_ode</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    MiCRM with constant resource input and cross-feeding leakage.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        state: Vector containing [R1, R2, ..., C1, C2, ...]</span>
+<span class="sd">        t: Time variable (for compatibility with odeint)</span>
+<span class="sd">        p: Dictionary of parameters</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Derivatives d[R, C]/dt</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Split state into resource and consumer components</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">state</span><span class="p">[:</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">]]</span>  <span class="c1"># Resource abundances</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">]:]</span>  <span class="c1"># Consumer abundances</span>
+    
+    <span class="c1"># --- Resource dynamics ---</span>
+    <span class="c1"># Constant input for resources (no logistic growth)</span>
+    <span class="n">dRdt</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+    <span class="c1"># Consumption term: -sum_i (C_i * u_ia * R_a)</span>
+    <span class="n">consumption</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">C</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">R</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="c1"># Leakage gain term: +sum_i sum_beta (C_i * u_ib * R_b * l_iba)</span>
+    <span class="n">leakage_gain</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;i, ib, b, iba -&gt; a&#39;</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">],</span> <span class="n">R</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">])</span>
+    
+    <span class="n">dRdt</span> <span class="o">+=</span> <span class="o">-</span><span class="n">consumption</span> <span class="o">+</span> <span class="n">leakage_gain</span>
+    
+    <span class="c1"># --- Consumer dynamics ---</span>
+    <span class="c1"># Calculate net conversion efficiency for each consumer-resource pair</span>
+    <span class="c1"># e_ia = u_ia * (1 - sum_beta l^i_ab)</span>
+    <span class="n">total_leakage_fraction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Shape (N, M)</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">total_leakage_fraction</span><span class="p">)</span>  <span class="c1"># Net conversion efficiency</span>
+    
+    <span class="c1"># Consumer growth rate: sum_alpha e_ia * R_alpha</span>
+    <span class="n">growth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">e</span> <span class="o">*</span> <span class="n">R</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">dCdt</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span><span class="n">growth</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">])</span>
+    
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">dRdt</span><span class="p">,</span> <span class="n">dCdt</span><span class="p">])</span>
+
+<span class="c1"># ===================== 3. SOLVE MiCRM =====================</span>
+<span class="c1"># Time array for simulation</span>
+<span class="n">t_cr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+
+<span class="c1"># Initial state: [R1, R2, C1, C2]</span>
+<span class="n">state0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">50.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>
+
+<span class="c1"># Solve mechanistic C-R model</span>
+<span class="n">sol_cr</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">micrm_ode</span><span class="p">,</span> <span class="n">state0</span><span class="p">,</span> <span class="n">t_cr</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">params</span><span class="p">,))</span>
+
+<span class="c1"># Extract equilibrium values (final time point)</span>
+<span class="n">R_eq</span> <span class="o">=</span> <span class="n">sol_cr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="n">M</span><span class="p">]</span>
+<span class="n">C_eq</span> <span class="o">=</span> <span class="n">sol_cr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">M</span><span class="p">:]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Equilibrium Resource Abundances:&quot;</span><span class="p">,</span> <span class="n">R_eq</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Equilibrium Consumer Abundances:&quot;</span><span class="p">,</span> <span class="n">C_eq</span><span class="p">)</span>
+
+<span class="c1"># ===================== 4. CALCULATE ELV PARAMETERS =====================</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_elv_params</span><span class="p">(</span><span class="n">R_star</span><span class="p">,</span> <span class="n">C_star</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate parameters for the elv model.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        R_star: Equilibrium resource abundances</span>
+<span class="sd">        C_star: Equilibrium consumer abundances</span>
+<span class="sd">        p: Parameter dictionary</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        r_eff: Intrinsic growth rates for ELV</span>
+<span class="sd">        Alpha: Interaction matrix for ELV</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># --- 1. Jacobian matrix D (M × M) for resource dynamics ---</span>
+    <span class="c1"># With constant resource input, the derivative of supply with respect to R is 0</span>
+    <span class="c1"># D_alpha_gamma = d(F_alpha)/dR_gamma</span>
+    
+    <span class="c1"># Initialize D with zeros</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">]))</span>
+    
+    <span class="c1"># Fill diagonal terms: -sum_i (C_i * u_i_alpha)</span>
+    <span class="c1"># This comes from the derivative of the consumption term with respect to R_alpha</span>
+    <span class="n">consumption_deriv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">C_star</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">]):</span>
+        <span class="n">D</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span> <span class="n">alpha</span><span class="p">]</span> <span class="o">-=</span> <span class="n">consumption_deriv</span><span class="p">[</span><span class="n">alpha</span><span class="p">]</span>
+    
+    <span class="c1"># Add leakage contributions</span>
+    <span class="c1"># For D[alpha, gamma]: + sum_i C_i * u_i_gamma * l_i_gamma_alpha</span>
+    <span class="c1"># This is the derivative of leakage gain term with respect to R_gamma</span>
+    <span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">gamma</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">]):</span>
+            <span class="n">leakage_contrib</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">C_star</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">][:,</span> <span class="n">gamma</span><span class="p">]</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">][:,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">alpha</span><span class="p">])</span>
+            <span class="n">D</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span> <span class="n">gamma</span><span class="p">]</span> <span class="o">+=</span> <span class="n">leakage_contrib</span>
+    
+    <span class="c1"># --- 2. Impact matrix V (M × N): d(F_alpha)/d(C_j) ---</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]))</span>
+    
+    <span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]):</span>
+            <span class="c1"># Term 1: -u_j_alpha * R_alpha (from consumption)</span>
+            <span class="n">V</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">,</span> <span class="n">alpha</span><span class="p">]</span> <span class="o">*</span> <span class="n">R_star</span><span class="p">[</span><span class="n">alpha</span><span class="p">]</span>
+            
+            <span class="c1"># Term 2: sum_beta u_j_beta * R_beta * l_j_beta_alpha (from leakage)</span>
+            <span class="n">leakage_sum</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">for</span> <span class="n">beta</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">]):</span>
+                <span class="n">leakage_sum</span> <span class="o">+=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">,</span> <span class="n">beta</span><span class="p">]</span> <span class="o">*</span> <span class="n">R_star</span><span class="p">[</span><span class="n">beta</span><span class="p">]</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">alpha</span><span class="p">]</span>
+            <span class="n">V</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">leakage_sum</span>
+    
+    <span class="c1"># --- 3. Net conversion efficiency matrix E (N × M) ---</span>
+    <span class="n">total_leakage_fraction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">total_leakage_fraction</span><span class="p">)</span>
+    
+    <span class="c1"># --- 4. Compute Alpha = -E * D^(-1) * V ---</span>
+    <span class="n">D_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+    <span class="n">Alpha</span> <span class="o">=</span> <span class="o">-</span><span class="n">E</span> <span class="o">@</span> <span class="n">D_inv</span> <span class="o">@</span> <span class="n">V</span>
+    
+    <span class="c1"># --- 5. Compute effective intrinsic growth rates r ---</span>
+    <span class="c1"># Growth at equilibrium: sum_alpha e_ia * R_alpha</span>
+    <span class="n">growth_at_eq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">E</span> <span class="o">*</span> <span class="n">R_star</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">r_eff</span> <span class="o">=</span> <span class="n">growth_at_eq</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;m&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">Alpha</span> <span class="o">@</span> <span class="n">C_star</span>
+    
+    <span class="k">return</span> <span class="n">r_eff</span><span class="p">,</span> <span class="n">Alpha</span>
+
+<span class="c1"># Calculate ELV parameters using equilibrium values</span>
+<span class="n">r_eff</span><span class="p">,</span> <span class="n">Alpha</span> <span class="o">=</span> <span class="n">calculate_elv_params</span><span class="p">(</span><span class="n">R_eq</span><span class="p">,</span> <span class="n">C_eq</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+
+<span class="c1"># ===================== 5. DEFINE AND SOLVE ELV MODEL =====================</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">elv_model</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Equivalent Lotka-Volterra model for consumer dynamics.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        C: Consumer abundances</span>
+<span class="sd">        t: Time variable (for compatibility with odeint)</span>
+<span class="sd">        r: Effective intrinsic growth rates</span>
+<span class="sd">        alpha: Effective interaction matrix</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        dC/dt for ELV model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">@</span> <span class="n">C</span><span class="p">)</span>
+
+<span class="c1"># Use same time array for ELV simulation</span>
+<span class="n">t_elv</span> <span class="o">=</span> <span class="n">t_cr</span>
+
+<span class="c1"># Use initial consumer abundances of MiCRM as initial condition for ELV model</span>
+<span class="n">C_start_elv</span> <span class="o">=</span> <span class="n">state0</span><span class="p">[</span><span class="n">M</span><span class="p">:]</span>
+
+<span class="c1"># Solve ELV model</span>
+<span class="n">sol_elv</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">elv_model</span><span class="p">,</span> <span class="n">C_start_elv</span><span class="p">,</span> <span class="n">t_elv</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">r_eff</span><span class="p">,</span> <span class="n">Alpha</span><span class="p">))</span>
+
+<span class="c1"># Print r and alpha</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Effective growth rates (r_eff):&quot;</span><span class="p">,</span> <span class="n">r_eff</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Interaction matrix (Alpha):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Alpha</span><span class="p">)</span>
+
+<span class="c1"># ===================== 6. PLOT COMPARISON =====================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Plot consumer dynamics comparison</span>
+<span class="c1"># Plot MiCRM consumers (semi-transparent)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_cr</span><span class="p">,</span> <span class="n">sol_cr</span><span class="p">[:,</span> <span class="n">M</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MiCRM C1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_cr</span><span class="p">,</span> <span class="n">sol_cr</span><span class="p">[:,</span> <span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MiCRM C2&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot ELV model consumers (opaque)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_elv</span><span class="p">,</span> <span class="n">sol_elv</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;eLV C1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_elv</span><span class="p">,</span> <span class="n">sol_elv</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;eLV C2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Consumer Dynamics: MiCRM vs eLV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Consumer Abundance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Equilibrium Resource Abundances: [4.8016641  2.71399046]
+Equilibrium Consumer Abundances: [38.93304345 71.06695364]
+Effective growth rates (r_eff): [0.09999981 0.10000011]
+Interaction matrix (Alpha):
+[[-0.00170283 -0.00047425]
+ [-0.00047425 -0.00114731]]
+</pre></div>
+</div>
+<img alt="../_images/94f5607ce5ec49d2a7a8a2b347f2175e79bb20450fe7bec957297438399f4124.png" src="../_images/94f5607ce5ec49d2a7a8a2b347f2175e79bb20450fe7bec957297438399f4124.png" />
+</div>
+</div>
+<p>From the simulation, it is evident that we have successfully transformed the MiCRM into the eLV model. This now allows us to analyze the consumer behavior of the entire system (the direction of the intrinsic growth rate vector) and the interactions among consumers (by analyzing the interaction coefficient matrix).</p>
+</section>
 </section>
 </section>
 
@@ -1223,12 +1700,12 @@ u_{i\alpha} (1 - \sum_\beta l^i_{\alpha \beta}) r_\alpha,
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="populations.html"
+       href="single-populations-practicals.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Single populations</p>
+        <p class="prev-next-title">Practical Work 1 — Problems &amp; Fully Worked Solutions</p>
       </div>
     </a>
     <a class="right-next"
@@ -1273,21 +1750,31 @@ u_{i\alpha} (1 - \sum_\beta l^i_{\alpha \beta}) r_\alpha,
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-questions">Discussion Questions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-code">Simulation Code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consumer-resource-model">consumer-resource Model:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-explanation">Detailed explanation:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-insights">Model Insights:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Simulation Code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-lotka-volterra-elv-model">Effective Lotka-Volterra (eLV) model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">reference</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Simulation Code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-modification">Further modification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#including-leakage-in-consumer-dynamics">Including Leakage in consumer Dynamics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updated-consumer-dynamics">Updated consumer Dynamics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#including-leakage-in-resource-dynamics">Including Leakage in resource Dynamics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-form">Final Form</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-and-explanations">Key Features and Explanations:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">A simple example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consumer-resource-model-crm">Consumer-Resource Model (CRM):</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-explanation">Detailed explanation:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-insights">Model Insights:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Simulation Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-lotka-volterra-elv-model">Effective Lotka-Volterra (eLV) model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Simulation Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-the-results-of-crm-and-elv-model">Compare the results of CRM and eLV model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leakage">Leakage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#including-leakage-in-consumer-dynamics">Including Leakage in Consumer Dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#including-leakage-in-resource-dynamics">Including Leakage in Resource Dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-form">Final Form</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-and-explanations">Key Features and Explanations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">A simple example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-the-elv-model-with-leakage">Update the eLV Model with Leakage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-example">Code example</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

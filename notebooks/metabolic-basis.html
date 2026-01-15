@@ -64,7 +64,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Single populations" href="populations.html" />
+    <link rel="next" title="Single Populations" href="populations.html" />
     <link rel="prev" title="Ecological &amp; Evolutionary Modelling" href="../part-eemodelling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -190,7 +190,10 @@
 <li class="toctree-l1"><a class="reference internal" href="shell-scripting.html">Shell scripting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git.html">Version control with Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html">Biological Computing in Python</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="python.html">Biological Computing in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="object-oriented-programming.html">Object-Oriented Programming</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="r.html">Biological Computing in R</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
@@ -221,7 +224,10 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-eemodelling.html">Ecological &amp; Evolutionary Modelling</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="populations.html">Single populations</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="populations.html">Single Populations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="single-populations-practicals.html">Practical Work 1 — Problems &amp; Fully Worked Solutions</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
 
 
@@ -230,9 +236,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Advanced Data Analyses and Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glms.html">Generalised Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="time-series.html">Time series analysis in R</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="microbial-growth.html">Microbial Growth rates in R</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
@@ -530,30 +536,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-intracellular-reaction-rates-to-cell-growth">From intracellular reaction rates to cell growth</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-singlecell-growth-to-division">From single‐cell growth to division</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-division-is-a-stochastic-process">Cell division is a stochastic process</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#average-doubling-time">(Average) Doubling time</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-cell-division-rate-to-population-growth">From cell division rate to population growth</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#growth-rate-vs-doubling-time">Growth rate vs Doubling Time</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#average-doubling-time-and-specific-growth-rate">(Average) doubling time and specific growth rate</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incorporating-cell-size-scaling">Incorporating Cell Size Scaling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-more-general-relationship">A more general relationship</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-exponential-to-logistic-growth">From exponential to logistic growth</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classic-logistic-equation">Classic Logistic Equation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-size-dependence-in-logistic-growth">2.2 Temperature &amp; Size Dependence in Logistic Growth</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-and-size-dependence-of-k">Temperature and Size Dependence of <span class="math notranslate nohighlight">\(K\)</span></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#population-dynamics">Population dynamics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#biological-interpretations">Biological Interpretations</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incorporating-cell-size-scaling">Incorporating Cell Size Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-from-individuals-to-populations">Transition: from individuals to populations</a></li>
 </ul>
             </nav>
         </div>
@@ -692,7 +681,7 @@ A \propto l^2
 <section id="going-beyond-geometric-constraints">
 <h2>Going beyond geometric constraints<a class="headerlink" href="#going-beyond-geometric-constraints" title="Link to this heading">#</a></h2>
 <p>Th above surface-to-volume geo biophysical constraint indeed holds at the level of cells, but is not the full story.</p>
-<p>Empirically, the scaling most multicellular organisms in fact follows a somewhat different exponent (<span class="math notranslate nohighlight">\(\approx \frac{3}{4}\)</span>, known as <em>Kleiber’s law</em>. This comes from the two additonal constraints: the requirement of heat dissipation and energy distribution (circulation) thorughout the body. We will not cover these here, but if you are intersted, please have a look at the readings at the end of this chapter.</p>
+<p>Empirically, the scaling most multicellular organisms in fact follows a somewhat different exponent (<span class="math notranslate nohighlight">\(\approx \frac{3}{4}\)</span>, known as <em>Kleiber’s law</em>. This comes from the two additonal constraints: the requirement of heat dissipation and energy distribution (circulation) thorughout the body. We will not cover these here, but if you are interested, see <span id="id6">[<a class="reference internal" href="../references.html#id3" title="M. Kleiber. Body size and metabolic rate. Physiol. rev., 27(4):511–541, 1947. URL: http://www.planta.cn/forum/files{\_}planta/511{\_}131.pdf{\%}5Cnpapers2://publication/uuid/008695C4-AE04-48B5-A89C-813ABFD00CB0, doi:10.1152/physrev.1947.27.4.511.">Kleiber, 1947</a>]</span> and <span id="id7">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. URL: isi:000223113500001, doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>]</span> for classic and modern treatments.</p>
 </section>
 <section id="importance-of-temperature-and-thermodynamic-constraints">
 <h2>Importance of Temperature (and Thermodynamic constraints)<a class="headerlink" href="#importance-of-temperature-and-thermodynamic-constraints" title="Link to this heading">#</a></h2>
@@ -703,11 +692,11 @@ A \propto l^2
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(k\)</span> is the reaction rate, <span class="math notranslate nohighlight">\(k_0\)</span> is a constant, <span class="math notranslate nohighlight">\(E_a\)</span> is the activation energy, <span class="math notranslate nohighlight">\(k_B\)</span> is the Boltzmann constant, and <span class="math notranslate nohighlight">\(T\)</span> is temperature in Kelvin. This relationship explains the characteristic thermal performance curve observed in biological processes, where rates increase with temperature to an optimum before declining due to enzyme denaturation or other stress factors (Johnson et al., 1974) (which we will consider later below).</p>
 <p>The <em>Arrhenius equation</em> and its variants (often collectively referred to as the “Boltzmann-Arrhenius” equation in certain contexts) are cornerstones of chemical kinetics. These formulations describe how reaction rates vary with temperature. For <em>enzyme kinetics</em>, the temperature dependence can also be described via modified forms of the Arrhenius equation, sometimes combined with effects such as protein denaturation at higher temperatures.</p>
-<p>Historically, this work can be traced back to <em>Jacobus Henricus van ‘t Hoff</em> (1852–1911), whose studies first quantified the temperature dependence of reaction rates. Building on van ‘t Hoff’s work, <em>Svante Arrhenius</em> (1859–1927) proposed a more explicit relationship that connected the rate constant <span class="math notranslate nohighlight">\(k\)</span> of a chemical reaction to an exponential function of temperature:</p>
-<div class="math notranslate nohighlight">
-\[
+<p>Historically, this work can be traced back to <em>Jacobus Henricus van ‘t Hoff</em> (1852–1911), whose studies first quantified the temperature dependence of reaction rates. Building on van ‘t Hoff’s work, <em>Svante Arrhenius</em> (1859–1927) proposed a more explicit relationship that connected the rate constant <span class="math notranslate nohighlight">\(k\)</span> of a chemical reaction to an exponential function of temperature:
+Historically, this work can be traced back to <em>Jacobus Henricus van ‘t Hoff</em> (1852–1911), whose studies first quantified the temperature dependence of reaction rates <span id="id8">[<a class="reference internal" href="../references.html#id167" title="J. H. van 't Hoff. Études de dynamique chimique. Frederik Muller, Amsterdam, 1884. URL: https://openlibrary.org/books/OL13511862M/Etudes_de_dynamique_chimique.">van 't Hoff, 1884</a>]</span>. Building on van ‘t Hoff’s work, <em>Svante Arrhenius</em> (1859–1927) proposed a more explicit relationship that connected the rate constant <span class="math notranslate nohighlight">\(k\)</span> of a chemical reaction to an exponential function of temperature <span id="id9">[<a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. URL: https://doi.org/10.1515/zpch-1889-0416, doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>]</span>:
+$<span class="math notranslate nohighlight">\(
     k = A \exp\left( -\frac{E_a}{rT} \right),
-\]</div>
+\)</span>$</p>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( A \)</span> is the pre-exponential factor (or frequency factor),</p></li>
@@ -727,20 +716,20 @@ A \propto l^2
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(k_\text{cat}(T)\)</span> is strongly dependent on <span class="math notranslate nohighlight">\(T\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\([\text{C}]\)</span> is the enzyme concentration,</p></li>
-<li><p><span class="math notranslate nohighlight">\(f([\text{S}])\)</span> is a function of substrate concentration (such as the Michaelis-Menten form <span class="math notranslate nohighlight">\(\tfrac{[\text{S}]}{K_M + [\text{S}] }\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(f([\text{S}])\)</span> is a function of substrate concentration (e.g. the Michaelis-Menten form <span class="math notranslate nohighlight">\(\tfrac{[\text{S}]}{K_M + [\text{S}] }\)</span>; see <span id="id10">[<a class="reference internal" href="../references.html#id170" title="Kenneth A. Johnson and Roger S. Goody. The original michaelis constant: translation of the 1913 michaelis–menten paper. Biochemistry, 50(39):8264–8269, 2011. URL: https://doi.org/10.1021/bi201284u, doi:10.1021/bi201284u.">Johnson and Goody, 2011</a>]</span>).</p></li>
 </ul>
 <p>We can model <span class="math notranslate nohighlight">\(k_\text{cat}(T)\)</span> using either the <em>Arrhenius</em> or the <em>Eyring</em> Equations. However, because real enzymes <em>denature</em> at higher temperatures, we typically observe a <em>bell-shaped</em> temperature activity profile.</p>
 </section>
 <section id="classical-transition-state-theory-tst">
 <h2>Classical Transition State Theory (TST)<a class="headerlink" href="#classical-transition-state-theory-tst" title="Link to this heading">#</a></h2>
 <p>We will now look at <em>classical transition state theory (TST)</em>, which provides a <em>microscopic rationale</em> for the temperature dependence of reaction rates, explaining both <em>how energy barriers (enthalpy)</em> slow down reactions and how <em>changes in molecular order (entropy)</em> can further modulate the speed at which reactants cross from the well of the reactants to the well of reaction products.</p>
-<p>TST was developed in the 1930s by <em>Henry Eyring</em> (1901–1981) and others (in particular Meredith Evans and Michael Polanyi).</p>
+<p>TST was developed in the 1930s by <em>Henry Eyring</em> (1901–1981) and others (in particular Meredith Evans and Michael Polanyi) <span id="id11">[<a class="reference internal" href="../references.html#id168" title="Henry Eyring. The activated complex in chemical reactions. The Journal of Chemical Physics, 3(2):107–115, 1935. URL: https://doi.org/10.1063/1.1749604, doi:10.1063/1.1749604.">Eyring, 1935</a>, <a class="reference internal" href="../references.html#id169">Polanyi, 1935</a>]</span>.</p>
 <p>The key idea underlying the TST is that a chemical reaction proceeds through a high-energy configuration of the reactants called the <em>transition state</em> (or activated complex). Once formed, the transition state either proceeds forward to products or reverts back to reactants, adhering to two key assumptions:</p>
 <ul class="simple">
 <li><p>reagents must first form an <em>activated complex</em>, which is in a “quasi-equilibrium” with the reactants.</p></li>
 <li><p>The rate of the reaction then depends on how frequently and efficiently this activated complex “crosses over” from the reactant side of the potential energy surface to the product side.</p></li>
 </ul>
-<p>Using statistical mechanics arguments, TST yields the famous <em>Eyring (or Eyring–Polanyi) equation</em>, sometimes called the “absolute rate equation:</p>
+<p>Using statistical mechanics arguments, TST yields the famous <em>Eyring (or Eyring–Polanyi) equation</em>, sometimes called the “absolute rate equation” <span id="id12">[<a class="reference internal" href="../references.html#id168" title="Henry Eyring. The activated complex in chemical reactions. The Journal of Chemical Physics, 3(2):107–115, 1935. URL: https://doi.org/10.1063/1.1749604, doi:10.1063/1.1749604.">Eyring, 1935</a>, <a class="reference internal" href="../references.html#id169">Polanyi, 1935</a>]</span>:</p>
 <div class="math notranslate nohighlight">
 \[
     k = \frac{k_B T}{h} \exp\Bigl(\tfrac{\Delta S^\ddagger}{r}\Bigr)\exp\Bigl(-\tfrac{\Delta H^\ddagger}{rT}\Bigr).
@@ -811,6 +800,13 @@ Hence, one can directly extract $\Delta H^\ddagger$ and $\Delta S^\ddagger$ from
 4. *Temperature Dependence*  
    - The Eyring equation, arising from TST, captures both the *enthalpic* (energy) and *entropic* (disorder) contributions to the rate constant's variation with temperature.  
 
+<p><em>Arrhenius plots</em> are generated by taking the natural log on both sides and plotting <span class="math notranslate nohighlight">\(\ln(k)\)</span> vs. <span class="math notranslate nohighlight">\(1/T\)</span> should yield a straight line with slope <span class="math notranslate nohighlight">\(-E_a/r\)</span> and intercept <span class="math notranslate nohighlight">\(\ln(A)\)</span>.</p>
+<p><em>Eyring Equation</em>:  A common linear form for plotting is:</p>
+<div class="math notranslate nohighlight">
+\[
+   \ln\Bigl(\tfrac{k}{T}\Bigr)  =  -\frac{\Delta H^\ddagger}{r} \frac{1}{T}  +  \ln\Bigl(\frac{k_B}{h}\Bigr)  +  \frac{\Delta S^\ddagger}{r}.
+\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\(\ln(k/T)\)</span> vs. <span class="math notranslate nohighlight">\(1/T\)</span> should be linear with slope <span class="math notranslate nohighlight">\(-\Delta H^\ddagger / r\)</span> and intercept <span class="math notranslate nohighlight">\(\ln(k_B/h) + \Delta S^\ddagger / r\)</span>.</p>
 <!-- ## 4. Discussion
 
 1. *Arrhenius vs. Eyring*  
@@ -844,401 +840,110 @@ B = B'_0 m^b e^{-\frac{E_a}{k_BT}}
 </section>
 <section id="ecological-implications">
 <h2>Ecological implications<a class="headerlink" href="#ecological-implications" title="Link to this heading">#</a></h2>
-<p>We can now consider how the temperature dependence of <em>enzyme kinetics</em> and basic <em>cellular physiology</em> leads to a <em>temperature‐dependent</em> rate of <em>cell division</em>, and ultimately to <em>exponential population growth</em>. We will use microbes as a model because of the relative simplicity of their growth process, which relies on simple cell division.</p>
+<p>We can now consider how the temperature dependence of enzyme kinetics and basic cellular physiology leads to a temperature‐dependent <em>rate of biomass production</em> and (for microbes) a temperature‐dependent <em>rate of division</em>. We will use microbes as a model because their growth process is relatively simple and closely tied to cell division.</p>
 <section id="from-intracellular-reaction-rates-to-cell-growth">
 <h3>From intracellular reaction rates to cell growth<a class="headerlink" href="#from-intracellular-reaction-rates-to-cell-growth" title="Link to this heading">#</a></h3>
-<p>A living cell’s <em>growth and division</em> require a <em>multitude of coupled enzyme reactions</em> (for nutrient uptake, biosynthesis, energy generation, etc.). MTE assumes that <em>one key rate‐limiting step</em> (or a small set of them) dominates the overall pace of cell growth and division. If those rate‐limiting reactions follow Arrhenius‐type kinetics, then the <em>cellular physiological rate</em> (e.g., biomass production rate, cell cycle progression rate) will inherit a similar temperature dependence:</p>
+<p>A living cell’s growth and division require a multitude of coupled enzyme reactions (nutrient uptake, biosynthesis, energy generation, etc.). MTE assumes that one key rate‐limiting step (or a small set of them) dominates the overall pace of cell growth and division. If those rate‐limiting reactions follow Arrhenius‐type kinetics, then the cellular physiological rate (e.g., biomass production rate, cell cycle progression rate) will inherit a similar temperature dependence:</p>
 <div class="math notranslate nohighlight">
 \[
-    \text{Physiological rate}  \propto  k(T)  \approx  A  \exp\Bigl(-\tfrac{E_a}{r  T}\Bigr).
+\text{Physiological rate} \propto k(T) \approx A\,\exp\Bigl(-\tfrac{E_a}{k_B T}\Bigr).
 \]</div>
-<p>Hence, as <span class="math notranslate nohighlight">\(T\)</span> increases (within a tolerable range), <em>enzyme‐catalyzed processes speed up</em>, and so does the <em>cell’s overall metabolism</em> and ability to replicate.</p>
+<p>Hence, as <span class="math notranslate nohighlight">\(T\)</span> increases (within a tolerable range), enzyme‐catalyzed processes speed up, and so does the cell’s overall metabolism and ability to replicate.</p>
 </section>
 <section id="from-singlecell-growth-to-division">
 <h3>From single‐cell growth to division<a class="headerlink" href="#from-singlecell-growth-to-division" title="Link to this heading">#</a></h3>
 <section id="cell-division-is-a-stochastic-process">
 <h4>Cell division is a stochastic process<a class="headerlink" href="#cell-division-is-a-stochastic-process" title="Link to this heading">#</a></h4>
-<p>To move from enzyme kinetics to <em>cell‐level</em> dynamics every cell must <em>replicate all essential components</em> (DNA, proteins, membranes, etc.), reach a certain “completion threshold” in biomass or chromosome replication, and <em>Divide</em> into two daughter cells.</p>
-<p>Because cellular biochemical events occur stochastically (randomly), the <em>exact</em> division time of any one cell can vary. However, in an <em>exponential (log) growth phase</em> with abundant nutrients, the <em>average</em> cell‐division rate <span class="math notranslate nohighlight">\(\lambda\)</span> (divisions per unit time) is fairly constant (Jafarpour et al 2020). This average division rate is ultimately <em>tied</em> to the cumulative rate of intracellular biochemical and biosynthetic reactions, and thus inherits their temperature dependence.</p>
+<p>To move from enzyme kinetics to cell‐level dynamics, a cell must replicate all essential components (DNA, proteins, membranes, etc.), reach a completion threshold in biomass or chromosome replication, and divide into two daughter cells.</p>
+<p>Because cellular biochemical events occur stochastically, the exact division time of any one cell can vary. However, in an exponential (log) growth phase with abundant nutrients, the <em>average</em> cell‐division rate <span class="math notranslate nohighlight">\(\lambda\)</span> (divisions per unit time) is fairly constant (Jafarpour et al. 2020). This average division rate is tied to the cumulative rate of intracellular biochemical and biosynthetic reactions, and thus inherits their temperature dependence.</p>
 </section>
-<section id="average-doubling-time">
-<h4>(Average) Doubling time<a class="headerlink" href="#average-doubling-time" title="Link to this heading">#</a></h4>
-<p>Let <span class="math notranslate nohighlight">\(\tau_d\)</span> be the <em>average doubling time</em> (the mean time for one cell to become two). Then,</p>
+<section id="average-doubling-time-and-specific-growth-rate">
+<h4>(Average) doubling time and specific growth rate<a class="headerlink" href="#average-doubling-time-and-specific-growth-rate" title="Link to this heading">#</a></h4>
+<p>Let <span class="math notranslate nohighlight">\(t_d\)</span> be the <em>average doubling time</em> (the mean time for one cell to become two). Then</p>
 <div class="math notranslate nohighlight">
 \[
-\lambda  =  \frac{1}{\tau_d} 
-\Longleftrightarrow  
-\tau_d  =  \frac{1}{\lambda}.
+\lambda = \frac{1}{t_d} \quad\Longleftrightarrow\quad t_d = \frac{1}{\lambda}.
 \]</div>
-<p>From the <em>Arrhenius perspective</em>, we can write</p>
+<p>From an Arrhenius perspective, we can write</p>
 <div class="math notranslate nohighlight">
 \[
-     \tau_d(T) \approx \tau_{d,0}  \exp\Bigl(\tfrac{E_a}{r  T}\Bigr),
+t_d(T) \approx t_{d,0}\,\exp\Bigl(\tfrac{E_a}{k_B T}\Bigr),
 \]</div>
-<p>so that the cell’s doubling time <em>decreases</em> with <em>increasing</em> temperature (again, within the physiological limit). Equivalently, the <em>division rate</em> <span class="math notranslate nohighlight">\(\lambda(T) = 1/\tau_d(T)\)</span> would <em>increase</em> with temperature:</p>
+<p>so that doubling time <em>decreases</em> with increasing temperature (again, within the physiological range). Equivalently, the division rate increases with temperature:</p>
 <div class="math notranslate nohighlight">
 \[
-    \lambda(T)  \approx  \lambda_0   \exp\Bigl(-\tfrac{E_a}{r T}\Bigr).
+\lambda(T) \approx \lambda_0\,\exp\Bigl(-\tfrac{E_a}{k_B T}\Bigr).
 \]</div>
-</section>
-</section>
-<section id="from-cell-division-rate-to-population-growth">
-<h3>From cell division rate to population growth<a class="headerlink" href="#from-cell-division-rate-to-population-growth" title="Link to this heading">#</a></h3>
-<p>Let’s consider a well‐mixed microbial population in batch or chemostat conditions (nurients are flowing through the environment continuously), focusing on their <em>exponential growth</em> phase (AKA <em>log phase</em>). If each cell divides (on average) at rate <span class="math notranslate nohighlight">\(\lambda(T)\)</span>, then the <em>expected</em> number of cells <span class="math notranslate nohighlight">\(N(t)\)</span> follows the <em>exponential growth law</em>:</p>
+<p>In population data and growth curves, microbiologists typically work with the <em>specific growth rate</em> <span class="math notranslate nohighlight">\(\mu\)</span> (units time<span class="math notranslate nohighlight">\(^{-1}\)</span>). In balanced exponential-phase microbial growth, it is essentially the same object as the average division rate (up to conventions and measurement details):</p>
 <div class="math notranslate nohighlight">
 \[
-    \frac{dN(t)}{dt}  =  \lambda(T)  N(t),
+\mu(T) \approx \lambda(T).
 \]</div>
+<p>With this notation, the doubling time is often written as</p>
 <div class="math notranslate nohighlight">
 \[
-\implies\quad N(t)  =  N(0)  \exp\Bigl[\lambda(T)  t\Bigr].
+t_d = \frac{\ln 2}{\mu(T)}.
 \]</div>
-<p>This is simply the standard Malthus‐type (or exponential) growth equation, whose solution is an exponential in time, with the <em>growth rate</em> <span class="math notranslate nohighlight">\(\lambda(T)\)</span> now an <em>Arrhenius‐like function</em> of temperature.</p>
-<section id="growth-rate-vs-doubling-time">
-<h4>Growth rate vs Doubling Time<a class="headerlink" href="#growth-rate-vs-doubling-time" title="Link to this heading">#</a></h4>
-<p>Microbiologists typically define the <em>specific growth rate</em> <span class="math notranslate nohighlight">\(\mu(T)\)</span> via</p>
-<div class="math notranslate nohighlight">
-\[
-    \frac{dN}{dt}  =  \mu(T)  N,
-\]</div>
-<p>so that <span class="math notranslate nohighlight">\(\mu(T)\equiv \lambda(T)\)</span>. Equivalently, the <em>doubling time</em> is</p>
-<div class="math notranslate nohighlight">
-\[
-    t_d  =  \frac{\ln(2)}{\mu(T)}.
-\]</div>
-<p>Thus, you will often see microbial growth curves written as</p>
-<div class="math notranslate nohighlight">
-\[
-N(t)  =  N(0)  \exp\Bigl[\mu(T)  t\Bigr],
-\]</div>
-<p>where</p>
-<div class="math notranslate nohighlight">
-\[
-\mu(T)  \approx  \mu_0  \exp\Bigl(-\tfrac{E_a}{r  T}\Bigr).
-\]</div>
-<p>So, in a nutshell,</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( \to\)</span> reaction rates speed up with temperature according to Arrhenius or Eyring equations.</p></li>
-<li><p><span class="math notranslate nohighlight">\( \to\)</span> The <em>cell division cycle</em> (DNA replication, protein synthesis, etc.) is governed by these enzymatic rates, so the <em>cell division rate</em> <span class="math notranslate nohighlight">\(\lambda(T)\)</span> similarly increases with temperature (up to an optimum).</p></li>
-<li><p><span class="math notranslate nohighlight">\( \to\)</span> When each cell divides at rate <span class="math notranslate nohighlight">\(\lambda(T)\)</span>, the <em>population</em> follows <em>exponential growth</em> <span class="math notranslate nohighlight">\(N(t) = N(0)  \exp[\lambda(T) t]\)</span>. The <em>specific growth rate</em> <span class="math notranslate nohighlight">\(\mu(T)\)</span> is effectively the <em>cell division rate</em> and inherits the same temperature dependence.</p></li>
-</ul>
-<p>There are also a few key caveats to keep in mind:</p>
-<ul class="simple">
-<li><p>real microbes have an <em>optimal growth temperature</em>. At <em>high temperatures</em>, enzymes <em>denature</em>, and growth drops off. Thus, beyond a certain point, Arrhenius‐type behavior breaks down.</p></li>
-<li><p>Many enzymatic steps contribute to growth; the overall temperature dependence can be more complicated than a simple exponential. Empirical models like the <em>ratkowsky model</em> (<span class="math notranslate nohighlight">\(\sqrt{\mu}\)</span> vs. <span class="math notranslate nohighlight">\(T\)</span>) or the <em>Cardinal model</em> with minimum, optimum, and maximum temperatures, are often used by biologists instead of explicitly thermodynamic equations.</p></li>
-<li><p>Below or near a certain threshold temperature, the <em>maintenance energy</em> requirement may exceed the energy‐generating reactions, effectively stopping growth.</p></li>
-<li><p>In single‐cell studies (e.g., time‐lapse microscopy), you see that individual cells have <em>variable</em> interdivision times. However, at the <em>population level</em>, the <em>average</em> behavior typically follows the exponential law (Jafarpour et al 2019).</p></li>
-</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This chapter stops at the level of <em>per-cell / per-individual</em> energetics and doubling. In the next chapter (<a class="reference internal" href="populations.html"><span class="doc std std-doc">Populations</span></a>), we treat <span class="math notranslate nohighlight">\(\mu(T,M)\)</span> as an <em>input parameter</em> and build explicit population models in discrete and continuous time (exponential growth, density dependence / logistic growth, and beyond).</p>
+</div>
 </section>
 </section>
 </section>
 <section id="incorporating-cell-size-scaling">
 <h2>Incorporating Cell Size Scaling<a class="headerlink" href="#incorporating-cell-size-scaling" title="Link to this heading">#</a></h2>
-<p><em>Metabolic Theory of Ecology</em> (MTE)’s equation for organism’s <em>metabolic rate</em> (see above) can be written as:</p>
+<p>MTE’s core relationship for an organism’s metabolic rate can be written as:</p>
 <div class="math notranslate nohighlight">
 \[
-    B(M, T)  \approx  B_0  M^{b}  \exp\Bigl(-\tfrac{E}{k_B  T}\Bigr),
+B(M,T) \approx B_0\,M^{b}\,\exp\Bigl(-\tfrac{E}{k_B T}\Bigr),
 \]</div>
 <p>where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(M\)</span> is the organism’s mass (for microbes, think <em>cell mass</em>),</p></li>
-<li><p><span class="math notranslate nohighlight">\(E\)</span> is an <em>effective activation energy</em> for metabolic reactions,</p></li>
-<li><p><span class="math notranslate nohighlight">\(k_B\)</span> here is Boltzmann’s constant (not to be confused with the same symbol in TST; context determines which constant is meant).</p></li>
+<li><p><span class="math notranslate nohighlight">\(M\)</span> is organism mass (for microbes, think <em>cell mass</em>),</p></li>
+<li><p><span class="math notranslate nohighlight">\(E\)</span> is an effective activation energy for metabolic reactions,</p></li>
+<li><p><span class="math notranslate nohighlight">\(k_B\)</span> is Boltzmann’s constant.</p></li>
 </ul>
-<p>A common assumption in MTE is that the <em>growth rate</em> of an organism is roughly <em>proportional</em> to its <em>mass‐specific</em> metabolic rate:</p>
+<p>A common (simple) assumption is that an organism’s <em>growth rate</em> is roughly proportional to its <em>mass-specific</em> metabolic rate, i.e. energy flux per unit mass:</p>
 <div class="math notranslate nohighlight">
 \[
-    \text{growth rate}  \propto  \frac{B(M,T)}{M}.
+\text{growth rate} \propto \frac{B(M,T)}{M}.
 \]</div>
-<p>Thus,</p>
+<p>This motivates an MTE-style form for the <em>per-capita</em> (per-individual) growth rate / division rate:</p>
 <div class="math notranslate nohighlight">
 \[
-\text{growth rate}  \approx  \frac{B_0  M^{b}  \exp\Bigl(-E/(k_B  T)\Bigr)}{M}
-     = B_0  M^{b-1}  \exp\Bigl(-E/(k_B  T)\Bigr).
+\mu(T,M) \approx \mu_0\,M^{b-1}\,\exp\Bigl(-\tfrac{E}{k_B T}\Bigr),
 \]</div>
-<p>For <em>microbial cells</em> of mass <span class="math notranslate nohighlight">\(M\)</span>, the MTE‐inspired prediction for the <em>specific growth rate</em> <span class="math notranslate nohighlight">\(\mu(T, M)\)</span> becomes:</p>
-<div class="math notranslate nohighlight">
-\[
-\mu(T, M)
- \approx 
-\mu_0   M^{b-1}  \exp\Bigl(-\tfrac{E}{k_B  T}\Bigr),
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mu_0\)</span> absorbs constants like <span class="math notranslate nohighlight">\(B_0\)</span>.</p>
-<p>The <em><span class="math notranslate nohighlight">\(M^{b-1}\)</span></em> factor, *in the case of <em>multi-cellular organisms</em>, reflects how <em>smaller cells</em> typically have a <em>faster</em> mass‐specific metabolic rate (and thus can grow/divide faster), whereas larger cells would have a somewhat lower per‐mass metabolic rate.</p>
+<p>where <span class="math notranslate nohighlight">\(\mu_0\)</span> absorbs constants such as <span class="math notranslate nohighlight">\(B_0\)</span> and conversion factors.</p>
+<p>For the commonly used case <span class="math notranslate nohighlight">\(b=3/4\)</span>, this becomes <span class="math notranslate nohighlight">\(\mu(T,M)\propto M^{-1/4}\)</span>: larger organisms (or larger cells) tend to have lower mass-specific metabolic rates and therefore lower per-capita growth rates, all else equal.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The scaling of metabolic rate of microbial cells is very different (it is not allomteric, but iso-metric or super-linear; see DeLong et al 2010).</p>
+<p>For microbes, empirical size scaling can differ from the canonical quarter-power law (it may be closer to isometric or even super-linear in some datasets; see DeLong et al. 2010). The main goal here is to show <em>how</em> size could enter a growth-rate parameter, not to claim one universal exponent.</p>
 </div>
-<p>Next, plugging <span class="math notranslate nohighlight">\(\mu(T, M)\)</span> into the <em>exponential growth equation</em>:</p>
+<p>This scaling immediately implies a size- and temperature-dependence of doubling time:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{dN}{dt}  =  \mu(T, M)  N
-\quad\Longrightarrow\quad
-N(t) = N(0)  \exp\Bigl[\mu(T, M)  t\Bigr].
+t_d = \frac{\ln 2}{\mu(T,M)} \;\propto\; M^{1-b}\,\exp\Bigl(\tfrac{E}{k_B T}\Bigr).
 \]</div>
-<p>Hence, from MTE, the <em>population’s</em> exponential growth rate now depends explicitly on <em>both</em> Temperature (<span class="math notranslate nohighlight">\(\exp[-E/(k_B  T)]\)</span> factor and <em>organismal size</em> (<span class="math notranslate nohighlight">\(M^{1-b}\)</span> factor).</p>
-<p>In simpler microbial physiology models (which ignore size variation), one might set <span class="math notranslate nohighlight">\(M\approx\text{constant}\)</span>. But if comparing cells (or species) of <em>different typical cell sizes</em>, or tracking how cell size changes under various conditions, the <span class="math notranslate nohighlight">\(M^{b-1}\)</span> dependence becomes relevant.</p>
-<p>So, in summary,</p>
+<p>That is: increasing <span class="math notranslate nohighlight">\(T\)</span> typically decreases <span class="math notranslate nohighlight">\(t_d\)</span> (faster doubling), while increasing <span class="math notranslate nohighlight">\(M\)</span> typically increases <span class="math notranslate nohighlight">\(t_d\)</span> (slower doubling), under this simplified picture.</p>
+<p>In the next chapter (<a class="reference internal" href="populations.html"><span class="doc std std-doc">Populations</span></a>), we take <span class="math notranslate nohighlight">\(\mu(T,M)\)</span> (and later <span class="math notranslate nohighlight">\(K\)</span>) as parameters and study the resulting population dynamics.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Population-level allometries (e.g., <span class="math notranslate nohighlight">\(r_{\max}\propto M^{-1/4}\)</span>, Damuth’s law, and how carrying capacities scale with size and trophic level) build on the individual-level scalings above, but belong in the population and community context. We return to these ideas later in the modelling sequence.</p>
+</div>
+</section>
+<section id="transition-from-individuals-to-populations">
+<h2>Transition: from individuals to populations<a class="headerlink" href="#transition-from-individuals-to-populations" title="Link to this heading">#</a></h2>
+<p>At this point we have a mechanistic story for how temperature (and, in simple MTE arguments, size) can shape a <em>per-capita</em> growth parameter <span class="math notranslate nohighlight">\(\mu(T,M)\)</span> and therefore the <em>doubling time</em> <span class="math notranslate nohighlight">\(t_d\)</span>.</p>
+<p>What we have <em>not</em> yet done is model how <em>population size</em> changes through time when individuals reproduce, when resources become limiting, or when the environment varies.</p>
+<p>The next chapter (<a class="reference internal" href="populations.html"><span class="doc std std-doc">Populations</span></a>) starts from <span class="math notranslate nohighlight">\(\mu\)</span> and builds population models in:</p>
 <ul class="simple">
-<li><p>Intracellular metabolic/biochemical <em>rates</em> follow an <em>Arrhenius‐</em> or <em>Eyring‐</em> increase with <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
-<li><p>The <em>cell division</em> (doubling) rate <span class="math notranslate nohighlight">\(\lambda(T)\)</span> (or <span class="math notranslate nohighlight">\(\mu(T)\)</span>) is governed by these enzyme‐limited processes.</p>
-<ul>
-<li><p>In MTE, it also <em>scales</em> with <em>cell mass</em> as <span class="math notranslate nohighlight">\(M^{-1/4}\)</span>.</p></li>
+<li><p><strong>Discrete time</strong> (difference equations; e.g. synchronous division as a toy model)</p></li>
+<li><p><strong>Continuous time</strong> (differential equations; exponential growth as a limit)</p></li>
+<li><p><strong>Density dependence</strong> (logistic growth, carrying capacity <span class="math notranslate nohighlight">\(K\)</span>)</p></li>
+<li><p><strong>Connections back to metabolism</strong> (how <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(M\)</span> shift parameters and affect stability)</p></li>
 </ul>
-</li>
-<li><p>When every cell divides at rate <span class="math notranslate nohighlight">\(\mu(T,M)\)</span>, the population satisfies <span class="math notranslate nohighlight">\(\tfrac{dN}{dt} = \mu(T,M)  N\)</span>. Thus, we get <em>exponential growth</em> at a <em>temperature‐ and size‐dependent</em> rate.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\boxed{
-N(t)  =  N(0)  
-\exp\Bigl[\mu_0  M^{-1/4}  \exp\Bigl(-\tfrac{E}{k_B  T}\Bigr)  t\Bigr].
-}
-\]</div>
-<p>Thus, MTE unifies the <em>thermal dependence</em> of growth rates with * Size scaling*, providing a more holistic understanding of organismal growth across different temperatures and organismal sizes across the tree of life.</p>
-<section id="a-more-general-relationship">
-<h3>A more general relationship<a class="headerlink" href="#a-more-general-relationship" title="Link to this heading">#</a></h3>
-<p>In general, because larger multicellular organisms have lower mass-specific metabolic rates, enabling longer lifespans and greater reproductive investment (Savage et al., 2004). That is, population growth rate scales negatively with body size:</p>
-<div class="math notranslate nohighlight">
-\[
-    r_{\text{max}} = r_0 M^{-0.25}.
-\]</div>
-<p>Therefore, population density decreases with size (Damuth’s law). Carnivores are rarer than herbivores due to energy loss across trophic levels (Colinvaux, 1978). We will address these phenomena later.</p>
-</section>
-</section>
-<section id="from-exponential-to-logistic-growth">
-<h2>From exponential to logistic growth<a class="headerlink" href="#from-exponential-to-logistic-growth" title="Link to this heading">#</a></h2>
-<p>Next, let’s look at logistic growth, once cells and individuals have moved from the purely exponential growth regime (valid at low population density) to a density‐dependent (logistic) regime, where “carrying capacity” plays a role.</p>
-<section id="classic-logistic-equation">
-<h3>Classic Logistic Equation<a class="headerlink" href="#classic-logistic-equation" title="Link to this heading">#</a></h3>
-<p>The <em>logistic equation</em> introduces a <em>carrying capacity</em> <span class="math notranslate nohighlight">\(K\)</span>, which is the maximum population (or density) sustainable by the environment:</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{dN}{dt} 
- =  r  N\Bigl(1 - \frac{N}{K}\Bigr),
-\]</div>
-<p>where,</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(r\)</span> is the (intrinsic) per‐capita growth rate in the <em>absence</em> of density‐dependent limitation,</p></li>
-<li><p><span class="math notranslate nohighlight">\(K\)</span> is the <em>carrying capacity</em>.</p></li>
-</ul>
-<p>If <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(K\)</span> are constants, the solution of this equation is well known (and which you will derive later in the course):</p>
-<div class="math notranslate nohighlight">
-\[ 
-N(t) =  
-\frac{K}{  1 + \Bigl(\tfrac{K}{N(0)} - 1\Bigr)\exp(-r  t)  },
-\]</div>
-<p>which saturates at <span class="math notranslate nohighlight">\(N(t)\to K\)</span> as <span class="math notranslate nohighlight">\(t\to\infty\)</span>.</p>
-</section>
-<section id="temperature-size-dependence-in-logistic-growth">
-<h3>2.2 Temperature &amp; Size Dependence in Logistic Growth<a class="headerlink" href="#temperature-size-dependence-in-logistic-growth" title="Link to this heading">#</a></h3>
-<p>To generalize, we can let the <em>intrinsic growth rate</em> <span class="math notranslate nohighlight">\(r\)</span> be <em>temperature</em>‐ and <em>cell size</em>‐dependent, i.e.,</p>
-<div class="math notranslate nohighlight">
-\[
-r(T,M)
- \approx 
-r_0  M^{-1/4}  \exp\Bigl(-\tfrac{E}{k_B  T}\Bigr).
-\]</div>
-<p>Thus, the logistic equation becomes:</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{dN}{dt} = r(T,M)  N  \Bigl(1 - \frac{N}{K}\Bigr).
-\]</div>
-<p>Depending on the complexity of the system, one might also consider <span class="math notranslate nohighlight">\(K\)</span> to be <em>T‐dependent</em>, <span class="math notranslate nohighlight">\(M\)</span>‐dependent, or both—especially if resource supply, waste removal, or cell size changes systematically with temperature or over time.</p>
-<p>When <span class="math notranslate nohighlight">\(N \ll K\)</span>, the term <span class="math notranslate nohighlight">\(\Bigl(1 - N/K\Bigr)\approx 1\)</span>, and:</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{dN}{dt}  \approx  r(T,M)  N.
-\]</div>
-<p>Hence, the <em>early</em> dynamics are effectively <em>exponential</em>, with the rate</p>
-<div class="math notranslate nohighlight">
-\[
-\mu(T,M)  \approx  r(T,M) 
- \approx 
-r_0  M^{-1/4}  \exp\Bigl(-\tfrac{E}{k_B  T}\Bigr).
-\]</div>
-<p>As <span class="math notranslate nohighlight">\(N\)</span> approaches <span class="math notranslate nohighlight">\(K\)</span>, resource depletion or waste accumulation slows growth:</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{dN}{dt}  \to  0
-\quad\text{as}\quad
-N  \to  K.
-\]</div>
-<p>Eventually, <span class="math notranslate nohighlight">\(N(t)\)</span> saturates at <span class="math notranslate nohighlight">\(K\)</span>. No matter how <em>fast</em> the intrinsic rate <span class="math notranslate nohighlight">\(r(T,M)\)</span> is (e.g., at high temperature for small cells), the population <em>cannot</em> surpass the environment’s <em>carrying capacity</em>.</p>
-</section>
-<section id="temperature-and-size-dependence-of-k">
-<h3>Temperature and Size Dependence of <span class="math notranslate nohighlight">\(K\)</span><a class="headerlink" href="#temperature-and-size-dependence-of-k" title="Link to this heading">#</a></h3>
-<p>In many real ecological or bioprocess contexts, the <em>carrying capacity</em> <span class="math notranslate nohighlight">\(K\)</span> might also <em>depend on temperature</em> (through effects on nutrient availability, oxygen solubility, etc.) or on <em>cell size</em> (larger cells might require more resources, reducing the total cell number sustainable). A simple extension might be:</p>
-<div class="math notranslate nohighlight">
-\[
-K(T,M) =  K_0  f(T)  g(M),
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(f(T)\)</span> and <span class="math notranslate nohighlight">\(g(M)\)</span> are functions that capture how resource utilization or environment capacity scales with temperature and cell size. Then,</p>
-<div class="math notranslate nohighlight">
-\[ \frac{dN}{dt} = r(T,M)  N
- \Bigl(1 - \frac{N}{K(T,M)}\Bigr).
-\]</div>
-<p>Although <em>analytical</em> solutions become more complicated, the qualitative behavior remains <em>logistic</em>—exponential growth at low <span class="math notranslate nohighlight">\(N\)</span>, saturating at an upper limit.</p>
-</section>
-</section>
-<section id="population-dynamics">
-<h2>Population dynamics<a class="headerlink" href="#population-dynamics" title="Link to this heading">#</a></h2>
-<p>Putting all these comonents into a <em>single</em> differential equation:</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{dN}{dt}  = 
-\Bigl[
-  \underbrace{
-    r_{0}\,M^{-\tfrac{1}{4}}\,\exp\Bigl(-\tfrac{E}{k_{B}\,T}\Bigr)
-  }_{\text{Temperature \&amp; size dependent rate}}
-\Bigr]
-\,N(t)\,
-\Bigl(1 - \tfrac{N(t)}{K}\Bigr).
-\]</div>
-<ul class="simple">
-<li><p>When <span class="math notranslate nohighlight">\(N(t)\ll K\)</span>, <span class="math notranslate nohighlight">\(dN/dt \approx r_0  M^{-1/4}  \exp[-E/(k_B  T)]  N\)</span>.</p></li>
-<li><p>As <span class="math notranslate nohighlight">\(N(t)\to K\)</span>, <span class="math notranslate nohighlight">\(dN/dt\to 0\)</span>.</p></li>
-</ul>
-<p>Or the more general form of <span class="math notranslate nohighlight">\(K\)</span> also depends on <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(M\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{dN}{dt}
- = 
-r(T,M)  N \Bigl(1 - \frac{N}{  K(T,M)}\Bigr).
-\]</div>
-<p>A potentuially useful Integrated Model  is:</p>
-<div class="math notranslate nohighlight">
-\[ \frac{dN}{dt} = \mu(T,M) N \Bigl(1 - \frac{N}{K}\Bigr) \]</div>
-<p>(optionally letting <span class="math notranslate nohighlight">\(K = K(T,M)\)</span>) succinctly unifies <em>temperature dependence</em>, <em>cell size scaling</em>, and <em>density limitations</em>.</p>
-<p>Hence, you get a <em>temperature‐ and size‐dependent</em> logistic equation that captures both the <em>initial exponential ramp</em> (driven by temperature‐enhanced metabolism in smaller or larger organsims / indoviduals) and the <em>ultimate saturation</em> governed by the ecological/physical constraints of the environment.</p>
-<section id="biological-interpretations">
-<h3>Biological Interpretations<a class="headerlink" href="#biological-interpretations" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Temperature and cell‐size effects dominate, so a <em>small</em> organism at an <em>optimal</em> temperature quickly ramps up in population.</p></li>
-<li><p>Eventually, the environment or culture conditions impose a <em>limit</em> <span class="math notranslate nohighlight">\(K\)</span>. Growth slows down, and the population saturates (e.g., nutrient depletion in a batch culture).</p></li>
-<li><p><em>Smaller</em> individuals often have <em>higher</em> mass‐specific metabolic rates, thus a <em>steeper</em> initial exponential growth. However, if <span class="math notranslate nohighlight">\(K\)</span> is in terms of total <em>number</em> of cells, smaller cells might sustain a higher <span class="math notranslate nohighlight">\(K\)</span> (because each cell needs fewer resources). Conversely, if <span class="math notranslate nohighlight">\(K\)</span> is in terms of <em>total biomass</em>, the absolute number of larger cells may be lower at carrying capacity.</p></li>
-<li><p>real systems show an <em>optimal temperature</em> for growth. Extremely high <span class="math notranslate nohighlight">\(T\)</span> leads to enzyme denaturation; extremely low <span class="math notranslate nohighlight">\(T\)</span> slows reaction rates. Thus, the functional form <span class="math notranslate nohighlight">\(r(T,M)\)</span> will be more complex than a simple Arrhenius.</p></li>
-</ul>
-</section>
-</section>
-<section id="readings">
-<h2>readings<a class="headerlink" href="#readings" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Arrhenius, S. (1889). <em>Über die reaktionsgeschwindigkeit bei Inversion von rohrzucker durch Säuren</em>. <em>Z. Phys. Chem.</em> 4, 226–248.</p></li>
-<li><p>van ‘t Hoff, J. H. (1884). <em>Études de dynamique chimique</em>. Frederik Muller &amp; Cie.</p></li>
-<li><p>Eyring, H. (1935). The Activated Complex in Chemical reactions. <em>J. Chem. Phys.</em> 3(2), 107–115.</p></li>
-<li><p>Polanyi, M. (1935). <em>Z. Phys. Chem. B</em> 28, 309–318.</p></li>
-<li><p>Johnson, K. A., &amp; Goody, r. S. (2011). The Original Michaelis Constant: Translation of the 1913 Michaelis–Menten Paper. <em>Biochemistry</em>, 50(39), 8264–8269.</p></li>
-</ol>
-<!-- Below is a *non‐exhaustive list* of key references and seminal works that underlie the *theoretical* and *empirical* arguments in the derivations above—covering Arrhenius and transition state theory, microbial growth models, and the Metabolic Theory of Ecology.
-
----
-
-## 1. Temperature Dependence of reaction rates
-
-1. *Svante Arrhenius* (1889)  
-   - *Über die reaktionsgeschwindigkeit bei Inversion von rohrzucker durch Säuren.*  
-     *Zeitschrift für Physikalische Chemie*, *4*, 226–248.  
-     - Seminal paper introducing the *Arrhenius equation* for reaction rates.
-
-2. *Henry Eyring* (1935)  
-   - *The Activated Complex in Chemical reactions.*  
-     *The Journal of Chemical Physics*, *3*, 107–115.  
-     - Foundational work on *Transition State Theory (TST)*, deriving the *Eyring equation*.
-
-3. *Keith J. Laidler* (1972)  
-   - *The development of the Arrhenius equation.*  
-     *Journal of Chemical Education*, *39*, 333–336.  
-     - Historical perspective on how the Arrhenius equation came to be.
-
----
-
-## 2. Classical Microbial Growth Kinetics
-
-1. *F. Jacob & J. Monod* (1961)  
-   - *Genetic regulatory mechanisms in the synthesis of proteins.*  
-     *Journal of Molecular Biology*, *3*, 318–356.  
-     - While this paper is famously about gene regulation, it lays groundwork for how enzyme kinetics tie into overall cellular processes.
-
-2. *E. O. Powell* (1956)  
-   - *Growth rate and generation time of bacteria, with special reference to continuous culture.*  
-     *Journal of General Microbiology*, *15*, 492–511.  
-     - Early treatments of *bacterial division rates* and how they depend on environmental conditions.
-
-3. *M. Schaechter, O. Maaløe, & N. O. Kjeldgaard* (1958 & 1962)  
-   - *Dependency on medium and temperature of cell size and chemical composition during balanced growth of Salmonella typhimurium.*  
-     *Journal of General Microbiology*, *19*, 592–606 (1962).  
-     - Classic experimental work linking *temperature* to *cellular physiology* (cell size, composition, growth).
-
-4. *J. D. Murray*  
-   - *Mathematical Biology* (various editions).  
-     - Standard reference for *logistic growth*, *exponential growth*, and *population dynamics* modeling.
-
----
-
-## 3. Logistic Growth & Population Ecology
-
-1. *Pierre F. Verhulst* (1838)  
-   - *Notice sur la loi que la population poursuit dans son accroissement.*  
-     *Correspondance Mathématique et Physique*, *10*, 113–121.  
-     - The original paper introducing the *logistic equation*.
-
-2. *r. Pearl & L. J. reed* (1920)  
-   - *On the rate of growth of the population of the United States since 1790 and its mathematical representation.*  
-     *Proceedings of the National Academy of Sciences (USA)*, *6*, 275–288.  
-     - Classic application of logistic growth to real population data.
-
-3. *D. A. ratkowsky, J. Olley, T. A. McMeekin, & A. Ball* (1982)  
-   - *relationship between temperature and growth rate of bacterial cultures.*  
-     *Journal of Bacteriology*, *149*, 1–5.  
-     - Introduced what became the *ratkowsky model*, an empirical expression for microbial growth rates vs. temperature, often used in food microbiology.
-
----
-
-## 4. Metabolic Theory of Ecology (MTE)
-
-1. *G. B. West, J. H. Brown, & B. J. Enquist* (1997)  
-   - *A general model for the origin of allometric scaling laws in biology.*  
-     *Science*, *276*, 122–126.  
-     - Landmark paper deriving the *quarter‐power* scaling (e.g., $M^{3/4}$, $M^{-1/4}$) based on fractal‐like transport networks.
-
-2. *G. B. West, J. H. Brown, & B. J. Enquist* (1999)  
-   - *The Fourth Dimension of Life: Fractal Geometry and Allometric Scaling of Organisms.*  
-     *Science*, *284*, 1677–1679.  
-     - Follow‐up discussion on how scaling laws affect metabolism and other life processes.
-
-3. *J. H. Brown, J. F. Gillooly, A. P. Allen, V. M. Savage, & G. B. West* (2004)  
-   - *Toward a Metabolic Theory of Ecology.*  
-     *Ecology*, *85*, 1771–1789.  
-     - Synthesis article outlining how *metabolic rates* scale with *body mass* and *temperature*, forming the basis of *MTE*.
-
----
-
-## 5. Integrative / Synthetic Works
-
-1. *S. A. Levin* (Ed.)* (2009)  
-   - *The Princeton Guide to Ecology.*  
-     *Princeton University Press.*  
-     - Contains chapters synthesizing *metabolic theory*, *population dynamics*, and *microbial ecology*.
-
-2. *B. Kerr, M. A. riley, M. W. Feldman, & B. J. M. Bohannan* (2002)  
-   - *Local dispersal promotes biodiversity in a real‐life game of rock–paper–scissors.*  
-     *Nature*, *418*, 171–174.  
-     - While not specifically about temperature, it's an example of coupling *population dynamics* with *microbial interactions*, illustrating the complexity of real ecological systems.
-
-3. *Metzler, D. E.* (2001)  
-   - *Biochemistry: The Chemical reactions of Living Cells.* 2nd ed., *Academic Press*.  
-     - Comprehensive reference on *enzyme kinetics* in the broader physiological context.
-
----
-
-### Additional Notes:
-
-- *Empirical vs. Theoretical*: Many of the earliest derivations of *temperature‐dependent growth* arose from *empirical fits* (e.g., Arrhenius, ratkowsky) to experimental microbial data. *Transition State Theory* was largely developed in *physical chemistry* for chemical reactions but has been adapted for *biochemical* and *enzymatic* rate processes.  
-- *MTE*: Extends these ideas to *whole‐organism* (or *whole‐cell*) metabolism, adding the *allometric* component $(M^{3/4}$ scaling for metabolic rate).  
-- *Logistic Growth*: Originates in *population ecology* (Verhulst, Pearl & reed), but it's widely applicable to *microbial cultures* in a *batch* environment with finite resources.
-
-Together, these references provide the *theoretical foundation* and *empirical evidence* for deriving and applying *temperature‐ and size‐dependent logistic (and exponential) growth* models in microbial systems. --><!-- 
+<!-- 
 ## Discussion Questions
 
 1. Given the way resting metabolic rate scales with body size, what must consumption rate scale like?
@@ -1246,14 +951,7 @@ Together, these references provide the *theoretical foundation* and *empirical e
 3. How much energy would a resting rabbit (∼ 1 kg), a human (∼ 70 kg, and an Asian elephant (∼ 4000 kg) need for metabolic balance, at the individual level? What about per unit mass?
 4. How does the value you calculated in the previous question compare with the recommended calorie intake for humans? Is it lower or higher? Why?
 5. What are the optimal temperatures for the enzyme underlying bioluminescence in the two bacteria in the given example? Why might they have different thermal optima?
- --><p><em>Arrhenius plots</em> are generated by taking the natural log on both sides and plotting <span class="math notranslate nohighlight">\(\ln(k)\)</span> vs. <span class="math notranslate nohighlight">\(1/T\)</span> should yield a straight line with slope <span class="math notranslate nohighlight">\(-E_a/r\)</span> and intercept <span class="math notranslate nohighlight">\(\ln(A)\)</span>.</p>
-<p><em>Eyring Equation</em>:  A common linear form for plotting is:</p>
-<div class="math notranslate nohighlight">
-\[
-   \ln\Bigl(\tfrac{k}{T}\Bigr)  =  -\frac{\Delta H^\ddagger}{r} \frac{1}{T}  +  \ln\Bigl(\frac{k_B}{h}\Bigr)  +  \frac{\Delta S^\ddagger}{r}.
-\]</div>
-<p>Thus, <span class="math notranslate nohighlight">\(\ln(k/T)\)</span> vs. <span class="math notranslate nohighlight">\(1/T\)</span> should be linear with slope <span class="math notranslate nohighlight">\(-\Delta H^\ddagger / r\)</span> and intercept <span class="math notranslate nohighlight">\(\ln(k_B/h) + \Delta S^\ddagger / r\)</span>.</p>
-</section>
+ --></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1300,7 +998,7 @@ Together, these references provide the *theoretical foundation* and *empirical e
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Single populations</p>
+        <p class="prev-next-title">Single Populations</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1338,30 +1036,13 @@ Together, these references provide the *theoretical foundation* and *empirical e
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-intracellular-reaction-rates-to-cell-growth">From intracellular reaction rates to cell growth</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-singlecell-growth-to-division">From single‐cell growth to division</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-division-is-a-stochastic-process">Cell division is a stochastic process</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#average-doubling-time">(Average) Doubling time</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-cell-division-rate-to-population-growth">From cell division rate to population growth</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#growth-rate-vs-doubling-time">Growth rate vs Doubling Time</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#average-doubling-time-and-specific-growth-rate">(Average) doubling time and specific growth rate</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incorporating-cell-size-scaling">Incorporating Cell Size Scaling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-more-general-relationship">A more general relationship</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-exponential-to-logistic-growth">From exponential to logistic growth</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classic-logistic-equation">Classic Logistic Equation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-size-dependence-in-logistic-growth">2.2 Temperature &amp; Size Dependence in Logistic Growth</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-and-size-dependence-of-k">Temperature and Size Dependence of <span class="math notranslate nohighlight">\(K\)</span></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#population-dynamics">Population dynamics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#biological-interpretations">Biological Interpretations</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incorporating-cell-size-scaling">Incorporating Cell Size Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transition-from-individuals-to-populations">Transition: from individuals to populations</a></li>
 </ul>
   </nav></div>
 
