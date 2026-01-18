@@ -6,4 +6,4 @@ init:
 
 # "Test" for this repository = build the Jupyter Book locally
 test:
-	. .venv/bin/activate && jupyter-book build content
+	. .venv/bin/activate && PYTHONPATH=$(CURDIR) jupyter-book build content
