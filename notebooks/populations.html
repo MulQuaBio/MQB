@@ -231,6 +231,14 @@
 <li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
 
 
+<li class="toctree-l1 has-children"><a class="reference internal" href="consumer-resource-dynamics.html">Consumer-Resource dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c-r-dynamics-practicals.html">Consumer-Resource Dynamics: Practicals</a></li>
+
+
+
+
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
 <ul class="nav bd-sidenav">
@@ -557,10 +565,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consumerresource-model-exploration">8) Consumer–resource model exploration</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -733,7 +738,7 @@ R = e^{\mu\,\Delta t},
 </div></blockquote>
 <section id="temperature-dependence">
 <h3>Temperature Dependence<a class="headerlink" href="#temperature-dependence" title="Link to this heading">#</a></h3>
-<p>Enzymatic processes in the cell generally speed up with increasing temperature (until proteins denature at high <span class="math notranslate nohighlight">\(T\)</span>). For simplicity, we can model <span class="math notranslate nohighlight">\(\mu\)</span> via an Arrhenius‐type expression:</p>
+<p>Enzymatic processes in the cell generally speed up with increasing temperature (until proteins denature at high <span class="math notranslate nohighlight">\(T\)</span>). For simplicity, we can model <span class="math notranslate nohighlight">\(\mu\)</span> via an Arrhenius‐type expression (<span id="id1">[<a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>]</span>):</p>
 <div class="math notranslate nohighlight">
 \[
 \mu(T) = \mu_0 \exp\Bigl(-\frac{E}{k_B T}\Bigr),
@@ -744,10 +749,11 @@ R = e^{\mu\,\Delta t},
 <li><p><span class="math notranslate nohighlight">\(k_B\)</span> is Boltzmann’s constant (or simply a scaling constant in some biological contexts),</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mu_0\)</span> is a pre‐exponential factor.</p></li>
 </ul>
+<p>As empirical context for microbes, see <span id="id2">[<a class="reference internal" href="../references.html#id173" title="David A. Ratkowsky, John Olley, Thomas A. McMeekin, and Andrew Ball. Relationship between temperature and growth rate of bacterial cultures. Journal of Bacteriology, 1982.">Ratkowsky <em>et al.</em>, 1982</a>, <a class="reference internal" href="../references.html#id174" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Dependency on medium and temperature of cell size and chemical composition during balanced growth of Salmonella typhimurium. Journal of General Microbiology, 19:592–606, 1958.">Schaechter <em>et al.</em>, 1958</a>, <a class="reference internal" href="../references.html#id175" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Balanced growth of Salmonella typhimurium: effects of medium and temperature on cell size and composition. 1962. Often cited alongside Schaechter et al. (1958). Please verify exact publication venue/pages for the 1962 follow-up and update this entry if needed.">Schaechter <em>et al.</em>, 1962</a>]</span>.</p>
 </section>
 <section id="cellsize-scaling-mte">
 <h3>Cell‐Size Scaling (MTE)<a class="headerlink" href="#cellsize-scaling-mte" title="Link to this heading">#</a></h3>
-<p>A common MTE-style assumption is that <strong>whole-organism metabolic rate</strong> scales as <span class="math notranslate nohighlight">\(B \propto M^b\)</span> (often <span class="math notranslate nohighlight">\(b \approx 3/4\)</span>). If growth is limited by energy processing, then a <em>mass-specific</em> rate (per unit biomass) scales like <span class="math notranslate nohighlight">\(B/M \propto M^{b-1}\)</span>. This motivates a size dependence of the intrinsic (per-capita) growth rate:</p>
+<p>A common MTE-style assumption is that <strong>whole-organism metabolic rate</strong> scales as <span class="math notranslate nohighlight">\(B \propto M^b\)</span> (often <span class="math notranslate nohighlight">\(b \approx 3/4\)</span>). If growth is limited by energy processing, then a <em>mass-specific</em> rate (per unit biomass) scales like <span class="math notranslate nohighlight">\(B/M \propto M^{b-1}\)</span>. This motivates a size dependence of the intrinsic (per-capita) growth rate (<span id="id3">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>):</p>
 <div class="math notranslate nohighlight">
 \[
 \mu(T,M) = \mu_0 M^{b-1} \exp\Bigl(-\frac{E}{k_B T}\Bigr).
@@ -781,7 +787,7 @@ R = e^{\mu\,\Delta t},
 </section>
 <section id="logistic-growth-with-temperature-size-dependence">
 <h2>Logistic Growth with Temperature &amp; Size Dependence<a class="headerlink" href="#logistic-growth-with-temperature-size-dependence" title="Link to this heading">#</a></h2>
-<p>A standard way to extend exponential growth to include resource limitation is the <strong>logistic model</strong>:</p>
+<p>A standard way to extend exponential growth to include resource limitation is the <strong>logistic model</strong> (<span id="id4">[<a class="reference internal" href="../references.html#id171" title="Pierre-François Verhulst. Notice sur la loi que la population poursuit dans son accroissement. Correspondance Mathématique et Physique, 10:113–121, 1838.">Verhulst, 1838</a>]</span>):</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{dN}{dt} = \mu(T,M)\,N \Bigl(1 - \frac{N}{K}\Bigr).
@@ -811,7 +817,7 @@ R = e^{\mu\,\Delta t},
 \[
 x_{t+1} = r_{\mathrm{map}}\,x_t\,(1-x_t).
 \]</div>
-<p>This equation can exhibit stable fixed points, cycles of period 2, 4, 8, … and eventually <em>chaos</em> as <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> increases.</p>
+<p>This equation can exhibit stable fixed points, cycles of period 2, 4, 8, … and eventually <em>chaos</em> as <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> increases (see <span id="id5">[<a class="reference internal" href="../references.html#id176" title="Robert M. May. Simple mathematical models with very complicated dynamics. Nature, 261:459–467, 1976. doi:10.1038/261459a0.">May, 1976</a>]</span>; for period-doubling universality see <span id="id6">[<a class="reference internal" href="../references.html#id177" title="Mitchell J. Feigenbaum. Quantitative universality for a class of nonlinear transformations. Journal of Statistical Physics, 19(1):25–52, 1978. doi:10.1007/BF01020332.">Feigenbaum, 1978</a>]</span>).</p>
 </section>
 <section id="connection-to-microbial-growth-and-metabolism">
 <h3>Connection to Microbial Growth (and Metabolism)<a class="headerlink" href="#connection-to-microbial-growth-and-metabolism" title="Link to this heading">#</a></h3>
@@ -1207,8 +1213,9 @@ Vary <span class="math notranslate nohighlight">\(\Delta t\)</span> and quantify
 </section>
 <section id="fit-a-logistic-model-and-interpret-parameters">
 <h3>3) Fit a logistic model and interpret parameters<a class="headerlink" href="#fit-a-logistic-model-and-interpret-parameters" title="Link to this heading">#</a></h3>
-<p>Given data that include saturation, fit the continuous logistic model:
-$<span class="math notranslate nohighlight">\(\frac{dN}{dt}=\mu N\left(1-\frac{N}{K}\right).\)</span>$</p>
+<p>Given data that include saturation, fit the continuous logistic model:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dN}{dt}=\mu N\left(1-\frac{N}{K}\right).\]</div>
 <ul class="simple">
 <li><p>Estimate <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(K\)</span> (e.g., nonlinear least squares).</p></li>
 <li><p>Check how sensitive your fitted <span class="math notranslate nohighlight">\(K\)</span> is to excluding early vs late points.</p></li>
@@ -1245,9 +1252,9 @@ $<span class="math notranslate nohighlight">\(\frac{dN}{dt}=\mu N\left(1-\frac{N
 <p>Modify exponential or logistic growth to include randomness, e.g.:</p>
 <ul class="simple">
 <li><p>Environmental noise: <span class="math notranslate nohighlight">\(\mu_t = \mu + \sigma\,\varepsilon_t\)</span> with <span class="math notranslate nohighlight">\(\varepsilon_t\sim\mathcal{N}(0,1)\)</span></p></li>
-<li><p>Demographic noise: births/deaths as Poisson or binomial draws per step
-Compare mean trajectories and variance across replicate simulations.</p></li>
+<li><p>Demographic noise: births/deaths as Poisson or binomial draws per step</p></li>
 </ul>
+<p>Compare mean trajectories and variance across replicate simulations.</p>
 </section>
 <section id="consumerresource-model-exploration">
 <h3>8) Consumer–resource model exploration<a class="headerlink" href="#consumerresource-model-exploration" title="Link to this heading">#</a></h3>
@@ -1264,26 +1271,13 @@ Compare mean trajectories and variance across replicate simulations.</p></li>
 <ul class="simple">
 <li><p>Microbial cell division is inherently discrete (integer splits), but at large population sizes, overall growth can often be approximated by continuous models.</p></li>
 <li><p>Exponential growth describes unlimited resources and is governed by an intrinsic (per-capita) growth rate <span class="math notranslate nohighlight">\(\mu\)</span>; in discrete time this corresponds to a step multiplier <span class="math notranslate nohighlight">\(R=e^{\mu\Delta t}\)</span>.</p></li>
-<li><p>Logistic growth incorporates resource limitation via a carrying capacity <span class="math notranslate nohighlight">\(K\)</span> (typically in abundance unless otherwise stated).</p></li>
-<li><p>Reaction rates (and thus growth) typically increase with temperature in an Arrhenius/Eyring-like way—up to an optimum or denaturation point in real cells.</p></li>
-<li><p>Metabolic theory suggests size (<span class="math notranslate nohighlight">\(M\)</span>) dependence (e.g., <span class="math notranslate nohighlight">\(\mu\propto M^{b-1}\)</span>). Smaller organisms often have higher mass-specific growth rates.</p></li>
+<li><p>Logistic growth incorporates resource limitation via a carrying capacity <span class="math notranslate nohighlight">\(K\)</span> (typically in abundance unless otherwise stated) (<span id="id7">[<a class="reference internal" href="../references.html#id171" title="Pierre-François Verhulst. Notice sur la loi que la population poursuit dans son accroissement. Correspondance Mathématique et Physique, 10:113–121, 1838.">Verhulst, 1838</a>]</span>).</p></li>
+<li><p>Reaction rates (and thus growth) typically increase with temperature in an Arrhenius/Eyring-like way—up to an optimum or denaturation point in real cells (<span id="id8">[<a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>, <a class="reference internal" href="../references.html#id168" title="Henry Eyring. The activated complex in chemical reactions. The Journal of Chemical Physics, 3(2):107–115, 1935. doi:10.1063/1.1749604.">Eyring, 1935</a>, <a class="reference internal" href="../references.html#id173" title="David A. Ratkowsky, John Olley, Thomas A. McMeekin, and Andrew Ball. Relationship between temperature and growth rate of bacterial cultures. Journal of Bacteriology, 1982.">Ratkowsky <em>et al.</em>, 1982</a>, <a class="reference internal" href="../references.html#id174" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Dependency on medium and temperature of cell size and chemical composition during balanced growth of Salmonella typhimurium. Journal of General Microbiology, 19:592–606, 1958.">Schaechter <em>et al.</em>, 1958</a>]</span>).</p></li>
+<li><p>Metabolic theory suggests size (<span class="math notranslate nohighlight">\(M\)</span>) dependence (e.g., <span class="math notranslate nohighlight">\(\mu\propto M^{b-1}\)</span>). Smaller organisms often have higher mass-specific growth rates (<span id="id9">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>).</p></li>
 <li><p>Real microbial growth can be more complex (lag phases, variable yields, toxin accumulation, pH shifts, etc.). The models here are minimal but illustrate core ideas.</p></li>
-<li><p>In discrete-time density-dependent models like the logistic map, increasing the effective growth-per-step (e.g., via higher temperature) can push the system toward larger <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> and more complex dynamics.</p></li>
+<li><p>In discrete-time density-dependent models like the logistic map, increasing the effective growth-per-step (e.g., via higher temperature) can push the system toward larger <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> and more complex dynamics (<span id="id10">[<a class="reference internal" href="../references.html#id176" title="Robert M. May. Simple mathematical models with very complicated dynamics. Nature, 261:459–467, 1976. doi:10.1038/261459a0.">May, 1976</a>, <a class="reference internal" href="../references.html#id177" title="Mitchell J. Feigenbaum. Quantitative universality for a class of nonlinear transformations. Journal of Statistical Physics, 19(1):25–52, 1978. doi:10.1007/BF01020332.">Feigenbaum, 1978</a>]</span>).</p></li>
 <li><p>Most laboratory cultures do not effectively operate at very large <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> per step, but ecological systems (e.g., pulsed resources, chemostats) can approach regimes where discrete-time dynamics become rich.</p></li>
 </ul>
-<section id="references">
-<h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Arrhenius, S. 1889. <em>Über die reaktionsgeschwindigkeit bei Inversion von rohrzucker durch Säuren.</em> Z. Phys. Chem.</p></li>
-<li><p>Verhulst, P. 1838. <em>Notice sur la loi que la population poursuit dans son accroissement.</em> Corr. Math. Phys.</p></li>
-<li><p>West, G.B., Brown, J.H., &amp; Enquist, B.J. 1997. <em>A general model for the origin of allometric scaling laws in biology.</em> Science, 276.</p></li>
-<li><p>Brown, J.H. et al. 2004. <em>Toward a Metabolic Theory of Ecology.</em> Ecology, 85, 1771–1789.</p></li>
-<li><p>ratkowsky, D.A. et al. 1982. <em>relationship between temperature and growth rate of bacterial cultures.</em> J. Bacteriol.</p></li>
-<li><p>Schaechter, M., Maaløe, O. &amp; Kjeldgaard, N.O. 1958 &amp; 1962. <em>Dependency on medium and temperature of cell size and chemical composition during balanced growth of Salmonella typhimurium.</em> J. Gen. Microbiol.</p></li>
-<li><p>May, r. M. (1976). <em>Simple mathematical models with very complicated dynamics.</em> Nature, 261, 459–467. (Seminal paper on logistic map chaos.)</p></li>
-<li><p>Feigenbaum, M. J. (1978). <em>Quantitative universality for a class of nonlinear transformations.</em> Journal of Statistical Physics, 19, 25–52. (Period-doubling universality.)</p></li>
-</ul>
-</section>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -1392,10 +1386,7 @@ Compare mean trajectories and variance across replicate simulations.</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consumerresource-model-exploration">8) Consumer–resource model exploration</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
   </nav></div>
 
