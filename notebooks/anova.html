@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -231,8 +231,8 @@
 <li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
 
 
-<li class="toctree-l1 has-children"><a class="reference internal" href="consumer-resource-dynamics.html">Consumer-Resource dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="c-r-dynamics-practicals.html">Consumer-Resource Dynamics: Practicals</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="competitive-dynamics.html">Competitive dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="competitive-dynamics-practicals.html">Competitive Dynamics: Practicals</a></li>
 
 
 
@@ -744,7 +744,7 @@ F = \frac{\left(\frac{ESS}{n_c-1}\right)}{\left(\frac{rSS}{n-n_c}\right)}
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                Binomial     meanCvalue             Order     AdultBodyMass_g  
- Acinonyx jubatus   :  1   Min.   :1.863   rodentia    :120   Min.   :      5  
+ Acinonyx jubatus   :  1   Min.   :1.863   Rodentia    :120   Min.   :      5  
  Acomys cahirinus   :  1   1st Qu.:2.768   Chiroptera  : 80   1st Qu.:     37  
  Aconaemys fuscus   :  1   Median :3.250   Primates    : 63   Median :    286  
  Aconaemys sagei    :  1   Mean   :3.352   Artiodactyla: 22   Mean   :  51787  
@@ -789,7 +789,7 @@ F = \frac{\left(\frac{ESS}{n_c-1}\right)}{\left(\frac{rSS}{n-n_c}\right)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/faf3f0e7fbbbdedf62426ceafc4cbb0672ba24a1b256d23222ae6e339125170d.png"><img alt="../_images/faf3f0e7fbbbdedf62426ceafc4cbb0672ba24a1b256d23222ae6e339125170d.png" src="../_images/faf3f0e7fbbbdedf62426ceafc4cbb0672ba24a1b256d23222ae6e339125170d.png" style="width: 300px; height: 300px;" />
+<a class="reference internal image-reference" href="../_images/7c33528e856a68ed928ac87300c4d43f3526c6980b6241312e2cb8e6b4bc4b5f.png"><img alt="../_images/7c33528e856a68ed928ac87300c4d43f3526c6980b6241312e2cb8e6b4bc4b5f.png" src="../_images/7c33528e856a68ed928ac87300c4d43f3526c6980b6241312e2cb8e6b4bc4b5f.png" style="width: 300px; height: 300px;" />
 </a>
 </div>
 </div>
@@ -824,7 +824,7 @@ F = \frac{\left(\frac{ESS}{n_c-1}\right)}{\left(\frac{rSS}{n-n_c}\right)}
 <p>Now we can use the function <code class="docutils literal notranslate"><span class="pre">tapply</span></code>: it splits a variable up into groups from a factor and calculates statistics on each group using a function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">trophMeans</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tapply</span><span class="p">(</span><span class="n">mammals</span><span class="o">$</span><span class="n">logCvalue</span><span class="p">,</span><span class="w"> </span><span class="n">mammals</span><span class="o">$</span><span class="n">TrophicLevel</span><span class="p">,</span><span class="w"> </span><span class="n">FUN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TrUE</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">trophMeans</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tapply</span><span class="p">(</span><span class="n">mammals</span><span class="o">$</span><span class="n">logCvalue</span><span class="p">,</span><span class="w"> </span><span class="n">mammals</span><span class="o">$</span><span class="n">TrophicLevel</span><span class="p">,</span><span class="w"> </span><span class="n">FUN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 
 <span class="nf">print</span><span class="p">(</span><span class="n">trophMeans</span><span class="p">)</span>
 </pre></div>
@@ -902,7 +902,7 @@ F = \frac{\left(\frac{ESS}{n_c-1}\right)}{\left(\frac{rSS}{n-n_c}\right)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/d891c712c610292e2b43433f30f44373e332a36e7450ddaf82255d09c2ed31b5.png"><img alt="../_images/d891c712c610292e2b43433f30f44373e332a36e7450ddaf82255d09c2ed31b5.png" src="../_images/d891c712c610292e2b43433f30f44373e332a36e7450ddaf82255d09c2ed31b5.png" style="width: 250px; height: 250px;" />
+<a class="reference internal image-reference" href="../_images/57936375114afc4aebb7bcf1d7e670643e295f1b87fca56b64798113c0db51e7.png"><img alt="../_images/57936375114afc4aebb7bcf1d7e670643e295f1b87fca56b64798113c0db51e7.png" src="../_images/57936375114afc4aebb7bcf1d7e670643e295f1b87fca56b64798113c0db51e7.png" style="width: 300px; height: 300px;" />
 </a>
 </div>
 </div>
@@ -951,7 +951,15 @@ F = \frac{\left(\frac{ESS}{n_c-1}\right)}{\left(\frac{rSS}{n-n_c}\right)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/b42864fe97c283cf02b300195cc2bdfb05547667b9a1943207b78cf18162011f.png"><img alt="../_images/b42864fe97c283cf02b300195cc2bdfb05547667b9a1943207b78cf18162011f.png" src="../_images/b42864fe97c283cf02b300195cc2bdfb05547667b9a1943207b78cf18162011f.png" style="width: 250px; height: 250px;" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘gplots’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:stats’:
+
+    lowess
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/35c4ce7bb00056d099a8c21b282febc81815a4fa2a6c21f06b8afa7ad4c51052.png"><img alt="../_images/35c4ce7bb00056d099a8c21b282febc81815a4fa2a6c21f06b8afa7ad4c51052.png" src="../_images/35c4ce7bb00056d099a8c21b282febc81815a4fa2a6c21f06b8afa7ad4c51052.png" style="width: 300px; height: 300px;" />
 </a>
 </div>
 </div>
@@ -986,7 +994,7 @@ model called <code class="docutils literal notranslate"><span class="pre">trophi
 </thead>
 <tbody>
 	<tr><th scope=row>TrophicLevel</th><td>  2</td><td> 0.8268678</td><td>0.41343388</td><td>7.220365</td><td>0.0008657029</td></tr>
-	<tr><th scope=row>residuals</th><td>300</td><td>17.1778247</td><td>0.05725942</td><td>      NA</td><td>          NA</td></tr>
+	<tr><th scope=row>Residuals</th><td>300</td><td>17.1778247</td><td>0.05725942</td><td>      NA</td><td>          NA</td></tr>
 </tbody>
 </table>
 </div></div>
@@ -1005,7 +1013,7 @@ or effect size, <code class="docutils literal notranslate"><span class="pre">*no
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
 lm(formula = logCvalue ~ TrophicLevel, data = mammals)
 
-residuals:
+Residuals:
      Min       1Q   Median       3Q      Max 
 -0.50378 -0.16350 -0.00379  0.15114  0.93130 
 
@@ -1017,9 +1025,9 @@ TrophicLevelOmnivore   0.15128    0.03985   3.796 0.000178 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-residual standard error: 0.2393 on 300 degrees of freedom
+Residual standard error: 0.2393 on 300 degrees of freedom
   (76 observations deleted due to missingness)
-Multiple r-squared:  0.04593,	Adjusted r-squared:  0.03956 
+Multiple R-squared:  0.04593,	Adjusted R-squared:  0.03956 
 F-statistic:  7.22 on 2 and 300 DF,  p-value: 0.0008657
 </pre></div>
 </div>
@@ -1090,7 +1098,7 @@ value.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/3ba07cc181b0848b7f1623f0ac2f45441ec1516c12a14c5509b490d6d4636118.png"><img alt="../_images/3ba07cc181b0848b7f1623f0ac2f45441ec1516c12a14c5509b490d6d4636118.png" src="../_images/3ba07cc181b0848b7f1623f0ac2f45441ec1516c12a14c5509b490d6d4636118.png" style="width: 250px; height: 250px;" />
+<a class="reference internal image-reference" href="../_images/be4e2126821f10f82aceffa395adc4f82e6d264113c614c14e3a5fe1cf22d4ae.png"><img alt="../_images/be4e2126821f10f82aceffa395adc4f82e6d264113c614c14e3a5fe1cf22d4ae.png" src="../_images/be4e2126821f10f82aceffa395adc4f82e6d264113c614c14e3a5fe1cf22d4ae.png" style="width: 250px; height: 250px;" />
 </a>
 </div>
 </div>

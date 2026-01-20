@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -1253,10 +1253,15 @@ J=
     <span class="n">feasible</span><span class="o">=</span><span class="p">(</span><span class="n">eq</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;=-</span><span class="mf">1e-9</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">eq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;=-</span><span class="mf">1e-9</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ev</span><span class="p">,</span> <span class="n">stable</span><span class="p">,</span> <span class="n">feasible</span>
 
-<span class="n">E</span> <span class="o">=</span> <span class="n">equilibria</span><span class="p">(</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">lab</span><span class="p">,</span><span class="n">eq</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="s2">&quot;E00&quot;</span><span class="p">,</span><span class="s2">&quot;E10&quot;</span><span class="p">,</span><span class="s2">&quot;E01&quot;</span><span class="p">,</span><span class="s2">&quot;Eco&quot;</span><span class="p">],</span><span class="n">E</span><span class="p">):</span>
-    <span class="n">ev</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">feas</span> <span class="o">=</span> <span class="n">classify</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span><span class="n">r1</span><span class="p">,</span><span class="n">r2</span><span class="p">,</span><span class="n">k1</span><span class="p">,</span><span class="n">k2</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">lab</span><span class="p">,</span> <span class="n">eq</span><span class="p">,</span> <span class="s2">&quot;feasible=&quot;</span><span class="p">,</span><span class="n">feas</span><span class="p">,</span> <span class="s2">&quot;stable=&quot;</span><span class="p">,</span><span class="n">st</span><span class="p">,</span> <span class="s2">&quot;eigs=&quot;</span><span class="p">,</span><span class="n">ev</span><span class="p">)</span>
+<span class="c1"># Example parameter set (coexistence case, same as practical Set A)</span>
+<span class="n">r1</span> <span class="o">=</span> <span class="n">r2</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">k1_1</span><span class="p">,</span> <span class="n">k2_1</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">7.5</span>
+<span class="n">a_1</span><span class="p">,</span> <span class="n">b_1</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.4</span>
+
+<span class="n">E</span> <span class="o">=</span> <span class="n">equilibria</span><span class="p">(</span><span class="n">k1_1</span><span class="p">,</span> <span class="n">k2_1</span><span class="p">,</span> <span class="n">a_1</span><span class="p">,</span> <span class="n">b_1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">lab</span><span class="p">,</span> <span class="n">eq</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="s2">&quot;E00&quot;</span><span class="p">,</span><span class="s2">&quot;E10&quot;</span><span class="p">,</span><span class="s2">&quot;E01&quot;</span><span class="p">,</span><span class="s2">&quot;Eco&quot;</span><span class="p">],</span> <span class="n">E</span><span class="p">):</span>
+    <span class="n">ev</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">feas</span> <span class="o">=</span> <span class="n">classify</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">k1_1</span><span class="p">,</span> <span class="n">k2_1</span><span class="p">,</span> <span class="n">a_1</span><span class="p">,</span> <span class="n">b_1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">lab</span><span class="p">,</span> <span class="n">eq</span><span class="p">,</span> <span class="s2">&quot;feasible=&quot;</span><span class="p">,</span> <span class="n">feas</span><span class="p">,</span> <span class="s2">&quot;stable=&quot;</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="s2">&quot;eigs=&quot;</span><span class="p">,</span> <span class="n">ev</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1386,7 +1391,7 @@ Eco (5.1724137931034475, 5.689655172413794) feasible= True stable= False eigs= [
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/32decab973253755cbca3152d33538ed18c1b3bd72c75a417c948e97d0751d4b.png" src="../_images/32decab973253755cbca3152d33538ed18c1b3bd72c75a417c948e97d0751d4b.png" />
+<img alt="../_images/1367b32895dc0d005b2da6b78f122a6d9a486df9602906cf534d29c5ee5a3fa8.png" src="../_images/1367b32895dc0d005b2da6b78f122a6d9a486df9602906cf534d29c5ee5a3fa8.png" />
 </div>
 </div>
 </section>

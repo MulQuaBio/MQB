@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -231,8 +231,8 @@
 <li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
 
 
-<li class="toctree-l1 has-children"><a class="reference internal" href="consumer-resource-dynamics.html">Consumer-Resource dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="c-r-dynamics-practicals.html">Consumer-Resource Dynamics: Practicals</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="competitive-dynamics.html">Competitive dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="competitive-dynamics-practicals.html">Competitive Dynamics: Practicals</a></li>
 
 
 
@@ -604,14 +604,24 @@ document.write(`
 <p>★ Add code to your script to load the genome size data into r and check it (again, using the relative path prefix <code class="docutils literal notranslate"><span class="pre">../</span></code>, assuming that you working directory is <code class="docutils literal notranslate"><span class="pre">code</span></code>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">genome</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&#39;../data/genome_size.csv&#39;</span><span class="p">,</span><span class="n">stringsAsFactors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span><span class="w"> </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">genome</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&#39;../data/genome_size.csv&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="c1"># Normalize expected column names (the dataset header has changed over time)</span>
+<span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;GenomeSize&quot;</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">genome</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="s">&quot;genome_size&quot;</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">genome</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">names</span><span class="p">(</span><span class="n">genome</span><span class="p">)[</span><span class="nf">names</span><span class="p">(</span><span class="n">genome</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;GenomeSize&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;genome_size&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># Ensure the key columns used below are numeric (avoid factors/characters breaking cor.test/log())</span>
+<span class="n">genome</span><span class="o">$</span><span class="n">genome_size</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">genome</span><span class="o">$</span><span class="n">genome_size</span><span class="p">))</span>
+<span class="n">genome</span><span class="o">$</span><span class="n">TotalLength</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">genome</span><span class="o">$</span><span class="n">TotalLength</span><span class="p">))</span>
+<span class="n">genome</span><span class="o">$</span><span class="n">BodyWeight</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">genome</span><span class="o">$</span><span class="n">BodyWeight</span><span class="p">))</span>
 
 <span class="nf">head</span><span class="p">(</span><span class="n">genome</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><table>
+<div class="output text_html"><table class="dataframe">
 <caption>A data.frame: 6 × 16</caption>
 <thead>
 	<tr><th></th><th scope=col>Suborder</th><th scope=col>Family</th><th scope=col>Species</th><th scope=col>genome_size</th><th scope=col>GenomeSE</th><th scope=col>GenomeN</th><th scope=col>BodyWeight</th><th scope=col>TotalLength</th><th scope=col>HeadLength</th><th scope=col>ThoraxLength</th><th scope=col>AdbdomenLength</th><th scope=col>ForewingLength</th><th scope=col>HindwingLength</th><th scope=col>ForewingArea</th><th scope=col>HindwingArea</th><th scope=col>MorphologyN</th></tr>
@@ -640,7 +650,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/f0fb2c0be8e8f6fb584a440fa34c1b8afd25caca3b257ba00dc183978d2e9f23.png"><img alt="../_images/f0fb2c0be8e8f6fb584a440fa34c1b8afd25caca3b257ba00dc183978d2e9f23.png" src="../_images/f0fb2c0be8e8f6fb584a440fa34c1b8afd25caca3b257ba00dc183978d2e9f23.png" style="width: 500px; height: 500px;" />
+<a class="reference internal image-reference" href="../_images/94380a863703759bcac0ad655db348ddcb83bec3910e1ec89f05ead4535b9497.png"><img alt="../_images/94380a863703759bcac0ad655db348ddcb83bec3910e1ec89f05ead4535b9497.png" src="../_images/94380a863703759bcac0ad655db348ddcb83bec3910e1ec89f05ead4535b9497.png" style="width: 500px; height: 500px;" />
 </a>
 </div>
 </div>
@@ -652,7 +662,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/5cb994a21a5b835f0d3e00e7fe0c291772a7d3708023c8057c6c6531dfe3b9ee.png"><img alt="../_images/5cb994a21a5b835f0d3e00e7fe0c291772a7d3708023c8057c6c6531dfe3b9ee.png" src="../_images/5cb994a21a5b835f0d3e00e7fe0c291772a7d3708023c8057c6c6531dfe3b9ee.png" style="width: 500px; height: 500px;" />
+<a class="reference internal image-reference" href="../_images/5b6c57762b61f6df45b63655dd207b252baee1cddd9eb5d75155ed9c8282b18c.png"><img alt="../_images/5b6c57762b61f6df45b63655dd207b252baee1cddd9eb5d75155ed9c8282b18c.png" src="../_images/5b6c57762b61f6df45b63655dd207b252baee1cddd9eb5d75155ed9c8282b18c.png" style="width: 500px; height: 500px;" />
 </a>
 </div>
 </div>
@@ -669,7 +679,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><table>
+<div class="output text_html"><table class="dataframe">
 <caption>A data.frame: 1 × 2</caption>
 <thead>
 	<tr><th></th><th scope=col>A</th><th scope=col>B</th></tr>
@@ -714,7 +724,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/50e2f532fe3aba62314ca242c05ba2db620e41fbac59c6867c01732a3499e602.png"><img alt="../_images/50e2f532fe3aba62314ca242c05ba2db620e41fbac59c6867c01732a3499e602.png" src="../_images/50e2f532fe3aba62314ca242c05ba2db620e41fbac59c6867c01732a3499e602.png" style="width: 400px; height: 400px;" />
+<a class="reference internal image-reference" href="../_images/fec6439d2b1cdc3b5d3649c54ab5a0dc9831ced37463bf711cf518201f1dc1a0.png"><img alt="../_images/fec6439d2b1cdc3b5d3649c54ab5a0dc9831ced37463bf711cf518201f1dc1a0.png" src="../_images/fec6439d2b1cdc3b5d3649c54ab5a0dc9831ced37463bf711cf518201f1dc1a0.png" style="width: 400px; height: 400px;" />
 </a>
 </div>
 </div>
@@ -766,7 +776,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><table>
+<div class="output text_html"><table class="dataframe">
 <caption>A matrix: 5 × 5 of type dbl</caption>
 <thead>
 	<tr><th></th><th scope=col>genome_size</th><th scope=col>BodyWeight</th><th scope=col>TotalLength</th><th scope=col>ForewingLength</th><th scope=col>ForewingArea</th></tr>
@@ -848,7 +858,7 @@ variables listed above:</p>
  $ Suborder      : Factor w/ 2 levels &quot;Anisoptera&quot;,&quot;Zygoptera&quot;: 1 1 1 1 1 1 1 1 1 1 ...
  $ Family        : Factor w/ 9 levels &quot;Aeshnidae&quot;,&quot;Calopterygidae&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
  $ Species       : Factor w/ 100 levels &quot;Aeshna canadensis&quot;,..: 1 2 3 4 5 6 8 17 46 53 ...
- $ genome_size    : num  2.2 1.76 1.85 1.78 2 1.59 1.44 1.16 1.44 1.2 ...
+ $ genome_size   : num  2.2 1.76 1.85 1.78 2 1.59 1.44 1.16 1.44 1.2 ...
  $ GenomeSE      : num  NA 0.06 NA 0.1 NA NA NA NA NA NA ...
  $ GenomeN       : int  1 4 1 2 1 1 1 1 1 1 ...
  $ BodyWeight    : num  0.159 0.228 0.312 0.218 0.207 0.22 0.344 0.128 0.392 0.029 ...
@@ -885,7 +895,7 @@ variables listed above:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/917df9416c2847c4e16e88e0edfef98e22aa33554b426d975333dabaed2131c9.png"><img alt="../_images/917df9416c2847c4e16e88e0edfef98e22aa33554b426d975333dabaed2131c9.png" src="../_images/917df9416c2847c4e16e88e0edfef98e22aa33554b426d975333dabaed2131c9.png" style="width: 400px; height: 400px;" />
+<a class="reference internal image-reference" href="../_images/427e29dd90d598e5c603b4589e7669bbcfcfa11200227cf8e38a034a545da3cc.png"><img alt="../_images/427e29dd90d598e5c603b4589e7669bbcfcfa11200227cf8e38a034a545da3cc.png" src="../_images/427e29dd90d598e5c603b4589e7669bbcfcfa11200227cf8e38a034a545da3cc.png" style="width: 400px; height: 400px;" />
 </a>
 </div>
 </div>
@@ -896,7 +906,7 @@ variables listed above:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><table>
+<div class="output text_html"><table class="dataframe">
 <caption>A matrix: 5 × 5 of type dbl</caption>
 <thead>
 	<tr><th></th><th scope=col>logGS</th><th scope=col>logBW</th><th scope=col>logTL</th><th scope=col>logFL</th><th scope=col>logFA</th></tr>
@@ -945,7 +955,7 @@ variables listed above:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/e8b9d59b803ba8af37af4964f7bb97c9959bf4ad87e3c72ae243d01c694e2e6a.png"><img alt="../_images/e8b9d59b803ba8af37af4964f7bb97c9959bf4ad87e3c72ae243d01c694e2e6a.png" src="../_images/e8b9d59b803ba8af37af4964f7bb97c9959bf4ad87e3c72ae243d01c694e2e6a.png" style="width: 300px; height: 300px;" />
+<a class="reference internal image-reference" href="../_images/e817d709691aeb9e861731e066742caa39fd7e3413676dd33d6011119841c5b4.png"><img alt="../_images/e817d709691aeb9e861731e066742caa39fd7e3413676dd33d6011119841c5b4.png" src="../_images/e817d709691aeb9e861731e066742caa39fd7e3413676dd33d6011119841c5b4.png" style="width: 300px; height: 300px;" />
 </a>
 </div>
 </div>
@@ -996,7 +1006,7 @@ variables listed above:</p>
 lm(formula = logBW ~ logGS, data = genome, subset = Suborder == 
     &quot;Anisoptera&quot;)
 
-residuals:
+Residuals:
     Min      1Q  Median      3Q     Max 
 -1.3243 -0.6124  0.0970  0.5194  1.3236 
 
@@ -1007,9 +1017,9 @@ logGS        1.00522    0.23975   4.193 9.54e-05 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-residual standard error: 0.6966 on 58 degrees of freedom
+Residual standard error: 0.6966 on 58 degrees of freedom
   (2 observations deleted due to missingness)
-Multiple r-squared:  0.2326,	Adjusted r-squared:  0.2194 
+Multiple R-squared:  0.2326,	Adjusted R-squared:  0.2194 
 F-statistic: 17.58 on 1 and 58 DF,  p-value: 9.539e-05
 </pre></div>
 </div>
@@ -1054,7 +1064,7 @@ Thus you can see that the regression slope is proportional to the correlation co
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><table>
+<div class="output text_html"><table class="dataframe">
 <caption>A anova: 2 × 5</caption>
 <thead>
 	<tr><th></th><th scope=col>Df</th><th scope=col>Sum Sq</th><th scope=col>Mean Sq</th><th scope=col>F value</th><th scope=col>Pr(&gt;F)</th></tr>
@@ -1062,7 +1072,7 @@ Thus you can see that the regression slope is proportional to the correlation co
 </thead>
 <tbody>
 	<tr><th scope=row>logGS</th><td> 1</td><td> 8.52939</td><td>8.5293897</td><td>17.57907</td><td>9.538946e-05</td></tr>
-	<tr><th scope=row>residuals</th><td>58</td><td>28.14168</td><td>0.4852014</td><td>      NA</td><td>          NA</td></tr>
+	<tr><th scope=row>Residuals</th><td>58</td><td>28.14168</td><td>0.4852014</td><td>      NA</td><td>          NA</td></tr>
 </tbody>
 </table>
 </div></div>
@@ -1148,7 +1158,7 @@ Thus you can see that the regression slope is proportional to the correlation co
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/16f0248ed5b5dfa580b2aa6a634d375a56d84f34bfd868cf304a4de44810061f.png"><img alt="../_images/16f0248ed5b5dfa580b2aa6a634d375a56d84f34bfd868cf304a4de44810061f.png" src="../_images/16f0248ed5b5dfa580b2aa6a634d375a56d84f34bfd868cf304a4de44810061f.png" style="width: 400px; height: 400px;" />
+<a class="reference internal image-reference" href="../_images/47cc25198ede9eec6bbf770088bcecaf006f561462d509a1f2bc1d2e6d1d8893.png"><img alt="../_images/47cc25198ede9eec6bbf770088bcecaf006f561462d509a1f2bc1d2e6d1d8893.png" src="../_images/47cc25198ede9eec6bbf770088bcecaf006f561462d509a1f2bc1d2e6d1d8893.png" style="width: 400px; height: 400px;" />
 </a>
 </div>
 </div>
@@ -1176,7 +1186,7 @@ Thus you can see that the regression slope is proportional to the correlation co
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/09a3d388ba5ab0f7cf7785482462a973b6390019f789581628d30011ffff0335.png"><img alt="../_images/09a3d388ba5ab0f7cf7785482462a973b6390019f789581628d30011ffff0335.png" src="../_images/09a3d388ba5ab0f7cf7785482462a973b6390019f789581628d30011ffff0335.png" style="width: 400px; height: 400px;" />
+<a class="reference internal image-reference" href="../_images/4aa2e4725a6b7781239421d2b8807724c205b1aa3a27089bde543c4087e509db.png"><img alt="../_images/4aa2e4725a6b7781239421d2b8807724c205b1aa3a27089bde543c4087e509db.png" src="../_images/4aa2e4725a6b7781239421d2b8807724c205b1aa3a27089bde543c4087e509db.png" style="width: 400px; height: 400px;" />
 </a>
 </div>
 </div>
@@ -1190,7 +1200,7 @@ Thus you can see that the regression slope is proportional to the correlation co
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/56c00397718a75dc11f117442c4172991795d0626536c2e7c0c1efa55427579c.png"><img alt="../_images/56c00397718a75dc11f117442c4172991795d0626536c2e7c0c1efa55427579c.png" src="../_images/56c00397718a75dc11f117442c4172991795d0626536c2e7c0c1efa55427579c.png" style="width: 400px; height: 400px;" />
+<a class="reference internal image-reference" href="../_images/7834272bebfd19fd8ff99ba4eadbdce63b7ec53807a8bf73095fa9931f9e45b0.png"><img alt="../_images/7834272bebfd19fd8ff99ba4eadbdce63b7ec53807a8bf73095fa9931f9e45b0.png" src="../_images/7834272bebfd19fd8ff99ba4eadbdce63b7ec53807a8bf73095fa9931f9e45b0.png" style="width: 400px; height: 400px;" />
 </a>
 </div>
 </div>

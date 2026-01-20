@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -231,8 +231,8 @@
 <li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
 
 
-<li class="toctree-l1 has-children"><a class="reference internal" href="consumer-resource-dynamics.html">Consumer-Resource dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="c-r-dynamics-practicals.html">Consumer-Resource Dynamics: Practicals</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="competitive-dynamics.html">Competitive dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="competitive-dynamics-practicals.html">Competitive Dynamics: Practicals</a></li>
 
 
 
@@ -667,7 +667,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/0c137878d2e3959635f9945f1d850c033dfa38344e91859dd29e91bd85d7b450.png"><img alt="../_images/0c137878d2e3959635f9945f1d850c033dfa38344e91859dd29e91bd85d7b450.png" src="../_images/0c137878d2e3959635f9945f1d850c033dfa38344e91859dd29e91bd85d7b450.png" style="width: 300px; height: 250px;" />
+<a class="reference internal image-reference" href="../_images/da99a6f52ee4df2a1d817388f136a8005ed6beb8f563c85c9247b6d10589d595.png"><img alt="../_images/da99a6f52ee4df2a1d817388f136a8005ed6beb8f563c85c9247b6d10589d595.png" src="../_images/da99a6f52ee4df2a1d817388f136a8005ed6beb8f563c85c9247b6d10589d595.png" style="width: 300px; height: 250px;" />
 </a>
 </div>
 </div>
@@ -745,7 +745,7 @@ Yes 0.05975510 0.02787009 0.03586826
 </div>
 <p>Now we can use <code class="docutils literal notranslate"><span class="pre">barplot</span></code>. The default option for a barplot of
 a table is to create a stacked barplot, which is not what we want. The
-option <code class="docutils literal notranslate"><span class="pre">beside=TrUE</span></code> makes the bars for each column appear
+option <code class="docutils literal notranslate"><span class="pre">beside=TRUE</span></code> makes the bars for each column appear
 side by side.</p>
 <p>Once again, we save the midpoints of the bars to add the
 error bars. The other options in the code below change the colours of
@@ -756,13 +756,13 @@ the bars and the length of error bar caps.</p>
 <span class="n">upperSE</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">groupMeans</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">groupSE</span>
 <span class="n">lowerSE</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">groupMeans</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">groupSE</span>
 <span class="c1"># create barplot</span>
-<span class="n">barMids</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">barplot</span><span class="p">(</span><span class="n">groupMeans</span><span class="p">,</span><span class="w"> </span><span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="n">upperSE</span><span class="p">)),</span><span class="w"> </span><span class="n">beside</span><span class="o">=</span><span class="n">TrUE</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="w"> </span><span class="s">&#39; log C value (pg) &#39;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="w"> </span><span class="s">&#39; white &#39;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&#39; grey70 &#39;</span><span class="p">))</span>
+<span class="n">barMids</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">barplot</span><span class="p">(</span><span class="n">groupMeans</span><span class="p">,</span><span class="w"> </span><span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="n">upperSE</span><span class="p">)),</span><span class="w"> </span><span class="n">beside</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="w"> </span><span class="s">&#39; log C value (pg) &#39;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="w"> </span><span class="s">&#39; white &#39;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&#39; grey70 &#39;</span><span class="p">))</span>
 <span class="nf">arrows</span><span class="p">(</span><span class="n">barMids</span><span class="p">,</span><span class="w"> </span><span class="n">upperSE</span><span class="p">,</span><span class="w"> </span><span class="n">barMids</span><span class="p">,</span><span class="w"> </span><span class="n">lowerSE</span><span class="p">,</span><span class="w"> </span><span class="n">ang</span><span class="o">=</span><span class="m">90</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="o">=</span><span class="m">0.05</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/7449a81a3d179512c71f137914389454fe24c44a4469f2417e4feb2058446402.png"><img alt="../_images/7449a81a3d179512c71f137914389454fe24c44a4469f2417e4feb2058446402.png" src="../_images/7449a81a3d179512c71f137914389454fe24c44a4469f2417e4feb2058446402.png" style="width: 300px; height: 250px;" />
+<a class="reference internal image-reference" href="../_images/f894d18e11a9771eab4db86fd5dfabe63e003b01b44bd31a833760acc8ec064c.png"><img alt="../_images/f894d18e11a9771eab4db86fd5dfabe63e003b01b44bd31a833760acc8ec064c.png" src="../_images/f894d18e11a9771eab4db86fd5dfabe63e003b01b44bd31a833760acc8ec064c.png" style="width: 300px; height: 250px;" />
 </a>
 </div>
 </div>
@@ -817,7 +817,7 @@ before we rush into interpretation.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/c87073cd2f05367b281564e29c3427442819394382859e965e5102a184ecbd89.png"><img alt="../_images/c87073cd2f05367b281564e29c3427442819394382859e965e5102a184ecbd89.png" src="../_images/c87073cd2f05367b281564e29c3427442819394382859e965e5102a184ecbd89.png" style="width: 350px; height: 400px;" />
+<a class="reference internal image-reference" href="../_images/f0f6bfd651a99469b83b1ab57057453a3aa628c1c1851e6f208eededc94dadc8.png"><img alt="../_images/f0f6bfd651a99469b83b1ab57057453a3aa628c1c1851e6f208eededc94dadc8.png" src="../_images/f0f6bfd651a99469b83b1ab57057453a3aa628c1c1851e6f208eededc94dadc8.png" style="width: 350px; height: 400px;" />
 </a>
 </div>
 </div>
@@ -838,7 +838,7 @@ before we rush into interpretation.</p>
 <tbody>
 	<tr><th scope=row>TrophicLevel</th><td>  2</td><td> 0.8141063</td><td>0.40705316</td><td> 7.859815</td><td>4.870855e-04</td></tr>
 	<tr><th scope=row>GroundDwelling</th><td>  1</td><td> 2.7469218</td><td>2.74692183</td><td>53.040485</td><td>4.062981e-12</td></tr>
-	<tr><th scope=row>residuals</th><td>255</td><td>13.2062341</td><td>0.05178915</td><td>       NA</td><td>          NA</td></tr>
+	<tr><th scope=row>Residuals</th><td>255</td><td>13.2062341</td><td>0.05178915</td><td>       NA</td><td>          NA</td></tr>
 </tbody>
 </table>
 </div></div>
@@ -860,7 +860,7 @@ before we rush into interpretation.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
 lm(formula = logCvalue ~ TrophicLevel + GroundDwelling, data = mammals)
 
-residuals:
+Residuals:
      Min       1Q   Median       3Q      Max 
 -0.49902 -0.17844 -0.01462  0.12496  0.86242 
 
@@ -873,8 +873,8 @@ GroundDwellingYes      0.20947    0.02876   7.283 4.06e-12 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-residual standard error: 0.2276 on 255 degrees of freedom
-Multiple r-squared:  0.2124,	Adjusted r-squared:  0.2031 
+Residual standard error: 0.2276 on 255 degrees of freedom
+Multiple R-squared:  0.2124,	Adjusted R-squared:  0.2031 
 F-statistic: 22.92 on 3 and 255 DF,  p-value: 3.602e-13
 </pre></div>
 </div>
@@ -970,7 +970,7 @@ omnivory and both of these have large effects sizes, each introducing about a 20
 <p><span class="math notranslate nohighlight">\(\star\)</span> Make a copy of the barplot and arrows code from above and modify it</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">barMids</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">barplot</span><span class="p">(</span><span class="n">groupMeans</span><span class="p">,</span><span class="w"> </span><span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1.4</span><span class="p">),</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;log C value (pg)&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">beside</span><span class="o">=</span><span class="n">TrUE</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;white&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;grey70&#39;</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">barMids</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">barplot</span><span class="p">(</span><span class="n">groupMeans</span><span class="p">,</span><span class="w"> </span><span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1.4</span><span class="p">),</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&#39;log C value (pg)&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">beside</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;white&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;grey70&#39;</span><span class="p">))</span>
 
 <span class="nf">arrows</span><span class="p">(</span><span class="n">barMids</span><span class="p">,</span><span class="w"> </span><span class="n">upperSE</span><span class="p">,</span><span class="w"> </span><span class="n">barMids</span><span class="p">,</span><span class="w"> </span><span class="n">lowerSE</span><span class="p">,</span><span class="w"> </span><span class="n">ang</span><span class="o">=</span><span class="m">90</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="o">=</span><span class="m">0.1</span><span class="p">)</span>
 <span class="nf">points</span><span class="p">(</span><span class="n">barMids</span><span class="p">,</span><span class="w"> </span><span class="n">predVals</span><span class="o">$</span><span class="n">predict</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="o">=</span><span class="m">12</span><span class="p">)</span>
@@ -978,7 +978,7 @@ omnivory and both of these have large effects sizes, each introducing about a 20
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/08b2cfdacdc37ec8fd2dcdb2f4e16c64532a5182dd299a77c3c8034c3f712334.png"><img alt="../_images/08b2cfdacdc37ec8fd2dcdb2f4e16c64532a5182dd299a77c3c8034c3f712334.png" src="../_images/08b2cfdacdc37ec8fd2dcdb2f4e16c64532a5182dd299a77c3c8034c3f712334.png" style="width: 300px; height: 250px;" />
+<a class="reference internal image-reference" href="../_images/afc947b22d69ca3a14c216555cc10be9449277ed4704b5610ad4d63f2e8e075a.png"><img alt="../_images/afc947b22d69ca3a14c216555cc10be9449277ed4704b5610ad4d63f2e8e075a.png" src="../_images/afc947b22d69ca3a14c216555cc10be9449277ed4704b5610ad4d63f2e8e075a.png" style="width: 300px; height: 250px;" />
 </a>
 </div>
 </div>

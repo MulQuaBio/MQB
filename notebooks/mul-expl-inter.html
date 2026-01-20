@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -231,8 +231,8 @@
 <li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
 
 
-<li class="toctree-l1 has-children"><a class="reference internal" href="consumer-resource-dynamics.html">Consumer-Resource dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="c-r-dynamics-practicals.html">Consumer-Resource Dynamics: Practicals</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="competitive-dynamics.html">Competitive dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="competitive-dynamics-practicals.html">Competitive Dynamics: Practicals</a></li>
 
 
 
@@ -620,7 +620,7 @@ specifically a <em>ground dwelling omnivore</em>. These independent effects of a
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/12d6d80332ffe0964d27f2adf054446d53b274ecde22b533dff6e29c4df143ae.png"><img alt="../_images/12d6d80332ffe0964d27f2adf054446d53b274ecde22b533dff6e29c4df143ae.png" src="../_images/12d6d80332ffe0964d27f2adf054446d53b274ecde22b533dff6e29c4df143ae.png" style="width: 250px; height: 250px;" />
+<a class="reference internal image-reference" href="../_images/b36df60cd22d31daa04cf23b94420b7b71f26d3825a030b804f6c18c4a763f20.png"><img alt="../_images/b36df60cd22d31daa04cf23b94420b7b71f26d3825a030b804f6c18c4a763f20.png" src="../_images/b36df60cd22d31daa04cf23b94420b7b71f26d3825a030b804f6c18c4a763f20.png" style="width: 250px; height: 250px;" />
 </a>
 </div>
 </div>
@@ -642,7 +642,7 @@ specifically a <em>ground dwelling omnivore</em>. These independent effects of a
 	<tr><th scope=row>TrophicLevel</th><td>  2</td><td> 0.8141063</td><td>0.40705316</td><td> 8.061439</td><td>4.036387e-04</td></tr>
 	<tr><th scope=row>GroundDwelling</th><td>  1</td><td> 2.7469218</td><td>2.74692183</td><td>54.401106</td><td>2.335706e-12</td></tr>
 	<tr><th scope=row>TrophicLevel:GroundDwelling</th><td>  2</td><td> 0.4312875</td><td>0.21564376</td><td> 4.270693</td><td>1.499280e-02</td></tr>
-	<tr><th scope=row>residuals</th><td>253</td><td>12.7749466</td><td>0.05049386</td><td>       NA</td><td>          NA</td></tr>
+	<tr><th scope=row>Residuals</th><td>253</td><td>12.7749466</td><td>0.05049386</td><td>       NA</td><td>          NA</td></tr>
 </tbody>
 </table>
 </div></div>
@@ -664,7 +664,7 @@ model explains 2.6% more of the variation in the data.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
 lm(formula = logCvalue ~ TrophicLevel * GroundDwelling, data = mammals)
 
-residuals:
+Residuals:
      Min       1Q   Median       3Q      Max 
 -0.52294 -0.17069 -0.01003  0.11920  0.83057 
 
@@ -686,9 +686,9 @@ TrophicLevelOmnivore:GroundDwellingYes  .
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-residual standard error: 0.2247 on 253 degrees of freedom
+Residual standard error: 0.2247 on 253 degrees of freedom
   (120 observations deleted due to missingness)
-Multiple r-squared:  0.2381,	Adjusted r-squared:  0.223 
+Multiple R-squared:  0.2381,	Adjusted R-squared:  0.223 
 F-statistic: 15.81 on 5 and 253 DF,  p-value: 1.504e-13
 </pre></div>
 </div>
@@ -805,7 +805,8 @@ in <a class="reference internal" href="mul-expl.html"><span class="std std-doc">
 <p><span class="math notranslate nohighlight">\(\star\)</span> First load the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">odonata</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&#39;../data/genome_size.csv&#39;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">odonata</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&#39;../data/genome_size.csv&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span>
+<span class="n">odonata</span><span class="o">$</span><span class="n">genome_size</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">odonata</span><span class="o">$</span><span class="n">GenomeSize</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -839,7 +840,7 @@ in <a class="reference internal" href="mul-expl.html"><span class="std std-doc">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
 lm(formula = logBW ~ logGS * Suborder, data = odonata)
 
-residuals:
+Residuals:
     Min      1Q  Median      3Q     Max 
 -1.3243 -0.3225  0.0073  0.3962  1.4976 
 
@@ -852,9 +853,9 @@ logGS:SuborderZygoptera -2.14919    0.46186  -4.653 1.07e-05 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-residual standard error: 0.6499 on 94 degrees of freedom
+Residual standard error: 0.6499 on 94 degrees of freedom
   (2 observations deleted due to missingness)
-Multiple r-squared:  0.7549,	Adjusted r-squared:  0.7471 
+Multiple R-squared:  0.7549,	Adjusted R-squared:  0.7471 
 F-statistic:  96.5 on 3 and 94 DF,  p-value: &lt; 2.2e-16
 </pre></div>
 </div>
@@ -868,13 +869,17 @@ F-statistic:  96.5 on 3 and 94 DF,  p-value: &lt; 2.2e-16
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><table>
-<thead><tr><th></th><th scope=col>Df</th><th scope=col>Sum Sq</th><th scope=col>Mean Sq</th><th scope=col>F value</th><th scope=col>Pr(&gt;F)</th></tr></thead>
+<div class="output text_html"><table class="dataframe">
+<caption>A anova: 4 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>Df</th><th scope=col>Sum Sq</th><th scope=col>Mean Sq</th><th scope=col>F value</th><th scope=col>Pr(&gt;F)</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
 <tbody>
-	<tr><th scope=row>logGS</th><td> 1          </td><td>  1.144458  </td><td>  1.1444583 </td><td>  2.710007  </td><td>1.030601e-01</td></tr>
-	<tr><th scope=row>Suborder</th><td> 1          </td><td>111.967748  </td><td>111.9677481 </td><td>265.132794  </td><td>4.154783e-29</td></tr>
-	<tr><th scope=row>logGS:Suborder</th><td> 1          </td><td>  9.144522  </td><td>  9.1445216 </td><td> 21.653669  </td><td>1.068365e-05</td></tr>
-	<tr><th scope=row>residuals</th><td>94          </td><td> 39.696969  </td><td>  0.4223082 </td><td>        NA  </td><td>          NA</td></tr>
+	<tr><th scope=row>logGS</th><td> 1</td><td>  1.144458</td><td>  1.1444583</td><td>  2.710007</td><td>1.030601e-01</td></tr>
+	<tr><th scope=row>Suborder</th><td> 1</td><td>111.967748</td><td>111.9677481</td><td>265.132794</td><td>4.154783e-29</td></tr>
+	<tr><th scope=row>logGS:Suborder</th><td> 1</td><td>  9.144522</td><td>  9.1445216</td><td> 21.653669</td><td>1.068365e-05</td></tr>
+	<tr><th scope=row>Residuals</th><td>94</td><td> 39.696969</td><td>  0.4223082</td><td>        NA</td><td>          NA</td></tr>
 </tbody>
 </table>
 </div></div>
@@ -896,7 +901,7 @@ F-statistic:  96.5 on 3 and 94 DF,  p-value: &lt; 2.2e-16
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
 lm(formula = logBW ~ logGS * Suborder, data = odonata)
 
-residuals:
+Residuals:
     Min      1Q  Median      3Q     Max 
 -1.3243 -0.3225  0.0073  0.3962  1.4976 
 
@@ -909,9 +914,9 @@ logGS:SuborderZygoptera -2.14919    0.46186  -4.653 1.07e-05 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-residual standard error: 0.6499 on 94 degrees of freedom
+Residual standard error: 0.6499 on 94 degrees of freedom
   (2 observations deleted due to missingness)
-Multiple r-squared:  0.7549,	Adjusted r-squared:  0.7471 
+Multiple R-squared:  0.7549,	Adjusted R-squared:  0.7471 
 F-statistic:  96.5 on 3 and 94 DF,  p-value: &lt; 2.2e-16
 </pre></div>
 </div>
@@ -987,16 +992,16 @@ F-statistic:  96.5 on 3 and 94 DF,  p-value: &lt; 2.2e-16
 <span class="n">ZygoVals</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">logGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LogGSForFitting</span><span class="p">,</span><span class="w"> </span><span class="n">Suborder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Zygoptera&quot;</span><span class="p">)</span>
 
 <span class="c1">#get the predictions and standard error</span>
-<span class="n">ZygoPred</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">odonModel</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZygoVals</span><span class="p">,</span><span class="w"> </span><span class="n">se.fit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TrUE</span><span class="p">)</span>
+<span class="n">ZygoPred</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">odonModel</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZygoVals</span><span class="p">,</span><span class="w"> </span><span class="n">se.fit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 
 <span class="c1">#repeat for anisoptera</span>
 <span class="n">AnisoVals</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">logGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LogGSForFitting</span><span class="p">,</span><span class="w"> </span><span class="n">Suborder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Anisoptera&quot;</span><span class="p">)</span>
-<span class="n">AnisoPred</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">odonModel</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AnisoVals</span><span class="p">,</span><span class="w"> </span><span class="n">se.fit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TrUE</span><span class="p">)</span>
+<span class="n">AnisoPred</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">odonModel</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AnisoVals</span><span class="p">,</span><span class="w"> </span><span class="n">se.fit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>We’ve added <code class="docutils literal notranslate"><span class="pre">se.fit=TrUE</span></code> to the function to get the standard error around the regression lines. Both <code class="docutils literal notranslate"><span class="pre">AnisoPred</span></code> and <code class="docutils literal notranslate"><span class="pre">ZygoPred</span></code> contain predicted values (called <code class="docutils literal notranslate"><span class="pre">fit</span></code>) and standard error values (called <code class="docutils literal notranslate"><span class="pre">se.fit</span></code>) for each of the values in our generated values in <code class="docutils literal notranslate"><span class="pre">LogGSForFitting</span></code> for each of the two suborders.</p>
+<p>We’ve added <code class="docutils literal notranslate"><span class="pre">se.fit=TRUE</span></code> to the function to get the standard error around the regression lines. Both <code class="docutils literal notranslate"><span class="pre">AnisoPred</span></code> and <code class="docutils literal notranslate"><span class="pre">ZygoPred</span></code> contain predicted values (called <code class="docutils literal notranslate"><span class="pre">fit</span></code>) and standard error values (called <code class="docutils literal notranslate"><span class="pre">se.fit</span></code>) for each of the values in our generated values in <code class="docutils literal notranslate"><span class="pre">LogGSForFitting</span></code> for each of the two suborders.</p>
 <p>We can add the predictions onto a plot like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1010,7 +1015,8 @@ F-statistic:  96.5 on 3 and 94 DF,  p-value: &lt; 2.2e-16
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5c5b7e6c0327c798e0abadf7eb166af3707de43568ad5ea3d5215d07ce531e54.png" src="../_images/5c5b7e6c0327c798e0abadf7eb166af3707de43568ad5ea3d5215d07ce531e54.png" />
+<a class="reference internal image-reference" href="../_images/dcb03e4f804a9b3fd17f1555b4cad219372d2df5adc4252349c8a363448c638c.png"><img alt="../_images/dcb03e4f804a9b3fd17f1555b4cad219372d2df5adc4252349c8a363448c638c.png" src="../_images/dcb03e4f804a9b3fd17f1555b4cad219372d2df5adc4252349c8a363448c638c.png" style="width: 250px; height: 250px;" />
+</a>
 </div>
 </div>
 <p><span class="math notranslate nohighlight">\(\star\)</span> Copy the prediction code into your script and run the plot above.</p>

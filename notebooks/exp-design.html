@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -231,8 +231,8 @@
 <li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
 
 
-<li class="toctree-l1 has-children"><a class="reference internal" href="consumer-resource-dynamics.html">Consumer-Resource dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="c-r-dynamics-practicals.html">Consumer-Resource Dynamics: Practicals</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="competitive-dynamics.html">Competitive dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="competitive-dynamics-practicals.html">Competitive Dynamics: Practicals</a></li>
 
 
 
@@ -757,7 +757,7 @@ document.write(`
 .list-inline>li {display: inline-block}
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
-<ol class=list-inline><li>-1.03922608249307</li><li>-1.32073769350156</li><li>1.20404236741287</li><li>0.0927214655362645</li><li>-0.865269133002308</li><li>0.192595535843</li><li>0.0915486093340949</li><li>0.848765639679302</li><li>1.93359409772977</li><li>-0.215123466861228</li></ol>
+<ol class=list-inline><li>1.38113758209142</li><li>1.60665132177658</li><li>1.49812227424615</li><li>-1.12118376044365</li><li>1.26509421064931</li><li>0.814432770797013</li><li>-0.976087224534256</li><li>0.487210534853539</li><li>-0.180525619218096</li><li>-1.34016717260107</li></ol>
 </div></div>
 </div>
 <div class="cell docutils container">
@@ -767,7 +767,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/5fa230c4e0e4cb4ae8251091c6be7dc226d560f3737174b5a5b48f625cc090ca.png"><img alt="../_images/5fa230c4e0e4cb4ae8251091c6be7dc226d560f3737174b5a5b48f625cc090ca.png" src="../_images/5fa230c4e0e4cb4ae8251091c6be7dc226d560f3737174b5a5b48f625cc090ca.png" style="width: 275px; height: 250px;" />
+<a class="reference internal image-reference" href="../_images/3a80092bcef6f1f52454257eca678c43d7c8a88fbf36855e2e564befcc184154.png"><img alt="../_images/3a80092bcef6f1f52454257eca678c43d7c8a88fbf36855e2e564befcc184154.png" src="../_images/3a80092bcef6f1f52454257eca678c43d7c8a88fbf36855e2e564befcc184154.png" style="width: 275px; height: 250px;" />
 </a>
 </div>
 </div>
@@ -848,7 +848,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/a8277a63a5144d1f7b0ee12c7a21941e266c33e505bae9de5dc9815fe1d2829d.png"><img alt="../_images/a8277a63a5144d1f7b0ee12c7a21941e266c33e505bae9de5dc9815fe1d2829d.png" src="../_images/a8277a63a5144d1f7b0ee12c7a21941e266c33e505bae9de5dc9815fe1d2829d.png" style="width: 275px; height: 250px;" />
+<a class="reference internal image-reference" href="../_images/e85ad2fcff183dabb8a04bf49b9442de3f8c65e49eab2eb387279bf96b329ec3.png"><img alt="../_images/e85ad2fcff183dabb8a04bf49b9442de3f8c65e49eab2eb387279bf96b329ec3.png" src="../_images/e85ad2fcff183dabb8a04bf49b9442de3f8c65e49eab2eb387279bf96b329ec3.png" style="width: 275px; height: 250px;" />
 </a>
 </div>
 </div>
@@ -890,6 +890,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">genome</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&#39;../data/genome_size.csv&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span>
+<span class="n">genome</span><span class="o">$</span><span class="n">genome_size</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">genome</span><span class="o">$</span><span class="n">GenomeSize</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -905,18 +906,18 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><table class="dataframe">
-<caption>A data.frame: 6 × 16</caption>
+<caption>A data.frame: 6 × 17</caption>
 <thead>
-	<tr><th></th><th scope=col>Suborder</th><th scope=col>Family</th><th scope=col>Species</th><th scope=col>genome_size</th><th scope=col>GenomeSE</th><th scope=col>GenomeN</th><th scope=col>BodyWeight</th><th scope=col>TotalLength</th><th scope=col>HeadLength</th><th scope=col>ThoraxLength</th><th scope=col>AdbdomenLength</th><th scope=col>ForewingLength</th><th scope=col>HindwingLength</th><th scope=col>ForewingArea</th><th scope=col>HindwingArea</th><th scope=col>MorphologyN</th></tr>
-	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+	<tr><th></th><th scope=col>Suborder</th><th scope=col>Family</th><th scope=col>Species</th><th scope=col>GenomeSize</th><th scope=col>GenomeSE</th><th scope=col>GenomeN</th><th scope=col>BodyWeight</th><th scope=col>TotalLength</th><th scope=col>HeadLength</th><th scope=col>ThoraxLength</th><th scope=col>AdbdomenLength</th><th scope=col>ForewingLength</th><th scope=col>HindwingLength</th><th scope=col>ForewingArea</th><th scope=col>HindwingArea</th><th scope=col>MorphologyN</th><th scope=col>genome_size</th></tr>
+	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><th scope=row>1</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna canadensis   </td><td>2.20</td><td>  NA</td><td>1</td><td>0.159</td><td>67.58</td><td>6.83</td><td>11.81</td><td>48.94</td><td>45.47</td><td>45.40</td><td>369.57</td><td>483.61</td><td>2</td></tr>
-	<tr><th scope=row>2</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna constricta   </td><td>1.76</td><td>0.06</td><td>4</td><td>0.228</td><td>71.97</td><td>6.84</td><td>10.72</td><td>54.41</td><td>46.00</td><td>45.48</td><td>411.15</td><td>517.38</td><td>3</td></tr>
-	<tr><th scope=row>3</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna eremita      </td><td>1.85</td><td>  NA</td><td>1</td><td>0.312</td><td>78.80</td><td>6.27</td><td>16.19</td><td>56.33</td><td>51.24</td><td>49.47</td><td>460.72</td><td>574.33</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna tuberculifera</td><td>1.78</td><td>0.10</td><td>2</td><td>0.218</td><td>72.44</td><td>6.62</td><td>12.53</td><td>53.29</td><td>49.84</td><td>48.82</td><td>468.74</td><td>591.42</td><td>2</td></tr>
-	<tr><th scope=row>5</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna umbrosa      </td><td>2.00</td><td>  NA</td><td>1</td><td>0.207</td><td>73.05</td><td>4.92</td><td>11.11</td><td>57.03</td><td>46.51</td><td>45.97</td><td>382.48</td><td>481.44</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna verticalis   </td><td>1.59</td><td>  NA</td><td>1</td><td>0.220</td><td>66.25</td><td>6.48</td><td>11.64</td><td>48.13</td><td>45.91</td><td>44.91</td><td>400.40</td><td>486.97</td><td>1</td></tr>
+	<tr><th scope=row>1</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna canadensis   </td><td>2.20</td><td>  NA</td><td>1</td><td>0.159</td><td>67.58</td><td>6.83</td><td>11.81</td><td>48.94</td><td>45.47</td><td>45.40</td><td>369.57</td><td>483.61</td><td>2</td><td>2.20</td></tr>
+	<tr><th scope=row>2</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna constricta   </td><td>1.76</td><td>0.06</td><td>4</td><td>0.228</td><td>71.97</td><td>6.84</td><td>10.72</td><td>54.41</td><td>46.00</td><td>45.48</td><td>411.15</td><td>517.38</td><td>3</td><td>1.76</td></tr>
+	<tr><th scope=row>3</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna eremita      </td><td>1.85</td><td>  NA</td><td>1</td><td>0.312</td><td>78.80</td><td>6.27</td><td>16.19</td><td>56.33</td><td>51.24</td><td>49.47</td><td>460.72</td><td>574.33</td><td>1</td><td>1.85</td></tr>
+	<tr><th scope=row>4</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna tuberculifera</td><td>1.78</td><td>0.10</td><td>2</td><td>0.218</td><td>72.44</td><td>6.62</td><td>12.53</td><td>53.29</td><td>49.84</td><td>48.82</td><td>468.74</td><td>591.42</td><td>2</td><td>1.78</td></tr>
+	<tr><th scope=row>5</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna umbrosa      </td><td>2.00</td><td>  NA</td><td>1</td><td>0.207</td><td>73.05</td><td>4.92</td><td>11.11</td><td>57.03</td><td>46.51</td><td>45.97</td><td>382.48</td><td>481.44</td><td>1</td><td>2.00</td></tr>
+	<tr><th scope=row>6</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna verticalis   </td><td>1.59</td><td>  NA</td><td>1</td><td>0.220</td><td>66.25</td><td>6.48</td><td>11.64</td><td>48.13</td><td>45.91</td><td>44.91</td><td>400.40</td><td>486.97</td><td>1</td><td>1.59</td></tr>
 </tbody>
 </table>
 </div></div>
@@ -928,11 +929,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;data.frame&#39;:	100 obs. of  16 variables:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;data.frame&#39;:	100 obs. of  17 variables:
  $ Suborder      : Factor w/ 2 levels &quot;Anisoptera&quot;,&quot;Zygoptera&quot;: 1 1 1 1 1 1 1 1 1 1 ...
  $ Family        : Factor w/ 9 levels &quot;Aeshnidae&quot;,&quot;Calopterygidae&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
  $ Species       : Factor w/ 100 levels &quot;Aeshna canadensis&quot;,..: 1 2 3 4 5 6 8 17 46 53 ...
- $ genome_size    : num  2.2 1.76 1.85 1.78 2 1.59 1.44 1.16 1.44 1.2 ...
+ $ GenomeSize    : num  2.2 1.76 1.85 1.78 2 1.59 1.44 1.16 1.44 1.2 ...
  $ GenomeSE      : num  NA 0.06 NA 0.1 NA NA NA NA NA NA ...
  $ GenomeN       : int  1 4 1 2 1 1 1 1 1 1 ...
  $ BodyWeight    : num  0.159 0.228 0.312 0.218 0.207 0.22 0.344 0.128 0.392 0.029 ...
@@ -945,6 +946,7 @@ document.write(`
  $ ForewingArea  : num  370 411 461 469 382 ...
  $ HindwingArea  : num  484 517 574 591 481 ...
  $ MorphologyN   : int  2 3 1 2 1 1 4 1 1 1 ...
+ $ genome_size   : num  2.2 1.76 1.85 1.78 2 1.59 1.44 1.16 1.44 1.2 ...
 </pre></div>
 </div>
 </div>
@@ -960,7 +962,7 @@ binomial for each species in the table. The remaining columns are measurements o
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Suborder             Family                   Species     genome_size    
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Suborder             Family                   Species     GenomeSize    
  Anisoptera:62   Coenagrionidae:27   Aeshna canadensis   : 1   Min.   :0.4100  
  Zygoptera :38   Libellulidae  :25   Aeshna constricta   : 1   1st Qu.:0.7375  
                  Gomphidae     :14   Aeshna eremita      : 1   Median :0.9400  
@@ -992,6 +994,14 @@ binomial for each species in the table. The remaining columns are measurements o
  3rd Qu.:35.40   3rd Qu.:226.91   3rd Qu.:279.36   3rd Qu.: 4.000  
  Max.   :54.59   Max.   :527.92   Max.   :632.77   Max.   :13.000  
  NA&#39;s   :4       NA&#39;s   :4        NA&#39;s   :4        NA&#39;s   :2       
+  genome_size    
+ Min.   :0.4100  
+ 1st Qu.:0.7375  
+ Median :0.9400  
+ Mean   :1.0143  
+ 3rd Qu.:1.1800  
+ Max.   :2.3600  
+                 
 </pre></div>
 </div>
 </div>
@@ -1013,7 +1023,7 @@ binomial for each species in the table. The remaining columns are measurements o
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/b248fb0e4731277606f583568fd594eb78f91cd61904e82963d17d52d35643e8.png"><img alt="../_images/b248fb0e4731277606f583568fd594eb78f91cd61904e82963d17d52d35643e8.png" src="../_images/b248fb0e4731277606f583568fd594eb78f91cd61904e82963d17d52d35643e8.png" style="width: 275px; height: 250px;" />
+<a class="reference internal image-reference" href="../_images/1e660f5904e65c2d48e9f450d75edbe25167b75e9f328513902743d87b839c2d.png"><img alt="../_images/1e660f5904e65c2d48e9f450d75edbe25167b75e9f328513902743d87b839c2d.png" src="../_images/1e660f5904e65c2d48e9f450d75edbe25167b75e9f328513902743d87b839c2d.png" style="width: 275px; height: 250px;" />
 </a>
 </div>
 </div>
@@ -1024,7 +1034,7 @@ binomial for each species in the table. The remaining columns are measurements o
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/336cdc8efb1d10ab1a5a013b3fc3798983747fce5b6b9ca54897f9223bd6644b.png"><img alt="../_images/336cdc8efb1d10ab1a5a013b3fc3798983747fce5b6b9ca54897f9223bd6644b.png" src="../_images/336cdc8efb1d10ab1a5a013b3fc3798983747fce5b6b9ca54897f9223bd6644b.png" style="width: 275px; height: 250px;" />
+<a class="reference internal image-reference" href="../_images/eb58f6410dd518157b6bc0096924f1af47b395bc0d2d550c8c511748f0fa92df.png"><img alt="../_images/eb58f6410dd518157b6bc0096924f1af47b395bc0d2d550c8c511748f0fa92df.png" src="../_images/eb58f6410dd518157b6bc0096924f1af47b395bc0d2d550c8c511748f0fa92df.png" style="width: 275px; height: 250px;" />
 </a>
 </div>
 </div>
@@ -1052,7 +1062,7 @@ binomial for each species in the table. The remaining columns are measurements o
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/74352322bf2a897684d38243769080f40f77b26aac39fcd6c530aef952dc6985.png"><img alt="../_images/74352322bf2a897684d38243769080f40f77b26aac39fcd6c530aef952dc6985.png" src="../_images/74352322bf2a897684d38243769080f40f77b26aac39fcd6c530aef952dc6985.png" style="width: 275px; height: 250px;" />
+<a class="reference internal image-reference" href="../_images/0bb3e305d1b1dbae52eecf3ba31cf6cb71964b475387ad37df8838549e79c470.png"><img alt="../_images/0bb3e305d1b1dbae52eecf3ba31cf6cb71964b475387ad37df8838549e79c470.png" src="../_images/0bb3e305d1b1dbae52eecf3ba31cf6cb71964b475387ad37df8838549e79c470.png" style="width: 275px; height: 250px;" />
 </a>
 </div>
 </div>
@@ -1082,18 +1092,18 @@ object in R — if you use <code class="docutils literal notranslate"><span clas
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><table class="dataframe">
-<caption>A data.frame: 6 × 16</caption>
+<caption>A data.frame: 6 × 17</caption>
 <thead>
-	<tr><th></th><th scope=col>Suborder</th><th scope=col>Family</th><th scope=col>Species</th><th scope=col>genome_size</th><th scope=col>GenomeSE</th><th scope=col>GenomeN</th><th scope=col>BodyWeight</th><th scope=col>TotalLength</th><th scope=col>HeadLength</th><th scope=col>ThoraxLength</th><th scope=col>AdbdomenLength</th><th scope=col>ForewingLength</th><th scope=col>HindwingLength</th><th scope=col>ForewingArea</th><th scope=col>HindwingArea</th><th scope=col>MorphologyN</th></tr>
-	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+	<tr><th></th><th scope=col>Suborder</th><th scope=col>Family</th><th scope=col>Species</th><th scope=col>GenomeSize</th><th scope=col>GenomeSE</th><th scope=col>GenomeN</th><th scope=col>BodyWeight</th><th scope=col>TotalLength</th><th scope=col>HeadLength</th><th scope=col>ThoraxLength</th><th scope=col>AdbdomenLength</th><th scope=col>ForewingLength</th><th scope=col>HindwingLength</th><th scope=col>ForewingArea</th><th scope=col>HindwingArea</th><th scope=col>MorphologyN</th><th scope=col>genome_size</th></tr>
+	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><th scope=row>1</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna canadensis   </td><td>2.20</td><td>  NA</td><td>1</td><td>0.159</td><td>67.58</td><td>6.83</td><td>11.81</td><td>48.94</td><td>45.47</td><td>45.40</td><td>369.57</td><td>483.61</td><td>2</td></tr>
-	<tr><th scope=row>2</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna constricta   </td><td>1.76</td><td>0.06</td><td>4</td><td>0.228</td><td>71.97</td><td>6.84</td><td>10.72</td><td>54.41</td><td>46.00</td><td>45.48</td><td>411.15</td><td>517.38</td><td>3</td></tr>
-	<tr><th scope=row>3</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna eremita      </td><td>1.85</td><td>  NA</td><td>1</td><td>0.312</td><td>78.80</td><td>6.27</td><td>16.19</td><td>56.33</td><td>51.24</td><td>49.47</td><td>460.72</td><td>574.33</td><td>1</td></tr>
-	<tr><th scope=row>4</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna tuberculifera</td><td>1.78</td><td>0.10</td><td>2</td><td>0.218</td><td>72.44</td><td>6.62</td><td>12.53</td><td>53.29</td><td>49.84</td><td>48.82</td><td>468.74</td><td>591.42</td><td>2</td></tr>
-	<tr><th scope=row>5</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna umbrosa      </td><td>2.00</td><td>  NA</td><td>1</td><td>0.207</td><td>73.05</td><td>4.92</td><td>11.11</td><td>57.03</td><td>46.51</td><td>45.97</td><td>382.48</td><td>481.44</td><td>1</td></tr>
-	<tr><th scope=row>6</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna verticalis   </td><td>1.59</td><td>  NA</td><td>1</td><td>0.220</td><td>66.25</td><td>6.48</td><td>11.64</td><td>48.13</td><td>45.91</td><td>44.91</td><td>400.40</td><td>486.97</td><td>1</td></tr>
+	<tr><th scope=row>1</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna canadensis   </td><td>2.20</td><td>  NA</td><td>1</td><td>0.159</td><td>67.58</td><td>6.83</td><td>11.81</td><td>48.94</td><td>45.47</td><td>45.40</td><td>369.57</td><td>483.61</td><td>2</td><td>2.20</td></tr>
+	<tr><th scope=row>2</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna constricta   </td><td>1.76</td><td>0.06</td><td>4</td><td>0.228</td><td>71.97</td><td>6.84</td><td>10.72</td><td>54.41</td><td>46.00</td><td>45.48</td><td>411.15</td><td>517.38</td><td>3</td><td>1.76</td></tr>
+	<tr><th scope=row>3</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna eremita      </td><td>1.85</td><td>  NA</td><td>1</td><td>0.312</td><td>78.80</td><td>6.27</td><td>16.19</td><td>56.33</td><td>51.24</td><td>49.47</td><td>460.72</td><td>574.33</td><td>1</td><td>1.85</td></tr>
+	<tr><th scope=row>4</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna tuberculifera</td><td>1.78</td><td>0.10</td><td>2</td><td>0.218</td><td>72.44</td><td>6.62</td><td>12.53</td><td>53.29</td><td>49.84</td><td>48.82</td><td>468.74</td><td>591.42</td><td>2</td><td>1.78</td></tr>
+	<tr><th scope=row>5</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna umbrosa      </td><td>2.00</td><td>  NA</td><td>1</td><td>0.207</td><td>73.05</td><td>4.92</td><td>11.11</td><td>57.03</td><td>46.51</td><td>45.97</td><td>382.48</td><td>481.44</td><td>1</td><td>2.00</td></tr>
+	<tr><th scope=row>6</th><td>Anisoptera</td><td>Aeshnidae</td><td>Aeshna verticalis   </td><td>1.59</td><td>  NA</td><td>1</td><td>0.220</td><td>66.25</td><td>6.48</td><td>11.64</td><td>48.13</td><td>45.91</td><td>44.91</td><td>400.40</td><td>486.97</td><td>1</td><td>1.59</td></tr>
 </tbody>
 </table>
 </div></div>
@@ -1108,7 +1118,7 @@ object in R — if you use <code class="docutils literal notranslate"><span clas
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/c9144fcb504f1a1557e39ef18833b59164608fdafac93442c455dbdb97044b50.png"><img alt="../_images/c9144fcb504f1a1557e39ef18833b59164608fdafac93442c455dbdb97044b50.png" src="../_images/c9144fcb504f1a1557e39ef18833b59164608fdafac93442c455dbdb97044b50.png" style="width: 275px; height: 250px;" />
+<a class="reference internal image-reference" href="../_images/9a6539c65550f31f0248b4445e12472f67d9e660df99b5d4512cd7a6d19d0ec4.png"><img alt="../_images/9a6539c65550f31f0248b4445e12472f67d9e660df99b5d4512cd7a6d19d0ec4.png" src="../_images/9a6539c65550f31f0248b4445e12472f67d9e660df99b5d4512cd7a6d19d0ec4.png" style="width: 275px; height: 250px;" />
 </a>
 </div>
 </div>
@@ -1129,7 +1139,7 @@ object in R — if you use <code class="docutils literal notranslate"><span clas
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/46477ef7535f7fe611c58591edfdbbccbb3f2e83a2ee768476e8d63c4e03fa35.png"><img alt="../_images/46477ef7535f7fe611c58591edfdbbccbb3f2e83a2ee768476e8d63c4e03fa35.png" src="../_images/46477ef7535f7fe611c58591edfdbbccbb3f2e83a2ee768476e8d63c4e03fa35.png" style="width: 275px; height: 250px;" />
+<a class="reference internal image-reference" href="../_images/a34adce0e21112d4486e945d8d5f4a00ba52b1faa1c0f5778dd809f19f9b4c52.png"><img alt="../_images/a34adce0e21112d4486e945d8d5f4a00ba52b1faa1c0f5778dd809f19f9b4c52.png" src="../_images/a34adce0e21112d4486e945d8d5f4a00ba52b1faa1c0f5778dd809f19f9b4c52.png" style="width: 275px; height: 250px;" />
 </a>
 </div>
 </div>
@@ -1169,7 +1179,7 @@ object in R — if you use <code class="docutils literal notranslate"><span clas
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/1fc962312c6c764a26bdff8bbd13192e10384e4ceee47bbfdbfc88a0bc99af9f.png"><img alt="../_images/1fc962312c6c764a26bdff8bbd13192e10384e4ceee47bbfdbfc88a0bc99af9f.png" src="../_images/1fc962312c6c764a26bdff8bbd13192e10384e4ceee47bbfdbfc88a0bc99af9f.png" style="width: 275px; height: 250px;" />
+<a class="reference internal image-reference" href="../_images/aaa79b123b17643278d98f7b53c2981be9b96291f5efd4c1a80571ad603c3237.png"><img alt="../_images/aaa79b123b17643278d98f7b53c2981be9b96291f5efd4c1a80571ad603c3237.png" src="../_images/aaa79b123b17643278d98f7b53c2981be9b96291f5efd4c1a80571ad603c3237.png" style="width: 275px; height: 250px;" />
 </a>
 </div>
 </div>
