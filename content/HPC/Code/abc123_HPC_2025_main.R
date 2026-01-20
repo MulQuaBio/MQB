@@ -113,7 +113,7 @@ neutral_time_series <- function(community,duration)  {
 }
 
 # Question 14
-question_8 <- function() {
+question_14 <- function() {
   
   
   
