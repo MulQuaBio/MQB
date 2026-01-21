@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=01a0bdc2" />
@@ -237,6 +237,14 @@
 
 
 
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../predator-prey.html">Predator–prey dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../predator-prey-practicals.html">Predator–prey dynamics: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../epidemiology.html">Epidemiological dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../epidemiology-practicals.html">Epidemiological dynamics: Practicals</a></li>
 </ul>
 </details></li>
 </ul>
@@ -671,8 +679,8 @@ Vectorised method took 72 ms on average.
 <section id="consumer-growth-rate">
 <h3>consumer growth rate:<a class="headerlink" href="#consumer-growth-rate" title="Link to this heading">#</a></h3>
 <p>In reality, each species will uptake carbon from the different sources at different rates, as well as respiring and losing carbon to the environment at different rates. This yields a complex relationship between overall per-species growth rate and resource availability, which we can describe with:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cfd2ce14-aed7-4e7c-8949-0e272659940a">
-<span class="eqno">()<a class="headerlink" href="#equation-cfd2ce14-aed7-4e7c-8949-0e272659940a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fa8f6263-9657-47da-8285-b55c95bcf9a0">
+<span class="eqno">()<a class="headerlink" href="#equation-fa8f6263-9657-47da-8285-b55c95bcf9a0" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{1}{C_i}\frac{dC_i}{dt} = (\sum_{j=1}^M u_{ij} S_j  (1 - {p_{r}}_j - \sum_{k=1}^{M} l_{jk})) - r_{i}
 \end{align}\]</div>
 <p>where:</p>
@@ -688,13 +696,13 @@ Vectorised method took 72 ms on average.
 <section id="resource-availability">
 <h3>resource availability:<a class="headerlink" href="#resource-availability" title="Link to this heading">#</a></h3>
 <p>The change in carbon resource avaliblity can be attributed either to abiotic processes (which we represent here through the constant term <span class="math notranslate nohighlight">\(\rho_j\)</span>) or through the activity of the bacterial community which takes up resource <span class="math notranslate nohighlight">\(j\)</span> at the rate <span class="math notranslate nohighlight">\(U_j\)</span> and releases it (via the inefficency of uptake) through the <span class="math notranslate nohighlight">\(L_j\)</span> term:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-89438d01-1589-4e43-baac-92890de474ef">
-<span class="eqno">()<a class="headerlink" href="#equation-89438d01-1589-4e43-baac-92890de474ef" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7ee60b9d-d39c-41c3-a18b-97c9904e8438">
+<span class="eqno">()<a class="headerlink" href="#equation-7ee60b9d-d39c-41c3-a18b-97c9904e8438" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dS_j}{dt} = \rho_j - U_j + L_j
 \end{align}\]</div>
 <p>How do the vectors <span class="math notranslate nohighlight">\(U_j\)</span> and <span class="math notranslate nohighlight">\(L_j\)</span> relate to the matricies <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(l\)</span> above? We can get the rates of uptake and release by the community by summing across all <span class="math notranslate nohighlight">\(N\)</span> species in the community and across all <span class="math notranslate nohighlight">\(M\)</span> resources which they release as a result of the <span class="math notranslate nohighlight">\(L_j\)</span> term:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1e5fa2f8-a371-434b-97ad-5d2116fcfddf">
-<span class="eqno">()<a class="headerlink" href="#equation-1e5fa2f8-a371-434b-97ad-5d2116fcfddf" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fb574ba1-9456-4ca4-a217-e934f5813f04">
+<span class="eqno">()<a class="headerlink" href="#equation-fb574ba1-9456-4ca4-a217-e934f5813f04" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dS_j}{dt} = \rho_j - 
                       \sum_{i = 1}^{N} \left( S_j C_i u_{ij}  - \sum_{k = 1}^{N} C_i S_k u_{ik} l_{kj} \right),
 \end{align}\]</div>
@@ -703,12 +711,12 @@ Vectorised method took 72 ms on average.
 <li><p><span class="math notranslate nohighlight">\(\rho =\)</span> constant vector of carbon resource change due to abiotic processes,</p></li>
 <li><p><span class="math notranslate nohighlight">\(C, S, u, l\)</span> are the same as above.</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-712fcc55-4d6d-45df-81fa-5c3eff61afeb">
-<span class="eqno">()<a class="headerlink" href="#equation-712fcc55-4d6d-45df-81fa-5c3eff61afeb" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0e93020d-c722-45ca-9211-0a0a5440c86c">
+<span class="eqno">()<a class="headerlink" href="#equation-0e93020d-c722-45ca-9211-0a0a5440c86c" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{1}{C_i}\frac{dC_i}{dt} = (\sum_{j=1}^M u_{ij} S_j  (1 - {p_{r}}_j - \sum_{k=1}^{M} l_{jk})) - r_{i}
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-33bf7bb4-32f2-44b2-96d9-cc27afeff32e">
-<span class="eqno">()<a class="headerlink" href="#equation-33bf7bb4-32f2-44b2-96d9-cc27afeff32e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-503f9f5b-ef38-4526-9258-43306bcd1310">
+<span class="eqno">()<a class="headerlink" href="#equation-503f9f5b-ef38-4526-9258-43306bcd1310" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dS_j}{dt} = \rho_j - 
                       \sum_{i = 1}^{N} \left( S_j C_i u_{ij}  - \sum_{k = 1}^{N} C_i S_k u_{ik} l_{kj} \right),
 \end{align}\]</div>

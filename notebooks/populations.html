@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -226,6 +226,7 @@
 <li class="toctree-l1"><a class="reference internal" href="metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Single Populations</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="populations-practicals.html">Populations: Practicals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="micrm-to-logistic.html">MiCRM → effective gLV → logistic (single species)</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
@@ -237,6 +238,14 @@
 
 
 
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="predator-prey.html">Predator–prey dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="predator-prey-practicals.html">Predator–prey dynamics: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="epidemiology.html">Epidemiological dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="epidemiology-practicals.html">Epidemiological dynamics: Practicals</a></li>
 </ul>
 </details></li>
 </ul>
@@ -543,6 +552,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-growth-with-temperature-size-dependence">Logistic Growth with Temperature &amp; Size Dependence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-common-logistic-forms">A note on common logistic forms</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-logistic-growth-bifurcations-and-metabolic-constraints">Discrete Logistic Growth, Bifurcations, and Metabolic Constraints</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-microbial-growth-and-metabolism">Connection to Microbial Growth (and Metabolism)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-bifurcation-diagram">Basic Bifurcation Diagram</a></li>
@@ -554,15 +564,20 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A Simple Example</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-populations">Structured populations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fibonacci-rabbits">Fibonacci rabbits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leslie-matrix-model">Leslie matrix model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metapopulations-levins-model-and-rescue-effect">Metapopulations: Levins model and rescue effect</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#levins-model">Levins model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rescue-effect-one-simple-form">Rescue effect (one simple form)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-population-illustration">Human population illustration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-mu-and-doubling-time-from-data">1) Estimate <span class="math notranslate nohighlight">\(\mu\)</span> and doubling time from data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-r-and-doubling-time-from-data">1) Estimate <span class="math notranslate nohighlight">\(r\)</span> and doubling time from data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-vs-continuous-when-does-it-matter">2) Discrete vs continuous: when does it matter?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-a-logistic-model-and-interpret-parameters">3) Fit a logistic model and interpret parameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrhenius-temperature-dependence-calibrate-e">4) Arrhenius temperature dependence (calibrate <span class="math notranslate nohighlight">\(E\)</span>)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#size-scaling-allometry-across-taxa">5) Size scaling (allometry) across taxa</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-size-shifts-in-bifurcation-conditions">6) Temperature/size shifts in bifurcation ‘conditions’</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-stochasticity-to-growth-demographic-vs-environmental">7) Add stochasticity to growth (demographic vs environmental)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consumerresource-model-exploration">8) Consumer–resource model exploration</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
@@ -606,6 +621,77 @@ document.write(`
 <li><p>Understand why unbounded exponential growth is rarely sustainable, motivating <strong>density dependence</strong> and the <strong>logistic</strong> model as an effective description of limited resources.</p></li>
 </ul>
 <p>As we go, we’ll keep using microbes as a running example for the same reasons as in the previous chapter: they make the discrete nature of reproduction (cell division) obvious, they connect cleanly to metabolic ideas, and they let us test models quickly with simple simulations and data.</p>
+<div class="tip admonition">
+<p class="admonition-title">Notation (quick glossary)</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Typical units</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(N_t\)</span></p></td>
+<td><p>abundance at discrete step <span class="math notranslate nohighlight">\(t\)</span></p></td>
+<td><p>individuals</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(N(t)\)</span></p></td>
+<td><p>abundance at continuous time <span class="math notranslate nohighlight">\(t\)</span></p></td>
+<td><p>individuals</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(R\)</span></p></td>
+<td><p>discrete multiplicative growth factor per step</p></td>
+<td><p>dimensionless</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(r\)</span></p></td>
+<td><p>intrinsic per-capita growth rate (“Malthusian” parameter)</p></td>
+<td><p>time<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\mu\)</span></p></td>
+<td><p>alternate notation for intrinsic per-capita growth rate (common in microbiology)</p></td>
+<td><p>time<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(t_d\)</span></p></td>
+<td><p>doubling time (<span class="math notranslate nohighlight">\(t_d=\ln 2 / r\)</span>)</p></td>
+<td><p>time</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(K\)</span></p></td>
+<td><p>carrying capacity (here: abundance unless stated)</p></td>
+<td><p>individuals</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(x_t\)</span></p></td>
+<td><p>scaled abundance (often <span class="math notranslate nohighlight">\(x_t=N_t/K\)</span>)</p></td>
+<td><p>dimensionless</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span></p></td>
+<td><p>logistic-map parameter</p></td>
+<td><p>dimensionless</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\mathbf{u}_t\)</span></p></td>
+<td><p>structured population vector (age/stage abundances)</p></td>
+<td><p>individuals</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(L\)</span></p></td>
+<td><p>Leslie (projection) matrix</p></td>
+<td><p>dimensionless</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\lambda_1\)</span></p></td>
+<td><p>dominant eigenvalue of <span class="math notranslate nohighlight">\(L\)</span> (asymptotic growth factor per step)</p></td>
+<td><p>dimensionless</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(p(t)\)</span></p></td>
+<td><p>fraction of occupied patches (metapopulation)</p></td>
+<td><p>dimensionless</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(c,e\)</span></p></td>
+<td><p>colonisation and extinction rates</p></td>
+<td><p>time<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We use <strong><span class="math notranslate nohighlight">\(r\)</span></strong> throughout for the intrinsic per-capita growth rate. You will also see <strong><span class="math notranslate nohighlight">\(\mu\)</span></strong> in the literature (especially for microbial growth rates); in this chapter you can treat them as the same parameter (<span class="math notranslate nohighlight">\(\mu \equiv r\)</span>) unless we explicitly note otherwise.</p>
+</div>
 <section id="discrete-geometric-growth">
 <h2>Discrete (Geometric) Growth<a class="headerlink" href="#discrete-geometric-growth" title="Link to this heading">#</a></h2>
 <p>Consider a microbial population that reproduces synchronously once per time step (e.g., once every 1 hour, or 1 day, etc.).</p>
@@ -618,6 +704,11 @@ document.write(`
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(R\)</span> is the <strong>discrete multiplicative growth factor per time step</strong> (<span class="math notranslate nohighlight">\(R&gt;1\)</span> for growth, <span class="math notranslate nohighlight">\(0&lt;R&lt;1\)</span> for decay).</p></li>
 <li><p>Over <span class="math notranslate nohighlight">\(T\)</span> steps, <span class="math notranslate nohighlight">\(N_T = R^T\,N_0\)</span>.</p></li>
+</ul>
+<p><strong>Units sanity check</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R\)</span> is <strong>dimensionless</strong> (a multiplier “per step”).</p></li>
+<li><p>If one step corresponds to <span class="math notranslate nohighlight">\(\Delta t\)</span> units of time, then the continuous-time rate relates as <span class="math notranslate nohighlight">\(R = e^{r\,\Delta t}\)</span> (see below).</p></li>
 </ul>
 </section>
 <section id="example-synchronous-cell-division">
@@ -667,43 +758,45 @@ document.write(`
 <p>A continuous model can be written as a differential equation:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{dN}{dt} = \mu\,N(t),
+\frac{dN}{dt} = r\,N(t),
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the intrinsic (per-capita) growth rate (units: time<span class="math notranslate nohighlight">\(^{-1}\)</span>). The solution is:</p>
+<p>where <span class="math notranslate nohighlight">\(r\)</span> is the intrinsic (per-capita) growth rate (units: time<span class="math notranslate nohighlight">\(^{-1}\)</span>). The solution is:</p>
 <div class="math notranslate nohighlight">
 \[
-N(t) = N_0\,e^{\mu t}.
+N(t) = N_0\,e^{r t}.
 \]</div>
-<p>When interpreted at large population sizes, this model can approximate the effect of many asynchronous cell divisions happening randomly but with an average rate <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<p><strong>Note on notation:</strong> many microbiology texts write the intrinsic growth rate as <span class="math notranslate nohighlight">\(\mu\)</span> (“specific growth rate”); throughout this chapter we use <span class="math notranslate nohighlight">\(r\)</span> for consistency, and you can treat <span class="math notranslate nohighlight">\(\mu\equiv r\)</span> unless stated otherwise.</p>
+<p>When interpreted at large population sizes, this model can approximate the effect of many asynchronous cell divisions happening randomly but with an average per-capita rate <span class="math notranslate nohighlight">\(r\)</span>.</p>
 </section>
 <section id="relationship-to-discrete-growth">
 <h3>Relationship to Discrete Growth<a class="headerlink" href="#relationship-to-discrete-growth" title="Link to this heading">#</a></h3>
-<p>If in the discrete model <span class="math notranslate nohighlight">\(N_{t+1} = R\,N_t\)</span>, after <span class="math notranslate nohighlight">\(T\)</span> time steps, <span class="math notranslate nohighlight">\(N_T = R^T N_0\)</span>. Comparing with <span class="math notranslate nohighlight">\(N(t) = N_0 e^{\mu t}\)</span> for the continuous case, we often identify:</p>
+<p>If in the discrete model <span class="math notranslate nohighlight">\(N_{t+1} = R\,N_t\)</span>, after <span class="math notranslate nohighlight">\(T\)</span> time steps, <span class="math notranslate nohighlight">\(N_T = R^T N_0\)</span>. Comparing with <span class="math notranslate nohighlight">\(N(t) = N_0 e^{r t}\)</span> for the continuous case, we often identify:</p>
 <div class="math notranslate nohighlight">
 \[
-R = e^{\mu\,\Delta t},
+R = e^{r\,\Delta t},
 \]</div>
 <p>assuming each time step is <span class="math notranslate nohighlight">\(\Delta t\)</span>. So</p>
 <div class="math notranslate nohighlight">
 \[
-\mu = \frac{1}{\Delta t}\ln(R).
+r = \frac{1}{\Delta t}\ln(R).
 \]</div>
 <p>Thus, discrete and continuous models are conceptually linked. As <span class="math notranslate nohighlight">\(\Delta t\rightarrow 0\)</span>, discrete growth steps become more closely approximated by a continuous growth process.</p>
+<p><strong>Units sanity check:</strong> <span class="math notranslate nohighlight">\(r\)</span> has units time<span class="math notranslate nohighlight">\(^{-1}\)</span>, while <span class="math notranslate nohighlight">\(R\)</span> is dimensionless.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s compare discrete and continuous growth numerically.</span>
 
-<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.7</span>      <span class="c1"># continuous growth rate per time unit</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mf">0.7</span>       <span class="c1"># intrinsic growth rate per time unit</span>
 <span class="n">N0_cont</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># initial population</span>
 <span class="n">t_end</span> <span class="o">=</span> <span class="mf">10.0</span>  <span class="c1"># total time</span>
 
-<span class="c1"># Continuous solution: dN/dt = mu N(t)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">N_continuous</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N0</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">N0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+<span class="c1"># Continuous solution: dN/dt = r N(t)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">N_continuous</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N0</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">N0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
 
 <span class="c1"># For discrete steps, pick a time step dt</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>  <span class="c1"># discrete multiplicative factor per time step</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>  <span class="c1"># discrete multiplicative factor per time step</span>
 
 <span class="n">num_steps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_end</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
 <span class="n">N_discrete_model</span> <span class="o">=</span> <span class="p">[</span><span class="n">N0_cont</span><span class="p">]</span>
@@ -712,7 +805,7 @@ R = e^{\mu\,\Delta t},
 
 <span class="c1"># Sample the continuous solution densely for plotting</span>
 <span class="n">time_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_end</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">N_continuous_vals</span> <span class="o">=</span> <span class="n">N_continuous</span><span class="p">(</span><span class="n">time_array</span><span class="p">,</span> <span class="n">N0_cont</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
+<span class="n">N_continuous_vals</span> <span class="o">=</span> <span class="n">N_continuous</span><span class="p">(</span><span class="n">time_array</span><span class="p">,</span> <span class="n">N0_cont</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_array</span><span class="p">,</span> <span class="n">N_continuous_vals</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Continuous&#39;</span><span class="p">)</span>
@@ -734,31 +827,32 @@ R = e^{\mu\,\Delta t},
 <section id="incorporating-metabolic-effects">
 <h2>Incorporating Metabolic Effects<a class="headerlink" href="#incorporating-metabolic-effects" title="Link to this heading">#</a></h2>
 <blockquote>
-<div><p>Link back: the key message from <a class="reference internal" href="metabolic-basis.html"><span class="doc std std-doc">Metabolic basis</span></a> is that growth and reproduction depend on <strong>energy flux</strong> (metabolic rate) and the <strong>cost</strong> of building/maintaining biomass. In population models, we typically fold that mechanistic detail into a small number of parameters—especially the <strong>per-capita growth rate</strong> <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<div><p>Link back: the key message from <a class="reference internal" href="metabolic-basis.html"><span class="doc std std-doc">Metabolic basis</span></a> is that growth and reproduction depend on <strong>energy flux</strong> (metabolic rate) and the <strong>cost</strong> of building/maintaining biomass. In population models, we typically fold that mechanistic detail into a small number of parameters—especially the <strong>per-capita growth rate</strong> <span class="math notranslate nohighlight">\(r\)</span> (also commonly written <span class="math notranslate nohighlight">\(\mu\)</span> in microbiology).</p>
 </div></blockquote>
 <section id="temperature-dependence">
 <h3>Temperature Dependence<a class="headerlink" href="#temperature-dependence" title="Link to this heading">#</a></h3>
-<p>Enzymatic processes in the cell generally speed up with increasing temperature (until proteins denature at high <span class="math notranslate nohighlight">\(T\)</span>). For simplicity, we can model <span class="math notranslate nohighlight">\(\mu\)</span> via an Arrhenius‐type expression (<span id="id1">[<a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>]</span>):</p>
+<p>Enzymatic processes in the cell generally speed up with increasing temperature (until proteins denature at high <span class="math notranslate nohighlight">\(T\)</span>). For simplicity, we can model <span class="math notranslate nohighlight">\(r\)</span> via an Arrhenius‐type expression (<span id="id1">[<a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>]</span>; see also <span id="id2">[<a class="reference internal" href="../references.html#id168" title="Henry Eyring. The activated complex in chemical reactions. The Journal of Chemical Physics, 3(2):107–115, 1935. doi:10.1063/1.1749604.">Eyring, 1935</a>]</span>):</p>
 <div class="math notranslate nohighlight">
 \[
-\mu(T) = \mu_0 \exp\Bigl(-\frac{E}{k_B T}\Bigr),
+r(T) = r_0 \exp\Bigl(-\frac{E}{k_B T}\Bigr),
 \]</div>
 <p>where,</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(E\)</span> is an activation energy,</p></li>
 <li><p><span class="math notranslate nohighlight">\(k_B\)</span> is Boltzmann’s constant (or simply a scaling constant in some biological contexts),</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mu_0\)</span> is a pre‐exponential factor.</p></li>
+<li><p><span class="math notranslate nohighlight">\(r_0\)</span> is a pre‐exponential factor.</p></li>
 </ul>
-<p>As empirical context for microbes, see <span id="id2">[<a class="reference internal" href="../references.html#id173" title="David A. Ratkowsky, John Olley, Thomas A. McMeekin, and Andrew Ball. Relationship between temperature and growth rate of bacterial cultures. Journal of Bacteriology, 1982.">Ratkowsky <em>et al.</em>, 1982</a>, <a class="reference internal" href="../references.html#id174" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Dependency on medium and temperature of cell size and chemical composition during balanced growth of Salmonella typhimurium. Journal of General Microbiology, 19:592–606, 1958.">Schaechter <em>et al.</em>, 1958</a>, <a class="reference internal" href="../references.html#id175" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Balanced growth of Salmonella typhimurium: effects of medium and temperature on cell size and composition. 1962. Often cited alongside Schaechter et al. (1958). Please verify exact publication venue/pages for the 1962 follow-up and update this entry if needed.">Schaechter <em>et al.</em>, 1962</a>]</span>.</p>
+<p>As empirical context for microbes, see <span id="id3">[<a class="reference internal" href="../references.html#id173" title="David A. Ratkowsky, John Olley, Thomas A. McMeekin, and Andrew Ball. Relationship between temperature and growth rate of bacterial cultures. Journal of Bacteriology, 1982.">Ratkowsky <em>et al.</em>, 1982</a>, <a class="reference internal" href="../references.html#id174" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Dependency on medium and temperature of cell size and chemical composition during balanced growth of Salmonella typhimurium. Journal of General Microbiology, 19:592–606, 1958.">Schaechter <em>et al.</em>, 1958</a>, <a class="reference internal" href="../references.html#id175" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Balanced growth of Salmonella typhimurium: effects of medium and temperature on cell size and composition. 1962. Often cited alongside Schaechter et al. (1958). Please verify exact publication venue/pages for the 1962 follow-up and update this entry if needed.">Schaechter <em>et al.</em>, 1962</a>]</span>.</p>
+<p><strong>Units sanity check:</strong> <span class="math notranslate nohighlight">\(r(T)\)</span> has units time<span class="math notranslate nohighlight">\(^{-1}\)</span>, so <span class="math notranslate nohighlight">\(r_0\)</span> must also carry units time<span class="math notranslate nohighlight">\(^{-1}\)</span> for the exponential factor to be dimensionless.</p>
 </section>
 <section id="cellsize-scaling-mte">
 <h3>Cell‐Size Scaling (MTE)<a class="headerlink" href="#cellsize-scaling-mte" title="Link to this heading">#</a></h3>
-<p>A common MTE-style assumption is that <strong>whole-organism metabolic rate</strong> scales as <span class="math notranslate nohighlight">\(B \propto M^b\)</span> (often <span class="math notranslate nohighlight">\(b \approx 3/4\)</span>). If growth is limited by energy processing, then a <em>mass-specific</em> rate (per unit biomass) scales like <span class="math notranslate nohighlight">\(B/M \propto M^{b-1}\)</span>. This motivates a size dependence of the intrinsic (per-capita) growth rate (<span id="id3">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>):</p>
+<p>A common MTE-style assumption is that <strong>whole-organism metabolic rate</strong> scales as <span class="math notranslate nohighlight">\(B \propto M^b\)</span> (often <span class="math notranslate nohighlight">\(b \approx 3/4\)</span>). If growth is limited by energy processing, then a <em>mass-specific</em> rate (per unit biomass) scales like <span class="math notranslate nohighlight">\(B/M \propto M^{b-1}\)</span>. This motivates a size dependence of the intrinsic (per-capita) growth rate (<span id="id4">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>):</p>
 <div class="math notranslate nohighlight">
 \[
-\mu(T,M) = \mu_0 M^{b-1} \exp\Bigl(-\frac{E}{k_B T}\Bigr).
+r(T,M) = r_0 M^{b-1} \exp\Bigl(-\frac{E}{k_B T}\Bigr).
 \]</div>
-<p>With <span class="math notranslate nohighlight">\(b=3/4\)</span>, this gives <span class="math notranslate nohighlight">\(\mu \propto M^{-1/4}\)</span>: <strong>smaller organisms (or smaller cells) tend to have higher mass-specific growth rates</strong>, all else equal.</p>
+<p>With <span class="math notranslate nohighlight">\(b=3/4\)</span>, this gives <span class="math notranslate nohighlight">\(r \propto M^{-1/4}\)</span>: <strong>smaller organisms (or smaller cells) tend to have higher mass-specific growth rates</strong>, all else equal.</p>
 </section>
 <section id="what-does-size-scaling-do-to-the-dynamics">
 <h3>What does size-scaling <em>do</em> to the dynamics?<a class="headerlink" href="#what-does-size-scaling-do-to-the-dynamics" title="Link to this heading">#</a></h3>
@@ -766,65 +860,81 @@ R = e^{\mu\,\Delta t},
 <ol class="arabic">
 <li><p><strong>Exponential phase (early growth):</strong></p>
 <div class="math notranslate nohighlight">
-\[N(t) = N_0 e^{\mu t}\]</div>
-<p>so larger <span class="math notranslate nohighlight">\(M\)</span> (smaller <span class="math notranslate nohighlight">\(\mu\)</span>) means a <em>shallower</em> exponential curve. The <strong>doubling time</strong> makes this explicit:</p>
+\[N(t) = N_0 e^{r t}\]</div>
+<p>so larger <span class="math notranslate nohighlight">\(M\)</span> (smaller <span class="math notranslate nohighlight">\(r\)</span>) means a <em>shallower</em> exponential curve. The <strong>doubling time</strong> makes this explicit:</p>
 <div class="math notranslate nohighlight">
-\[t_d = \frac{\ln 2}{\mu(T,M)} \;\propto\; M^{1-b}\,\exp\Bigl(\frac{E}{k_B T}\Bigr).\]</div>
+\[t_d = \frac{\ln 2}{r(T,M)} \;\propto\; M^{1-b}\,\exp\Bigl(\frac{E}{k_B T}\Bigr).\]</div>
 <p>For <span class="math notranslate nohighlight">\(b=3/4\)</span>, <span class="math notranslate nohighlight">\(t_d \propto M^{1/4}\)</span>: larger organisms generally take longer to double.</p>
 </li>
 <li><p><strong>Logistic phase (resource limitation):</strong></p>
 <div class="math notranslate nohighlight">
-\[\frac{dN}{dt} = \mu(T,M)\,N\Bigl(1-\frac{N}{K}\Bigr)\]</div>
-<p>Size can enter <em>both</em> <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(K\)</span>. A simple energetic argument is: if the environment provides a roughly fixed resource/energy supply rate <span class="math notranslate nohighlight">\(S\)</span> and each individual requires metabolic power <span class="math notranslate nohighlight">\(B \propto M^{3/4}\)</span>, then the maximum sustainable <strong>abundance</strong> scales like</p>
+\[\frac{dN}{dt} = r(T,M)\,N\Bigl(1-\frac{N}{K}\Bigr)\]</div>
+<p>Size can enter <em>both</em> <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(K\)</span>. A simple energetic argument is: if the environment provides a roughly fixed resource/energy supply rate <span class="math notranslate nohighlight">\(S\)</span> and each individual requires metabolic power <span class="math notranslate nohighlight">\(B \propto M^{3/4}\)</span>, then the maximum sustainable <strong>abundance</strong> scales like</p>
 <div class="math notranslate nohighlight">
 \[K \propto \frac{S}{B} \propto M^{-3/4}.\]</div>
 <p>This means bigger organisms typically have <em>lower</em> carrying capacities in terms of <strong>number of individuals</strong>, even if the total standing <strong>biomass</strong> can be similar or larger (since <span class="math notranslate nohighlight">\(K\,M \propto M^{1/4}\)</span> under these assumptions).</p>
 <p><strong>Abundance vs biomass carrying capacity:</strong> be explicit about what your state variable represents. In the logistic model above, <span class="math notranslate nohighlight">\(K\)</span> is a limit on <em>abundance</em> <span class="math notranslate nohighlight">\(N\)</span>. If instead you model total biomass <span class="math notranslate nohighlight">\(B_{\text{tot}}=MN\)</span>, then the effective “carrying capacity” is a limit on biomass rather than individuals, and scaling with <span class="math notranslate nohighlight">\(M\)</span> can look different. This is why comparing <span class="math notranslate nohighlight">\(K\)</span> values across taxa of very different size only makes sense once you specify whether you mean <strong>individuals</strong>, <strong>biomass</strong>, or <strong>energy flux</strong>.</p>
 </li>
 </ol>
-<p>Below we’ll visualize these effects in a toy example by letting size change both <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(K\)</span>.</p>
+<p>Below we’ll visualize these effects in a toy example by letting size change both <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(K\)</span>.</p>
 </section>
 </section>
 <section id="logistic-growth-with-temperature-size-dependence">
 <h2>Logistic Growth with Temperature &amp; Size Dependence<a class="headerlink" href="#logistic-growth-with-temperature-size-dependence" title="Link to this heading">#</a></h2>
-<p>A standard way to extend exponential growth to include resource limitation is the <strong>logistic model</strong> (<span id="id4">[<a class="reference internal" href="../references.html#id171" title="Pierre-François Verhulst. Notice sur la loi que la population poursuit dans son accroissement. Correspondance Mathématique et Physique, 10:113–121, 1838.">Verhulst, 1838</a>]</span>):</p>
+<p>A standard way to extend exponential growth to include resource limitation is the <strong>logistic model</strong> (<span id="id5">[<a class="reference internal" href="../references.html#id171" title="Pierre-François Verhulst. Notice sur la loi que la population poursuit dans son accroissement. Correspondance Mathématique et Physique, 10:113–121, 1838.">Verhulst, 1838</a>]</span>):</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{dN}{dt} = \mu(T,M)\,N \Bigl(1 - \frac{N}{K}\Bigr).
+\frac{dN}{dt} = r(T,M)\,N \Bigl(1 - \frac{N}{K}\Bigr).
 \]</div>
-<p>Here <span class="math notranslate nohighlight">\(K\)</span> is the <strong>carrying capacity in abundance</strong> (i.e., the maximum sustainable <em>number of individuals</em> under the model assumptions). If instead you model biomass (or energy flux) as the state variable, the corresponding “carrying capacity” would be defined in those units and can scale differently with size.</p>
-<p>In the previous chapter we motivated how temperature (and, in simple allometric arguments, size) can shape the <em>per-capita</em> growth parameter <span class="math notranslate nohighlight">\(\mu(T,M)\)</span>. A common metabolically motivated form is:</p>
+<p>Here:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r(T,M)\)</span> is the intrinsic per-capita growth rate (units time<span class="math notranslate nohighlight">\(^{-1}\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(K\)</span> is the <strong>carrying capacity in abundance</strong> (i.e., the maximum sustainable <em>number of individuals</em> under the model assumptions; units: individuals).</p></li>
+</ul>
+<p>If instead you model biomass (or energy flux) as the state variable, the corresponding “carrying capacity” would be defined in those units and can scale differently with size.</p>
+<section id="a-note-on-common-logistic-forms">
+<h3>A note on common logistic forms<a class="headerlink" href="#a-note-on-common-logistic-forms" title="Link to this heading">#</a></h3>
+<p>You will see several algebraically related versions in the literature. The key is to check how the parameters are defined (especially units):</p>
+<ul class="simple">
+<li><p><strong>Standard (dimensionally consistent) form:</strong> <span class="math notranslate nohighlight">\(\frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)\)</span>, where <span class="math notranslate nohighlight">\(K\)</span> has units of individuals.</p></li>
+<li><p><strong>Alternative parameterisation:</strong> <span class="math notranslate nohighlight">\(\frac{dN}{dt}=rN\,(K-N)\)</span> is only dimensionally correct if <span class="math notranslate nohighlight">\(K\)</span> is interpreted as <em>inverse individuals</em> (or if <span class="math notranslate nohighlight">\(r\)</span> has been rescaled accordingly). In ecology, authors sometimes write a form like this with parameters redefined; don’t mix parameter meanings across forms.</p></li>
+</ul>
+<p>In the previous chapter we motivated how temperature (and, in simple allometric arguments, size) can shape the per-capita growth parameter. A common metabolically motivated form is (<span id="id6">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>; microbial temperature dependence examples in <span id="id7">[<a class="reference internal" href="../references.html#id173" title="David A. Ratkowsky, John Olley, Thomas A. McMeekin, and Andrew Ball. Relationship between temperature and growth rate of bacterial cultures. Journal of Bacteriology, 1982.">Ratkowsky <em>et al.</em>, 1982</a>, <a class="reference internal" href="../references.html#id174" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Dependency on medium and temperature of cell size and chemical composition during balanced growth of Salmonella typhimurium. Journal of General Microbiology, 19:592–606, 1958.">Schaechter <em>et al.</em>, 1958</a>]</span>):</p>
 <div class="math notranslate nohighlight">
 \[
-\mu(T,M) = \mu_0\, M^{b-1}\, \exp \Bigl(-\frac{E}{k_B T}\Bigr).
+r(T,M) = r_0\, M^{b-1}\, \exp \Bigl(-\frac{E}{k_B T}\Bigr).
 \]</div>
-<p>For the commonly used case <span class="math notranslate nohighlight">\(b=3/4\)</span>, this becomes <span class="math notranslate nohighlight">\(\mu(T,M)=\mu_0\,M^{-1/4}\exp\bigl(-E/(k_B T)\bigr)\)</span>, so the logistic model can be written as:</p>
+<p>For the commonly used case <span class="math notranslate nohighlight">\(b=3/4\)</span>, this becomes <span class="math notranslate nohighlight">\(r(T,M)=r_0\,M^{-1/4}\exp\bigl(-E/(k_B T)\bigr)\)</span>, so the logistic model can be written as:</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{dN}{dt} = \Bigl[
   \underbrace{
-    \mu_0\,M^{-\tfrac{1}{4}}
+    r_0\,M^{-\tfrac{1}{4}}
     \exp \Bigl(-\tfrac{E}{k_B T}\Bigr)
   }_{\text{Temperature \&amp; size dependent rate}}
 \Bigr]
  N
  \Bigl(1 - \tfrac{N}{K}\Bigr).
 \]</div>
-<!-- Below, we do a simple numerical integration of this logistic equation. --><section id="discrete-logistic-growth-bifurcations-and-metabolic-constraints">
+<!-- Below, we do a simple numerical integration of this logistic equation. --></section>
+<section id="discrete-logistic-growth-bifurcations-and-metabolic-constraints">
 <h3>Discrete Logistic Growth, Bifurcations, and Metabolic Constraints<a class="headerlink" href="#discrete-logistic-growth-bifurcations-and-metabolic-constraints" title="Link to this heading">#</a></h3>
 <p>A common <strong>dimensionless</strong> discrete-time model for density dependence is the <em>logistic map</em>. For a scaled population <span class="math notranslate nohighlight">\(x_t \in [0,1]\)</span> (think <span class="math notranslate nohighlight">\(x_t = N_t/K\)</span>), it is:</p>
 <div class="math notranslate nohighlight">
 \[
 x_{t+1} = r_{\mathrm{map}}\,x_t\,(1-x_t).
 \]</div>
-<p>This equation can exhibit stable fixed points, cycles of period 2, 4, 8, … and eventually <em>chaos</em> as <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> increases (see <span id="id5">[<a class="reference internal" href="../references.html#id176" title="Robert M. May. Simple mathematical models with very complicated dynamics. Nature, 261:459–467, 1976. doi:10.1038/261459a0.">May, 1976</a>]</span>; for period-doubling universality see <span id="id6">[<a class="reference internal" href="../references.html#id177" title="Mitchell J. Feigenbaum. Quantitative universality for a class of nonlinear transformations. Journal of Statistical Physics, 19(1):25–52, 1978. doi:10.1007/BF01020332.">Feigenbaum, 1978</a>]</span>).</p>
+<p><strong>Why use a map at all?</strong> Discrete-time models are most natural when reproduction and/or density dependence occur in pulses (seasonal breeding, discrete generations, periodic harvesting, pulsed resources), or when you only observe the system at regular intervals. They can also be useful as <em>caricatures</em> of more complex continuous dynamics.</p>
+<p><strong>When not to use it:</strong> if births and deaths occur continuously and the time step is an arbitrary sampling choice, a continuous-time model (ODE) is often more defensible; discrete maps can exaggerate instability if the step is too large.</p>
+<p><strong>Units sanity check:</strong> <span class="math notranslate nohighlight">\(x_t\)</span> and <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> are both dimensionless.</p>
+<p>This equation can exhibit stable fixed points, cycles of period 2, 4, 8, … and eventually <em>chaos</em> as <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> increases (see <span id="id8">[<a class="reference internal" href="../references.html#id176" title="Robert M. May. Simple mathematical models with very complicated dynamics. Nature, 261:459–467, 1976. doi:10.1038/261459a0.">May, 1976</a>]</span>; for period-doubling universality see <span id="id9">[<a class="reference internal" href="../references.html#id177" title="Mitchell J. Feigenbaum. Quantitative universality for a class of nonlinear transformations. Journal of Statistical Physics, 19(1):25–52, 1978. doi:10.1007/BF01020332.">Feigenbaum, 1978</a>]</span>).</p>
 </section>
 <section id="connection-to-microbial-growth-and-metabolism">
 <h3>Connection to Microbial Growth (and Metabolism)<a class="headerlink" href="#connection-to-microbial-growth-and-metabolism" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>In real microbial systems, temperature and cell size affect the <strong>continuous-time</strong> intrinsic growth rate <span class="math notranslate nohighlight">\(\mu(T,M)\)</span>.</p></li>
-<li><p>When we observe populations at discrete intervals (e.g., daily sampling, or per generation), <span class="math notranslate nohighlight">\(\mu(T,M)\)</span> induces an effective discrete multiplier <span class="math notranslate nohighlight">\(R=e^{\mu\Delta t}\)</span> during the early (near-exponential) phase.</p></li>
-<li><p>After rescaling abundances to <span class="math notranslate nohighlight">\(x_t\in[0,1]\)</span> and choosing a particular discrete-time model, changes in <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(M\)</span> can be interpreted as shifting an <em>effective</em> density-dependent parameter such as <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> (larger <span class="math notranslate nohighlight">\(\mu\Delta t\)</span> typically corresponds to larger <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span>, though the exact mapping depends on how you discretise and rescale).</p></li>
+<li><p>In real microbial systems, temperature and cell size affect the <strong>continuous-time</strong> intrinsic growth rate <span class="math notranslate nohighlight">\(r(T,M)\)</span> (often written <span class="math notranslate nohighlight">\(\mu(T,M)\)</span> in microbiology).</p></li>
+<li><p>When we observe populations at discrete intervals (e.g., daily sampling, or per generation), <span class="math notranslate nohighlight">\(r(T,M)\)</span> induces an effective discrete multiplier <span class="math notranslate nohighlight">\(R=e^{r\Delta t}\)</span> during the early (near-exponential) phase.</p></li>
+<li><p>After rescaling abundances to <span class="math notranslate nohighlight">\(x_t\in[0,1]\)</span> and choosing a particular discrete-time model, changes in <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(M\)</span> can be interpreted as shifting an <em>effective</em> density-dependent parameter such as <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> (larger <span class="math notranslate nohighlight">\(r\Delta t\)</span> typically corresponds to larger <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span>, though the exact mapping depends on how you discretise and rescale).</p></li>
 </ul>
 </section>
 <section id="basic-bifurcation-diagram">
@@ -885,26 +995,26 @@ x_{t+1} = r_{\mathrm{map}}\,x_t\,(1-x_t).
 <h3>Interpreting Temperature &amp; Cell-Size Effects as Parameter Shifts<a class="headerlink" href="#interpreting-temperature-cell-size-effects-as-parameter-shifts" title="Link to this heading">#</a></h3>
 <p>To connect continuous-time growth rates back to discrete-time dynamics, it helps to separate three related (but distinct) objects:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\mu(T,M)\)</span>: a <strong>continuous-time</strong> intrinsic growth rate (units time<span class="math notranslate nohighlight">\(^{-1}\)</span>)</p></li>
-<li><p><span class="math notranslate nohighlight">\(R=e^{\mu\Delta t}\)</span>: a <strong>discrete multiplicative factor</strong> over an observation interval <span class="math notranslate nohighlight">\(\Delta t\)</span> during the near-exponential phase</p></li>
+<li><p><span class="math notranslate nohighlight">\(r(T,M)\)</span>: a <strong>continuous-time</strong> intrinsic growth rate (units time<span class="math notranslate nohighlight">\(^{-1}\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(R=e^{r\Delta t}\)</span>: a <strong>discrete multiplicative factor</strong> over an observation interval <span class="math notranslate nohighlight">\(\Delta t\)</span> during the near-exponential phase</p></li>
 <li><p><span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span>: a <strong>dimensionless</strong> parameter in a chosen discrete-time density-dependent map (like the logistic map)</p></li>
 </ul>
 <p>One simple way to discretise the continuous logistic model is an Euler step:</p>
 <div class="math notranslate nohighlight">
 \[
-N_{t+1} = N_t + \mu(T,M)\,N_t\Bigl(1 - \frac{N_t}{K}\Bigr)\,\Delta t.
+N_{t+1} = N_t + r(T,M)\,N_t\Bigl(1 - \frac{N_t}{K}\Bigr)\,\Delta t.
 \]</div>
 <p>If we scale by <span class="math notranslate nohighlight">\(K\)</span> and define <span class="math notranslate nohighlight">\(x_t = N_t/K\)</span>, then:</p>
 <div class="math notranslate nohighlight">
 \[
-x_{t+1} = x_t + \mu(T,M)\,\Delta t\,x_t(1-x_t).
+x_{t+1} = x_t + r(T,M)\,\Delta t\,x_t(1-x_t).
 \]</div>
 <p>The <strong>logistic map</strong> is a different (but qualitatively similar) discrete-time model:</p>
 <div class="math notranslate nohighlight">
 \[
 x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 \]</div>
-<p>Important subtlety: <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> is <strong>dimensionless</strong> and depends on the chosen time step and rescaling. For small <span class="math notranslate nohighlight">\(\mu\Delta t\)</span>, the Euler form behaves like a gentle density-dependent correction to exponential growth; increasing <span class="math notranslate nohighlight">\(T\)</span> or decreasing <span class="math notranslate nohighlight">\(M\)</span> typically increases <span class="math notranslate nohighlight">\(\mu(T,M)\)</span> and therefore increases the effective “strength” of growth over a step, which you can think of as pushing you toward larger effective <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> in map-based models (though the exact correspondence depends on your discretisation choice).</p>
+<p>Important subtlety: <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> is <strong>dimensionless</strong> and depends on the chosen time step and rescaling. For small <span class="math notranslate nohighlight">\(r\Delta t\)</span>, the Euler form behaves like a gentle density-dependent correction to exponential growth; increasing <span class="math notranslate nohighlight">\(T\)</span> or decreasing <span class="math notranslate nohighlight">\(M\)</span> typically increases <span class="math notranslate nohighlight">\(r(T,M)\)</span> and therefore increases the effective “strength” of growth over a step, which you can think of as pushing you toward larger effective <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> in map-based models (though the exact correspondence depends on your discretisation choice).</p>
 <p>Hence, <em>sweeping</em> <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> from ~2.5 to 4.0 in the standard logistic map can be thought of (qualitatively) as increasing the effective growth-per-step, which in real systems could arise from changes in temperature and/or organism size.</p>
 <p>Thus, bifurcation analysis of the logistic map reveals:</p>
 <ul class="simple">
@@ -918,26 +1028,26 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <p>The logistic map’s bifurcation points occur at fixed values of <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> (e.g., period-doubling starts at <span class="math notranslate nohighlight">\(r_{\mathrm{map}}=3\)</span>). Metabolism and size do <strong>not</strong> change those numerical values; instead they change the mapping from biology (<span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(M\)</span>) to the <strong>effective</strong> growth-per-step parameter <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span>.</p>
 <p>A simple way to <em>show</em> this is:</p>
 <ol class="arabic simple">
-<li><p>Choose a mapping <span class="math notranslate nohighlight">\(r_{\mathrm{map}} = g(\mu(T,M)\,\Delta t)\)</span> that is monotone increasing in <span class="math notranslate nohighlight">\(\mu\Delta t\)</span>.</p></li>
-<li><p>Use Arrhenius + allometry for <span class="math notranslate nohighlight">\(\mu(T,M)\)</span>.</p></li>
+<li><p>Choose a mapping <span class="math notranslate nohighlight">\(r_{\mathrm{map}} = g(r(T,M)\,\Delta t)\)</span> that is monotone increasing in <span class="math notranslate nohighlight">\(r\Delta t\)</span>.</p></li>
+<li><p>Use Arrhenius + allometry for <span class="math notranslate nohighlight">\(r(T,M)\)</span> (<span id="id10">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>).</p></li>
 <li><p>Plot <span class="math notranslate nohighlight">\(r_{\mathrm{map}}(T)\)</span> for different <span class="math notranslate nohighlight">\(M\)</span> values and mark where it crosses the canonical bifurcation thresholds.</p></li>
 </ol>
-<p>Below we use the simplest monotone mapping <span class="math notranslate nohighlight">\(r_{\mathrm{map}} = \exp(\mu\Delta t)\)</span> (so that <span class="math notranslate nohighlight">\(\ln r_{\mathrm{map}} = \mu\Delta t\)</span>). This is not the only possible mapping, but it’s easy to interpret and makes the dependence on <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(M\)</span> explicit.</p>
+<p>Below we use the simplest monotone mapping <span class="math notranslate nohighlight">\(r_{\mathrm{map}} = \exp(r\Delta t)\)</span> (so that <span class="math notranslate nohighlight">\(\ln r_{\mathrm{map}} = r\Delta t\)</span>). This is not the only possible mapping, but it’s easy to interpret and makes the dependence on <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(M\)</span> explicit.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="c1"># --- Model ingredients (reuse mu_TM from earlier if it exists) ---</span>
+<span class="c1"># --- Model ingredients (reuse r_TM from earlier if it exists) ---</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="n">mu_TM</span>
+    <span class="n">r_TM</span>
 <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">mu_TM</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">mu0</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="n">kB</span><span class="o">=</span><span class="mf">0.001987</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.75</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">mu0</span> <span class="o">*</span> <span class="p">(</span><span class="n">M</span> <span class="o">**</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">E</span> <span class="o">/</span> <span class="p">(</span><span class="n">kB</span> <span class="o">*</span> <span class="n">T</span><span class="p">))</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">r_TM</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">r0</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="n">kB</span><span class="o">=</span><span class="mf">0.001987</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.75</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">r0</span> <span class="o">*</span> <span class="p">(</span><span class="n">M</span> <span class="o">**</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">E</span> <span class="o">/</span> <span class="p">(</span><span class="n">kB</span> <span class="o">*</span> <span class="n">T</span><span class="p">))</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">r_map_from_mu</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">dt_map</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">r_map_from_r</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">dt_map</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple monotone mapping from continuous-time rate to logistic-map parameter.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mu</span> <span class="o">*</span> <span class="n">dt_map</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">dt_map</span><span class="p">)</span>
 
 <span class="c1"># Canonical bifurcation thresholds for the logistic map x_{t+1} = r_map x_t (1-x_t)</span>
 <span class="n">r_thresholds</span> <span class="o">=</span> <span class="p">{</span>
@@ -952,8 +1062,8 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <span class="c1"># Here: pick dt_map so that at a reference (T_ref, M_ref) we sit exactly at the first period-doubling r_map=3.</span>
 <span class="n">T_ref</span> <span class="o">=</span> <span class="mf">300.0</span>
 <span class="n">M_ref</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">mu_ref</span> <span class="o">=</span> <span class="n">mu_TM</span><span class="p">(</span><span class="n">T_ref</span><span class="p">,</span> <span class="n">M_ref</span><span class="p">)</span>
-<span class="n">dt_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">r_thresholds</span><span class="p">[</span><span class="s2">&quot;fixed point → period-2&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">mu_ref</span>
+<span class="n">r_ref</span> <span class="o">=</span> <span class="n">r_TM</span><span class="p">(</span><span class="n">T_ref</span><span class="p">,</span> <span class="n">M_ref</span><span class="p">)</span>
+<span class="n">dt_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">r_thresholds</span><span class="p">[</span><span class="s2">&quot;fixed point → period-2&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">r_ref</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calibration: at T=</span><span class="si">{</span><span class="n">T_ref</span><span class="si">}</span><span class="s2"> K, M=</span><span class="si">{</span><span class="n">M_ref</span><span class="si">}</span><span class="s2">, dt_map=</span><span class="si">{</span><span class="n">dt_map</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> gives r_map=3&quot;</span><span class="p">)</span>
 
@@ -963,9 +1073,9 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">M</span> <span class="ow">in</span> <span class="n">masses</span><span class="p">:</span>
-    <span class="n">mu_vals</span> <span class="o">=</span> <span class="n">mu_TM</span><span class="p">(</span><span class="n">T_grid</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
-    <span class="n">r_vals</span> <span class="o">=</span> <span class="n">r_map_from_mu</span><span class="p">(</span><span class="n">mu_vals</span><span class="p">,</span> <span class="n">dt_map</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_grid</span><span class="p">,</span> <span class="n">r_vals</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;M=</span><span class="si">{</span><span class="n">M</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">r_vals</span> <span class="o">=</span> <span class="n">r_TM</span><span class="p">(</span><span class="n">T_grid</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+    <span class="n">rmap_vals</span> <span class="o">=</span> <span class="n">r_map_from_r</span><span class="p">(</span><span class="n">r_vals</span><span class="p">,</span> <span class="n">dt_map</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_grid</span><span class="p">,</span> <span class="n">rmap_vals</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;M=</span><span class="si">{</span><span class="n">M</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Add horizontal lines at bifurcation thresholds</span>
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">r_star</span> <span class="ow">in</span> <span class="n">r_thresholds</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -997,8 +1107,8 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Approx threshold temperatures (K):&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">M</span> <span class="ow">in</span> <span class="n">masses</span><span class="p">:</span>
-    <span class="n">r_vals</span> <span class="o">=</span> <span class="n">r_map_from_mu</span><span class="p">(</span><span class="n">mu_TM</span><span class="p">(</span><span class="n">T_grid</span><span class="p">,</span> <span class="n">M</span><span class="p">),</span> <span class="n">dt_map</span><span class="p">)</span>
-    <span class="n">temps</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">crossing_temperature</span><span class="p">(</span><span class="n">T_grid</span><span class="p">,</span> <span class="n">r_vals</span><span class="p">,</span> <span class="n">r_star</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">r_star</span> <span class="ow">in</span> <span class="n">r_thresholds</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    <span class="n">rmap_vals</span> <span class="o">=</span> <span class="n">r_map_from_r</span><span class="p">(</span><span class="n">r_TM</span><span class="p">(</span><span class="n">T_grid</span><span class="p">,</span> <span class="n">M</span><span class="p">),</span> <span class="n">dt_map</span><span class="p">)</span>
+    <span class="n">temps</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">crossing_temperature</span><span class="p">(</span><span class="n">T_grid</span><span class="p">,</span> <span class="n">rmap_vals</span><span class="p">,</span> <span class="n">r_star</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">r_star</span> <span class="ow">in</span> <span class="n">r_thresholds</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
     <span class="n">temps_fmt</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="p">(</span><span class="kc">None</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">round</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">temps</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  M=</span><span class="si">{</span><span class="n">M</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">temps_fmt</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
@@ -1012,13 +1122,13 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <p>So far, the logistic model treats population growth as self-limited by density:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{dN}{dt} = \mu\,N\Bigl(1 - \frac{N}{K}\Bigr),
+\frac{dN}{dt} = r\,N\Bigl(1 - \frac{N}{K}\Bigr),
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the intrinsic (per-capita) growth rate and <span class="math notranslate nohighlight">\(K\)</span> is the carrying capacity (in abundance). In reality, populations are also affected by external factors such as predators, pathogens, competitors, or harvesting.</p>
+<p>where <span class="math notranslate nohighlight">\(r\)</span> is the intrinsic (per-capita) growth rate and <span class="math notranslate nohighlight">\(K\)</span> is the carrying capacity (in abundance). In reality, populations are also affected by external factors such as predators, pathogens, competitors, or harvesting.</p>
 <p>Suppose the predator population is <span class="math notranslate nohighlight">\(P\)</span>, and per-predator consumption depends on prey abundance through a functional response <span class="math notranslate nohighlight">\(f(N)\)</span>. Then predation removes <span class="math notranslate nohighlight">\(f(N)P\)</span> prey per unit time, giving:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{dN}{dt} = \mu\,N\Bigl(1 - \frac{N}{K}\Bigr) - f(N)P.
+\frac{dN}{dt} = r\,N\Bigl(1 - \frac{N}{K}\Bigr) - f(N)P.
 \]</div>
 <p>If consumed prey are converted into predator births with efficiency <span class="math notranslate nohighlight">\(e\)</span>, and predators die at per-capita rate <span class="math notranslate nohighlight">\(m\)</span>, then predator dynamics are:</p>
 <div class="math notranslate nohighlight">
@@ -1029,7 +1139,7 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
-&amp;\frac{dN}{dt} = \mu N \left(1 - \frac{N}{K}\right) - f(N)P,\\
+&amp;\frac{dN}{dt} = r N \left(1 - \frac{N}{K}\right) - f(N)P,\\
 &amp;\frac{dP}{dt} = e f(N)P - mP.
 \end{aligned}
 \end{split}\]</div>
@@ -1037,7 +1147,7 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
-&amp;\frac{dN}{dt} = \mu N \left(1 - \frac{N}{K}\right) - aNP,\\
+&amp;\frac{dN}{dt} = r N \left(1 - \frac{N}{K}\right) - aNP,\\
 &amp;\frac{dP}{dt} = eaNP - mP.
 \end{aligned}
 \end{split}\]</div>
@@ -1045,7 +1155,7 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
-&amp;\frac{dR}{dt} = \mu R \left(1 - \frac{R}{K}\right) - aRC,\\
+&amp;\frac{dR}{dt} = r R \left(1 - \frac{R}{K}\right) - aRC,\\
 &amp;\frac{dC}{dt} = wRC - mC.
 \end{aligned}
 \end{split}\]</div>
@@ -1059,7 +1169,7 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
 
 <span class="c1"># Parameters for the consumer–resource model</span>
-<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.8</span>   <span class="c1"># intrinsic growth rate of resource (time^-1)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mf">0.8</span>    <span class="c1"># intrinsic growth rate of resource (time^-1)</span>
 <span class="n">K</span> <span class="o">=</span> <span class="mi">100</span>    <span class="c1"># carrying capacity of resource (abundance)</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mf">0.05</span>   <span class="c1"># consumption rate</span>
 <span class="n">w</span> <span class="o">=</span> <span class="mf">0.03</span>   <span class="c1"># conversion efficiency parameter (w = e*a in the linear-response case)</span>
@@ -1076,7 +1186,7 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <span class="k">def</span><span class="w"> </span><span class="nf">resource_consumer_model</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;ODE system for a simple consumer–resource model.&quot;&quot;&quot;</span>
     <span class="n">R</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">y</span>
-    <span class="n">dR_dt</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">R</span> <span class="o">/</span> <span class="n">K</span><span class="p">)</span> <span class="o">-</span> <span class="n">a</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">C</span>
+    <span class="n">dR_dt</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">R</span> <span class="o">/</span> <span class="n">K</span><span class="p">)</span> <span class="o">-</span> <span class="n">a</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">C</span>
     <span class="n">dC_dt</span> <span class="o">=</span> <span class="n">w</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">C</span> <span class="o">-</span> <span class="n">m</span> <span class="o">*</span> <span class="n">C</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">dR_dt</span><span class="p">,</span> <span class="n">dC_dt</span><span class="p">]</span>
 
@@ -1121,30 +1231,32 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 <span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">65</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 
-<span class="c1"># Closed-form logistic solution for fitting: N(t) = K / (1 + A e^{-mu t})</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">logistic_solution</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">K</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">mu</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span>
+<span class="c1"># Closed-form logistic solution for fitting: N(t) = K / (1 + A e^{-r t})</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">logistic_solution</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">K</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span>
 
 <span class="c1"># Initial guesses</span>
 <span class="n">K0</span> <span class="o">=</span> <span class="n">N</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<span class="n">mu0</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">r0</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">A0</span> <span class="o">=</span> <span class="p">(</span><span class="n">K0</span> <span class="o">/</span> <span class="n">N</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mf">1.0</span>
-<span class="n">p0</span> <span class="o">=</span> <span class="p">[</span><span class="n">mu0</span><span class="p">,</span> <span class="n">K0</span><span class="p">,</span> <span class="n">A0</span><span class="p">]</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="p">[</span><span class="n">r0</span><span class="p">,</span> <span class="n">K0</span><span class="p">,</span> <span class="n">A0</span><span class="p">]</span>
 
 <span class="n">params</span><span class="p">,</span> <span class="n">cov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">logistic_solution</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="n">p0</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">))</span>
-<span class="n">mu_hat</span><span class="p">,</span> <span class="n">K_hat</span><span class="p">,</span> <span class="n">A_hat</span> <span class="o">=</span> <span class="n">params</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated mu = </span><span class="si">{</span><span class="n">mu_hat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (time^-1)&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated K  = </span><span class="si">{</span><span class="n">K_hat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="n">t_fine</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">t</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">300</span><span class="p">)</span>
-<span class="n">N_fit</span> <span class="o">=</span> <span class="n">logistic_solution</span><span class="p">(</span><span class="n">t_fine</span><span class="p">,</span> <span class="n">mu_hat</span><span class="p">,</span> <span class="n">K_hat</span><span class="p">,</span> <span class="n">A_hat</span><span class="p">)</span>
+<span class="n">r_hat</span><span class="p">,</span> <span class="n">K_hat</span><span class="p">,</span> <span class="n">A_hat</span> <span class="o">=</span> <span class="n">params</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fitted r = </span><span class="si">{</span><span class="n">r_hat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (time^-1)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fitted K = </span><span class="si">{</span><span class="n">K_hat</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot fit</span>
+<span class="n">t_fine</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">t</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">N_fit</span> <span class="o">=</span> <span class="n">logistic_solution</span><span class="p">(</span><span class="n">t_fine</span><span class="p">,</span> <span class="n">r_hat</span><span class="p">,</span> <span class="n">K_hat</span><span class="p">,</span> <span class="n">A_hat</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_fine</span><span class="p">,</span> <span class="n">N_fit</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;logistic fit&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Population size $N$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Logistic fit&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_fine</span><span class="p">,</span> <span class="n">N_fit</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;logistic fit&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Population size $N$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Logistic curve fit&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1153,28 +1265,27 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exercise template: estimate mu from (t, N) data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exercise template: estimate r from (t, N) data</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="c1"># TODO: replace with real data (time in hours/days, N in cells/mL etc.)</span>
+<span class="c1"># Example data (replace with your own)</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-<span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.9</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mf">7.4</span><span class="p">,</span> <span class="mf">14.8</span><span class="p">,</span> <span class="mf">29.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">,</span> <span class="mf">8.6</span><span class="p">,</span> <span class="mf">17.0</span><span class="p">,</span> <span class="mf">33.8</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 
-<span class="c1"># Fit ln(N) = a + mu * t via least squares</span>
+<span class="c1"># Fit r by linear regression on log-scale: ln N = ln N0 + r t</span>
 <span class="n">logN</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">t</span><span class="p">])</span>
-<span class="n">a_hat</span><span class="p">,</span> <span class="n">mu_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">logN</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">N0_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a_hat</span><span class="p">)</span>
-<span class="n">t_d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">mu_hat</span>
+<span class="n">r_hat</span><span class="p">,</span> <span class="n">logN0_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">logN</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">N0_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logN0_hat</span><span class="p">)</span>
+<span class="n">t_d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">r_hat</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated mu = </span><span class="si">{</span><span class="n">mu_hat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (time^-1)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated r = </span><span class="si">{</span><span class="n">r_hat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (time^-1)&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated N0 = </span><span class="si">{</span><span class="n">N0_hat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Doubling time t_d = </span><span class="si">{</span><span class="n">t_d</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> time units&quot;</span><span class="p">)</span>
 
 <span class="c1"># Visualise fit</span>
 <span class="n">t_fine</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">t</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">N_fit</span> <span class="o">=</span> <span class="n">N0_hat</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mu_hat</span> <span class="o">*</span> <span class="n">t_fine</span><span class="p">)</span>
+<span class="n">N_fit</span> <span class="o">=</span> <span class="n">N0_hat</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r_hat</span> <span class="o">*</span> <span class="n">t_fine</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_fine</span><span class="p">,</span> <span class="n">N_fit</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;exp fit&#39;</span><span class="p">)</span>
@@ -1190,93 +1301,227 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 </div>
 </section>
 </section>
+<section id="structured-populations">
+<h2>Structured populations<a class="headerlink" href="#structured-populations" title="Link to this heading">#</a></h2>
+<p>So far, we assumed individuals are identical. But populations often have <strong>age/stage structure</strong>, and vital rates (survival, fecundity) vary across classes.</p>
+<p>Two classic examples:</p>
+<ol class="arabic simple">
+<li><p>Fibonacci’s rabbits (a 2-stage recursion)</p></li>
+<li><p>Leslie matrix (age-structured projection matrix) (<span id="id11">[<a class="reference internal" href="../references.html#id181" title="P. H. Leslie. On the use of matrices in certain population mathematics. Biometrika, 33(3):183–212, 1945. doi:10.1093/biomet/33.3.183.">Leslie, 1945</a>, <a class="reference internal" href="../references.html#id182" title="Hal Caswell. Matrix Population Models: Construction, Analysis, and Interpretation. Sinauer Associates, 2 edition, 2001.">Caswell, 2001</a>]</span>)</p></li>
+</ol>
+<p>The key modelling move is to track a <em>vector</em> of abundances by class, and update it each time step with a <strong>projection matrix</strong>.</p>
+<section id="fibonacci-rabbits">
+<h3>Fibonacci rabbits<a class="headerlink" href="#fibonacci-rabbits" title="Link to this heading">#</a></h3>
+<p>Fibonacci’s problem can be interpreted as an effectively 2-stage system (baby <span class="math notranslate nohighlight">\(\to\)</span> adult).
+$<span class="math notranslate nohighlight">\(
+F_n = F_{n-1} + F_{n-2}
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F_{n-1}\)</span>: adults last month (who survive and breed again)</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{n-2}\)</span>: babies who have just matured (and can now breed)</p></li>
+</ul>
+<p>This is a specific case of a <strong>matrix model</strong>: a 2-stage population vector updated by a fixed projection matrix (<span id="id12">[<a class="reference internal" href="../references.html#id181" title="P. H. Leslie. On the use of matrices in certain population mathematics. Biometrika, 33(3):183–212, 1945. doi:10.1093/biomet/33.3.183.">Leslie, 1945</a>, <a class="reference internal" href="../references.html#id182" title="Hal Caswell. Matrix Population Models: Construction, Analysis, and Interpretation. Sinauer Associates, 2 edition, 2001.">Caswell, 2001</a>]</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">simulate_fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">fib</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">fib</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fib</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">fib</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">fib</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fibonacci sequence up to month 12:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">simulate_fib</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="leslie-matrix-model">
+<h3>Leslie matrix model<a class="headerlink" href="#leslie-matrix-model" title="Link to this heading">#</a></h3>
+<p>Let the population vector at time <span class="math notranslate nohighlight">\(t\)</span> be
+$<span class="math notranslate nohighlight">\(
+\mathbf{u}_t = (u_{1,t}, u_{2,t}, \dots, u_{\omega,t})^\top
+\)</span><span class="math notranslate nohighlight">\(
+for \)</span>\omega<span class="math notranslate nohighlight">\( age classes. A Leslie matrix \)</span>L<span class="math notranslate nohighlight">\( maps \)</span>\mathbf{u}_{t+1} = L\mathbf{u}_t$ (<span id="id13">[<a class="reference internal" href="../references.html#id181" title="P. H. Leslie. On the use of matrices in certain population mathematics. Biometrika, 33(3):183–212, 1945. doi:10.1093/biomet/33.3.183.">Leslie, 1945</a>]</span>; see also <span id="id14">[<a class="reference internal" href="../references.html#id182" title="Hal Caswell. Matrix Population Models: Construction, Analysis, and Interpretation. Sinauer Associates, 2 edition, 2001.">Caswell, 2001</a>]</span>).</p>
+<ul class="simple">
+<li><p>top row: age-specific fecundities (offspring contributions)</p></li>
+<li><p>subdiagonal: survival probabilities to next age class</p></li>
+</ul>
+<p><strong>Interpretation:</strong> repeated multiplication by <span class="math notranslate nohighlight">\(L\)</span> projects the population forward in discrete steps (e.g., years). The dominant eigenvalue <span class="math notranslate nohighlight">\(\lambda_1\)</span> gives the long-run multiplicative growth factor per step, and the associated eigenvector gives the stable age distribution (after normalisation).</p>
+<p>Long-run growth is governed by the dominant eigenvalue <span class="math notranslate nohighlight">\(\lambda_1\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda_1&gt;1\)</span>: growth</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda_1&lt;1\)</span>: decline</p></li>
+<li><p>stable age distribution given by dominant eigenvector</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">simulate_leslie</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">u0</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">u0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">traj</span> <span class="o">=</span> <span class="p">[</span><span class="n">u</span><span class="o">.</span><span class="n">copy</span><span class="p">()]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">L</span> <span class="o">@</span> <span class="n">u</span>
+        <span class="n">traj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">traj</span><span class="p">)</span>
+
+<span class="c1"># Example 3-age Leslie model (illustrative)</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+<span class="p">])</span>
+
+<span class="n">u0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">traj</span> <span class="o">=</span> <span class="n">simulate_leslie</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">u0</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">traj</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Age class </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Individuals&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Leslie matrix dynamics (illustrative)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">lam</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">L</span><span class="p">)))</span>
+<span class="n">lam</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="metapopulations-levins-model-and-rescue-effect">
+<h2>Metapopulations: Levins model and rescue effect<a class="headerlink" href="#metapopulations-levins-model-and-rescue-effect" title="Link to this heading">#</a></h2>
+<p>A metapopulation is a set of habitat patches that can be occupied or empty. Let <span class="math notranslate nohighlight">\(p(t)\)</span> be the fraction of occupied patches (so <span class="math notranslate nohighlight">\(p\in[0,1]\)</span>).</p>
+<section id="levins-model">
+<h3>Levins model<a class="headerlink" href="#levins-model" title="Link to this heading">#</a></h3>
+<p>A classic starting point is the Levins patch-occupancy model (<span id="id15">[<a class="reference internal" href="../references.html#id42" title="richard Levins. Evolution in changing environments. Monographs in Population Biology. Princeton University Press, Princeton, NJ, August 1968.">Levins, 1968</a>]</span>):
+$<span class="math notranslate nohighlight">\(
+\frac{dp}{dt} = cp(1-p) - ep
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(c\)</span>: colonisation rate (time<span class="math notranslate nohighlight">\(^{-1}\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(e\)</span>: extinction rate (time<span class="math notranslate nohighlight">\(^{-1}\)</span>)</p></li>
+</ul>
+<p>Equilibria:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p^*=0\)</span> always</p></li>
+<li><p><span class="math notranslate nohighlight">\(p^*=1-e/c\)</span> if <span class="math notranslate nohighlight">\(c&gt;e\)</span></p></li>
+</ul>
+<p><strong>Units sanity check:</strong> <span class="math notranslate nohighlight">\(p\)</span> is dimensionless, so <span class="math notranslate nohighlight">\(dp/dt\)</span> has units time<span class="math notranslate nohighlight">\(^{-1}\)</span>; therefore <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(e\)</span> must have units time<span class="math notranslate nohighlight">\(^{-1}\)</span>.</p>
+<p><strong>A useful diagnostic plot:</strong> plot <span class="math notranslate nohighlight">\(\dot p = dp/dt\)</span> versus <span class="math notranslate nohighlight">\(p\)</span> and mark where it crosses zero. The sign of <span class="math notranslate nohighlight">\(\dot p\)</span> tells you whether occupancy increases or decreases, and makes thresholds (e.g., <span class="math notranslate nohighlight">\(c=e\)</span>) visually obvious.</p>
+</section>
+<section id="rescue-effect-one-simple-form">
+<h3>Rescue effect (one simple form)<a class="headerlink" href="#rescue-effect-one-simple-form" title="Link to this heading">#</a></h3>
+<p>Extinction can decline as occupancy increases (e.g., through immigration rescuing local populations). One simple illustrative form is:
+$<span class="math notranslate nohighlight">\(
+\frac{dp}{dt} = cp(1-p) - ep(1-p) = (c-e)p(1-p).
+\)</span><span class="math notranslate nohighlight">\(
+Now equilibria are 0 and 1, with a threshold at \)</span>c=e$.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">levins_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">c</span><span class="o">*</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="n">e</span><span class="o">*</span><span class="n">p</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">rescue_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">e</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[(</span><span class="n">c</span><span class="o">-</span><span class="n">e</span><span class="p">)</span><span class="o">*</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_ode</span><span class="p">(</span><span class="n">rhs</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(),</span> <span class="n">n</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
+    <span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_end</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t_end</span><span class="p">),</span> <span class="p">[</span><span class="n">y0</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span>
+                    <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Levins</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">simulate_ode</span><span class="p">(</span><span class="n">levins_rhs</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;p(t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Levins metapopulation model: $</span><span class="se">\\</span><span class="s2">dot p=cp(1-p)-ep$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Rescue effect</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">simulate_ode</span><span class="p">(</span><span class="n">rescue_rhs</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;p(t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Rescue-effect model: $</span><span class="se">\\</span><span class="s2">dot p=(c-e)p(1-p)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="human-population-illustration">
+<h2>Human population illustration<a class="headerlink" href="#human-population-illustration" title="Link to this heading">#</a></h2>
+<p>Human population growth has historically been close to exponential over substantial periods, but growth rates have changed over time due to:</p>
+<ul class="simple">
+<li><p>demographic transition (declining fertility)</p></li>
+<li><p>technology and resource constraints</p></li>
+<li><p>policy and socioeconomic change</p></li>
+</ul>
+<p>A simplistic way to illustrate the difference is to compare exponential and logistic projections.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Illustrative comparison: exponential vs logistic trajectories</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>  <span class="c1"># years</span>
+<span class="n">N0</span> <span class="o">=</span> <span class="mf">2.5e9</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mf">0.018</span>  <span class="c1"># 1.8% / year (illustrative, not current)</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mf">11e9</span>
+
+<span class="n">N_exp</span> <span class="o">=</span> <span class="n">N0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="n">N_log</span> <span class="o">=</span> <span class="n">K</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">K</span><span class="o">/</span><span class="n">N0</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N_exp</span><span class="o">/</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Exponential (illustrative)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N_log</span><span class="o">/</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Logistic (illustrative)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">K</span><span class="o">/</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;K&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t (years)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Population (billions)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Illustrative human population: exponential vs logistic&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
-<p>These are intended to be short modelling + coding tasks that reinforce the main ideas (discrete vs continuous time, <span class="math notranslate nohighlight">\(\mu\)</span> vs <span class="math notranslate nohighlight">\(R\)</span>, density dependence, and how <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(M\)</span> enter via metabolism). Feel free to treat the ones marked <strong>(Extension)</strong> as optional.</p>
-<section id="estimate-mu-and-doubling-time-from-data">
-<h3>1) Estimate <span class="math notranslate nohighlight">\(\mu\)</span> and doubling time from data<a class="headerlink" href="#estimate-mu-and-doubling-time-from-data" title="Link to this heading">#</a></h3>
-<p>You are given time series data <span class="math notranslate nohighlight">\((t_i, N_i)\)</span> during the early growth phase. Assuming exponential growth <span class="math notranslate nohighlight">\(N(t)=N_0 e^{\mu t}\)</span>:</p>
+<p>These are intended to be short modelling + coding tasks that reinforce the main ideas (discrete vs continuous time, <span class="math notranslate nohighlight">\(r\)</span> vs <span class="math notranslate nohighlight">\(R\)</span>, density dependence, and how <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(M\)</span> enter via metabolism). Feel free to treat the ones marked <strong>(Extension)</strong> as optional.</p>
+<p><em>(Reminder: many microbiology texts write the intrinsic per-capita growth rate as <span class="math notranslate nohighlight">\(\mu\)</span>; in this chapter we use <span class="math notranslate nohighlight">\(r\)</span> and treat <span class="math notranslate nohighlight">\(\mu\equiv r\)</span>.)</em></p>
+<section id="estimate-r-and-doubling-time-from-data">
+<h3>1) Estimate <span class="math notranslate nohighlight">\(r\)</span> and doubling time from data<a class="headerlink" href="#estimate-r-and-doubling-time-from-data" title="Link to this heading">#</a></h3>
+<p>You are given time series data <span class="math notranslate nohighlight">\((t_i, N_i)\)</span> during the early growth phase. Assuming exponential growth <span class="math notranslate nohighlight">\(N(t)=N_0 e^{r t}\)</span>:</p>
 <ul class="simple">
-<li><p>Fit <span class="math notranslate nohighlight">\(\mu\)</span> by regressing <span class="math notranslate nohighlight">\(\ln N\)</span> on <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
-<li><p>Report the doubling time <span class="math notranslate nohighlight">\(t_d = \ln 2/\mu\)</span>.</p></li>
-<li><p>Convert the estimate to a discrete-time multiplier <span class="math notranslate nohighlight">\(R=e^{\mu\Delta t}\)</span> for a chosen sampling interval <span class="math notranslate nohighlight">\(\Delta t\)</span>.</p></li>
+<li><p>Fit <span class="math notranslate nohighlight">\(r\)</span> by regressing <span class="math notranslate nohighlight">\(\ln N\)</span> on <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p>Report the doubling time <span class="math notranslate nohighlight">\(t_d = \ln 2/r\)</span>.</p></li>
+<li><p>Convert the estimate to a discrete-time multiplier <span class="math notranslate nohighlight">\(R=e^{r\Delta t}\)</span> for a chosen sampling interval <span class="math notranslate nohighlight">\(\Delta t\)</span>.</p></li>
 </ul>
 </section>
 <section id="discrete-vs-continuous-when-does-it-matter">
 <h3>2) Discrete vs continuous: when does it matter?<a class="headerlink" href="#discrete-vs-continuous-when-does-it-matter" title="Link to this heading">#</a></h3>
 <p>Simulate exponential growth in two ways over the same total time:</p>
-<ul class="simple">
-<li><p>Continuous: <span class="math notranslate nohighlight">\(N(t)=N_0 e^{\mu t}\)</span></p></li>
-<li><p>Discrete: <span class="math notranslate nohighlight">\(N_{t+1}=R N_t\)</span> with <span class="math notranslate nohighlight">\(R=e^{\mu\Delta t}\)</span>
-Vary <span class="math notranslate nohighlight">\(\Delta t\)</span> and quantify the approximation error (e.g., max relative error across times).</p></li>
-</ul>
-</section>
-<section id="fit-a-logistic-model-and-interpret-parameters">
-<h3>3) Fit a logistic model and interpret parameters<a class="headerlink" href="#fit-a-logistic-model-and-interpret-parameters" title="Link to this heading">#</a></h3>
-<p>Given data that include saturation, fit the continuous logistic model:</p>
-<div class="math notranslate nohighlight">
-\[\frac{dN}{dt}=\mu N\left(1-\frac{N}{K}\right).\]</div>
-<ul class="simple">
-<li><p>Estimate <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(K\)</span> (e.g., nonlinear least squares).</p></li>
-<li><p>Check how sensitive your fitted <span class="math notranslate nohighlight">\(K\)</span> is to excluding early vs late points.</p></li>
-<li><p>Plot residuals and discuss where the model is systematically wrong (lag phase, measurement noise, etc.).</p></li>
-</ul>
-</section>
-<section id="arrhenius-temperature-dependence-calibrate-e">
-<h3>4) Arrhenius temperature dependence (calibrate <span class="math notranslate nohighlight">\(E\)</span>)<a class="headerlink" href="#arrhenius-temperature-dependence-calibrate-e" title="Link to this heading">#</a></h3>
-<p>Assume <span class="math notranslate nohighlight">\(\mu(T)=\mu_0\exp\left(-\frac{E}{k_B T}\right)\)</span>.</p>
-<ul class="simple">
-<li><p>Given two growth-rate measurements <span class="math notranslate nohighlight">\((T_1,\mu_1)\)</span> and <span class="math notranslate nohighlight">\((T_2,\mu_2)\)</span>, solve for <span class="math notranslate nohighlight">\(E\)</span> (and/or <span class="math notranslate nohighlight">\(\mu_0\)</span>).</p></li>
-<li><p>Plot predicted <span class="math notranslate nohighlight">\(\mu(T)\)</span> across a temperature range and overlay the observed points.</p></li>
-</ul>
-</section>
-<section id="size-scaling-allometry-across-taxa">
-<h3>5) Size scaling (allometry) across taxa<a class="headerlink" href="#size-scaling-allometry-across-taxa" title="Link to this heading">#</a></h3>
-<p>Assume <span class="math notranslate nohighlight">\(\mu(T,M)=\mu_0 M^{b-1}\exp\left(-\frac{E}{k_B T}\right)\)</span> and (optionally) <span class="math notranslate nohighlight">\(K \propto M^{-3/4}\)</span> for abundance carrying capacity.</p>
-<ul class="simple">
-<li><p>On log–log axes, plot <span class="math notranslate nohighlight">\(\mu\)</span> vs <span class="math notranslate nohighlight">\(M\)</span> at fixed <span class="math notranslate nohighlight">\(T\)</span> and estimate the slope.</p></li>
-<li><p>Explore how changing <span class="math notranslate nohighlight">\(b\)</span> changes dynamics in the logistic model.</p></li>
-</ul>
-</section>
-<section id="temperature-size-shifts-in-bifurcation-conditions">
-<h3>6) Temperature/size shifts in bifurcation ‘conditions’<a class="headerlink" href="#temperature-size-shifts-in-bifurcation-conditions" title="Link to this heading">#</a></h3>
-<p>Using your mapping <span class="math notranslate nohighlight">\(r_{\mathrm{map}} = g(\mu\Delta t)\)</span> (e.g., <span class="math notranslate nohighlight">\(r_{\mathrm{map}}=e^{\mu\Delta t}\)</span>):</p>
-<ul class="simple">
-<li><p>For several masses <span class="math notranslate nohighlight">\(M\)</span>, compute and plot <span class="math notranslate nohighlight">\(r_{\mathrm{map}}(T)\)</span>.</p></li>
-<li><p>Mark where the curve crosses <span class="math notranslate nohighlight">\(r_{\mathrm{map}}=3\)</span> (period-doubling onset).</p></li>
-<li><p><strong>(Extension)</strong> also mark <span class="math notranslate nohighlight">\(1+\sqrt{6}\)</span> and the chaos accumulation point <span class="math notranslate nohighlight">\(\approx 3.56995\)</span>.</p></li>
-</ul>
-</section>
-<section id="add-stochasticity-to-growth-demographic-vs-environmental">
-<h3>7) Add stochasticity to growth (demographic vs environmental)<a class="headerlink" href="#add-stochasticity-to-growth-demographic-vs-environmental" title="Link to this heading">#</a></h3>
-<p>Modify exponential or logistic growth to include randomness, e.g.:</p>
-<ul class="simple">
-<li><p>Environmental noise: <span class="math notranslate nohighlight">\(\mu_t = \mu + \sigma\,\varepsilon_t\)</span> with <span class="math notranslate nohighlight">\(\varepsilon_t\sim\mathcal{N}(0,1)\)</span></p></li>
-<li><p>Demographic noise: births/deaths as Poisson or binomial draws per step</p></li>
-</ul>
-<p>Compare mean trajectories and variance across replicate simulations.</p>
-</section>
-<section id="consumerresource-model-exploration">
-<h3>8) Consumer–resource model exploration<a class="headerlink" href="#consumerresource-model-exploration" title="Link to this heading">#</a></h3>
-<p>For the consumer–resource model in this notebook:</p>
-<ul class="simple">
-<li><p>Find equilibria analytically.</p></li>
-<li><p>Simulate for different parameter sets and classify behaviour (damped oscillations, sustained oscillations, collapse).</p></li>
-<li><p><strong>(Extension)</strong> make <span class="math notranslate nohighlight">\(\mu\)</span> temperature dependent (<span class="math notranslate nohighlight">\(\mu(T)\)</span>) and explore how warming shifts stability.</p></li>
-</ul>
 </section>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Microbial cell division is inherently discrete (integer splits), but at large population sizes, overall growth can often be approximated by continuous models.</p></li>
-<li><p>Exponential growth describes unlimited resources and is governed by an intrinsic (per-capita) growth rate <span class="math notranslate nohighlight">\(\mu\)</span>; in discrete time this corresponds to a step multiplier <span class="math notranslate nohighlight">\(R=e^{\mu\Delta t}\)</span>.</p></li>
-<li><p>Logistic growth incorporates resource limitation via a carrying capacity <span class="math notranslate nohighlight">\(K\)</span> (typically in abundance unless otherwise stated) (<span id="id7">[<a class="reference internal" href="../references.html#id171" title="Pierre-François Verhulst. Notice sur la loi que la population poursuit dans son accroissement. Correspondance Mathématique et Physique, 10:113–121, 1838.">Verhulst, 1838</a>]</span>).</p></li>
-<li><p>Reaction rates (and thus growth) typically increase with temperature in an Arrhenius/Eyring-like way—up to an optimum or denaturation point in real cells (<span id="id8">[<a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>, <a class="reference internal" href="../references.html#id168" title="Henry Eyring. The activated complex in chemical reactions. The Journal of Chemical Physics, 3(2):107–115, 1935. doi:10.1063/1.1749604.">Eyring, 1935</a>, <a class="reference internal" href="../references.html#id173" title="David A. Ratkowsky, John Olley, Thomas A. McMeekin, and Andrew Ball. Relationship between temperature and growth rate of bacterial cultures. Journal of Bacteriology, 1982.">Ratkowsky <em>et al.</em>, 1982</a>, <a class="reference internal" href="../references.html#id174" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Dependency on medium and temperature of cell size and chemical composition during balanced growth of Salmonella typhimurium. Journal of General Microbiology, 19:592–606, 1958.">Schaechter <em>et al.</em>, 1958</a>]</span>).</p></li>
-<li><p>Metabolic theory suggests size (<span class="math notranslate nohighlight">\(M\)</span>) dependence (e.g., <span class="math notranslate nohighlight">\(\mu\propto M^{b-1}\)</span>). Smaller organisms often have higher mass-specific growth rates (<span id="id9">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>).</p></li>
-<li><p>Real microbial growth can be more complex (lag phases, variable yields, toxin accumulation, pH shifts, etc.). The models here are minimal but illustrate core ideas.</p></li>
-<li><p>In discrete-time density-dependent models like the logistic map, increasing the effective growth-per-step (e.g., via higher temperature) can push the system toward larger <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> and more complex dynamics (<span id="id10">[<a class="reference internal" href="../references.html#id176" title="Robert M. May. Simple mathematical models with very complicated dynamics. Nature, 261:459–467, 1976. doi:10.1038/261459a0.">May, 1976</a>, <a class="reference internal" href="../references.html#id177" title="Mitchell J. Feigenbaum. Quantitative universality for a class of nonlinear transformations. Journal of Statistical Physics, 19(1):25–52, 1978. doi:10.1007/BF01020332.">Feigenbaum, 1978</a>]</span>).</p></li>
-<li><p>Most laboratory cultures do not effectively operate at very large <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> per step, but ecological systems (e.g., pulsed resources, chemostats) can approach regimes where discrete-time dynamics become rich.</p></li>
+<li><p>Cell division is inherently discrete (integer splits), but at large population sizes overall growth can often be approximated by continuous-time models.</p></li>
+<li><p>Exponential growth describes unlimited resources and is governed by an intrinsic (per-capita) growth rate <span class="math notranslate nohighlight">\(r\)</span> (often written <span class="math notranslate nohighlight">\(\mu\)</span> in microbiology); in discrete time this corresponds to a step multiplier <span class="math notranslate nohighlight">\(R=e^{r\Delta t}\)</span>.</p></li>
+<li><p>Logistic growth incorporates resource limitation via a carrying capacity <span class="math notranslate nohighlight">\(K\)</span> (typically in abundance unless otherwise stated) (<span id="id16">[<a class="reference internal" href="../references.html#id171" title="Pierre-François Verhulst. Notice sur la loi que la population poursuit dans son accroissement. Correspondance Mathématique et Physique, 10:113–121, 1838.">Verhulst, 1838</a>]</span>).</p></li>
+<li><p>Reaction rates (and thus growth) typically increase with temperature in an Arrhenius/Eyring-like way—up to an optimum or denaturation point in real cells (<span id="id17">[<a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>, <a class="reference internal" href="../references.html#id168" title="Henry Eyring. The activated complex in chemical reactions. The Journal of Chemical Physics, 3(2):107–115, 1935. doi:10.1063/1.1749604.">Eyring, 1935</a>, <a class="reference internal" href="../references.html#id173" title="David A. Ratkowsky, John Olley, Thomas A. McMeekin, and Andrew Ball. Relationship between temperature and growth rate of bacterial cultures. Journal of Bacteriology, 1982.">Ratkowsky <em>et al.</em>, 1982</a>, <a class="reference internal" href="../references.html#id174" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Dependency on medium and temperature of cell size and chemical composition during balanced growth of Salmonella typhimurium. Journal of General Microbiology, 19:592–606, 1958.">Schaechter <em>et al.</em>, 1958</a>]</span>).</p></li>
+<li><p>Smaller organisms have higher mass-specific growth rates (<span id="id18">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>; <span class="math notranslate nohighlight">\(r\propto M^{b-1}\)</span>), linking metabolism and demography.</p></li>
+<li><p>In discrete-time density-dependent models like the logistic map, increasing the effective growth-per-step (e.g., via higher temperature) can push the system toward larger <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> and more complex dynamics (<span id="id19">[<a class="reference internal" href="../references.html#id176" title="Robert M. May. Simple mathematical models with very complicated dynamics. Nature, 261:459–467, 1976. doi:10.1038/261459a0.">May, 1976</a>, <a class="reference internal" href="../references.html#id177" title="Mitchell J. Feigenbaum. Quantitative universality for a class of nonlinear transformations. Journal of Statistical Physics, 19(1):25–52, 1978. doi:10.1007/BF01020332.">Feigenbaum, 1978</a>]</span>).</p></li>
+<li><p>Structured populations can be represented with stage/age classes (e.g., Fibonacci rabbits as a 2-stage recursion, and Leslie matrices in general), where long-run growth and stable structure are governed by the dominant eigenvalue and eigenvector (<span id="id20">[<a class="reference internal" href="../references.html#id181" title="P. H. Leslie. On the use of matrices in certain population mathematics. Biometrika, 33(3):183–212, 1945. doi:10.1093/biomet/33.3.183.">Leslie, 1945</a>, <a class="reference internal" href="../references.html#id182" title="Hal Caswell. Matrix Population Models: Construction, Analysis, and Interpretation. Sinauer Associates, 2 edition, 2001.">Caswell, 2001</a>]</span>).</p></li>
+<li><p>Metapopulations model occupancy across habitat patches; in the Levins framework <span class="math notranslate nohighlight">\(p(t)\)</span> changes via colonisation and extinction, and “rescue effect” variants capture decreasing extinction risk as occupancy increases (<span id="id21">[<a class="reference internal" href="../references.html#id42" title="richard Levins. Evolution in changing environments. Monographs in Population Biology. Princeton University Press, Princeton, NJ, August 1968.">Levins, 1968</a>]</span>).</p></li>
+<li><p>Simple human-population trajectories provide a concrete illustration of how exponential and logistic assumptions yield very different forecasts, especially over long time horizons.</p></li>
 </ul>
 </section>
 <div class="toctree-wrapper compound">
@@ -1364,6 +1609,7 @@ Vary <span class="math notranslate nohighlight">\(\Delta t\)</span> and quantify
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-growth-with-temperature-size-dependence">Logistic Growth with Temperature &amp; Size Dependence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-common-logistic-forms">A note on common logistic forms</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-logistic-growth-bifurcations-and-metabolic-constraints">Discrete Logistic Growth, Bifurcations, and Metabolic Constraints</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-microbial-growth-and-metabolism">Connection to Microbial Growth (and Metabolism)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-bifurcation-diagram">Basic Bifurcation Diagram</a></li>
@@ -1375,15 +1621,20 @@ Vary <span class="math notranslate nohighlight">\(\Delta t\)</span> and quantify
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A Simple Example</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-populations">Structured populations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fibonacci-rabbits">Fibonacci rabbits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leslie-matrix-model">Leslie matrix model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metapopulations-levins-model-and-rescue-effect">Metapopulations: Levins model and rescue effect</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#levins-model">Levins model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rescue-effect-one-simple-form">Rescue effect (one simple form)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-population-illustration">Human population illustration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-mu-and-doubling-time-from-data">1) Estimate <span class="math notranslate nohighlight">\(\mu\)</span> and doubling time from data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-r-and-doubling-time-from-data">1) Estimate <span class="math notranslate nohighlight">\(r\)</span> and doubling time from data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-vs-continuous-when-does-it-matter">2) Discrete vs continuous: when does it matter?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-a-logistic-model-and-interpret-parameters">3) Fit a logistic model and interpret parameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrhenius-temperature-dependence-calibrate-e">4) Arrhenius temperature dependence (calibrate <span class="math notranslate nohighlight">\(E\)</span>)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#size-scaling-allometry-across-taxa">5) Size scaling (allometry) across taxa</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-size-shifts-in-bifurcation-conditions">6) Temperature/size shifts in bifurcation ‘conditions’</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-stochasticity-to-growth-demographic-vs-environmental">7) Add stochasticity to growth (demographic vs environmental)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consumerresource-model-exploration">8) Consumer–resource model exploration</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>

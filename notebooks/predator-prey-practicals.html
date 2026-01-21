@@ -1,0 +1,1089 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Predator–prey dynamics: Practicals &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/predator-prey-practicals';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Epidemiological dynamics" href="epidemiology.html" />
+    <link rel="prev" title="Predator–prey dynamics" href="predator-prey.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-computing.html">Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="python.html">Biological Computing in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="object-oriented-programming.html">Object-Oriented Programming</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="r.html">Biological Computing in R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-basic-stats.html">Basic Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-r.html">Data Management and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exp-design.html">Experimental design and Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Advanced Modelling &amp; Statistics Pre-work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-eemodelling.html">Ecological &amp; Evolutionary Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="populations.html">Single Populations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="populations-practicals.html">Populations: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="competitive-dynamics.html">Competitive dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="competitive-dynamics-practicals.html">Competitive Dynamics: Practicals</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="predator-prey.html">Predator–prey dynamics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Predator–prey dynamics: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="epidemiology.html">Epidemiological dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="epidemiology-practicals.html">Epidemiological dynamics: Practicals</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Advanced Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="microbial-growth.html">Microbial Growth rates in R</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Assignments and Assessments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Appendices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MulQuaBio/MQB/master?urlpath=lab/tree/notebooks/predator-prey-practicals.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MulQuaBio/MQB/blob/master/notebooks/predator-prey-practicals.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/predator-prey-practicals.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/predator-prey-practicals.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Predator–prey dynamics: Practicals</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-shared-helpers">Utility: shared helpers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-31-lv-predatorprey-with-fisheries">Problem 3‑1 — LV predator–prey with fisheries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-notes-31">Solution notes (3‑1)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-32a-rosenzweigmacarthur-dynamics-limit-cycles">Problem 3‑2a — Rosenzweig–MacArthur dynamics (limit cycles)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-32b-numerical-bifurcation-diagram-in-k">Problem 3‑2b — Numerical bifurcation diagram in <span class="math notranslate nohighlight">\(k\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-notes-32">Solution notes (3‑2)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-32c-two-coupled-patches-predator-dispersal">Problem 3‑2c — Two coupled patches (predator dispersal)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-notes-32c">Solution notes (3‑2c)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="predatorprey-dynamics-practicals">
+<h1>Predator–prey dynamics: Practicals<a class="headerlink" href="#predatorprey-dynamics-practicals" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>This section contains practicals based on the <a class="reference internal" href="predator-prey.html"><span class="std std-doc">Predator–prey dynamics chapter</span></a>.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Model conventions used here</p>
+<ul class="simple">
+<li><p>Prey (victim) density: <span class="math notranslate nohighlight">\(V(t)\)</span></p></li>
+<li><p>Predator density: <span class="math notranslate nohighlight">\(P(t)\)</span></p></li>
+<li><p>Unless stated, parameters are in arbitrary units and time is in arbitrary units.</p></li>
+</ul>
+</div>
+<section id="utility-shared-helpers">
+<h2>Utility: shared helpers<a class="headerlink" href="#utility-shared-helpers" title="Link to this heading">#</a></h2>
+<p>We will reuse these functions across problems.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">integrate</span><span class="p">(</span><span class="n">rhs</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(),</span> <span class="n">n</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
+    <span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_end</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_end</span><span class="p">),</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span>
+                    <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-31-lv-predatorprey-with-fisheries">
+<h2>Problem 3‑1 — LV predator–prey with fisheries<a class="headerlink" href="#problem-31-lv-predatorprey-with-fisheries" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>(3-1) The Lotka–Volterra predator–prey model</p>
+</div></blockquote>
+<p>The Lotka–Volterra predator–prey model with the effects of fisheries is given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\frac{dV}{dt} &amp;= (r-f)V - \alpha V P,\\
+\frac{dP}{dt} &amp;= \beta V P - qP - fP.
+\end{aligned}
+\end{split}\]</div>
+<p>Plot the output of the model as time plots and in the phase plane using parameters
+<span class="math notranslate nohighlight">\(f=1\)</span>, <span class="math notranslate nohighlight">\(q=1.5\)</span>, <span class="math notranslate nohighlight">\(r=1.5\)</span>, <span class="math notranslate nohighlight">\(\alpha=1\)</span>, <span class="math notranslate nohighlight">\(\beta=1\)</span>.</p>
+<p>Also plot the isoclines and construct a phase portrait.
+Where do the orbits go to? Where is the equilibrium of the model?
+Is it stable? Is it unstable?</p>
+<p>Now change the parameter <span class="math notranslate nohighlight">\(f\)</span>, which describes the fishing effort.
+What happens to the equilibrium? Relate this to D’Ancona’s observation.</p>
+<p><strong>Related chapter sections:</strong></p>
+<ul class="simple">
+<li><p><em>Lotka–Volterra predator–prey model</em></p></li>
+<li><p><em>LV with fishing (D’Ancona)</em></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">lv_fish_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="n">V</span><span class="p">,</span> <span class="n">P</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="p">[(</span><span class="n">r</span><span class="o">-</span><span class="n">f</span><span class="p">)</span><span class="o">*</span><span class="n">V</span> <span class="o">-</span> <span class="n">a</span><span class="o">*</span><span class="n">V</span><span class="o">*</span><span class="n">P</span><span class="p">,</span> <span class="n">b</span><span class="o">*</span><span class="n">V</span><span class="o">*</span><span class="n">P</span> <span class="o">-</span> <span class="p">(</span><span class="n">q</span><span class="o">+</span><span class="n">f</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fish_equilibrium</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">f</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">q</span><span class="o">+</span><span class="n">f</span><span class="p">)</span><span class="o">/</span><span class="n">b</span><span class="p">,</span> <span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="n">f</span><span class="p">)</span><span class="o">/</span><span class="n">a</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_phase_portrait</span><span class="p">(</span><span class="n">rhs</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">Vlim</span><span class="p">,</span> <span class="n">Plim</span><span class="p">,</span> <span class="n">initials</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">80</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">y0</span> <span class="ow">in</span> <span class="n">initials</span><span class="p">:</span>
+        <span class="n">t</span><span class="p">,(</span><span class="n">V</span><span class="p">,</span><span class="n">P</span><span class="p">)</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">rhs</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">y0</span><span class="p">),</span> <span class="n">t_end</span><span class="o">=</span><span class="n">t_end</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1500</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="n">P</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">y0</span><span class="p">[</span><span class="mi">0</span><span class="p">]],[</span><span class="n">y0</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">*</span><span class="n">Vlim</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">*</span><span class="n">Plim</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;V&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given parameters</span>
+<span class="n">f</span><span class="o">=</span><span class="mf">1.0</span><span class="p">;</span> <span class="n">q</span><span class="o">=</span><span class="mf">1.5</span><span class="p">;</span> <span class="n">r</span><span class="o">=</span><span class="mf">1.5</span><span class="p">;</span> <span class="n">a</span><span class="o">=</span><span class="mf">1.0</span><span class="p">;</span> <span class="n">b</span><span class="o">=</span><span class="mf">1.0</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+
+<span class="c1"># Time series from one initial condition</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">t</span><span class="p">,(</span><span class="n">V</span><span class="p">,</span><span class="n">P</span><span class="p">)</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">lv_fish_rhs</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">y0</span><span class="p">),</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">Vstar</span><span class="p">,</span><span class="n">Pstar</span> <span class="o">=</span> <span class="n">fish_equilibrium</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;V(t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;P(t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;density&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Problem 3-1: time series (f=1)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;trajectory&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">Vstar</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;V*=(q+f)/b&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Pstar</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;P*=(r-f)/a&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">Vstar</span><span class="p">],[</span><span class="n">Pstar</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;equilibrium&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;V&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Problem 3-1: phase plane + isoclines (f=1)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Phase portrait</span>
+<span class="n">initials</span> <span class="o">=</span> <span class="p">[(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mf">0.5</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span>
+<span class="n">plot_phase_portrait</span><span class="p">(</span><span class="n">lv_fish_rhs</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">Vlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="n">Plim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">initials</span><span class="o">=</span><span class="n">initials</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Problem 3-1: phase portrait (f=1)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/45afb77d8f001f5d887ade6e28558bb4fa0a04f23a1b584411844987da7ebdae.png" src="../_images/45afb77d8f001f5d887ade6e28558bb4fa0a04f23a1b584411844987da7ebdae.png" />
+<img alt="../_images/d08cdc0e43c7604523e33a8801a4eb62208071c3f090981c979e856391c3c257.png" src="../_images/d08cdc0e43c7604523e33a8801a4eb62208071c3f090981c979e856391c3c257.png" />
+<img alt="../_images/8017a9099d56361dc6c5ae83c2b049d7b20d81efbc4c7c24ae1cf19013e1ef72.png" src="../_images/8017a9099d56361dc6c5ae83c2b049d7b20d81efbc4c7c24ae1cf19013e1ef72.png" />
+</div>
+</div>
+<section id="solution-notes-31">
+<h3>Solution notes (3‑1)<a class="headerlink" href="#solution-notes-31" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The nullclines intersect at <span class="math notranslate nohighlight">\((V^*,P^*)=((q+f)/b,(r-f)/a)\)</span> (see the chapter section <em>LV with fishing (D’Ancona)</em>).</p></li>
+<li><p>As long as <span class="math notranslate nohighlight">\(r&gt;f\)</span>, predators persist; if <span class="math notranslate nohighlight">\(f\ge r\)</span> then <span class="math notranslate nohighlight">\(P^*\le 0\)</span> and the only biologically relevant outcome is predator extinction.</p></li>
+<li><p>With symmetric harvesting of both species, trajectories remain closed orbits (neutral cycles) in this LV‑type setup; the equilibrium is neither attracting nor repelling (borderline).</p></li>
+<li><p>Decreasing fishing (smaller <span class="math notranslate nohighlight">\(f\)</span>) increases <span class="math notranslate nohighlight">\(P^*\)</span> and decreases <span class="math notranslate nohighlight">\(V^*\)</span>, consistent with D’Ancona’s observation.</p></li>
+</ul>
+</section>
+</section>
+<section id="problem-32a-rosenzweigmacarthur-dynamics-limit-cycles">
+<h2>Problem 3‑2a — Rosenzweig–MacArthur dynamics (limit cycles)<a class="headerlink" href="#problem-32a-rosenzweigmacarthur-dynamics-limit-cycles" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>(3-2) Investigate the dynamics of the Rosenzweig–MacArthur model.</p>
+</div></blockquote>
+<p>The Rosenzweig–MacArthur model is given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\frac{dV}{dt} &amp;= V\, r\,(k - V) - \frac{\alpha V P}{1+\alpha h V},\\
+\frac{dP}{dt} &amp;= P\left(\frac{\beta V}{1+\alpha h V} - q\right).
+\end{aligned}
+\end{split}\]</div>
+<p>Investigate the dynamics over time, and then make a phase portrait for the parameters:
+<span class="math notranslate nohighlight">\(k=0.5\)</span>, <span class="math notranslate nohighlight">\(\alpha=1\)</span>, <span class="math notranslate nohighlight">\(\beta=1\)</span>, <span class="math notranslate nohighlight">\(h=1.25\)</span>, <span class="math notranslate nohighlight">\(q=0.1\)</span>, <span class="math notranslate nohighlight">\(r=1\)</span>.</p>
+<p>Repeat the exercise for <span class="math notranslate nohighlight">\(k=1.25\)</span>, <span class="math notranslate nohighlight">\(\alpha=1\)</span>, <span class="math notranslate nohighlight">\(\beta=1\)</span>, <span class="math notranslate nohighlight">\(h=1.25\)</span>, <span class="math notranslate nohighlight">\(q=0.1\)</span>, <span class="math notranslate nohighlight">\(r=1\)</span>.
+Compare the two time plots and phase portraits. Admire your limit cycle.</p>
+<p><strong>Related chapter section:</strong></p>
+<ul class="simple">
+<li><p><em>Holling type II response and the Rosenzweig–MacArthur model</em></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rm_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+    <span class="n">V</span><span class="p">,</span> <span class="n">P</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">V</span><span class="o">*</span><span class="n">P</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">V</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">r</span><span class="o">*</span><span class="n">V</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">V</span><span class="o">/</span><span class="n">K</span><span class="p">)</span> <span class="o">-</span> <span class="n">pred</span><span class="p">,</span> <span class="n">b</span><span class="o">*</span><span class="n">pred</span> <span class="o">-</span> <span class="n">q</span><span class="o">*</span><span class="n">P</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_rm</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+    <span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_end</span><span class="p">,</span> <span class="mi">6000</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">rm_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">q</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t_end</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">y0</span><span class="p">),</span>
+                    <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span>
+
+<span class="c1"># K=0.5</span>
+<span class="n">t</span><span class="p">,(</span><span class="n">V</span><span class="p">,</span><span class="n">P</span><span class="p">)</span><span class="o">=</span><span class="n">simulate_rm</span><span class="p">(</span><span class="n">K</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;V&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;density&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;R–M time series (K=0.5)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="n">P</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;V&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;R–M phase plane (K=0.5)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># K=1.25</span>
+<span class="n">t</span><span class="p">,(</span><span class="n">V</span><span class="p">,</span><span class="n">P</span><span class="p">)</span><span class="o">=</span><span class="n">simulate_rm</span><span class="p">(</span><span class="n">K</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="p">(</span><span class="mf">1.25</span><span class="p">,</span><span class="mf">0.01</span><span class="p">),</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;V&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;P&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;density&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;R–M time series (K=1.25)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># show the limit cycle after discarding transients</span>
+<span class="n">burn</span><span class="o">=</span><span class="mi">200</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">t</span><span class="o">&gt;=</span><span class="n">burn</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">V</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span><span class="n">P</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;V&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;R–M phase plane (K=1.25) — limit cycle (post-transient)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5bf0e8e8c482e0a38d7b3c7e2a923419898f36b843ccb2d97ed97c976d2381d1.png" src="../_images/5bf0e8e8c482e0a38d7b3c7e2a923419898f36b843ccb2d97ed97c976d2381d1.png" />
+<img alt="../_images/a4a4fe4b68cbf6f0b9a6d49a142b8f874062441bb83e71de2392eff30de3982f.png" src="../_images/a4a4fe4b68cbf6f0b9a6d49a142b8f874062441bb83e71de2392eff30de3982f.png" />
+<img alt="../_images/4a56c9c591b37cbefb0f901fbffa67602cbd6502b4db6f725f769b57502840d2.png" src="../_images/4a56c9c591b37cbefb0f901fbffa67602cbd6502b4db6f725f769b57502840d2.png" />
+<img alt="../_images/e13198fd63927304208f9e24a6c5b32982ffd8d9e84172e72df0e39bd52357dc.png" src="../_images/e13198fd63927304208f9e24a6c5b32982ffd8d9e84172e72df0e39bd52357dc.png" />
+</div>
+</div>
+</section>
+<section id="problem-32b-numerical-bifurcation-diagram-in-k">
+<h2>Problem 3‑2b — Numerical bifurcation diagram in <span class="math notranslate nohighlight">\(k\)</span><a class="headerlink" href="#problem-32b-numerical-bifurcation-diagram-in-k" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>(3-2) Make a bifurcation diagram in <span class="math notranslate nohighlight">\(k\)</span> of the Rosenzweig–MacArthur model.</p>
+</div></blockquote>
+<p>Building on the previous exercise, see how the dynamics change as <span class="math notranslate nohighlight">\(k\)</span> increases.
+A simple numerical approach is to integrate for a long time at each <span class="math notranslate nohighlight">\(k\)</span>, then plot many late‑time prey values (to reveal equilibria vs cycles).</p>
+<p><strong>Related chapter section:</strong></p>
+<ul class="simple">
+<li><p><em>A simple numerical “bifurcation diagram” in <span class="math notranslate nohighlight">\(K\)</span></em></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rm_bifurcation_points</span><span class="p">(</span><span class="n">K_values</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                          <span class="n">burn</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">sample</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)):</span>
+    <span class="n">Ks</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">Vs</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">y</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">y0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">K</span> <span class="ow">in</span> <span class="n">K_values</span><span class="p">:</span>
+        <span class="n">t_end</span> <span class="o">=</span> <span class="n">burn</span> <span class="o">+</span> <span class="n">sample</span>
+        <span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_end</span><span class="o">+</span><span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+        <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">,</span><span class="n">yy</span><span class="p">:</span> <span class="n">rm_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">q</span><span class="p">),</span>
+                        <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t_end</span><span class="p">),</span> <span class="n">y</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span> <span class="o">&gt;=</span> <span class="n">burn</span>
+        <span class="n">Ks</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">K</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mask</span><span class="p">))</span>
+        <span class="n">Vs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">V</span><span class="p">[</span><span class="n">mask</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Ks</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Vs</span><span class="p">)</span>
+
+<span class="n">Kvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">Ks</span><span class="p">,</span> <span class="n">Vs</span> <span class="o">=</span> <span class="n">rm_bifurcation_points</span><span class="p">(</span><span class="n">Kvals</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ks</span><span class="p">,</span> <span class="n">Vs</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;K&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Prey V (long-run samples)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Problem 3-2b: numerical bifurcation diagram in K (prey samples)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2af13077933f58fd88a40c65e8203608387460fe839514d83063ebc01cb6ffaa.png" src="../_images/2af13077933f58fd88a40c65e8203608387460fe839514d83063ebc01cb6ffaa.png" />
+</div>
+</div>
+<section id="solution-notes-32">
+<h3>Solution notes (3‑2)<a class="headerlink" href="#solution-notes-32" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>For smaller <span class="math notranslate nohighlight">\(K\)</span>, trajectories converge to a stable coexistence equilibrium (damped oscillations).</p></li>
+<li><p>Beyond a threshold <span class="math notranslate nohighlight">\(K\)</span>, the equilibrium loses stability via a Hopf bifurcation and a stable limit cycle appears.</p></li>
+<li><p>The numerical bifurcation diagram shows this as the transition from a single band of points (equilibrium) to a vertical spread (cycle values).</p></li>
+<li><p>This is the computational signature of the <strong>paradox of enrichment</strong> (see the chapter section <em>Holling type II response and the Rosenzweig–MacArthur model</em>).</p></li>
+</ul>
+</section>
+</section>
+<section id="problem-32c-two-coupled-patches-predator-dispersal">
+<h2>Problem 3‑2c — Two coupled patches (predator dispersal)<a class="headerlink" href="#problem-32c-two-coupled-patches-predator-dispersal" title="Link to this heading">#</a></h2>
+<p>To investigate how spatial predator–prey systems can be less likely to become extinct, consider a model with two patches.
+Predators move between patches at rate <span class="math notranslate nohighlight">\(d\)</span>.</p>
+<p>The model is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\frac{dV_1}{dt} &amp;= V_1\, r\,(k - V_1) - \frac{\alpha V_1 P_1}{1+\alpha h V_1},\\
+\frac{dP_1}{dt} &amp;= P_1\left(\frac{\beta V_1}{1+\alpha h V_1} - q\right) + d(P_2-P_1),\\
+\frac{dV_2}{dt} &amp;= V_2\, r\,(k - V_2) - \frac{\alpha V_2 P_2}{1+\alpha h V_2},\\
+\frac{dP_2}{dt} &amp;= P_2\left(\frac{\beta V_2}{1+\alpha h V_2} - q\right) + d(P_1-P_2).
+\end{aligned}
+\end{split}\]</div>
+<p>You have 4 variables, so making a phase portrait is much harder (your phase space is 4D).
+To visualise the dynamics in 2D you will have to make some choices.
+You could, for example:</p>
+<ul class="simple">
+<li><p>plot <span class="math notranslate nohighlight">\((V_1,P_1)\)</span> in a phase plane;</p></li>
+<li><p>plot total predators vs total prey;</p></li>
+<li><p>plot <span class="math notranslate nohighlight">\(\log(V_1+V_2)\)</span> vs <span class="math notranslate nohighlight">\(\log(P_1+P_2)\)</span> to see what happens when values get very small.</p></li>
+</ul>
+<p>Create a solution for <span class="math notranslate nohighlight">\(k=14\)</span>, <span class="math notranslate nohighlight">\(d=0.42\)</span>, <span class="math notranslate nohighlight">\(h=0.1\)</span>, <span class="math notranslate nohighlight">\(\alpha=1\)</span>, <span class="math notranslate nohighlight">\(\beta=1\)</span>, <span class="math notranslate nohighlight">\(q=1\)</span>, <span class="math notranslate nohighlight">\(r=0.05\)</span>.
+Look at the solution over time and in the phase plane (just plot one solution).
+What happens? Is this different from the non‑spatial model?</p>
+<p>Next, do the same but now for <span class="math notranslate nohighlight">\(k=18\)</span> (same other parameters).
+You will need to integrate for a long time. What happens now?</p>
+<p>Finally, set parameters to <span class="math notranslate nohighlight">\(k=20\)</span> (same other parameters).
+You will need to integrate for a long time. What happens now?</p>
+<p><strong>Related chapter section:</strong></p>
+<ul class="simple">
+<li><p><em>Space: two coupled patches</em></p></li>
+</ul>
+<p><strong>Note (solver warnings).</strong> During execution you may see <code class="docutils literal notranslate"><span class="pre">LSODA</span></code> warnings (e.g. “too much accuracy requested” / convergence warnings). They don’t stop execution (outputs are still produced), but if you want them gone we can switch those cells to <code class="docutils literal notranslate"><span class="pre">RK45</span></code> with relaxed tolerances or reduce stiffness by rescaling time/parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rm2patch_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+    <span class="n">V1</span><span class="p">,</span> <span class="n">P1</span><span class="p">,</span> <span class="n">V2</span><span class="p">,</span> <span class="n">P2</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">pred1</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">V1</span><span class="o">*</span><span class="n">P1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">V1</span><span class="p">)</span>
+    <span class="n">pred2</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">V2</span><span class="o">*</span><span class="n">P2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">V2</span><span class="p">)</span>
+    <span class="n">dV1</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">V1</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">V1</span><span class="o">/</span><span class="n">K</span><span class="p">)</span> <span class="o">-</span> <span class="n">pred1</span>
+    <span class="n">dV2</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">V2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">V2</span><span class="o">/</span><span class="n">K</span><span class="p">)</span> <span class="o">-</span> <span class="n">pred2</span>
+    <span class="n">dP1</span> <span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="n">pred1</span> <span class="o">-</span> <span class="n">q</span><span class="o">*</span><span class="n">P1</span> <span class="o">+</span> <span class="n">d</span><span class="o">*</span><span class="p">(</span><span class="n">P2</span><span class="o">-</span><span class="n">P1</span><span class="p">)</span>
+    <span class="n">dP2</span> <span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="n">pred2</span> <span class="o">-</span> <span class="n">q</span><span class="o">*</span><span class="n">P2</span> <span class="o">+</span> <span class="n">d</span><span class="o">*</span><span class="p">(</span><span class="n">P1</span><span class="o">-</span><span class="n">P2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dV1</span><span class="p">,</span> <span class="n">dP1</span><span class="p">,</span> <span class="n">dV2</span><span class="p">,</span> <span class="n">dP2</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_rm2</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mf">0.42</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+                 <span class="n">y0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">2500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;LSODA&quot;</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">y0</span> <span class="o">=</span> <span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
+    <span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_end</span> <span class="o">+</span> <span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">rm2patch_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">d</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_end</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">y0</span><span class="p">),</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="n">rtol</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="n">atol</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">summarize_two_patch</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">burn</span><span class="o">=</span><span class="mi">800</span><span class="p">):</span>
+    <span class="n">V1</span><span class="p">,</span> <span class="n">P1</span><span class="p">,</span> <span class="n">V2</span><span class="p">,</span> <span class="n">P2</span> <span class="o">=</span> <span class="n">Y</span>
+    <span class="n">Vtot</span> <span class="o">=</span> <span class="n">V1</span> <span class="o">+</span> <span class="n">V2</span>
+    <span class="n">Ptot</span> <span class="o">=</span> <span class="n">P1</span> <span class="o">+</span> <span class="n">P2</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Vtot</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;V1+V2&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Ptot</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;P1+P2&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;total density&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span> <span class="o">+</span> <span class="s2">&quot; — totals&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="c1"># Post-transient projection</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="n">burn</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">V1</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">P1</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;V1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;P1&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span> <span class="o">+</span> <span class="s2">&quot; — (V1,P1) projection (post-transient)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="c1"># Log totals can reveal near-zero episodes</span>
+    <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-12</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Vtot</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">+</span> <span class="n">eps</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Ptot</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">+</span> <span class="n">eps</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;log(V1+V2)&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;log(P1+P2)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span> <span class="o">+</span> <span class="s2">&quot; — log-total phase projection (post-transient)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Short runs for book rendering (students can extend t_end/burn locally)</span>
+<span class="k">for</span> <span class="n">K</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">]:</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">simulate_rm2</span><span class="p">(</span><span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">2500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+    <span class="n">summarize_two_patch</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Two-patch R–M (K=</span><span class="si">{</span><span class="n">K</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">burn</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<pre class="output stream literal-block"> lsoda--  at t (=r1) and step size h (=r2), the           corrector convergence failed repeatedly            or with abs(h) = hmin   l
+      in above,  r1 =  0.2514677346907D+03   r2 =  0.8285326742089D-09
+</pre>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/mhasoba/Documents/Teaching/MulQuaBio/MQB/.venv/lib/python3.12/site-packages/scipy/integrate/_ivp/lsoda.py:161: UserWarning: lsoda: Repeated convergence failures (perhaps bad Jacobian or tolerances).
+  solver._y, solver.t = integrator.run(
+</pre></div>
+</div>
+<img alt="../_images/0bd5b86777dbb99bd6e24df882c0e5cdf00c15e05206c782d15a8342b5719887.png" src="../_images/0bd5b86777dbb99bd6e24df882c0e5cdf00c15e05206c782d15a8342b5719887.png" />
+<img alt="../_images/62c0c6b331b705d62bc46f141d2c9708a3cc973288e35bcdd1b210005cdd499a.png" src="../_images/62c0c6b331b705d62bc46f141d2c9708a3cc973288e35bcdd1b210005cdd499a.png" />
+<img alt="../_images/7680f25fca2b156746d17d18252f9356a08d176513125b1f21c5f4851927c1db.png" src="../_images/7680f25fca2b156746d17d18252f9356a08d176513125b1f21c5f4851927c1db.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_106660/2985766631.py:3: RuntimeWarning: overflow encountered in scalar multiply
+  pred1 = (a*V1*P1)/(1 + a*h*V1)
+</pre></div>
+</div>
+<pre class="output stream literal-block"> lsoda--  at t (=r1), too much accuracy requested         for precision of machine..  see tolsf (=r2)       in above,  r1 =  0.3603969918185D+03   r2 =                  NaN
+</pre>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_106660/2985766631.py:4: RuntimeWarning: overflow encountered in scalar multiply
+  pred2 = (a*V2*P2)/(1 + a*h*V2)
+/home/mhasoba/Documents/Teaching/MulQuaBio/MQB/.venv/lib/python3.12/site-packages/scipy/integrate/_ivp/lsoda.py:161: UserWarning: lsoda: Excess accuracy requested (tolerances too small).
+  solver._y, solver.t = integrator.run(
+</pre></div>
+</div>
+<img alt="../_images/75e8167eb0f8f2f2ab6471b17863fbc15125e86dcae3aa5bc0d16c19590ecf4c.png" src="../_images/75e8167eb0f8f2f2ab6471b17863fbc15125e86dcae3aa5bc0d16c19590ecf4c.png" />
+<img alt="../_images/cfeb44f445a897e1fe4f420790fcb3105b4e94d51a6b0dc703a385a0d2f4f461.png" src="../_images/cfeb44f445a897e1fe4f420790fcb3105b4e94d51a6b0dc703a385a0d2f4f461.png" />
+<img alt="../_images/0aa90c3d06c3d305fd05520f0638aa844e975b29a49898906224dd6aecd8e6ce.png" src="../_images/0aa90c3d06c3d305fd05520f0638aa844e975b29a49898906224dd6aecd8e6ce.png" />
+<pre class="output stream literal-block"> lsoda--  at t (=r1), too much accuracy requested         for precision of machine..  see tolsf (=r2)       in above,  r1 =  0.3887751518806D+03   r2 =                  NaN
+</pre>
+<img alt="../_images/4f35405cd4d93b57b71862d6d09b0283e31d4815410492fa3bf36436016403d3.png" src="../_images/4f35405cd4d93b57b71862d6d09b0283e31d4815410492fa3bf36436016403d3.png" />
+<img alt="../_images/fcf61fb330bc76f0583dc7e3f82faec4203ac657fd5bd2b95aa19576b12d4ec4.png" src="../_images/fcf61fb330bc76f0583dc7e3f82faec4203ac657fd5bd2b95aa19576b12d4ec4.png" />
+<img alt="../_images/a8e3c33c33ea7d9361ce63d86852f52f6a6f87316dc96e4c0d50c69b3c2445ab.png" src="../_images/a8e3c33c33ea7d9361ce63d86852f52f6a6f87316dc96e4c0d50c69b3c2445ab.png" />
+</div>
+</div>
+<section id="solution-notes-32c">
+<h3>Solution notes (3‑2c)<a class="headerlink" href="#solution-notes-32c" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Two coupled patches can reduce synchrony between patches and prevent simultaneous extreme crashes.</p></li>
+<li><p>As <span class="math notranslate nohighlight">\(K\)</span> increases, oscillations often increase in amplitude/period and transients can become very long; hence long integrations.</p></li>
+<li><p>A log‑total projection is useful for seeing whether the system approaches extremely small predator totals (quasi‑extinction).</p></li>
+<li><p>This illustrates how space can mitigate the paradox of enrichment (see the chapter section <em>Space: two coupled patches</em>).</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="predator-prey.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Predator–prey dynamics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="epidemiology.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Epidemiological dynamics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-shared-helpers">Utility: shared helpers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-31-lv-predatorprey-with-fisheries">Problem 3‑1 — LV predator–prey with fisheries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-notes-31">Solution notes (3‑1)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-32a-rosenzweigmacarthur-dynamics-limit-cycles">Problem 3‑2a — Rosenzweig–MacArthur dynamics (limit cycles)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-32b-numerical-bifurcation-diagram-in-k">Problem 3‑2b — Numerical bifurcation diagram in <span class="math notranslate nohighlight">\(k\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-notes-32">Solution notes (3‑2)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-32c-two-coupled-patches-predator-dispersal">Problem 3‑2c — Two coupled patches (predator dispersal)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-notes-32c">Solution notes (3‑2c)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

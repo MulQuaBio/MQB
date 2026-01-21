@@ -1,0 +1,1242 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>MiCRM → effective gLV → logistic (single species) &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/MiCRM_to_Logistic_UPDATED_from_manuscript';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Species interactions" href="interactions.html" />
+    <link rel="prev" title="Populations: Practicals" href="populations-practicals.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-computing.html">Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="python.html">Biological Computing in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="object-oriented-programming.html">Object-Oriented Programming</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="r.html">Biological Computing in R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-basic-stats.html">Basic Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-r.html">Data Management and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exp-design.html">Experimental design and Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Advanced Modelling &amp; Statistics Pre-work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-eemodelling.html">Ecological &amp; Evolutionary Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="populations.html">Single Populations</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="populations-practicals.html">Populations: Practicals</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">MiCRM → effective gLV → logistic (single species)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="competitive-dynamics.html">Competitive dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="competitive-dynamics-practicals.html">Competitive Dynamics: Practicals</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="predator-prey.html">Predator–prey dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="predator-prey-practicals.html">Predator–prey dynamics: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="epidemiology.html">Epidemiological dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="epidemiology-practicals.html">Epidemiological dynamics: Practicals</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Advanced Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="microbial-growth.html">Microbial Growth rates in R</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Assignments and Assessments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Appendices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MulQuaBio/MQB/master?urlpath=lab/tree/notebooks/MiCRM_to_Logistic_UPDATED_from_manuscript.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MulQuaBio/MQB/blob/master/notebooks/MiCRM_to_Logistic_UPDATED_from_manuscript.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/MiCRM_to_Logistic_UPDATED_from_manuscript.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/MiCRM_to_Logistic_UPDATED_from_manuscript.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>MiCRM → effective gLV → logistic (single species)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-aligned-to-manuscript">0) Model (aligned to manuscript)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder-glv-form">Reminder: gLV form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-glv-derivation-from-micrm-qss-linearization">1) Effective gLV derivation from MiCRM (QSS + linearization)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quasisteady-resources-timescale-separation">1.1 Quasi‑steady resources (time‑scale separation)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linearize-around-an-equilibrium">1.2 Linearize around an equilibrium</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-partial-hat-r-partial-c-implicit-function-theorem">1.3 Computing (\partial \hat R/\partial C) (Implicit Function Theorem)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-one-species-logistic-growth-effective-r-and-a-ii">2) Special case: one species ⇒ logistic growth (effective (r) and (a_{ii}))</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-form">2.1 Logistic form</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-mapping-from-micrm">2.2 General mapping from MiCRM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-form-example-no-leakage">2.3 Closed-form example (no leakage)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-simulations">3) Numerical simulations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-using-the-manuscript-uptake-structure-c-r-alpha-u-alpha">3.1 Simulation using the manuscript uptake structure (;C R_\alpha u_\alpha)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-monod-uptake-nonlinear-still-logistic-like">4) Optional: Monod uptake (nonlinear), still logistic-like</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-on-cross-feeding-leakage">5) Remarks on cross-feeding (leakage)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-effective-mappings-single-species-no-cross-feeding">Summary of effective mappings (single species, no cross-feeding)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch">Batch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemostat">Chemostat</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="micrm-effective-glv-logistic-single-species">
+<h1>MiCRM → effective gLV → logistic (single species)<a class="headerlink" href="#micrm-effective-glv-logistic-single-species" title="Link to this heading">#</a></h1>
+<p>This notebook derives how the <strong>standard MiCRM form used in the attached manuscript</strong> can be coarse‑grained to a <strong>generalised Lotka–Volterra (gLV)</strong> model, and then specialised to <strong>logistic growth</strong> for a <strong>single microbial population</strong>.</p>
+<p>We treat both:</p>
+<ul class="simple">
+<li><p><strong>Batch / closed</strong> (no inflow/outflow) and</p></li>
+<li><p><strong>Chemostat / open</strong> (constant inflow + dilution/outflow)</p></li>
+</ul>
+<p>and we support the derivations with numerical simulations.</p>
+<hr class="docutils" />
+<section id="model-aligned-to-manuscript">
+<h2>0) Model (aligned to manuscript)<a class="headerlink" href="#model-aligned-to-manuscript" title="Link to this heading">#</a></h2>
+<p>The manuscript writes the MiCRM (their Eq. (1); notation adapted slightly) as</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dC_i}{dt} \;=\; C_i\left[\sum_{\alpha=1}^{M} R_\alpha\,u_{i\alpha}\,(1-\lambda_\alpha)\;-\;m_i\right],
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{dR_\alpha}{dt} \;=\; \rho_\alpha - \omega_\alpha R_\alpha \;-\;\sum_{i=1}^{N} C_i R_\alpha u_{i\alpha}
+\;+\;\sum_{i=1}^{N}\sum_{\beta=1}^{M} C_i R_\beta u_{i\beta}\,l_{\beta\alpha}.
+\]</div>
+<p><strong>Key points:</strong></p>
+<ul class="simple">
+<li><p>(u_{i\alpha}) are <strong>constants</strong>; uptake flux scales as (C_iR_\alpha u_{i\alpha}).</p></li>
+<li><p>(\lambda_\alpha = \sum_\beta l_{\alpha\beta}) is total leakage fraction of resource (\alpha).</p></li>
+<li><p>(\rho_\alpha) is supply, (\omega_\alpha) is resource washout/decay.</p></li>
+<li><p>(m_i) is maintenance (and may include consumer washout).</p></li>
+</ul>
+<p>We:</p>
+<ol class="arabic simple">
+<li><p>Derive the <strong>effective gLV</strong> coefficients (a_{ij}) and (r_i) by QSS + linearization (as in the manuscript, but with more steps).</p></li>
+<li><p>Specialise to <strong>one species</strong> to show the gLV becomes <strong>logistic growth</strong> with effective (r) and (a_{ii}).</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="reminder-glv-form">
+<h2>Reminder: gLV form<a class="headerlink" href="#reminder-glv-form" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\frac{dC_i}{dt} \;=\; C_i\left(r_i + \sum_{j=1}^N a_{ij}C_j\right).
+\]</div>
+<p>For (N=1): (\dot C = C(r + a_{11}C)), which is logistic when (a_{11}&lt;0):
+$<span class="math notranslate nohighlight">\(
+\frac{dC}{dt}= rC - aC^2 = rC\left(1-\frac{C}{K}\right),\qquad a=-a_{11}&gt;0,\quad K=\frac{r}{a}.
+\)</span>$</p>
+</section>
+<section id="effective-glv-derivation-from-micrm-qss-linearization">
+<h2>1) Effective gLV derivation from MiCRM (QSS + linearization)<a class="headerlink" href="#effective-glv-derivation-from-micrm-qss-linearization" title="Link to this heading">#</a></h2>
+<p>This follows the manuscript’s logic (their Eqs. (5)–(7) and Appendix C), but with extra intermediate steps.</p>
+<section id="quasisteady-resources-timescale-separation">
+<h3>1.1 Quasi‑steady resources (time‑scale separation)<a class="headerlink" href="#quasisteady-resources-timescale-separation" title="Link to this heading">#</a></h3>
+<p>Assume resources relax quickly compared to consumers, so:
+$<span class="math notranslate nohighlight">\(
+\frac{dR_\alpha}{dt}\approx 0.
+\)</span><span class="math notranslate nohighlight">\(
+Define nullcline functions
+\)</span>$
+F_\alpha(C,R)= \rho_\alpha - \omega_\alpha R_\alpha - \sum_i C_iR_\alpha u_{i\alpha}</p>
+<ul class="simple">
+<li><p>\sum_i\sum_\beta C_iR_\beta u_{i\beta}l_{\beta\alpha}=0.
+$$
+Solving (F_\alpha=0) gives implicit functions (R_\alpha=\hat R_\alpha(C)).</p></li>
+</ul>
+<p>Substitute into consumer dynamics:
+$<span class="math notranslate nohighlight">\(
+\frac{dC_i}{dt}=C_i\Big[\sum_\alpha \hat R_\alpha(C)\,u_{i\alpha}(1-\lambda_\alpha) - m_i\Big]
+=:C_i\,G_i(C).
+\)</span>$</p>
+</section>
+<section id="linearize-around-an-equilibrium">
+<h3>1.2 Linearize around an equilibrium<a class="headerlink" href="#linearize-around-an-equilibrium" title="Link to this heading">#</a></h3>
+<p>Let ((\hat C,\hat R)) be an equilibrium with (\hat C_i&gt;0) for retained species; then (G_i(\hat C)=0).</p>
+<p>First-order expansion:
+$<span class="math notranslate nohighlight">\(
+\hat R_\alpha(C)\approx \hat R_\alpha+\sum_j \frac{\partial \hat R_\alpha}{\partial C_j}\Big|_{\hat C}(C_j-\hat C_j).
+\)</span>$</p>
+<p>Insert into (G_i) and collect terms to obtain gLV:
+$<span class="math notranslate nohighlight">\(
+\frac{dC_i}{dt}\approx C_i\left(r_i+\sum_j a_{ij}C_j\right),
+\)</span><span class="math notranslate nohighlight">\(
+with
+\)</span><span class="math notranslate nohighlight">\(
+a_{ij}=\sum_\alpha u_{i\alpha}(1-\lambda_\alpha)\frac{\partial \hat R_\alpha}{\partial C_j}\Big|_{\hat C},
+\qquad
+r_i=\left[\sum_\alpha u_{i\alpha}(1-\lambda_\alpha)\hat R_\alpha - m_i\right]-\sum_j a_{ij}\hat C_j.
+\)</span>$</p>
+</section>
+<section id="computing-partial-hat-r-partial-c-implicit-function-theorem">
+<h3>1.3 Computing (\partial \hat R/\partial C) (Implicit Function Theorem)<a class="headerlink" href="#computing-partial-hat-r-partial-c-implicit-function-theorem" title="Link to this heading">#</a></h3>
+<p>Differentiate (F_\alpha(C,\hat R(C))=0) w.r.t. (C_j):
+$<span class="math notranslate nohighlight">\(
+\frac{\partial F_\alpha}{\partial C_j}+\sum_\gamma \frac{\partial F_\alpha}{\partial R_\gamma}\frac{\partial \hat R_\gamma}{\partial C_j}=0.
+\)</span><span class="math notranslate nohighlight">\(
+Let \(D_{\alpha\gamma}=\partial F_\alpha/\partial R_\gamma\) at equilibrium. Then
+\)</span><span class="math notranslate nohighlight">\(
+\frac{\partial \hat R}{\partial C_j}=-D^{-1}\frac{\partial F}{\partial C_j}.
+\)</span>$</p>
+<p>This shows (pedagogically) how <strong>competition</strong> (via depletion) and <strong>facilitation</strong> (via leakage) enter (a_{ij}).</p>
+</section>
+</section>
+<section id="special-case-one-species-logistic-growth-effective-r-and-a-ii">
+<h2>2) Special case: one species ⇒ logistic growth (effective (r) and (a_{ii}))<a class="headerlink" href="#special-case-one-species-logistic-growth-effective-r-and-a-ii" title="Link to this heading">#</a></h2>
+<p>Set (N=1) and drop species indices: biomass (C(t)), preferences (u_\alpha), maintenance (m).</p>
+<section id="logistic-form">
+<h3>2.1 Logistic form<a class="headerlink" href="#logistic-form" title="Link to this heading">#</a></h3>
+<p>The one-species gLV approximation is
+$<span class="math notranslate nohighlight">\(
+\frac{dC}{dt}\approx C\left(r+a_{11}C\right).
+\)</span>$
+If (a_{11}&lt;0), this is logistic: (\dot C=rC-aC^2) with (a=-a_{11}&gt;0) and (K=r/a).</p>
+</section>
+<section id="general-mapping-from-micrm">
+<h3>2.2 General mapping from MiCRM<a class="headerlink" href="#general-mapping-from-micrm" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+a_{11}=\sum_{\alpha=1}^M u_{\alpha}(1-\lambda_\alpha)\,\frac{\partial \hat R_\alpha}{\partial C}\Big|_{\hat C},
+\qquad
+r=\left[\sum_\alpha u_\alpha(1-\lambda_\alpha)\hat R_\alpha(\hat C)-m\right]-a_{11}\hat C.
+\]</div>
+<p>So self-limitation is guaranteed when the dominant resources satisfy (\partial \hat R_\alpha/\partial C&lt;0).</p>
+</section>
+<section id="closed-form-example-no-leakage">
+<h3>2.3 Closed-form example (no leakage)<a class="headerlink" href="#closed-form-example-no-leakage" title="Link to this heading">#</a></h3>
+<p>If (l_{\beta\alpha}=0) (hence (\lambda_\alpha=0)), resource QSS gives
+$<span class="math notranslate nohighlight">\(
+0=\rho_\alpha-\omega_\alpha R_\alpha-CR_\alpha u_\alpha
+\Rightarrow
+\hat R_\alpha(C)=\frac{\rho_\alpha}{\omega_\alpha+Cu_\alpha}.
+\)</span><span class="math notranslate nohighlight">\(
+Then
+\)</span><span class="math notranslate nohighlight">\(
+\frac{\partial \hat R_\alpha}{\partial C}=-\frac{\rho_\alpha u_\alpha}{(\omega_\alpha+Cu_\alpha)^2},
+\)</span><span class="math notranslate nohighlight">\(
+and therefore
+\)</span><span class="math notranslate nohighlight">\(
+a_{11}(\hat C)=\sum_\alpha u_\alpha\frac{\partial \hat R_\alpha}{\partial C}\Big|_{\hat C}
+=-\sum_\alpha \frac{\rho_\alpha u_\alpha^2}{(\omega_\alpha+\hat Cu_\alpha)^2}&lt;0.
+\)</span>$</p>
+<p>This explicitly shows the MiCRM yields negative density dependence (logistic self-limitation) for one species.</p>
+</section>
+</section>
+<section id="numerical-simulations">
+<h2>3) Numerical simulations<a class="headerlink" href="#numerical-simulations" title="Link to this heading">#</a></h2>
+<p>We simulate a one-species MiCRM with <strong>two resources</strong> in both batch and chemostat settings, and compare trajectories to the corresponding logistic approximation.</p>
+<p>We will:</p>
+<ol class="arabic simple">
+<li><p>Define MiCRM ODEs (Monod uptake in general; we also show linear uptake).</p></li>
+<li><p>Integrate with <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp</span></code>.</p></li>
+<li><p>Compute predicted (r) and (a_{ii}) from the formulas above.</p></li>
+</ol>
+<section id="simulation-using-the-manuscript-uptake-structure-c-r-alpha-u-alpha">
+<h3>3.1 Simulation using the manuscript uptake structure (;C R_\alpha u_\alpha)<a class="headerlink" href="#simulation-using-the-manuscript-uptake-structure-c-r-alpha-u-alpha" title="Link to this heading">#</a></h3>
+<p>We simulate the <strong>exact manuscript-form MiCRM</strong> (single species, no leakage) under chemostat-like conditions
+((\rho_\alpha&gt;0, \omega_\alpha&gt;0)) and compare to the <strong>effective logistic</strong> predicted by the one-species gLV mapping
+evaluated at the equilibrium (\hat C) obtained numerically.</p>
+<p>For no leakage:
+$<span class="math notranslate nohighlight">\(
+\hat R_\alpha(C)=\frac{\rho_\alpha}{\omega_\alpha + C u_\alpha},\qquad
+\frac{\partial \hat R_\alpha}{\partial C}=-\frac{\rho_\alpha u_\alpha}{(\omega_\alpha + C u_\alpha)^2}.
+\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">micrm_manuscript_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Single-species, no-leakage manuscript MiCRM:</span>
+<span class="sd">      dC/dt = C( sum_alpha R_alpha u_alpha - m )</span>
+<span class="sd">      dR_alpha/dt = rho_alpha - omega_alpha R_alpha - C R_alpha u_alpha</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">dC</span> <span class="o">=</span> <span class="n">C</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">u</span><span class="p">)</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span>
+    <span class="n">dR</span> <span class="o">=</span> <span class="n">rho</span> <span class="o">-</span> <span class="n">omega</span><span class="o">*</span><span class="n">R</span> <span class="o">-</span> <span class="n">C</span><span class="o">*</span><span class="n">R</span><span class="o">*</span><span class="n">u</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="n">dC</span><span class="p">],</span> <span class="n">dR</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_manuscript</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">R0</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">npts</span><span class="o">=</span><span class="mi">4000</span><span class="p">):</span>
+    <span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="n">C0</span><span class="p">],</span> <span class="n">R0</span><span class="p">])</span>
+    <span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">,</span> <span class="n">npts</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">micrm_manuscript_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span>
+                    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">),</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span>
+
+<span class="c1"># Parameters (2 resources)</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">])</span>      <span class="c1"># supply</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>    <span class="c1"># resource washout/decay</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>        <span class="c1"># preferences</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">0.2</span>                         <span class="c1"># maintenance (include consumer washout here if desired)</span>
+
+<span class="n">C0</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">R0</span> <span class="o">=</span> <span class="n">rho</span><span class="o">/</span><span class="n">omega</span>                  <span class="c1"># resource-only equilibrium (no consumers)</span>
+
+<span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">simulate_manuscript</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">R0</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="c1"># Numerical equilibrium (late-time mean)</span>
+<span class="n">Chat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="o">-</span><span class="mi">400</span><span class="p">:]))</span>
+<span class="n">Rhat_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">R</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">400</span><span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Closed-form nullcline and derivative (no leakage)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Rhat_of_C</span><span class="p">(</span><span class="n">Cval</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">rho</span><span class="o">/</span><span class="p">(</span><span class="n">omega</span> <span class="o">+</span> <span class="n">Cval</span><span class="o">*</span><span class="n">u</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dRhat_dC</span><span class="p">(</span><span class="n">Cval</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">rho</span><span class="o">*</span><span class="n">u</span><span class="o">/</span><span class="p">(</span><span class="n">omega</span> <span class="o">+</span> <span class="n">Cval</span><span class="o">*</span><span class="n">u</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">a11</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="n">dRhat_dC</span><span class="p">(</span><span class="n">Chat</span><span class="p">))</span>  <span class="c1"># (1-lambda_alpha)=1 here</span>
+<span class="n">r_eff</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">u</span><span class="o">*</span><span class="n">Rhat_of_C</span><span class="p">(</span><span class="n">Chat</span><span class="p">))</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span> <span class="o">-</span> <span class="n">a11</span><span class="o">*</span><span class="n">Chat</span>
+
+<span class="c1"># Logistic comparison</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_logistic_scalar</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">npts</span><span class="o">=</span><span class="mi">4000</span><span class="p">):</span>
+    <span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">,</span> <span class="n">npts</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">[</span><span class="n">r</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">),</span> <span class="p">[</span><span class="n">C0</span><span class="p">],</span>
+                    <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">tL</span><span class="p">,</span> <span class="n">Clog</span> <span class="o">=</span> <span class="n">simulate_logistic_scalar</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">r_eff</span><span class="p">,</span> <span class="n">a11</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">a11</span><span class="p">,</span> <span class="n">r_eff</span><span class="p">,</span> <span class="n">r_eff</span><span class="o">/</span><span class="p">(</span><span class="o">-</span><span class="n">a11</span><span class="p">)</span> <span class="k">if</span> <span class="n">a11</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">Chat</span><span class="p">,</span> <span class="n">Rhat_num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(-0.025000909765940202),
+ np.float64(0.18657659053018824),
+ np.float64(7.462792045446659),
+ 7.462792045422807,
+ array([0.15698011, 0.14883182]))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MiCRM (manuscript form) C(t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL</span><span class="p">,</span> <span class="n">Clog</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Effective logistic (gLV @ equilibrium)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Chat</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;C*≈</span><span class="si">{</span><span class="n">Chat</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Single species: manuscript-form MiCRM vs effective logistic&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">R</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;R</span><span class="si">{</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">((</span><span class="n">rho</span><span class="o">/</span><span class="n">omega</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R1 (no-consumer eq)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">((</span><span class="n">rho</span><span class="o">/</span><span class="n">omega</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R2 (no-consumer eq)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Resources under manuscript-form MiCRM&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2f604336daa46f4fc5d1a99e3e84fdd46b3909851bd51b99f42979486bc67618.png" src="../_images/2f604336daa46f4fc5d1a99e3e84fdd46b3909851bd51b99f42979486bc67618.png" />
+<img alt="../_images/d365695cba4d95dc669c1dbebb73e4a9cf80a3d733d67b086aa4f43169aefdbe.png" src="../_images/d365695cba4d95dc669c1dbebb73e4a9cf80a3d733d67b086aa4f43169aefdbe.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Params</span><span class="p">:</span>
+    <span class="n">M</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">eta</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>          <span class="c1"># yields (M,)</span>
+    <span class="n">lam</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>          <span class="c1"># max uptake or linear coefficient (M,)</span>
+    <span class="n">Km</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>           <span class="c1"># Monod half-sat (M,)</span>
+    <span class="n">D</span><span class="p">:</span> <span class="nb">float</span>                 <span class="c1"># dilution rate (0 for batch)</span>
+    <span class="n">S</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>            <span class="c1"># feed concentrations (M,) (ignored if batch)</span>
+    <span class="n">use_monod</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">uptake</span><span class="p">(</span><span class="n">R</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="n">Params</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">use_monod</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="n">lam</span> <span class="o">*</span> <span class="p">(</span><span class="n">R</span> <span class="o">/</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">Km</span> <span class="o">+</span> <span class="n">R</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="n">lam</span> <span class="o">*</span> <span class="n">R</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">micrm_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="n">Params</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">uptake</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">dN</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">eta</span> <span class="o">*</span> <span class="n">u</span><span class="p">)</span> <span class="o">-</span> <span class="n">p</span><span class="o">.</span><span class="n">D</span> <span class="o">*</span> <span class="n">N</span>
+    <span class="n">dR</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">D</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">S</span> <span class="o">-</span> <span class="n">R</span><span class="p">)</span> <span class="o">-</span> <span class="n">u</span> <span class="o">*</span> <span class="n">N</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="n">dN</span><span class="p">],</span> <span class="n">dR</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate</span><span class="p">(</span><span class="n">p</span><span class="p">:</span> <span class="n">Params</span><span class="p">,</span> <span class="n">N0</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">R0</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">tmax</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">npts</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
+    <span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="n">N0</span><span class="p">],</span> <span class="n">R0</span><span class="p">])</span>
+    <span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">,</span> <span class="n">npts</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">micrm_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">),</span> <span class="n">y0</span><span class="p">,</span>
+                    <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">logistic_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">r</span><span class="o">*</span><span class="n">N</span> <span class="o">-</span> <span class="n">a</span><span class="o">*</span><span class="n">N</span><span class="o">*</span><span class="n">N</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_logistic</span><span class="p">(</span><span class="n">N0</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">npts</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
+    <span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">,</span> <span class="n">npts</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">logistic_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">),</span> <span class="p">[</span><span class="n">N0</span><span class="p">],</span>
+                    <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Parameter set (two resources) ---</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">eta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
+<span class="n">lam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>          <span class="c1"># equal slopes =&gt; exact logistic in batch under linear uptake</span>
+<span class="n">Km</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1e-6</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">])</span>
+
+<span class="n">N0</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">R0_batch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">])</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">])</span>
+<span class="n">R0_che</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Linear uptake case</span>
+<span class="n">p_batch_lin</span> <span class="o">=</span> <span class="n">Params</span><span class="p">(</span><span class="n">M</span><span class="o">=</span><span class="n">M</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="n">eta</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="n">lam</span><span class="p">,</span> <span class="n">Km</span><span class="o">=</span><span class="n">Km</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">M</span><span class="p">),</span> <span class="n">use_monod</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">p_che_lin</span>   <span class="o">=</span> <span class="n">Params</span><span class="p">(</span><span class="n">M</span><span class="o">=</span><span class="n">M</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="n">eta</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="n">lam</span><span class="p">,</span> <span class="n">Km</span><span class="o">=</span><span class="n">Km</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="n">D</span><span class="p">,</span>  <span class="n">S</span><span class="o">=</span><span class="n">S</span><span class="p">,</span>         <span class="n">use_monod</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">t_b</span><span class="p">,</span> <span class="n">y_b</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">p_batch_lin</span><span class="p">,</span> <span class="n">N0</span><span class="o">=</span><span class="n">N0</span><span class="p">,</span> <span class="n">R0</span><span class="o">=</span><span class="n">R0_batch</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">t_c</span><span class="p">,</span> <span class="n">y_c</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">p_che_lin</span><span class="p">,</span>   <span class="n">N0</span><span class="o">=</span><span class="n">N0</span><span class="p">,</span> <span class="n">R0</span><span class="o">=</span><span class="n">R0_che</span><span class="p">,</span>   <span class="n">tmax</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="n">N_b</span><span class="p">,</span> <span class="n">Rb1</span><span class="p">,</span> <span class="n">Rb2</span> <span class="o">=</span> <span class="n">y_b</span>
+<span class="n">N_c</span><span class="p">,</span> <span class="n">Rc1</span><span class="p">,</span> <span class="n">Rc2</span> <span class="o">=</span> <span class="n">y_c</span>
+
+<span class="c1"># Predicted effective logistic parameters (linear case)</span>
+<span class="n">K_tot_batch</span> <span class="o">=</span> <span class="n">N0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="n">R0_batch</span><span class="p">)</span>
+<span class="n">r_batch</span> <span class="o">=</span> <span class="n">lam</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">K_tot_batch</span>
+<span class="n">a_batch</span> <span class="o">=</span> <span class="n">lam</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">r_che</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="n">lam</span> <span class="o">*</span> <span class="n">S</span><span class="p">))</span> <span class="o">-</span> <span class="n">D</span>
+<span class="n">a_che</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">D</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="n">lam</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">S</span><span class="p">)</span>
+
+<span class="n">tL_b</span><span class="p">,</span> <span class="n">Nlog_b</span> <span class="o">=</span> <span class="n">simulate_logistic</span><span class="p">(</span><span class="n">N0</span><span class="p">,</span> <span class="n">r_batch</span><span class="p">,</span> <span class="n">a_batch</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">tL_c</span><span class="p">,</span> <span class="n">Nlog_c</span> <span class="o">=</span> <span class="n">simulate_logistic</span><span class="p">(</span><span class="n">N0</span><span class="p">,</span> <span class="n">r_che</span><span class="p">,</span> <span class="n">a_che</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="n">K_che</span> <span class="o">=</span> <span class="n">r_che</span> <span class="o">/</span> <span class="n">a_che</span>
+
+<span class="p">(</span><span class="n">r_batch</span><span class="p">,</span> <span class="n">a_batch</span><span class="p">,</span> <span class="n">K_tot_batch</span><span class="p">,</span> <span class="n">r_che</span><span class="p">,</span> <span class="n">a_che</span><span class="p">,</span> <span class="n">K_che</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(1.42),
+ np.float64(0.2),
+ np.float64(7.1),
+ np.float64(0.8999999999999999),
+ np.float64(0.56),
+ np.float64(1.6071428571428568))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Batch plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_b</span><span class="p">,</span> <span class="n">N_b</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MiCRM N (batch)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL_b</span><span class="p">,</span> <span class="n">Nlog_b</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Logistic (predicted)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">K_tot_batch</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;K_tot=</span><span class="si">{</span><span class="n">K_tot_batch</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Batch: MiCRM vs logistic (linear uptake)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_b</span><span class="p">,</span> <span class="n">Rb1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_b</span><span class="p">,</span> <span class="n">Rb2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Resource&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Batch resources&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Chemostat plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_c</span><span class="p">,</span> <span class="n">N_c</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MiCRM N (chemostat)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL_c</span><span class="p">,</span> <span class="n">Nlog_c</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Logistic (predicted)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">N_c</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">:]),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;N*≈</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">N_c</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">:])</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">K_che</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;r/a≈</span><span class="si">{</span><span class="n">K_che</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Chemostat: MiCRM vs logistic (linear uptake approximation)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_c</span><span class="p">,</span> <span class="n">Rc1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_c</span><span class="p">,</span> <span class="n">Rc2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;S1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;S2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Resource&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Chemostat resources&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f343de111de4c279a3feb4cd6ad270267a03583d59f1ae3fc4b5593325375263.png" src="../_images/f343de111de4c279a3feb4cd6ad270267a03583d59f1ae3fc4b5593325375263.png" />
+<img alt="../_images/b659ff410b9527115c699d13e6af35f7126ab6cbcc79ea1662148b8824ebf4d1.png" src="../_images/b659ff410b9527115c699d13e6af35f7126ab6cbcc79ea1662148b8824ebf4d1.png" />
+<img alt="../_images/59183297e8372fdeaf03bf740e88b91d1985cf1c325b3e6a7236665c291a3e7a.png" src="../_images/59183297e8372fdeaf03bf740e88b91d1985cf1c325b3e6a7236665c291a3e7a.png" />
+<img alt="../_images/5e8b307d070cb018817559211b3087d2313e284f309ace4f9d5dc48e6db30802.png" src="../_images/5e8b307d070cb018817559211b3087d2313e284f309ace4f9d5dc48e6db30802.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="optional-monod-uptake-nonlinear-still-logistic-like">
+<h2>4) Optional: Monod uptake (nonlinear), still logistic-like<a class="headerlink" href="#optional-monod-uptake-nonlinear-still-logistic-like" title="Link to this heading">#</a></h2>
+<p>With Monod uptake (u_j(R)=\lambda_j\frac{R}{K_j+R}), the reduction is no longer exactly logistic,
+but early and intermediate dynamics are typically <strong>sigmoidal</strong>, and can be approximated by logistic growth.</p>
+<p>We compute:</p>
+<ul class="simple">
+<li><p>(r_{\mathrm{batch}} = \sum_j \eta_j u_j(R_{j0})),</p></li>
+<li><p>(K_{\mathrm{tot}} = N_0 + \sum_j \eta_j R_{j0}),
+and use (a_{ii}\approx r/K_{\mathrm{tot}}) as a simple effective mapping.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Km_mod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>  <span class="c1"># moderate half-saturation constants</span>
+
+<span class="n">p_batch_mon</span> <span class="o">=</span> <span class="n">Params</span><span class="p">(</span><span class="n">M</span><span class="o">=</span><span class="n">M</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="n">eta</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="n">lam</span><span class="p">,</span> <span class="n">Km</span><span class="o">=</span><span class="n">Km_mod</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">M</span><span class="p">),</span> <span class="n">use_monod</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">p_che_mon</span>   <span class="o">=</span> <span class="n">Params</span><span class="p">(</span><span class="n">M</span><span class="o">=</span><span class="n">M</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="n">eta</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="n">lam</span><span class="p">,</span> <span class="n">Km</span><span class="o">=</span><span class="n">Km_mod</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="n">D</span><span class="p">,</span>  <span class="n">S</span><span class="o">=</span><span class="n">S</span><span class="p">,</span>         <span class="n">use_monod</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">t_bm</span><span class="p">,</span> <span class="n">y_bm</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">p_batch_mon</span><span class="p">,</span> <span class="n">N0</span><span class="o">=</span><span class="n">N0</span><span class="p">,</span> <span class="n">R0</span><span class="o">=</span><span class="n">R0_batch</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">t_cm</span><span class="p">,</span> <span class="n">y_cm</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">p_che_mon</span><span class="p">,</span>   <span class="n">N0</span><span class="o">=</span><span class="n">N0</span><span class="p">,</span> <span class="n">R0</span><span class="o">=</span><span class="n">R0_che</span><span class="p">,</span>   <span class="n">tmax</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+
+<span class="n">N_bm</span><span class="p">,</span> <span class="n">Rbm1</span><span class="p">,</span> <span class="n">Rbm2</span> <span class="o">=</span> <span class="n">y_bm</span>
+<span class="n">N_cm</span><span class="p">,</span> <span class="n">Rcm1</span><span class="p">,</span> <span class="n">Rcm2</span> <span class="o">=</span> <span class="n">y_cm</span>
+
+<span class="c1"># Effective batch parameters</span>
+<span class="n">u0_batch</span> <span class="o">=</span> <span class="n">uptake</span><span class="p">(</span><span class="n">R0_batch</span><span class="p">,</span> <span class="n">p_batch_mon</span><span class="p">)</span>
+<span class="n">r_batch_eff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="n">u0_batch</span><span class="p">)</span>
+<span class="n">K_tot_eff</span> <span class="o">=</span> <span class="n">N0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="n">R0_batch</span><span class="p">)</span>
+<span class="n">a_batch_eff</span> <span class="o">=</span> <span class="n">r_batch_eff</span> <span class="o">/</span> <span class="n">K_tot_eff</span>
+
+<span class="c1"># Effective chemostat parameters at supply levels</span>
+<span class="n">uS</span> <span class="o">=</span> <span class="n">uptake</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">p_che_mon</span><span class="p">)</span>
+<span class="n">r_che_eff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="n">uS</span><span class="p">)</span> <span class="o">-</span> <span class="n">D</span>
+
+<span class="c1"># Use observed equilibrium as K-like scale for a simple effective logistic map</span>
+<span class="n">Nstar_obs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">N_cm</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">:])</span>
+<span class="n">a_che_eff</span> <span class="o">=</span> <span class="n">r_che_eff</span> <span class="o">/</span> <span class="n">Nstar_obs</span> <span class="k">if</span> <span class="n">Nstar_obs</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="n">tL_bm</span><span class="p">,</span> <span class="n">Nlog_bm</span> <span class="o">=</span> <span class="n">simulate_logistic</span><span class="p">(</span><span class="n">N0</span><span class="p">,</span> <span class="n">r_batch_eff</span><span class="p">,</span> <span class="n">a_batch_eff</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">tL_cm</span><span class="p">,</span> <span class="n">Nlog_cm</span> <span class="o">=</span> <span class="n">simulate_logistic</span><span class="p">(</span><span class="n">N0</span><span class="p">,</span> <span class="n">r_che_eff</span><span class="p">,</span> <span class="n">a_che_eff</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">r_batch_eff</span><span class="p">,</span> <span class="n">a_batch_eff</span><span class="p">,</span> <span class="n">K_tot_eff</span><span class="p">,</span> <span class="n">r_che_eff</span><span class="p">,</span> <span class="n">a_che_eff</span><span class="p">,</span> <span class="n">Nstar_obs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(0.1575757575757576),
+ np.float64(0.022193768672641917),
+ np.float64(7.1),
+ np.float64(-0.3424242424242424),
+ np.float64(-16030622466.111002),
+ np.float64(2.1360632947855447e-11))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_bm</span><span class="p">,</span> <span class="n">N_bm</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MiCRM N (batch, Monod)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL_bm</span><span class="p">,</span> <span class="n">Nlog_bm</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Effective logistic&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">K_tot_eff</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;K_tot=</span><span class="si">{</span><span class="n">K_tot_eff</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Batch: MiCRM vs effective logistic (Monod uptake)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_cm</span><span class="p">,</span> <span class="n">N_cm</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MiCRM N (chemostat, Monod)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL_cm</span><span class="p">,</span> <span class="n">Nlog_cm</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Effective logistic&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Nstar_obs</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;N*≈</span><span class="si">{</span><span class="n">Nstar_obs</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Chemostat: MiCRM vs effective logistic (Monod uptake)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7aa5a716c27c0c6a175826a5656db73919dfcae5b7beb74ace107d7b1175acfb.png" src="../_images/7aa5a716c27c0c6a175826a5656db73919dfcae5b7beb74ace107d7b1175acfb.png" />
+<img alt="../_images/e1e205a5c809c0a3b577ab33e349acd6bb3f07029375ff232891e932e73b55bf.png" src="../_images/e1e205a5c809c0a3b577ab33e349acd6bb3f07029375ff232891e932e73b55bf.png" />
+</div>
+</div>
+</section>
+<section id="remarks-on-cross-feeding-leakage">
+<h2>5) Remarks on cross-feeding (leakage)<a class="headerlink" href="#remarks-on-cross-feeding-leakage" title="Link to this heading">#</a></h2>
+<p>In the full MiCRM, a fraction <span class="math notranslate nohighlight">\(l_j\)</span> of consumed resource can be released as byproducts and redistributed via a conversion matrix.
+This can produce <strong>multi-phase growth</strong> (e.g. diauxie).</p>
+<p>If byproducts remain within the tracked pool and are eventually utilizable by the same population, the <strong>overall</strong> biomass remains constrained by generalized mass balance, so a logistic model with <strong>effective</strong> <span class="math notranslate nohighlight">\((r,a_{ii})\)</span> is still often useful at a coarse-grained level (with possible deviations from a single smooth sigmoid).</p>
+</section>
+<hr class="docutils" />
+<section id="summary-of-effective-mappings-single-species-no-cross-feeding">
+<h2>Summary of effective mappings (single species, no cross-feeding)<a class="headerlink" href="#summary-of-effective-mappings-single-species-no-cross-feeding" title="Link to this heading">#</a></h2>
+<section id="batch">
+<h3>Batch<a class="headerlink" href="#batch" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r_{\mathrm{batch}} = \sum_j \eta_j u_j(R_{j0})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(K_{\mathrm{tot}} = N_0 + \sum_j \eta_j R_{j0}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a_{ii,\mathrm{batch}} \approx r_{\mathrm{batch}}/K_{\mathrm{tot}}\)</span> (exactly <span class="math notranslate nohighlight">\(=\lambda\)</span> for common linear uptake)</p></li>
+</ul>
+</section>
+<section id="chemostat">
+<h3>Chemostat<a class="headerlink" href="#chemostat" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r_{\mathrm{che}} = \sum_j \eta_j u_j(S_j) - D\)</span></p></li>
+<li><p>For linear uptake <span class="math notranslate nohighlight">\(u_j=\lambda_j R\)</span>: <span class="math notranslate nohighlight">\(a_{ii,\mathrm{che}} = \frac{1}{D}\sum_j \eta_j \lambda_j^2 S_j\)</span></p></li>
+<li><p>Equilibrium satisfies <span class="math notranslate nohighlight">\(\sum_j \eta_j u_j(R_j^*)=D\)</span> with <span class="math notranslate nohighlight">\(D(S_j-R_j^*)=u_j(R_j^*)N^*\)</span></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="populations-practicals.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Populations: Practicals</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="interactions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Species interactions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-aligned-to-manuscript">0) Model (aligned to manuscript)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder-glv-form">Reminder: gLV form</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-glv-derivation-from-micrm-qss-linearization">1) Effective gLV derivation from MiCRM (QSS + linearization)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quasisteady-resources-timescale-separation">1.1 Quasi‑steady resources (time‑scale separation)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linearize-around-an-equilibrium">1.2 Linearize around an equilibrium</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-partial-hat-r-partial-c-implicit-function-theorem">1.3 Computing (\partial \hat R/\partial C) (Implicit Function Theorem)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-one-species-logistic-growth-effective-r-and-a-ii">2) Special case: one species ⇒ logistic growth (effective (r) and (a_{ii}))</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-form">2.1 Logistic form</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-mapping-from-micrm">2.2 General mapping from MiCRM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-form-example-no-leakage">2.3 Closed-form example (no leakage)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-simulations">3) Numerical simulations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-using-the-manuscript-uptake-structure-c-r-alpha-u-alpha">3.1 Simulation using the manuscript uptake structure (;C R_\alpha u_\alpha)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-monod-uptake-nonlinear-still-logistic-like">4) Optional: Monod uptake (nonlinear), still logistic-like</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-on-cross-feeding-leakage">5) Remarks on cross-feeding (leakage)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-effective-mappings-single-species-no-cross-feeding">Summary of effective mappings (single species, no cross-feeding)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch">Batch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemostat">Chemostat</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

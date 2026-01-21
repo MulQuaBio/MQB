@@ -1,0 +1,910 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Epidemiological dynamics &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/epidemiology';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Epidemiological dynamics: Practicals" href="epidemiology-practicals.html" />
+    <link rel="prev" title="Predator–prey dynamics: Practicals" href="predator-prey-practicals.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-computing.html">Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="python.html">Biological Computing in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="object-oriented-programming.html">Object-Oriented Programming</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="r.html">Biological Computing in R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-basic-stats.html">Basic Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-r.html">Data Management and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exp-design.html">Experimental design and Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Advanced Modelling &amp; Statistics Pre-work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-eemodelling.html">Ecological &amp; Evolutionary Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="populations.html">Single Populations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="populations-practicals.html">Populations: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="competitive-dynamics.html">Competitive dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="competitive-dynamics-practicals.html">Competitive Dynamics: Practicals</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="predator-prey.html">Predator–prey dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="predator-prey-practicals.html">Predator–prey dynamics: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Epidemiological dynamics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="epidemiology-practicals.html">Epidemiological dynamics: Practicals</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Advanced Data Analyses and Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="microbial-growth.html">Microbial Growth rates in R</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Assignments and Assessments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Appendices</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MulQuaBio/MQB/master?urlpath=lab/tree/notebooks/epidemiology.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MulQuaBio/MQB/blob/master/notebooks/epidemiology.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/epidemiology.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/epidemiology.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Epidemiological dynamics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-sir-model-no-demography">Basic SIR model (no demography)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#early-growth-and-r-0">Early growth and <span class="math notranslate nohighlight">\(R_0\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaccination-and-herd-immunity">Vaccination and herd immunity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sir-with-demography-births-and-deaths">SIR with demography (births and deaths)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodically-forced-sir-seasonality">Periodically forced SIR (seasonality)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="epidemiological-dynamics">
+<h1>Epidemiological dynamics<a class="headerlink" href="#epidemiological-dynamics" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>This chapter introduces the basic deterministic models of infectious disease dynamics (SIR), focusing on threshold behaviour (<span class="math notranslate nohighlight">\(R_0\)</span>), vaccination (herd immunity), demography (endemic equilibria), and seasonal forcing (multi-year cycles).</p>
+<p>It reuses the same ODE toolkit as earlier chapters, but the interaction here is between <strong>hosts and infection status</strong> rather than between species.</p>
+<p>References: <span id="id1">Kermack and McKendrick [<a class="reference internal" href="../references.html#id194" title="W. O. Kermack and A. G. McKendrick. A contribution to the mathematical theory of epidemics. Proceedings of the Royal Society of London. Series A, 115(772):700–721, 1927. doi:10.1098/rspa.1927.0118.">1927</a>]</span>; <span id="id2">Anderson and May [<a class="reference internal" href="../references.html#id195" title="Roy M. Anderson and Robert M. May. Infectious Diseases of Humans: Dynamics and Control. Oxford University Press, 1991.">1991</a>]</span>; <span id="id3">Keeling and Rohani [<a class="reference internal" href="../references.html#id196" title="Matt J. Keeling and Pejman Rohani. Modeling Infectious Diseases in Humans and Animals. Princeton University Press, 2008.">2008</a>]</span>.</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Conventions used here</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S(t)\)</span>: susceptible fraction (or count)</p></li>
+<li><p><span class="math notranslate nohighlight">\(I(t)\)</span>: infectious fraction (or count)</p></li>
+<li><p><span class="math notranslate nohighlight">\(R(t)\)</span>: recovered/removed fraction (or count)</p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<section id="basic-sir-model-no-demography">
+<h2>Basic SIR model (no demography)<a class="headerlink" href="#basic-sir-model-no-demography" title="Link to this heading">#</a></h2>
+<p>A standard SIR model is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\dot S &amp;= -\beta SI,\\
+\dot I &amp;= \beta SI - \gamma I,\\
+\dot R &amp;= \gamma I.
+\end{aligned}
+\end{split}\]</div>
+<p>Here:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span> is the transmission parameter (contact × transmission probability)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span> is the recovery rate; mean infectious period is <span class="math notranslate nohighlight">\(1/\gamma\)</span></p></li>
+</ul>
+<p>If <span class="math notranslate nohighlight">\(S(0)+I(0)+R(0)=1\)</span> (fractions), then <span class="math notranslate nohighlight">\(S+I+R=1\)</span> is conserved.</p>
+<section id="early-growth-and-r-0">
+<h3>Early growth and <span class="math notranslate nohighlight">\(R_0\)</span><a class="headerlink" href="#early-growth-and-r-0" title="Link to this heading">#</a></h3>
+<p>At the start of an outbreak, <span class="math notranslate nohighlight">\(S\approx S(0)\)</span> is near 1.
+Then</p>
+<div class="math notranslate nohighlight">
+\[
+\dot I \approx (\beta S(0) - \gamma) I.
+\]</div>
+<p>So infections grow initially if <span class="math notranslate nohighlight">\(\beta S(0) &gt; \gamma\)</span>.
+Define the <strong>basic reproduction number</strong> (in this normalised setting):</p>
+<div class="math notranslate nohighlight">
+\[
+R_0 = \frac{\beta}{\gamma}.
+\]</div>
+<p>More generally, if <span class="math notranslate nohighlight">\(S(0)\neq 1\)</span>, early growth is controlled by <span class="math notranslate nohighlight">\(R_0 S(0)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sir_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
+    <span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">R</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="p">[</span><span class="o">-</span><span class="n">beta</span><span class="o">*</span><span class="n">S</span><span class="o">*</span><span class="n">I</span><span class="p">,</span> <span class="n">beta</span><span class="o">*</span><span class="n">S</span><span class="o">*</span><span class="n">I</span> <span class="o">-</span> <span class="n">gamma</span><span class="o">*</span><span class="n">I</span><span class="p">,</span> <span class="n">gamma</span><span class="o">*</span><span class="n">I</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_sir</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="p">(</span><span class="mf">0.999</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
+    <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t_end</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">sir_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">beta</span><span class="p">,</span><span class="n">gamma</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t_end</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">y0</span><span class="p">),</span>
+                    <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span>
+
+<span class="n">t</span><span class="p">,(</span><span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">R</span><span class="p">)</span> <span class="o">=</span> <span class="n">simulate_sir</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;I&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;R&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;fraction&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Basic SIR: single epidemic wave (example)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a0b94b5a56d22b36f36cf2c0df5f45c0f90d7295d07ffe3be4817bab0e537632.png" src="../_images/a0b94b5a56d22b36f36cf2c0df5f45c0f90d7295d07ffe3be4817bab0e537632.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="vaccination-and-herd-immunity">
+<h2>Vaccination and herd immunity<a class="headerlink" href="#vaccination-and-herd-immunity" title="Link to this heading">#</a></h2>
+<p>If a fraction <span class="math notranslate nohighlight">\(p\)</span> of the population is immune at the start (perfect vaccination),
+the initial susceptible fraction is <span class="math notranslate nohighlight">\(S(0)=1-p\)</span>.</p>
+<p>Initial growth requires:</p>
+<div class="math notranslate nohighlight">
+\[
+\beta(1-p) &gt; \gamma
+\quad\Leftrightarrow\quad
+(1-p)R_0 &gt; 1.
+\]</div>
+<p>So the critical vaccination coverage is:</p>
+<div class="math notranslate nohighlight">
+\[
+p_c = 1 - \frac{1}{R_0}.
+\]</div>
+<p>This is the classic herd immunity threshold.</p>
+</section>
+<section id="sir-with-demography-births-and-deaths">
+<h2>SIR with demography (births and deaths)<a class="headerlink" href="#sir-with-demography-births-and-deaths" title="Link to this heading">#</a></h2>
+<p>To model an endemic infection, include per-capita birth/death rate <span class="math notranslate nohighlight">\(\mu\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\dot S &amp;= \mu - \beta SI - \mu S,\\
+\dot I &amp;= \beta SI - \gamma I - \mu I,\\
+\dot R &amp;= \gamma I - \mu R.
+\end{aligned}
+\end{split}\]</div>
+<p>(Here we have normalised so total population is 1.)</p>
+<p>Then susceptibles are replenished by births, so infections can persist (endemic equilibrium) if <span class="math notranslate nohighlight">\(R_0&gt;1\)</span>.</p>
+<p>A common form of <span class="math notranslate nohighlight">\(R_0\)</span> here is:</p>
+<div class="math notranslate nohighlight">
+\[
+R_0 = \frac{\beta}{\gamma + \mu}.
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sir_demo_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
+    <span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">R</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">mu</span> <span class="o">-</span> <span class="n">beta</span><span class="o">*</span><span class="n">S</span><span class="o">*</span><span class="n">I</span> <span class="o">-</span> <span class="n">mu</span><span class="o">*</span><span class="n">S</span><span class="p">,</span>
+            <span class="n">beta</span><span class="o">*</span><span class="n">S</span><span class="o">*</span><span class="n">I</span> <span class="o">-</span> <span class="n">gamma</span><span class="o">*</span><span class="n">I</span> <span class="o">-</span> <span class="n">mu</span><span class="o">*</span><span class="n">I</span><span class="p">,</span>
+            <span class="n">gamma</span><span class="o">*</span><span class="n">I</span> <span class="o">-</span> <span class="n">mu</span><span class="o">*</span><span class="n">R</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_sir_demo</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mi">750</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">52</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.0125</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="p">(</span><span class="mf">0.99</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.0</span><span class="p">),</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5000</span><span class="p">):</span>
+    <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t_end</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>  <span class="c1"># time in years</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">sir_demo_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">beta</span><span class="p">,</span><span class="n">gamma</span><span class="p">,</span><span class="n">mu</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t_end</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">y0</span><span class="p">),</span>
+                    <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span>
+
+<span class="n">t</span><span class="p">,(</span><span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">R</span><span class="p">)</span><span class="o">=</span><span class="n">simulate_sir_demo</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mi">750</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">52</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.0125</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;I&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;R&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t (years)&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;fraction&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;SIR with demography: approach to endemic equilibrium (example)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/80068121cc32ead572dbe383a6e1f38098ebac05367b9b496664575a9cc3ee48.png" src="../_images/80068121cc32ead572dbe383a6e1f38098ebac05367b9b496664575a9cc3ee48.png" />
+</div>
+</div>
+</section>
+<section id="periodically-forced-sir-seasonality">
+<h2>Periodically forced SIR (seasonality)<a class="headerlink" href="#periodically-forced-sir-seasonality" title="Link to this heading">#</a></h2>
+<p>Seasonality can be represented by periodic forcing of <span class="math notranslate nohighlight">\(\beta\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\beta(t) = \beta_0\,(1 + \mathrm{amp}\,\sin(\omega t)).
+\]</div>
+<p>With forcing, the system is <strong>non-autonomous</strong> and can show:</p>
+<ul class="simple">
+<li><p>annual cycles</p></li>
+<li><p>multi-year cycles (e.g. 2-cycle, 3-cycle)</p></li>
+<li><p>more complex (even chaotic) dynamics for some parameter ranges</p></li>
+</ul>
+<p>A practical way to diagnose an <span class="math notranslate nohighlight">\(n\)</span>-cycle is via a <strong>stroboscopic/Poincaré map</strong>:
+sample the state once per forcing period and look for repeating patterns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sir_forced_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">beta0</span><span class="p">,</span> <span class="n">amp</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
+    <span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">R</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="n">beta0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">amp</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">mu</span> <span class="o">-</span> <span class="n">beta</span><span class="o">*</span><span class="n">S</span><span class="o">*</span><span class="n">I</span> <span class="o">-</span> <span class="n">mu</span><span class="o">*</span><span class="n">S</span><span class="p">,</span>
+            <span class="n">beta</span><span class="o">*</span><span class="n">S</span><span class="o">*</span><span class="n">I</span> <span class="o">-</span> <span class="n">gamma</span><span class="o">*</span><span class="n">I</span> <span class="o">-</span> <span class="n">mu</span><span class="o">*</span><span class="n">I</span><span class="p">,</span>
+            <span class="n">gamma</span><span class="o">*</span><span class="n">I</span> <span class="o">-</span> <span class="n">mu</span><span class="o">*</span><span class="n">R</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_sir_forced</span><span class="p">(</span><span class="n">beta0</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">omega</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.0125</span><span class="p">,</span>
+                        <span class="n">y0</span><span class="o">=</span><span class="p">(</span><span class="mf">0.99</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.0</span><span class="p">),</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.002</span><span class="p">):</span>
+    <span class="c1"># time in years; step ~ 0.002 years ~ 0.73 days</span>
+    <span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_end</span><span class="o">+</span><span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">sir_forced_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">beta0</span><span class="p">,</span><span class="n">amp</span><span class="p">,</span><span class="n">omega</span><span class="p">,</span><span class="n">gamma</span><span class="p">,</span><span class="n">mu</span><span class="p">),</span>
+                    <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t_end</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">y0</span><span class="p">),</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span>
+
+<span class="n">t</span><span class="p">,(</span><span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">R</span><span class="p">)</span><span class="o">=</span><span class="n">simulate_sir_forced</span><span class="p">(</span><span class="n">beta0</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">omega</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.0125</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">I</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t (years)&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Forced SIR: I(t) (example)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Poincaré sampling once per year</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>  <span class="c1"># with omega=2*pi, period is 1 year</span>
+<span class="n">years</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">I_sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">I_sample</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;I sampled annually&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Forced SIR: stroboscopic samples (diagnose n-cycles)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/05d2bb49845d1356e97c22bfdf8086144a470677c0b724867ec1a39472d1ac95.png" src="../_images/05d2bb49845d1356e97c22bfdf8086144a470677c0b724867ec1a39472d1ac95.png" />
+<img alt="../_images/fdb069b38cf56dc34c3899abdea088a216253e7c7b7efdfcebb9d85efb108488.png" src="../_images/fdb069b38cf56dc34c3899abdea088a216253e7c7b7efdfcebb9d85efb108488.png" />
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In the basic SIR model, early epidemic growth occurs when <span class="math notranslate nohighlight">\(R_0 S(0) &gt; 1\)</span>; in the fully susceptible limit <span class="math notranslate nohighlight">\(S(0)\approx 1\)</span>, this reduces to the familiar threshold <span class="math notranslate nohighlight">\(R_0&gt;1\)</span>.</p></li>
+<li><p>Vaccination reduces the initial susceptible fraction; the herd-immunity threshold in the simplest setting is <span class="math notranslate nohighlight">\(p_c = 1 - 1/R_0\)</span>.</p></li>
+<li><p>Adding demography (<span class="math notranslate nohighlight">\(\mu\)</span>) replenishes susceptibles and allows endemic equilibria; a common threshold form is <span class="math notranslate nohighlight">\(R_0 = \beta/(\gamma+\mu)\)</span>.</p></li>
+<li><p>Seasonal forcing makes the system non-autonomous and can generate multi-year cycles that are easy to diagnose using stroboscopic (Poincaré) sampling.</p></li>
+</ul>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="predator-prey-practicals.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Predator–prey dynamics: Practicals</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="epidemiology-practicals.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Epidemiological dynamics: Practicals</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-sir-model-no-demography">Basic SIR model (no demography)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#early-growth-and-r-0">Early growth and <span class="math notranslate nohighlight">\(R_0\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaccination-and-herd-immunity">Vaccination and herd immunity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sir-with-demography-births-and-deaths">SIR with demography (births and deaths)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodically-forced-sir-seasonality">Periodically forced SIR (seasonality)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
