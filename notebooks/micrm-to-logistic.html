@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>MiCRM → effective gLV → logistic (single species) &#8212; MulQuaBio</title>
+    <title>From consumer–resource dynamics to logistic growth &#8212; MulQuaBio</title>
   
   
   
@@ -226,7 +226,7 @@
 <li class="toctree-l1"><a class="reference internal" href="metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="populations.html">Single Populations</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="populations-practicals.html">Populations: Practicals</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">MiCRM → effective gLV → logistic (single species)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">From consumer–resource dynamics to logistic growth</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
@@ -525,7 +525,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>MiCRM → effective gLV → logistic (single species)</h1>
+    <h1>From consumer–resource dynamics to logistic growth</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -535,29 +535,32 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-aligned-to-manuscript">0) Model (aligned to manuscript)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-will-learn">What you will learn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-this-fits-in-the-course">Where this fits in the course</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-micrm">Model (MiCRM)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder-glv-form">Reminder: gLV form</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-glv-derivation-from-micrm-qss-linearization">1) Effective gLV derivation from MiCRM (QSS + linearization)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quasisteady-resources-timescale-separation">1.1 Quasi‑steady resources (time‑scale separation)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linearize-around-an-equilibrium">1.2 Linearize around an equilibrium</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-partial-hat-r-partial-c-implicit-function-theorem">1.3 Computing (\partial \hat R/\partial C) (Implicit Function Theorem)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-partial-hat-r-partial-c-implicit-function-theorem">1.3 Computing <span class="math notranslate nohighlight">\(\partial \hat R/\partial C\)</span> (Implicit Function Theorem)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-one-species-logistic-growth-effective-r-and-a-ii">2) Special case: one species ⇒ logistic growth (effective (r) and (a_{ii}))</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-one-species-logistic-growth-effective-r-and-a-11">2) Special case: one species ⇒ logistic growth (effective <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(a_{11}\)</span>)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-form">2.1 Logistic form</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-mapping-from-micrm">2.2 General mapping from MiCRM</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-form-example-no-leakage">2.3 Closed-form example (no leakage)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-simulations">3) Numerical simulations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-using-the-manuscript-uptake-structure-c-r-alpha-u-alpha">3.1 Simulation using the manuscript uptake structure (;C R_\alpha u_\alpha)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warmup-simulation-linear-uptake-with-supply-washout">3.1 Warm‑up simulation: linear uptake with supply + washout</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-monod-uptake-nonlinear-still-logistic-like">4) Optional: Monod uptake (nonlinear), still logistic-like</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-monod-uptake-nonlinear-still-logisticlike">4) Optional: Monod uptake (nonlinear), still logistic‑like</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-on-cross-feeding-leakage">5) Remarks on cross-feeding (leakage)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-effective-mappings-single-species-no-cross-feeding">Summary of effective mappings (single species, no cross-feeding)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch">Batch</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemostat">Chemostat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further reading</a></li>
 </ul>
 </li>
 </ul>
@@ -571,39 +574,58 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="micrm-effective-glv-logistic-single-species">
-<h1>MiCRM → effective gLV → logistic (single species)<a class="headerlink" href="#micrm-effective-glv-logistic-single-species" title="Link to this heading">#</a></h1>
-<p>This notebook derives how the <strong>standard MiCRM form used in the attached manuscript</strong> can be coarse‑grained to a <strong>generalised Lotka–Volterra (gLV)</strong> model, and then specialised to <strong>logistic growth</strong> for a <strong>single microbial population</strong>.</p>
-<p>We treat both:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="from-consumerresource-dynamics-to-logistic-growth">
+<h1>From consumer–resource dynamics to logistic growth<a class="headerlink" href="#from-consumerresource-dynamics-to-logistic-growth" title="Link to this heading">#</a></h1>
+<p>This section shows how a mechanistic <strong>consumer–resource model</strong> (the MiCRM) can be approximated as a <strong>generalized Lotka–Volterra (gLV)</strong> model, and—when we keep only one population—into <strong>logistic growth</strong>.</p>
 <ul class="simple">
-<li><p><strong>Batch / closed</strong> (no inflow/outflow) and</p></li>
-<li><p><strong>Chemostat / open</strong> (constant inflow + dilution/outflow)</p></li>
+<li><p>MiCRM-style consumer–resource models are widely used in microbial ecology (<span id="id1">[<a class="reference internal" href="../references.html#id199" title="Robert Marsland, Wentao Cui, and Pankaj Mehta. The available energy fluxes drive the self-organization of microbial communities. PLOS Computational Biology, 15(2):e1006793, 2019. doi:10.1371/journal.pcbi.1006793.">Marsland <em>et al.</em>, 2019</a>]</span>; see also <span id="id2">[<a class="reference internal" href="../references.html#id200" title="Joshua E. Goldford, Nan Lu, Dusan Bajić, Sylvie Estrela, Mikhail Tikhonov, Alberto Sanchez-Gorostiaga, Daniel Segre, Pankaj Mehta, and Alvaro Sanchez. Emergent simplicity in microbial community assembly. Science, 361(6401):469–474, 2018. doi:10.1126/science.aat1168.">Goldford <em>et al.</em>, 2018</a>]</span>).</p></li>
+<li><p>Logistic growth is a classical single‑population model dating back to Verhulst (<span id="id3">[<a class="reference internal" href="../references.html#id171" title="Pierre-François Verhulst. Notice sur la loi que la population poursuit dans son accroissement. Correspondance Mathématique et Physique, 10:113–121, 1838.">Verhulst, 1838</a>]</span>).</p></li>
 </ul>
-<p>and we support the derivations with numerical simulations.</p>
+<section id="what-you-will-learn">
+<h2>What you will learn<a class="headerlink" href="#what-you-will-learn" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>How the <strong>gLV interaction coefficients</strong> arise from resource depletion (and, optionally, cross‑feeding).</p></li>
+<li><p>Why the gLV approximation is <strong>local</strong> (valid near an equilibrium).</p></li>
+<li><p>Why a one‑species gLV often becomes <strong>logistic growth</strong> (negative density dependence).</p></li>
+</ul>
+</section>
+<section id="where-this-fits-in-the-course">
+<h2>Where this fits in the course<a class="headerlink" href="#where-this-fits-in-the-course" title="Link to this heading">#</a></h2>
+<p>If you want more background as you read this notebook:</p>
+<ul class="simple">
+<li><p>Logistic growth, equilibria, and stability: <a class="reference internal" href="populations.html"><span class="doc std std-doc">populations</span></a></p></li>
+<li><p>Interactions and multi‑species dynamics: <a class="reference internal" href="interactions.html"><span class="doc std std-doc">interactions</span></a></p></li>
+<li><p>Microbial growth and chemostat ideas: <a class="reference internal" href="microbial-growth.html"><span class="doc std std-doc">microbial-growth</span></a></p></li>
+<li><p>Maths details (linearization, Jacobians): <a class="reference internal" href="appendix-maths.html"><span class="doc std std-doc">appendix-maths</span></a></p></li>
+</ul>
+</section>
 <hr class="docutils" />
-<section id="model-aligned-to-manuscript">
-<h2>0) Model (aligned to manuscript)<a class="headerlink" href="#model-aligned-to-manuscript" title="Link to this heading">#</a></h2>
-<p>The manuscript writes the MiCRM (their Eq. (1); notation adapted slightly) as</p>
+<section id="model-micrm">
+<h2>Model (MiCRM)<a class="headerlink" href="#model-micrm" title="Link to this heading">#</a></h2>
+<p>We write consumer abundance/biomass as <span class="math notranslate nohighlight">\(C_i(t)\)</span> and resource concentrations as <span class="math notranslate nohighlight">\(R_\alpha(t)\)</span>.</p>
+<p>The standard MiCRM is</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{dC_i}{dt} \;=\; C_i\left[\sum_{\alpha=1}^{M} R_\alpha\,u_{i\alpha}\,(1-\lambda_\alpha)\;-\;m_i\right],
+\frac{dC_i}{dt} \,=\, C_i\left[\sum_{\alpha=1}^{M} R_\alpha\,u_{i\alpha}\,(1-\lambda_\alpha)\; -\; m_i\right],
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-\frac{dR_\alpha}{dt} \;=\; \rho_\alpha - \omega_\alpha R_\alpha \;-\;\sum_{i=1}^{N} C_i R_\alpha u_{i\alpha}
-\;+\;\sum_{i=1}^{N}\sum_{\beta=1}^{M} C_i R_\beta u_{i\beta}\,l_{\beta\alpha}.
+\frac{dR_\alpha}{dt} \,=\, \rho_\alpha - \omega_\alpha R_\alpha \, -\,\sum_{i=1}^{N} C_i R_\alpha u_{i\alpha}
+\; +\;\sum_{i=1}^{N}\sum_{\beta=1}^{M} C_i R_\beta u_{i\beta}\,l_{\beta\alpha}.
 \]</div>
-<p><strong>Key points:</strong></p>
+<p><strong>Interpretation (one clean way to read the symbols):</strong></p>
 <ul class="simple">
-<li><p>(u_{i\alpha}) are <strong>constants</strong>; uptake flux scales as (C_iR_\alpha u_{i\alpha}).</p></li>
-<li><p>(\lambda_\alpha = \sum_\beta l_{\alpha\beta}) is total leakage fraction of resource (\alpha).</p></li>
-<li><p>(\rho_\alpha) is supply, (\omega_\alpha) is resource washout/decay.</p></li>
-<li><p>(m_i) is maintenance (and may include consumer washout).</p></li>
+<li><p><span class="math notranslate nohighlight">\(u_{i\alpha}\)</span>: uptake coefficient (a <strong>Type‑I / linear</strong> uptake assumption in <span class="math notranslate nohighlight">\(R_\alpha\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda_\alpha = \sum_\beta l_{\alpha\beta}\)</span>: total leakage fraction of consumed resource <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rho_\alpha\)</span>: resource supply term; <span class="math notranslate nohighlight">\(\omega_\alpha\)</span>: resource washout/decay.</p></li>
+<li><p><span class="math notranslate nohighlight">\(m_i\)</span>: maintenance (and may also include consumer washout).</p></li>
+<li><p><span class="math notranslate nohighlight">\(l_{\beta\alpha}\)</span>: byproduct conversion matrix (cross‑feeding).</p></li>
 </ul>
-<p>We:</p>
+<p><strong>Roadmap:</strong></p>
 <ol class="arabic simple">
-<li><p>Derive the <strong>effective gLV</strong> coefficients (a_{ij}) and (r_i) by QSS + linearization (as in the manuscript, but with more steps).</p></li>
-<li><p>Specialise to <strong>one species</strong> to show the gLV becomes <strong>logistic growth</strong> with effective (r) and (a_{ii}).</p></li>
+<li><p>Use a <strong>quasi‑steady resource</strong> approximation (time‑scale separation) to write <span class="math notranslate nohighlight">\(R_\alpha \approx \hat R_\alpha(C)\)</span>.</p></li>
+<li><p><strong>Linearize near an equilibrium</strong> to obtain a gLV model.</p></li>
+<li><p>Specialize to <span class="math notranslate nohighlight">\(N=1\)</span> to see the gLV becomes <strong>logistic growth</strong> under very general conditions.</p></li>
 </ol>
 </section>
 <hr class="docutils" />
@@ -611,151 +633,197 @@ document.write(`
 <h2>Reminder: gLV form<a class="headerlink" href="#reminder-glv-form" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
-\frac{dC_i}{dt} \;=\; C_i\left(r_i + \sum_{j=1}^N a_{ij}C_j\right).
+\frac{dC_i}{dt} \,=\, C_i\left(r_i + \sum_{j=1}^N a_{ij}C_j\right).
 \]</div>
-<p>For (N=1): (\dot C = C(r + a_{11}C)), which is logistic when (a_{11}&lt;0):
-$<span class="math notranslate nohighlight">\(
+<p>For <span class="math notranslate nohighlight">\(N=1\)</span>: <span class="math notranslate nohighlight">\(\dot C = C(r + a_{11}C)\)</span>, which is logistic when <span class="math notranslate nohighlight">\(a_{11}&lt;0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{dC}{dt}= rC - aC^2 = rC\left(1-\frac{C}{K}\right),\qquad a=-a_{11}&gt;0,\quad K=\frac{r}{a}.
-\)</span>$</p>
+\]</div>
 </section>
 <section id="effective-glv-derivation-from-micrm-qss-linearization">
 <h2>1) Effective gLV derivation from MiCRM (QSS + linearization)<a class="headerlink" href="#effective-glv-derivation-from-micrm-qss-linearization" title="Link to this heading">#</a></h2>
-<p>This follows the manuscript’s logic (their Eqs. (5)–(7) and Appendix C), but with extra intermediate steps.</p>
+<p>The key idea is: <strong>resources mediate interactions</strong>. If resources adjust quickly, we can eliminate them and get an approximate population‑only model.</p>
+<blockquote>
+<div><p>The result is a <strong>local</strong> approximation: we linearize near a particular equilibrium, so the gLV coefficients are not “universal constants” for all states.</p>
+</div></blockquote>
 <section id="quasisteady-resources-timescale-separation">
 <h3>1.1 Quasi‑steady resources (time‑scale separation)<a class="headerlink" href="#quasisteady-resources-timescale-separation" title="Link to this heading">#</a></h3>
-<p>Assume resources relax quickly compared to consumers, so:
-$<span class="math notranslate nohighlight">\(
+<p>Assume resources relax quickly compared to consumers, so (approximately)</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{dR_\alpha}{dt}\approx 0.
-\)</span><span class="math notranslate nohighlight">\(
-Define nullcline functions
-\)</span>$
-F_\alpha(C,R)= \rho_\alpha - \omega_\alpha R_\alpha - \sum_i C_iR_\alpha u_{i\alpha}</p>
-<ul class="simple">
-<li><p>\sum_i\sum_\beta C_iR_\beta u_{i\beta}l_{\beta\alpha}=0.
-$$
-Solving (F_\alpha=0) gives implicit functions (R_\alpha=\hat R_\alpha(C)).</p></li>
-</ul>
-<p>Substitute into consumer dynamics:
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>Define the resource nullcline equations</p>
+<div class="math notranslate nohighlight">
+\[
+F_\alpha(C,R)= \rho_\alpha - \omega_\alpha R_\alpha - \sum_i C_iR_\alpha u_{i\alpha}
++ \sum_i\sum_\beta C_iR_\beta u_{i\beta}l_{\beta\alpha}=0.
+\]</div>
+<p>Solving <span class="math notranslate nohighlight">\(F_\alpha=0\)</span> (implicitly) gives functions <span class="math notranslate nohighlight">\(R_\alpha=\hat R_\alpha(C)\)</span>.</p>
+<p>Substitute this into the consumer dynamics:</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{dC_i}{dt}=C_i\Big[\sum_\alpha \hat R_\alpha(C)\,u_{i\alpha}(1-\lambda_\alpha) - m_i\Big]
 =:C_i\,G_i(C).
-\)</span>$</p>
+\]</div>
 </section>
 <section id="linearize-around-an-equilibrium">
 <h3>1.2 Linearize around an equilibrium<a class="headerlink" href="#linearize-around-an-equilibrium" title="Link to this heading">#</a></h3>
-<p>Let ((\hat C,\hat R)) be an equilibrium with (\hat C_i&gt;0) for retained species; then (G_i(\hat C)=0).</p>
-<p>First-order expansion:
-$<span class="math notranslate nohighlight">\(
+<p>Let <span class="math notranslate nohighlight">\((\hat C,\hat R)\)</span> be an equilibrium with <span class="math notranslate nohighlight">\(\hat C_i&gt;0\)</span> for retained species; then <span class="math notranslate nohighlight">\(G_i(\hat C)=0\)</span>.</p>
+<p>First‑order (Taylor) expansion of the resource nullclines around <span class="math notranslate nohighlight">\(\hat C\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \hat R_\alpha(C)\approx \hat R_\alpha+\sum_j \frac{\partial \hat R_\alpha}{\partial C_j}\Big|_{\hat C}(C_j-\hat C_j).
-\)</span>$</p>
-<p>Insert into (G_i) and collect terms to obtain gLV:
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>Insert this into <span class="math notranslate nohighlight">\(G_i\)</span> and collect terms to obtain a gLV model:</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{dC_i}{dt}\approx C_i\left(r_i+\sum_j a_{ij}C_j\right),
-\)</span><span class="math notranslate nohighlight">\(
-with
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
 a_{ij}=\sum_\alpha u_{i\alpha}(1-\lambda_\alpha)\frac{\partial \hat R_\alpha}{\partial C_j}\Big|_{\hat C},
 \qquad
 r_i=\left[\sum_\alpha u_{i\alpha}(1-\lambda_\alpha)\hat R_\alpha - m_i\right]-\sum_j a_{ij}\hat C_j.
-\)</span>$</p>
+\]</div>
+<p><strong>Interpretation:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a_{ij}\)</span> encodes how changing <span class="math notranslate nohighlight">\(C_j\)</span> shifts equilibrium resources, which then changes <span class="math notranslate nohighlight">\(C_i\)</span>’s growth rate.</p></li>
+<li><p>If more consumers reduce resources (<span class="math notranslate nohighlight">\(\partial \hat R_\alpha/\partial C_j&lt;0\)</span>), you get <strong>competition</strong> (negative contributions to <span class="math notranslate nohighlight">\(a_{ij}\)</span>).</p></li>
+<li><p>With leakage/cross‑feeding, some derivatives can be positive, creating <strong>facilitation</strong>.</p></li>
+</ul>
 </section>
 <section id="computing-partial-hat-r-partial-c-implicit-function-theorem">
-<h3>1.3 Computing (\partial \hat R/\partial C) (Implicit Function Theorem)<a class="headerlink" href="#computing-partial-hat-r-partial-c-implicit-function-theorem" title="Link to this heading">#</a></h3>
-<p>Differentiate (F_\alpha(C,\hat R(C))=0) w.r.t. (C_j):
-$<span class="math notranslate nohighlight">\(
+<h3>1.3 Computing <span class="math notranslate nohighlight">\(\partial \hat R/\partial C\)</span> (Implicit Function Theorem)<a class="headerlink" href="#computing-partial-hat-r-partial-c-implicit-function-theorem" title="Link to this heading">#</a></h3>
+<p>Differentiate <span class="math notranslate nohighlight">\(F_\alpha(C,\hat R(C))=0\)</span> with respect to <span class="math notranslate nohighlight">\(C_j\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{\partial F_\alpha}{\partial C_j}+\sum_\gamma \frac{\partial F_\alpha}{\partial R_\gamma}\frac{\partial \hat R_\gamma}{\partial C_j}=0.
-\)</span><span class="math notranslate nohighlight">\(
-Let \(D_{\alpha\gamma}=\partial F_\alpha/\partial R_\gamma\) at equilibrium. Then
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Let <span class="math notranslate nohighlight">\(D_{\alpha\gamma}=\partial F_\alpha/\partial R_\gamma\)</span> evaluated at <span class="math notranslate nohighlight">\((\hat C,\hat R)\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{\partial \hat R}{\partial C_j}=-D^{-1}\frac{\partial F}{\partial C_j}.
-\)</span>$</p>
-<p>This shows (pedagogically) how <strong>competition</strong> (via depletion) and <strong>facilitation</strong> (via leakage) enter (a_{ij}).</p>
+\]</div>
+<p>If you want a refresher on this linear‑algebra/Jacobian view, see <a class="reference internal" href="appendix-maths.html"><span class="doc std std-doc">appendix-maths</span></a>.</p>
 </section>
 </section>
-<section id="special-case-one-species-logistic-growth-effective-r-and-a-ii">
-<h2>2) Special case: one species ⇒ logistic growth (effective (r) and (a_{ii}))<a class="headerlink" href="#special-case-one-species-logistic-growth-effective-r-and-a-ii" title="Link to this heading">#</a></h2>
-<p>Set (N=1) and drop species indices: biomass (C(t)), preferences (u_\alpha), maintenance (m).</p>
+<section id="special-case-one-species-logistic-growth-effective-r-and-a-11">
+<h2>2) Special case: one species ⇒ logistic growth (effective <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(a_{11}\)</span>)<a class="headerlink" href="#special-case-one-species-logistic-growth-effective-r-and-a-11" title="Link to this heading">#</a></h2>
+<p>Now set <span class="math notranslate nohighlight">\(N=1\)</span> and drop species indices: biomass <span class="math notranslate nohighlight">\(C(t)\)</span>, preferences <span class="math notranslate nohighlight">\(u_\alpha\)</span>, maintenance <span class="math notranslate nohighlight">\(m\)</span>.</p>
+<p>This is the cleanest setting to see <em>why</em> logistic growth is such a common coarse‑grained approximation: if increasing <span class="math notranslate nohighlight">\(C\)</span> tends to reduce the resources the population relies on, you automatically get negative density dependence.</p>
 <section id="logistic-form">
 <h3>2.1 Logistic form<a class="headerlink" href="#logistic-form" title="Link to this heading">#</a></h3>
-<p>The one-species gLV approximation is
-$<span class="math notranslate nohighlight">\(
+<p>The one‑species gLV approximation is</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{dC}{dt}\approx C\left(r+a_{11}C\right).
-\)</span>$
-If (a_{11}&lt;0), this is logistic: (\dot C=rC-aC^2) with (a=-a_{11}&gt;0) and (K=r/a).</p>
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(a_{11}&lt;0\)</span>, this is logistic: <span class="math notranslate nohighlight">\(\dot C=rC-aC^2\)</span> with <span class="math notranslate nohighlight">\(a=-a_{11}&gt;0\)</span> and <span class="math notranslate nohighlight">\(K=r/a\)</span>.</p>
+<p>(For more on interpreting equilibria/stability in 1D models, see <a class="reference internal" href="populations.html"><span class="doc std std-doc">populations</span></a>.)</p>
 </section>
 <section id="general-mapping-from-micrm">
 <h3>2.2 General mapping from MiCRM<a class="headerlink" href="#general-mapping-from-micrm" title="Link to this heading">#</a></h3>
+<p>From the gLV derivation,</p>
 <div class="math notranslate nohighlight">
 \[
 a_{11}=\sum_{\alpha=1}^M u_{\alpha}(1-\lambda_\alpha)\,\frac{\partial \hat R_\alpha}{\partial C}\Big|_{\hat C},
 \qquad
 r=\left[\sum_\alpha u_\alpha(1-\lambda_\alpha)\hat R_\alpha(\hat C)-m\right]-a_{11}\hat C.
 \]</div>
-<p>So self-limitation is guaranteed when the dominant resources satisfy (\partial \hat R_\alpha/\partial C&lt;0).</p>
+<p>So self‑limitation is expected whenever the dominant resources satisfy <span class="math notranslate nohighlight">\(\partial \hat R_\alpha/\partial C&lt;0\)</span>.</p>
 </section>
 <section id="closed-form-example-no-leakage">
 <h3>2.3 Closed-form example (no leakage)<a class="headerlink" href="#closed-form-example-no-leakage" title="Link to this heading">#</a></h3>
-<p>If (l_{\beta\alpha}=0) (hence (\lambda_\alpha=0)), resource QSS gives
-$<span class="math notranslate nohighlight">\(
+<p>If <span class="math notranslate nohighlight">\(l_{\beta\alpha}=0\)</span> (hence <span class="math notranslate nohighlight">\(\lambda_\alpha=0\)</span>), resource QSS gives</p>
+<div class="math notranslate nohighlight">
+\[
 0=\rho_\alpha-\omega_\alpha R_\alpha-CR_\alpha u_\alpha
 \Rightarrow
 \hat R_\alpha(C)=\frac{\rho_\alpha}{\omega_\alpha+Cu_\alpha}.
-\)</span><span class="math notranslate nohighlight">\(
-Then
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{\partial \hat R_\alpha}{\partial C}=-\frac{\rho_\alpha u_\alpha}{(\omega_\alpha+Cu_\alpha)^2},
-\)</span><span class="math notranslate nohighlight">\(
-and therefore
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>and therefore</p>
+<div class="math notranslate nohighlight">
+\[
 a_{11}(\hat C)=\sum_\alpha u_\alpha\frac{\partial \hat R_\alpha}{\partial C}\Big|_{\hat C}
 =-\sum_\alpha \frac{\rho_\alpha u_\alpha^2}{(\omega_\alpha+\hat Cu_\alpha)^2}&lt;0.
-\)</span>$</p>
-<p>This explicitly shows the MiCRM yields negative density dependence (logistic self-limitation) for one species.</p>
+\]</div>
+<p>So, in this simple no‑leakage case, the MiCRM <em>guarantees</em> negative density dependence for one population.</p>
 </section>
 </section>
 <section id="numerical-simulations">
 <h2>3) Numerical simulations<a class="headerlink" href="#numerical-simulations" title="Link to this heading">#</a></h2>
-<p>We simulate a one-species MiCRM with <strong>two resources</strong> in both batch and chemostat settings, and compare trajectories to the corresponding logistic approximation.</p>
-<p>We will:</p>
+<p>Here we simulate a one‑species MiCRM with <strong>two resources</strong> and compare it to a fitted/predicted logistic curve.</p>
+<p>We’ll do this in two “environments”:</p>
+<ul class="simple">
+<li><p><strong>Batch</strong>: no inflow/outflow (<span class="math notranslate nohighlight">\(D=0\)</span>). Resources are depleted.</p></li>
+<li><p><strong>Chemostat</strong>: constant dilution <span class="math notranslate nohighlight">\(D&gt;0\)</span> with feed concentrations <span class="math notranslate nohighlight">\(S\)</span> (a standard continuous‑culture setup; see <span id="id4">[<a class="reference internal" href="../references.html#id201" title="Aaron Novick and Leo Szilard. Description of the chemostat. Science, 112(2920):715–716, 1950. doi:10.1126/science.112.2920.715.">Novick and Szilard, 1950</a>]</span>).</p></li>
+</ul>
+<p>Workflow:</p>
 <ol class="arabic simple">
-<li><p>Define MiCRM ODEs (Monod uptake in general; we also show linear uptake).</p></li>
-<li><p>Integrate with <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp</span></code>.</p></li>
-<li><p>Compute predicted (r) and (a_{ii}) from the formulas above.</p></li>
+<li><p>Define MiCRM ODEs and integrate with <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp</span></code>.</p></li>
+<li><p>Compute effective <span class="math notranslate nohighlight">\((r,a)\)</span> from the mapping above (exact for some linear cases; approximate for Monod).</p></li>
+<li><p>Compare time series for <span class="math notranslate nohighlight">\(C(t)\)</span> or <span class="math notranslate nohighlight">\(N(t)\)</span>.</p></li>
 </ol>
-<section id="simulation-using-the-manuscript-uptake-structure-c-r-alpha-u-alpha">
-<h3>3.1 Simulation using the manuscript uptake structure (;C R_\alpha u_\alpha)<a class="headerlink" href="#simulation-using-the-manuscript-uptake-structure-c-r-alpha-u-alpha" title="Link to this heading">#</a></h3>
-<p>We simulate the <strong>exact manuscript-form MiCRM</strong> (single species, no leakage) under chemostat-like conditions
-((\rho_\alpha&gt;0, \omega_\alpha&gt;0)) and compare to the <strong>effective logistic</strong> predicted by the one-species gLV mapping
-evaluated at the equilibrium (\hat C) obtained numerically.</p>
-<p>For no leakage:
-$<span class="math notranslate nohighlight">\(
+<p>If you need a quick refresher on using SciPy ODE solvers and plotting, see <a class="reference internal" href="python.html"><span class="doc std std-doc">python</span></a> and <a class="reference internal" href="microbial-growth.html"><span class="doc std std-doc">microbial-growth</span></a>.</p>
+<section id="warmup-simulation-linear-uptake-with-supply-washout">
+<h3>3.1 Warm‑up simulation: linear uptake with supply + washout<a class="headerlink" href="#warmup-simulation-linear-uptake-with-supply-washout" title="Link to this heading">#</a></h3>
+<p>First we simulate a minimal one‑species, multi‑resource model with <strong>linear uptake</strong> proportional to <span class="math notranslate nohighlight">\(CR_\alpha u_\alpha\)</span> and a simple supply/washout term for resources.</p>
+<p>This is the same <em>mathematical structure</em> as the no‑leakage example above, and it lets us check the mapping to logistic growth in a controlled setting.</p>
+<p>We assume <span class="math notranslate nohighlight">\(\rho_\alpha&gt;0\)</span> and <span class="math notranslate nohighlight">\(\omega_\alpha&gt;0\)</span> so that resources have a well‑defined “resource‑only” equilibrium <span class="math notranslate nohighlight">\(R_\alpha=\rho_\alpha/\omega_\alpha\)</span> in the absence of consumers.</p>
+<p>For no leakage:</p>
+<div class="math notranslate nohighlight">
+\[
 \hat R_\alpha(C)=\frac{\rho_\alpha}{\omega_\alpha + C u_\alpha},\qquad
 \frac{\partial \hat R_\alpha}{\partial C}=-\frac{\rho_\alpha u_\alpha}{(\omega_\alpha + C u_\alpha)^2}.
-\)</span>$</p>
+\]</div>
+<p>In the code below we:</p>
+<ul class="simple">
+<li><p>integrate the full <span class="math notranslate nohighlight">\((C, R_1, R_2)\)</span> system;</p></li>
+<li><p>estimate the equilibrium <span class="math notranslate nohighlight">\(\hat C\)</span> numerically;</p></li>
+<li><p>plug <span class="math notranslate nohighlight">\(\hat C\)</span> into the analytic formulas to get an effective <span class="math notranslate nohighlight">\((r, a_{11})\)</span>;</p></li>
+<li><p>compare <span class="math notranslate nohighlight">\(C(t)\)</span> to the corresponding logistic trajectory.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">micrm_manuscript_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Single-species, no-leakage manuscript MiCRM:</span>
-<span class="sd">      dC/dt = C( sum_alpha R_alpha u_alpha - m )</span>
-<span class="sd">      dR_alpha/dt = rho_alpha - omega_alpha R_alpha - C R_alpha u_alpha</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">micrm_supply_washout_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Single-species, no-leakage MiCRM with linear uptake and resource supply/washout.</span>
+
+<span class="sd">    dC/dt = C( sum_alpha R_alpha u_alpha - m )</span>
+<span class="sd">    dR_alpha/dt = rho_alpha - omega_alpha R_alpha - C R_alpha u_alpha</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">C</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">R</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-    <span class="n">dC</span> <span class="o">=</span> <span class="n">C</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">u</span><span class="p">)</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span>
-    <span class="n">dR</span> <span class="o">=</span> <span class="n">rho</span> <span class="o">-</span> <span class="n">omega</span><span class="o">*</span><span class="n">R</span> <span class="o">-</span> <span class="n">C</span><span class="o">*</span><span class="n">R</span><span class="o">*</span><span class="n">u</span>
+    <span class="n">dC</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">u</span><span class="p">)</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span>
+    <span class="n">dR</span> <span class="o">=</span> <span class="n">rho</span> <span class="o">-</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">R</span> <span class="o">-</span> <span class="n">C</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">u</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="n">dC</span><span class="p">],</span> <span class="n">dR</span><span class="p">])</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">simulate_manuscript</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">R0</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">npts</span><span class="o">=</span><span class="mi">4000</span><span class="p">):</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_supply_washout_micrm</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">R0</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">npts</span><span class="o">=</span><span class="mi">4000</span><span class="p">):</span>
     <span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="n">C0</span><span class="p">],</span> <span class="n">R0</span><span class="p">])</span>
     <span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">,</span> <span class="n">npts</span><span class="p">)</span>
-    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">micrm_manuscript_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span>
-                    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">),</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">micrm_supply_washout_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">),</span>
+        <span class="n">y0</span><span class="p">,</span>
+        <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span>
+        <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span>
+        <span class="n">atol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">,</span>
+    <span class="p">)</span>
     <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span>
+
 
 <span class="c1"># Parameters (2 resources)</span>
 <span class="n">rho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">])</span>      <span class="c1"># supply</span>
@@ -764,9 +832,9 @@ $<span class="math notranslate nohighlight">\(
 <span class="n">m</span> <span class="o">=</span> <span class="mf">0.2</span>                         <span class="c1"># maintenance (include consumer washout here if desired)</span>
 
 <span class="n">C0</span> <span class="o">=</span> <span class="mf">0.05</span>
-<span class="n">R0</span> <span class="o">=</span> <span class="n">rho</span><span class="o">/</span><span class="n">omega</span>                  <span class="c1"># resource-only equilibrium (no consumers)</span>
+<span class="n">R0</span> <span class="o">=</span> <span class="n">rho</span> <span class="o">/</span> <span class="n">omega</span>                <span class="c1"># resource-only equilibrium (no consumers)</span>
 
-<span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">simulate_manuscript</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">R0</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">simulate_supply_washout_micrm</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">R0</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 <span class="n">C</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">R</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 
@@ -774,26 +842,37 @@ $<span class="math notranslate nohighlight">\(
 <span class="n">Chat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="o">-</span><span class="mi">400</span><span class="p">:]))</span>
 <span class="n">Rhat_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">R</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">400</span><span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
+
 <span class="c1"># Closed-form nullcline and derivative (no leakage)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">Rhat_of_C</span><span class="p">(</span><span class="n">Cval</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">rho</span><span class="o">/</span><span class="p">(</span><span class="n">omega</span> <span class="o">+</span> <span class="n">Cval</span><span class="o">*</span><span class="n">u</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rho</span> <span class="o">/</span> <span class="p">(</span><span class="n">omega</span> <span class="o">+</span> <span class="n">Cval</span> <span class="o">*</span> <span class="n">u</span><span class="p">)</span>
+
 
 <span class="k">def</span><span class="w"> </span><span class="nf">dRhat_dC</span><span class="p">(</span><span class="n">Cval</span><span class="p">):</span>
-    <span class="k">return</span> <span class="o">-</span><span class="n">rho</span><span class="o">*</span><span class="n">u</span><span class="o">/</span><span class="p">(</span><span class="n">omega</span> <span class="o">+</span> <span class="n">Cval</span><span class="o">*</span><span class="n">u</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">rho</span> <span class="o">*</span> <span class="n">u</span> <span class="o">/</span> <span class="p">(</span><span class="n">omega</span> <span class="o">+</span> <span class="n">Cval</span> <span class="o">*</span> <span class="n">u</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
 
-<span class="n">a11</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="n">dRhat_dC</span><span class="p">(</span><span class="n">Chat</span><span class="p">))</span>  <span class="c1"># (1-lambda_alpha)=1 here</span>
-<span class="n">r_eff</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">u</span><span class="o">*</span><span class="n">Rhat_of_C</span><span class="p">(</span><span class="n">Chat</span><span class="p">))</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span> <span class="o">-</span> <span class="n">a11</span><span class="o">*</span><span class="n">Chat</span>
 
-<span class="c1"># Logistic comparison</span>
+<span class="n">a11</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="n">dRhat_dC</span><span class="p">(</span><span class="n">Chat</span><span class="p">))</span>
+<span class="n">r_eff</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">u</span> <span class="o">*</span> <span class="n">Rhat_of_C</span><span class="p">(</span><span class="n">Chat</span><span class="p">))</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span> <span class="o">-</span> <span class="n">a11</span> <span class="o">*</span> <span class="n">Chat</span>
+
+
+<span class="c1"># Logistic comparison (gLV with one species)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">simulate_logistic_scalar</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">npts</span><span class="o">=</span><span class="mi">4000</span><span class="p">):</span>
     <span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">,</span> <span class="n">npts</span><span class="p">)</span>
-    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">[</span><span class="n">r</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">),</span> <span class="p">[</span><span class="n">C0</span><span class="p">],</span>
-                    <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">[</span><span class="n">r</span> <span class="o">*</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span> <span class="o">*</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmax</span><span class="p">),</span>
+        <span class="p">[</span><span class="n">C0</span><span class="p">],</span>
+        <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span>
+        <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span>
+        <span class="n">atol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">,</span>
+    <span class="p">)</span>
     <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
 
 <span class="n">tL</span><span class="p">,</span> <span class="n">Clog</span> <span class="o">=</span> <span class="n">simulate_logistic_scalar</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">r_eff</span><span class="p">,</span> <span class="n">a11</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 
-<span class="p">(</span><span class="n">a11</span><span class="p">,</span> <span class="n">r_eff</span><span class="p">,</span> <span class="n">r_eff</span><span class="o">/</span><span class="p">(</span><span class="o">-</span><span class="n">a11</span><span class="p">)</span> <span class="k">if</span> <span class="n">a11</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">Chat</span><span class="p">,</span> <span class="n">Rhat_num</span><span class="p">)</span>
+<span class="p">(</span><span class="n">a11</span><span class="p">,</span> <span class="n">r_eff</span><span class="p">,</span> <span class="n">r_eff</span> <span class="o">/</span> <span class="p">(</span><span class="o">-</span><span class="n">a11</span><span class="p">)</span> <span class="k">if</span> <span class="n">a11</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">Chat</span><span class="p">,</span> <span class="n">Rhat_num</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -810,22 +889,24 @@ $<span class="math notranslate nohighlight">\(
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MiCRM (manuscript form) C(t)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL</span><span class="p">,</span> <span class="n">Clog</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Effective logistic (gLV @ equilibrium)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MiCRM C(t) (linear uptake, supply/washout)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL</span><span class="p">,</span> <span class="n">Clog</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Effective logistic (gLV near equilibrium)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Chat</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;C*≈</span><span class="si">{</span><span class="n">Chat</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Single species: manuscript-form MiCRM vs effective logistic&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Single species: MiCRM vs effective logistic&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">R</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;R</span><span class="si">{</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">((</span><span class="n">rho</span><span class="o">/</span><span class="n">omega</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R1 (no-consumer eq)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">((</span><span class="n">rho</span><span class="o">/</span><span class="n">omega</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R2 (no-consumer eq)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">((</span><span class="n">rho</span> <span class="o">/</span> <span class="n">omega</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R1 (no-consumer eq)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">((</span><span class="n">rho</span> <span class="o">/</span> <span class="n">omega</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R2 (no-consumer eq)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Resources under manuscript-form MiCRM&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Resources (linear uptake, supply/washout)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -987,16 +1068,22 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </section>
 </section>
-<section id="optional-monod-uptake-nonlinear-still-logistic-like">
-<h2>4) Optional: Monod uptake (nonlinear), still logistic-like<a class="headerlink" href="#optional-monod-uptake-nonlinear-still-logistic-like" title="Link to this heading">#</a></h2>
-<p>With Monod uptake (u_j(R)=\lambda_j\frac{R}{K_j+R}), the reduction is no longer exactly logistic,
-but early and intermediate dynamics are typically <strong>sigmoidal</strong>, and can be approximated by logistic growth.</p>
-<p>We compute:</p>
+<section id="optional-monod-uptake-nonlinear-still-logisticlike">
+<h2>4) Optional: Monod uptake (nonlinear), still logistic‑like<a class="headerlink" href="#optional-monod-uptake-nonlinear-still-logisticlike" title="Link to this heading">#</a></h2>
+<p>So far we used <strong>linear (Type‑I)</strong> uptake in resource, which makes the algebra clean.</p>
+<p>A more biologically grounded alternative is <strong>Monod/Michaelis–Menten</strong> uptake (<span id="id5">[<a class="reference internal" href="../references.html#id202" title="Jacques Monod. The growth of bacterial cultures. Annual Review of Microbiology, 3:371–394, 1949. doi:10.1146/annurev.mi.03.100149.002103.">Monod, 1949</a>]</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+u_j(R)=\lambda_j\frac{R}{K_j+R}.\]</div>
+<p>With Monod uptake, the reduction is no longer <em>exactly</em> logistic, but early and intermediate dynamics are typically <strong>sigmoidal</strong> and a logistic curve can still be a useful coarse‑grained summary.</p>
+<p>One simple effective mapping in batch is:</p>
 <ul class="simple">
-<li><p>(r_{\mathrm{batch}} = \sum_j \eta_j u_j(R_{j0})),</p></li>
-<li><p>(K_{\mathrm{tot}} = N_0 + \sum_j \eta_j R_{j0}),
-and use (a_{ii}\approx r/K_{\mathrm{tot}}) as a simple effective mapping.</p></li>
+<li><p><span class="math notranslate nohighlight">\(r_{\mathrm{batch}} = \sum_j \eta_j \nu_j(R_{j0})\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(K_{\mathrm{tot}} = N_0 + \sum_j \eta_j R_{j0}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(a\approx r_{\mathrm{batch}}/K_{\mathrm{tot}}\)</span>.</p></li>
 </ul>
+<p>This is deliberately “back‑of‑the‑envelope”: it captures the mass‑balance scale <span class="math notranslate nohighlight">\(K_{\mathrm{tot}}\)</span> but ignores that <span class="math notranslate nohighlight">\(\nu_j\)</span> changes as resources deplete.</p>
+<p>For more context on Monod kinetics and chemostats, see <a class="reference internal" href="microbial-growth.html"><span class="doc std std-doc">microbial-growth</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Km_mod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>  <span class="c1"># moderate half-saturation constants</span>
@@ -1070,9 +1157,13 @@ and use (a_{ii}\approx r/K_{\mathrm{tot}}) as a simple effective mapping.</p></l
 </section>
 <section id="remarks-on-cross-feeding-leakage">
 <h2>5) Remarks on cross-feeding (leakage)<a class="headerlink" href="#remarks-on-cross-feeding-leakage" title="Link to this heading">#</a></h2>
-<p>In the full MiCRM, a fraction <span class="math notranslate nohighlight">\(l_j\)</span> of consumed resource can be released as byproducts and redistributed via a conversion matrix.
-This can produce <strong>multi-phase growth</strong> (e.g. diauxie).</p>
-<p>If byproducts remain within the tracked pool and are eventually utilizable by the same population, the <strong>overall</strong> biomass remains constrained by generalized mass balance, so a logistic model with <strong>effective</strong> <span class="math notranslate nohighlight">\((r,a_{ii})\)</span> is still often useful at a coarse-grained level (with possible deviations from a single smooth sigmoid).</p>
+<p>In the full MiCRM, a fraction <span class="math notranslate nohighlight">\(l_j\)</span> of consumed resource can be released as byproducts and redistributed via a conversion matrix. This can generate <strong>multi‑phase growth</strong> (e.g. diauxie) and richer community‑level assembly patterns (<span id="id6">[<a class="reference internal" href="../references.html#id200" title="Joshua E. Goldford, Nan Lu, Dusan Bajić, Sylvie Estrela, Mikhail Tikhonov, Alberto Sanchez-Gorostiaga, Daniel Segre, Pankaj Mehta, and Alvaro Sanchez. Emergent simplicity in microbial community assembly. Science, 361(6401):469–474, 2018. doi:10.1126/science.aat1168.">Goldford <em>et al.</em>, 2018</a>]</span>; <span id="id7">[<a class="reference internal" href="../references.html#id199" title="Robert Marsland, Wentao Cui, and Pankaj Mehta. The available energy fluxes drive the self-organization of microbial communities. PLOS Computational Biology, 15(2):e1006793, 2019. doi:10.1371/journal.pcbi.1006793.">Marsland <em>et al.</em>, 2019</a>]</span>).</p>
+<p>A useful way to think about it:</p>
+<ul class="simple">
+<li><p><strong>Depletion</strong> creates negative feedback (self‑limitation / competition).</p></li>
+<li><p><strong>Byproducts</strong> can create positive feedback (facilitation), but still operate through resource accounting.</p></li>
+</ul>
+<p>If byproducts remain within the tracked pool and are eventually utilizable by the same population, then <strong>generalized mass balance</strong> still constrains total biomass. In that sense, a logistic model with <strong>effective</strong> <span class="math notranslate nohighlight">\((r,a)\)</span> is often a reasonable coarse‑grained summary—even if the underlying trajectory deviates from a single smooth sigmoid.</p>
 </section>
 <hr class="docutils" />
 <section id="summary-of-effective-mappings-single-species-no-cross-feeding">
@@ -1082,15 +1173,23 @@ This can produce <strong>multi-phase growth</strong> (e.g. diauxie).</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(r_{\mathrm{batch}} = \sum_j \eta_j u_j(R_{j0})\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(K_{\mathrm{tot}} = N_0 + \sum_j \eta_j R_{j0}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(a_{ii,\mathrm{batch}} \approx r_{\mathrm{batch}}/K_{\mathrm{tot}}\)</span> (exactly <span class="math notranslate nohighlight">\(=\lambda\)</span> for common linear uptake)</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_{\mathrm{batch}} \approx r_{\mathrm{batch}}/K_{\mathrm{tot}}\)</span> (exactly <span class="math notranslate nohighlight">\(=\lambda\)</span> for common linear uptake)</p></li>
 </ul>
 </section>
 <section id="chemostat">
 <h3>Chemostat<a class="headerlink" href="#chemostat" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(r_{\mathrm{che}} = \sum_j \eta_j u_j(S_j) - D\)</span></p></li>
-<li><p>For linear uptake <span class="math notranslate nohighlight">\(u_j=\lambda_j R\)</span>: <span class="math notranslate nohighlight">\(a_{ii,\mathrm{che}} = \frac{1}{D}\sum_j \eta_j \lambda_j^2 S_j\)</span></p></li>
+<li><p>For linear uptake <span class="math notranslate nohighlight">\(u_j=\lambda_j R\)</span>: <span class="math notranslate nohighlight">\(a_{\mathrm{che}} = \frac{1}{D}\sum_j \eta_j \lambda_j^2 S_j\)</span></p></li>
 <li><p>Equilibrium satisfies <span class="math notranslate nohighlight">\(\sum_j \eta_j u_j(R_j^*)=D\)</span> with <span class="math notranslate nohighlight">\(D(S_j-R_j^*)=u_j(R_j^*)N^*\)</span></p></li>
+</ul>
+</section>
+<section id="further-reading">
+<h3>Further reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Chemostat fundamentals: <span id="id8">[<a class="reference internal" href="../references.html#id201" title="Aaron Novick and Leo Szilard. Description of the chemostat. Science, 112(2920):715–716, 1950. doi:10.1126/science.112.2920.715.">Novick and Szilard, 1950</a>]</span></p></li>
+<li><p>Monod kinetics: <span id="id9">[<a class="reference internal" href="../references.html#id202" title="Jacques Monod. The growth of bacterial cultures. Annual Review of Microbiology, 3:371–394, 1949. doi:10.1146/annurev.mi.03.100149.002103.">Monod, 1949</a>]</span></p></li>
+<li><p>MiCRM / energy-flux consumer–resource framing: <span id="id10">[<a class="reference internal" href="../references.html#id199" title="Robert Marsland, Wentao Cui, and Pankaj Mehta. The available energy fluxes drive the self-organization of microbial communities. PLOS Computational Biology, 15(2):e1006793, 2019. doi:10.1371/journal.pcbi.1006793.">Marsland <em>et al.</em>, 2019</a>]</span></p></li>
 </ul>
 </section>
 </section>
@@ -1160,29 +1259,32 @@ This can produce <strong>multi-phase growth</strong> (e.g. diauxie).</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-aligned-to-manuscript">0) Model (aligned to manuscript)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-will-learn">What you will learn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-this-fits-in-the-course">Where this fits in the course</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-micrm">Model (MiCRM)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder-glv-form">Reminder: gLV form</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-glv-derivation-from-micrm-qss-linearization">1) Effective gLV derivation from MiCRM (QSS + linearization)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quasisteady-resources-timescale-separation">1.1 Quasi‑steady resources (time‑scale separation)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linearize-around-an-equilibrium">1.2 Linearize around an equilibrium</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-partial-hat-r-partial-c-implicit-function-theorem">1.3 Computing (\partial \hat R/\partial C) (Implicit Function Theorem)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-partial-hat-r-partial-c-implicit-function-theorem">1.3 Computing <span class="math notranslate nohighlight">\(\partial \hat R/\partial C\)</span> (Implicit Function Theorem)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-one-species-logistic-growth-effective-r-and-a-ii">2) Special case: one species ⇒ logistic growth (effective (r) and (a_{ii}))</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-one-species-logistic-growth-effective-r-and-a-11">2) Special case: one species ⇒ logistic growth (effective <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(a_{11}\)</span>)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-form">2.1 Logistic form</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-mapping-from-micrm">2.2 General mapping from MiCRM</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-form-example-no-leakage">2.3 Closed-form example (no leakage)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-simulations">3) Numerical simulations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-using-the-manuscript-uptake-structure-c-r-alpha-u-alpha">3.1 Simulation using the manuscript uptake structure (;C R_\alpha u_\alpha)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warmup-simulation-linear-uptake-with-supply-washout">3.1 Warm‑up simulation: linear uptake with supply + washout</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-monod-uptake-nonlinear-still-logistic-like">4) Optional: Monod uptake (nonlinear), still logistic-like</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-monod-uptake-nonlinear-still-logisticlike">4) Optional: Monod uptake (nonlinear), still logistic‑like</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-on-cross-feeding-leakage">5) Remarks on cross-feeding (leakage)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-effective-mappings-single-species-no-cross-feeding">Summary of effective mappings (single species, no cross-feeding)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch">Batch</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemostat">Chemostat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further reading</a></li>
 </ul>
 </li>
 </ul>

@@ -226,6 +226,7 @@
 <li class="toctree-l1"><a class="reference internal" href="metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="populations.html">Single Populations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="populations-practicals.html">Populations: Practicals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="micrm-to-logistic.html">From consumer–resource dynamics to logistic growth</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
@@ -594,9 +595,9 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-input-output">Python Input/Output</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#safely-opening-files-using-with-open">Safely opening files using <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">open()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-csv-s">Handling <code class="docutils literal notranslate"><span class="pre">csv</span></code>’s</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-csv-s">Handling <code class="docutils literal notranslate"><span class="pre">csv</span></code>’s</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-code-compartmentalization">Modules and code compartmentalization</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing Modules</a></li>
 </ul>
@@ -608,7 +609,9 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-variables">Internal Variables</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#function-definitions-and-modules">Function <code class="docutils literal notranslate"><span class="pre">def</span></code>initions and “modules”</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-include-name-main-and-all-that-jazz">Why include <code class="docutils literal notranslate"><span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">"__main__"</span></code> and all that jazz</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-sys-argv">What is <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>?</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-sys-argv">What is <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>?</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-main-argv">What is <code class="docutils literal notranslate"><span class="pre">main(argv)</span></code> ?</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#finally-sys-exit">Finally, sys.exit()</a></li>
 </ul>
@@ -1015,7 +1018,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 <li><p>Test code during development to catch bugs before they become difficult to track.</p></li>
 </ul>
 </li>
-<li><p><strong><a class="reference internal" href="#./Git.ipynb"><span class="xref myst">Version Control</span></a></strong></p>
+<li><p><strong><a class="reference internal" href="git.html"><span class="std std-doc">Version Control</span></a></strong></p>
 <ul class="simple">
 <li><p>Commit frequently, with clear commit messages describing the purpose of the changes.</p></li>
 <li><p>Develop new features, solutions, or bug fixes in separate branches to avoid conflicts in the main branch.</p></li>
@@ -2147,7 +2150,7 @@ this       module    &lt;module &#39;this&#39; from &#39;/usr&lt;...&gt;/lib/pyt
 <section id="getting-help">
 <h3>Getting help<a class="headerlink" href="#getting-help" title="Link to this heading">#</a></h3>
 <p>You can do this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">?</span><span class="n">s</span><span class="o">.</span><span class="n">upper</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>?s.upper
 </pre></div>
 </div>
 <p>Also try <code class="docutils literal notranslate"><span class="pre">help()</span></code> at the Python/ipython prompt.</p>
@@ -3333,8 +3336,9 @@ this       module    &lt;module &#39;this&#39; from &#39;/usr&lt;...&gt;/lib/pyt
 <p>The rest of this session will use the <code class="docutils literal notranslate"><span class="pre">with</span></code> method of opening files</p>
 </div>
 </section>
+</section>
 <section id="handling-csv-s">
-<h3>Handling <code class="docutils literal notranslate"><span class="pre">csv</span></code>’s<a class="headerlink" href="#handling-csv-s" title="Link to this heading">#</a></h3>
+<h2>Handling <code class="docutils literal notranslate"><span class="pre">csv</span></code>’s<a class="headerlink" href="#handling-csv-s" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">csv</span></code> package makes it easy to manipulate CSV files. Let’s try it.</p>
 <p><span class="math notranslate nohighlight">\(\star\)</span> Get <code class="docutils literal notranslate"> <span class="pre">testcsv.csv</span></code> from TheMulQuaBio’s <code class="docutils literal notranslate"><span class="pre">data</span></code> directory. Then type the following script in a script file called <code class="docutils literal notranslate"><span class="pre">basic_csv.py</span></code> and run it:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
@@ -3363,7 +3367,6 @@ this       module    &lt;module &#39;this&#39; from &#39;/usr&lt;...&gt;/lib/pyt
 </pre></div>
 </div>
 <p><span class="math notranslate nohighlight">\(\star\)</span> run this script from bash, bash with ipython, and from within ipython, like you did above for the <code class="docutils literal notranslate"><span class="pre">basic_io*.py</span></code> scripts.</p>
-</section>
 </section>
 <section id="modules-and-code-compartmentalization">
 <h2>Modules and code compartmentalization<a class="headerlink" href="#modules-and-code-compartmentalization" title="Link to this heading">#</a></h2>
@@ -3544,8 +3547,9 @@ stripped. Hence, you can access your docstrings at run time. It is a good idea t
 <p>Also please look up the <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">official python doc for modules</a>.</p>
 </div>
 </section>
+</section>
 <section id="what-is-sys-argv">
-<h4>What is <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>?<a class="headerlink" href="#what-is-sys-argv" title="Link to this heading">#</a></h4>
+<h3>What is <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>?<a class="headerlink" href="#what-is-sys-argv" title="Link to this heading">#</a></h3>
 <p>In your boilerplate code, as any other Python code, <code class="docutils literal notranslate"><span class="pre">argv</span></code> is the “argument variable”. Such variables are necessarily very common across programming languages, and play an important role — <code class="docutils literal notranslate"><span class="pre">argv</span></code> is a variable that holds the arguments you pass to your Python script when you run it (like <code class="docutils literal notranslate"><span class="pre">$var</span></code> in shell scripts). <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> is simply an object created by Python using the <code class="docutils literal notranslate"><span class="pre">sys</span></code> module (which you imported at the beginning of the script) that contains the names of the argument variables in the current script.</p>
 <p>To understand this in a practical way, write and save a script called <code class="docutils literal notranslate"><span class="pre">sysargv.py</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
@@ -3584,7 +3588,6 @@ stripped. Hence, you can access your docstrings at run time. It is a good idea t
 <p class="admonition-title">Tip</p>
 <p>As the number of arguments increases, handling <code class="docutils literal notranslate"><span class="pre">sys.</span></code>argv becomes less readable and more error-prone. You must manually validate and parse each argument, which can lead to complex code. Instead of <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>, you may want to use <code class="docutils literal notranslate"><span class="pre">argparse</span></code> when building scripts or programs that require more complex argument parsing, error handling, and user-friendly help messages.</p>
 </div>
-</section>
 <section id="what-is-main-argv">
 <h4>What is <code class="docutils literal notranslate"><span class="pre">main(argv)</span></code> ?<a class="headerlink" href="#what-is-main-argv" title="Link to this heading">#</a></h4>
 <p>Now for the final bit of your Python boilerplate:</p>
@@ -4773,8 +4776,8 @@ from the end of an array:</p>
 <section id="the-lotka-volterra-model">
 <h5>The Lotka-Volterra model<a class="headerlink" href="#the-lotka-volterra-model" title="Link to this heading">#</a></h5>
 <p>Now let’s try numerical integration in Python for solving a classical model in biology — the Lotka-Volterra (LV) model for a predator-prey system in two-dimensional space (e.g., on land). The LV model is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-50b623fe-b345-4e28-904a-84a45a7aca90">
-<span class="eqno">(2)<a class="headerlink" href="#equation-50b623fe-b345-4e28-904a-84a45a7aca90" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-aba5d459-fa9a-48fc-adb4-98aece226192">
+<span class="eqno">(2)<a class="headerlink" href="#equation-aba5d459-fa9a-48fc-adb4-98aece226192" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dr}{dt} &amp;= r r - a C r  \nonumber \\
     \frac{dC}{dt} &amp;= - z C + e a C r
 \end{align}\]</div>
@@ -5254,8 +5257,8 @@ from the end of an array:</p>
 <h3>The Lotka-Volterra model revisited<a class="headerlink" href="#the-lotka-volterra-model-revisited" title="Link to this heading">#</a></h3>
 <p><em>What happens when the consumer population <span class="math notranslate nohighlight">\(C\)</span> goes extinct in the Lotka-Volterra that you encountered above</em>?</p>
 <p>If the consumer population goes extinct, the resources grow to infinity! This is not biologically realistic, of course. To address this, we can introduce density dependence to the resource population <span class="math notranslate nohighlight">\(\left(1 - \frac{r} {K}\right)\)</span>, which changes the ODE system to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-90cbc204-28c1-44b3-859f-e77c47a52d1e">
-<span class="eqno">(3)<a class="headerlink" href="#equation-90cbc204-28c1-44b3-859f-e77c47a52d1e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0c68e286-1c88-4fa7-83ca-fcadadd0aa9a">
+<span class="eqno">(3)<a class="headerlink" href="#equation-0c68e286-1c88-4fa7-83ca-fcadadd0aa9a" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dr}{dt} &amp;= r r \left(1 - \frac{r} {K}\right) - a C r\\
     \frac{dC}{dt} &amp;= - z C + e a C r
 \end{align}\]</div>
@@ -5285,8 +5288,8 @@ from the end of an array:</p>
 <ul class="simple">
 <li><p>Write a discrete-time version of the LV model called <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>. The discrete-time model is:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-f1442b52-fc68-4c36-8ba2-6dcf2ad9806e">
-<span class="eqno">(4)<a class="headerlink" href="#equation-f1442b52-fc68-4c36-8ba2-6dcf2ad9806e" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-1bf6c4e0-5348-456c-b21a-c212279625da">
+<span class="eqno">(4)<a class="headerlink" href="#equation-1bf6c4e0-5348-456c-b21a-c212279625da" title="Permalink to this equation">#</a></span>\[\begin{align} 
     r_{t+1} &amp;= r_t (1 + r \left(1 - \frac{r_t}{K}\right) - a C_t)\\ 
     C_{t+1} &amp;= C_t (1 - z + e a r_t) 
 \end{align}\]</div>
@@ -5297,14 +5300,14 @@ from the end of an array:</p>
 <ul class="simple">
 <li><p>Write a version of the discrete-time model (which you implemented in <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>) simulation with a random gaussian fluctuation in resource’s growth rate at each time-step:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-1d63cbd2-3a02-4715-b16c-c96c6c244faf">
-<span class="eqno">(5)<a class="headerlink" href="#equation-1d63cbd2-3a02-4715-b16c-c96c6c244faf" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bc30ffa6-0031-4ce5-bf42-5a38e1ebaa09">
+<span class="eqno">(5)<a class="headerlink" href="#equation-bc30ffa6-0031-4ce5-bf42-5a38e1ebaa09" title="Permalink to this equation">#</a></span>\[\begin{align}
         r_{t+1} &amp;= r_t (1 + (r + \epsilon) \left(1 - \frac{r_t}{K}\right)- a C_t)\\
         C_{t+1} &amp;= C_t (1 - z + e a r_t)
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random fluctuation drawn from a gaussian distribution (use <code class="docutils literal notranslate"><span class="pre">sc.stats</span></code> or <code class="docutils literal notranslate"><span class="pre">np.random</span></code>). Include this script in <code class="docutils literal notranslate"> <span class="pre">run_LV.py</span></code>, and profile it as well. You can also add fluctuations to both populations simultaneously this way:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fce33ee6-c1c5-46a6-83bd-12865eb25787">
-<span class="eqno">(6)<a class="headerlink" href="#equation-fce33ee6-c1c5-46a6-83bd-12865eb25787" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-082bea99-d6f8-4dae-9b58-7eb3c81b00dd">
+<span class="eqno">(6)<a class="headerlink" href="#equation-082bea99-d6f8-4dae-9b58-7eb3c81b00dd" title="Permalink to this equation">#</a></span>\[\begin{align}
     r_{t+1} &amp;= r_t (1 + (r + \epsilon)  \left(1 - \frac{r_t}{K}\right) - a C_t)\\
     C_{t+1} &amp;= C_t (1 - (z + \epsilon) + e a r_t)
 \end{align}\]</div>
@@ -6369,9 +6372,9 @@ And this exercise: <a class="reference external" href="https://developers.google
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-input-output">Python Input/Output</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#safely-opening-files-using-with-open">Safely opening files using <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">open()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-csv-s">Handling <code class="docutils literal notranslate"><span class="pre">csv</span></code>’s</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-csv-s">Handling <code class="docutils literal notranslate"><span class="pre">csv</span></code>’s</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-code-compartmentalization">Modules and code compartmentalization</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing Modules</a></li>
 </ul>
@@ -6383,7 +6386,9 @@ And this exercise: <a class="reference external" href="https://developers.google
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-variables">Internal Variables</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#function-definitions-and-modules">Function <code class="docutils literal notranslate"><span class="pre">def</span></code>initions and “modules”</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-include-name-main-and-all-that-jazz">Why include <code class="docutils literal notranslate"><span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">"__main__"</span></code> and all that jazz</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-sys-argv">What is <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>?</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-sys-argv">What is <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>?</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-main-argv">What is <code class="docutils literal notranslate"><span class="pre">main(argv)</span></code> ?</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#finally-sys-exit">Finally, sys.exit()</a></li>
 </ul>

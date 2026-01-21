@@ -226,6 +226,7 @@
 <li class="toctree-l1"><a class="reference internal" href="metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="populations.html">Single Populations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="populations-practicals.html">Populations: Practicals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="micrm-to-logistic.html">From consumer–resource dynamics to logistic growth</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
@@ -565,7 +566,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Visualizing the fit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-the-fit">Summary of the fit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-residuals">Examine the residuals</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises <a id="Allom_Exercises"></a></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -1571,7 +1572,7 @@ b 2.318292e+00 2.872287e+00
 <p>remember, when you write this analysis into a stand-alone r script, you should put all commands for loading packages (<code class="docutils literal notranslate"><span class="pre">library()</span></code>, <code class="docutils literal notranslate"><span class="pre">require()</span></code>) at the start of the script. *</p>
 </div>
 <section id="exercises">
-<h4>Exercises <a id='Allom_Exercises'></a><a class="headerlink" href="#exercises" title="Link to this heading">#</a></h4>
+<span id="allom-exercises"></span><h4>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h4>
 <p>(a) Make the same plot as above, fitted line and all, in <code class="docutils literal notranslate"><span class="pre">ggplot</span></code>, and add (display) the equation you estimated to your new (ggplot) plot. The equation is: <span class="math notranslate nohighlight">\(\text{Weight} = 3.94 \times 10^{-06} \times \text{Length}^{2.59}\)</span></p>
 <p>(b) Try playing with the starting values, and see if you can “break” the model fitting – that is, change the starting values till the nlls fitting does not converge on a solution.</p>
 <p>(c) repeat the model fitting (including a-b above) using the Zygoptera data subset.</p>
@@ -1682,8 +1683,8 @@ y = a + b x + c x^2
 <p>(a) Calculate the bayesian Information Criterion (BIC), also know as the Schwarz Criterion (see your Lecture notes and the <a class="reference external" href="https://github.com/MulQuaBio/MQB/blob/main/content/readings/Modelling/JohnsonOmland2004.pdf">Johnson &amp; Omland paper</a>, and use <span class="math notranslate nohighlight">\(\Delta\)</span>BIC to select the better fitting model.</p>
 <p>(b) Fit a straight line to the same data and compare with the allometric and quadratic models.</p>
 <p>(c) repeat the model comparison (incuding 1-2 above) using the Damselflies (Zygoptera) data subset – does the allometric model still win?</p>
-<p>(d) repeat exercise (e)(i) and (ii) from the <a class="reference internal" href="#Allom_Exercises"><span class="xref myst">above set</span></a>, but with model comparison (e.g., again using a quadratic as an alternative model) to establish that the relationships are indeed allometric.</p>
-<p>(e) repeat exercise (e)(ii) from the <a class="reference internal" href="#Allom_Exercises"><span class="xref myst">above set</span></a>, but with model comparison to establish which linear measurement is the best predictor of Body weight.</p>
+<p>(d) repeat exercise (e)(i) and (ii) from the <a class="reference internal" href="#allom-exercises"><span class="std std-ref">above set</span></a>, but with model comparison (e.g., again using a quadratic as an alternative model) to establish that the relationships are indeed allometric.</p>
+<p>(e) repeat exercise (e)(ii) from the <a class="reference internal" href="#allom-exercises"><span class="std std-ref">above set</span></a>, but with model comparison to establish which linear measurement is the best predictor of Body weight.</p>
 </section>
 </section>
 <section id="albatross-chick-growth">
@@ -1804,7 +1805,7 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 </div>
 </div>
 <p>The residuals for all 3 models still exhibit some patterns. In particular, the data seems to go down near the end of the observation period, but none of these models can capture that behavior.</p>
-<p>Finally, let’s compare the 3 models using a simpler approach than the AIC/BIC one that we used <a class="reference internal" href="#Allom_Exercises"><span class="xref myst">above</span></a> by calculating adjusted Sums of Squared Errors (SSE’s):</p>
+<p>Finally, let’s compare the 3 models using a simpler approach than the AIC/BIC one that we used <a class="reference internal" href="#allom-exercises"><span class="std std-ref">above</span></a> by calculating adjusted Sums of Squared Errors (SSE’s):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">alb</span><span class="o">$</span><span class="n">wt</span><span class="p">)</span>
@@ -2534,7 +2535,7 @@ In both cases, the <em>mean</em> of the sampling distribution will be the starti
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Visualizing the fit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-the-fit">Summary of the fit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-residuals">Examine the residuals</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises <a id="Allom_Exercises"></a></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
 </li>
 </ul>
