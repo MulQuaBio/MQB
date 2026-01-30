@@ -1,4 +1,4 @@
-# Advanced Data Analyses and Statistics
+# Introduction & prerequisites
 
 This part builds toward modern statistical modelling and inference workflows used in quantitative biology.
 
@@ -20,6 +20,11 @@ By the end of this part, you will be able to:
 - **Essential**: Comfort with R programming, model formulas, and interpreting model output
 - **Strongly recommended**: Complete the basic statistics part first — these chapters build directly on regression concepts
 - **Helpful refresher**: [Pre-work exercises](notebooks/mqb-prework-exercises) covering probability distributions, likelihood concepts, and numerical optimisation
+
+## Recommended pre-work
+
+- If you haven’t done it recently: revisit regression + diagnostics in [Basic Data Analyses and Statistics](part-basic-stats).
+- If likelihood/probability feels unfamiliar: do the [Pre-work exercises](notebooks/mqb-prework-exercises) before starting.
 
 ## Do this first
 

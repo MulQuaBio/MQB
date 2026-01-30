@@ -1,6 +1,14 @@
-# Appendices
+# Introduction & prerequisites
 
 These appendices are reference and extension material you can dip into as needed.
+
+## Prerequisites
+
+- None.
+
+## Recommended pre-work
+
+- None — use these as needed while working through other parts.
 
 ## How to use
 

@@ -1,4 +1,4 @@
-# Ecological & Evolutionary Modelling
+# Introduction & prerequisites
 
 This part focuses on building and analysing **mechanistic models** used in ecology and evolution.
 Mechanistic models start from assumptions about biological processes (birth, death, competition, predation, infection, resource uptake) and turn them into mathematics and simulations that generate predictions.
@@ -34,6 +34,11 @@ If you feel shaky on calculus/algebra, do the [Pre-work exercises](notebooks/mqb
 - Comfortable running notebooks and basic code (see [Computing](part-computing) if you need a refresh).
 - Helpful: the [Pre-work](notebooks/mqb-prework-exercises) if you want a maths refresher.
 - Recommended: basic regression intuition from [Basic Data Analyses and Statistics](part-basic-stats) (to help you think about models vs data).
+
+## Recommended pre-work
+
+- If you feel rusty on maths: do (or dip into) the [Pre-work exercises](notebooks/mqb-prework-exercises).
+- If you want extra support while reading the modelling notebooks: keep the [Maths appendix](appendices/maths) open for reference.
 
 ## Do this first
 

@@ -1,4 +1,4 @@
-# Advanced Modelling & Statistics Pre-work
+# Introduction & prerequisites
 
 These are short exercises (with worked solutions) to refresh the core mathematics and statistics ideas that show up repeatedly in modelling and advanced inference.
 
@@ -13,6 +13,11 @@ These are short exercises (with worked solutions) to refresh the core mathematic
 ## Prerequisites
 
 - None required, but it’s most useful if you already know basic algebra.
+
+## Recommended pre-work
+
+- If you’re about to start modelling chapters: do these exercises first (or alongside).
+- If you’re about to start advanced inference (GLMs/NLLS/MLE): focus on probability/likelihood and calculus refreshers.
 
 ## Do this first
 
