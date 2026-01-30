@@ -1,4 +1,4 @@
-# Basic Data Analyses and Statistics
+# Introduction & prerequisites
 
 This part introduces practical data analysis in R and the core frequentist toolkit used throughout the book.
 
@@ -30,6 +30,11 @@ By the end of this part, you will be able to:
 - **Essential**: Functional R programming skills — variables, vectors, data frames, basic plotting (covered in [R chapter](notebooks/r))
 - **Helpful**: Basic understanding of mean, variance, and probability concepts
 - **If rusty**: Review [R chapter](notebooks/r) before starting
+
+## Recommended pre-work
+
+- If you have not completed the [Computing](part-computing) part, do that first (terminal + git basics help a lot).
+- If you want a gentle stats refresher before starting: skim the lecture notes for this part and do the first few exercises in [Data wrangling in R](notebooks/data-r).
 
 ## Do this first
 

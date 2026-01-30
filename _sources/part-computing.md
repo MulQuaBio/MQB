@@ -1,4 +1,4 @@
-# Computing
+# Introduction & prerequisites
 
 This part gets you comfortable with the command line, version control, and the core tools used throughout MQB.
 
@@ -14,6 +14,11 @@ This part gets you comfortable with the command line, version control, and the c
 
 - None assumed.
 - If you are brand new to Jupyter, see the [Jupyter introduction appendix](notebooks/appendix-jupy-intro).
+
+## Recommended pre-work
+
+- If you have never used a terminal before: skim the first section of [Unix](notebooks/unix).
+- If you have never used version control: read the intro of [Git](notebooks/git).
 
 ## Do this first
 
