@@ -1,0 +1,134 @@
+\documentclass[xcolor=x11names,compress]{beamer}
+
+% General document
+\usepackage{graphicx}
+\graphicspath{{graphics/}}
+\usepackage{animate}
+\usepackage{tikz}
+
+% highlight boxes
+\usepackage{color}
+\input{../nlls/inputs/rgb}
+\definecolor{capri}{rgb}{0,.75,1}
+\definecolor{coral}{rgb}{1,.2,.2}
+\newcommand{\hltyellow}[1]{\colorbox{yellow}{$\displaystyle #1$}}
+\newcommand{\hltblue}[1]{\colorbox{capri}{$\displaystyle #1$}}
+\newcommand{\hltred}[1]{\colorbox{coral}{$\displaystyle #1$}}
+\newcommand{\hltgreen}[1]{\colorbox{green}{$\displaystyle #1$}}
+
+\usepackage{ulem}
+\renewcommand<>{\sout}[1]{%
+  \only#2{\beameroriginal{\sout}{#1}}%
+  \invisible#2{#1}%
+}
+
+% Beamer layout
+\usetheme{Madrid}
+\usecolortheme{seahorse}
+\setbeamertemplate{headline}{}
+\usepackage{pdfpages}
+\setbeamertemplate{navigation symbols}{}
+\usefonttheme{serif}
+\usepackage{palatino}
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape, series=\bfseries}
+\setbeamercolor*{lower separation line head}{bg=DeepSkyBlue4}
+
+\renewcommand{\(}{\begin{columns}}
+\renewcommand{\)}{\end{columns}}
+\newcommand{\<}[1]{\begin{column}{#1}}
+\renewcommand{\>}{\end{column}}
+
+\title[Computing Miniproject]{\bf The MQB Computing Miniproject: Intro and Guidelines}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\begin{itemize}\itemsep12pt
+  \item What is the Miniproject?
+  \item Key objectives and deliverables
+  \item Suggested workflow and scripts
+  \item Report requirements and marking
+  \item Next steps / deadlines
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What is the Miniproject?}
+\begin{itemize}\itemsep10pt
+  \item A short, reproducible computing project: choose a dataset, fit and compare models, write a LaTeX report.
+  \item Aim: apply the computational tools you learned (bash, Git, R, Python, LaTeX).
+  \item Minimum: fit and compare at least two alternative models (e.g., linear vs non-linear) and perform model selection (AIC/BIC).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Objectives and Deliverables}
+\begin{itemize}\itemsep8pt
+  \item Deliver a reproducible workflow (single script \texttt{run\_MiniProject.*}).
+    \item Produce a written report (LaTeX, $\leq$ 3500 words) with title page, methods (including computing tools), results, discussion.
+  \item Provide source code, data, plots, and a README with versions/dependencies.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Suggested Workflow}
+\begin{enumerate}\itemsep8pt
+  \item Data preparation script: clean, ID curves, save CSVs.
+  \item Model fitting script: fit models (LMs, NLLS), compute AIC/BIC, export results.
+  \item Final plotting/analysis: overlay fits, summary tables, save figures.
+  \item Report compile script: compile LaTeX to PDF.
+  \item \texttt{run\_MiniProject.*} ties everything together.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Notes on NLLS fitting}
+\begin{itemize}\itemsep8pt
+  \item Read the nlls practicals (R and Python) before fitting.
+  \item Compute sensible starting values; use \texttt{try} / error handling to skip non-convergent fits.
+  \item Consider fitting on transformed data (e.g., log) to aid convergence.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Report requirements}
+\begin{itemize}\itemsep8pt
+  \item LaTeX \texttt{article}, 11pt, 1.5 spacing, continuous line numbers.
+  \item Title page with word count; references via BibTeX (non-numeric style recommended).
+  \item Methods must include a `Computing tools` subsection listing languages, packages, and justifications.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dataset (required)}
+\begin{itemize}\itemsep8pt
+  \item The required dataset for this miniproject is the bacterial population growth dataset provided in the \texttt{data/} folder.
+  \item Workflows: explore the dataset, write plotting scripts, fit baseline LMs and mechanistic/non-linear models, compare with AIC/BIC.
+  \item Starter scripts and a report template are available; use \texttt{run\_MiniProject.*} to reproduce the full workflow.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dataset file}
+\begin{itemize}\itemsep8pt
+  \item File: \texttt{content/data/logistic\_growth\_data.csv}
+  \item Use this exact file for all student analyses; cite the file and include it with your submission.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Submission and Marking}
+\begin{itemize}\itemsep8pt
+  \item Push \texttt{MiniProject/} directory to your repo with code, data, scripts, report, and README.
+  \item Marking: equal weight to code+workflow and the written report.
+  \item Include versions and dependencies in README; ensure \texttt{run\_MiniProject.*} executes the full workflow.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Next steps}
+\begin{itemize}\itemsep8pt
+  \item Read \texttt{content/notebooks/appendix-mini-proj.ipynb} for full guidance and examples.
+  \item Prepare a short analysis plan for the bacterial population growth dataset for the next class.
+  \item Ask if you want a template \texttt{run\_MiniProject.sh} or starter LaTeX report template.
+\end{itemize}
+\end{frame}
+
+\end{document}

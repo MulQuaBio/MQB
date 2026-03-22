@@ -1,0 +1,631 @@
+\documentclass[xcolor=x11names,compress, handout]{beamer}
+
+%% General document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\graphicspath{{graphics/}}
+\usepackage{tikz}
+\usepackage{color,colortbl}
+\usepackage{framed}
+\usepackage{textcomp, setspace} %Needed for customization of ``listings''
+% package
+\usepackage[procnames]{listings} % to display code; don't forget [fragile]
+% option after \begin{frame}
+\input{inputs/rgb}
+\definecolor{shadecolor}{rgb}{1,.9,.3}
+
+\usepackage [autostyle]{csquotes}
+\MakeOuterQuote{"}
+
+\lstset{
+    backgroundcolor=\color{shadecolor},
+    tabsize=4,
+    rulecolor=,
+    language=python,
+        basicstyle=\ttfamily\setstretch{1},
+        upquote=true,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.133,0.545,0.133},
+        stringstyle=\color[rgb]{0.627,0.126,0.941},
+        numbers=left, 
+        numberstyle=\tiny, 
+        stepnumber=2, 
+        numbersep=5pt
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Beamer Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetheme{Madrid}
+\usecolortheme{seahorse}
+\useoutertheme[subsection=false,shadow]{miniframes}
+\useinnertheme{default}
+% \usefonttheme{serif}
+\usepackage{palatino}
+
+\setbeamerfont{title like}{shape=\scshape}
+\setbeamerfont{frametitle}{shape=\scshape, series = \bfseries}
+\setbeamertemplate{frametitle}[default][center]
+\setbeamertemplate{headline}{} %suppress headline (navigation pane)
+
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.2ex,dp=1ex,center]{author in head/foot}
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=2.2ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{3em}
+  \end{beamercolorbox}}
+  \begin{beamercolorbox}[wd=.05\paperwidth,ht=2.2ex,dp=1ex,center]{}
+     \insertframenumber{} / \inserttotalframenumber\hspace*{-3ex}
+  \end{beamercolorbox}
+}
+
+\renewcommand{\(}{\begin{columns}}
+\renewcommand{\)}{\end{columns}}
+\newcommand{\<}[1]{\begin{column}{#1}}
+\renewcommand{\>}{\end{column}}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
+  \hbox{}\nobreak\hfil(#1)%
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quote}}
+  {\signed{\usebox\mybox}\end{quote}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[EnE Modelling]{Mathematical Modelling, Theory, and Model Fitting in Ecology \& Evolution}
+\subtitle{\it A MulQuaBio Lecture}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Outline}
+	\begin{itemize}\setlength{\itemindent}{0em}\itemsep12pt
+  
+	  \item Modelling: what and why
+  
+	  \item Types of Models
+	  
+	  \item How to build 'em
+	  
+	  \item How to test 'em (AKA Fitting Models to Data)
+
+	  \item Summary and readings
+	  \end{itemize}  
+  
+  \end{frame}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Models and Modelling}
+
+	\begin{center}
+
+		\it What does ``modelling'' mean to you?\\
+		\vspace{20pt}
+		\pause 
+		Caricature of a phenomenon that captures its essence \\ (the model's output reproduces/emulates the phenomenon)
+		
+	  \end{center}
+ 
+ \end{frame}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Why use (Mathematical) models?}
+
+	\begin{columns}[c]
+	  \column{2.3in}
+	  \includegraphics[width=\textwidth]{reef.jpg}
+	  \column{2.3in}
+	  \includegraphics[width=\textwidth]{Forest.jpg}
+	\end{columns}
+  
+	\pause
+  
+	\begin{itemize}[<+->] \itemsep4pt
+	
+		\item To understand/explain an observed phenomenon
+  
+		\item To develop accurate predictions of an observed phenomenon in the future    
+		
+		\item To find out what is important to know in an otherwise complex system (cannot measure and monitor everything!)
+	  
+	\end{itemize}
+  
+  \end{frame}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{How to build 'em?}
+
+	\begin{columns}[c]
+	  \column{2.3in}
+		\includegraphics[width=\textwidth]{reef.jpg}
+	  \column{2.3in}
+		\includegraphics[width=\textwidth]{Forest.jpg}
+	  \end{columns}
+	
+	  \begin{center}
+		{\it Essentially, all models are wrong, but some are useful}\\--- 
+		{\small George Box (1987) (British mathematician)}
+	  \end{center}
+	
+	  \pause
+	  \begin{itemize}[<+->] \itemsep6pt
+		\item ``{\it All models are wrong}'' --- every model is a 
+		  simplification of reality (e.g., the frictionless pendulum!)
+	
+		\item ``{\it But some are useful}'' --- the appropriately simplistic 
+		  ones can ({\it sufficiently}) explain and predict phenomena
+	  \end{itemize}
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Models and Modelling}
+
+	\begin{center}
+
+		\it What is more important to you when it come's to a Model's capabilities - Accuracy or Precision?\\
+		\vspace{20pt}
+		\pause 
+		Accuracy is a more fundamental property
+		
+	  \end{center}
+ 
+ \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Two Types of Models}
+
+	\begin{itemize}[<+->]\itemsep20pt
+
+		\item {\it Mechanistic models} aim to explain the \textbf{processes} or \textbf{mechanisms} underlying \textbf{patterns} or \textbf{phenomena} in empirical data 
+		\begin{itemize}
+			\item These models have a \textbf{theoretical basis}
+		\end{itemize}
+ 
+		\item {\it Inferential/Empirical (AKA Phenomenological) models} establish the existence of
+		\textbf{statistically significant, non-random patterns} or \textbf{phenomena} in empirical
+		data
+		\begin{itemize}
+			\item They make no assumptions about the processes or mechanisms that generate the patterns
+			\item That is, these models lack a \textbf{theoretical basis}
+		\end{itemize}
+			
+	  \end{itemize}
+ 
+ \end{frame}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Mechanistic vs. Inferential model fitting}
+
+\begin{center}
+		\includegraphics[width=.7\textwidth]{graphics/L-H_cycle.png}\\
+		{\it \tiny source: \url{https://www.cds.caltech.edu/~murray/amwiki/images/8/8f/LHgraph.gif}}
+\end{center}
+\pause
+\begin{itemize}[<+->] \itemsep6pt
+
+	\item {\bf Mechanistic model}: \it The Lynx--Hare cycle is driven by density-dependent population growth in hares
+
+	\item {\bf Inferential model}: \it The Lynx and Hare cycles have a significant asynchrony (period shift) of $x$ years
+
+\end{itemize}
+
+ \end{frame}
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Mechanistic vs. Inferential model fitting}
+
+	\begin{itemize}[<+->]\itemsep10pt
+		\item {\it It's not really one vs.\ the other}; both types of models play a role in science (and biology)
+		\item Inferential model fitting reveals patterns in data that generate \textbf{hypotheses}
+ 		\begin{itemize}
+			\item These can be tested using further model fitting
+			\item Example: {\it Whether} climatic temperature affects the Lynx-Hare cycle (using Generalized Linear Model-fitting)
+		\end{itemize} 
+
+		\item Mechanistic model fitting {\it tries} to validate a model that can {\it mechanistically explain} the observed pattern and generate \textbf{more accurate, mechanistic hypotheses}
+		\begin{itemize}
+			\item Example: {\it How} climatic temperature {\it drives} the Lynx-Hare cycle
+		\end{itemize} 
+		\item \it Ultimately, successful, \textbf{empirically grounded} mechanistic models are the best path towards a theory in any scientific discipline (including ecology and evolution)
+	  \end{itemize}
+ 
+ 
+ \end{frame}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Mechanistic vs. Inferential model fitting}
+	 
+  \begin{center}
+	  \includegraphics[width=\textwidth]{Mechanisms.pdf}
+  \end{center} 
+ 
+ \end{frame}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Mechanistic models in Ecology and Evolution?}
+
+\begin{itemize}[<+->] \itemsep12pt
+	\item \it Do most ecological studies perform \textbf{inferential} or \textbf{mechanistic} modelling (or model fitting)?
+	
+	\item The answer is mostly inferential \pause --- {\it why?} \pause
+	\begin{itemize}
+		\item Partly because we are still establishing the existence of \textbf{general} patterns/phenomena,
+		\item ... and partly because we are (or are forced to be) interested in \textbf{forecasting} rather than \textbf{explaining}.
+ 
+	\end{itemize}	  
+	
+	\item {\it So the big question is, can we forecast without explaining?}
+	
+	\begin{itemize}
+		\item For example, disease outbreaks: do we really need to care about the underlying mechanisms if we can predict a future event using inferential modelling (e.g., machine learning of time-series patterns)?
+		
+	\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{What are Mechanisms?}
+
+   \begin{itemize}[<+->] \itemsep10pt
+		\item Somewhat subjective! 
+		\item For example, the Logistic growth model can be thought of as mechanistic:
+		$$ 
+			\dfrac{dN}{dt} = r N \left(1-\frac{N}{K}\right)  
+		$$ 
+				
+		\item What is the mechanism? \pause --- Density dependence through scramble competition (Brannstrom \& Sumpter 2005)
+
+		\item If the logistic growth model and another model with contest
+			competition were compared with data --- some would call it
+			mechanistic modelling because one is trying to get at the
+			underlying mechanism --- scramble vs.\ contest competition
+			
+		\item But is this really mechanistic? What are $r$ and $K$, really?
+   \end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example of a fundamental mechanism: metabolic rate}
+
+	\begin{itemize}
+		\item Proponents of {\it Metabolic Theory of Ecology} (MTE) argue that we have not progressed far enough towards mechanistic modelling because metabolism has been ignored
+	\end{itemize}
+
+	\begin{center}
+		\includegraphics[width=\textwidth]{Mechanisms.pdf}
+	\end{center} 	
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Example of a fundamental mechanism: metabolic rate}
+
+	\begin{itemize}
+		\item The mechanistic basis of thermal performance curves (\url{https://youtu.be/6n8fCuDwn74}) 
+	\end{itemize}
+
+\begin{columns}[c]
+  \column{.4\textwidth}
+    \pause
+      \includegraphics[width=\textwidth]{graphics/Photobacterium.pdf}
+  \pause
+  \column{.6\textwidth}
+  \scriptsize
+		$B = B_0 \boxed{e^{-\frac{E}{kT}}}f(T,T_{pk},E_D)$\\
+    \vspace{10pt}
+    \raggedright{$T$ = temperature (K)\\
+     $k$ = Boltzmann constant (eV K$^{-1}$)}\\
+     $E$ = Activation energy (eV)\\
+     $T_{pk}$ = Temperature of peak performance\\
+	 $E_D$ = Deactivation energy (eV)\\
+	 
+    {\tiny (J H van't Hoff 1884, S Arrhenius 1889)}
+\end{columns}
+
+\begin{itemize}\setlength{\itemindent}{0em}
+  \pause
+  \item Surely there is more to thermal responses?
+    % \begin{itemize}\setlength{\itemindent}{-1em}
+    %  \item Oxygen limitation
+    %  \item Complexity of metabolic network
+    %  \item Hormonal regulation
+    % \end{itemize}
+    % \pause
+  \item \textit{What about alternative models?}\\
+
+\end{itemize}
+ 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Modelling, and fitting models to data: What's the big idea?}
+
+\begin{itemize} [<+->] \itemsep8pt
+
+	\item {\it If possible}, use biological knowledge to construct models
+	\item See if the models ``agree well'' with data
+	\item Whichever model ``agrees best'' is most likely to have the right 
+	mechanisms
+	\item That's the one that's best for predictions (e.g., population cycles), estimating rates (e.g., population or individual growth rates), etc.
+	\item Don't use models you already know have the wrong mechanisms just because they are popular!
+	\item Inferential/statistical models often perform better than mechanistic ones. \pause {\it Why? \pause --- because they have less restrictive assumptions}
+
+\end{itemize}
+  
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Building Models}
+
+\begin{itemize}\itemsep10pt
+
+	\item It's an art, takes practice (Levins' paper on the strategy of model building in biology)
+	
+	\item Build models one mechanism at a time --- in biology, it means 
+	start at the right level of organization! 
+	
+	\item Always consider an alternative that is more parsimonious, even if 
+	it is an Inferential model! 
+
+	\item For example, the Boltzmann--Arrhenius model is a good first try to 
+	describe and uncover mechanisms underlying individual-level ``traits'' that are rates (e.g., fecundity or development rate)
+
+	\item The next step would be to include species interactions with 
+	temperature-dependent individuals (or go in an evolutionary direction)
+
+\end{itemize}   
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Models and Modelling?}
+
+	\begin{center}
+
+		\it Which modelling approach (mechanistic vs.\ inferential) is more likely to yield accurate predictions under global change?\\
+		\vspace{20pt}
+		\pause 
+		Mechanisms are the key to accurate {\it prediction}!
+		
+	  \end{center}
+ 
+ \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Building EnE Models}
+	 
+\begin{center}
+	\includegraphics[width=\textwidth]{Mechanisms.pdf}
+\end{center} 
+
+\begin{itemize}\itemsep2pt
+
+	\item \it You will learn about (deriving and analysing) key models (and theories) at different levels of organization in this part of the course (starting with metabolism)
+
+\end{itemize}   
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Fitting Models (to data)}
+
+\begin{itemize}\itemsep16pt
+
+	\item Least Squares methods
+	\begin{itemize}
+		 \item Linear 
+		 \item Non-linear
+	\end{itemize}
+	\item Likelihood-based methods 
+	\begin{itemize}
+	 \item Maximum Likelihood 
+	 \item Bayesian
+	\end{itemize}
+	\item Machine learning and artificial intelligence
+
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Fitting Models (to data)}
+
+\begin{itemize} \itemsep12pt
+	
+\item Linear and non-linear least squares model fitting: (mathematically/algorithmically simple) approaches, useful in many scenarios in biology
+\begin{itemize}
+	\item Many mechanisms in biology are inherently non-linear (i.e., data are often better explained by a non-linear mathematical model)
+\end{itemize} 
+
+\item Bayesian (and MLE) methods: versatile and powerful when data are limited and your (e.g., mechanistic) models are complex (many parameters). Bayesian methods can outperform MLE when you have strong prior information.
+
+\item AI/machine learning: most versatile and powerful for large amounts of noisy data, but the focus on maximizing the ability to discover patterns and predict comes at the cost of mechanistic insights
+
+
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Summary: Model comparison and selection are key}
+
+\begin{itemize}[<+->]\itemsep12pt
+	\item Ideally, several competing (meaningful, not just null) hypotheses (mathematical models) should be fitted to data and compared using statistical theory
+	\item This is an advance over the traditional ``null hypothesis'' approach in biology
+	\item Necessary for the advancement of biology from an observational and axiomatic discipline to one with general theories
+	\item Necessary for understanding the mechanisms underlying biological patterns/phenomena
+\end{itemize}
+ 
+ \end{frame}
+  
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}{Comparing and selecting models}
+
+% \begin{itemize}\itemsep12pt
+	
+% 	\item It's all about the ``Likelihood'' of a model: \\
+% 	the set of parameter values of the	model ($\theta$) given outcomes ($x$),	equals the probability of those observed outcomes given those parameter
+% 	values, that is,
+
+% 	$$ \mathcal{L}(\theta |x) = P(x | \theta)$$
+
+% 	\item The easiest thing to do for you is to use information theory
+% 	(including AIC and BIC) to compare models. 
+
+% 	\item Both AIC and BIC use the {\it estimated (log-) likelihood of a model}:\\
+	
+% 	\begin{itemize}
+		
+% 		\item AIC: $-2 \ln[\mathcal{L}(\theta |x)] + 2p$\\
+
+% 		\item BIC (Schwartz criterion): $-2 ln[\mathcal{L}(\theta |x) ] + p \ln(n)$
+		
+% 		($n = $ sample size, $p$ = number of free parameters)	
+% 	\end{itemize}
+	
+	
+% 	\item The lower the AIC or BIC, the better
+
+% \end{itemize}
+
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}{AIC and BIC}
+
+% 	\begin{itemize}\itemsep6pt
+		
+% 		\item In models fitted with least squares and normally-distributed errors,
+		
+% 		 $\ln[\mathcal{L}(\theta |x)] = -\frac{n}{2}\ln\left(\frac{rSS}{n}\right)$
+
+% 		\item Thus 
+% 		\begin{align*}
+% 			\text{AIC} &= -2 \ln[\mathcal{L}(\theta |x)] + 2p \\
+% 			&= n + 2 + n \ln\left(\frac{2 \pi}{n}\right) + n \ln(\text{rSS}) + 2 p			
+% 		\end{align*}
+		
+% 		\item And 
+% 		\begin{align*}
+% 			\text{BIC} &= -2 ln[\mathcal{L}(\theta |x) ] + p \ln(n) \\ 
+% 			&= n + 2 + n \ln\left(\frac{2 \pi}{n}\right) + n \ln(\text{rSS}) + p \ln(n)
+% 		\end{align*}
+
+% 		\item  \it The small-sample AIC can also be calculated similarly (see Johnson \& Omland 2004)
+
+% 	\end{itemize}
+	
+% 	\end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}{Comparing and selecting models}
+
+% This is how you calculate AIC and BIC (using python syntax): 
+
+% \pause
+% \begin{itemize}\itemsep10pt
+% \small
+% 	\item residuals = Observations - Predictions
+% 	\item rss = sum(residuals ** 2) 
+% 	\item Then, AIC = n + 2 + n * log((2 * pi) / n) + n * log(rss) + 2 * p \\
+% 		({\it note n and p!})
+% 	\item And BIC = n + 2 + n * log((2 * pi) / n) + n * log(rss) + (log(n)) * (p + 1)
+
+% 	\item For both AIC and BIC, If model {\bf A} has AIC lower by 2-3 or 
+% 	more than model {\bf B}, it's better --- Differences of less than 2-3 
+% 	don't really matter
+
+% \end{itemize}
+
+%     \pause
+% Also note that:
+% \begin{itemize}
+% \small
+% 	\item r$^{2}$ = 1 - (rss$/$tss), where tss is total sum of squares: \\
+% tss = sum((Observations - mean(Predictions)) ** 2)\\
+% (a useful measure of goodness of fit)
+
+% \end{itemize}
+
+% \end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{frame}{Comparing and selecting models: More stuff}
+
+% \begin{itemize} \itemsep12pt
+% 	\item You can also calculate Akaike Weights, which is very useful/important
+% 	when comparing $ > 2$ models. These weights can then be used to perform {\it
+% 	model averaging}
+
+% 	\item Model selection using the Likelihood-ratio test (LrT) is another
+% 	option when you are comparing 2 models
+	
+% 	\item Adjusted $r^2$ can be used to get a rigorous ``idea'' about how
+% 	alternative models are performing
+	
+% 	\item Very often, you can do step-wise model simplification, especially in
+% 	{\it for linear least squares model fitting}: Start with a complex model and
+% 	drop terms till you have found a the most {\it parsimonious} simpler version
+% 	of the original model
+% 	\begin{itemize}
+% 		\item There are ready-made functions in {\tt r} to do this (of course!)
+% 	\end{itemize}
+
+% \end{itemize}
+
+% \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Readings}
+
+\begin{itemize}\itemsep10pt
+
+\item Levins, R. (1966) The strategy of model building in population biology. Am. Sci. 54, 421--431.  
+
+\item Kingsland, Sharon E. (1995) Modeling Nature. University of Chicago Press. (read over the term --- and beyond!)
+
+\item Otto, S.P. and Day, T. (2011) A biologist's guide to mathematical modeling in ecology and evolution. Princeton University Press. (read Chapters 1--2)
+
+% \item Johnson, J. B. \& Omland, K. S. (2004) Model selection in ecology 
+% and evolution. Trends Ecol. Evol. 19, 101--108. (coming up later)
+
+\item Additional readings on the MQB Git repository ({\tt Modelling} directory)
+ 
+\end{itemize}
+\end{frame}
+
+\end{document}

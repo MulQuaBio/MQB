@@ -116,7 +116,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[plain]
  
-	\begin{center}\LArGE
+	\begin{center}\Large
 		\textsc{Why nlls?}
 	\end{center}
 
@@ -190,10 +190,10 @@
 		\item An example of $f(x_i,\boldsymbol\beta) + \varepsilon_i $ could be:
 		$y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$ (linear regression)
 
-		\item The objective of any {\it least squares} method is to find estimates of values of the parameters ($\hat{\beta_j}$) that {\it minimize} the sum ($S$) of squared residuals ($r_i$) (AKA rSS):
+		\item The objective of any {\it least squares} method is to find estimates of values of the parameters ($\hat{\beta_j}$) that {\it minimize} the sum ($S$) of squared residuals ($r_i$) (AKA RSS):
 		
 		$$
-		\text{rSS} = S = \sum\nolimits_{i=1}^n{\left[ y_i - f(x_i,\boldsymbol\beta) 
+		\text{RSS} = S = \sum\nolimits_{i=1}^n{\left[ y_i - f(x_i,\boldsymbol\beta) 
 		\right]^2} = \sum\nolimits_{i=1}^n{r_i^2}
 		$$
 	
@@ -206,10 +206,10 @@
 
 	\begin{itemize}[<+->] \itemsep20pt
 
-		\item The objective of any {\it least squares} method  is to find estimates of values of the parameters ($\hat{\beta_j}$) that minimize the sum ($S$) of squared residuals ($r_i$) (AKA rSS):
+		\item The objective of any {\it least squares} method  is to find estimates of values of the parameters ($\hat{\beta_j}$) that minimize the sum ($S$) of squared residuals ($r_i$) (AKA RSS):
 		
 		$$
-		\text{rSS} = S = \sum\nolimits_{i=1}^n{\left[ y_i - f(x_i,\boldsymbol\beta) 
+		\text{RSS} = S = \sum\nolimits_{i=1}^n{\left[ y_i - f(x_i,\boldsymbol\beta) 
 		\right]^2} = \sum\nolimits_{i=1}^n{r_i^2}
 		$$
 		
@@ -367,7 +367,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[plain]
  
-	\begin{center}\LArGE 
+	\begin{center}\Large 
 		\textsc{The nlls Fitting Method}
 	\end{center}
 
@@ -385,10 +385,10 @@
 		\begin{itemize}[<+->]\itemsep6pt
 			\item Choose starting (initial values for the parameters we want to estimate ( $\beta_j$'s)
 		
-			\item Then, adjust the parameters {\it iteratively} (using a specific ``algorithm'' that is better than searching {\it randomly}) such that the rSS is gradually decreased 
+			\item Then, adjust the parameters {\it iteratively} (using a specific ``algorithm'' that is better than searching {\it randomly}) such that the RSS is gradually decreased 
 	
 			\item Eventually, if it all goes well, a combination of
-		$\beta_j$'s that is {\it very close} to the desired solution (where the rSS is {\it approximately} minimized) can be found
+		$\beta_j$'s that is {\it very close} to the desired solution (where the RSS is {\it approximately} minimized) can be found
 				
 		\end{itemize}
 	\end{itemize}
@@ -414,14 +414,14 @@ The general procedure / algorithm is:
 \begin{enumerate}[<+->] \itemsep4pt
 	\item Start with an initial value for each parameter in the model
 	\item Generate the curve defined by the initial values
-	\item Calculate the residual sum-of-squares (rSS)
+	\item Calculate the residual sum-of-squares (RSS)
 	\item Adjust the parameters to make the curve come closer to the data 
 	points. {\it This the tricky part --- more on this in the next slide}
 	\item Adjust the parameters again so that the curve comes even closer 
-	to the points (rSS decreases)
+	to the points (RSS decreases)
 	\item repeat 4--5
 	\item Stop simulations when the adjustments make virtually no 
-	difference to the rSS
+	difference to the RSS
 \end{enumerate}
 
 
@@ -459,7 +459,7 @@ the data points} (step 4) --- has two main algorithms that are generally used:
 	\begin{itemize}
 	
 		\item Sums of deviations of the data points from the final model 
-		fit (final rSS)
+		fit (final RSS)
 		\item Estimated coefficients
 		\item For each coefficient, standard error (can be used for CI's), t-statistic and corresponding (two-tailed) p-value 
 	\end{itemize} 
@@ -501,7 +501,7 @@ nlls-regression has all the assumptions of OLS-regression:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[plain]
  
-	\begin{center}\LArGE 
+	\begin{center}\Large 
 		\textsc{Practicals Overview}
 	\end{center}
 
@@ -514,9 +514,9 @@ nlls-regression has all the assumptions of OLS-regression:
 	
 	\begin{itemize}[<+->]\itemsep16pt
 	
-		\item We will use {\tt r}
+		\item We will use {\tt R} for nlls fitting practicals
 		
-		\item For fitting simple non-linear models, the {\tt nls} function in r is sufficient 
+		\item For fitting simple non-linear models, the {\tt nls} function in R is sufficient 
 			\begin{itemize}
 				\item It uses the {\bf Gauss-Newton} algorithm by default
 				\item The command is {\tt nls()}
@@ -617,7 +617,7 @@ nlls-regression has all the assumptions of OLS-regression:
 			
 % 		\item We want to find estimates of values of the parameters 
 % 		($\hat{\beta_j}$) that {\it minimize} the sum ($S$) of squared residuals 
-% 		($r_i$) (AKA ``rSS'') $S = \sum\nolimits_{i=1}^n{\left[ y_i - 
+% 		($r_i$) (AKA ``RSS'') $S = \sum\nolimits_{i=1}^n{\left[ y_i - 
 % 		f(x_i,\boldsymbol\beta) \right]^2} = \sum\nolimits_{i=1}^n{r_i^2}$
 
 % 		\item For this we can solve $\frac{\partial S}{\partial 
