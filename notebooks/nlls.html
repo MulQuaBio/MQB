@@ -208,11 +208,10 @@
 <li class="toctree-l1"><a class="reference internal" href="mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model-simp.html">Model simplification</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced E&amp;E Modelling and Statistics Pre-work</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Introduction &amp; prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
-
 
 
 
@@ -542,7 +541,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-the-model-using-nlls">Fitting the model using nlls</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-fit">Visualizing the fit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-stats-of-the-fit">Summary stats of the fit</a></li>
 </ul>
 </li>
@@ -563,7 +561,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnostics-of-an-nlls-fit">Diagnostics of an nlls fit</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#allometric-scaling-of-traits">Allometric scaling of traits</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nlls-fitting-using-a-model-object">nlls fitting using a model object</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Visualizing the fit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-fit">Visualizing the fit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-the-fit">Summary of the fit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-residuals">Examine the residuals</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
@@ -572,17 +570,17 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-models">Comparing models</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercises <a id="ModelSelection_Exercises"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercises <a id="ModelSelection_Exercises"></a></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#albatross-chick-growth">Albatross chick growth</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-the-three-models-using-nlls">Fitting the three models using nlls</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercises <a id="Albatross_Exercises"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercises <a id="Albatross_Exercises"></a></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aedes-aegypti-fecundity">Aedes aegypti fecundity</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-thermal-performance-curve-models">The Thermal Performance Curve models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Exercises <a id="Aedes_Exercises"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercises <a id="Aedes_Exercises"></a></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abundance-data-as-an-example">Abundance data as an example</a></li>
@@ -705,8 +703,8 @@ V = \frac{V_{\max} S}{K_M + S}
 <ol class=list-inline><li>1</li><li>6</li><li>11</li><li>16</li><li>21</li><li>26</li><li>31</li><li>36</li><li>41</li><li>46</li></ol>
 </div></div>
 </div>
-<p>Note that because we generated values only at intervals of, there will be 50/5 = 10 “substrate” values.</p>
-<p>Now generate a Michaelis-Menten reaction  velocity response with <code class="docutils literal notranslate"><span class="pre">V_max</span></code> = 12.5 and <code class="docutils literal notranslate"><span class="pre">K_M</span></code> = 7.1:</p>
+<p>Note that because we generated values only at intervals of 5, there will be 50/5 = 10 substrate values.</p>
+<p>Now generate a Michaelis–Menten reaction velocity response with <code class="docutils literal notranslate"><span class="pre">V_max</span></code> = 12.5 and <code class="docutils literal notranslate"><span class="pre">K_M</span></code> = 7.1:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">V_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">((</span><span class="m">12.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">S_data</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="m">7.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">S_data</span><span class="p">))</span>
@@ -719,8 +717,7 @@ V = \frac{V_{\max} S}{K_M + S}
 </a>
 </div>
 </div>
-<p>Note that our choice of <span class="math notranslate nohighlight">\(V_{\max} = 12.5\)</span> and <span class="math notranslate nohighlight">\(K_M = 7.1\)</span> is completely arbitrary. As long as we make sure that <span class="math notranslate nohighlight">\(V_{\max} &gt; 0\)</span>, <span class="math notranslate nohighlight">\(K_H &gt; 0\)</span>, and <span class="math notranslate nohighlight">\(K_M\)</span> lies well within the lower half of the the range of substrate concentrations (0-50), these “data” will be physically biologically sensible.</p>
-<p>Now let’s add some random (normally-distributed) fluctuations to the data to emulate experimental / measurement error:</p>
+<p>Note that our choice of <span class="math notranslate nohighlight">\(V_{\max} = 12.5\)</span> and <span class="math notranslate nohighlight">\(K_M = 7.1\)</span> is arbitrary. As long as <span class="math notranslate nohighlight">\(V_{\max} &gt; 0\)</span>, <span class="math notranslate nohighlight">\(K_M &gt; 0\)</span>, and <span class="math notranslate nohighlight">\(K_M\)</span> lies well within the lower half of the range of substrate concentrations (0–50), these data are biologically sensible.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">1456</span><span class="p">)</span><span class="w"> </span><span class="c1"># To get the same random fluctuations in the &quot;data&quot; every time</span>
@@ -755,15 +752,12 @@ Consider specifying &#39;start&#39; or using a selfStart model”
 </div>
 </div>
 </div>
-<p>This warning arises because <code class="docutils literal notranslate"><span class="pre">nls</span></code> requires “starting values” for the parameters (two in this case: <code class="docutils literal notranslate"><span class="pre">V_max</span></code> and <code class="docutils literal notranslate"><span class="pre">K_M</span></code>) to start searching for optimal combinations of parameter values (ones that minimize the rSS). Indeed, all nlls fitting functions / algorithms require this. If you do not provide starting values, <code class="docutils literal notranslate"><span class="pre">nls</span></code> gives you a warning (as above) and uses a starting value of 1 for every parameter by default. For simple models, despite the warning, this works well enough.</p>
+<p>This warning arises because <code class="docutils literal notranslate"><span class="pre">nls</span></code> requires “starting values” for the parameters (two in this case: <code class="docutils literal notranslate"><span class="pre">V_max</span></code> and <code class="docutils literal notranslate"><span class="pre">K_M</span></code>) to start searching for optimal combinations of parameter values (ones that minimize the RSS). Indeed, all nlls fitting functions / algorithms require this. If you do not provide starting values, <code class="docutils literal notranslate"><span class="pre">nls</span></code> gives you a warning (as above) and uses a starting value of 1 for every parameter by default. For simple models, despite the warning, this works well enough.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Before proceeding further, have a look at what <code class="docutils literal notranslate"><span class="pre">nls()</span></code>’s arguments are using <code class="docutils literal notranslate"><span class="pre">?nls</span></code>, or looking at the documentation <a class="reference external" href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/nls">online</a>.</p>
 </div>
 <p>We will address the issue of starting values soon enough, but first let’s look at how good the fit that we obtained looks.</p>
-<section id="visualizing-the-fit">
-<h3>Visualizing the fit<a class="headerlink" href="#visualizing-the-fit" title="Link to this heading">#</a></h3>
-<p>The first thing to do is to see how well the model fitted the data, for which plotting is the best  first option:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">S_data</span><span class="p">,</span><span class="n">V_data</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Substrate Concentration&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;reaction rate&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># first plot the data </span>
@@ -823,11 +817,10 @@ Consider specifying &#39;start&#39; or using a selfStart model”
 </a>
 </div>
 </div>
-<p>That looks much better (smoother) than the plot above !</p>
-</section>
+<p>That looks much better (smoother) than the plot above!</p>
 <section id="summary-stats-of-the-fit">
 <h3>Summary stats of the fit<a class="headerlink" href="#summary-stats-of-the-fit" title="Link to this heading">#</a></h3>
-<p>Now lets get some stats of this nlls fit. Having obtained the fit object (<code class="docutils literal notranslate"><span class="pre">MM_model</span></code>), we can use <code class="docutils literal notranslate"><span class="pre">summary()</span></code> just like we would for a <code class="docutils literal notranslate"><span class="pre">lm()</span></code> fit object:</p>
+<p>Now let’s get some statistics for this nlls fit. Having obtained the fit object (<code class="docutils literal notranslate"><span class="pre">MM_model</span></code>), we can use <code class="docutils literal notranslate"><span class="pre">summary()</span></code> as we would for an <code class="docutils literal notranslate"><span class="pre">lm()</span></code> fit object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">summary</span><span class="p">(</span><span class="n">MM_model</span><span class="p">)</span>
@@ -1084,7 +1077,7 @@ Achieved convergence tolerance: 9.535e-06
 <p>In this case, the model fitting did get started, but eventually failed, again because the starting values were too far from the (approximately) optimal values (<span class="math notranslate nohighlight">\(V_{\max} \approx 12.96, K_M \approx 10.61\)</span>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>There are other types of errors (other than the “singular gadient matrix” one) that the nlls fitting can run into because of poor starting parameter values.</p>
+<p>There are other types of errors besides the “singular gradient matrix” error that nlls fitting can encounter when starting parameter values are poor.</p>
 </div>
 <p>And what happens if we start really close to the optimal values? Let’s try:</p>
 <div class="cell docutils container">
@@ -1465,8 +1458,8 @@ y = a x^b
 </div>
 <p>Which gives the same result as before (you can check it).</p>
 </section>
-<section id="id1">
-<h3>Visualizing the fit<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<section id="visualizing-the-fit">
+<h3>Visualizing the fit<a class="headerlink" href="#visualizing-the-fit" title="Link to this heading">#</a></h3>
 <p>The first thing to do is to see how well the model fitted the data, for which plotting is the best first option. So let’s visualize the fit. For this, first we need to generate a vector of body lengths (the x-axis variable) for plotting:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1678,8 +1671,8 @@ y = a + b x + c x^2
 <ul class="simple">
 <li><p>So which model wins? * As we had dicussed in the nlls lecture, a rule of thumb is that a AIC value difference (typically denoted as <span class="math notranslate nohighlight">\(\Delta\)</span>AIC) &gt;-2 (more negative is better) is a acceptable cutoff for calling a winner. So the power law (allometric model) is a better fit here. read the <a class="reference external" href="https://github.com/MulQuaBio/MQB/blob/main/content/readings/Modelling/JohnsonOmland2004.pdf">Johnson &amp; Omland paper</a> for more on model selection in Ecology and Evolution.</p></li>
 </ul>
-<section id="id2">
-<h3>Exercises <a id='ModelSelection_Exercises'></a><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h3>Exercises <a id='ModelSelection_Exercises'></a><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>(a) Calculate the bayesian Information Criterion (BIC), also know as the Schwarz Criterion (see your Lecture notes and the <a class="reference external" href="https://github.com/MulQuaBio/MQB/blob/main/content/readings/Modelling/JohnsonOmland2004.pdf">Johnson &amp; Omland paper</a>, and use <span class="math notranslate nohighlight">\(\Delta\)</span>BIC to select the better fitting model.</p>
 <p>(b) Fit a straight line to the same data and compare with the allometric and quadratic models.</p>
 <p>(c) repeat the model comparison (incuding 1-2 above) using the Damselflies (Zygoptera) data subset – does the allometric model still win?</p>
@@ -1829,8 +1822,8 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 <p>The adjusted SSE accounts for sample size and number of parameters by dividing the rSS by the residual degrees of freedom. Adjusted SSE can also be used for model selection like AIC/BIC (but is less robust than AIC/BIC). The residual degrees of freedom is calculated as the number of response values (sample size, <span class="math notranslate nohighlight">\(n\)</span>) minus 2, times the number of fitted coefficients <span class="math notranslate nohighlight">\(m\)</span> (= 2 or 3 in this case) estimated.</p>
 <p>The logistic model has the lowest adjusted SSE, so it’s the best by this measure. It is also, visually, a better fit.</p>
 </section>
-<section id="id3">
-<h3>Exercises <a id='Albatross_Exercises'></a><a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="id2">
+<h3>Exercises <a id='Albatross_Exercises'></a><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>(a) Use AIC/BIC to perform model selection on the Albatross data as we did for the trait allometry example.</p>
 <p>(b) Write this example as a self-sufficient r script, with ggplot istead of base plotting</p>
 </section>
@@ -1891,8 +1884,8 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 </div>
 </div>
 </section>
-<section id="id4">
-<h3>Exercises <a id='Aedes_Exercises'></a><a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id3">
+<h3>Exercises <a id='Aedes_Exercises'></a><a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>(a) Complete the * Aedes * data analysis by fitting the models, calculating predictions and then comparing models. Write a single, self-standing script for it. Which model fits best? By what measure?</p>
 <p>(b) In this script, use ggplot instead of base plotting.</p>
 </section>
@@ -2184,15 +2177,13 @@ Achieved convergence tolerance: 1.49e-08
 </div>
 <p>The above seen deviation of the Logistic model from the data is because this model assumes that the population is growing right from the start (Time = 0), while in “reality” (in our synthetic “data”), this is not what’s happening; the population takes a while to grow truly exponentially (i.e., there is a time lag in the population growth). This time lag is seen frequently in the lab, and is also expected in nature, because when bacteria encounter fresh growth media (in the lab) or a new resource/environment (in the field), they take some time to acclimate, activating genes involved in nutrient uptake and metabolic processes, before beginning exponential growth. This is called the lag phase and can be seen in our example data where exponential growth doesn’t properly begin until around the 4th hour.</p>
 <p>To capture the lag phase, more complicated bacterial growth models have been designed.</p>
-<p>One of these is the modified Gompertz model (Zwietering et. al., 1990), which has been used frequently in the literature to model bacterial growth:</p>
-<div class="math notranslate nohighlight" id="equation-eq-gompertz">
-<span class="eqno">(10)<a class="headerlink" href="#equation-eq-gompertz" title="Link to this equation">#</a></span>\[ 
-  \log(N_t) = N_0 + (N_{max} - N_0) e^{-e^{r_{max} \exp(1) \frac{t_{lag} - t}{(N_{max} - N_0) \log(10)} + 1}}
-\]</div>
+<p>One of these is the modified Gompertz model (<span id="id4">[<a class="reference internal" href="../references.html#id196" title="M. H. Zwietering, I. Jongenburger, F. M. Rombouts, and K. van't Riet. Modeling of the bacterial growth curve. Applied and Environmental Microbiology, 56(6):1875–1881, 1990.">Zwietering <em>et al.</em>, 1990</a>]</span>), which has been used frequently in the literature to model bacterial growth:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}:label: eq:Gompertz\\\log(N_t) = N_0 + (N_{max} - N_0) e^{-e^{r_{max} \exp(1) \frac{t_{lag} - t}{(N_{max} - N_0) \log(10)} + 1}}\end{aligned}\end{align} \]</div>
 <p>Here maximum growth rate (<span class="math notranslate nohighlight">\(r_{max}\)</span>) is the tangent to the inflection point, <span class="math notranslate nohighlight">\(t_{lag}\)</span> is the x-axis intercept to this tangent (duration of the delay before the population starts growing exponentially) and <span class="math notranslate nohighlight">\(\log\left(\frac{N_{max}}{N_0}\right)\)</span> is the asymptote of the log-transformed population growth trajectory, i.e., the log ratio of maximum population density <span class="math notranslate nohighlight">\(N_{max}\)</span> (aka “carrying capacity”) and initial cell (Population) <span class="math notranslate nohighlight">\(N_0\)</span> density.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Note that unlike the Logistic growth model above, the Gompertz model is in the log scale. This is because the model is not derived from a differential equation, but was designed * specifically * to be fitted to log-transformed data.</p>
+<p>Note that unlike the Logistic growth model above, the Gompertz model is in the log scale. This is because the model is not derived from a differential equation, but was designed <em>specifically</em> to be fitted to log-transformed data.</p>
 </div>
 <p>Now let’s fit and compare the two alternative nonlinear growth models: Logistic and Gompertz.</p>
 <p>First, specify the function object for the Gompertz model (we already defined the function for the Logistic model above):</p>
@@ -2367,9 +2358,9 @@ Achieved convergence tolerance: 1.49e-08
 <section id="obtaining-them">
 <h4>Obtaining them<a class="headerlink" href="#obtaining-them" title="Link to this heading">#</a></h4>
 <p>Finding the starting values is a <a class="reference external" href="https://en.wikipedia.org/wiki/Non-linear_least_squares#Initial_parameter_estimates">bit of an art</a>. There is no method for finding starting values that works universally (across different types of models).</p>
-<p>The one universal rule though, is that finding starting values requires you to understand the meaning of each of the parameters in your model. So, for example, in the population <a class="reference internal" href="#model-fitting-r-population-growth"><span class="std std-ref">growth rate example</span></a>, the parameters in both the nonlinear models that <a class="reference internal" href="#model-fitting-r-population-growth"><span class="std std-ref">we covered</span></a> (Logistic growth, eqn. <a class="reference internal" href="#equation-eq-logist-growth-sol">(9)</a> , Gompertz model; eqn. <a class="reference internal" href="#equation-eq-gompertz">(10)</a>) have a clear meaning.</p>
+<p>The one universal rule though, is that finding starting values requires you to understand the meaning of each of the parameters in your model. So, for example, in the population <a class="reference internal" href="#model-fitting-r-population-growth"><span class="std std-ref">growth rate example</span></a>, the parameters in both the nonlinear models that <a class="reference internal" href="#model-fitting-r-population-growth"><span class="std std-ref">we covered</span></a> (Logistic growth, eqn. <a class="reference internal" href="#equation-eq-logist-growth-sol">(9)</a> , Gompertz model; eqn. <code class="xref eq docutils literal notranslate"><span class="pre">eq:Gompertz</span></code>) have a clear meaning.</p>
 <p>Furthermore, you will typically need to determine starting values <em>specific</em> to each model <em>and</em> each dataset that that you are wanting to fit that model to (e.g., every distinct functional response dataset to be <a class="reference internal" href="appendix-mini-proj.html#miniproject-fr-models"><span class="std std-ref">fitted to the Holling Type II model</span></a>). To do so, understanding how each parameter in the model corresponds to features of the actual data is really necessary.</p>
-<p>For example, in the Gompertz population growth rate model (eqn. <a class="reference internal" href="#equation-eq-gompertz">(10)</a>), your starting values generator function would, for each dataset,</p>
+<p>For example, in the Gompertz population growth rate model (eqn. <code class="xref eq docutils literal notranslate"><span class="pre">eq:Gompertz</span></code>), your starting values generator function would, for each dataset,</p>
 <ul class="simple">
 <li><p>Calculate a starting value for <span class="math notranslate nohighlight">\(r_{max}\)</span> by searching for the steepest slope of the growth curve (e.g., with a rolling OLS regression)</p></li>
 <li><p>Calculate a starting value of <span class="math notranslate nohighlight">\(t_{lag}\)</span> by intersecting the fitted line with the x (time)-axis</p></li>
@@ -2404,7 +2395,7 @@ In both cases, the <em>mean</em> of the sampling distribution will be the starti
 <section id="bounding-parameters-revisited">
 <h3>Bounding parameters revisited<a class="headerlink" href="#bounding-parameters-revisited" title="Link to this heading">#</a></h3>
 <p>At the start, we looked at an <a class="reference internal" href="#nlls-bounding"><span class="std std-ref">example</span></a> of nlls fitting where we bounded the parameters. It can be a good idea to restrict the range of values that the each of the model’s parameters can take <em>during any one fitting/optimization run</em>. To “bound” a parameter in this way means to give it upper and lower limits. By doing so, during one optimization/fitting (e.g., one call to <code class="docutils literal notranslate"><span class="pre">nlsLM</span></code>, to fit one model, to one dataset), the fitting algorithm does not allow a parameter to go outside some limits. This reduces the chances of the optimization getting stuck too far from the solution, or failing completely due to some mathematical singularity (e.g., log(0)).</p>
-<p>The bounds are typically fixed for each parameter of a model <em>at the level of the model</em> (e.g., they do not change based on each dataset). For example, in the Gompertz model for growth rates (eqn. <a class="reference internal" href="#equation-eq-gompertz">(10)</a>), you can limit the growth rate parameter to never be negative (the bounds would be <span class="math notranslate nohighlight">\([0,\infty]\)</span>), or restrict it further to be some value between zero and an upper limit (say, 10) that you know organismal growth rates cannot exceed (the bounds would in this case would be <span class="math notranslate nohighlight">\([0,10]\)</span>).</p>
+<p>The bounds are typically fixed for each parameter of a model <em>at the level of the model</em> (e.g., they do not change based on each dataset). For example, in the Gompertz model for growth rates (eqn. <code class="xref eq docutils literal notranslate"><span class="pre">eq:Gompertz</span></code>), you can limit the growth rate parameter to never be negative (the bounds would be <span class="math notranslate nohighlight">\([0,\infty]\)</span>), or restrict it further to be some value between zero and an upper limit (say, 10) that you know organismal growth rates cannot exceed (the bounds would in this case would be <span class="math notranslate nohighlight">\([0,10]\)</span>).</p>
 <p>However, as we saw in the Michaelis-Menten model fitting <a class="reference internal" href="#nlls-bounding"><span class="std std-ref">example</span></a>, bounding the parameters too much (excessively narrow ranges) can result in poor solutions because the algorithm cannot explore sufficient parameter space.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -2511,7 +2502,6 @@ In both cases, the <em>mean</em> of the sampling distribution will be the starti
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-the-model-using-nlls">Fitting the model using nlls</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-fit">Visualizing the fit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-stats-of-the-fit">Summary stats of the fit</a></li>
 </ul>
 </li>
@@ -2532,7 +2522,7 @@ In both cases, the <em>mean</em> of the sampling distribution will be the starti
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnostics-of-an-nlls-fit">Diagnostics of an nlls fit</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#allometric-scaling-of-traits">Allometric scaling of traits</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nlls-fitting-using-a-model-object">nlls fitting using a model object</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Visualizing the fit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-fit">Visualizing the fit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-the-fit">Summary of the fit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-residuals">Examine the residuals</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
@@ -2541,17 +2531,17 @@ In both cases, the <em>mean</em> of the sampling distribution will be the starti
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-models">Comparing models</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercises <a id="ModelSelection_Exercises"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercises <a id="ModelSelection_Exercises"></a></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#albatross-chick-growth">Albatross chick growth</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-the-three-models-using-nlls">Fitting the three models using nlls</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercises <a id="Albatross_Exercises"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercises <a id="Albatross_Exercises"></a></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aedes-aegypti-fecundity">Aedes aegypti fecundity</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-thermal-performance-curve-models">The Thermal Performance Curve models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Exercises <a id="Aedes_Exercises"></a></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercises <a id="Aedes_Exercises"></a></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abundance-data-as-an-example">Abundance data as an example</a></li>
