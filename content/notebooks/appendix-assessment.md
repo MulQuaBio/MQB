@@ -22,7 +22,7 @@ The basic rules you must follow, irrespective of the week or project's content, 
     
 * All results go to the `results` directory. The results directory should be empty when you submit your week's work, as it will be populated automatically when the assessment script runs.
     
-* If you have files that don't fit in these categories, put them in additional, meaningfully named directories. For example, you can create a `sandbox` directory to hold your experimental work (and perhaps [`.gitignore`](Git) it).
+* If you have files that don't fit in these categories, put them in additional, meaningfully named directories. For example, you can create a `sandbox` directory to hold your experimental work (and perhaps [`.gitignore`](./git) it).
     
 * No single file should be greater than 100 MB, whether data or script/code. If a script needs a data file, but the example data file is >100 MB, reduce it to a minimally sized working dataset and upload that, keeping the main data file(s) in `.gitignore`. Keep all your data backed up elsewhere, of course!
     
@@ -66,9 +66,68 @@ Your project (e.g., weekly) directories will be checked for how neat and organis
 * All results of a code/script run are saved to a separate `results` directory.
     
 
+### The Good, The Bad, and The Ugly
+
+This is a practical way to interpret the criteria above: what to aim for, what to avoid, and what to clean up before submission. Think of it as a quick quality check before your code struts onto the assessment stage.
+
+#### The Good (what you must do consistently well)
+
+These are the core practices expected in all submissions; doing these well is the baseline for strong marks.
+
+*No drama, no mystery, just reproducible science and solid Git habits.*
+
+If your repository were a flat, this is the "looks tidy and smells like fresh coffee" version:
+
+* Scripts run on Linux without errors and produce the expected outputs.
+* Files are organised clearly (for example, `code/`, `data/`, and an empty `results/` at submission time).
+* Readmes explain what scripts do and how to run them.
+* Code is readable, with meaningful names and helpful comments/docstrings.
+* Git history shows regular, descriptive commits and steady progress.
+
+#### The Bad (errors, missing files, etc - must avoid; usually easy to prevent)
+
+These are direct functional problems (errors, missing files, broken runs) and are usually avoidable with careful checks.
+
+*"It works on my machine" is not a genre we award marks for.*
+
+In short: the code equivalent of forgetting your keys, your wallet, and your laptop charger on the same day:
+
+* Runtime errors, missing input files, or broken commands.
+* Scripts that only run on one machine because of hard-coded paths.
+* Required files or directories missing from the repository.
+* Placeholder files (or mostly commented-out files) submitted as complete work.
+* Basic checks missing, leading to crashes or unclear failures.
+
+#### The Ugly (niggling quality issues that improve with practice)
+
+These are quality issues that may not crash code, but they reduce readability, maintainability, and assessor confidence.
+
+*The code runs, but the comments vanished and the folder structure went feral.*
+
+The code may run, but future-you (and your assessor) will need detective skills and strong tea:
+
+* Cluttered project structure or inconsistent naming.
+* `results/` filled with stale or unnecessary outputs.
+* Overly long, monolithic scripts with repeated code.
+* Too little, too much, or unclear commenting/documentation.
+* Readmes that are too vague, too long, or out of sync with the actual code.
+
+Bad usually stops execution or correctness. Ugly usually harms communication and quality even when execution succeeds.
+
+Bad code can often be debugged; ugly workflow usually has to be excavated first, ideally with a brush, a map, and a lot of patience.
+
+#### Quick recovery checklist before submission
+
+* Fix all "Bad" issues first so everything runs correctly (no crashes, no mysteries).
+* Then clean up "Ugly" issues so your work is readable and assessable (and less likely to scare your future self).
+* Re-run from a clean clone to confirm full reproducibility.
+
+*Debug for survival, refactor for dignity, document for posterity.*
+
+
 ### Group work execution
 
-#### repository setup and access
+#### Repository setup and access
 
 * Each student group will assign a "scribe" to the group who will create a **new Group work repository** where all assigned group work practicals will be tackled collaboratively.
     
@@ -94,21 +153,21 @@ All group members are expected to contribute meaningfully to the project. The Gi
     
 * **Write descriptive commit messages**: Use clear, informative commit messages that explain what was changed and why (e.g., "Add data validation function for tree heights" rather than "update code").
     
-* **Participate in code reviews**: Comment on pull requests, suggest improvements, and engage in technical discussions (visible in Pr comments).
+* **Participate in code reviews**: Comment on pull requests, suggest improvements, and engage in technical discussions (visible in PR comments).
     
 * **Document your work**: Contribute to code comments, docstrings, and readme documentation.
     
 * **Share responsibilities**: Aim for a balanced distribution of coding, testing, documentation, and debugging tasks across all team members.
 
-#### required documentation
+#### Required documentation
 
-Each group work repository must include a `CONTrIBUTIONS.md` file in the root directory that documents:
+Each group work repository must include a `CONTRIBUTIONS.md` file in the root directory that documents:
 
 * The name and role(s) of each team member
 * A brief description of each member's specific contributions (e.g., "Implemented data import functions", "Wrote unit tests", "Created visualization code", "Debugged edge cases and improved error handling")
 * Any challenges faced and how they were resolved as a team
 
-This file should be updated collaboratively and reflect the actual work distribution. A template is available at [`contributions-template.md`](contributions-template.md) to help you get started.
+This file should be updated collaboratively and reflect the actual work distribution. A template is available at `notebooks/experimental/contributions-template.md` to help you get started.
 
 #### Assessing individual contributions
 
@@ -121,7 +180,7 @@ Your individual grade for group work will be determined by:
     * Complexity and significance of code contributed
     * Participation in code reviews and discussions
     * Contributions to documentation and testing
-    * Accuracy of the `CONTrIBUTIONS.md` documentation
+    * Accuracy of the `CONTRIBUTIONS.md` documentation
 
 A group member who does not contribute meaningfully (as evidenced by Git history and peer feedback) may receive a significantly reduced grade, even if the group's solution is excellent.
 
@@ -151,7 +210,7 @@ The instructor can provide mediation, reassign work, or adjust individual grades
 * **Start early**: Begin work within the first few days of receiving the assignment.
 * **Commit regularly**: Aim for commits spread across multiple days/weeks, not concentrated in the final 24 hours.
 * **Coordinate meetings**: Schedule regular team meetings (online or in-person) to discuss progress, divide tasks, and resolve issues.
-* **review before submission**: Allow time for final code review, testing, and documentation polish before the deadline.
+* **Review before submission**: Allow time for final code review, testing, and documentation polish before the deadline.
 
 ```{Note}
 Please read about git branching and merging during teamwork in the [git Chapter](git), including the "**Common Mistakes to avoid…**" listed there. Please also check the readings & resources at the end of the chapter.
@@ -163,7 +222,7 @@ Every "Group work" question/script completed will be assessed using the criteria
 
 * The quality and correctness of the submitted code
 * The Git repository history (commits, branches, merges)
-* The `CONTrIBUTIONS.md` documentation
+* The `CONTRIBUTIONS.md` documentation
 * Peer assessment feedback
 * Individual contribution patterns and engagement
 
@@ -257,7 +316,7 @@ Share your insights and understanding gained from AI assistance with classmates,
 
 *Example:* If an AI tool helped you grasp a difficult concept, consider explaining it to study group members or participating in class discussions to help others benefit from your newfound understanding.
 
-By following these guidelines, you can make the most of AI tools to enhance your coding skills while maintaining academic integrity and personal growth. remember, the goal of using AI in coding is to support your learning journey, *not* to replace the valuable process of learning through practice and problem-solving.
+By following these guidelines, you can make the most of AI tools to enhance your coding skills while maintaining academic integrity and personal growth. Remember, the goal of using AI in coding is to support your learning journey, *not* to replace the valuable process of learning through practice and problem-solving.
 
 ---
 *Alright, full steam ahead then!*
