@@ -10,26 +10,29 @@ This is the current MQB project structure:
 .
 ├── CONDUCT.md
 ├── content
+│   ├── appendices
 │   ├── code
 │   ├── _config.yml
 │   ├── data
-│   ├── HPC
+│   ├── hpc
 │   ├── images
 │   ├── intro.md
 │   ├── lectures
-│   ├── mathscourse
 │   ├── notebooks
 │   ├── readings
 │   ├── references.bib
 │   ├── results
+│   ├── rubrics
 │   ├── _static
-│   ├── Stats-Intro.md
 │   └── _toc.yml
 ├── LICENSE
-├── MQB.code-workspace
+├── Makefile
+├── mqb_bibstyle.py
 ├── notes_n_todos.md
-├── readme.md
-└── requirements.txt
+├── README.md
+├── requirements.txt
+├── results
+└── scripts
 ```
 
 ## requirements
