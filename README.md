@@ -219,7 +219,9 @@ More information on this hosting process can be found [here](https://jupyterbook
 
 * We do not currently use gitHub Actions to automatically build and deploy the book to the `gh-pages` branch (Step 8). This is a [currently pending issue](https://github.com/mulquabio/MQB/issues/132); please feel free to tackle it if you wish!
 
-* The solutions to the exercises in this book are in a [separate private git repo](https://github.com/mulquabio/MQB_Sols) under this organization.
+* The solutions to the exercises in this book are in the private [MQB-Sols repository](https://github.com/MulQuaBio/MQB-Sols).
+
+* The [MulQuaBio organisation profile](https://github.com/MulQuaBio) lists the other teaching and assessment repositories.
 
 * The `results` directory in `content` is populated when scripts are run, but these are not version controlled (all files in this directory under `.gitignore`).
 
