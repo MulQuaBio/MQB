@@ -10,14 +10,14 @@ Welcome to The Multilingual Quantitative Biologist!
 ## About
 
 These notes have emerged from the development of content for modules on Biological Computing taught in various past and present courses at the
-Department of Life Sciences, Imperial College London. These courses include Year 1 & 2 Computational Biostatistics modules at the South Kensington Campus, the Computational Methods in Ecology and Evolution [(CMEE) Masters program](http://www.imperial.ac.uk/life-sciences/postgraduate/masters-courses/computational-methods-in-ecology-and-evolution/) at the Silwood Park Campus, the Quantitative Methods in Ecology and Evolution Centre for Doctoral Training ([QMEE CDT](https://www.imperial.ac.uk/qmee-cdt/)), and the training workshops of the [VectorBiTE rCN](http://vectorbite.org) and [VBD Hub](https://vbdhub.org?utm_source=mulquabio.github.io).
+Department of Life Sciences, Imperial College London. These courses include Year 1 & 2 Computational Biostatistics modules at the South Kensington Campus, the [Computational Ecology and Evolution MSc](https://www.imperial.ac.uk/study/courses/postgraduate-taught/computational-methods-ecology-evolution-msc/) at the Silwood Park Campus, the Quantitative Methods in Ecology and Evolution Centre for Doctoral Training ([QMEE CDT](https://www.imperial.ac.uk/qmee-cdt/)), and the training workshops of the [VectorBiTE rCN](http://vectorbite.org) and [VBD Hub](https://vbdhub.org?utm_source=mulquabio.github.io).
 
 Different subsets of these notes will be covered in different courses. Please look up your respective course guidebooks/handbooks to determine when the modules covered in these notes are scheduled in your course. You will be given instructions about which sections are covered in your course.
 
-All the chapters of these notes are written as [jupyter](./notebooks/appendix-jupy-intro.ipynb) notebooks. Each chapter/notebook is accompanied by data and code on which you can practice your skills in your own time and during practical sessions. These materials are available (and will be updated regularly) at a [Git repository](https://github.com/MulQuaBio/MQB). We use Git for hosting this course's materials because we want to version-control this course's content, which is constantly evolving to keep up with changing
+The chapters include [Jupyter](./notebooks/appendix-jupy-intro.ipynb) notebooks and written pages. Many chapters are accompanied by data and code on which you can practice your skills in your own time and during practical sessions. These materials are available (and will be updated regularly) at a [Git repository](https://github.com/MulQuaBio/MQB). We use Git for hosting this course's materials because we want to version-control this course's content, which is constantly evolving to keep up with changing
 programming/computing technologies. That is, we are treating this course as any computing project that needs to be regularly updated and improved. Changes to the notes and content will also be made based upon student feedback. Blackboard is just not set up to handle dynamic updating and version control of this sort! 
 
-If you do not use Git, you may download the code, data, these notes, and other course materials from the [repository](https://github.com/MulQuaBio/MQB) at one go look for the green "Clone or Download" button and then clicking on the "Download repository" link. You can then unzip the downloaded .zip and grab the files you need.
+If you do not use Git, you can download the code, data, notes, and other course materials from the [repository](https://github.com/MulQuaBio/MQB): select **Code**, then **Download ZIP**. Unzip the archive to access the files you need.
 
 ---
 
@@ -25,10 +25,10 @@ If you do not use Git, you may download the code, data, these notes, and other c
 ---
 width: 400px
 name: xkcd-programming
-alt: xkcd on programming
+alt: xkcd comic about a programmer trying to solve a general problem instead of the task at hand
 align: center
 ---
-Logical workflows are important, but don't get married to yours!
+Solve the problem at hand before designing a general-purpose solution.
 <small> <center>(Source: [xkcd](http://xkcd.com/974)) 
 </center></small>
 ```
@@ -60,18 +60,19 @@ complexity through precise specification and modularization of complicated analy
 
 There are several hundred programming languages currently available – which ones should a biologist choose? These notes are built on the philosophy that quantitative biologists can significantly benefit from being multilingual programmers, knowing:
 
-1. A modern, easy-to-write, versatile, interpreted (or semi-compiled) language that is "reasonably" fast, like `python`
+1. A modern, easy-to-write, versatile, interpreted (or semi-compiled) language that is "reasonably" fast, like Python
 
 2. Mathematical and statistical software with programming and graphing capabilities, like `R`
 
-3. A compiled (or semi-compiled) '[procedural](https://en.wikipedia.org/wiki/Procedural_programming)' language, like `C`
+3. A compiled (or semi-compiled) '[procedural](https://en.wikipedia.org/wiki/Procedural_programming)' language, like C
 
-And all these because one language doesn't fit all purposes. Something like `C`, the last item in the list above, is a "procedural" language that forces you to deal with the real "under the hood" workings of your computer (especially, memory management). Without an understanding of these 'low-level' aspects of computer programming, you will be limited in your ability to develop applications that either intrinsically require you to optimize performance, or need to be run in a memory- or performance-constrained environment (combination of computer hardware and operating system). Languages like Python and r intentionally obscure a lot of details of the underlying computer science, trading-off performance in favor of ease of programming and running code. However, they are sufficient for the purposes of most research and industry programming requirements.
+And all these because one language doesn't fit all purposes. Something like C, the last item in the list above, is a "procedural" language that forces you to deal with the real "under the hood" workings of your computer (especially, memory management). Without an understanding of these 'low-level' aspects of computer programming, you will be limited in your ability to develop applications that either intrinsically require you to optimize performance, or need to be run in a memory- or performance-constrained environment (combination of computer hardware and operating system). Languages like Python and R abstract away many low-level details, trading some control over performance for ease of programming. However, they are sufficient for most research and industry programming tasks.
 
-You will learn `python` and `R` (along with the `bash` language) on this course. These two are among the most popular languages [currently](https://www.tiobe.com/tiobe-index) (also [see this](https://spectrum.ieee.org/top-programming-languages-2021)), and with good reasons. We will not learn any procedural languages here, but it may be necessary for some of you to learn something like `C` in certain lines of research or industry jobs. Just be aware if this, and keep your mind open to the possibility of learning yet another language!
-### r vs. Python
+You will learn Python and R (along with Bash) on this course. We will not learn a lower-level language like C here, but it may be useful in some lines of research or industry jobs. Keep your mind open to learning another language as your work requires it!
 
-We will use r mainly for data analysis and visualization because it a great one stop solution for these purposes. If you are keen on trying data analyses in Python, see [this Appendix](./notebooks/appendix-data-python.ipynb). In general, r will do the job for most of your purposes. There not much between these two languages for data science. Python is somewhat more computationally efficient, and is a multi-purpose programming language with a very clean and easy-to-learn syntax. It is generally used by data scientists in the industry to for exploratory data analysis and machine learning in team-driven production environments. r, on the other hand, has been built mainly by by academic researchers and statisticians, and has a wider range of *inbuilt* (not requiring additional packages) statistical analysis capabilities. Learn more about r vs Python for data science [here](https://www.kdnuggets.com/2015/05/r-vs-Python-data-science.html) and [here](http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1523009719/main-qimg-9dcf536c501455f073dfbc4e09798a51_vpijr0.png). 
+### R vs. Python
+
+We will use R mainly for data analysis and visualization. You can also do these tasks in Python; see [the data analysis in Python appendix](./notebooks/appendix-data-python.ipynb). Both languages have extensive packages for statistical analysis, visualization, and machine learning. R is especially common in statistics and academic research, while Python is a general-purpose language used across research and software development. Choose the tools that fit your question, collaborators, and existing workflow.
 
 ## Some guidelines, conventions and rules
 
@@ -80,12 +81,11 @@ Our goal is to teach you not just programming, but also good computing practices
 ### Beware the dark forces
 
 You will NOT be using spreadsheet software (e.g., Excel) on this course. There are times when you will feel the pull of the dark side (ahem!), and imagine a more "comfortable" world where you are mouse-clicking your way happily though Excel-based data manipulations and analyses. NO! You will be doing yourself a disservice. On the
-long-ish run you will be much better off visualizing and manipulating data on your computer using a programming language like r. This is something you will learn, young [*padawan*](http://starwars.wikia.com/wiki/Padawan)!
+long-ish run you will be much better off visualizing and manipulating data on your computer using a programming language like R. This is something you will learn, young [*padawan*](https://en.wikipedia.org/wiki/Jedi#Ranks_of_authority_and_educational_progress)!
 
 ### Keep your workflow organized
 
-In the following chapters, you will practice many examples where you are required to write large blocks of code. Please get into the habit of writing code into text files with an appropriate extension (e.g., `.R` for `R` code, `.py` for `python` code, etc.). Furthermore, please keep all your code files organized in one or more directories (e.g., named `Code`!). Similarly, some of these scripts will take data files as inputs, and output some results in the form of text or graphics. Please keep these inputs and outputs organized as well, in
-separate directories (e.g., named `Data` and ` results`) respectively. Your instructor(s) will help you get set up and abide by this "workflow".
+In the following chapters, you will practice many examples where you are required to write large blocks of code. Please get into the habit of writing code into text files with an appropriate extension (e.g., `.R` for R code, `.py` for Python code). Keep your code files organized in a `code` directory. Similarly, some of these scripts will take data files as inputs and produce text or graphics. Keep inputs in `data` and outputs in `results`, as in this repository. Your instructor(s) will help you get set up and follow this workflow.
 
 ---
 
@@ -93,10 +93,10 @@ separate directories (e.g., named `Data` and ` results`) respectively. Your inst
 ---
 width: 300px
 name: xkcd-workflows
-alt: xkcd on workflows
+alt: xkcd comic about a fragile workflow breaking when a small detail changes
 align: center
 ---
-Logical workflows are important, but don't get married to yours!
+Document your workflow so that small changes do not make it impossible to repeat.
 <small> <center>(Source: [xkcd](https://xkcd.com/1172/)) 
 </center></small>
 ```
@@ -105,17 +105,17 @@ Logical workflows are important, but don't get married to yours!
 
 ### Conventions used in this document
 
-Throughout these sessions, directory paths will be specified in UNIX (Mac, Linux) style, using `/` instead of the `\` used in Windows. Also, in general, we will be using [relative paths](https://en.wikipedia.org/wiki/Path_(computing)) throughout the exercises and practicals (more on this later, but google it!).
+Throughout these sessions, directory paths will be specified in UNIX (Mac, Linux) style, using `/` instead of the `\` used in Windows. Also, in general, we will be using [relative paths](https://en.wikipedia.org/wiki/Path_(computing)) throughout the exercises and practicals (more on this later).
 
-You will find all command line/console arguments, code snippets and output in boxes like this:
+Commands and code snippets appear in blocks like this shell example, which prints your current directory:
 
+```bash
+pwd
 ```
 
-```
+Run examples in the relevant terminal or programming environment. Typing them out can help you learn the syntax, but whether you type or paste them, check what each command does and whether its output makes sense.
 
-You should type the commands/code that you see in such boxes into the relevant command line. Don't copy-and-paste - you likely need all the command / syntax typing practice you can get ! Also, copying-and-pasting chunks of code without understanding them, i.e., blindly shoveling data into a black box and assuming the output is correct and meaningful, will eventually lead to frustrations, and if you are unlucky, embarrassments or even catastrophes!
-
-Note that the commandline prompt you will see on your own terminal/console will vary with the programming language: `$` for UNIX, `>>>` for Python, `>` for r, etc.
+The prompt you see on your own terminal/console will vary with the environment: `$` for a UNIX shell, `>>>` for Python, `>` for R, etc. Prompts are not part of the commands you type.
 
 Also note that:
 
@@ -138,18 +138,17 @@ This is a warning
 So here's your first (and perhaps most important) tip:
 
 ```{tip}
-**Finding solutions online.**  This document does not tell you every single thing you need to know to perform the exercises in it. In programming and computing, you learn faster by trying to solve problems on your own. The contemporary way to do this is to google the problem! Some suggestions: 
-* Your typical approach should be to serach online the main keywords along the programming language name (e.g., "unix mv vs cp" or "r create empty dataframe"). 
-* Look for [stackoverflow](https://stackoverflow.com/) or [stackexchange](https://stackexchange.com/) based results in particular. Look for number of endorsements for both the question that has been asked, and for its answer.
-* Be selective - there will often be multiple solutions to the same issue or problem - don't just blindly use the first one you find. 
-* Also, every time a mysterious, geeky-sounding term like "relative path" or "version control" appears, please search (e.g., google) it online it as well!
+**Finding solutions online.** This document does not tell you every single thing you need to know to perform the exercises in it. In programming and computing, you learn by trying to solve problems yourself. Search the web when you need help:
+* Search for the main keywords along with the programming language name (e.g., "unix mv vs cp" or "R create empty dataframe").
+* Check official documentation and relevant discussions on [Stack Overflow](https://stackoverflow.com/) or [Stack Exchange](https://stackexchange.com/). Votes can help you find useful answers, but check their dates and test the advice in your own environment.
+* There may be several solutions to the same problem. Understand an approach before using it, and look up unfamiliar terms such as "relative path" or "version control".
 ```
 
 ### To IDE or not to IDE?
 
 As you embark on your journey to becoming a competent practitioner of biological computing, you will be faced with a Hamletian question: "To IDE or not to IDE" (anagram alert!). *OK, maybe not that dramatic or Hamletian...*
 
-An interactive Development Environment (IDE) is a text editor with additional features that can make life easy by allowing auto-formatting of code, running code, providing a graphic view of the workspace (your active functions, variables, etc.), graphic debugging and profiling (you will see these delightful things later), and allowing integrated version control (e.g., using `git`). 
+An Integrated Development Environment (IDE) brings together a code editor and tools for tasks such as formatting, running and debugging code, inspecting variables, and using version control (e.g., Git).
 
 You will benefit a lot if you use a code editor that can also offer an IDE. At the very least, your IDE should offer:
 
@@ -170,11 +169,11 @@ You will benefit a lot if you use a code editor that can also offer an IDE. At t
 * Debugging
 
 
-If you end up using multiple programming languages, you will want an IDE that can handle them. Four commonly-used and very powerful multi-lingual code editors/IDEs are: Emacs, Vim, Visual Studio Code (AKA VS Code), and Atom.  We will use [Visual Studio Code](https://code.visualstudio.com) in this course, because it is freely available, is relatively easy to master,  and has many plugins that make multilingual code development easier. Atom, Vim and Emacs are also great alternatives. The last having a steeper learning curve, but are very powerful once you have mastered them. 
+If you use multiple programming languages, choose an editor that can handle them. We will use [Visual Studio Code](https://code.visualstudio.com) in this course because it is freely available and supports extensions for multilingual development. Vim and Emacs are also powerful editors, though they can take more time to learn.
 
 #### Gooey IDEs
 
-IDEs come with graphic user interfaces (GUI's, or "gooeys") of differing levels of sophistication and shiny-ness. Some go over and above the call of duty to offer further useful features like embedded data and plot views and package management. One such example is the freely available [RStudio](http://rstudio.org), which is dedicated to r.  However, there is a tradeoff &ndash; these are necessarily specialized to one language (e.g., RStudio). It is up to you if you want to use multiple, language specific IDEs, or one somewhat less shiny multi-lingual IDE.   
+Many IDEs have graphical user interfaces (GUIs, or "gooeys") with features such as data and plot views and package management. [RStudio](https://posit.co/products/open-source/rstudio/) is a popular option with a strong focus on R. You can use a specialist tool alongside a multilingual editor; choose what works for your tasks.
 
 ### Assessment
 
