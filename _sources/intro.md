@@ -10,7 +10,7 @@ Welcome to The Multilingual Quantitative Biologist!
 ## About
 
 These notes have emerged from the development of content for modules on Biological Computing taught in various past and present courses at the
-Department of Life Sciences, Imperial College London. These courses include Year 1 & 2 Computational Biostatistics modules at the South Kensington Campus, the Computational Methods in Ecology and Evolution [(CMEE) Masters program](http://www.imperial.ac.uk/life-sciences/postgraduate/masters-courses/computational-methods-in-ecology-and-evolution/) at the Silwood Park Campus, the Quantitative Methods in Ecology and Evolution Centre for Doctoral Training ([QMEE CDT](https://www.imperial.ac.uk/qmee-cdt/)), and the training workshops of the [VectorBiTE rCN](http://vectorbite.org) and [VBD Hub](https://vbdhub.org?utm_source=mulquabio.github.io).
+Department of Life Sciences, Imperial College London. These courses include Year 1 & 2 Computational Biostatistics modules at the South Kensington Campus, the [Computational Ecology and Evolution MSc](https://www.imperial.ac.uk/study/courses/postgraduate-taught/computational-methods-ecology-evolution-msc/) at the Silwood Park Campus, the Quantitative Methods in Ecology and Evolution Centre for Doctoral Training ([QMEE CDT](https://www.imperial.ac.uk/qmee-cdt/)), and the training workshops of the [VectorBiTE rCN](http://vectorbite.org) and [VBD Hub](https://vbdhub.org?utm_source=mulquabio.github.io).
 
 Different subsets of these notes will be covered in different courses. Please look up your respective course guidebooks/handbooks to determine when the modules covered in these notes are scheduled in your course. You will be given instructions about which sections are covered in your course.
 
@@ -81,7 +81,7 @@ Our goal is to teach you not just programming, but also good computing practices
 ### Beware the dark forces
 
 You will NOT be using spreadsheet software (e.g., Excel) on this course. There are times when you will feel the pull of the dark side (ahem!), and imagine a more "comfortable" world where you are mouse-clicking your way happily though Excel-based data manipulations and analyses. NO! You will be doing yourself a disservice. On the
-long-ish run you will be much better off visualizing and manipulating data on your computer using a programming language like R. This is something you will learn, young [*padawan*](http://starwars.wikia.com/wiki/Padawan)!
+long-ish run you will be much better off visualizing and manipulating data on your computer using a programming language like R. This is something you will learn, young [*padawan*](https://en.wikipedia.org/wiki/Jedi#Ranks_of_authority_and_educational_progress)!
 
 ### Keep your workflow organized
 
