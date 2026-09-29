@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -61,6 +64,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/competitive-dynamics-practicals';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -68,34 +72,30 @@
     <link rel="prev" title="Competitive dynamics" href="competitive-dynamics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -103,7 +103,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -111,15 +110,59 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -128,7 +171,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -158,21 +202,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MulQuaBio - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -262,8 +302,14 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Introduction &amp; prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_Bootcamp_Rubric.html">Computing Bootcamp Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_MiniProject_Rubric.html">Computing MiniProject Rubric</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -298,9 +344,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -479,7 +530,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -493,25 +544,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -533,12 +576,12 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Competitive Dynamics: Practicals</a><ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Competitive Dynamics: Practicals</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-lv-model-isoclines-equilibria-jacobian">Utility: LV model, isoclines, equilibria, Jacobian</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#investigate-the-phase-portrait-of-the-lotkavolterra-competition-model">(2‑1) Investigate the phase portrait of the Lotka–Volterra competition model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#investigate-the-phase-portrait-of-the-lotkavolterra-competition-model">(2‑1) Investigate the phase portrait of the Lotka–Volterra competition model</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-set-a-coexistence-case">Parameter set A (coexistence case)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-set-b-alternative-stable-states-case">Parameter set B (alternative stable states case)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibria-stability-set-a">Equilibria &amp; stability (Set A)</a></li>
@@ -551,7 +594,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-1parameter-bifurcation-diagram-of-the-lotkavolterra-competition-model">(2‑2) Make a 1‑parameter bifurcation diagram of the Lotka–Volterra competition model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-1parameter-bifurcation-diagram-of-the-lotkavolterra-competition-model">(2‑2) Make a 1‑parameter bifurcation diagram of the Lotka–Volterra competition model</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-branches-mean">What the branches mean</a></li>
 </ul>
 </li>
@@ -704,15 +747,15 @@ k_2 - bN_1 - N_2 = 0 \Rightarrow N_2=k_2-bN_1.
 
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">add_vector_field</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(),</span> <span class="n">density</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mask_fn</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.6&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_vector_field</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(),</span> <span class="n">density</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mask_fn</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'0.6'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">):</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a light vector field (quiver) to a 2D phase-plane axis.</span>
+<span class="w">    </span><span class="sd">"""Add a light vector field (quiver) to a 2D phase-plane axis.</span>
 
 
 
 <span class="sd">    mask_fn(x, y) -&gt; bool can be used to restrict arrows (e.g., simplex constraints).</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">density</span><span class="p">)</span>
 
@@ -776,9 +819,9 @@ k_2 - bN_1 - N_2 = 0 \Rightarrow N_2=k_2-bN_1.
 
         <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span>
 
-        <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span>
+        <span class="n">angles</span><span class="o">=</span><span class="s1">'xy'</span><span class="p">,</span>
 
-        <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span>
+        <span class="n">scale_units</span><span class="o">=</span><span class="s1">'xy'</span><span class="p">,</span>
 
         <span class="n">scale</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
 
@@ -788,7 +831,7 @@ k_2 - bN_1 - N_2 = 0 \Rightarrow N_2=k_2-bN_1.
 
         <span class="n">headlength</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
 
-        <span class="n">pivot</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span><span class="p">,</span>
+        <span class="n">pivot</span><span class="o">=</span><span class="s1">'mid'</span><span class="p">,</span>
 
         <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 
@@ -863,12 +906,12 @@ Mark the initial conditions with a dot (or other marker).</p></li>
 <span class="n">N1</span><span class="p">,</span> <span class="n">N2</span> <span class="o">=</span> <span class="n">solA</span><span class="o">.</span><span class="n">y</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solA</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">N1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;N1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solA</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">N2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;N2&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="n">y0</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="n">y0</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Population&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;LV competition — Set A: time series from (1,1)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solA</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">N1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"N1"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solA</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">N2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"N2"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="n">y0</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"none"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="n">y0</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"none"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"t"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Population"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"LV competition — Set A: time series from (1,1)"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -894,27 +937,27 @@ Mark the initial conditions with a dot (or other marker).</p></li>
 
 
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;trajectory&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"trajectory"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">y0</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">y0</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;initial&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">y0</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">y0</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"none"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"initial"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid</span><span class="p">,</span> <span class="n">iso1</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;dN1/dt=0&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid</span><span class="p">,</span> <span class="n">iso1</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"dN1/dt=0"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid</span><span class="p">,</span> <span class="n">iso2</span><span class="p">,</span> <span class="s2">&quot;-.&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;dN2/dt=0&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid</span><span class="p">,</span> <span class="n">iso2</span><span class="p">,</span> <span class="s2">"-."</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"dN2/dt=0"</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;N1&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"N1"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;N2&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"N2"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;LV competition — Set A: phase plane + isoclines&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"LV competition — Set A: phase plane + isoclines"</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">':'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -966,25 +1009,25 @@ Mark the initial conditions with a dot (or other marker).</p></li>
 
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
 
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">y0_</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">y0_</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">y0_</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">y0_</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"none"</span><span class="p">)</span>
 
 
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid</span><span class="p">,</span> <span class="n">iso1</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;dN1/dt=0&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid</span><span class="p">,</span> <span class="n">iso1</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"dN1/dt=0"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid</span><span class="p">,</span> <span class="n">iso2</span><span class="p">,</span> <span class="s2">&quot;-.&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;dN2/dt=0&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid</span><span class="p">,</span> <span class="n">iso2</span><span class="p">,</span> <span class="s2">"-."</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"dN2/dt=0"</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;N1&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"N1"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;N2&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"N2"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;LV competition — Set A: phase portrait + isoclines&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"LV competition — Set A: phase portrait + isoclines"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">':'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 
@@ -1014,9 +1057,9 @@ Mark the initial conditions with a dot (or other marker).</p></li>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E_A</span> <span class="o">=</span> <span class="n">equilibria</span><span class="p">(</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">lab</span><span class="p">,</span> <span class="n">eq</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="s2">&quot;E00&quot;</span><span class="p">,</span><span class="s2">&quot;E10&quot;</span><span class="p">,</span><span class="s2">&quot;E01&quot;</span><span class="p">,</span><span class="s2">&quot;Eco&quot;</span><span class="p">],</span> <span class="n">E_A</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">lab</span><span class="p">,</span> <span class="n">eq</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="s2">"E00"</span><span class="p">,</span><span class="s2">"E10"</span><span class="p">,</span><span class="s2">"E01"</span><span class="p">,</span><span class="s2">"Eco"</span><span class="p">],</span> <span class="n">E_A</span><span class="p">):</span>
     <span class="n">ev</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">feas</span> <span class="o">=</span> <span class="n">stability_at</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lab</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">eq</span><span class="si">}</span><span class="s2"> | feasible=</span><span class="si">{</span><span class="n">feas</span><span class="si">}</span><span class="s2"> | stable=</span><span class="si">{</span><span class="n">st</span><span class="si">}</span><span class="s2"> | eigenvalues=</span><span class="si">{</span><span class="n">ev</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">lab</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">eq</span><span class="si">}</span><span class="s2"> | feasible=</span><span class="si">{</span><span class="n">feas</span><span class="si">}</span><span class="s2"> | stable=</span><span class="si">{</span><span class="n">st</span><span class="si">}</span><span class="s2"> | eigenvalues=</span><span class="si">{</span><span class="n">ev</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1067,12 +1110,12 @@ Eco = (4.166666666666667, 5.833333333333334) | feasible=True | stable=True | eig
 <span class="n">N1b</span><span class="p">,</span> <span class="n">N2b</span> <span class="o">=</span> <span class="n">solB</span><span class="o">.</span><span class="n">y</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solB</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">N1b</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;N1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solB</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">N2b</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;N2&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="n">y0</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="n">y0</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Population&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;LV competition — Set B: time series from (1,1)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solB</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">N1b</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"N1"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solB</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">N2b</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"N2"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="n">y0</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"none"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="n">y0</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"none"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"t"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Population"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"LV competition — Set B: time series from (1,1)"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1098,27 +1141,27 @@ Eco = (4.166666666666667, 5.833333333333334) | feasible=True | stable=True | eig
 
 
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">N1b</span><span class="p">,</span> <span class="n">N2b</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;trajectory&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">N1b</span><span class="p">,</span> <span class="n">N2b</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"trajectory"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">y0</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">y0</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;initial&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">y0</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">y0</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"none"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"initial"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid_b</span><span class="p">,</span> <span class="n">iso1b</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;dN1/dt=0&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid_b</span><span class="p">,</span> <span class="n">iso1b</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"dN1/dt=0"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid_b</span><span class="p">,</span> <span class="n">iso2b</span><span class="p">,</span> <span class="s2">&quot;-.&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;dN2/dt=0&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid_b</span><span class="p">,</span> <span class="n">iso2b</span><span class="p">,</span> <span class="s2">"-."</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"dN2/dt=0"</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;N1&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"N1"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;N2&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"N2"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;LV competition — Set B: phase plane + isoclines&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"LV competition — Set B: phase plane + isoclines"</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">':'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1170,25 +1213,25 @@ Eco = (4.166666666666667, 5.833333333333334) | feasible=True | stable=True | eig
 
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
 
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">y0_</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">y0_</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">y0_</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">y0_</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"none"</span><span class="p">)</span>
 
 
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid_b</span><span class="p">,</span> <span class="n">iso1b</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;dN1/dt=0&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid_b</span><span class="p">,</span> <span class="n">iso1b</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"dN1/dt=0"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid_b</span><span class="p">,</span> <span class="n">iso2b</span><span class="p">,</span> <span class="s2">&quot;-.&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;dN2/dt=0&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n1_grid_b</span><span class="p">,</span> <span class="n">iso2b</span><span class="p">,</span> <span class="s2">"-."</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"dN2/dt=0"</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;N1&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"N1"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;N2&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"N2"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;LV competition — Set B: phase portrait + isoclines&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"LV competition — Set B: phase portrait + isoclines"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">':'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 
@@ -1205,9 +1248,9 @@ Eco = (4.166666666666667, 5.833333333333334) | feasible=True | stable=True | eig
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E_B</span> <span class="o">=</span> <span class="n">equilibria</span><span class="p">(</span><span class="n">k1b</span><span class="p">,</span> <span class="n">k2b</span><span class="p">,</span> <span class="n">ab</span><span class="p">,</span> <span class="n">bb</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">lab</span><span class="p">,</span> <span class="n">eq</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="s2">&quot;E00&quot;</span><span class="p">,</span><span class="s2">&quot;E10&quot;</span><span class="p">,</span><span class="s2">&quot;E01&quot;</span><span class="p">,</span><span class="s2">&quot;Eco&quot;</span><span class="p">],</span> <span class="n">E_B</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">lab</span><span class="p">,</span> <span class="n">eq</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="s2">"E00"</span><span class="p">,</span><span class="s2">"E10"</span><span class="p">,</span><span class="s2">"E01"</span><span class="p">,</span><span class="s2">"Eco"</span><span class="p">],</span> <span class="n">E_B</span><span class="p">):</span>
     <span class="n">ev</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">feas</span> <span class="o">=</span> <span class="n">stability_at</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">k1b</span><span class="p">,</span> <span class="n">k2b</span><span class="p">,</span> <span class="n">ab</span><span class="p">,</span> <span class="n">bb</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lab</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">eq</span><span class="si">}</span><span class="s2"> | feasible=</span><span class="si">{</span><span class="n">feas</span><span class="si">}</span><span class="s2"> | stable=</span><span class="si">{</span><span class="n">st</span><span class="si">}</span><span class="s2"> | eigenvalues=</span><span class="si">{</span><span class="n">ev</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">lab</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">eq</span><span class="si">}</span><span class="s2"> | feasible=</span><span class="si">{</span><span class="n">feas</span><span class="si">}</span><span class="s2"> | stable=</span><span class="si">{</span><span class="n">st</span><span class="si">}</span><span class="s2"> | eigenvalues=</span><span class="si">{</span><span class="n">ev</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1262,10 +1305,10 @@ Eco = (5.1724137931034475, 5.689655172413794) | feasible=True | stable=False | e
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">branches_vs_k1</span><span class="p">(</span><span class="n">k1_values</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">r1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">r2</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-    <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;E00&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;E10&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;E01&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;Eco&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"E00"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"E10"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"E01"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"Eco"</span><span class="p">:</span> <span class="p">[]}</span>
     <span class="k">for</span> <span class="n">k1</span> <span class="ow">in</span> <span class="n">k1_values</span><span class="p">:</span>
         <span class="n">E</span> <span class="o">=</span> <span class="n">equilibria</span><span class="p">(</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;E00&quot;</span><span class="p">,</span><span class="s2">&quot;E10&quot;</span><span class="p">,</span><span class="s2">&quot;E01&quot;</span><span class="p">,</span><span class="s2">&quot;Eco&quot;</span><span class="p">]</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"E00"</span><span class="p">,</span><span class="s2">"E10"</span><span class="p">,</span><span class="s2">"E01"</span><span class="p">,</span><span class="s2">"Eco"</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">lab</span><span class="p">,</span> <span class="n">eq</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">E</span><span class="p">):</span>
             <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">eq</span>
             <span class="n">ev</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">feas</span> <span class="o">=</span> <span class="n">stability_at</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
@@ -1284,18 +1327,18 @@ Eco = (5.1724137931034475, 5.689655172413794) | feasible=True | stable=False | e
         <span class="n">stable</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
         <span class="n">feas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
 
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k1_values</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="n">stable</span><span class="p">],</span> <span class="n">n2</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="n">stable</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lab</span><span class="si">}</span><span class="s2"> stable&quot;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k1_values</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">stable</span><span class="p">],</span> <span class="n">n2</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">stable</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lab</span><span class="si">}</span><span class="s2"> unstable&quot;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k1_values</span><span class="p">[</span><span class="o">~</span><span class="n">feas</span><span class="p">],</span> <span class="n">n2</span><span class="p">[</span><span class="o">~</span><span class="n">feas</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k1_values</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="n">stable</span><span class="p">],</span> <span class="n">n2</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="n">stable</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">lab</span><span class="si">}</span><span class="s2"> stable"</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k1_values</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">stable</span><span class="p">],</span> <span class="n">n2</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">stable</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">lab</span><span class="si">}</span><span class="s2"> unstable"</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k1_values</span><span class="p">[</span><span class="o">~</span><span class="n">feas</span><span class="p">],</span> <span class="n">n2</span><span class="p">[</span><span class="o">~</span><span class="n">feas</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">)</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;k1&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Equilibrium N2*&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"k1"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Equilibrium N2*"</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">k2</span><span class="o">+</span><span class="mi">5</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="n">plot_bifurcation_k1</span><span class="p">(</span><span class="s2">&quot;N2* vs k1 (Set A: fix k2=7.5, a=1, b=0.4)&quot;</span><span class="p">,</span> <span class="n">k2</span><span class="o">=</span><span class="mf">7.5</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">k1_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">k1_max</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">plot_bifurcation_k1</span><span class="p">(</span><span class="s2">"N2* vs k1 (Set A: fix k2=7.5, a=1, b=0.4)"</span><span class="p">,</span> <span class="n">k2</span><span class="o">=</span><span class="mf">7.5</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">k1_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">k1_max</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1306,10 +1349,10 @@ Eco = (5.1724137931034475, 5.689655172413794) | feasible=True | stable=False | e
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">branches_vs_k2</span><span class="p">(</span><span class="n">k2_values</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">r1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">r2</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-    <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;E00&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;E10&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;E01&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;Eco&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"E00"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"E10"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"E01"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"Eco"</span><span class="p">:</span> <span class="p">[]}</span>
     <span class="k">for</span> <span class="n">k2</span> <span class="ow">in</span> <span class="n">k2_values</span><span class="p">:</span>
         <span class="n">E</span> <span class="o">=</span> <span class="n">equilibria</span><span class="p">(</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;E00&quot;</span><span class="p">,</span><span class="s2">&quot;E10&quot;</span><span class="p">,</span><span class="s2">&quot;E01&quot;</span><span class="p">,</span><span class="s2">&quot;Eco&quot;</span><span class="p">]</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"E00"</span><span class="p">,</span><span class="s2">"E10"</span><span class="p">,</span><span class="s2">"E01"</span><span class="p">,</span><span class="s2">"Eco"</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">lab</span><span class="p">,</span> <span class="n">eq</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">E</span><span class="p">):</span>
             <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">eq</span>
             <span class="n">ev</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">feas</span> <span class="o">=</span> <span class="n">stability_at</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
@@ -1328,18 +1371,18 @@ Eco = (5.1724137931034475, 5.689655172413794) | feasible=True | stable=False | e
         <span class="n">stable</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
         <span class="n">feas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
 
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k2_values</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="n">stable</span><span class="p">],</span> <span class="n">n2</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="n">stable</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lab</span><span class="si">}</span><span class="s2"> stable&quot;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k2_values</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">stable</span><span class="p">],</span> <span class="n">n2</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">stable</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lab</span><span class="si">}</span><span class="s2"> unstable&quot;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k2_values</span><span class="p">[</span><span class="o">~</span><span class="n">feas</span><span class="p">],</span> <span class="n">n2</span><span class="p">[</span><span class="o">~</span><span class="n">feas</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k2_values</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="n">stable</span><span class="p">],</span> <span class="n">n2</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="n">stable</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">lab</span><span class="si">}</span><span class="s2"> stable"</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k2_values</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">stable</span><span class="p">],</span> <span class="n">n2</span><span class="p">[</span><span class="n">feas</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">stable</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">lab</span><span class="si">}</span><span class="s2"> unstable"</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k2_values</span><span class="p">[</span><span class="o">~</span><span class="n">feas</span><span class="p">],</span> <span class="n">n2</span><span class="p">[</span><span class="o">~</span><span class="n">feas</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">)</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;k2&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Equilibrium N2*&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"k2"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Equilibrium N2*"</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">k1</span><span class="o">+</span><span class="mi">5</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="n">plot_bifurcation_k2</span><span class="p">(</span><span class="s2">&quot;N2* vs k2 (Set A: fix k1=10, a=1, b=0.4)&quot;</span><span class="p">,</span> <span class="n">k1</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">k2_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">k2_max</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">plot_bifurcation_k2</span><span class="p">(</span><span class="s2">"N2* vs k2 (Set A: fix k1=10, a=1, b=0.4)"</span><span class="p">,</span> <span class="n">k1</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">k2_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">k2_max</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1369,7 +1412,7 @@ Eco = (5.1724137931034475, 5.689655172413794) | feasible=True | stable=False | e
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="mumby-et-al-coralmacroalgae-model-phase-portrait">
 <h1>(2‑3) Mumby et al. coral–macroalgae model: phase portrait<a class="headerlink" href="#mumby-et-al-coralmacroalgae-model-phase-portrait" title="Link to this heading">#</a></h1>
-<p>The model of Mumby et al. (<span id="id2">[<a class="reference internal" href="../references.html#id223" title="Peter J. Mumby, Alan Hastings, and Helen J. Edwards. Thresholds and the resilience of caribbean coral reefs. Nature, 450(7166):98–101, 2007. doi:10.1038/nature06252.">Mumby <em>et al.</em>, 2007</a>]</span>) describes the dynamics of corals and algae. The model in the practical is:
+<p>The model of Mumby et al. (<span class="bibtex-citation" id="id2">[<a class="reference internal" href="../references.html#id223" title="Peter J. Mumby, Alan Hastings, and Helen J. Edwards. Thresholds and the resilience of caribbean coral reefs. Nature, 450(7166):98–101, 2007. doi:10.1038/nature06252.">Mumby <em>et al.</em>, 2007</a>]</span>) describes the dynamics of corals and algae. The model in the practical is:
 $<span class="math notranslate nohighlight">\(
 \begin{aligned}
 \dot C &amp;= \gamma C T - aMC - dC,\\
@@ -1410,12 +1453,12 @@ Use parameters:</p>
 <span class="n">C2</span><span class="p">,</span> <span class="n">M2</span> <span class="o">=</span> <span class="n">sol2</span><span class="o">.</span><span class="n">y</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol1</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">C1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;C (coral) from (0.9,0.05)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol1</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">M1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;M (macroalgae) from (0.9,0.05)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol2</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;C (coral) from (0.1,0.8)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol2</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">M2</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;M (macroalgae) from (0.1,0.8)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;cover&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mumby model: time series&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol1</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">C1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"C (coral) from (0.9,0.05)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol1</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">M1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"M (macroalgae) from (0.9,0.05)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol2</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">C2</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"C (coral) from (0.1,0.8)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol2</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">M2</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"M (macroalgae) from (0.1,0.8)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"t"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"cover"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Mumby model: time series"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1429,7 +1472,7 @@ Use parameters:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Phase plane + nullclines</span>
 
-<span class="c1"># We&#39;ll plot trajectories and add the analytical nullclines derived from dividing by C or M:</span>
+<span class="c1"># We'll plot trajectories and add the analytical nullclines derived from dividing by C or M:</span>
 
 <span class="c1"># dC/dt=0 for C&gt;0: gamma(1-C-M) - aM - d = 0</span>
 
@@ -1485,17 +1528,17 @@ Use parameters:</p>
 
 
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">C1</span><span class="p">,</span> <span class="n">M1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;traj from (0.9,0.05)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">C1</span><span class="p">,</span> <span class="n">M1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"traj from (0.9,0.05)"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">C2</span><span class="p">,</span> <span class="n">M2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;traj from (0.1,0.8)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">C2</span><span class="p">,</span> <span class="n">M2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"traj from (0.1,0.8)"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">0.9</span><span class="p">],[</span><span class="mf">0.05</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">0.9</span><span class="p">],[</span><span class="mf">0.05</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"none"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">0.1</span><span class="p">],[</span><span class="mf">0.8</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">0.1</span><span class="p">],[</span><span class="mf">0.8</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"none"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">C_grid</span><span class="p">,</span> <span class="n">M_nullC</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;dC/dt=0 (C&gt;0)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">C_grid</span><span class="p">,</span> <span class="n">M_nullC</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"dC/dt=0 (C&gt;0)"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">C_grid</span><span class="p">,</span> <span class="n">M_nullM</span><span class="p">,</span> <span class="s2">&quot;-.&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;dM/dt=0 (M&gt;0)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">C_grid</span><span class="p">,</span> <span class="n">M_nullM</span><span class="p">,</span> <span class="s2">"-."</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"dM/dt=0 (M&gt;0)"</span><span class="p">)</span>
 
 
 
@@ -1503,13 +1546,13 @@ Use parameters:</p>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"C"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"M"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Mumby model: phase plane + nullclines&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Mumby model: phase plane + nullclines"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">':'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 
@@ -1525,7 +1568,7 @@ Use parameters:</p>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="cont-an-analysis-of-the-codim2-cusp-bifurcation-minimal-hysteresis-model">
 <h1>(2‑3 cont.) An analysis of the codim‑2 cusp bifurcation (minimal hysteresis model)<a class="headerlink" href="#cont-an-analysis-of-the-codim2-cusp-bifurcation-minimal-hysteresis-model" title="Link to this heading">#</a></h1>
-<p>In <span id="id3">[<a class="reference internal" href="../references.html#id187" title="Marten Scheffer, Stephen Carpenter, Jonathan A. Foley, Carl Folke, and Brian Walker. Catastrophic shifts in ecosystems. Nature, 2001.">Scheffer <em>et al.</em>, 2001</a>]</span> a minimal model for an ecosystem with hysteresis is given. The variable <span class="math notranslate nohighlight">\(x\)</span> is a property (for instance a nutrient) of the ecosystem, and changes over time as
+<p>In <span class="bibtex-citation" id="id3">[<a class="reference internal" href="../references.html#id187" title="Marten Scheffer, Stephen Carpenter, Jonathan A. Foley, Carl Folke, and Brian Walker. Catastrophic shifts in ecosystems. Nature, 2001.">Scheffer <em>et al.</em>, 2001</a>]</span> a minimal model for an ecosystem with hysteresis is given. The variable <span class="math notranslate nohighlight">\(x\)</span> is a property (for instance a nutrient) of the ecosystem, and changes over time as
 $<span class="math notranslate nohighlight">\(
 \frac{dx}{dt} = a - bx + r f(x).
 \)</span>$</p>
@@ -1578,10 +1621,10 @@ What do you see? What happens in the middle? Is the bifurcation diagram complete
     <span class="n">x_dn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rs_up</span><span class="p">,</span> <span class="n">x_up</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;increasing r (stable branch)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rs_dn</span><span class="p">,</span> <span class="n">x_dn</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;decreasing r (stable branch)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;equilibrium x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hysteresis loop from quasi‑static parameter sweep&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rs_up</span><span class="p">,</span> <span class="n">x_up</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"increasing r (stable branch)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rs_dn</span><span class="p">,</span> <span class="n">x_dn</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"decreasing r (stable branch)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"r"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"equilibrium x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Hysteresis loop from quasi‑static parameter sweep"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1648,20 +1691,22 @@ What do you see? What happens in the middle? Is the bifurcation diagram complete
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Competitive Dynamics: Practicals</a><ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Competitive Dynamics: Practicals</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-lv-model-isoclines-equilibria-jacobian">Utility: LV model, isoclines, equilibria, Jacobian</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#investigate-the-phase-portrait-of-the-lotkavolterra-competition-model">(2‑1) Investigate the phase portrait of the Lotka–Volterra competition model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#investigate-the-phase-portrait-of-the-lotkavolterra-competition-model">(2‑1) Investigate the phase portrait of the Lotka–Volterra competition model</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-set-a-coexistence-case">Parameter set A (coexistence case)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-set-b-alternative-stable-states-case">Parameter set B (alternative stable states case)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibria-stability-set-a">Equilibria &amp; stability (Set A)</a></li>
@@ -1674,7 +1719,7 @@ What do you see? What happens in the middle? Is the bifurcation diagram complete
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-1parameter-bifurcation-diagram-of-the-lotkavolterra-competition-model">(2‑2) Make a 1‑parameter bifurcation diagram of the Lotka–Volterra competition model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-1parameter-bifurcation-diagram-of-the-lotkavolterra-competition-model">(2‑2) Make a 1‑parameter bifurcation diagram of the Lotka–Volterra competition model</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-branches-mean">What the branches mean</a></li>
 </ul>
 </li>
@@ -1729,8 +1774,8 @@ By MulQuaBio collective!
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

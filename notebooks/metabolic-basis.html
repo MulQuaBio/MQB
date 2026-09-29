@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -61,6 +64,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/metabolic-basis';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -68,34 +72,30 @@
     <link rel="prev" title="Introduction &amp; prerequisites" href="../part-eemodelling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -103,7 +103,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -111,15 +110,59 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -128,7 +171,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -158,21 +202,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MulQuaBio - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -262,8 +302,14 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Introduction &amp; prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_Bootcamp_Rubric.html">Computing Bootcamp Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_MiniProject_Rubric.html">Computing MiniProject Rubric</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -298,9 +344,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -479,7 +530,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -493,25 +544,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -533,7 +576,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-and-metabolic-rate">Energy and Metabolic rate</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-size">Importance of Size</a><ul class="nav section-nav flex-column">
@@ -582,7 +625,7 @@ document.write(`
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Metabolism is fundamental to the understanding of ecological and evolutionary processes.</p>
-<p>The laws of thermodynamics are fundamental principles describing how energy and heat behave in physical, chemical, and living systems. As Boltzmann noted <span id="id1">[<a class="reference internal" href="../references.html#id6" title="Ludwig Boltzmann. The second law of thermodynamics. Naturwissenschaftliche rundschau, 1(1):293–297, 1886. Translated and cited in later works on thermodynamics and biological processes. Original in German.">Boltzmann, 1886</a>]</span>, the <em>Second Law of Thermodynamics</em> is fundamental for understanding how biological cells and systems work as well as their ecological and evolutionary dynamics:</p>
+<p>The laws of thermodynamics are fundamental principles describing how energy and heat behave in physical, chemical, and living systems. As Boltzmann noted <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../references.html#id6" title="Ludwig Boltzmann. The second law of thermodynamics. Naturwissenschaftliche rundschau, 1(1):293–297, 1886. Translated and cited in later works on thermodynamics and biological processes. Original in German.">Boltzmann, 1886</a>]</span>, the <em>Second Law of Thermodynamics</em> is fundamental for understanding how biological cells and systems work as well as their ecological and evolutionary dynamics:</p>
 <blockquote>
 <div><p>In any <em>spontaneous</em> process, the total entropy of an <em>isolated</em> system can never decrease. Equivalently, it can stay the same (in a reversible process) or increase (in an irreversible process).</p>
 </div></blockquote>
@@ -595,7 +638,7 @@ document.write(`
 <p>While organisms maintain or increase their internal order (i.e., decrease entropy locally) by building and organizing complex molecules, they do so by taking in energy from external sources (e.g., sunlight or food) and releasing waste heat and byproducts back into their environment. This flow of energy and matter ultimately does increase the total entropy of the universe. Thus, life’s local decrease in entropy comes at the expense of a larger increase in entropy elsewhere, in accordance with the second law.</p>
 </div>
 <ul class="simple">
-<li><p>The second implication is that it is impossible to convert heat completely into work without waste (there is no perfect engine) — living organisms like any engine are subject to this limitation, but are typically designed by natural selection to maximise or optimise their energy conversion efficiency. Indeed, Lotka <span id="id2">[<a class="reference internal" href="../references.html#id7" title="Alfred J Lotka. Contribution to the energetics of evolution. Proceedings of the National Academy of Sciences, 8(6):147–151, 1922.">Lotka, 1922</a>]</span> made this observation over a 100 years ago:</p></li>
+<li><p>The second implication is that it is impossible to convert heat completely into work without waste (there is no perfect engine) — living organisms like any engine are subject to this limitation, but are typically designed by natural selection to maximise or optimise their energy conversion efficiency. Indeed, Lotka <span class="bibtex-citation" id="id2">[<a class="reference internal" href="../references.html#id7" title="Alfred J Lotka. Contribution to the energetics of evolution. Proceedings of the National Academy of Sciences, 8(6):147–151, 1922.">Lotka, 1922</a>]</span> made this observation over a 100 years ago:</p></li>
 </ul>
 <blockquote>
 <div><p><em>It has been pointed out by Boltzmann’ that the fundamental object ofcontention in the life-struggle, in the evolution of the organic world, is available energy. In accord with this observation is the principle that,in the struggle for existence, the advantage must go to those organismswhose energy-capturing devices are most efficient in directing available energy into channels favorable to the preservation of the species.</em></p>
@@ -609,13 +652,13 @@ document.write(`
 \[
     \text{Energy Consumed} = \text{Energy Used (Maintenance + Growth + Movement)}.
 \]</div>
-<p>Metabolic rates influence key life-history traits, including movement rates, development speed, lifespan, and reproductive output <span id="id3">[<a class="reference internal" href="../references.html#id5" title="Anthony I Dell, Samraat Pawar, and Van M Savage. Systematic variation in the temperature dependence of physiological and ecological traits. Proceedings of the National Academy of Sciences, 108(26):10591–10596, 2011.">Dell <em>et al.</em>, 2011</a>]</span>.</p>
-<p>The metabolic theory of ecology (MTE) <span id="id4">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>]</span> provides a framework for understanding how metabolic processes scale across levels of biological organization and influence ecological dynamics. It combines the <em>biomechanical</em> constraints of cell or body size of organisms and the <em>thermodynamic</em> effects of temperature on biological reaction kinetics into one equation for organism-level (that of single, integral organisms, either unicells or multi-cells) metabolic rate.</p>
+<p>Metabolic rates influence key life-history traits, including movement rates, development speed, lifespan, and reproductive output <span class="bibtex-citation" id="id3">[<a class="reference internal" href="../references.html#id5" title="Anthony I Dell, Samraat Pawar, and Van M Savage. Systematic variation in the temperature dependence of physiological and ecological traits. Proceedings of the National Academy of Sciences, 108(26):10591–10596, 2011.">Dell <em>et al.</em>, 2011</a>]</span>.</p>
+<p>The metabolic theory of ecology (MTE) <span class="bibtex-citation" id="id4">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>]</span> provides a framework for understanding how metabolic processes scale across levels of biological organization and influence ecological dynamics. It combines the <em>biomechanical</em> constraints of cell or body size of organisms and the <em>thermodynamic</em> effects of temperature on biological reaction kinetics into one equation for organism-level (that of single, integral organisms, either unicells or multi-cells) metabolic rate.</p>
 <p>We will now seperately consider the biophysical effects of size and temperature and then combine them into a unified understanding (and equations).</p>
 </section>
 <section id="importance-of-size">
 <h2>Importance of Size<a class="headerlink" href="#importance-of-size" title="Link to this heading">#</a></h2>
-<p>Metabolic rate (<span class="math notranslate nohighlight">\(B\)</span>) increases with body size (<span class="math notranslate nohighlight">\(M\)</span>) according to the allometric scaling law <span id="id5">[<a class="reference internal" href="../references.html#id3" title="M. Kleiber. Body size and metabolic rate. Physiol. rev., 27(4):511–541, 1947. doi:10.1152/physrev.1947.27.4.511.">Kleiber, 1947</a>]</span>:
+<p>Metabolic rate (<span class="math notranslate nohighlight">\(B\)</span>) increases with body size (<span class="math notranslate nohighlight">\(M\)</span>) according to the allometric scaling law <span class="bibtex-citation" id="id5">[<a class="reference internal" href="../references.html#id3" title="M. Kleiber. Body size and metabolic rate. Physiol. rev., 27(4):511–541, 1947. doi:10.1152/physrev.1947.27.4.511.">Kleiber, 1947</a>]</span>:
 $<span class="math notranslate nohighlight">\(
     B = B_0 M^b,
 \)</span>$</p>
@@ -629,7 +672,7 @@ $<span class="math notranslate nohighlight">\(
     \frac{B}{M} = B_0 M^{b-1}.
 \)</span>$</p>
 <p>For example, a mouse (0.1 kg) needs approximately 12.3 kcal/day, while its mass-specific rate is 123 kcal/(kg<span class="math notranslate nohighlight">\(\cdot\)</span>day).
-This reduction in per-mass energy use with size arises from a combination of constraints, including geometry, overheating risk, and within-organism resource distribution (<span id="id6">[<a class="reference internal" href="../references.html#id221" title="Geoffrey B. West and James H. Brown. The origin of allometric scaling laws in biology from genomes to ecosystems: towards a quantitative unifying theory of biological structure and organization. Journal of Experimental Biology, 208(9):1575–1592, 2005. doi:10.1242/jeb.01589.">West and Brown, 2005</a>]</span>).</p>
+This reduction in per-mass energy use with size arises from a combination of constraints, including geometry, overheating risk, and within-organism resource distribution (<span class="bibtex-citation" id="id6">[<a class="reference internal" href="../references.html#id221" title="Geoffrey B. West and James H. Brown. The origin of allometric scaling laws in biology from genomes to ecosystems: towards a quantitative unifying theory of biological structure and organization. Journal of Experimental Biology, 208(9):1575–1592, 2005. doi:10.1242/jeb.01589.">West and Brown, 2005</a>]</span>).</p>
 <section id="geometric-foundations-of-the-metabolic-scaling-law">
 <h3>Geometric foundations of the metabolic scaling law<a class="headerlink" href="#geometric-foundations-of-the-metabolic-scaling-law" title="Link to this heading">#</a></h3>
 <p>Historically, a geometric argument was used to suggest that metabolic rate scales like the surface area, which in turn scales as the <span class="math notranslate nohighlight">\(\tfrac{2}{3}\)</span> power of mass.</p>
@@ -694,7 +737,7 @@ A \propto l^2
 <section id="going-beyond-geometric-constraints">
 <h2>Going beyond geometric constraints<a class="headerlink" href="#going-beyond-geometric-constraints" title="Link to this heading">#</a></h2>
 <p>Th above surface-to-volume geo biophysical constraint indeed holds at the level of cells, but is not the full story.</p>
-<p>Empirically, the scaling most multicellular organisms in fact follows a somewhat different exponent (<span class="math notranslate nohighlight">\(\approx \frac{3}{4}\)</span>, known as <em>Kleiber’s law</em>. This comes from the two additonal constraints: the requirement of heat dissipation and energy distribution (circulation) thorughout the body. We will not cover these here, but if you are interested, see <span id="id7">[<a class="reference internal" href="../references.html#id3" title="M. Kleiber. Body size and metabolic rate. Physiol. rev., 27(4):511–541, 1947. doi:10.1152/physrev.1947.27.4.511.">Kleiber, 1947</a>]</span> and <span id="id8">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>]</span> for classic and modern treatments.</p>
+<p>Empirically, the scaling most multicellular organisms in fact follows a somewhat different exponent (<span class="math notranslate nohighlight">\(\approx \frac{3}{4}\)</span>, known as <em>Kleiber’s law</em>. This comes from the two additonal constraints: the requirement of heat dissipation and energy distribution (circulation) thorughout the body. We will not cover these here, but if you are interested, see <span class="bibtex-citation" id="id7">[<a class="reference internal" href="../references.html#id3" title="M. Kleiber. Body size and metabolic rate. Physiol. rev., 27(4):511–541, 1947. doi:10.1152/physrev.1947.27.4.511.">Kleiber, 1947</a>]</span> and <span class="bibtex-citation" id="id8">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>]</span> for classic and modern treatments.</p>
 </section>
 <section id="importance-of-temperature-and-thermodynamic-constraints">
 <h2>Importance of Temperature (and Thermodynamic constraints)<a class="headerlink" href="#importance-of-temperature-and-thermodynamic-constraints" title="Link to this heading">#</a></h2>
@@ -702,9 +745,9 @@ A \propto l^2
 $<span class="math notranslate nohighlight">\(
     k = A e^{-\frac{E_a}{k_B T}},
 \)</span>$</p>
-<p>where <span class="math notranslate nohighlight">\(k\)</span> is the reaction rate, <span class="math notranslate nohighlight">\(k_0\)</span> is a constant, <span class="math notranslate nohighlight">\(E_a\)</span> is the activation energy, <span class="math notranslate nohighlight">\(k_B\)</span> is the Boltzmann constant, and <span class="math notranslate nohighlight">\(T\)</span> is temperature in Kelvin. This relationship explains the characteristic thermal performance curve observed in biological processes, where rates increase with temperature to an optimum before declining due to enzyme denaturation or other stress factors, as captured by later thermal-performance formulations (<span id="id9">[<a class="reference internal" href="../references.html#id5" title="Anthony I Dell, Samraat Pawar, and Van M Savage. Systematic variation in the temperature dependence of physiological and ecological traits. Proceedings of the National Academy of Sciences, 108(26):10591–10596, 2011.">Dell <em>et al.</em>, 2011</a>, <a class="reference internal" href="../references.html#id205" title="Robert M. Schoolfield, Peter J. H. Sharpe, and Charles E. Magnuson. Non-linear regression of biological temperature-dependent rate models based on absolute reaction-rate theory. Journal of Theoretical Biology, 88(4):719–731, 1981. doi:10.1016/0022-5193(81)90246-0.">Schoolfield <em>et al.</em>, 1981</a>]</span>) that we will consider below.
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is the reaction rate, <span class="math notranslate nohighlight">\(k_0\)</span> is a constant, <span class="math notranslate nohighlight">\(E_a\)</span> is the activation energy, <span class="math notranslate nohighlight">\(k_B\)</span> is the Boltzmann constant, and <span class="math notranslate nohighlight">\(T\)</span> is temperature in Kelvin. This relationship explains the characteristic thermal performance curve observed in biological processes, where rates increase with temperature to an optimum before declining due to enzyme denaturation or other stress factors, as captured by later thermal-performance formulations (<span class="bibtex-citation" id="id9">[<a class="reference internal" href="../references.html#id5" title="Anthony I Dell, Samraat Pawar, and Van M Savage. Systematic variation in the temperature dependence of physiological and ecological traits. Proceedings of the National Academy of Sciences, 108(26):10591–10596, 2011.">Dell <em>et al.</em>, 2011</a>, <a class="reference internal" href="../references.html#id205" title="Robert M. Schoolfield, Peter J. H. Sharpe, and Charles E. Magnuson. Non-linear regression of biological temperature-dependent rate models based on absolute reaction-rate theory. Journal of Theoretical Biology, 88(4):719–731, 1981. doi:10.1016/0022-5193(81)90246-0.">Schoolfield <em>et al.</em>, 1981</a>]</span>) that we will consider below.
 The <em>Arrhenius equation</em> and its variants (often collectively referred to as the “Boltzmann-Arrhenius” equation in certain contexts) are cornerstones of chemical kinetics. These formulations describe how reaction rates vary with temperature. For <em>enzyme kinetics</em>, the temperature dependence can also be described via modified forms of the Arrhenius equation, sometimes combined with effects such as protein denaturation at higher temperatures.
-Historically, this work can be traced back to <em>Jacobus Henricus van ‘t Hoff</em> (1852–1911), whose studies first quantified the temperature dependence of reaction rates <span id="id10">[<a class="reference internal" href="../references.html#id167" title="J. H. van 't Hoff. Études de dynamique chimique. Frederik Muller, Amsterdam, 1884.">van 't Hoff, 1884</a>]</span>. Building on van ‘t Hoff’s work, <em>Svante Arrhenius</em> (1859–1927) proposed a more explicit relationship that connected the rate constant <span class="math notranslate nohighlight">\(k\)</span> of a chemical reaction to an exponential function of temperature <span id="id11">[<a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>]</span>:
+Historically, this work can be traced back to <em>Jacobus Henricus van ‘t Hoff</em> (1852–1911), whose studies first quantified the temperature dependence of reaction rates <span class="bibtex-citation" id="id10">[<a class="reference internal" href="../references.html#id167" title="J. H. van 't Hoff. Études de dynamique chimique. Frederik Muller, Amsterdam, 1884.">van 't Hoff, 1884</a>]</span>. Building on van ‘t Hoff’s work, <em>Svante Arrhenius</em> (1859–1927) proposed a more explicit relationship that connected the rate constant <span class="math notranslate nohighlight">\(k\)</span> of a chemical reaction to an exponential function of temperature <span class="bibtex-citation" id="id11">[<a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>]</span>:
 $<span class="math notranslate nohighlight">\(
     k = A \exp\left( -\frac{E_a}{rT} \right),
 \)</span>$</p>
@@ -727,20 +770,20 @@ $<span class="math notranslate nohighlight">\(
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(k_\text{cat}(T)\)</span> is strongly dependent on <span class="math notranslate nohighlight">\(T\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\([\text{C}]\)</span> is the enzyme concentration,</p></li>
-<li><p><span class="math notranslate nohighlight">\(f([\text{S}])\)</span> is a function of substrate concentration (e.g. the Michaelis-Menten form <span class="math notranslate nohighlight">\(\tfrac{[\text{S}]}{K_M + [\text{S}] }\)</span>; see <span id="id12">[<a class="reference internal" href="../references.html#id170" title="Kenneth A. Johnson and Roger S. Goody. The original michaelis constant: translation of the 1913 michaelis–menten paper. Biochemistry, 50(39):8264–8269, 2011. doi:10.1021/bi201284u.">Johnson and Goody, 2011</a>]</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(f([\text{S}])\)</span> is a function of substrate concentration (e.g. the Michaelis-Menten form <span class="math notranslate nohighlight">\(\tfrac{[\text{S}]}{K_M + [\text{S}] }\)</span>; see <span class="bibtex-citation" id="id12">[<a class="reference internal" href="../references.html#id170" title="Kenneth A. Johnson and Roger S. Goody. The original michaelis constant: translation of the 1913 michaelis–menten paper. Biochemistry, 50(39):8264–8269, 2011. doi:10.1021/bi201284u.">Johnson and Goody, 2011</a>]</span>).</p></li>
 </ul>
 <p>We can model <span class="math notranslate nohighlight">\(k_\text{cat}(T)\)</span> using either the <em>Arrhenius</em> or the <em>Eyring</em> Equations. However, because real enzymes <em>denature</em> at higher temperatures, we typically observe a <em>bell-shaped</em> temperature activity profile.</p>
 </section>
 <section id="classical-transition-state-theory-tst">
 <h2>Classical Transition State Theory (TST)<a class="headerlink" href="#classical-transition-state-theory-tst" title="Link to this heading">#</a></h2>
 <p>We will now look at <em>classical transition state theory (TST)</em>, which provides a <em>microscopic rationale</em> for the temperature dependence of reaction rates, explaining both <em>how energy barriers (enthalpy)</em> slow down reactions and how <em>changes in molecular order (entropy)</em> can further modulate the speed at which reactants cross from the well of the reactants to the well of reaction products.</p>
-<p>TST was developed in the 1930s by <em>Henry Eyring</em> (1901–1981) and others (in particular Meredith Evans and Michael Polanyi) <span id="id13">[<a class="reference internal" href="../references.html#id168" title="Henry Eyring. The activated complex in chemical reactions. The Journal of Chemical Physics, 3(2):107–115, 1935. doi:10.1063/1.1749604.">Eyring, 1935</a>, <a class="reference internal" href="../references.html#id169" title="M. Polanyi. Unknown title (please verify). Z. Phys. Chem. B, 28:309–318, 1935. Exact article title not found in open metadata during lookup; please verify from the journal issue/table of contents and add title (and DOI if present).">Polanyi, 1935</a>]</span>.</p>
+<p>TST was developed in the 1930s by <em>Henry Eyring</em> (1901–1981) and others (in particular Meredith Evans and Michael Polanyi) <span class="bibtex-citation" id="id13">[<a class="reference internal" href="../references.html#id168" title="Henry Eyring. The activated complex in chemical reactions. The Journal of Chemical Physics, 3(2):107–115, 1935. doi:10.1063/1.1749604.">Eyring, 1935</a>, <a class="reference internal" href="../references.html#id169" title="M. Polanyi. Unknown title (please verify). Z. Phys. Chem. B, 28:309–318, 1935. Exact article title not found in open metadata during lookup; please verify from the journal issue/table of contents and add title (and DOI if present).">Polanyi, 1935</a>]</span>.</p>
 <p>The key idea underlying the TST is that a chemical reaction proceeds through a high-energy configuration of the reactants called the <em>transition state</em> (or activated complex). Once formed, the transition state either proceeds forward to products or reverts back to reactants, adhering to two key assumptions:</p>
 <ul class="simple">
 <li><p>reagents must first form an <em>activated complex</em>, which is in a “quasi-equilibrium” with the reactants.</p></li>
 <li><p>The rate of the reaction then depends on how frequently and efficiently this activated complex “crosses over” from the reactant side of the potential energy surface to the product side.</p></li>
 </ul>
-<p>Using statistical mechanics arguments, TST yields the famous <em>Eyring (or Eyring–Polanyi) equation</em>, sometimes called the “absolute rate equation” <span id="id14">[<a class="reference internal" href="../references.html#id168" title="Henry Eyring. The activated complex in chemical reactions. The Journal of Chemical Physics, 3(2):107–115, 1935. doi:10.1063/1.1749604.">Eyring, 1935</a>, <a class="reference internal" href="../references.html#id169" title="M. Polanyi. Unknown title (please verify). Z. Phys. Chem. B, 28:309–318, 1935. Exact article title not found in open metadata during lookup; please verify from the journal issue/table of contents and add title (and DOI if present).">Polanyi, 1935</a>]</span>:</p>
+<p>Using statistical mechanics arguments, TST yields the famous <em>Eyring (or Eyring–Polanyi) equation</em>, sometimes called the “absolute rate equation” <span class="bibtex-citation" id="id14">[<a class="reference internal" href="../references.html#id168" title="Henry Eyring. The activated complex in chemical reactions. The Journal of Chemical Physics, 3(2):107–115, 1935. doi:10.1063/1.1749604.">Eyring, 1935</a>, <a class="reference internal" href="../references.html#id169" title="M. Polanyi. Unknown title (please verify). Z. Phys. Chem. B, 28:309–318, 1935. Exact article title not found in open metadata during lookup; please verify from the journal issue/table of contents and add title (and DOI if present).">Polanyi, 1935</a>]</span>:</p>
 <div class="math notranslate nohighlight">
 \[
     k = \frac{k_B T}{h} \exp\Bigl(\tfrac{\Delta S^\ddagger}{r}\Bigr)\exp\Bigl(-\tfrac{\Delta H^\ddagger}{rT}\Bigr).
@@ -841,7 +884,7 @@ Hence, one can directly extract $\Delta H^\ddagger$ and $\Delta S^\ddagger$ from
 </section>
 <section id="putting-it-together-temperature-size-scaling-and-metabolic-rate">
 <h2>Putting it together: temperature, size scaling, and metabolic rate<a class="headerlink" href="#putting-it-together-temperature-size-scaling-and-metabolic-rate" title="Link to this heading">#</a></h2>
-<p>Thus, metabolism drives growth rates and influences population dynamics through its scaling with size and temperature (<span id="id15">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>]</span>). Larger organisms exhibit slower per-mass metabolic rates but greater absolute energy use (<span id="id16">[<a class="reference internal" href="../references.html#id220" title="Van M. Savage, James F. Gillooly, James H. Brown, Geoffrey B. West, and Eric L. Charnov. Effects of body size and temperature on population growth. The American Naturalist, 163(3):429–441, 2004. doi:10.1086/381872.">Savage <em>et al.</em>, 2004</a>]</span>). Temperature affects metabolic rates exponentially, shaping life-history strategies and population dynamics (<span id="id17">[<a class="reference internal" href="../references.html#id5" title="Anthony I Dell, Samraat Pawar, and Van M Savage. Systematic variation in the temperature dependence of physiological and ecological traits. Proceedings of the National Academy of Sciences, 108(26):10591–10596, 2011.">Dell <em>et al.</em>, 2011</a>]</span>).
+<p>Thus, metabolism drives growth rates and influences population dynamics through its scaling with size and temperature (<span class="bibtex-citation" id="id15">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>]</span>). Larger organisms exhibit slower per-mass metabolic rates but greater absolute energy use (<span class="bibtex-citation" id="id16">[<a class="reference internal" href="../references.html#id220" title="Van M. Savage, James F. Gillooly, James H. Brown, Geoffrey B. West, and Eric L. Charnov. Effects of body size and temperature on population growth. The American Naturalist, 163(3):429–441, 2004. doi:10.1086/381872.">Savage <em>et al.</em>, 2004</a>]</span>). Temperature affects metabolic rates exponentially, shaping life-history strategies and population dynamics (<span class="bibtex-citation" id="id17">[<a class="reference internal" href="../references.html#id5" title="Anthony I Dell, Samraat Pawar, and Van M Savage. Systematic variation in the temperature dependence of physiological and ecological traits. Proceedings of the National Academy of Sciences, 108(26):10591–10596, 2011.">Dell <em>et al.</em>, 2011</a>]</span>).
 Combining these gives MTE’s fundamental equation:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -864,7 +907,7 @@ B = B'_0 m^b e^{-\frac{E_a}{k_BT}}
 <section id="cell-division-is-a-stochastic-process">
 <h4>Cell division is a stochastic process<a class="headerlink" href="#cell-division-is-a-stochastic-process" title="Link to this heading">#</a></h4>
 <p>To move from enzyme kinetics to cell‐level dynamics, a cell must replicate all essential components (DNA, proteins, membranes, etc.), reach a completion threshold in biomass or chromosome replication, and divide into two daughter cells.</p>
-<p>Because cellular biochemical events occur stochastically, the exact division time of any one cell can vary. However, in an exponential (log) growth phase with abundant nutrients, the <em>average</em> cell‐division rate <span class="math notranslate nohighlight">\(\lambda\)</span> (divisions per unit time) is fairly constant (<span id="id18">[<a class="reference internal" href="../references.html#id224" title="Dan Pirjol, Farshid Jafarpour, and Srividya Iyer-Biswas. Phenomenology of stochastic exponential growth. Physical Review E, 95(6):062406, 2017. doi:10.1103/PhysRevE.95.062406.">Pirjol <em>et al.</em>, 2017</a>]</span>). This average division rate is tied to the cumulative rate of intracellular biochemical and biosynthetic reactions, and thus inherits their temperature dependence.</p>
+<p>Because cellular biochemical events occur stochastically, the exact division time of any one cell can vary. However, in an exponential (log) growth phase with abundant nutrients, the <em>average</em> cell‐division rate <span class="math notranslate nohighlight">\(\lambda\)</span> (divisions per unit time) is fairly constant (<span class="bibtex-citation" id="id18">[<a class="reference internal" href="../references.html#id224" title="Dan Pirjol, Farshid Jafarpour, and Srividya Iyer-Biswas. Phenomenology of stochastic exponential growth. Physical Review E, 95(6):062406, 2017. doi:10.1103/PhysRevE.95.062406.">Pirjol <em>et al.</em>, 2017</a>]</span>). This average division rate is tied to the cumulative rate of intracellular biochemical and biosynthetic reactions, and thus inherits their temperature dependence.</p>
 </section>
 <section id="average-doubling-time-and-specific-growth-rate">
 <h4>(Average) doubling time and specific growth rate<a class="headerlink" href="#average-doubling-time-and-specific-growth-rate" title="Link to this heading">#</a></h4>
@@ -971,15 +1014,17 @@ B = B'_0 m^b e^{-\frac{E_a}{k_BT}}
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-and-metabolic-rate">Energy and Metabolic rate</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-size">Importance of Size</a><ul class="nav section-nav flex-column">
@@ -1052,8 +1097,8 @@ By MulQuaBio collective!
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

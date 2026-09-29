@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -61,6 +64,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/micrm-to-logistic';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -68,34 +72,30 @@
     <link rel="prev" title="Single Populations" href="populations.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -103,7 +103,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -111,15 +110,59 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -128,7 +171,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -158,21 +202,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MulQuaBio - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -208,11 +248,10 @@
 <li class="toctree-l1"><a class="reference internal" href="mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model-simp.html">Model simplification</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced E&amp;E Modelling and Statistics Pre-work</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Introduction &amp; prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
-
 
 
 
@@ -263,8 +302,14 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Introduction &amp; prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_Bootcamp_Rubric.html">Computing Bootcamp Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_MiniProject_Rubric.html">Computing MiniProject Rubric</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -299,9 +344,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -480,7 +530,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -494,25 +544,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -534,7 +576,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-will-learn">What you will learn</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-this-fits-in-the-course">Where this fits in the course</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-micrm">Model (MiCRM)</a></li>
@@ -578,8 +620,8 @@ document.write(`
 <h1>From consumer–resource dynamics to logistic growth<a class="headerlink" href="#from-consumerresource-dynamics-to-logistic-growth" title="Link to this heading">#</a></h1>
 <p>This section shows how a mechanistic <strong>consumer–resource model</strong> (the MiCRM) can be approximated as a <strong>generalized Lotka–Volterra (gLV)</strong> model, and—when we keep only one population—into <strong>logistic growth</strong>.</p>
 <ul class="simple">
-<li><p>MiCRM-style consumer–resource models are widely used in microbial ecology (<span id="id1">[<a class="reference internal" href="../references.html#id199" title="Robert Marsland, Wentao Cui, and Pankaj Mehta. The available energy fluxes drive the self-organization of microbial communities. PLOS Computational Biology, 15(2):e1006793, 2019. doi:10.1371/journal.pcbi.1006793.">Marsland <em>et al.</em>, 2019</a>]</span>; see also <span id="id2">[<a class="reference internal" href="../references.html#id200" title="Joshua E. Goldford, Nan Lu, Dusan Bajić, Sylvie Estrela, Mikhail Tikhonov, Alberto Sanchez-Gorostiaga, Daniel Segre, Pankaj Mehta, and Alvaro Sanchez. Emergent simplicity in microbial community assembly. Science, 361(6401):469–474, 2018. doi:10.1126/science.aat1168.">Goldford <em>et al.</em>, 2018</a>]</span>).</p></li>
-<li><p>Logistic growth is a classical single‑population model dating back to Verhulst (<span id="id3">[<a class="reference internal" href="../references.html#id171" title="Pierre-François Verhulst. Notice sur la loi que la population poursuit dans son accroissement. Correspondance Mathématique et Physique, 10:113–121, 1838.">Verhulst, 1838</a>]</span>).</p></li>
+<li><p>MiCRM-style consumer–resource models are widely used in microbial ecology (<span class="bibtex-citation" id="id1">[<a class="reference internal" href="../references.html#id216" title="Robert Marsland, Wentao Cui, and Pankaj Mehta. The available energy fluxes drive the self-organization of microbial communities. PLOS Computational Biology, 15(2):e1006793, 2019. doi:10.1371/journal.pcbi.1006793.">Marsland <em>et al.</em>, 2019</a>]</span>; see also <span class="bibtex-citation" id="id2">[<a class="reference internal" href="../references.html#id217" title="Joshua E. Goldford, Nan Lu, Dusan Bajić, Sylvie Estrela, Mikhail Tikhonov, Alberto Sanchez-Gorostiaga, Daniel Segre, Pankaj Mehta, and Alvaro Sanchez. Emergent simplicity in microbial community assembly. Science, 361(6401):469–474, 2018. doi:10.1126/science.aat1168.">Goldford <em>et al.</em>, 2018</a>]</span>).</p></li>
+<li><p>Logistic growth is a classical single‑population model dating back to Verhulst (<span class="bibtex-citation" id="id3">[<a class="reference internal" href="../references.html#id171" title="Pierre-François Verhulst. Notice sur la loi que la population poursuit dans son accroissement. Correspondance Mathématique et Physique, 10:113–121, 1838.">Verhulst, 1838</a>]</span>).</p></li>
 </ul>
 <section id="what-you-will-learn">
 <h2>What you will learn<a class="headerlink" href="#what-you-will-learn" title="Link to this heading">#</a></h2>
@@ -764,7 +806,7 @@ a_{11}(\hat C)=\sum_\alpha u_\alpha\frac{\partial \hat R_\alpha}{\partial C}\Big
 <p>We’ll do this in two “environments”:</p>
 <ul class="simple">
 <li><p><strong>Batch</strong>: no inflow/outflow (<span class="math notranslate nohighlight">\(D=0\)</span>). Resources are depleted.</p></li>
-<li><p><strong>Chemostat</strong>: constant dilution <span class="math notranslate nohighlight">\(D&gt;0\)</span> with feed concentrations <span class="math notranslate nohighlight">\(S\)</span> (a standard continuous‑culture setup; see <span id="id4">[<a class="reference internal" href="../references.html#id201" title="Aaron Novick and Leo Szilard. Description of the chemostat. Science, 112(2920):715–716, 1950. doi:10.1126/science.112.2920.715.">Novick and Szilard, 1950</a>]</span>).</p></li>
+<li><p><strong>Chemostat</strong>: constant dilution <span class="math notranslate nohighlight">\(D&gt;0\)</span> with feed concentrations <span class="math notranslate nohighlight">\(S\)</span> (a standard continuous‑culture setup; see <span class="bibtex-citation" id="id4">[<a class="reference internal" href="../references.html#id218" title="Aaron Novick and Leo Szilard. Description of the chemostat. Science, 112(2920):715–716, 1950. doi:10.1126/science.112.2920.715.">Novick and Szilard, 1950</a>]</span>).</p></li>
 </ul>
 <p>Workflow:</p>
 <ol class="arabic simple">
@@ -799,11 +841,11 @@ a_{11}(\hat C)=\sum_\alpha u_\alpha\frac{\partial \hat R_\alpha}{\partial C}\Big
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">micrm_supply_washout_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Single-species, no-leakage MiCRM with linear uptake and resource supply/washout.</span>
+<span class="w">    </span><span class="sd">"""Single-species, no-leakage MiCRM with linear uptake and resource supply/washout.</span>
 
 <span class="sd">    dC/dt = C( sum_alpha R_alpha u_alpha - m )</span>
 <span class="sd">    dR_alpha/dt = rho_alpha - omega_alpha R_alpha - C R_alpha u_alpha</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">C</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">R</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
     <span class="n">dC</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">u</span><span class="p">)</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span>
@@ -889,24 +931,24 @@ a_{11}(\hat C)=\sum_\alpha u_\alpha\frac{\partial \hat R_\alpha}{\partial C}\Big
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MiCRM C(t) (linear uptake, supply/washout)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL</span><span class="p">,</span> <span class="n">Clog</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Effective logistic (gLV near equilibrium)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Chat</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;C*≈</span><span class="si">{</span><span class="n">Chat</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"MiCRM C(t) (linear uptake, supply/washout)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL</span><span class="p">,</span> <span class="n">Clog</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Effective logistic (gLV near equilibrium)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Chat</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"C*≈</span><span class="si">{</span><span class="n">Chat</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"time"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"C"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Single species: MiCRM vs effective logistic&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Single species: MiCRM vs effective logistic"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">R</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;R</span><span class="si">{</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">((</span><span class="n">rho</span> <span class="o">/</span> <span class="n">omega</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R1 (no-consumer eq)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">((</span><span class="n">rho</span> <span class="o">/</span> <span class="n">omega</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R2 (no-consumer eq)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">R</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"R</span><span class="si">{</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">((</span><span class="n">rho</span> <span class="o">/</span> <span class="n">omega</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"R1 (no-consumer eq)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">((</span><span class="n">rho</span> <span class="o">/</span> <span class="n">omega</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"R2 (no-consumer eq)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"time"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"R"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Resources (linear uptake, supply/washout)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Resources (linear uptake, supply/washout)"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1024,37 +1066,37 @@ a_{11}(\hat C)=\sum_\alpha u_\alpha\frac{\partial \hat R_\alpha}{\partial C}\Big
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Batch plots</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_b</span><span class="p">,</span> <span class="n">N_b</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MiCRM N (batch)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL_b</span><span class="p">,</span> <span class="n">Nlog_b</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Logistic (predicted)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">K_tot_batch</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;K_tot=</span><span class="si">{</span><span class="n">K_tot_batch</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Batch: MiCRM vs logistic (linear uptake)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_b</span><span class="p">,</span> <span class="n">N_b</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"MiCRM N (batch)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL_b</span><span class="p">,</span> <span class="n">Nlog_b</span><span class="p">,</span> <span class="s1">'--'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Logistic (predicted)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">K_tot_batch</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"K_tot=</span><span class="si">{</span><span class="n">K_tot_batch</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"time"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"N"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Batch: MiCRM vs logistic (linear uptake)"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_b</span><span class="p">,</span> <span class="n">Rb1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_b</span><span class="p">,</span> <span class="n">Rb2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R2&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Resource&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Batch resources&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_b</span><span class="p">,</span> <span class="n">Rb1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"R1"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_b</span><span class="p">,</span> <span class="n">Rb2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"R2"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"time"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Resource"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Batch resources"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># Chemostat plots</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_c</span><span class="p">,</span> <span class="n">N_c</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MiCRM N (chemostat)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL_c</span><span class="p">,</span> <span class="n">Nlog_c</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Logistic (predicted)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">N_c</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">:]),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;N*≈</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">N_c</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">:])</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">K_che</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;r/a≈</span><span class="si">{</span><span class="n">K_che</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Chemostat: MiCRM vs logistic (linear uptake approximation)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_c</span><span class="p">,</span> <span class="n">N_c</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"MiCRM N (chemostat)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL_c</span><span class="p">,</span> <span class="n">Nlog_c</span><span class="p">,</span> <span class="s1">'--'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Logistic (predicted)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">N_c</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">:]),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"N*≈</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">N_c</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">:])</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">K_che</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"r/a≈</span><span class="si">{</span><span class="n">K_che</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"time"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"N"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Chemostat: MiCRM vs logistic (linear uptake approximation)"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_c</span><span class="p">,</span> <span class="n">Rc1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_c</span><span class="p">,</span> <span class="n">Rc2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R2&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;S1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;S2&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Resource&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Chemostat resources&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_c</span><span class="p">,</span> <span class="n">Rc1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"R1"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_c</span><span class="p">,</span> <span class="n">Rc2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"R2"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"S1"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"S2"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"time"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Resource"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Chemostat resources"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1071,7 +1113,7 @@ a_{11}(\hat C)=\sum_\alpha u_\alpha\frac{\partial \hat R_\alpha}{\partial C}\Big
 <section id="optional-monod-uptake-nonlinear-still-logisticlike">
 <h2>4) Optional: Monod uptake (nonlinear), still logistic‑like<a class="headerlink" href="#optional-monod-uptake-nonlinear-still-logisticlike" title="Link to this heading">#</a></h2>
 <p>So far we used <strong>linear (Type‑I)</strong> uptake in resource, which makes the algebra clean.</p>
-<p>A more biologically grounded alternative is <strong>Monod/Michaelis–Menten</strong> uptake (<span id="id5">[<a class="reference internal" href="../references.html#id202" title="Jacques Monod. The growth of bacterial cultures. Annual Review of Microbiology, 3:371–394, 1949. doi:10.1146/annurev.mi.03.100149.002103.">Monod, 1949</a>]</span>):</p>
+<p>A more biologically grounded alternative is <strong>Monod/Michaelis–Menten</strong> uptake (<span class="bibtex-citation" id="id5">[<a class="reference internal" href="../references.html#id219" title="Jacques Monod. The growth of bacterial cultures. Annual Review of Microbiology, 3:371–394, 1949. doi:10.1146/annurev.mi.03.100149.002103.">Monod, 1949</a>]</span>):</p>
 <div class="math notranslate nohighlight">
 \[
 u_j(R)=\lambda_j\frac{R}{K_j+R}.\]</div>
@@ -1132,19 +1174,19 @@ u_j(R)=\lambda_j\frac{R}{K_j+R}.\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_bm</span><span class="p">,</span> <span class="n">N_bm</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MiCRM N (batch, Monod)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL_bm</span><span class="p">,</span> <span class="n">Nlog_bm</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Effective logistic&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">K_tot_eff</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;K_tot=</span><span class="si">{</span><span class="n">K_tot_eff</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Batch: MiCRM vs effective logistic (Monod uptake)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_bm</span><span class="p">,</span> <span class="n">N_bm</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"MiCRM N (batch, Monod)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL_bm</span><span class="p">,</span> <span class="n">Nlog_bm</span><span class="p">,</span> <span class="s1">'--'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Effective logistic"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">K_tot_eff</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"K_tot=</span><span class="si">{</span><span class="n">K_tot_eff</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"time"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"N"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Batch: MiCRM vs effective logistic (Monod uptake)"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_cm</span><span class="p">,</span> <span class="n">N_cm</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MiCRM N (chemostat, Monod)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL_cm</span><span class="p">,</span> <span class="n">Nlog_cm</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Effective logistic&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Nstar_obs</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;N*≈</span><span class="si">{</span><span class="n">Nstar_obs</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Chemostat: MiCRM vs effective logistic (Monod uptake)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_cm</span><span class="p">,</span> <span class="n">N_cm</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"MiCRM N (chemostat, Monod)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tL_cm</span><span class="p">,</span> <span class="n">Nlog_cm</span><span class="p">,</span> <span class="s1">'--'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Effective logistic"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Nstar_obs</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"N*≈</span><span class="si">{</span><span class="n">Nstar_obs</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"time"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"N"</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Chemostat: MiCRM vs effective logistic (Monod uptake)"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1157,7 +1199,7 @@ u_j(R)=\lambda_j\frac{R}{K_j+R}.\]</div>
 </section>
 <section id="remarks-on-cross-feeding-leakage">
 <h2>5) Remarks on cross-feeding (leakage)<a class="headerlink" href="#remarks-on-cross-feeding-leakage" title="Link to this heading">#</a></h2>
-<p>In the full MiCRM, a fraction <span class="math notranslate nohighlight">\(l_j\)</span> of consumed resource can be released as byproducts and redistributed via a conversion matrix. This can generate <strong>multi‑phase growth</strong> (e.g. diauxie) and richer community‑level assembly patterns (<span id="id6">[<a class="reference internal" href="../references.html#id200" title="Joshua E. Goldford, Nan Lu, Dusan Bajić, Sylvie Estrela, Mikhail Tikhonov, Alberto Sanchez-Gorostiaga, Daniel Segre, Pankaj Mehta, and Alvaro Sanchez. Emergent simplicity in microbial community assembly. Science, 361(6401):469–474, 2018. doi:10.1126/science.aat1168.">Goldford <em>et al.</em>, 2018</a>]</span>; <span id="id7">[<a class="reference internal" href="../references.html#id199" title="Robert Marsland, Wentao Cui, and Pankaj Mehta. The available energy fluxes drive the self-organization of microbial communities. PLOS Computational Biology, 15(2):e1006793, 2019. doi:10.1371/journal.pcbi.1006793.">Marsland <em>et al.</em>, 2019</a>]</span>).</p>
+<p>In the full MiCRM, a fraction <span class="math notranslate nohighlight">\(l_j\)</span> of consumed resource can be released as byproducts and redistributed via a conversion matrix. This can generate <strong>multi‑phase growth</strong> (e.g. diauxie) and richer community‑level assembly patterns (<span class="bibtex-citation" id="id6">[<a class="reference internal" href="../references.html#id217" title="Joshua E. Goldford, Nan Lu, Dusan Bajić, Sylvie Estrela, Mikhail Tikhonov, Alberto Sanchez-Gorostiaga, Daniel Segre, Pankaj Mehta, and Alvaro Sanchez. Emergent simplicity in microbial community assembly. Science, 361(6401):469–474, 2018. doi:10.1126/science.aat1168.">Goldford <em>et al.</em>, 2018</a>]</span>; <span class="bibtex-citation" id="id7">[<a class="reference internal" href="../references.html#id216" title="Robert Marsland, Wentao Cui, and Pankaj Mehta. The available energy fluxes drive the self-organization of microbial communities. PLOS Computational Biology, 15(2):e1006793, 2019. doi:10.1371/journal.pcbi.1006793.">Marsland <em>et al.</em>, 2019</a>]</span>).</p>
 <p>A useful way to think about it:</p>
 <ul class="simple">
 <li><p><strong>Depletion</strong> creates negative feedback (self‑limitation / competition).</p></li>
@@ -1187,9 +1229,9 @@ u_j(R)=\lambda_j\frac{R}{K_j+R}.\]</div>
 <section id="further-reading">
 <h3>Further reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Chemostat fundamentals: <span id="id8">[<a class="reference internal" href="../references.html#id201" title="Aaron Novick and Leo Szilard. Description of the chemostat. Science, 112(2920):715–716, 1950. doi:10.1126/science.112.2920.715.">Novick and Szilard, 1950</a>]</span></p></li>
-<li><p>Monod kinetics: <span id="id9">[<a class="reference internal" href="../references.html#id202" title="Jacques Monod. The growth of bacterial cultures. Annual Review of Microbiology, 3:371–394, 1949. doi:10.1146/annurev.mi.03.100149.002103.">Monod, 1949</a>]</span></p></li>
-<li><p>MiCRM / energy-flux consumer–resource framing: <span id="id10">[<a class="reference internal" href="../references.html#id199" title="Robert Marsland, Wentao Cui, and Pankaj Mehta. The available energy fluxes drive the self-organization of microbial communities. PLOS Computational Biology, 15(2):e1006793, 2019. doi:10.1371/journal.pcbi.1006793.">Marsland <em>et al.</em>, 2019</a>]</span></p></li>
+<li><p>Chemostat fundamentals: <span class="bibtex-citation" id="id8">[<a class="reference internal" href="../references.html#id218" title="Aaron Novick and Leo Szilard. Description of the chemostat. Science, 112(2920):715–716, 1950. doi:10.1126/science.112.2920.715.">Novick and Szilard, 1950</a>]</span></p></li>
+<li><p>Monod kinetics: <span class="bibtex-citation" id="id9">[<a class="reference internal" href="../references.html#id219" title="Jacques Monod. The growth of bacterial cultures. Annual Review of Microbiology, 3:371–394, 1949. doi:10.1146/annurev.mi.03.100149.002103.">Monod, 1949</a>]</span></p></li>
+<li><p>MiCRM / energy-flux consumer–resource framing: <span class="bibtex-citation" id="id10">[<a class="reference internal" href="../references.html#id216" title="Robert Marsland, Wentao Cui, and Pankaj Mehta. The available energy fluxes drive the self-organization of microbial communities. PLOS Computational Biology, 15(2):e1006793, 2019. doi:10.1371/journal.pcbi.1006793.">Marsland <em>et al.</em>, 2019</a>]</span></p></li>
 </ul>
 </section>
 </section>
@@ -1250,15 +1292,17 @@ u_j(R)=\lambda_j\frac{R}{K_j+R}.\]</div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-will-learn">What you will learn</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-this-fits-in-the-course">Where this fits in the course</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-micrm">Model (MiCRM)</a></li>
@@ -1335,8 +1379,8 @@ By MulQuaBio collective!
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

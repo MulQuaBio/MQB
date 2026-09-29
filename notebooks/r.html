@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -61,6 +64,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/r';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -68,34 +72,30 @@
     <link rel="prev" title="Object-Oriented Programming" href="object-oriented-programming.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -103,7 +103,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -111,15 +110,59 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -128,7 +171,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -158,21 +202,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MulQuaBio - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -208,11 +248,10 @@
 <li class="toctree-l1"><a class="reference internal" href="mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model-simp.html">Model simplification</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced E&amp;E Modelling and Statistics Pre-work</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Introduction &amp; prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
-
 
 
 
@@ -263,8 +302,14 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Introduction &amp; prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_Bootcamp_Rubric.html">Computing Bootcamp Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_MiniProject_Rubric.html">Computing MiniProject Rubric</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -299,9 +344,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -480,7 +530,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -494,25 +544,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -534,7 +576,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-r">Why r?</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#would-you-ever-need-anything-other-than-r">Would you ever need anything other than r?</a></li>
@@ -896,7 +938,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">is.vector</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="c1"># check if v&#39;s a vector</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">is.vector</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="c1"># check if v's a vector</span>
 </pre></div>
 </div>
 </div>
@@ -1163,7 +1205,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;A string&quot;</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"A string"</span>
 <span class="nf">class</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1428,7 +1470,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.02</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
-<span class="n">v2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bc&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;def&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ghij&quot;</span><span class="p">)</span>
+<span class="n">v2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span><span class="w"> </span><span class="s">"bc"</span><span class="p">,</span><span class="w"> </span><span class="s">"def"</span><span class="p">,</span><span class="w"> </span><span class="s">"ghij"</span><span class="p">)</span>
 <span class="n">v3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">TrUE</span><span class="p">,</span><span class="w"> </span><span class="n">TrUE</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1481,7 +1523,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>TrUE gets converted to 1 because vectors can contain only one data type, and the Integer class is higher in the heirarchy of data types than Boolean (so the latter by default gets converted to former).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.02</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Mary&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.02</span><span class="p">,</span><span class="w"> </span><span class="s">"Mary"</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
 <span class="n">v1</span>
 </pre></div>
 </div>
@@ -1500,7 +1542,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>You create empty vectors like this instead of using <code class="docutils literal notranslate"><span class="pre">c()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">character</span><span class="p">(</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="c1"># an empty vector &#39;character&#39; with 3 elements</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">character</span><span class="p">(</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="c1"># an empty vector 'character' with 3 elements</span>
 <span class="n">v2</span>
 </pre></div>
 </div>
@@ -1516,7 +1558,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">numeric</span><span class="p">(</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="c1"># an empty numeric &#39;character&#39; with 3 elements</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">numeric</span><span class="p">(</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="c1"># an empty numeric 'character' with 3 elements</span>
 <span class="n">v3</span>
 </pre></div>
 </div>
@@ -1685,7 +1727,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>Try inserting a text value in <code class="docutils literal notranslate"><span class="pre">mat1</span></code>and see what happens:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mat1</span><span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;one&quot;</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mat1</span><span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"one"</span>
 <span class="n">mat1</span>
 </pre></div>
 </div>
@@ -1717,7 +1759,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>Try this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyList</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">1L</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;p&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">.</span><span class="m">001</span><span class="p">)</span><span class="w"> </span><span class="c1"># an integer, a character, a boolean, and a numeric walk into a bar...</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyList</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="m">1L</span><span class="p">,</span><span class="w"> </span><span class="s">"p"</span><span class="p">,</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">.</span><span class="m">001</span><span class="p">)</span><span class="w"> </span><span class="c1"># an integer, a character, a boolean, and a numeric walk into a bar...</span>
 <span class="n">MyList</span>
 </pre></div>
 </div>
@@ -1734,7 +1776,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>A more complex (and meaningful) list:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyList</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">species</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Quercus robur&quot;</span><span class="p">,</span><span class="s">&quot;Fraxinus excelsior&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">age</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">123</span><span class="p">,</span><span class="w"> </span><span class="m">84</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyList</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">species</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">"Quercus robur"</span><span class="p">,</span><span class="s">"Fraxinus excelsior"</span><span class="p">),</span><span class="w"> </span><span class="n">age</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">123</span><span class="p">,</span><span class="w"> </span><span class="m">84</span><span class="p">))</span>
 <span class="n">MyList</span>
 </pre></div>
 </div>
@@ -1804,7 +1846,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>or this way:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyList</span><span class="p">[[</span><span class="s">&quot;species&quot;</span><span class="p">]]</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyList</span><span class="p">[[</span><span class="s">"species"</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -1830,7 +1872,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>A more complex list:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pop1</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">(</span><span class="n">species</span><span class="o">=</span><span class="s">&#39;Cancer magister&#39;</span><span class="p">,</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pop1</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">(</span><span class="n">species</span><span class="o">=</span><span class="s">'Cancer magister'</span><span class="p">,</span>
 <span class="w">           </span><span class="n">latitude</span><span class="o">=</span><span class="m">48.3</span><span class="p">,</span><span class="n">longitude</span><span class="o">=</span><span class="m">-123.1</span><span class="p">,</span>
 <span class="w">           </span><span class="n">startyr</span><span class="o">=</span><span class="m">1980</span><span class="p">,</span><span class="n">endyr</span><span class="o">=</span><span class="m">1985</span><span class="p">,</span>
 <span class="w">           </span><span class="n">pop</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">303</span><span class="p">,</span><span class="m">402</span><span class="p">,</span><span class="m">101</span><span class="p">,</span><span class="m">607</span><span class="p">,</span><span class="m">802</span><span class="p">,</span><span class="m">35</span><span class="p">))</span>
@@ -1953,7 +1995,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pops</span><span class="o">$</span><span class="n">sp1</span><span class="p">[</span><span class="s">&quot;pop&quot;</span><span class="p">]</span><span class="w"> </span><span class="c1"># sp1&#39;s population sizes</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pops</span><span class="o">$</span><span class="n">sp1</span><span class="p">[</span><span class="s">"pop"</span><span class="p">]</span><span class="w"> </span><span class="c1"># sp1's population sizes</span>
 </pre></div>
 </div>
 </div>
@@ -2149,7 +2191,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>You can easily assign names to the columns of dataframes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">names</span><span class="p">(</span><span class="n">MyDF</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;MyFirstColumn&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Second Column&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My.Third.Column&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">names</span><span class="p">(</span><span class="n">MyDF</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"MyFirstColumn"</span><span class="p">,</span><span class="w"> </span><span class="s">"My Second Column"</span><span class="p">,</span><span class="w"> </span><span class="s">"My.Third.Column"</span><span class="p">)</span>
 <span class="n">MyDF</span>
 </pre></div>
 </div>
@@ -2219,7 +2261,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">colnames</span><span class="p">(</span><span class="n">MyDF</span><span class="p">)[</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;MySecondColumn&quot;</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">colnames</span><span class="p">(</span><span class="n">MyDF</span><span class="p">)[</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"MySecondColumn"</span>
 <span class="n">MyDF</span>
 </pre></div>
 </div>
@@ -2261,7 +2303,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyDF</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;MyFirstColumn&quot;</span><span class="p">,</span><span class="s">&quot;My.Third.Column&quot;</span><span class="p">)]</span><span class="w"> </span><span class="c1"># show two specific columns only</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyDF</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="s">"MyFirstColumn"</span><span class="p">,</span><span class="s">"My.Third.Column"</span><span class="p">)]</span><span class="w"> </span><span class="c1"># show two specific columns only</span>
 </pre></div>
 </div>
 </div>
@@ -2305,9 +2347,9 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;data.frame&#39;:	10 obs. of  3 variables:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'data.frame':	10 obs. of  3 variables:
  $ MyFirstColumn   : int  1 2 3 4 5 6 7 8 9 10
- $ My Second Column: chr  &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...
+ $ My Second Column: chr  "A" "B" "C" "D" ...
  $ My.Third.Column : num  0.1514 0.8298 0.09 0.0867 0.1289 ...
 </pre></div>
 </div>
@@ -2506,7 +2548,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>Every element (entry) of a vector in R has an order (an “index” value): the first value, second, third, etc. To illustrate this, let’s create a simple vector:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyVar</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="w"> </span><span class="s">&#39;a&#39;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&#39;b&#39;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&#39;d&#39;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&#39;e&#39;</span><span class="w"> </span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyVar</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="w"> </span><span class="s">'a'</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">'b'</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">'c'</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">'d'</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">'e'</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2906,7 +2948,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>Let’s try creating and manipulating strings:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">species.name</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;Quercus robur&quot;</span><span class="w"> </span><span class="c1">#You can alo use single quotes</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">species.name</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"Quercus robur"</span><span class="w"> </span><span class="c1">#You can alo use single quotes</span>
 <span class="n">species.name</span>
 </pre></div>
 </div>
@@ -2917,7 +2959,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>To combine to strings:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Quercus&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;robur&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">paste</span><span class="p">(</span><span class="s">"Quercus"</span><span class="p">,</span><span class="w"> </span><span class="s">"robur"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2926,7 +2968,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Quercus&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;robur&quot;</span><span class="p">,</span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">#Get rid of space</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">paste</span><span class="p">(</span><span class="s">"Quercus"</span><span class="p">,</span><span class="w"> </span><span class="s">"robur"</span><span class="p">,</span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">""</span><span class="p">)</span><span class="w"> </span><span class="c1">#Get rid of space</span>
 </pre></div>
 </div>
 </div>
@@ -2935,7 +2977,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Quercus&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;robur&quot;</span><span class="p">,</span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">#insert comma to separate</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">paste</span><span class="p">(</span><span class="s">"Quercus"</span><span class="p">,</span><span class="w"> </span><span class="s">"robur"</span><span class="p">,</span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">", "</span><span class="p">)</span><span class="w"> </span><span class="c1">#insert comma to separate</span>
 </pre></div>
 </div>
 </div>
@@ -2946,7 +2988,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>And as is the case with so many r functions, pasting works on vectors:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">paste</span><span class="p">(</span><span class="s">&#39;Year is:&#39;</span><span class="p">,</span><span class="w"> </span><span class="m">1990</span><span class="o">:</span><span class="m">2000</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">paste</span><span class="p">(</span><span class="s">'Year is:'</span><span class="p">,</span><span class="w"> </span><span class="m">1990</span><span class="o">:</span><span class="m">2000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3106,7 +3148,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>★ <em>Try out the above commands in your r console by generating the appropriate data</em>. For example,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">strsplit</span><span class="p">(</span><span class="s">&quot;String; to; Split&quot;</span><span class="p">,</span><span class="s">&#39;;&#39;</span><span class="p">)</span><span class="c1"># Split the string at &#39;;&#39;</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">strsplit</span><span class="p">(</span><span class="s">"String; to; Split"</span><span class="p">,</span><span class="s">';'</span><span class="p">)</span><span class="c1"># Split the string at ';'</span>
 </pre></div>
 </div>
 </div>
@@ -3231,10 +3273,10 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>★ Create a sensibly-named directory (e.g., <code class="docutils literal notranslate"><span class="pre">MyrCoursework</span></code>, <code class="docutils literal notranslate"><span class="pre">week3</span></code>, etc, depnding on which course you are on) in an appropriate location on your computer. If you are using a college Windows computer, you may need to create it in your <code class="docutils literal notranslate"><span class="pre">H:</span></code> drive. Avoid including spaces in your file or directory names, as this will often create problems when you share your file or directory with somebody else. Many software programs do not handle spaces in file/directory names well. Use underscores instead of spaces. For example, instead of <code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">r</span> <span class="pre">Coursework</span></code>, use <code class="docutils literal notranslate"><span class="pre">My_r_Coursework</span></code> or <code class="docutils literal notranslate"><span class="pre">MyrCoursework</span></code>.</p>
 <p>★ Create subdirectories <em>within this directory</em> called <code class="docutils literal notranslate"><span class="pre">code</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code>, and <code class="docutils literal notranslate"><span class="pre">results</span></code>. remember,  commands in all programming languages are case-sensitive when it comes to reading directory path names, so <code class="docutils literal notranslate"><span class="pre">code</span></code> is not the same as <code class="docutils literal notranslate"><span class="pre">Code</span></code>!</p>
 <p>You can create directories using <code class="docutils literal notranslate"><span class="pre">dir.create()</span></code>within r (or if on Mac/Linux, with the usual <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> from the bash terminal):</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dir.create</span><span class="p">(</span><span class="s">&quot;MyrCoursework&quot;</span><span class="p">)</span>
-<span class="nf">dir.create</span><span class="p">(</span><span class="s">&quot;MyrCoursework/code&quot;</span><span class="p">)</span>
-<span class="nf">dir.create</span><span class="p">(</span><span class="s">&quot;MyrCoursework/data&quot;</span><span class="p">)</span><span class="w">    </span>
-<span class="nf">dir.create</span><span class="p">(</span><span class="s">&quot;MyrCoursework/results&quot;</span><span class="p">)</span><span class="w">    </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dir.create</span><span class="p">(</span><span class="s">"MyrCoursework"</span><span class="p">)</span>
+<span class="nf">dir.create</span><span class="p">(</span><span class="s">"MyrCoursework/code"</span><span class="p">)</span>
+<span class="nf">dir.create</span><span class="p">(</span><span class="s">"MyrCoursework/data"</span><span class="p">)</span><span class="w">    </span>
+<span class="nf">dir.create</span><span class="p">(</span><span class="s">"MyrCoursework/results"</span><span class="p">)</span><span class="w">    </span>
 </pre></div>
 </div>
 <section id="the-r-workspace-and-working-directory">
@@ -3259,7 +3301,7 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 </li>
 </ul>
 <p>and</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`.Last &lt;- function() cat(&quot;\n   Goodbye! \n\n&quot;)`.
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`.Last &lt;- function() cat("\n   Goodbye! \n\n")`.
 </pre></div>
 </div>
 <p>Between these two lines, insert:
@@ -3279,14 +3321,14 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <p>Now, import the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyData</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;../data/trees.csv&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyData</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">"../data/trees.csv"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ls</span><span class="p">(</span><span class="n">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;My*&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># Check that MyData has appeared</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ls</span><span class="p">(</span><span class="n">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"My*"</span><span class="p">)</span><span class="w"> </span><span class="c1"># Check that MyData has appeared</span>
 </pre></div>
 </div>
 </div>
@@ -3357,8 +3399,8 @@ your r Workspace during the current r session. But the main thing is, you should
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;data.frame&#39;:	120 obs. of  3 variables:
- $ Species      : chr  &quot;Populus tremula&quot; &quot;Quercus robur&quot; &quot;Ginkgo biloba&quot; &quot;Fraxinus excelsior&quot; ...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'data.frame':	120 obs. of  3 variables:
+ $ Species      : chr  "Populus tremula" "Quercus robur" "Ginkgo biloba" "Fraxinus excelsior" ...
  $ Distance.m   : num  31.7 46 31.2 34.6 45.5 ...
  $ Angle.degrees: num  41.3 44.5 25.1 23.3 38.3 ...
 </pre></div>
@@ -3367,7 +3409,7 @@ your r Workspace during the current r session. But the main thing is, you should
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyData</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;../data/trees.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="c1"># Import ignoring headers</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyData</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">"../data/trees.csv"</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">F</span><span class="p">)</span><span class="w"> </span><span class="c1"># Import ignoring headers</span>
 </pre></div>
 </div>
 </div>
@@ -3399,7 +3441,7 @@ your r Workspace during the current r session. But the main thing is, you should
 <p>Or you can load data using the more general <code class="docutils literal notranslate"><span class="pre">read.table</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyData</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.table</span><span class="p">(</span><span class="s">&quot;../data/trees.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;,&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TrUE</span><span class="p">)</span><span class="w"> </span><span class="c1">#another way</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyData</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.table</span><span class="p">(</span><span class="s">"../data/trees.csv"</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">','</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TrUE</span><span class="p">)</span><span class="w"> </span><span class="c1">#another way</span>
 </pre></div>
 </div>
 </div>
@@ -3431,7 +3473,7 @@ your r Workspace during the current r session. But the main thing is, you should
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyData</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;../data/trees.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">skip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="c1"># skip first 5 lines</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyData</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">"../data/trees.csv"</span><span class="p">,</span><span class="w"> </span><span class="n">skip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="c1"># skip first 5 lines</span>
 </pre></div>
 </div>
 </div>
@@ -3442,14 +3484,14 @@ your r Workspace during the current r session. But the main thing is, you should
 <p>You can also save your data frames using <code class="docutils literal notranslate"><span class="pre">write.table</span></code> or <code class="docutils literal notranslate"><span class="pre">write.csv</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">write.csv</span><span class="p">(</span><span class="n">MyData</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;../results/MyData.csv&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">write.csv</span><span class="p">(</span><span class="n">MyData</span><span class="p">,</span><span class="w"> </span><span class="s">"../results/MyData.csv"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dir</span><span class="p">(</span><span class="s">&quot;../results/&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># Check if it worked</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dir</span><span class="p">(</span><span class="s">"../results/"</span><span class="p">)</span><span class="w"> </span><span class="c1"># Check if it worked</span>
 </pre></div>
 </div>
 </div>
@@ -3464,12 +3506,12 @@ your r Workspace during the current r session. But the main thing is, you should
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">write.table</span><span class="p">(</span><span class="n">MyData</span><span class="p">[</span><span class="m">1</span><span class="p">,],</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;../results/MyData.csv&quot;</span><span class="p">,</span><span class="n">append</span><span class="o">=</span><span class="n">TrUE</span><span class="p">)</span><span class="w"> </span><span class="c1"># append</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">write.table</span><span class="p">(</span><span class="n">MyData</span><span class="p">[</span><span class="m">1</span><span class="p">,],</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"../results/MyData.csv"</span><span class="p">,</span><span class="n">append</span><span class="o">=</span><span class="n">TrUE</span><span class="p">)</span><span class="w"> </span><span class="c1"># append</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in write.table(MyData[1, ], file = &quot;../results/MyData.csv&quot;, append = TrUE):
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in write.table(MyData[1, ], file = "../results/MyData.csv", append = TrUE):
 “appending column names to file”
 </pre></div>
 </div>
@@ -3478,14 +3520,14 @@ your r Workspace during the current r session. But the main thing is, you should
 <p>You get a warning with here because r thinks it is strange that you are appending headers to a file that already has headers!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">write.csv</span><span class="p">(</span><span class="n">MyData</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;../results/MyData.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="o">=</span><span class="n">TrUE</span><span class="p">)</span><span class="w"> </span><span class="c1"># write row names</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">write.csv</span><span class="p">(</span><span class="n">MyData</span><span class="p">,</span><span class="w"> </span><span class="s">"../results/MyData.csv"</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="o">=</span><span class="n">TrUE</span><span class="p">)</span><span class="w"> </span><span class="c1"># write row names</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">write.table</span><span class="p">(</span><span class="n">MyData</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;../results/MyData.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">col.names</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="c1"># ignore col names</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">write.table</span><span class="p">(</span><span class="n">MyData</span><span class="p">,</span><span class="w"> </span><span class="s">"../results/MyData.csv"</span><span class="p">,</span><span class="w"> </span><span class="n">col.names</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="c1"># ignore col names</span>
 </pre></div>
 </div>
 </div>
@@ -3502,15 +3544,15 @@ your r Workspace during the current r session. But the main thing is, you should
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># A simple script to illustrate r input-output.  </span>
 <span class="c1"># run line by line and check inputs outputs to understand what is happening  </span>
 
-<span class="n">MyData</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;../data/trees.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TrUE</span><span class="p">)</span><span class="w"> </span><span class="c1"># import with headers</span>
+<span class="n">MyData</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">"../data/trees.csv"</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TrUE</span><span class="p">)</span><span class="w"> </span><span class="c1"># import with headers</span>
 
-<span class="nf">write.csv</span><span class="p">(</span><span class="n">MyData</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;../results/MyData.csv&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">#write it out as a new file</span>
+<span class="nf">write.csv</span><span class="p">(</span><span class="n">MyData</span><span class="p">,</span><span class="w"> </span><span class="s">"../results/MyData.csv"</span><span class="p">)</span><span class="w"> </span><span class="c1">#write it out as a new file</span>
 
-<span class="nf">write.table</span><span class="p">(</span><span class="n">MyData</span><span class="p">[</span><span class="m">1</span><span class="p">,],</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;../results/MyData.csv&quot;</span><span class="p">,</span><span class="n">append</span><span class="o">=</span><span class="n">TrUE</span><span class="p">)</span><span class="w"> </span><span class="c1"># Append to it</span>
+<span class="nf">write.table</span><span class="p">(</span><span class="n">MyData</span><span class="p">[</span><span class="m">1</span><span class="p">,],</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"../results/MyData.csv"</span><span class="p">,</span><span class="n">append</span><span class="o">=</span><span class="n">TrUE</span><span class="p">)</span><span class="w"> </span><span class="c1"># Append to it</span>
 
-<span class="nf">write.csv</span><span class="p">(</span><span class="n">MyData</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;../results/MyData.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="o">=</span><span class="n">TrUE</span><span class="p">)</span><span class="w"> </span><span class="c1"># write row names</span>
+<span class="nf">write.csv</span><span class="p">(</span><span class="n">MyData</span><span class="p">,</span><span class="w"> </span><span class="s">"../results/MyData.csv"</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="o">=</span><span class="n">TrUE</span><span class="p">)</span><span class="w"> </span><span class="c1"># write row names</span>
 
-<span class="nf">write.table</span><span class="p">(</span><span class="n">MyData</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;../results/MyData.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">col.names</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="c1"># ignore column names</span>
+<span class="nf">write.table</span><span class="p">(</span><span class="n">MyData</span><span class="p">,</span><span class="w"> </span><span class="s">"../results/MyData.csv"</span><span class="p">,</span><span class="w"> </span><span class="n">col.names</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="c1"># ignore column names</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -3531,12 +3573,12 @@ your r Workspace during the current r session. But the main thing is, you should
 <p>★ Try sourcing <code class="docutils literal notranslate"><span class="pre">basic_io.R</span></code> (you will need to make sure you have <code class="docutils literal notranslate"><span class="pre">setwd</span></code> to your code directory):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">source</span><span class="p">(</span><span class="s">&quot;basic_io.r&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">source</span><span class="p">(</span><span class="s">"basic_io.r"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in write.table(MyData[1, ], file = &quot;../results/MyData.csv&quot;, append = TrUE):
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in write.table(MyData[1, ], file = "../results/MyData.csv", append = TrUE):
 “appending column names to file”
 </pre></div>
 </div>
@@ -3586,15 +3628,15 @@ your r Workspace during the current r session. But the main thing is, you should
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">TrUE</span>
 <span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">TrUE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nf">print </span><span class="p">(</span><span class="s">&quot;a is TrUE&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">print </span><span class="p">(</span><span class="s">"a is TrUE"</span><span class="p">)</span>
 <span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nf">print </span><span class="p">(</span><span class="s">&quot;a is FALSE&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">print </span><span class="p">(</span><span class="s">"a is FALSE"</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;a is TrUE&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] "a is TrUE"
 </pre></div>
 </div>
 </div>
@@ -3605,7 +3647,7 @@ your r Workspace during the current r session. But the main thing is, you should
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">runif</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="c1">## Generate a uniformly distributed random number</span>
-<span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="nf">print </span><span class="p">(</span><span class="s">&quot;Less than a half&quot;</span><span class="p">)}</span>
+<span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="nf">print </span><span class="p">(</span><span class="s">"Less than a half"</span><span class="p">)}</span>
 </pre></div>
 </div>
 </div>
@@ -3616,7 +3658,7 @@ your r Workspace during the current r session. But the main thing is, you should
 <p>Please indent your code for readability, even if its not strictly necessary (unlike <a class="reference internal" href="python.html"><span class="std std-doc">python</span></a>). Indentation helps you see the flow of the logic, rather than flattened version, which is hard for you and anybody else to read. For example, the following code block is so much much readable than the one above:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">z</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">runif</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
 <span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nf">print </span><span class="p">(</span><span class="s">&quot;Less than a half&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nf">print </span><span class="p">(</span><span class="s">"Less than a half"</span><span class="p">)</span>
 <span class="w">   </span><span class="p">}</span>
 </pre></div>
 </div>
@@ -3630,22 +3672,22 @@ your r Workspace during the current r session. But the main thing is, you should
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span>
-<span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; squared is&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">))</span>
+<span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="s">" squared is"</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;1  squared is 1&quot;
-[1] &quot;2  squared is 4&quot;
-[1] &quot;3  squared is 9&quot;
-[1] &quot;4  squared is 16&quot;
-[1] &quot;5  squared is 25&quot;
-[1] &quot;6  squared is 36&quot;
-[1] &quot;7  squared is 49&quot;
-[1] &quot;8  squared is 64&quot;
-[1] &quot;9  squared is 81&quot;
-[1] &quot;10  squared is 100&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] "1  squared is 1"
+[1] "2  squared is 4"
+[1] "3  squared is 9"
+[1] "4  squared is 16"
+[1] "5  squared is 25"
+[1] "6  squared is 36"
+[1] "7  squared is 49"
+[1] "8  squared is 64"
+[1] "9  squared is 81"
+[1] "10  squared is 100"
 </pre></div>
 </div>
 </div>
@@ -3676,18 +3718,18 @@ your r Workspace during the current r session. But the main thing is, you should
 <p>You can also loop over a vector of strings:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span><span class="p">(</span><span class="n">species</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;Heliodoxa rubinoides&#39;</span><span class="p">,</span><span class="w"> </span>
-<span class="w">                 </span><span class="s">&#39;Boissonneaua jardini&#39;</span><span class="p">,</span><span class="w"> </span>
-<span class="w">                 </span><span class="s">&#39;Sula nebouxii&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&#39;The species is&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">species</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span><span class="p">(</span><span class="n">species</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">'Heliodoxa rubinoides'</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                 </span><span class="s">'Boissonneaua jardini'</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                 </span><span class="s">'Sula nebouxii'</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">'The species is'</span><span class="p">,</span><span class="w"> </span><span class="n">species</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;The species is Heliodoxa rubinoides&quot;
-[1] &quot;The species is Boissonneaua jardini&quot;
-[1] &quot;The species is Sula nebouxii&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] "The species is Heliodoxa rubinoides"
+[1] "The species is Boissonneaua jardini"
+[1] "The species is Sula nebouxii"
 </pre></div>
 </div>
 </div>
@@ -3696,7 +3738,7 @@ your r Workspace during the current r session. But the main thing is, you should
 <p>And here’s a for loop using apre-existing vector:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="s">&quot;bc&quot;</span><span class="p">,</span><span class="s">&quot;def&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span><span class="s">"bc"</span><span class="p">,</span><span class="s">"def"</span><span class="p">)</span>
 <span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="n">v1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="p">}</span>
@@ -3704,9 +3746,9 @@ your r Workspace during the current r session. But the main thing is, you should
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;a&quot;
-[1] &quot;bc&quot;
-[1] &quot;def&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] "a"
+[1] "bc"
+[1] "def"
 </pre></div>
 </div>
 </div>
@@ -3757,7 +3799,7 @@ your r Workspace during the current r session. But the main thing is, you should
 <span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="kr">break</span><span class="w"> </span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1"># Break out of the while loop!  </span>
-<span class="w">            </span><span class="nf">cat</span><span class="p">(</span><span class="s">&quot;i equals &quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&quot; \n&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="nf">cat</span><span class="p">(</span><span class="s">"i equals "</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">" \n"</span><span class="p">)</span>
 <span class="w">            </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># Update i</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -3819,29 +3861,29 @@ The syntax for r functions is quite simple, with each function accepting “argu
 <span class="n">MyFunction</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">Arg1</span><span class="p">,</span><span class="w"> </span><span class="n">Arg2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span>
 <span class="w">  </span><span class="c1"># Statements involving Arg1, Arg2:</span>
-<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Argument&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">Arg1</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;is a&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">Arg1</span><span class="p">)))</span><span class="w"> </span><span class="c1"># print Arg1&#39;s type</span>
-<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Argument&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">Arg2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;is a&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">Arg2</span><span class="p">)))</span><span class="w"> </span><span class="c1"># print Arg2&#39;s type</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">"Argument"</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">Arg1</span><span class="p">),</span><span class="w"> </span><span class="s">"is a"</span><span class="p">,</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">Arg1</span><span class="p">)))</span><span class="w"> </span><span class="c1"># print Arg1's type</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">"Argument"</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">Arg2</span><span class="p">),</span><span class="w"> </span><span class="s">"is a"</span><span class="p">,</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">Arg2</span><span class="p">)))</span><span class="w"> </span><span class="c1"># print Arg2's type</span>
 <span class="w">    </span>
 <span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">Arg1</span><span class="p">,</span><span class="w"> </span><span class="n">Arg2</span><span class="p">))</span><span class="w"> </span><span class="c1">#this is optional, but very useful</span>
 <span class="p">}</span>
 
 <span class="nf">MyFunction</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1">#test the function</span>
-<span class="nf">MyFunction</span><span class="p">(</span><span class="s">&quot;riki&quot;</span><span class="p">,</span><span class="s">&quot;Tiki&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">#A different test</span>
+<span class="nf">MyFunction</span><span class="p">(</span><span class="s">"riki"</span><span class="p">,</span><span class="s">"Tiki"</span><span class="p">)</span><span class="w"> </span><span class="c1">#A different test</span>
 </pre></div>
 </div>
 <p>Note the curly brackets – these are necessary for r to know where the specification of the function starts and ends. Also, note the indentation. Not necessary (unlike Python), but recommended to make the code more readable.</p>
 <p>Now enter the R console and source the script:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">source</span><span class="p">(</span><span class="s">&quot;boilerplate.r&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">source</span><span class="p">(</span><span class="s">"boilerplate.r"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Argument 1 is a numeric&quot;
-[1] &quot;Argument 2 is a numeric&quot;
-[1] &quot;Argument riki is a character&quot;
-[1] &quot;Argument Tiki is a character&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] "Argument 1 is a numeric"
+[1] "Argument 2 is a numeric"
+[1] "Argument riki is a character"
+[1] "Argument Tiki is a character"
 </pre></div>
 </div>
 </div>
@@ -3849,7 +3891,7 @@ The syntax for r functions is quite simple, with each function accepting “argu
 <p>This will run the script, and also save your function <code class="docutils literal notranslate"><span class="pre">MyFunction</span></code> as an object into your workspace (try <code class="docutils literal notranslate"><span class="pre">ls()</span></code>, and you will see <code class="docutils literal notranslate"><span class="pre">MyFunction</span></code> appear in the list of objects):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ls</span><span class="p">(</span><span class="n">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MyFun*&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ls</span><span class="p">(</span><span class="n">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"MyFun*"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3877,9 +3919,9 @@ The syntax for r functions is quite simple, with each function accepting “argu
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Checks if an integer is even</span>
 <span class="n">is.even</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is even!&#39;</span><span class="p">))</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">'is even!'</span><span class="p">))</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is odd!&#39;</span><span class="p">))</span>
+<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">'is odd!'</span><span class="p">))</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -3895,9 +3937,9 @@ The syntax for r functions is quite simple, with each function accepting “argu
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Checks if a number is a power of 2</span>
 <span class="n">is.power2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nf">log2</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="m">1</span><span class="o">==</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;is a power of 2!&#39;</span><span class="p">))</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="s">'is a power of 2!'</span><span class="p">))</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is not a power of 2!&#39;</span><span class="p">))</span>
+<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">'is not a power of 2!'</span><span class="p">))</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -3913,17 +3955,17 @@ The syntax for r functions is quite simple, with each function accepting “argu
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Checks if a number is prime</span>
 <span class="n">is.prime</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="o">==</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is a zero!&#39;</span><span class="p">))</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">'is a zero!'</span><span class="p">))</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="o">==</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is just a unit!&#39;</span><span class="p">))</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">'is just a unit!'</span><span class="p">))</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="w">    </span>
 <span class="w">  </span><span class="n">ints</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="p">(</span><span class="n">n</span><span class="m">-1</span><span class="p">)</span>
 <span class="w">  </span>
 <span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nf">all</span><span class="p">(</span><span class="n">n</span><span class="o">%%</span><span class="n">ints</span><span class="o">!=</span><span class="m">0</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is a prime!&#39;</span><span class="p">))</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">'is a prime!'</span><span class="p">))</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">&#39;is a composite!&#39;</span><span class="p">))</span>
+<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="s">'is a composite!'</span><span class="p">))</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -3950,12 +3992,12 @@ The syntax for r functions is quite simple, with each function accepting “argu
 <span class="c1"># distance:  The distance from base of tree (e.g., meters)</span>
 <span class="c1">#</span>
 <span class="c1"># OUTPUT</span>
-<span class="c1"># The heights of the tree, same units as &quot;distance&quot;</span>
+<span class="c1"># The heights of the tree, same units as "distance"</span>
 
 <span class="n">TreeHeight</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">radians</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">degrees</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kc">pi</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">180</span>
 <span class="w">    </span><span class="n">height</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">tan</span><span class="p">(</span><span class="n">radians</span><span class="p">)</span>
-<span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Tree height is:&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">))</span>
+<span class="w">    </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">"Tree height is:"</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">))</span>
 <span class="w">  </span>
 <span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
 <span class="p">}</span>
@@ -3977,9 +4019,9 @@ The syntax for r functions is quite simple, with each function accepting “argu
 <ul>
 <li><p>Loads <code class="docutils literal notranslate"><span class="pre">trees.csv</span></code> and calculates tree heights for all trees in the data. Note that the distances have been measured in meters. (Hint: use relative paths)).</p></li>
 <li><p>Creates a csv output file called <code class="docutils literal notranslate"><span class="pre">TreeHts.csv</span></code> in <code class="docutils literal notranslate"><span class="pre">results</span></code>that contains the calculated tree heights along with the original data in the following format (only first two rows and headers shown):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Species&quot;</span>,<span class="s2">&quot;Distance.m&quot;</span>,<span class="s2">&quot;Angle.degrees&quot;</span>,<span class="s2">&quot;Tree.Height.m&quot;</span>
-<span class="s2">&quot;Populus tremula&quot;</span>,31.6658337740228,41.2826361937914,27.8021161438536
-<span class="s2">&quot;Quercus robur&quot;</span>,45.984992608428,44.5359166583512,45.2460250644405
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s2">"Species"</span>,<span class="s2">"Distance.m"</span>,<span class="s2">"Angle.degrees"</span>,<span class="s2">"Tree.Height.m"</span>
+<span class="s2">"Populus tremula"</span>,31.6658337740228,41.2826361937914,27.8021161438536
+<span class="s2">"Quercus robur"</span>,45.984992608428,44.5359166583512,45.2460250644405
 </pre></div>
 </div>
 </li>
@@ -4040,19 +4082,19 @@ The syntax for r functions is quite simple, with each function accepting “argu
 <span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="p">(</span><span class="n">Tot</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="w"> </span>
-<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Using loops, the time taken is:&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Using loops, the time taken is:"</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">system.time</span><span class="p">(</span><span class="nf">SumAllElements</span><span class="p">(</span><span class="n">M</span><span class="p">)))</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Using the in-built vectorized function, the time taken is:&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Using the in-built vectorized function, the time taken is:"</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">system.time</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">M</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Using loops, the time taken is:&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] "Using loops, the time taken is:"
    user  system elapsed 
   0.058   0.000   0.057 
-[1] &quot;Using the in-built vectorized function, the time taken is:&quot;
+[1] "Using the in-built vectorized function, the time taken is:"
    user  system elapsed 
   0.001   0.000   0.001 
 </pre></div>
@@ -4271,7 +4313,7 @@ for some guidelines.</p>
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">######### Functions ##########</span>
 
-<span class="c1">## A function to take a sample of size n from a population &quot;popn&quot; and return its mean</span>
+<span class="c1">## A function to take a sample of size n from a population "popn" and return its mean</span>
 <span class="n">myexperiment</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">pop_sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
 <span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">pop_sample</span><span class="p">))</span>
@@ -4286,7 +4328,7 @@ for some guidelines.</p>
 <span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">result1</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="c1">## To run &quot;num&quot; iterations of the experiment using a FOr loop on a vector with preallocation:</span>
+<span class="c1">## To run "num" iterations of the experiment using a FOr loop on a vector with preallocation:</span>
 <span class="n">loopy_sample2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">result2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vector</span><span class="p">(,</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="c1">#Preallocate expected size</span>
 <span class="w">    </span><span class="kr">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -4295,9 +4337,9 @@ for some guidelines.</p>
 <span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">result2</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="c1">## To run &quot;num&quot; iterations of the experiment using a FOr loop on a list with preallocation:</span>
+<span class="c1">## To run "num" iterations of the experiment using a FOr loop on a list with preallocation:</span>
 <span class="n">loopy_sample3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">result3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vector</span><span class="p">(</span><span class="s">&quot;list&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="c1">#Preallocate expected size</span>
+<span class="w">    </span><span class="n">result3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vector</span><span class="p">(</span><span class="s">"list"</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="c1">#Preallocate expected size</span>
 <span class="w">    </span><span class="kr">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">result3</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">myexperiment</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
@@ -4305,13 +4347,13 @@ for some guidelines.</p>
 <span class="p">}</span>
 
 
-<span class="c1">## To run &quot;num&quot; iterations of the experiment using vectorization with lapply:</span>
+<span class="c1">## To run "num" iterations of the experiment using vectorization with lapply:</span>
 <span class="n">lapply_sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">result4</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="nf">myexperiment</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">))</span>
 <span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">result4</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="c1">## To run &quot;num&quot; iterations of the experiment using vectorization with sapply:</span>
+<span class="c1">## To run "num" iterations of the experiment using vectorization with sapply:</span>
 <span class="n">sapply_sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">result5</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sapply</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="nf">myexperiment</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">))</span>
 <span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="n">result5</span><span class="p">)</span>
@@ -4341,37 +4383,37 @@ for some guidelines.</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="c1"># sample size for each experiment</span>
 <span class="n">num</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">10000</span><span class="w"> </span><span class="c1"># Number of times to rerun the experiment</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Using loops without preallocation on a vector took:&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Using loops without preallocation on a vector took:"</span><span class="w"> </span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">system.time</span><span class="p">(</span><span class="nf">loopy_sample1</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)))</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Using loops with preallocation on a vector took:&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Using loops with preallocation on a vector took:"</span><span class="w"> </span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">system.time</span><span class="p">(</span><span class="nf">loopy_sample2</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)))</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Using loops with preallocation on a list took:&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Using loops with preallocation on a list took:"</span><span class="w"> </span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">system.time</span><span class="p">(</span><span class="nf">loopy_sample3</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)))</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Using the vectorized sapply function (on a list) took:&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Using the vectorized sapply function (on a list) took:"</span><span class="w"> </span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">system.time</span><span class="p">(</span><span class="nf">sapply_sample</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)))</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Using the vectorized lapply function (on a list) took:&quot;</span><span class="w"> </span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Using the vectorized lapply function (on a list) took:"</span><span class="w"> </span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">system.time</span><span class="p">(</span><span class="nf">lapply_sample</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Using loops without preallocation on a vector took:&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] "Using loops without preallocation on a vector took:"
    user  system elapsed 
   0.476   0.004   0.479 
-[1] &quot;Using loops with preallocation on a vector took:&quot;
+[1] "Using loops with preallocation on a vector took:"
    user  system elapsed 
   0.315   0.024   0.339 
-[1] &quot;Using loops with preallocation on a list took:&quot;
+[1] "Using loops with preallocation on a list took:"
    user  system elapsed 
   0.253   0.097   0.350 
-[1] &quot;Using the vectorized sapply function (on a list) took:&quot;
+[1] "Using the vectorized sapply function (on a list) took:"
    user  system elapsed 
   0.243   0.085   0.328 
-[1] &quot;Using the vectorized lapply function (on a list) took:&quot;
+[1] "Using the vectorized lapply function (on a list) took:"
    user  system elapsed 
   0.263   0.072   0.337 
 </pre></div>
@@ -4716,7 +4758,7 @@ for examples.    There you will also see a comparison of speed of <code class="d
 <span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="nf">plot</span><span class="p">(</span><span class="nf">ricker</span><span class="p">(</span><span class="n">generations</span><span class="o">=</span><span class="m">10</span><span class="p">),</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="nf">ricker</span><span class="p">(</span><span class="n">generations</span><span class="o">=</span><span class="m">10</span><span class="p">),</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">"l"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4725,7 +4767,7 @@ for examples.    There you will also see a comparison of speed of <code class="d
 </a>
 </div>
 </div>
-<p>Now open and run the script <code class="docutils literal notranslate"><span class="pre">vectorize2.R</span></code> (available on the TheMulQuaBio repository). This is the stochastic ricker model (compare with the above script to see where the stochasticity (random error) enters). Now modify the script to complete the exercise given.
+<p>Now open and run the script <code class="docutils literal notranslate"><span class="pre">vectorize2.R</span></code> (available on the MQB repository). This is the stochastic ricker model (compare with the above script to see where the stochasticity (random error) enters). Now modify the script to complete the exercise given.
 <em>Your goal is to come up with a solution better than mine!</em></p>
 </section>
 </section>
@@ -4759,7 +4801,7 @@ for examples.    There you will also see a comparison of speed of <code class="d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">inner_function</span><span class="p">(</span><span class="n">b</span><span class="p">):</span> <span class="nb">object</span> <span class="s1">&#39;d&#39;</span> <span class="ow">not</span> <span class="n">found</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">inner_function</span><span class="p">(</span><span class="n">b</span><span class="p">):</span> <span class="nb">object</span> <span class="s1">'d'</span> <span class="ow">not</span> <span class="n">found</span>
 <span class="ne">Traceback</span>:
 
 <span class="mi">1</span><span class="o">.</span> <span class="n">outer_function</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -4795,7 +4837,7 @@ for examples.    There you will also see a comparison of speed of <code class="d
 <span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="nf">plot</span><span class="p">(</span><span class="nf">Exponential</span><span class="p">(),</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">&quot;Exponential growth&quot;</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="nf">Exponential</span><span class="p">(),</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">"l"</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">"Exponential growth"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now run <code class="docutils literal notranslate"><span class="pre">browse.R</span></code> from the R console (using <code class="docutils literal notranslate"><span class="pre">source()</span></code>).</p>
@@ -4856,10 +4898,10 @@ for examples.    There you will also see a comparison of speed of <code class="d
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">doit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">temp_x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TrUE</span><span class="p">)</span>
 <span class="w">    </span><span class="kr">if</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">temp_x</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">30</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="c1">#only take mean if sample was sufficient</span>
-<span class="w">         </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Mean of this sample was:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">temp_x</span><span class="p">))))</span>
+<span class="w">         </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">"Mean of this sample was:"</span><span class="p">,</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">temp_x</span><span class="p">))))</span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span>
 <span class="w">    </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nf">stop</span><span class="p">(</span><span class="s">&quot;Couldn&#39;t calculate mean: too few unique values!&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nf">stop</span><span class="p">(</span><span class="s">"Couldn't calculate mean: too few unique values!"</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 </pre></div>
@@ -4891,19 +4933,19 @@ for examples.    There you will also see a comparison of speed of <code class="d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Mean of this sample was: -0.11620822588674&quot;
-[1] &quot;Mean of this sample was: -0.0468516755995931&quot;
-[1] &quot;Mean of this sample was: -0.0890228211466614&quot;
-[1] &quot;Mean of this sample was: -0.124229742255296&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] "Mean of this sample was: -0.11620822588674"
+[1] "Mean of this sample was: -0.0468516755995931"
+[1] "Mean of this sample was: -0.0890228211466614"
+[1] "Mean of this sample was: -0.124229742255296"
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">doit</span><span class="p">(</span><span class="n">popn</span><span class="p">):</span> <span class="n">Couldn</span><span class="s1">&#39;t calculate mean: too few unique values!</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">doit</span><span class="p">(</span><span class="n">popn</span><span class="p">):</span> <span class="n">Couldn</span><span class="s1">'t calculate mean: too few unique values!</span>
 <span class="ne">Traceback</span>:
 
 <span class="mi">1</span><span class="o">.</span> <span class="n">lapply</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="n">doit</span><span class="p">(</span><span class="n">popn</span><span class="p">))</span>
 <span class="mi">2</span><span class="o">.</span> <span class="n">FUN</span><span class="p">(</span><span class="n">X</span><span class="p">[[</span><span class="n">i</span><span class="p">]],</span> <span class="o">...</span><span class="p">)</span>
 <span class="mi">3</span><span class="o">.</span> <span class="n">doit</span><span class="p">(</span><span class="n">popn</span><span class="p">)</span>   <span class="c1"># at line 1 of file &lt;text&gt;</span>
-<span class="mi">4</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="s2">&quot;Couldn&#39;t calculate mean: too few unique values!&quot;</span><span class="p">)</span>   <span class="c1"># at line 7 of file &lt;text&gt;</span>
+<span class="mi">4</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="s2">"Couldn't calculate mean: too few unique values!"</span><span class="p">)</span>   <span class="c1"># at line 7 of file &lt;text&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -4917,21 +4959,21 @@ for examples.    There you will also see a comparison of speed of <code class="d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Mean of this sample was: -0.123990166669901&quot;
-Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!
-[1] &quot;Mean of this sample was: 0.0818124335353191&quot;
-[1] &quot;Mean of this sample was: -0.139655286435176&quot;
-[1] &quot;Mean of this sample was: -0.0215429865826124&quot;
-Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!
-[1] &quot;Mean of this sample was: 0.00539838134322893&quot;
-Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!
-[1] &quot;Mean of this sample was: 0.146907839413106&quot;
-[1] &quot;Mean of this sample was: -0.152002314653857&quot;
-[1] &quot;Mean of this sample was: 0.0161321300360042&quot;
-[1] &quot;Mean of this sample was: -0.241857872516043&quot;
-[1] &quot;Mean of this sample was: -0.16077541901813&quot;
-[1] &quot;Mean of this sample was: -0.0450988128783513&quot;
-[1] &quot;Mean of this sample was: -0.162230652541811&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] "Mean of this sample was: -0.123990166669901"
+Error in doit(popn) : Couldn't calculate mean: too few unique values!
+[1] "Mean of this sample was: 0.0818124335353191"
+[1] "Mean of this sample was: -0.139655286435176"
+[1] "Mean of this sample was: -0.0215429865826124"
+Error in doit(popn) : Couldn't calculate mean: too few unique values!
+[1] "Mean of this sample was: 0.00539838134322893"
+Error in doit(popn) : Couldn't calculate mean: too few unique values!
+[1] "Mean of this sample was: 0.146907839413106"
+[1] "Mean of this sample was: -0.152002314653857"
+[1] "Mean of this sample was: 0.0161321300360042"
+[1] "Mean of this sample was: -0.241857872516043"
+[1] "Mean of this sample was: -0.16077541901813"
+[1] "Mean of this sample was: -0.0450988128783513"
+[1] "Mean of this sample was: -0.162230652541811"
 </pre></div>
 </div>
 </div>
@@ -4956,61 +4998,61 @@ Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1]]
-[1] &quot;Mean of this sample was: -0.123990166669901&quot;
+[1] "Mean of this sample was: -0.123990166669901"
 
 [[2]]
-[1] &quot;Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!\n&quot;
-attr(,&quot;class&quot;)
-[1] &quot;try-error&quot;
-attr(,&quot;condition&quot;)
-&lt;simpleError in doit(popn): Couldn&#39;t calculate mean: too few unique values!&gt;
+[1] "Error in doit(popn) : Couldn't calculate mean: too few unique values!\n"
+attr(,"class")
+[1] "try-error"
+attr(,"condition")
+&lt;simpleError in doit(popn): Couldn't calculate mean: too few unique values!&gt;
 
 [[3]]
-[1] &quot;Mean of this sample was: 0.0818124335353191&quot;
+[1] "Mean of this sample was: 0.0818124335353191"
 
 [[4]]
-[1] &quot;Mean of this sample was: -0.139655286435176&quot;
+[1] "Mean of this sample was: -0.139655286435176"
 
 [[5]]
-[1] &quot;Mean of this sample was: -0.0215429865826124&quot;
+[1] "Mean of this sample was: -0.0215429865826124"
 
 [[6]]
-[1] &quot;Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!\n&quot;
-attr(,&quot;class&quot;)
-[1] &quot;try-error&quot;
-attr(,&quot;condition&quot;)
-&lt;simpleError in doit(popn): Couldn&#39;t calculate mean: too few unique values!&gt;
+[1] "Error in doit(popn) : Couldn't calculate mean: too few unique values!\n"
+attr(,"class")
+[1] "try-error"
+attr(,"condition")
+&lt;simpleError in doit(popn): Couldn't calculate mean: too few unique values!&gt;
 
 [[7]]
-[1] &quot;Mean of this sample was: 0.00539838134322893&quot;
+[1] "Mean of this sample was: 0.00539838134322893"
 
 [[8]]
-[1] &quot;Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!\n&quot;
-attr(,&quot;class&quot;)
-[1] &quot;try-error&quot;
-attr(,&quot;condition&quot;)
-&lt;simpleError in doit(popn): Couldn&#39;t calculate mean: too few unique values!&gt;
+[1] "Error in doit(popn) : Couldn't calculate mean: too few unique values!\n"
+attr(,"class")
+[1] "try-error"
+attr(,"condition")
+&lt;simpleError in doit(popn): Couldn't calculate mean: too few unique values!&gt;
 
 [[9]]
-[1] &quot;Mean of this sample was: 0.146907839413106&quot;
+[1] "Mean of this sample was: 0.146907839413106"
 
 [[10]]
-[1] &quot;Mean of this sample was: -0.152002314653857&quot;
+[1] "Mean of this sample was: -0.152002314653857"
 
 [[11]]
-[1] &quot;Mean of this sample was: 0.0161321300360042&quot;
+[1] "Mean of this sample was: 0.0161321300360042"
 
 [[12]]
-[1] &quot;Mean of this sample was: -0.241857872516043&quot;
+[1] "Mean of this sample was: -0.241857872516043"
 
 [[13]]
-[1] &quot;Mean of this sample was: -0.16077541901813&quot;
+[1] "Mean of this sample was: -0.16077541901813"
 
 [[14]]
-[1] &quot;Mean of this sample was: -0.0450988128783513&quot;
+[1] "Mean of this sample was: -0.0450988128783513"
 
 [[15]]
-[1] &quot;Mean of this sample was: -0.162230652541811&quot;
+[1] "Mean of this sample was: -0.162230652541811"
 </pre></div>
 </div>
 </div>
@@ -5018,7 +5060,7 @@ attr(,&quot;condition&quot;)
 <p>That’s a lot output! But basically it tells you which runs ran into and error and why (no surprises here, of course!). You can also store the results “manually” by using a loop to do the same:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vector</span><span class="p">(</span><span class="s">&quot;list&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="p">)</span><span class="w"> </span><span class="c1">#Preallocate/Initialize</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vector</span><span class="p">(</span><span class="s">"list"</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="p">)</span><span class="w"> </span><span class="c1">#Preallocate/Initialize</span>
 <span class="kr">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">15</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">result</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">try</span><span class="p">(</span><span class="nf">doit</span><span class="p">(</span><span class="n">popn</span><span class="p">),</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
@@ -5026,21 +5068,21 @@ attr(,&quot;condition&quot;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Mean of this sample was: -0.0380441875766665&quot;
-[1] &quot;Mean of this sample was: 0.00168314213476879&quot;
-Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!
-[1] &quot;Mean of this sample was: 0.0242456893346038&quot;
-[1] &quot;Mean of this sample was: -0.0533969700166486&quot;
-[1] &quot;Mean of this sample was: -0.0291390915544602&quot;
-Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!
-Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!
-[1] &quot;Mean of this sample was: 0.102288157365559&quot;
-[1] &quot;Mean of this sample was: -0.0386626637117577&quot;
-[1] &quot;Mean of this sample was: -0.106126210208736&quot;
-Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!
-Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!
-[1] &quot;Mean of this sample was: -0.0667300626988677&quot;
-[1] &quot;Mean of this sample was: -0.13529133118215&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] "Mean of this sample was: -0.0380441875766665"
+[1] "Mean of this sample was: 0.00168314213476879"
+Error in doit(popn) : Couldn't calculate mean: too few unique values!
+[1] "Mean of this sample was: 0.0242456893346038"
+[1] "Mean of this sample was: -0.0533969700166486"
+[1] "Mean of this sample was: -0.0291390915544602"
+Error in doit(popn) : Couldn't calculate mean: too few unique values!
+Error in doit(popn) : Couldn't calculate mean: too few unique values!
+[1] "Mean of this sample was: 0.102288157365559"
+[1] "Mean of this sample was: -0.0386626637117577"
+[1] "Mean of this sample was: -0.106126210208736"
+Error in doit(popn) : Couldn't calculate mean: too few unique values!
+Error in doit(popn) : Couldn't calculate mean: too few unique values!
+[1] "Mean of this sample was: -0.0667300626988677"
+[1] "Mean of this sample was: -0.13529133118215"
 </pre></div>
 </div>
 </div>
@@ -5059,7 +5101,7 @@ Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!
 <p>There are r packages for practically all statistical and mathematical analysis you might conceive, so check them out before reinventing the wheel. Visit <a class="reference external" href="https://cran.r-project.org">cran.r-project.org</a> and go to packages to see a list and a brief description.</p>
 <p>In Windows and Macs and Linux, you can install a package within r by using the <code class="docutils literal notranslate"><span class="pre">install.packages()</span></code>command.</p>
 <p>For example:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;tidyverse&quot;</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">"tidyverse"</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>You can also install multiple packages by concatenating their names: <code class="docutils literal notranslate"><span class="pre">install.packages(c(&quot;pack1&quot;,&quot;pack2&quot;,&quot;pack3&quot;))</span></code>
@@ -5093,7 +5135,7 @@ Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="o">=</span><span class="nf">ls</span><span class="p">())</span>
 
-<span class="nf">load</span><span class="p">(</span><span class="s">&quot;../data/key_west_annual_mean_temperature.rData&quot;</span><span class="p">)</span>
+<span class="nf">load</span><span class="p">(</span><span class="s">"../data/key_west_annual_mean_temperature.RData"</span><span class="p">)</span>
 
 <span class="nf">ls</span><span class="p">()</span>
 </pre></div>
@@ -5184,7 +5226,7 @@ Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!
 </section>
 <section id="readings-and-resources">
 <h2>readings and resources<a class="headerlink" href="#readings-and-resources" title="Link to this heading">#</a></h2>
-<p>Check the readings under the R directory in the TheMulQuaBio repository. Also, search online for “r tutorial”, and plenty will pop up. Choose ones that seem the most intuitive to you. * <em>remember, all r packages come with pdf guides/documentation!</em></p>
+<p>Check the readings under the R directory in the MQB repository. Also, search online for “r tutorial”, and plenty will pop up. Choose ones that seem the most intuitive to you. * <em>remember, all r packages come with pdf guides/documentation!</em></p>
 <section id="r-as-a-programming-language">
 <h3>r as a Programming language<a class="headerlink" href="#r-as-a-programming-language" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -5277,15 +5319,17 @@ Error in doit(popn) : Couldn&#39;t calculate mean: too few unique values!
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-r">Why r?</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#would-you-ever-need-anything-other-than-r">Would you ever need anything other than r?</a></li>
@@ -5462,8 +5506,8 @@ By MulQuaBio collective!
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

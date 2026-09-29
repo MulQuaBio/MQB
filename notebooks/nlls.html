@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -61,6 +64,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/nlls';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -68,34 +72,30 @@
     <link rel="prev" title="Generalised Linear Models" href="glms.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -103,7 +103,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -111,15 +110,59 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -128,7 +171,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -158,21 +202,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MulQuaBio - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -262,8 +302,14 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Introduction &amp; prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_Bootcamp_Rubric.html">Computing Bootcamp Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_MiniProject_Rubric.html">Computing MiniProject Rubric</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -298,9 +344,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -479,7 +530,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -493,25 +544,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -533,7 +576,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traits-data-as-an-example">Traits data as an example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biochemical-kinetics">Biochemical Kinetics</a><ul class="nav section-nav flex-column">
@@ -720,7 +763,7 @@ V = \frac{V_{\max} S}{K_M + S}
 <p>Note that our choice of <span class="math notranslate nohighlight">\(V_{\max} = 12.5\)</span> and <span class="math notranslate nohighlight">\(K_M = 7.1\)</span> is arbitrary. As long as <span class="math notranslate nohighlight">\(V_{\max} &gt; 0\)</span>, <span class="math notranslate nohighlight">\(K_M &gt; 0\)</span>, and <span class="math notranslate nohighlight">\(K_M\)</span> lies well within the lower half of the range of substrate concentrations (0–50), these data are biologically sensible.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">1456</span><span class="p">)</span><span class="w"> </span><span class="c1"># To get the same random fluctuations in the &quot;data&quot; every time</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">1456</span><span class="p">)</span><span class="w"> </span><span class="c1"># To get the same random fluctuations in the "data" every time</span>
 <span class="n">V_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">V_data</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="c1"># Add 10 random fluctuations  with standard deviation of 1 to emulate error</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">S_data</span><span class="p">,</span><span class="w"> </span><span class="n">V_data</span><span class="p">)</span>
 </pre></div>
@@ -746,8 +789,8 @@ V = \frac{V_{\max} S}{K_M + S}
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in nls(V_data ~ V_max * S_data/(K_M + S_data)):
 “No starting values specified for some parameters.
-Initializing ‘V_max’, ‘K_M’ to &#39;1.&#39;.
-Consider specifying &#39;start&#39; or using a selfStart model”
+Initializing ‘V_max’, ‘K_M’ to '1.'.
+Consider specifying 'start' or using a selfStart model”
 </pre></div>
 </div>
 </div>
@@ -760,8 +803,8 @@ Consider specifying &#39;start&#39; or using a selfStart model”
 <p>We will address the issue of starting values soon enough, but first let’s look at how good the fit that we obtained looks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">S_data</span><span class="p">,</span><span class="n">V_data</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Substrate Concentration&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;reaction rate&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># first plot the data </span>
-<span class="nf">lines</span><span class="p">(</span><span class="n">S_data</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">MM_model</span><span class="p">),</span><span class="n">lty</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1"># now overlay the fitted model </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">S_data</span><span class="p">,</span><span class="n">V_data</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Substrate Concentration"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"reaction rate"</span><span class="p">)</span><span class="w">  </span><span class="c1"># first plot the data </span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">S_data</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">MM_model</span><span class="p">),</span><span class="n">lty</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">"blue"</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1"># now overlay the fitted model </span>
 </pre></div>
 </div>
 </div>
@@ -800,15 +843,15 @@ Consider specifying &#39;start&#39; or using a selfStart model”
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Predict2Plot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">MM_model</span><span class="p">)[</span><span class="s">&quot;V_max&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Substrate2Plot</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">MM_model</span><span class="p">)[</span><span class="s">&quot;K_M&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Substrate2Plot</span><span class="p">)</span><span class="w"> </span><span class="c1"># calculate the predicted values by plugging the fitted coefficients into the model equation </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Predict2Plot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">MM_model</span><span class="p">)[</span><span class="s">"V_max"</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Substrate2Plot</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">MM_model</span><span class="p">)[</span><span class="s">"K_M"</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Substrate2Plot</span><span class="p">)</span><span class="w"> </span><span class="c1"># calculate the predicted values by plugging the fitted coefficients into the model equation </span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">S_data</span><span class="p">,</span><span class="n">V_data</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Substrate Concentration&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;reaction rate&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># first plot the data </span>
-<span class="nf">lines</span><span class="p">(</span><span class="n">Substrate2Plot</span><span class="p">,</span><span class="w"> </span><span class="n">Predict2Plot</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1"># now overlay the fitted model</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">S_data</span><span class="p">,</span><span class="n">V_data</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Substrate Concentration"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"reaction rate"</span><span class="p">)</span><span class="w">  </span><span class="c1"># first plot the data </span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Substrate2Plot</span><span class="p">,</span><span class="w"> </span><span class="n">Predict2Plot</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">"blue"</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1"># now overlay the fitted model</span>
 </pre></div>
 </div>
 </div>
@@ -872,12 +915,12 @@ Achieved convergence tolerance: 9.535e-06
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">anova</span><span class="o">.</span><span class="n">nls</span><span class="p">(</span><span class="n">MM_model</span><span class="p">):</span> <span class="n">anova</span> <span class="ow">is</span> <span class="n">only</span> <span class="n">defined</span> <span class="k">for</span> <span class="n">sequences</span> <span class="n">of</span> <span class="s2">&quot;nls&quot;</span> <span class="n">objects</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">anova</span><span class="o">.</span><span class="n">nls</span><span class="p">(</span><span class="n">MM_model</span><span class="p">):</span> <span class="n">anova</span> <span class="ow">is</span> <span class="n">only</span> <span class="n">defined</span> <span class="k">for</span> <span class="n">sequences</span> <span class="n">of</span> <span class="s2">"nls"</span> <span class="n">objects</span>
 <span class="ne">Traceback</span>:
 
 <span class="mi">1</span><span class="o">.</span> <span class="n">anova</span><span class="p">(</span><span class="n">MM_model</span><span class="p">)</span>
 <span class="mi">2</span><span class="o">.</span> <span class="n">anova</span><span class="o">.</span><span class="n">nls</span><span class="p">(</span><span class="n">MM_model</span><span class="p">)</span>
-<span class="mi">3</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="s2">&quot;anova is only defined for sequences of </span><span class="se">\&quot;</span><span class="s2">nls</span><span class="se">\&quot;</span><span class="s2"> objects&quot;</span><span class="p">)</span>
+<span class="mi">3</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="s2">"anova is only defined for sequences of </span><span class="se">\"</span><span class="s2">nls</span><span class="se">\"</span><span class="s2"> objects"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1025,8 +1068,8 @@ Achieved convergence tolerance: 9.535e-06
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">S_data</span><span class="p">,</span><span class="n">V_data</span><span class="p">)</span><span class="w">  </span><span class="c1"># first plot the data </span>
-<span class="nf">lines</span><span class="p">(</span><span class="n">S_data</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">MM_model</span><span class="p">),</span><span class="n">lty</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1"># overlay the original model fit</span>
-<span class="nf">lines</span><span class="p">(</span><span class="n">S_data</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">MM_model3</span><span class="p">),</span><span class="n">lty</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1"># overlay the latest model fit</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">S_data</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">MM_model</span><span class="p">),</span><span class="n">lty</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">"blue"</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1"># overlay the original model fit</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">S_data</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">MM_model3</span><span class="p">),</span><span class="n">lty</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">"red"</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1"># overlay the latest model fit</span>
 </pre></div>
 </div>
 </div>
@@ -1051,7 +1094,7 @@ Achieved convergence tolerance: 9.535e-06
 <span class="mi">1</span><span class="o">.</span> <span class="n">nls</span><span class="p">(</span><span class="n">V_data</span> <span class="o">~</span> <span class="n">V_max</span> <span class="o">*</span> <span class="n">S_data</span><span class="o">/</span><span class="p">(</span><span class="n">K_M</span> <span class="o">+</span> <span class="n">S_data</span><span class="p">),</span> <span class="n">start</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">V_max</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
  <span class="o">.</span>     <span class="n">K_M</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">))</span>
 <span class="mi">2</span><span class="o">.</span> <span class="n">nlsModel</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">mf</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">wts</span><span class="p">,</span> <span class="n">scaleOffset</span> <span class="o">=</span> <span class="n">scOff</span><span class="p">,</span> <span class="n">nDcentral</span> <span class="o">=</span> <span class="n">nDcntr</span><span class="p">)</span>
-<span class="mi">3</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="s2">&quot;singular gradient matrix at initial parameter estimates&quot;</span><span class="p">)</span>
+<span class="mi">3</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="s2">"singular gradient matrix at initial parameter estimates"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1119,13 +1162,13 @@ Achieved convergence tolerance: 9.535e-06
 <p>Some nonlinear models are especially difficult for nls to fit to data because such model have a mathematical form that makes it hard to find parameter combinations that minimize the residual sum of squared (rSS). If this does not makes sense, don’t worry about it.</p>
 <p>One solution to this is to use a different algorithm than Gauss-Newton. <code class="docutils literal notranslate"><span class="pre">nls()</span></code> has one other algorithm that can be more robust in some situations, called the “port” algorithm. However, there is a better solution still: the Levenberg-Marqualdt algorithm, which is less likely to get stuck (is more robust than) than Gauss-Newton (or port). If you want to learn more about the technicalities of this, <a class="reference external" href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Newton_algorithm">here</a> are <a class="reference external" href="https://en.wikipedia.org/wiki/Levenberg%E2%80%93Marquardt_algorithm">here</a> are good places to start (also see the readings list at the end of this chapter).</p>
 <p>To be able to use nlsLM, we will need to switch to a different nlls function called <code class="docutils literal notranslate"><span class="pre">nlsLM</span></code>. In order to be able to use <code class="docutils literal notranslate"><span class="pre">nlsLM</span></code>, you will need the <code class="docutils literal notranslate"><span class="pre">nls.lm</span></code> r package, which you can install using the method appropriate for your operating system  (e.g., linux users will launch r in <code class="docutils literal notranslate"><span class="pre">sudo</span></code> mode first) and then use:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;minpack.lm&quot;</span><span class="p">)</span><span class="w"> </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="w"> </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">"minpack.lm"</span><span class="p">)</span><span class="w"> </span>
 </pre></div>
 </div>
 <p>Now load the <code class="docutils literal notranslate"><span class="pre">minpack.lm</span></code> package:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">require</span><span class="p">(</span><span class="s">&quot;minpack.lm&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">require</span><span class="p">(</span><span class="s">"minpack.lm"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1233,7 +1276,7 @@ Achieved convergence tolerance: 9.535e-06
 <span class="mi">1</span><span class="o">.</span> <span class="n">nlsLM</span><span class="p">(</span><span class="n">V_data</span> <span class="o">~</span> <span class="n">V_max</span> <span class="o">*</span> <span class="n">S_data</span><span class="o">/</span><span class="p">(</span><span class="n">K_M</span> <span class="o">+</span> <span class="n">S_data</span><span class="p">),</span> <span class="n">start</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">V_max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> 
  <span class="o">.</span>     <span class="n">K_M</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span><span class="p">))</span>
 <span class="mi">2</span><span class="o">.</span> <span class="n">nlsModel</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">mf</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">wts</span><span class="p">)</span>
-<span class="mi">3</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="s2">&quot;singular gradient matrix at initial parameter estimates&quot;</span><span class="p">)</span>
+<span class="mi">3</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="s2">"singular gradient matrix at initial parameter estimates"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1355,7 +1398,7 @@ y = a x^b
 <p><span class="math notranslate nohighlight">\(\star\)</span> Save the <code class="docutils literal notranslate"><span class="pre">genome_size.csv</span></code> data file to your <code class="docutils literal notranslate"><span class="pre">data</span></code> directory, and import it into your r workspace:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyData</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;../data/genome_size.csv&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># using relative path assuming that your working directory is &quot;code&quot;</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">MyData</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">"../data/genome_size.csv"</span><span class="p">)</span><span class="w"> </span><span class="c1"># using relative path assuming that your working directory is "code"</span>
 
 <span class="nf">head</span><span class="p">(</span><span class="n">MyData</span><span class="p">)</span>
 </pre></div>
@@ -1383,9 +1426,9 @@ y = a x^b
 <p>So subset the data accordingly and remove NAs:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Data2Fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">MyData</span><span class="p">,</span><span class="n">Suborder</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Anisoptera&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Data2Fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">MyData</span><span class="p">,</span><span class="n">Suborder</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"Anisoptera"</span><span class="p">)</span>
 
-<span class="n">Data2Fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Data2Fit</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">Data2Fit</span><span class="o">$</span><span class="n">TotalLength</span><span class="p">),]</span><span class="w"> </span><span class="c1"># remove NA&#39;s</span>
+<span class="n">Data2Fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Data2Fit</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">Data2Fit</span><span class="o">$</span><span class="n">TotalLength</span><span class="p">),]</span><span class="w"> </span><span class="c1"># remove NA's</span>
 </pre></div>
 </div>
 </div>
@@ -1393,7 +1436,7 @@ y = a x^b
 <p>Plot the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">Data2Fit</span><span class="o">$</span><span class="n">TotalLength</span><span class="p">,</span><span class="w"> </span><span class="n">Data2Fit</span><span class="o">$</span><span class="n">BodyWeight</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Body Length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Body Weight&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">Data2Fit</span><span class="o">$</span><span class="n">TotalLength</span><span class="p">,</span><span class="w"> </span><span class="n">Data2Fit</span><span class="o">$</span><span class="n">BodyWeight</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Body Length"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Body Weight"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1405,11 +1448,11 @@ y = a x^b
 <p>Or, using <code class="docutils literal notranslate"><span class="pre">ggplot</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">"ggplot2"</span><span class="p">)</span>
 
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">Data2Fit</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TotalLength</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BodyWeight</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-<span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-<span class="nf">labs</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s">&quot;Body mass (mg)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Wing length (mm)&quot;</span><span class="p">)</span>
+<span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s">"red"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="nf">labs</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s">"Body mass (mg)"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Wing length (mm)"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1470,8 +1513,8 @@ y = a x^b
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">coef</span><span class="p">(</span><span class="n">PowFit</span><span class="p">)[</span><span class="s">&quot;a&quot;</span><span class="p">]</span>
-<span class="nf">coef</span><span class="p">(</span><span class="n">PowFit</span><span class="p">)[</span><span class="s">&quot;b&quot;</span><span class="p">]</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">coef</span><span class="p">(</span><span class="n">PowFit</span><span class="p">)[</span><span class="s">"a"</span><span class="p">]</span>
+<span class="nf">coef</span><span class="p">(</span><span class="n">PowFit</span><span class="p">)[</span><span class="s">"b"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1480,7 +1523,7 @@ y = a x^b
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Predic2PlotPow</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">powMod</span><span class="p">(</span><span class="n">Lengths</span><span class="p">,</span><span class="nf">coef</span><span class="p">(</span><span class="n">PowFit</span><span class="p">)[</span><span class="s">&quot;a&quot;</span><span class="p">],</span><span class="nf">coef</span><span class="p">(</span><span class="n">PowFit</span><span class="p">)[</span><span class="s">&quot;b&quot;</span><span class="p">])</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Predic2PlotPow</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">powMod</span><span class="p">(</span><span class="n">Lengths</span><span class="p">,</span><span class="nf">coef</span><span class="p">(</span><span class="n">PowFit</span><span class="p">)[</span><span class="s">"a"</span><span class="p">],</span><span class="nf">coef</span><span class="p">(</span><span class="n">PowFit</span><span class="p">)[</span><span class="s">"b"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1490,7 +1533,7 @@ y = a x^b
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">Data2Fit</span><span class="o">$</span><span class="n">TotalLength</span><span class="p">,</span><span class="w"> </span><span class="n">Data2Fit</span><span class="o">$</span><span class="n">BodyWeight</span><span class="p">)</span>
-<span class="nf">lines</span><span class="p">(</span><span class="n">Lengths</span><span class="p">,</span><span class="w"> </span><span class="n">Predic2PlotPow</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;blue&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2.5</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Lengths</span><span class="p">,</span><span class="w"> </span><span class="n">Predic2PlotPow</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">'blue'</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1611,8 +1654,8 @@ y = a + b x + c x^2
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">Data2Fit</span><span class="o">$</span><span class="n">TotalLength</span><span class="p">,</span><span class="w"> </span><span class="n">Data2Fit</span><span class="o">$</span><span class="n">BodyWeight</span><span class="p">)</span>
-<span class="nf">lines</span><span class="p">(</span><span class="n">Lengths</span><span class="p">,</span><span class="w"> </span><span class="n">Predic2PlotPow</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;blue&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2.5</span><span class="p">)</span>
-<span class="nf">lines</span><span class="p">(</span><span class="n">Lengths</span><span class="p">,</span><span class="w"> </span><span class="n">Predic2PlotQua</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;red&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2.5</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Lengths</span><span class="p">,</span><span class="w"> </span><span class="n">Predic2PlotPow</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">'blue'</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2.5</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Lengths</span><span class="p">,</span><span class="w"> </span><span class="n">Predic2PlotQua</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">'red'</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1685,9 +1728,9 @@ y = a + b x + c x^2
 <p>Now let’s look at a different trait example: the growth of an individual albatross chick (you can find similar data for vector and non-vector arthropods in <a class="reference external" href="https://vectorbyte.org/">VecTraits</a>). First load and plot the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">alb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s">&quot;../data/albatross_grow.csv&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">alb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s">"../data/albatross_grow.csv"</span><span class="p">)</span>
 <span class="n">alb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">alb</span><span class="p">,</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">alb</span><span class="o">$</span><span class="n">wt</span><span class="p">))</span>
-<span class="nf">plot</span><span class="p">(</span><span class="n">alb</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">alb</span><span class="o">$</span><span class="n">wt</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;age (days)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;weight (g)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">))</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">alb</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">alb</span><span class="o">$</span><span class="n">wt</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">"age (days)"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">"weight (g)"</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">100</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1768,12 +1811,12 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 <p>And finally plot the data with the fits:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">alb</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">alb</span><span class="o">$</span><span class="n">wt</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;age (days)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;weight (g)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">100</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">alb</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">alb</span><span class="o">$</span><span class="n">wt</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">"age (days)"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">"weight (g)"</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">100</span><span class="p">))</span>
 <span class="nf">lines</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span><span class="w"> </span><span class="n">pred.lin</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
 <span class="nf">lines</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span><span class="w"> </span><span class="n">pred.log</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
 <span class="nf">lines</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span><span class="w"> </span><span class="n">pred.vb</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
 
-<span class="nf">legend</span><span class="p">(</span><span class="s">&quot;topleft&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;linear&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;logistic&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Von Bert&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="m">2</span><span class="o">:</span><span class="m">4</span><span class="p">)</span>
+<span class="nf">legend</span><span class="p">(</span><span class="s">"topleft"</span><span class="p">,</span><span class="w"> </span><span class="n">legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"linear"</span><span class="p">,</span><span class="w"> </span><span class="s">"logistic"</span><span class="p">,</span><span class="w"> </span><span class="s">"Von Bert"</span><span class="p">),</span><span class="w"> </span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="m">2</span><span class="o">:</span><span class="m">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1785,10 +1828,10 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 <p>Next examine the residuals between the 3 models:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">bty</span><span class="o">=</span><span class="s">&quot;n&quot;</span><span class="p">)</span>
-<span class="nf">plot</span><span class="p">(</span><span class="n">alb</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="nf">resid</span><span class="p">(</span><span class="n">alb.lin</span><span class="p">),</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">&quot;LM resids&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">100</span><span class="p">))</span>
-<span class="nf">plot</span><span class="p">(</span><span class="n">alb</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="nf">resid</span><span class="p">(</span><span class="n">alb.log</span><span class="p">),</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">&quot;Logisitic resids&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">100</span><span class="p">))</span>
-<span class="nf">plot</span><span class="p">(</span><span class="n">alb</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="nf">resid</span><span class="p">(</span><span class="n">alb.vb</span><span class="p">),</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">&quot;VB resids&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">100</span><span class="p">))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">bty</span><span class="o">=</span><span class="s">"n"</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">alb</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="nf">resid</span><span class="p">(</span><span class="n">alb.lin</span><span class="p">),</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">"LM resids"</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">100</span><span class="p">))</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">alb</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="nf">resid</span><span class="p">(</span><span class="n">alb.log</span><span class="p">),</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">"Logisitic resids"</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">100</span><span class="p">))</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">alb</span><span class="o">$</span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="nf">resid</span><span class="p">(</span><span class="n">alb.vb</span><span class="p">),</span><span class="w"> </span><span class="n">main</span><span class="o">=</span><span class="s">"VB resids"</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">100</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1834,9 +1877,9 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 <p>First load and visualize the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">aedes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s">&quot;../data/aedes_fecund.csv&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">aedes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s">"../data/aedes_fecund.csv"</span><span class="p">)</span>
 
-<span class="nf">plot</span><span class="p">(</span><span class="n">aedes</span><span class="o">$</span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">aedes</span><span class="o">$</span><span class="n">EFD</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;temperature (C)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Eggs/day&quot;</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">aedes</span><span class="o">$</span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">aedes</span><span class="o">$</span><span class="n">EFD</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="o">=</span><span class="s">"temperature (C)"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">"Eggs/day"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1904,11 +1947,11 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">22</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
 <span class="n">N</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">32500</span><span class="p">,</span><span class="w"> </span><span class="m">33000</span><span class="p">,</span><span class="w"> </span><span class="m">38000</span><span class="p">,</span><span class="w"> </span><span class="m">105000</span><span class="p">,</span><span class="w"> </span><span class="m">445000</span><span class="p">,</span><span class="w"> </span><span class="m">1430000</span><span class="p">,</span><span class="w"> </span><span class="m">3020000</span><span class="p">,</span><span class="w"> </span><span class="m">4720000</span><span class="p">,</span><span class="w"> </span><span class="m">5670000</span><span class="p">,</span><span class="w"> </span><span class="m">5870000</span><span class="p">,</span><span class="w"> </span><span class="m">5930000</span><span class="p">,</span><span class="w"> </span><span class="m">5940000</span><span class="p">)</span>
 
-<span class="nf">set.seed</span><span class="p">(</span><span class="m">1234</span><span class="p">)</span><span class="w"> </span><span class="c1"># To ensure we always get the same random sequence in this example &quot;dataset&quot; </span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">1234</span><span class="p">)</span><span class="w"> </span><span class="c1"># To ensure we always get the same random sequence in this example "dataset" </span>
 
 <span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="w"> </span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.1</span><span class="p">)))</span><span class="w"> </span><span class="c1"># add some random error</span>
 
-<span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Time&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;N&quot;</span><span class="p">)</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"Time"</span><span class="p">,</span><span class="w"> </span><span class="s">"N"</span><span class="p">)</span>
 
 <span class="nf">head</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
@@ -1939,7 +1982,7 @@ N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Time</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
 <span class="w"> </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-<span class="w"> </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Time (Hours)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Population size (cells)&quot;</span><span class="p">)</span>
+<span class="w"> </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Time (Hours)"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Population size (cells)"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1966,7 +2009,7 @@ r = \frac{\log(N(t)) - \log(N_0)}{t} ,
 <span class="c1"># visualise</span>
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LogN</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
 <span class="w"> </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-<span class="w"> </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Time (Hours)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;log(cell number)&quot;</span><span class="p">)</span>
+<span class="w"> </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Time (Hours)"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"log(cell number)"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2113,18 +2156,18 @@ Achieved convergence tolerance: 1.49e-08
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">timepoints</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">22</span><span class="p">,</span><span class="w"> </span><span class="m">0.1</span><span class="p">)</span>
 
 <span class="n">logistic_points</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">logistic_model</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timepoints</span><span class="p">,</span><span class="w"> </span>
-<span class="w">         </span><span class="n">r_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_logistic</span><span class="p">)[</span><span class="s">&quot;r_max&quot;</span><span class="p">],</span><span class="w"> </span>
-<span class="w">         </span><span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_logistic</span><span class="p">)[</span><span class="s">&quot;K&quot;</span><span class="p">],</span><span class="w"> </span>
-<span class="w">         </span><span class="n">N_0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_logistic</span><span class="p">)[</span><span class="s">&quot;N_0&quot;</span><span class="p">])</span>
+<span class="w">         </span><span class="n">r_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_logistic</span><span class="p">)[</span><span class="s">"r_max"</span><span class="p">],</span><span class="w"> </span>
+<span class="w">         </span><span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_logistic</span><span class="p">)[</span><span class="s">"K"</span><span class="p">],</span><span class="w"> </span>
+<span class="w">         </span><span class="n">N_0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_logistic</span><span class="p">)[</span><span class="s">"N_0"</span><span class="p">])</span>
 <span class="n">df1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">timepoints</span><span class="p">,</span><span class="w"> </span><span class="n">logistic_points</span><span class="p">)</span>
-<span class="n">df1</span><span class="o">$</span><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;Logistic equation&quot;</span>
-<span class="nf">names</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Time&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;N&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;model&quot;</span><span class="p">)</span>
+<span class="n">df1</span><span class="o">$</span><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"Logistic equation"</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"Time"</span><span class="p">,</span><span class="w"> </span><span class="s">"N"</span><span class="p">,</span><span class="w"> </span><span class="s">"model"</span><span class="p">)</span>
 
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Time</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
 <span class="w"> </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
 <span class="w"> </span><span class="nf">geom_line</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df1</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Time</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
 <span class="w"> </span><span class="nf">theme</span><span class="p">(</span><span class="n">aspect.ratio</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="o">+</span><span class="w"> </span><span class="c1"># make the plot square </span>
-<span class="w"> </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Time&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Cell number&quot;</span><span class="p">)</span>
+<span class="w"> </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Time"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Cell number"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2146,7 +2189,7 @@ Achieved convergence tolerance: 1.49e-08
 <span class="w"> </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
 <span class="w"> </span><span class="nf">geom_line</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df1</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Time</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="n">N</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
 <span class="w"> </span><span class="nf">theme</span><span class="p">(</span><span class="n">aspect.ratio</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="o">+</span><span class="w"> </span>
-<span class="w"> </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Time&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;log(Cell number)&quot;</span><span class="p">)</span>
+<span class="w"> </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Time"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"log(Cell number)"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2161,7 +2204,7 @@ Achieved convergence tolerance: 1.49e-08
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LogN</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
 <span class="w"> </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
 <span class="w"> </span><span class="nf">theme</span><span class="p">(</span><span class="n">aspect.ratio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="o">+</span><span class="w"> </span>
-<span class="w"> </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;N&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;log(N)&quot;</span><span class="p">)</span>
+<span class="w"> </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"N"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"log(N)"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2177,7 +2220,7 @@ Achieved convergence tolerance: 1.49e-08
 </div>
 <p>The above seen deviation of the Logistic model from the data is because this model assumes that the population is growing right from the start (Time = 0), while in “reality” (in our synthetic “data”), this is not what’s happening; the population takes a while to grow truly exponentially (i.e., there is a time lag in the population growth). This time lag is seen frequently in the lab, and is also expected in nature, because when bacteria encounter fresh growth media (in the lab) or a new resource/environment (in the field), they take some time to acclimate, activating genes involved in nutrient uptake and metabolic processes, before beginning exponential growth. This is called the lag phase and can be seen in our example data where exponential growth doesn’t properly begin until around the 4th hour.</p>
 <p>To capture the lag phase, more complicated bacterial growth models have been designed.</p>
-<p>One of these is the modified Gompertz model (<span id="id4">[<a class="reference internal" href="../references.html#id196" title="M. H. Zwietering, I. Jongenburger, F. M. Rombouts, and K. van't Riet. Modeling of the bacterial growth curve. Applied and Environmental Microbiology, 56(6):1875–1881, 1990.">Zwietering <em>et al.</em>, 1990</a>]</span>), which has been used frequently in the literature to model bacterial growth:</p>
+<p>One of these is the modified Gompertz model (<span class="bibtex-citation" id="id4">[<a class="reference internal" href="../references.html#id196" title="M. H. Zwietering, I. Jongenburger, F. M. Rombouts, and K. van't Riet. Modeling of the bacterial growth curve. Applied and Environmental Microbiology, 56(6):1875–1881, 1990.">Zwietering <em>et al.</em>, 1990</a>]</span>), which has been used frequently in the literature to model bacterial growth:</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}:label: eq:Gompertz\\\log(N_t) = N_0 + (N_{max} - N_0) e^{-e^{r_{max} \exp(1) \frac{t_{lag} - t}{(N_{max} - N_0) \log(10)} + 1}}\end{aligned}\end{align} \]</div>
 <p>Here maximum growth rate (<span class="math notranslate nohighlight">\(r_{max}\)</span>) is the tangent to the inflection point, <span class="math notranslate nohighlight">\(t_{lag}\)</span> is the x-axis intercept to this tangent (duration of the delay before the population starts growing exponentially) and <span class="math notranslate nohighlight">\(\log\left(\frac{N_{max}}{N_0}\right)\)</span> is the asymptote of the log-transformed population growth trajectory, i.e., the log ratio of maximum population density <span class="math notranslate nohighlight">\(N_{max}\)</span> (aka “carrying capacity”) and initial cell (Population) <span class="math notranslate nohighlight">\(N_0\)</span> density.</p>
@@ -2305,23 +2348,23 @@ Achieved convergence tolerance: 1.49e-08
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">timepoints</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">24</span><span class="p">,</span><span class="w"> </span><span class="m">0.1</span><span class="p">)</span>
 
 <span class="n">logistic_points</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="nf">logistic_model</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timepoints</span><span class="p">,</span><span class="w"> </span>
-<span class="w">          </span><span class="n">r_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_logistic</span><span class="p">)[</span><span class="s">&quot;r_max&quot;</span><span class="p">],</span><span class="w"> </span>
-<span class="w">          </span><span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_logistic</span><span class="p">)[</span><span class="s">&quot;K&quot;</span><span class="p">],</span><span class="w"> </span>
-<span class="w">          </span><span class="n">N_0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_logistic</span><span class="p">)[</span><span class="s">&quot;N_0&quot;</span><span class="p">]))</span>
+<span class="w">          </span><span class="n">r_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_logistic</span><span class="p">)[</span><span class="s">"r_max"</span><span class="p">],</span><span class="w"> </span>
+<span class="w">          </span><span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_logistic</span><span class="p">)[</span><span class="s">"K"</span><span class="p">],</span><span class="w"> </span>
+<span class="w">          </span><span class="n">N_0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_logistic</span><span class="p">)[</span><span class="s">"N_0"</span><span class="p">]))</span>
 
 <span class="n">gompertz_points</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">gompertz_model</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timepoints</span><span class="p">,</span><span class="w"> </span>
-<span class="w">         </span><span class="n">r_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_gompertz</span><span class="p">)[</span><span class="s">&quot;r_max&quot;</span><span class="p">],</span><span class="w"> </span>
-<span class="w">         </span><span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_gompertz</span><span class="p">)[</span><span class="s">&quot;K&quot;</span><span class="p">],</span><span class="w"> </span>
-<span class="w">         </span><span class="n">N_0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_gompertz</span><span class="p">)[</span><span class="s">&quot;N_0&quot;</span><span class="p">],</span><span class="w"> </span>
-<span class="w">         </span><span class="n">t_lag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_gompertz</span><span class="p">)[</span><span class="s">&quot;t_lag&quot;</span><span class="p">])</span>
+<span class="w">         </span><span class="n">r_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_gompertz</span><span class="p">)[</span><span class="s">"r_max"</span><span class="p">],</span><span class="w"> </span>
+<span class="w">         </span><span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_gompertz</span><span class="p">)[</span><span class="s">"K"</span><span class="p">],</span><span class="w"> </span>
+<span class="w">         </span><span class="n">N_0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_gompertz</span><span class="p">)[</span><span class="s">"N_0"</span><span class="p">],</span><span class="w"> </span>
+<span class="w">         </span><span class="n">t_lag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">coef</span><span class="p">(</span><span class="n">fit_gompertz</span><span class="p">)[</span><span class="s">"t_lag"</span><span class="p">])</span>
 
 <span class="n">df1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">timepoints</span><span class="p">,</span><span class="w"> </span><span class="n">logistic_points</span><span class="p">)</span>
-<span class="n">df1</span><span class="o">$</span><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;Logistic model&quot;</span>
-<span class="nf">names</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Time&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;LogN&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;model&quot;</span><span class="p">)</span>
+<span class="n">df1</span><span class="o">$</span><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"Logistic model"</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">df1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"Time"</span><span class="p">,</span><span class="w"> </span><span class="s">"LogN"</span><span class="p">,</span><span class="w"> </span><span class="s">"model"</span><span class="p">)</span>
 
 <span class="n">df2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">timepoints</span><span class="p">,</span><span class="w"> </span><span class="n">gompertz_points</span><span class="p">)</span>
-<span class="n">df2</span><span class="o">$</span><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;Gompertz model&quot;</span>
-<span class="nf">names</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Time&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;LogN&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;model&quot;</span><span class="p">)</span>
+<span class="n">df2</span><span class="o">$</span><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"Gompertz model"</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"Time"</span><span class="p">,</span><span class="w"> </span><span class="s">"LogN"</span><span class="p">,</span><span class="w"> </span><span class="s">"model"</span><span class="p">)</span>
 
 <span class="n">model_frame</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="w"> </span><span class="n">df2</span><span class="p">)</span>
 
@@ -2330,7 +2373,7 @@ Achieved convergence tolerance: 1.49e-08
 <span class="w"> </span><span class="nf">geom_line</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model_frame</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Time</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LogN</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
 <span class="w"> </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># make the background white</span>
 <span class="w"> </span><span class="nf">theme</span><span class="p">(</span><span class="n">aspect.ratio</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="o">+</span><span class="w"> </span><span class="c1"># make the plot square </span>
-<span class="w"> </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Time&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;log(Abundance)&quot;</span><span class="p">)</span>
+<span class="w"> </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Time"</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"log(Abundance)"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2486,15 +2529,17 @@ In both cases, the <em>mean</em> of the sampling distribution will be the starti
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traits-data-as-an-example">Traits data as an example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biochemical-kinetics">Biochemical Kinetics</a><ul class="nav section-nav flex-column">
@@ -2610,8 +2655,8 @@ By MulQuaBio collective!
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -59,6 +62,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/object-oriented-programming';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -66,34 +70,30 @@
     <link rel="prev" title="Biological Computing in Python" href="python.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -101,7 +101,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -109,15 +108,59 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -126,7 +169,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -156,21 +200,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MulQuaBio - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -206,11 +246,10 @@
 <li class="toctree-l1"><a class="reference internal" href="mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model-simp.html">Model simplification</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced E&amp;E Modelling and Statistics Pre-work</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Introduction &amp; prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
-
 
 
 
@@ -261,8 +300,14 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Introduction &amp; prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_Bootcamp_Rubric.html">Computing Bootcamp Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_MiniProject_Rubric.html">Computing MiniProject Rubric</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -297,9 +342,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -478,7 +528,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -492,25 +542,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -532,7 +574,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-oop">What is OOP?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-first-class">Our first <code class="docutils literal notranslate"><span class="pre">class</span></code></a></li>
@@ -646,7 +688,7 @@ document.write(`
 <p>Here is the skeleton for creating our first class, the class for a square:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">square</span><span class="p">:</span>                   <span class="c1"># Create class &quot;square&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">square</span><span class="p">:</span>                   <span class="c1"># Create class "square"</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>         <span class="c1"># Define init method</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">side_length</span> <span class="o">=</span> <span class="mi">2</span>    <span class="c1"># Set side_length to the value 2</span>
 </pre></div>
@@ -702,7 +744,7 @@ document.write(`
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">square1</span><span class="o">.</span><span class="n">area</span>
 
-<span class="ne">AttributeError</span>: &#39;square&#39; object has no attribute &#39;area&#39;
+<span class="ne">AttributeError</span>: 'square' object has no attribute 'area'
 </pre></div>
 </div>
 </div>
@@ -875,7 +917,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rect</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;New area: </span><span class="si">{</span><span class="n">rect</span><span class="o">.</span><span class="n">area</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Automatically recalculated!</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"New area: </span><span class="si">{</span><span class="n">rect</span><span class="o">.</span><span class="n">area</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># Automatically recalculated!</span>
 </pre></div>
 </div>
 </div>
@@ -884,8 +926,8 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rect</span> <span class="o">=</span> <span class="n">rectangle</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Area: </span><span class="si">{</span><span class="n">rect</span><span class="o">.</span><span class="n">area</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Note: no parentheses!</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perimeter: </span><span class="si">{</span><span class="n">rect</span><span class="o">.</span><span class="n">perimeter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Area: </span><span class="si">{</span><span class="n">rect</span><span class="o">.</span><span class="n">area</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># Note: no parentheses!</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Perimeter: </span><span class="si">{</span><span class="n">rect</span><span class="o">.</span><span class="n">perimeter</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -899,7 +941,7 @@ document.write(`
     
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Area is computed on-the-fly whenever accessed.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Area is computed on-the-fly whenever accessed."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
     
     <span class="nd">@property</span>
@@ -932,7 +974,7 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">chair1</span></code> is a very typical chair with 4 legs, is 0.8m tall, and is coloured green.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chair1</span> <span class="o">=</span> <span class="n">chair</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chair1</span> <span class="o">=</span> <span class="n">chair</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">)</span>
 <span class="n">chair1</span><span class="o">.</span><span class="n">legs</span>
 </pre></div>
 </div>
@@ -962,7 +1004,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;green&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'green'
 </pre></div>
 </div>
 </div>
@@ -970,13 +1012,13 @@ document.write(`
 <p>Now let’s use the <code class="docutils literal notranslate"><span class="pre">paint()</span></code> method of the chair class to repaint the chair a different colour</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chair1</span><span class="o">.</span><span class="n">paint</span><span class="p">(</span><span class="s2">&quot;purple&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chair1</span><span class="o">.</span><span class="n">paint</span><span class="p">(</span><span class="s2">"purple"</span><span class="p">)</span>
 <span class="n">chair1</span><span class="o">.</span><span class="n">colour</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;purple&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'purple'
 </pre></div>
 </div>
 </div>
@@ -1021,7 +1063,7 @@ document.write(`
 <p><strong>This is something to be very careful of!</strong></p>
 <p>In Python, objects are passed <strong>by reference</strong>, meaning the function receives a reference to the same object in memory, not a copy. Changes made inside the function affect the original object. This is different from simple types like integers or strings, which are immutable.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-<span class="c1"># Compare: immutable vs mutableIn general it is good practice when working with functions that manipulate objects to return the object at the end. This makes the function&#39;s side effects explicit and behaves as expected—predictability is what we should always be striving for when programming.</span>
+<span class="c1"># Compare: immutable vs mutableIn general it is good practice when working with functions that manipulate objects to return the object at the end. This makes the function's side effects explicit and behaves as expected—predictability is what we should always be striving for when programming.</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">change_number</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 
@@ -1031,7 +1073,7 @@ document.write(`
 
 <span class="n">change_object</span><span class="p">(</span><span class="n">chair1</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">change_object</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span><span class="n">chair1</span> <span class="o">=</span> <span class="n">chair</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">change_object</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span><span class="n">chair1</span> <span class="o">=</span> <span class="n">chair</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">)</span>
 
     <span class="n">obj</span><span class="o">.</span><span class="n">legs</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">legs</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># Modifies the original!</span>
 
@@ -1066,7 +1108,7 @@ document.write(`
 <span class="n">chair_stack</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="c1"># Make 10 green chairs with random numbers of legs and random heights</span>
-    <span class="n">chair_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chair</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">))</span>
+    <span class="n">chair_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chair</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">chair_stack</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">legs</span><span class="p">)</span>
@@ -1141,8 +1183,8 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Organism</span><span class="p">:</span>
     <span class="c1"># Class attributes - shared by all instances</span>
-    <span class="n">kingdom</span> <span class="o">=</span> <span class="s2">&quot;Animalia&quot;</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Track how many organisms we&#39;ve created</span>
+    <span class="n">kingdom</span> <span class="o">=</span> <span class="s2">"Animalia"</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Track how many organisms we've created</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span> <span class="n">mass</span><span class="p">):</span>
         <span class="c1"># Instance attributes - unique to each instance</span>
@@ -1150,12 +1192,12 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="n">mass</span>
         <span class="n">Organism</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># Increment class attribute</span>
         
-<span class="n">org1</span> <span class="o">=</span> <span class="n">Organism</span><span class="p">(</span><span class="s2">&quot;Homo sapiens&quot;</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
-<span class="n">org2</span> <span class="o">=</span> <span class="n">Organism</span><span class="p">(</span><span class="s2">&quot;Canis familiaris&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+<span class="n">org1</span> <span class="o">=</span> <span class="n">Organism</span><span class="p">(</span><span class="s2">"Homo sapiens"</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+<span class="n">org2</span> <span class="o">=</span> <span class="n">Organism</span><span class="p">(</span><span class="s2">"Canis familiaris"</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kingdom (shared): </span><span class="si">{</span><span class="n">org1</span><span class="o">.</span><span class="n">kingdom</span><span class="si">}</span><span class="s2"> == </span><span class="si">{</span><span class="n">org2</span><span class="o">.</span><span class="n">kingdom</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Species (unique): </span><span class="si">{</span><span class="n">org1</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2"> != </span><span class="si">{</span><span class="n">org2</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total organisms created: </span><span class="si">{</span><span class="n">Organism</span><span class="o">.</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Kingdom (shared): </span><span class="si">{</span><span class="n">org1</span><span class="o">.</span><span class="n">kingdom</span><span class="si">}</span><span class="s2"> == </span><span class="si">{</span><span class="n">org2</span><span class="o">.</span><span class="n">kingdom</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Species (unique): </span><span class="si">{</span><span class="n">org1</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2"> != </span><span class="si">{</span><span class="n">org2</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Total organisms created: </span><span class="si">{</span><span class="n">Organism</span><span class="o">.</span><span class="n">count</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1170,12 +1212,12 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">pi</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">spider</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a spider with web architecture measurements.</span>
+<span class="w">    </span><span class="sd">"""Represents a spider with web architecture measurements.</span>
 <span class="sd">    </span>
 <span class="sd">    The capture area is the effective web area available for prey interception,</span>
 <span class="sd">    calculated as the elliptical web area minus the hub (where the spider sits).</span>
 <span class="sd">    This is an important functional trait for understanding foraging efficiency.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body_weight</span><span class="p">,</span> <span class="n">web_diameter_horizontal</span><span class="p">,</span> <span class="n">web_diameter_vertical</span><span class="p">,</span> <span class="n">hub_diameter</span><span class="p">,</span> <span class="n">mesh_width</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bw</span> <span class="o">=</span> <span class="n">body_weight</span>  <span class="c1"># mg</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dh</span> <span class="o">=</span> <span class="n">web_diameter_horizontal</span>  <span class="c1"># cm</span>
@@ -1185,7 +1227,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">calc_ca</span><span class="p">()</span>
     
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">calc_ca</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Capture area: </span><span class="si">{</span><span class="n">spidey1</span><span class="o">.</span><span class="n">ca</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> cm²&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calc_ca</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Capture area: </span><span class="si">{</span><span class="n">spidey1</span><span class="o">.</span><span class="n">ca</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> cm²"</span><span class="p">)</span>
 
         <span class="c1"># Calculate capture area using Ellipse-Hub formulaspidey1 = spider(1, 10, 8, 3, 1.4)</span>
 
@@ -1214,17 +1256,17 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Measurement</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a single measurement with units.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Represents a single measurement with units."""</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">unit</span> <span class="o">=</span> <span class="n">unit</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">variable_name</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="si">}</span><span class="s2">"</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">ExperimentalUnit</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents one replicate in an experiment.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Represents one replicate in an experiment."""</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">unit_id</span><span class="p">,</span> <span class="n">treatment</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">unit_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">treatment</span> <span class="o">=</span> <span class="n">treatment</span>
@@ -1234,17 +1276,17 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">measurements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measurement</span><span class="p">)</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">meas_str</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">measurements</span><span class="p">)</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Unit </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">treatment</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">meas_str</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">meas_str</span> <span class="o">=</span> <span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">measurements</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Unit </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">treatment</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">meas_str</span><span class="si">}</span><span class="s2">"</span>
 
 <span class="c1"># Create experimental units</span>
-<span class="n">unit1</span> <span class="o">=</span> <span class="n">ExperimentalUnit</span><span class="p">(</span><span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="s2">&quot;control&quot;</span><span class="p">)</span>
-<span class="n">unit1</span><span class="o">.</span><span class="n">add_measurement</span><span class="p">(</span><span class="n">Measurement</span><span class="p">(</span><span class="mf">23.5</span><span class="p">,</span> <span class="s2">&quot;°C&quot;</span><span class="p">,</span> <span class="s2">&quot;temperature&quot;</span><span class="p">))</span>
-<span class="n">unit1</span><span class="o">.</span><span class="n">add_measurement</span><span class="p">(</span><span class="n">Measurement</span><span class="p">(</span><span class="mf">7.2</span><span class="p">,</span> <span class="s2">&quot;pH&quot;</span><span class="p">,</span> <span class="s2">&quot;acidity&quot;</span><span class="p">))</span>
+<span class="n">unit1</span> <span class="o">=</span> <span class="n">ExperimentalUnit</span><span class="p">(</span><span class="s2">"A1"</span><span class="p">,</span> <span class="s2">"control"</span><span class="p">)</span>
+<span class="n">unit1</span><span class="o">.</span><span class="n">add_measurement</span><span class="p">(</span><span class="n">Measurement</span><span class="p">(</span><span class="mf">23.5</span><span class="p">,</span> <span class="s2">"°C"</span><span class="p">,</span> <span class="s2">"temperature"</span><span class="p">))</span>
+<span class="n">unit1</span><span class="o">.</span><span class="n">add_measurement</span><span class="p">(</span><span class="n">Measurement</span><span class="p">(</span><span class="mf">7.2</span><span class="p">,</span> <span class="s2">"pH"</span><span class="p">,</span> <span class="s2">"acidity"</span><span class="p">))</span>
 
-<span class="n">unit2</span> <span class="o">=</span> <span class="n">ExperimentalUnit</span><span class="p">(</span><span class="s2">&quot;A2&quot;</span><span class="p">,</span> <span class="s2">&quot;treatment&quot;</span><span class="p">)</span>
-<span class="n">unit2</span><span class="o">.</span><span class="n">add_measurement</span><span class="p">(</span><span class="n">Measurement</span><span class="p">(</span><span class="mf">28.1</span><span class="p">,</span> <span class="s2">&quot;°C&quot;</span><span class="p">,</span> <span class="s2">&quot;temperature&quot;</span><span class="p">))</span>
-<span class="n">unit2</span><span class="o">.</span><span class="n">add_measurement</span><span class="p">(</span><span class="n">Measurement</span><span class="p">(</span><span class="mf">6.8</span><span class="p">,</span> <span class="s2">&quot;pH&quot;</span><span class="p">,</span> <span class="s2">&quot;acidity&quot;</span><span class="p">))</span>
+<span class="n">unit2</span> <span class="o">=</span> <span class="n">ExperimentalUnit</span><span class="p">(</span><span class="s2">"A2"</span><span class="p">,</span> <span class="s2">"treatment"</span><span class="p">)</span>
+<span class="n">unit2</span><span class="o">.</span><span class="n">add_measurement</span><span class="p">(</span><span class="n">Measurement</span><span class="p">(</span><span class="mf">28.1</span><span class="p">,</span> <span class="s2">"°C"</span><span class="p">,</span> <span class="s2">"temperature"</span><span class="p">))</span>
+<span class="n">unit2</span><span class="o">.</span><span class="n">add_measurement</span><span class="p">(</span><span class="n">Measurement</span><span class="p">(</span><span class="mf">6.8</span><span class="p">,</span> <span class="s2">"pH"</span><span class="p">,</span> <span class="s2">"acidity"</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">unit1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">unit2</span><span class="p">)</span>
@@ -1277,22 +1319,22 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="n">mass</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if two organisms are equal (same species and mass).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Check if two organisms are equal (same species and mass)."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">species</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">species</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">mass</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if this organism is smaller than another (by mass).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Check if this organism is smaller than another (by mass)."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">mass</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="si">}</span><span class="s2">kg)&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="si">}</span><span class="s2">kg)"</span>
 
-<span class="n">mouse</span> <span class="o">=</span> <span class="n">Organism</span><span class="p">(</span><span class="s2">&quot;Mus musculus&quot;</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
-<span class="n">cat</span> <span class="o">=</span> <span class="n">Organism</span><span class="p">(</span><span class="s2">&quot;Felis catus&quot;</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span>
-<span class="n">dog</span> <span class="o">=</span> <span class="n">Organism</span><span class="p">(</span><span class="s2">&quot;Canis familiaris&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+<span class="n">mouse</span> <span class="o">=</span> <span class="n">Organism</span><span class="p">(</span><span class="s2">"Mus musculus"</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
+<span class="n">cat</span> <span class="o">=</span> <span class="n">Organism</span><span class="p">(</span><span class="s2">"Felis catus"</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span>
+<span class="n">dog</span> <span class="o">=</span> <span class="n">Organism</span><span class="p">(</span><span class="s2">"Canis familiaris"</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mouse</span><span class="si">}</span><span class="s2"> &lt; </span><span class="si">{</span><span class="n">cat</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">mouse</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">cat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dog</span><span class="si">}</span><span class="s2"> &lt; </span><span class="si">{</span><span class="n">cat</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">dog</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">cat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">mouse</span><span class="si">}</span><span class="s2"> &lt; </span><span class="si">{</span><span class="n">cat</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">mouse</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">cat</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">dog</span><span class="si">}</span><span class="s2"> &lt; </span><span class="si">{</span><span class="n">cat</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">dog</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">cat</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1362,7 +1404,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Individual</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents one organism in a population.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Represents one organism in a population."""</span>
     <span class="n">next_id</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Class attribute to assign unique IDs</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -1373,23 +1415,23 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">alive</span> <span class="o">=</span> <span class="kc">True</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">food_available</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Organisms grow if food is available.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Organisms grow if food is available."""</span>
         <span class="k">if</span> <span class="n">food_available</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">age_one_year</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Age and check for mortality.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Age and check for mortality."""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="c1"># Simple mortality: probability increases with age</span>
         <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">*</span> <span class="mf">0.05</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">alive</span> <span class="o">=</span> <span class="kc">False</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;alive&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">alive</span> <span class="k">else</span> <span class="s2">&quot;dead&quot;</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Individual </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">kg, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2">y (</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="s2">"alive"</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">alive</span> <span class="k">else</span> <span class="s2">"dead"</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Individual </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">kg, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2">y (</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">)"</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Population</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages a collection of individuals.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Manages a collection of individuals."""</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span> <span class="n">initial_size</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">species</span> <span class="o">=</span> <span class="n">species</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">individuals</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1399,16 +1441,16 @@ document.write(`
     
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Current population size (alive individuals only).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Current population size (alive individuals only)."""</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">individuals</span> <span class="k">if</span> <span class="n">ind</span><span class="o">.</span><span class="n">alive</span><span class="p">)</span>
     
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">total_biomass</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Total mass of all living individuals.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Total mass of all living individuals."""</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ind</span><span class="o">.</span><span class="n">mass</span> <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">individuals</span> <span class="k">if</span> <span class="n">ind</span><span class="o">.</span><span class="n">alive</span><span class="p">)</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">simulate_year</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">food_available</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Simulate one year: growth, aging, reproduction.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Simulate one year: growth, aging, reproduction."""</span>
         <span class="c1"># Age all individuals</span>
         <span class="k">for</span> <span class="n">ind</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">ind</span><span class="o">.</span><span class="n">alive</span><span class="p">:</span>
@@ -1424,15 +1466,15 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">new_individuals</span><span class="p">)</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2"> individuals, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">total_biomass</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">kg total&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2"> individuals, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">total_biomass</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">kg total"</span>
 
 <span class="c1"># Run a simple simulation</span>
-<span class="n">pop</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="s2">&quot;Oryctolagus cuniculus&quot;</span><span class="p">,</span> <span class="n">initial_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Year 0: </span><span class="si">{</span><span class="n">pop</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">pop</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="s2">"Oryctolagus cuniculus"</span><span class="p">,</span> <span class="n">initial_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Year 0: </span><span class="si">{</span><span class="n">pop</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
     <span class="n">pop</span><span class="o">.</span><span class="n">simulate_year</span><span class="p">(</span><span class="n">food_available</span><span class="o">=</span><span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># Food every other year</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Year </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">pop</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Year </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">pop</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1463,7 +1505,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_chair</span> <span class="o">=</span> <span class="n">chair</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_chair</span> <span class="o">=</span> <span class="n">chair</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">"black"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1505,12 +1547,12 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">colour</span> <span class="o">=</span> <span class="n">colour</span>
         
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;A </span><span class="si">{}</span><span class="s2"> legged, </span><span class="si">{}</span><span class="s2">m tall, </span><span class="si">{}</span><span class="s2"> chair.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">legs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">colour</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">"A </span><span class="si">{}</span><span class="s2"> legged, </span><span class="si">{}</span><span class="s2">m tall, </span><span class="si">{}</span><span class="s2"> chair."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">legs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">colour</span><span class="p">)</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">paint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newcolour</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">colour</span> <span class="o">=</span> <span class="n">newcolour</span>
         
-<span class="n">my_chair</span> <span class="o">=</span> <span class="n">chair</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">my_chair</span> <span class="o">=</span> <span class="n">chair</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">"black"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1544,10 +1586,10 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">colour</span> <span class="o">=</span> <span class="n">colour</span>
         
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;chair(</span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1">, &quot;</span><span class="si">{}</span><span class="s1">&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">legs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">colour</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">'chair(</span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1">, "</span><span class="si">{}</span><span class="s1">")'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">legs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">colour</span><span class="p">)</span>
         
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;A </span><span class="si">{}</span><span class="s2"> legged, </span><span class="si">{}</span><span class="s2">m tall, </span><span class="si">{}</span><span class="s2"> chair.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">legs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">colour</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">"A </span><span class="si">{}</span><span class="s2"> legged, </span><span class="si">{}</span><span class="s2">m tall, </span><span class="si">{}</span><span class="s2"> chair."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">legs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">colour</span><span class="p">)</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">paint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newcolour</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">colour</span> <span class="o">=</span> <span class="n">newcolour</span>
@@ -1558,7 +1600,7 @@ document.write(`
 <p>Now let’s reinstantiate <code class="docutils literal notranslate"><span class="pre">my_chair</span></code> with the new class definition</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_chair</span> <span class="o">=</span> <span class="n">chair</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_chair</span> <span class="o">=</span> <span class="n">chair</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">"black"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1571,7 +1613,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;chair(6, 0.8, &quot;black&quot;)&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'chair(6, 0.8, "black")'
 </pre></div>
 </div>
 </div>
@@ -1587,15 +1629,15 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">chairstack</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chairs</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;lab&quot;</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chairs</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">"lab"</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">chairs</span> <span class="o">=</span> <span class="n">chairs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="n">location</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;chairstack(</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chairs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">"chairstack(</span><span class="si">{}</span><span class="s2">)"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chairs</span><span class="p">)</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;Chair stack containing </span><span class="si">{}</span><span class="s2"> chair/s.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chairs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s2">"Chair stack containing </span><span class="si">{}</span><span class="s2"> chair/s."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chairs</span><span class="p">))</span>
         
 </pre></div>
 </div>
@@ -1608,7 +1650,7 @@ document.write(`
 <span class="n">chair_stack</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="c1"># Make 10 green chairs with random numbers of legs and random heights</span>
-    <span class="n">chair_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chair</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">))</span>
+    <span class="n">chair_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chair</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">))</span>
 
 <span class="n">stack</span> <span class="o">=</span> <span class="n">chairstack</span><span class="p">(</span><span class="n">chair_stack</span><span class="p">)</span>
 </pre></div>
@@ -1634,7 +1676,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;chairstack([chair(3, 1.769448546869566, &quot;green&quot;), chair(8, 0.5064408569591434, &quot;green&quot;), chair(2, 1.7235454887699924, &quot;green&quot;), chair(4, 0.49848348480071314, &quot;green&quot;), chair(9, 0.2203557317580227, &quot;green&quot;), chair(1, 1.370163669679231, &quot;green&quot;), chair(9, 1.2030246812940097, &quot;green&quot;), chair(10, 0.3260746760576183, &quot;green&quot;), chair(3, 1.1635929734812964, &quot;green&quot;), chair(6, 0.48796006249702173, &quot;green&quot;)])&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'chairstack([chair(3, 1.769448546869566, "green"), chair(8, 0.5064408569591434, "green"), chair(2, 1.7235454887699924, "green"), chair(4, 0.49848348480071314, "green"), chair(9, 0.2203557317580227, "green"), chair(1, 1.370163669679231, "green"), chair(9, 1.2030246812940097, "green"), chair(10, 0.3260746760576183, "green"), chair(3, 1.1635929734812964, "green"), chair(6, 0.48796006249702173, "green")])'
 </pre></div>
 </div>
 </div>
@@ -1657,15 +1699,15 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">chairstack</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chairs</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;lab&quot;</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chairs</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">"lab"</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">chairs</span> <span class="o">=</span> <span class="n">chairs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="n">location</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;chairstack(</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chairs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">"chairstack(</span><span class="si">{}</span><span class="s2">)"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chairs</span><span class="p">)</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;Chair stack containing </span><span class="si">{}</span><span class="s2"> chair/s.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chairs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s2">"Chair stack containing </span><span class="si">{}</span><span class="s2"> chair/s."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chairs</span><span class="p">))</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chairs</span><span class="p">)</span>
@@ -1719,18 +1761,18 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PopulationModel</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple exponential growth model.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Simple exponential growth model."""</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">r</span>  <span class="c1"># growth rate</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">K</span> <span class="o">=</span> <span class="n">K</span>  <span class="c1"># carrying capacity</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate population at time t.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Calculate population at time t."""</span>
         <span class="c1"># Logistic growth: dN/dt = r*N*(1 - N/K)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">K</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">K</span> <span class="o">-</span> <span class="n">N</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">2.71828</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">*</span> <span class="n">t</span><span class="p">)))</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Logistic model (r=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="si">}</span><span class="s2">, K=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Logistic model (r=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="si">}</span><span class="s2">, K=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="si">}</span><span class="s2">)"</span>
 
 <span class="c1"># Create a model instance</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">PopulationModel</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
@@ -1739,7 +1781,7 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 <span class="c1"># Now use it like a function!</span>
 <span class="n">N0</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;t=</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">: N=</span><span class="si">{</span><span class="n">model</span><span class="p">(</span><span class="n">N0</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"t=</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">: N=</span><span class="si">{</span><span class="n">model</span><span class="p">(</span><span class="n">N0</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1765,7 +1807,7 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Organism</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for all organisms.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Base class for all organisms."""</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">species</span> <span class="o">=</span> <span class="n">species</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="n">mass</span>
@@ -1773,10 +1815,10 @@ A 6 legged, 0.48796006249702173m tall, green chair.
     
     <span class="k">def</span><span class="w"> </span><span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mass_increase</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">+=</span> <span class="n">mass_increase</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2"> grew to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="si">}</span><span class="s2">kg&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2"> grew to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="si">}</span><span class="s2">kg"</span>
     
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="si">}</span><span class="s2">kg, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2">y)&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="si">}</span><span class="s2">kg, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2">y)"</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Plant</span><span class="p">(</span><span class="n">Organism</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
@@ -1786,7 +1828,7 @@ A 6 legged, 0.48796006249702173m tall, green chair.
     <span class="k">def</span><span class="w"> </span><span class="nf">photosynthesize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">light_hours</span><span class="p">):</span>
         <span class="n">biomass_gain</span> <span class="o">=</span> <span class="n">light_hours</span> <span class="o">*</span> <span class="mf">0.01</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">grow</span><span class="p">(</span><span class="n">biomass_gain</span><span class="p">)</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Photosynthesized </span><span class="si">{</span><span class="n">biomass_gain</span><span class="si">}</span><span class="s2">kg biomass&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Photosynthesized </span><span class="si">{</span><span class="n">biomass_gain</span><span class="si">}</span><span class="s2">kg biomass"</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Animal</span><span class="p">(</span><span class="n">Organism</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">diet</span><span class="p">):</span>
@@ -1796,13 +1838,13 @@ A 6 legged, 0.48796006249702173m tall, green chair.
     <span class="k">def</span><span class="w"> </span><span class="nf">eat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">food_mass</span><span class="p">):</span>
         <span class="c1"># Animals only convert part of food to biomass</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">grow</span><span class="p">(</span><span class="n">food_mass</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">)</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2"> ate </span><span class="si">{</span><span class="n">food_mass</span><span class="si">}</span><span class="s2">kg of food&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2"> ate </span><span class="si">{</span><span class="n">food_mass</span><span class="si">}</span><span class="s2">kg of food"</span>
 
-<span class="n">oak</span> <span class="o">=</span> <span class="n">Plant</span><span class="p">(</span><span class="s2">&quot;Quercus robur&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">oak</span> <span class="o">=</span> <span class="n">Plant</span><span class="p">(</span><span class="s2">"Quercus robur"</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">oak</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">oak</span><span class="o">.</span><span class="n">photosynthesize</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
 
-<span class="n">rabbit</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="s2">&quot;Oryctolagus cuniculus&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;herbivore&quot;</span><span class="p">)</span>
+<span class="n">rabbit</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="s2">"Oryctolagus cuniculus"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"herbivore"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rabbit</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rabbit</span><span class="o">.</span><span class="n">eat</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
 </pre></div>
@@ -1811,7 +1853,7 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Both</span> <span class="err">`</span><span class="n">Plant</span><span class="err">`</span> <span class="ow">and</span> <span class="err">`</span><span class="n">Animal</span><span class="err">`</span> <span class="n">inherit</span> <span class="kn">from</span><span class="w"> </span><span class="err">`</span><span class="n">Organism</span><span class="err">`</span><span class="p">,</span> <span class="n">so</span> <span class="n">they</span> <span class="n">share</span> <span class="n">the</span> <span class="err">`</span><span class="n">grow</span><span class="p">()</span><span class="err">`</span> <span class="n">method</span><span class="p">,</span> <span class="n">but</span> <span class="n">each</span> <span class="n">has</span> <span class="n">unique</span> <span class="n">methods</span> <span class="n">appropriate</span> <span class="n">to</span> <span class="n">their</span> <span class="n">biology</span><span class="o">.</span> <span class="n">The</span> <span class="err">`</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span><span class="err">`</span> <span class="n">call</span> <span class="n">ensures</span> <span class="n">the</span> <span class="n">parent</span> <span class="n">class</span><span class="s1">&#39;s initialization runs first.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Both</span> <span class="err">`</span><span class="n">Plant</span><span class="err">`</span> <span class="ow">and</span> <span class="err">`</span><span class="n">Animal</span><span class="err">`</span> <span class="n">inherit</span> <span class="kn">from</span><span class="w"> </span><span class="err">`</span><span class="n">Organism</span><span class="err">`</span><span class="p">,</span> <span class="n">so</span> <span class="n">they</span> <span class="n">share</span> <span class="n">the</span> <span class="err">`</span><span class="n">grow</span><span class="p">()</span><span class="err">`</span> <span class="n">method</span><span class="p">,</span> <span class="n">but</span> <span class="n">each</span> <span class="n">has</span> <span class="n">unique</span> <span class="n">methods</span> <span class="n">appropriate</span> <span class="n">to</span> <span class="n">their</span> <span class="n">biology</span><span class="o">.</span> <span class="n">The</span> <span class="err">`</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span><span class="err">`</span> <span class="n">call</span> <span class="n">ensures</span> <span class="n">the</span> <span class="n">parent</span> <span class="n">class</span><span class="s1">'s initialization runs first.</span>
 </pre></div>
 </div>
 </div>
@@ -1828,7 +1870,7 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Lichen</span><span class="p">(</span><span class="n">Organism</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Slow-growing organism with limited growth.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Slow-growing organism with limited growth."""</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">species</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_mass</span> <span class="o">=</span> <span class="n">mass</span> <span class="o">*</span> <span class="mi">2</span>  <span class="c1"># Can only double in size</span>
@@ -1837,12 +1879,12 @@ A 6 legged, 0.48796006249702173m tall, green chair.
         <span class="c1"># Override parent method with growth limits</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">+</span> <span class="n">mass_increase</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_mass</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_mass</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2"> reached maximum size&quot;</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2"> reached maximum size"</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">+=</span> <span class="n">mass_increase</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2"> grew to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="si">}</span><span class="s2">kg&quot;</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2"> grew to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mass</span><span class="si">}</span><span class="s2">kg"</span>
 
-<span class="n">lichen</span> <span class="o">=</span> <span class="n">Lichen</span><span class="p">(</span><span class="s2">&quot;Xanthoria parietina&quot;</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">lichen</span> <span class="o">=</span> <span class="n">Lichen</span><span class="p">(</span><span class="s2">"Xanthoria parietina"</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lichen</span><span class="o">.</span><span class="n">grow</span><span class="p">(</span><span class="mf">0.005</span><span class="p">))</span>  <span class="c1"># Normal growth</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lichen</span><span class="o">.</span><span class="n">grow</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>     <span class="c1"># Hits maximum</span>
 </pre></div>
@@ -1875,31 +1917,31 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">EcologyError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base exception for ecology package.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Base exception for ecology package."""</span>
     <span class="k">pass</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">InvalidPopulationSizeError</span><span class="p">(</span><span class="n">EcologyError</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when population size is negative or non-numeric.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Raised when population size is negative or non-numeric."""</span>
     <span class="k">pass</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">CarryingCapacityExceededError</span><span class="p">(</span><span class="n">EcologyError</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when population exceeds carrying capacity.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Raised when population exceeds carrying capacity."""</span>
     <span class="k">pass</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">update_population</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">N</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">InvalidPopulationSizeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Population cannot be negative: </span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">InvalidPopulationSizeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Population cannot be negative: </span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">N</span> <span class="o">&gt;</span> <span class="n">K</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">CarryingCapacityExceededError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;N=</span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s2"> exceeds K=</span><span class="si">{</span><span class="n">K</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">CarryingCapacityExceededError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"N=</span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s2"> exceeds K=</span><span class="si">{</span><span class="n">K</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">N</span><span class="o">/</span><span class="n">K</span><span class="p">))</span>
 
 <span class="c1"># Now you can catch all ecology errors, or specific ones</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">update_population</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="k">except</span> <span class="n">InvalidPopulationSizeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Caught specific error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Caught specific error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="k">except</span> <span class="n">EcologyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Caught any ecology error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Caught any ecology error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1908,12 +1950,12 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">say_woof</span><span class="p">(</span><span class="n">subject</span><span class="p">):</span>
     <span class="n">subject</span> <span class="o">=</span> <span class="n">subject</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">subject</span> <span class="o">==</span> <span class="s2">&quot;dog&quot;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Woof&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">subject</span> <span class="o">==</span> <span class="s2">"dog"</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Woof"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Only dogs can go &#39;woof&#39;, </span><span class="si">{}</span><span class="s2">s cannot go &#39;woof&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">"Only dogs can go 'woof', </span><span class="si">{}</span><span class="s2">s cannot go 'woof'"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
 
-<span class="n">say_woof</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">)</span>
+<span class="n">say_woof</span><span class="p">(</span><span class="s2">"cat"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1922,15 +1964,15 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 <span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">48</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Only dogs can go &#39;woof&#39;, </span><span class="si">{}</span><span class="s2">s cannot go &#39;woof&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">say_woof</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">"Only dogs can go 'woof', </span><span class="si">{}</span><span class="s2">s cannot go 'woof'"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">say_woof</span><span class="p">(</span><span class="s2">"cat"</span><span class="p">)</span>
 
 <span class="nn">Cell In[48], line 6,</span> in <span class="ni">say_woof</span><span class="nt">(subject)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Woof&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">"Woof"</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">6</span>     <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Only dogs can go &#39;woof&#39;, </span><span class="si">{}</span><span class="s2">s cannot go &#39;woof&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">6</span>     <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">"Only dogs can go 'woof', </span><span class="si">{}</span><span class="s2">s cannot go 'woof'"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
 
-<span class="ne">AttributeError</span>: Only dogs can go &#39;woof&#39;, cats cannot go &#39;woof&#39;
+<span class="ne">AttributeError</span>: Only dogs can go 'woof', cats cannot go 'woof'
 </pre></div>
 </div>
 </div>
@@ -1951,10 +1993,10 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 <span class="nn">Cell In[48], line 2,</span> in <span class="ni">say_woof</span><span class="nt">(subject)</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span><span class="w"> </span><span class="nf">say_woof</span><span class="p">(</span><span class="n">subject</span><span class="p">):</span>
 <span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">subject</span> <span class="o">=</span> <span class="n">subject</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="k">if</span> <span class="n">subject</span> <span class="o">==</span> <span class="s2">&quot;dog&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Woof&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="k">if</span> <span class="n">subject</span> <span class="o">==</span> <span class="s2">"dog"</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">"Woof"</span><span class="p">)</span>
 
-<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;lower&#39;
+<span class="ne">AttributeError</span>: 'int' object has no attribute 'lower'
 </pre></div>
 </div>
 </div>
@@ -1967,12 +2009,12 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 
 <span class="k">def</span><span class="w"> </span><span class="nf">say_woof</span><span class="p">(</span><span class="n">subject</span><span class="p">):</span>
     <span class="n">subject</span> <span class="o">=</span> <span class="n">subject</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">subject</span> <span class="o">==</span> <span class="s2">&quot;dog&quot;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Woof&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">subject</span> <span class="o">==</span> <span class="s2">"dog"</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Woof"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">WoofError</span><span class="p">(</span><span class="s2">&quot;Only dogs can go &#39;woof&#39;, </span><span class="si">{0}</span><span class="s2">s cannot go &#39;woof&#39;, they are </span><span class="si">{0}</span><span class="s2">s...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="n">WoofError</span><span class="p">(</span><span class="s2">"Only dogs can go 'woof', </span><span class="si">{0}</span><span class="s2">s cannot go 'woof', they are </span><span class="si">{0}</span><span class="s2">s..."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
 
-<span class="n">say_woof</span><span class="p">(</span><span class="s2">&quot;chair&quot;</span><span class="p">)</span>
+<span class="n">say_woof</span><span class="p">(</span><span class="s2">"chair"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1981,15 +2023,15 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 <span class="ne">WoofError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">50</span><span class="p">],</span> <span class="n">line</span> <span class="mi">11</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>         <span class="k">raise</span> <span class="n">WoofError</span><span class="p">(</span><span class="s2">&quot;Only dogs can go &#39;woof&#39;, </span><span class="si">{0}</span><span class="s2">s cannot go &#39;woof&#39;, they are </span><span class="si">{0}</span><span class="s2">s...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">say_woof</span><span class="p">(</span><span class="s2">&quot;chair&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>         <span class="k">raise</span> <span class="n">WoofError</span><span class="p">(</span><span class="s2">"Only dogs can go 'woof', </span><span class="si">{0}</span><span class="s2">s cannot go 'woof', they are </span><span class="si">{0}</span><span class="s2">s..."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">say_woof</span><span class="p">(</span><span class="s2">"chair"</span><span class="p">)</span>
 
 <span class="nn">Cell In[50], line 9,</span> in <span class="ni">say_woof</span><span class="nt">(subject)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Woof&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">"Woof"</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">9</span>     <span class="k">raise</span> <span class="n">WoofError</span><span class="p">(</span><span class="s2">&quot;Only dogs can go &#39;woof&#39;, </span><span class="si">{0}</span><span class="s2">s cannot go &#39;woof&#39;, they are </span><span class="si">{0}</span><span class="s2">s...&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">9</span>     <span class="k">raise</span> <span class="n">WoofError</span><span class="p">(</span><span class="s2">"Only dogs can go 'woof', </span><span class="si">{0}</span><span class="s2">s cannot go 'woof', they are </span><span class="si">{0}</span><span class="s2">s..."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">subject</span><span class="p">))</span>
 
-<span class="ne">WoofError</span>: Only dogs can go &#39;woof&#39;, chairs cannot go &#39;woof&#39;, they are chairs...
+<span class="ne">WoofError</span>: Only dogs can go 'woof', chairs cannot go 'woof', they are chairs...
 </pre></div>
 </div>
 </div>
@@ -2009,10 +2051,10 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 <span class="nn">Cell In[50], line 5,</span> in <span class="ni">say_woof</span><span class="nt">(subject)</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span><span class="w"> </span><span class="nf">say_woof</span><span class="p">(</span><span class="n">subject</span><span class="p">):</span>
 <span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">subject</span> <span class="o">=</span> <span class="n">subject</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="k">if</span> <span class="n">subject</span> <span class="o">==</span> <span class="s2">&quot;dog&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Woof&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="k">if</span> <span class="n">subject</span> <span class="o">==</span> <span class="s2">"dog"</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">"Woof"</span><span class="p">)</span>
 
-<span class="ne">AttributeError</span>: &#39;int&#39; object has no attribute &#39;lower&#39;
+<span class="ne">AttributeError</span>: 'int' object has no attribute 'lower'
 </pre></div>
 </div>
 </div>
@@ -2041,7 +2083,7 @@ A 6 legged, 0.48796006249702173m tall, green chair.
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">breed</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">breed</span> <span class="o">=</span> <span class="n">breed</span>
         <span class="c1"># Forgot super().__init__(name)!</span>
-        <span class="c1"># Now self.name and self.alive don&#39;t exist!</span>
+        <span class="c1"># Now self.name and self.alive don't exist!</span>
 </pre></div>
 </div>
 <p><strong>Fix</strong>: Always call parent’s <code class="docutils literal notranslate"><span class="pre">__init__</span></code>:</p>
@@ -2058,9 +2100,9 @@ A 6 legged, 0.48796006249702173m tall, green chair.
         <span class="bp">self</span><span class="o">.</span><span class="n">samples</span> <span class="o">=</span> <span class="n">samples</span>
         
 <span class="n">exp1</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">()</span>
-<span class="n">exp1</span><span class="o">.</span><span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;sample1&quot;</span><span class="p">)</span>
+<span class="n">exp1</span><span class="o">.</span><span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"sample1"</span><span class="p">)</span>
 <span class="n">exp2</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">()</span>  <span class="c1"># Expects empty list, but...</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">exp2</span><span class="o">.</span><span class="n">samples</span><span class="p">)</span>  <span class="c1"># [&#39;sample1&#39;] - they share the default list!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">exp2</span><span class="o">.</span><span class="n">samples</span><span class="p">)</span>  <span class="c1"># ['sample1'] - they share the default list!</span>
 </pre></div>
 </div>
 <p><strong>Fix</strong>: Use <code class="docutils literal notranslate"><span class="pre">None</span></code> and create new list inside:</p>
@@ -2078,9 +2120,9 @@ A 6 legged, 0.48796006249702173m tall, green chair.
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># Oops! All instances share this list!</span>
         
-<span class="n">pop1</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="s2">&quot;Site A&quot;</span><span class="p">)</span>
-<span class="n">pop2</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="s2">&quot;Site B&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">pop1</span><span class="o">.</span><span class="n">individuals</span><span class="p">)</span>  <span class="c1"># [&#39;Site A&#39;, &#39;Site B&#39;] - unexpected!</span>
+<span class="n">pop1</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="s2">"Site A"</span><span class="p">)</span>
+<span class="n">pop2</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="s2">"Site B"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pop1</span><span class="o">.</span><span class="n">individuals</span><span class="p">)</span>  <span class="c1"># ['Site A', 'Site B'] - unexpected!</span>
 </pre></div>
 </div>
 <p><strong>Fix</strong>: Initialize mutable containers in <code class="docutils literal notranslate"><span class="pre">__init__</span></code>:</p>
@@ -2097,7 +2139,7 @@ A 6 legged, 0.48796006249702173m tall, green chair.
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
     
     <span class="k">def</span><span class="w"> </span><span class="nf">get_double</span><span class="p">():</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="mi">2</span>  <span class="c1"># ERROR! get_double() missing &#39;self&#39; parameter</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="mi">2</span>  <span class="c1"># ERROR! get_double() missing 'self' parameter</span>
 </pre></div>
 </div>
 <p><strong>Fix</strong>: Every method needs <code class="docutils literal notranslate"><span class="pre">self</span></code> as first parameter (except <code class="docutils literal notranslate"><span class="pre">&#64;staticmethod</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;classmethod</span></code>).</p>
@@ -2116,15 +2158,15 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 
 <span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Sample</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Experimental sample with automatic __init__, __repr__, etc.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Experimental sample with automatic __init__, __repr__, etc."""</span>
     <span class="n">sample_id</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">treatment</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">measurement</span><span class="p">:</span> <span class="nb">float</span>
     <span class="n">replicate</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Default value</span>
     
 <span class="c1"># All this functionality for free!</span>
-<span class="n">s1</span> <span class="o">=</span> <span class="n">Sample</span><span class="p">(</span><span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="s2">&quot;control&quot;</span><span class="p">,</span> <span class="mf">23.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">s2</span> <span class="o">=</span> <span class="n">Sample</span><span class="p">(</span><span class="s2">&quot;A2&quot;</span><span class="p">,</span> <span class="s2">&quot;control&quot;</span><span class="p">,</span> <span class="mf">24.1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">Sample</span><span class="p">(</span><span class="s2">"A1"</span><span class="p">,</span> <span class="s2">"control"</span><span class="p">,</span> <span class="mf">23.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">Sample</span><span class="p">(</span><span class="s2">"A2"</span><span class="p">,</span> <span class="s2">"control"</span><span class="p">,</span> <span class="mf">24.1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>  <span class="c1"># Automatic __repr__</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s1</span> <span class="o">==</span> <span class="n">s2</span><span class="p">)</span>  <span class="c1"># Automatic __eq__</span>
@@ -2198,15 +2240,17 @@ A 6 legged, 0.48796006249702173m tall, green chair.
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-oop">What is OOP?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-first-class">Our first <code class="docutils literal notranslate"><span class="pre">class</span></code></a></li>
@@ -2303,8 +2347,8 @@ By MulQuaBio collective!
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

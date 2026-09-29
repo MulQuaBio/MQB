@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -61,6 +64,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/appendix-maths';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -68,34 +72,30 @@
     <link rel="prev" title="Maths and Quantitative Foundations" href="../appendices/maths.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -103,7 +103,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -111,15 +110,59 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -128,7 +171,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -158,21 +202,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MulQuaBio - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -262,8 +302,14 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Introduction &amp; prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_Bootcamp_Rubric.html">Computing Bootcamp Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_MiniProject_Rubric.html">Computing MiniProject Rubric</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="current nav bd-sidenav">
@@ -298,9 +344,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -479,7 +530,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -493,25 +544,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -533,7 +576,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-sympy-if-needed">Installing SymPy (if needed)</a></li>
 </ul>
@@ -641,8 +684,8 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <p>In CAS’ like SymPy, we need to create symbolic variables for the mathematical variables we want to work with. A new symbolic variable can be created using <code class="docutils literal notranslate"><span class="pre">var</span></code>. Try this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># check it&#39;s class</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># check it's class</span>
 </pre></div>
 </div>
 </div>
@@ -655,7 +698,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <p>You can also define multiple symbolic variables at one go:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;a, b, c&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">"a, b, c"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -664,7 +707,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <p>It is often important to add assumptions (constraints) to our symbolic vars:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -684,7 +727,7 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -736,7 +779,7 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\\left(x + \\pi\\right)^{2}&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'\\left(x + \\pi\\right)^{2}'
 </pre></div>
 </div>
 </div>
@@ -876,7 +919,7 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 <p>However, numerical evaluation using <code class="docutils literal notranslate"><span class="pre">evalf()</span></code> can be very slow. There is a much more efficient way to do it by using <a class="reference external" href="http://docs.sympy.org/latest/modules/utilities/lambdify.html"><code class="docutils literal notranslate"><span class="pre">lambdify()</span></code></a> to “compile” a Sympy expression into a function that is much more efficient to evaluate numerically:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MyFun_lamb</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">([</span><span class="n">x</span><span class="p">],</span> <span class="n">MyFun</span><span class="p">,</span> <span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MyFun_lamb</span> <span class="o">=</span> <span class="n">lambdify</span><span class="p">([</span><span class="n">x</span><span class="p">],</span> <span class="n">MyFun</span><span class="p">,</span> <span class="s1">'numpy'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1069,7 +1112,7 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 <p>Calculate the derivative of a multivariate expression:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;x,y,z&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">"x,y,z"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1145,7 +1188,7 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 <p>You can evaluate sums and products using <code class="docutils literal notranslate"><span class="pre">Sum</span></code>. Note that this function is named <code class="docutils literal notranslate"><span class="pre">Sum</span></code> and not <code class="docutils literal notranslate"><span class="pre">sum</span></code> to avoid namespace conflict.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">"n"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1229,7 +1272,7 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 <p><span class="math notranslate nohighlight">\(\displaystyle \frac{\mathrm{d}f(x,y)}{\mathrm{d}x} = \frac{f(x+h,y)-f(x,y)}{h}\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;h&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">"h"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1248,7 +1291,7 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 <p>We can change the direction from which we approach the limiting point using the <code class="docutils literal notranslate"><span class="pre">dir</span></code> keywork argument:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">limit</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">limit</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s2">"+"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1258,7 +1301,7 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">limit</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">limit</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="s2">"-"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1382,8 +1425,8 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 <p>Matrices are defined using the <code class="docutils literal notranslate"><span class="pre">Matrix</span></code> class:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m11</span><span class="p">,</span> <span class="n">m12</span><span class="p">,</span> <span class="n">m21</span><span class="p">,</span> <span class="n">m22</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;m11, m12, m21, m22&quot;</span><span class="p">)</span>
-<span class="n">b1</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;b1, b2&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m11</span><span class="p">,</span> <span class="n">m12</span><span class="p">,</span> <span class="n">m21</span><span class="p">,</span> <span class="n">m22</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">"m11, m12, m21, m22"</span><span class="p">)</span>
+<span class="n">b1</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">"b1, b2"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1512,8 +1555,8 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 <section id="one-population-exponential-growth">
 <h3>One population: Exponential growth<a class="headerlink" href="#one-population-exponential-growth" title="Link to this heading">#</a></h3>
 <p>Let’s look at how populations grow when there are no environmental constraints. The differential equation model is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cb6e7dfc-aaee-4ed6-b657-66063e8eb999">
-<span class="eqno">(19)<a class="headerlink" href="#equation-cb6e7dfc-aaee-4ed6-b657-66063e8eb999" title="Permalink to this equation">#</a></span>\[\begin{equation}\label{eq:exp_growth}
+<div class="amsmath math notranslate nohighlight" id="equation-e140ac19-ac05-4d54-a8bc-c39c3deedf43">
+<span class="eqno">(19)<a class="headerlink" href="#equation-e140ac19-ac05-4d54-a8bc-c39c3deedf43" title="Permalink to this equation">#</a></span>\[\begin{equation}\label{eq:exp_growth}
 	\frac{\text{d}N}{\text{d}t} = r_m N
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(r_m\)</span> is the intrinsic, constant rate of population gowth (units of 1/time), and <span class="math notranslate nohighlight">\(N\)</span> is population size (or biomass abundance). I use the subscript <span class="math notranslate nohighlight">\(m\)</span> in <span class="math notranslate nohighlight">\(r_m\)</span> to denote both <a class="reference external" href="https://en.wikipedia.org/wiki/Malthusianism">Malthusian</a> and maximal population growth rate because, in theory, without any constraints, this growth rate is expected to at its theoretical/biological maximum.</p>
@@ -1521,7 +1564,7 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 <p>First assign the symbolic variables:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_max</span><span class="p">,</span> <span class="n">N_0</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">t_lag</span><span class="p">,</span> <span class="n">t</span>  <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;r_max N_0 K t_lag t&quot;</span><span class="p">,</span><span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># the real bit is not really necessary here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_max</span><span class="p">,</span> <span class="n">N_0</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">t_lag</span><span class="p">,</span> <span class="n">t</span>  <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">"r_max N_0 K t_lag t"</span><span class="p">,</span><span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># the real bit is not really necessary here</span>
 </pre></div>
 </div>
 </div>
@@ -1538,7 +1581,7 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_m</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;r_m N t&quot;</span><span class="p">,</span><span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># the real bit is not really necessary here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_m</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">"r_m N t"</span><span class="p">,</span><span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># the real bit is not really necessary here</span>
 </pre></div>
 </div>
 </div>
@@ -1546,7 +1589,7 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 <p>Now tell SymPy that <span class="math notranslate nohighlight">\(N\)</span> is a function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">'N'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1577,8 +1620,8 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 <div class="math notranslate nohighlight">
 \[C_1 = N_0\]</div>
 <p>That is,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-254a6ece-aa16-442b-ab51-6df7d71215e9">
-<span class="eqno">(20)<a class="headerlink" href="#equation-254a6ece-aa16-442b-ab51-6df7d71215e9" title="Permalink to this equation">#</a></span>\[\begin{equation}\label{eq:exp_growth_sol}
+<div class="amsmath math notranslate nohighlight" id="equation-0071082d-bb95-4cad-9af8-a89f0378be00">
+<span class="eqno">(20)<a class="headerlink" href="#equation-0071082d-bb95-4cad-9af8-a89f0378be00" title="Permalink to this equation">#</a></span>\[\begin{equation}\label{eq:exp_growth_sol}
 N{\left (t \right )} = N_0 e^{r_m t}
 \end{equation}\]</div>
 <p>We could use Sympy for this last step as well (using <code class="docutils literal notranslate"><span class="pre">subs()</span></code> like you learned above), but that would be just plain silly – like using a sledge-hammer to drive in a nail!</p>
@@ -1597,18 +1640,18 @@ N{\left (t \right )} = N_0 e^{r_m t}
 <span class="n">t_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">exp_pop</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r_m</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The right-hand side of the exponential growth ODE&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The right-hand side of the exponential growth ODE"""</span>
     <span class="k">return</span> <span class="n">r_m</span><span class="o">*</span><span class="n">N</span>
 
 <span class="n">N_vec</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">exp_pop</span><span class="p">,</span> <span class="n">N_0</span><span class="p">,</span> <span class="n">t_vec</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">r_m</span><span class="p">,))</span> <span class="c1"># the comma is needed!</span>
 
 <span class="c1"># plot the numerical solution</span>
 <span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_vec</span><span class="p">,</span> <span class="n">N_vec</span><span class="p">)</span>
-<span class="n">p</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span> <span class="p">;</span> <span class="n">p</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$N$&#39;</span><span class="p">)</span> 
+<span class="n">p</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">)</span> <span class="p">;</span> <span class="n">p</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'$N$'</span><span class="p">)</span> 
 
 <span class="c1"># plot analytical solution</span>
-<span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_vec</span><span class="p">,</span> <span class="n">N_0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r_m</span> <span class="o">*</span> <span class="n">t_vec</span><span class="p">),</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
-<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;numerical approximation&#39;</span><span class="p">,</span> <span class="s1">&#39;analytical solution&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span> <span class="c1"># draw legend</span>
+<span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_vec</span><span class="p">,</span> <span class="n">N_0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r_m</span> <span class="o">*</span> <span class="n">t_vec</span><span class="p">),</span><span class="s1">'k--'</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">'numerical approximation'</span><span class="p">,</span> <span class="s1">'analytical solution'</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'best'</span><span class="p">)</span> <span class="c1"># draw legend</span>
 </pre></div>
 </div>
 </div>
@@ -1658,9 +1701,9 @@ N{\left (t \right )} = N_0 e^{r_m t}
 <p>Again, first we define the vars and the function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_m</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;r_m K N t&quot;</span><span class="p">,</span><span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># the real bit is not really necessary here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_m</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">"r_m K N t"</span><span class="p">,</span><span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># the real bit is not really necessary here</span>
 
-<span class="n">N</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">'N'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1687,8 +1730,8 @@ N{\left (t \right )} = N_0 e^{r_m t}
 </div>
 </div>
 <p>This is a bit more complicated than the solution for exponential growth above. But we can solve it the same way. First substitute <span class="math notranslate nohighlight">\(t = 0\)</span>, and then solve the resulting equation for the initital condition of <span class="math notranslate nohighlight">\(N_0\)</span>, which then gives This the time-dependent solution:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2e6510ea-f9cd-4755-bca4-37300bba77ac">
-<span class="eqno">(22)<a class="headerlink" href="#equation-2e6510ea-f9cd-4755-bca4-37300bba77ac" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b85f9929-be42-4a8f-ba0d-7770c169fc2e">
+<span class="eqno">(22)<a class="headerlink" href="#equation-b85f9929-be42-4a8f-ba0d-7770c169fc2e" title="Permalink to this equation">#</a></span>\[\begin{equation}
     N_t = \frac{N_0 K\mathrm{e}^{r_m t}}{K + N_0(\mathrm{e}^{r_m t}-1)}
 \end{equation}\]</div>
 <p>You can do the last steps to obtain this solution using Sympy as well (I leave it to you to try it).</p>
@@ -1707,17 +1750,17 @@ N{\left (t \right )} = N_0 e^{r_m t}
 <span class="n">t_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">log_pop</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">r_m</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The right-hand side of the logistic ODE&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The right-hand side of the logistic ODE"""</span>
     <span class="k">return</span> <span class="n">r_m</span><span class="o">*</span><span class="n">N</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">N</span><span class="o">/</span><span class="n">K</span><span class="p">)</span>
 
 <span class="n">N_vec</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">log_pop</span><span class="p">,</span> <span class="n">N_0</span><span class="p">,</span> <span class="n">t_vec</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">r_m</span><span class="p">,</span> <span class="n">K</span><span class="p">));</span>
 
 <span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_vec</span><span class="p">,</span> <span class="n">N_vec</span><span class="p">)</span> <span class="c1"># plot the solution</span>
-<span class="n">p</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span> <span class="p">;</span> <span class="n">p</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$N$&#39;</span><span class="p">)</span> 
+<span class="n">p</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">)</span> <span class="p">;</span> <span class="n">p</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'$N$'</span><span class="p">)</span> 
 
 <span class="c1"># plot analytical solution</span>
-<span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_vec</span><span class="p">,</span> <span class="n">K</span> <span class="o">*</span> <span class="n">N_0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r_m</span> <span class="o">*</span> <span class="n">t_vec</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">K</span> <span class="o">+</span> <span class="n">N_0</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r_m</span> <span class="o">*</span> <span class="n">t_vec</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">)),</span><span class="s1">&#39;k--&#39;</span><span class="p">)</span>
-<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;numerical approximation&#39;</span><span class="p">,</span> <span class="s1">&#39;analytical solution&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span> <span class="c1"># draw legend</span>
+<span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_vec</span><span class="p">,</span> <span class="n">K</span> <span class="o">*</span> <span class="n">N_0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r_m</span> <span class="o">*</span> <span class="n">t_vec</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">K</span> <span class="o">+</span> <span class="n">N_0</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r_m</span> <span class="o">*</span> <span class="n">t_vec</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">)),</span><span class="s1">'k--'</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">'numerical approximation'</span><span class="p">,</span> <span class="s1">'analytical solution'</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'best'</span><span class="p">)</span> <span class="c1"># draw legend</span>
 </pre></div>
 </div>
 </div>
@@ -1732,8 +1775,8 @@ N{\left (t \right )} = N_0 e^{r_m t}
 <section id="two-interacting-populations-the-lotka-volterra-predator-prey-model">
 <h3>Two interacting populations: The Lotka-Volterra predator-prey model<a class="headerlink" href="#two-interacting-populations-the-lotka-volterra-predator-prey-model" title="Link to this heading">#</a></h3>
 <p>Now for the classical Lotka-Volterra model that you encountered in the advanced Python week (without logistic growth for the consumer, <span class="math notranslate nohighlight">\(C\)</span>).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1af91a44-924e-49ec-8929-0e7acd38f504">
-<span class="eqno">(23)<a class="headerlink" href="#equation-1af91a44-924e-49ec-8929-0e7acd38f504" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-36a9e8f8-0e8e-4de2-8299-04cfa73243fb">
+<span class="eqno">(23)<a class="headerlink" href="#equation-36a9e8f8-0e8e-4de2-8299-04cfa73243fb" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{dN}{dt} &amp;= r_m N \left(1-\frac{N}{K}\right) - a N C\\
 \frac{dC}{dt} &amp;= e a N C - z C
 \end{align}\]</div>
@@ -1741,7 +1784,7 @@ N{\left (t \right )} = N_0 e^{r_m t}
 <p>To solve this system of ODEs, we will take a different approach – We will solve for the equilibrum (steady state for the two species’ populations). Again, we start by define the vars:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_m</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">&quot;r_m, a, e, z, K, N, C, t&quot;</span><span class="p">,</span><span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_m</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="s2">"r_m, a, e, z, K, N, C, t"</span><span class="p">,</span><span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1840,14 +1883,14 @@ N{\left (t \right )} = N_0 e^{r_m t}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Solarize_Light2&#39;, &#39;_classic_test_patch&#39;, &#39;_mpl-gallery&#39;, &#39;_mpl-gallery-nogrid&#39;, &#39;bmh&#39;, &#39;classic&#39;, &#39;dark_background&#39;, &#39;fast&#39;, &#39;fivethirtyeight&#39;, &#39;ggplot&#39;, &#39;grayscale&#39;, &#39;petroff10&#39;, &#39;seaborn-v0_8&#39;, &#39;seaborn-v0_8-bright&#39;, &#39;seaborn-v0_8-colorblind&#39;, &#39;seaborn-v0_8-dark&#39;, &#39;seaborn-v0_8-dark-palette&#39;, &#39;seaborn-v0_8-darkgrid&#39;, &#39;seaborn-v0_8-deep&#39;, &#39;seaborn-v0_8-muted&#39;, &#39;seaborn-v0_8-notebook&#39;, &#39;seaborn-v0_8-paper&#39;, &#39;seaborn-v0_8-pastel&#39;, &#39;seaborn-v0_8-poster&#39;, &#39;seaborn-v0_8-talk&#39;, &#39;seaborn-v0_8-ticks&#39;, &#39;seaborn-v0_8-white&#39;, &#39;seaborn-v0_8-whitegrid&#39;, &#39;tableau-colorblind10&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['Solarize_Light2', '_classic_test_patch', '_mpl-gallery', '_mpl-gallery-nogrid', 'bmh', 'classic', 'dark_background', 'fast', 'fivethirtyeight', 'ggplot', 'grayscale', 'petroff10', 'seaborn-v0_8', 'seaborn-v0_8-bright', 'seaborn-v0_8-colorblind', 'seaborn-v0_8-dark', 'seaborn-v0_8-dark-palette', 'seaborn-v0_8-darkgrid', 'seaborn-v0_8-deep', 'seaborn-v0_8-muted', 'seaborn-v0_8-notebook', 'seaborn-v0_8-paper', 'seaborn-v0_8-pastel', 'seaborn-v0_8-poster', 'seaborn-v0_8-talk', 'seaborn-v0_8-ticks', 'seaborn-v0_8-white', 'seaborn-v0_8-whitegrid', 'tableau-colorblind10']
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-dark&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">'seaborn-v0_8-dark'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1855,8 +1898,8 @@ N{\left (t \right )} = N_0 e^{r_m t}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_vec</span><span class="p">,</span> <span class="n">NC_vec</span><span class="p">)</span>
-<span class="n">p</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">);</span> <span class="n">p</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population size&#39;</span><span class="p">)</span> <span class="c1"># and of y-axis</span>
-<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;resource ($N$)&#39;</span><span class="p">,</span> <span class="s1">&#39;consumer ($C$)&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">);</span> <span class="n">p</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Population size'</span><span class="p">)</span> <span class="c1"># and of y-axis</span>
+<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">'resource ($N$)'</span><span class="p">,</span> <span class="s1">'consumer ($C$)'</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">'best'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1870,16 +1913,16 @@ N{\left (t \right )} = N_0 e^{r_m t}
 <p>An useful thing to do here is take a look at the <em>phase space</em>, that is, plot only the dependent variables, without respect to time:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">NC_vec</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">NC_vec</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Initial condition:&#39;</span><span class="p">,</span> <span class="n">NC_vec</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">NC_vec</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">NC_vec</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">'o'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Initial condition:'</span><span class="p">,</span> <span class="n">NC_vec</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">NC_vec</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">NC_vec</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="c1">#Another solution with a different initial condition:</span>
 <span class="c1">#NC_vec2 = odeint(LV, [2., 4.], t_vec, (r_m, K, a, e, z))</span>
 <span class="c1">#p.plot(NC_vec2[:,0], NC_vec2[:,1])</span>
-<span class="c1">#p.plot(NC_vec2[0,0], NC_vec2[0,1], &#39;o&#39;)</span>
-<span class="c1">#p.xlabel(&#39;resource Population size&#39;); p.ylabel(&#39;consumer Population size&#39;) # and of y-axis</span>
+<span class="c1">#p.plot(NC_vec2[0,0], NC_vec2[0,1], 'o')</span>
+<span class="c1">#p.xlabel('resource Population size'); p.ylabel('consumer Population size') # and of y-axis</span>
 </pre></div>
 </div>
 </div>
@@ -1959,15 +2002,17 @@ N{\left (t \right )} = N_0 e^{r_m t}
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-sympy-if-needed">Installing SymPy (if needed)</a></li>
 </ul>
@@ -2046,8 +2091,8 @@ By MulQuaBio collective!
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -61,6 +64,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/populations';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -68,34 +72,30 @@
     <link rel="prev" title="The Metabolic Basis of Ecology and Evolutionary dynamics" href="metabolic-basis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -103,7 +103,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -111,15 +110,59 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -128,7 +171,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -158,21 +202,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MulQuaBio - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -208,11 +248,10 @@
 <li class="toctree-l1"><a class="reference internal" href="mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model-simp.html">Model simplification</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Modelling &amp; Statistics Pre-work</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced E&amp;E Modelling and Statistics Pre-work</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Introduction &amp; prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
-
 
 
 
@@ -263,8 +302,14 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Introduction &amp; prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_Bootcamp_Rubric.html">Computing Bootcamp Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_MiniProject_Rubric.html">Computing MiniProject Rubric</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -299,9 +344,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -480,7 +530,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -494,25 +544,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -534,7 +576,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-geometric-growth">Discrete (Geometric) Growth</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-model">Basic Model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-synchronous-cell-division">Example: Synchronous Cell Division</a></li>
@@ -735,10 +777,10 @@ document.write(`
 <span class="c1"># Plot</span>
 <span class="n">time_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">tmax</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_points</span><span class="p">,</span> <span class="n">N_discrete</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Discrete (R=2)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time step&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Population size $N$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Discrete geometric growth (doubling)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_points</span><span class="p">,</span> <span class="n">N_discrete</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'o'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Discrete (R=2)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time step'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'Population size $N$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Discrete geometric growth (doubling)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -784,7 +826,7 @@ r = \frac{1}{\Delta t}\ln(R).
 <p><strong>Units sanity check:</strong> <span class="math notranslate nohighlight">\(r\)</span> has units time<span class="math notranslate nohighlight">\(^{-1}\)</span>, while <span class="math notranslate nohighlight">\(R\)</span> is dimensionless.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s compare discrete and continuous growth numerically.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let's compare discrete and continuous growth numerically.</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="mf">0.7</span>       <span class="c1"># intrinsic growth rate per time unit</span>
 <span class="n">N0_cont</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># initial population</span>
@@ -808,11 +850,11 @@ r = \frac{1}{\Delta t}\ln(R).
 <span class="n">N_continuous_vals</span> <span class="o">=</span> <span class="n">N_continuous</span><span class="p">(</span><span class="n">time_array</span><span class="p">,</span> <span class="n">N0_cont</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_array</span><span class="p">,</span> <span class="n">N_continuous_vals</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Continuous&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">N_discrete_model</span><span class="p">,</span> <span class="s1">&#39;ro--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Discrete (dt=</span><span class="si">{</span><span class="n">dt</span><span class="si">:</span><span class="s1">g</span><span class="si">}</span><span class="s1">, R=</span><span class="si">{</span><span class="n">R</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Population size $N$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Continuous vs discrete exponential growth&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_array</span><span class="p">,</span> <span class="n">N_continuous_vals</span><span class="p">,</span> <span class="s1">'b-'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Continuous'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">N_discrete_model</span><span class="p">,</span> <span class="s1">'ro--'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">'Discrete (dt=</span><span class="si">{</span><span class="n">dt</span><span class="si">:</span><span class="s1">g</span><span class="si">}</span><span class="s1">, R=</span><span class="si">{</span><span class="n">R</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'Population size $N$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Continuous vs discrete exponential growth'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -831,7 +873,7 @@ r = \frac{1}{\Delta t}\ln(R).
 </div></blockquote>
 <section id="temperature-dependence">
 <h3>Temperature Dependence<a class="headerlink" href="#temperature-dependence" title="Link to this heading">#</a></h3>
-<p>Enzymatic processes in the cell generally speed up with increasing temperature (until proteins denature at high <span class="math notranslate nohighlight">\(T\)</span>). For simplicity, we can model <span class="math notranslate nohighlight">\(r\)</span> via an Arrhenius‐type expression (<span id="id1">[<a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>]</span>; see also <span id="id2">[<a class="reference internal" href="../references.html#id168" title="Henry Eyring. The activated complex in chemical reactions. The Journal of Chemical Physics, 3(2):107–115, 1935. doi:10.1063/1.1749604.">Eyring, 1935</a>]</span>):</p>
+<p>Enzymatic processes in the cell generally speed up with increasing temperature (until proteins denature at high <span class="math notranslate nohighlight">\(T\)</span>). For simplicity, we can model <span class="math notranslate nohighlight">\(r\)</span> via an Arrhenius‐type expression (<span class="bibtex-citation" id="id1">[<a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>]</span>; see also <span class="bibtex-citation" id="id2">[<a class="reference internal" href="../references.html#id168" title="Henry Eyring. The activated complex in chemical reactions. The Journal of Chemical Physics, 3(2):107–115, 1935. doi:10.1063/1.1749604.">Eyring, 1935</a>]</span>):</p>
 <div class="math notranslate nohighlight">
 \[
 r(T) = r_0 \exp\Bigl(-\frac{E}{k_B T}\Bigr),
@@ -842,12 +884,12 @@ r(T) = r_0 \exp\Bigl(-\frac{E}{k_B T}\Bigr),
 <li><p><span class="math notranslate nohighlight">\(k_B\)</span> is Boltzmann’s constant (or simply a scaling constant in some biological contexts),</p></li>
 <li><p><span class="math notranslate nohighlight">\(r_0\)</span> is a pre‐exponential factor.</p></li>
 </ul>
-<p>As empirical context for microbes, see <span id="id3">[<a class="reference internal" href="../references.html#id173" title="David A. Ratkowsky, John Olley, Thomas A. McMeekin, and Andrew Ball. Relationship between temperature and growth rate of bacterial cultures. Journal of Bacteriology, 1982.">Ratkowsky <em>et al.</em>, 1982</a>, <a class="reference internal" href="../references.html#id174" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Dependency on medium and temperature of cell size and chemical composition during balanced growth of Salmonella typhimurium. Journal of General Microbiology, 19:592–606, 1958.">Schaechter <em>et al.</em>, 1958</a>, <a class="reference internal" href="../references.html#id175" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Balanced growth of Salmonella typhimurium: effects of medium and temperature on cell size and composition. 1962. Often cited alongside Schaechter et al. (1958). Please verify exact publication venue/pages for the 1962 follow-up and update this entry if needed.">Schaechter <em>et al.</em>, 1962</a>]</span>.</p>
+<p>As empirical context for microbes, see <span class="bibtex-citation" id="id3">[<a class="reference internal" href="../references.html#id173" title="David A. Ratkowsky, John Olley, Thomas A. McMeekin, and Andrew Ball. Relationship between temperature and growth rate of bacterial cultures. Journal of Bacteriology, 1982.">Ratkowsky <em>et al.</em>, 1982</a>, <a class="reference internal" href="../references.html#id174" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Dependency on medium and temperature of cell size and chemical composition during balanced growth of Salmonella typhimurium. Journal of General Microbiology, 19:592–606, 1958.">Schaechter <em>et al.</em>, 1958</a>, <a class="reference internal" href="../references.html#id175" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Balanced growth of Salmonella typhimurium: effects of medium and temperature on cell size and composition. 1962. Often cited alongside Schaechter et al. (1958). Please verify exact publication venue/pages for the 1962 follow-up and update this entry if needed.">Schaechter <em>et al.</em>, 1962</a>]</span>.</p>
 <p><strong>Units sanity check:</strong> <span class="math notranslate nohighlight">\(r(T)\)</span> has units time<span class="math notranslate nohighlight">\(^{-1}\)</span>, so <span class="math notranslate nohighlight">\(r_0\)</span> must also carry units time<span class="math notranslate nohighlight">\(^{-1}\)</span> for the exponential factor to be dimensionless.</p>
 </section>
 <section id="cellsize-scaling-mte">
 <h3>Cell‐Size Scaling (MTE)<a class="headerlink" href="#cellsize-scaling-mte" title="Link to this heading">#</a></h3>
-<p>A common MTE-style assumption is that <strong>whole-organism metabolic rate</strong> scales as <span class="math notranslate nohighlight">\(B \propto M^b\)</span> (often <span class="math notranslate nohighlight">\(b \approx 3/4\)</span>). If growth is limited by energy processing, then a <em>mass-specific</em> rate (per unit biomass) scales like <span class="math notranslate nohighlight">\(B/M \propto M^{b-1}\)</span>. This motivates a size dependence of the intrinsic (per-capita) growth rate (<span id="id4">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>):</p>
+<p>A common MTE-style assumption is that <strong>whole-organism metabolic rate</strong> scales as <span class="math notranslate nohighlight">\(B \propto M^b\)</span> (often <span class="math notranslate nohighlight">\(b \approx 3/4\)</span>). If growth is limited by energy processing, then a <em>mass-specific</em> rate (per unit biomass) scales like <span class="math notranslate nohighlight">\(B/M \propto M^{b-1}\)</span>. This motivates a size dependence of the intrinsic (per-capita) growth rate (<span class="bibtex-citation" id="id4">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>):</p>
 <div class="math notranslate nohighlight">
 \[
 r(T,M) = r_0 M^{b-1} \exp\Bigl(-\frac{E}{k_B T}\Bigr).
@@ -881,7 +923,7 @@ r(T,M) = r_0 M^{b-1} \exp\Bigl(-\frac{E}{k_B T}\Bigr).
 </section>
 <section id="logistic-growth-with-temperature-size-dependence">
 <h2>Logistic Growth with Temperature &amp; Size Dependence<a class="headerlink" href="#logistic-growth-with-temperature-size-dependence" title="Link to this heading">#</a></h2>
-<p>A standard way to extend exponential growth to include resource limitation is the <strong>logistic model</strong> (<span id="id5">[<a class="reference internal" href="../references.html#id171" title="Pierre-François Verhulst. Notice sur la loi que la population poursuit dans son accroissement. Correspondance Mathématique et Physique, 10:113–121, 1838.">Verhulst, 1838</a>]</span>):</p>
+<p>A standard way to extend exponential growth to include resource limitation is the <strong>logistic model</strong> (<span class="bibtex-citation" id="id5">[<a class="reference internal" href="../references.html#id171" title="Pierre-François Verhulst. Notice sur la loi que la population poursuit dans son accroissement. Correspondance Mathématique et Physique, 10:113–121, 1838.">Verhulst, 1838</a>]</span>):</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{dN}{dt} = r(T,M)\,N \Bigl(1 - \frac{N}{K}\Bigr).
@@ -899,7 +941,7 @@ r(T,M) = r_0 M^{b-1} \exp\Bigl(-\frac{E}{k_B T}\Bigr).
 <li><p><strong>Standard (dimensionally consistent) form:</strong> <span class="math notranslate nohighlight">\(\frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)\)</span>, where <span class="math notranslate nohighlight">\(K\)</span> has units of individuals.</p></li>
 <li><p><strong>Alternative parameterisation:</strong> <span class="math notranslate nohighlight">\(\frac{dN}{dt}=rN\,(K-N)\)</span> is only dimensionally correct if <span class="math notranslate nohighlight">\(K\)</span> is interpreted as <em>inverse individuals</em> (or if <span class="math notranslate nohighlight">\(r\)</span> has been rescaled accordingly). In ecology, authors sometimes write a form like this with parameters redefined; don’t mix parameter meanings across forms.</p></li>
 </ul>
-<p>In the previous chapter we motivated how temperature (and, in simple allometric arguments, size) can shape the per-capita growth parameter. A common metabolically motivated form is (<span id="id6">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>; microbial temperature dependence examples in <span id="id7">[<a class="reference internal" href="../references.html#id173" title="David A. Ratkowsky, John Olley, Thomas A. McMeekin, and Andrew Ball. Relationship between temperature and growth rate of bacterial cultures. Journal of Bacteriology, 1982.">Ratkowsky <em>et al.</em>, 1982</a>, <a class="reference internal" href="../references.html#id174" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Dependency on medium and temperature of cell size and chemical composition during balanced growth of Salmonella typhimurium. Journal of General Microbiology, 19:592–606, 1958.">Schaechter <em>et al.</em>, 1958</a>]</span>):</p>
+<p>In the previous chapter we motivated how temperature (and, in simple allometric arguments, size) can shape the per-capita growth parameter. A common metabolically motivated form is (<span class="bibtex-citation" id="id6">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>; microbial temperature dependence examples in <span class="bibtex-citation" id="id7">[<a class="reference internal" href="../references.html#id173" title="David A. Ratkowsky, John Olley, Thomas A. McMeekin, and Andrew Ball. Relationship between temperature and growth rate of bacterial cultures. Journal of Bacteriology, 1982.">Ratkowsky <em>et al.</em>, 1982</a>, <a class="reference internal" href="../references.html#id174" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Dependency on medium and temperature of cell size and chemical composition during balanced growth of Salmonella typhimurium. Journal of General Microbiology, 19:592–606, 1958.">Schaechter <em>et al.</em>, 1958</a>]</span>):</p>
 <div class="math notranslate nohighlight">
 \[
 r(T,M) = r_0\, M^{b-1}\, \exp \Bigl(-\frac{E}{k_B T}\Bigr).
@@ -927,7 +969,7 @@ x_{t+1} = r_{\mathrm{map}}\,x_t\,(1-x_t).
 <p><strong>Why use a map at all?</strong> Discrete-time models are most natural when reproduction and/or density dependence occur in pulses (seasonal breeding, discrete generations, periodic harvesting, pulsed resources), or when you only observe the system at regular intervals. They can also be useful as <em>caricatures</em> of more complex continuous dynamics.</p>
 <p><strong>When not to use it:</strong> if births and deaths occur continuously and the time step is an arbitrary sampling choice, a continuous-time model (ODE) is often more defensible; discrete maps can exaggerate instability if the step is too large.</p>
 <p><strong>Units sanity check:</strong> <span class="math notranslate nohighlight">\(x_t\)</span> and <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> are both dimensionless.</p>
-<p>This equation can exhibit stable fixed points, cycles of period 2, 4, 8, … and eventually <em>chaos</em> as <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> increases (see <span id="id8">[<a class="reference internal" href="../references.html#id176" title="Robert M. May. Simple mathematical models with very complicated dynamics. Nature, 261:459–467, 1976. doi:10.1038/261459a0.">May, 1976</a>]</span>; for period-doubling universality see <span id="id9">[<a class="reference internal" href="../references.html#id177" title="Mitchell J. Feigenbaum. Quantitative universality for a class of nonlinear transformations. Journal of Statistical Physics, 19(1):25–52, 1978. doi:10.1007/BF01020332.">Feigenbaum, 1978</a>]</span>).</p>
+<p>This equation can exhibit stable fixed points, cycles of period 2, 4, 8, … and eventually <em>chaos</em> as <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> increases (see <span class="bibtex-citation" id="id8">[<a class="reference internal" href="../references.html#id176" title="Robert M. May. Simple mathematical models with very complicated dynamics. Nature, 261:459–467, 1976. doi:10.1038/261459a0.">May, 1976</a>]</span>; for period-doubling universality see <span class="bibtex-citation" id="id9">[<a class="reference internal" href="../references.html#id177" title="Mitchell J. Feigenbaum. Quantitative universality for a class of nonlinear transformations. Journal of Statistical Physics, 19(1):25–52, 1978. doi:10.1007/BF01020332.">Feigenbaum, 1978</a>]</span>).</p>
 </section>
 <section id="connection-to-microbial-growth-and-metabolism">
 <h3>Connection to Microbial Growth (and Metabolism)<a class="headerlink" href="#connection-to-microbial-growth-and-metabolism" title="Link to this heading">#</a></h3>
@@ -956,10 +998,10 @@ x_{t+1} = r_{\mathrm{map}}\,x_t\,(1-x_t).
     <span class="k">return</span> <span class="n">r_map</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">bifurcation_diagram</span><span class="p">(</span><span class="n">r_min</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">r_max</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">discard</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">4000</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Generate (r_map, x) pairs for a bifurcation diagram of the logistic map:</span>
 <span class="sd">        x_{t+1} = r_map * x_t * (1 - x_t).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">r_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">r_min</span><span class="p">,</span> <span class="n">r_max</span><span class="p">,</span> <span class="n">resolution</span><span class="p">)</span>
     <span class="n">r_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">x_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -978,10 +1020,10 @@ x_{t+1} = r_{\mathrm{map}}\,x_t\,(1-x_t).
 <span class="n">r_bif</span><span class="p">,</span> <span class="n">x_bif</span> <span class="o">=</span> <span class="n">bifurcation_diagram</span><span class="p">(</span><span class="n">r_min</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">r_max</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">discard</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">r_bif</span><span class="p">,</span> <span class="n">x_bif</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$r_{\mathrm</span><span class="si">{map}</span><span class="s1">}$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Long-term $x$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bifurcation diagram: logistic map&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">r_bif</span><span class="p">,</span> <span class="n">x_bif</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$r_{\mathrm</span><span class="si">{map}</span><span class="s1">}$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'Long-term $x$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Bifurcation diagram: logistic map'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1029,7 +1071,7 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <p>A simple way to <em>show</em> this is:</p>
 <ol class="arabic simple">
 <li><p>Choose a mapping <span class="math notranslate nohighlight">\(r_{\mathrm{map}} = g(r(T,M)\,\Delta t)\)</span> that is monotone increasing in <span class="math notranslate nohighlight">\(r\Delta t\)</span>.</p></li>
-<li><p>Use Arrhenius + allometry for <span class="math notranslate nohighlight">\(r(T,M)\)</span> (<span id="id10">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>).</p></li>
+<li><p>Use Arrhenius + allometry for <span class="math notranslate nohighlight">\(r(T,M)\)</span> (<span class="bibtex-citation" id="id10">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>).</p></li>
 <li><p>Plot <span class="math notranslate nohighlight">\(r_{\mathrm{map}}(T)\)</span> for different <span class="math notranslate nohighlight">\(M\)</span> values and mark where it crosses the canonical bifurcation thresholds.</p></li>
 </ol>
 <p>Below we use the simplest monotone mapping <span class="math notranslate nohighlight">\(r_{\mathrm{map}} = \exp(r\Delta t)\)</span> (so that <span class="math notranslate nohighlight">\(\ln r_{\mathrm{map}} = r\Delta t\)</span>). This is not the only possible mapping, but it’s easy to interpret and makes the dependence on <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(M\)</span> explicit.</p>
@@ -1046,16 +1088,16 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
         <span class="k">return</span> <span class="n">r0</span> <span class="o">*</span> <span class="p">(</span><span class="n">M</span> <span class="o">**</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">E</span> <span class="o">/</span> <span class="p">(</span><span class="n">kB</span> <span class="o">*</span> <span class="n">T</span><span class="p">))</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">r_map_from_r</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">dt_map</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple monotone mapping from continuous-time rate to logistic-map parameter.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Simple monotone mapping from continuous-time rate to logistic-map parameter."""</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">dt_map</span><span class="p">)</span>
 
 <span class="c1"># Canonical bifurcation thresholds for the logistic map x_{t+1} = r_map x_t (1-x_t)</span>
 <span class="n">r_thresholds</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;fixed point → period-2&quot;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span>
-    <span class="s2">&quot;period-2 → period-4&quot;</span><span class="p">:</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">6.0</span><span class="p">),</span>  <span class="c1"># ≈ 3.44949</span>
-    <span class="s2">&quot;period-4 → period-8&quot;</span><span class="p">:</span> <span class="mf">3.544090359551922</span><span class="p">,</span>
-    <span class="s2">&quot;period-8 → period-16&quot;</span><span class="p">:</span> <span class="mf">3.564407266094041</span><span class="p">,</span>
-    <span class="s2">&quot;chaos onset (accumulation)&quot;</span><span class="p">:</span> <span class="mf">3.569945672</span><span class="p">,</span>
+    <span class="s2">"fixed point → period-2"</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="s2">"period-2 → period-4"</span><span class="p">:</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">6.0</span><span class="p">),</span>  <span class="c1"># ≈ 3.44949</span>
+    <span class="s2">"period-4 → period-8"</span><span class="p">:</span> <span class="mf">3.544090359551922</span><span class="p">,</span>
+    <span class="s2">"period-8 → period-16"</span><span class="p">:</span> <span class="mf">3.564407266094041</span><span class="p">,</span>
+    <span class="s2">"chaos onset (accumulation)"</span><span class="p">:</span> <span class="mf">3.569945672</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="c1"># Choose an observation interval (dt_map) by calibration:</span>
@@ -1063,9 +1105,9 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <span class="n">T_ref</span> <span class="o">=</span> <span class="mf">300.0</span>
 <span class="n">M_ref</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">r_ref</span> <span class="o">=</span> <span class="n">r_TM</span><span class="p">(</span><span class="n">T_ref</span><span class="p">,</span> <span class="n">M_ref</span><span class="p">)</span>
-<span class="n">dt_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">r_thresholds</span><span class="p">[</span><span class="s2">&quot;fixed point → period-2&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">r_ref</span>
+<span class="n">dt_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">r_thresholds</span><span class="p">[</span><span class="s2">"fixed point → period-2"</span><span class="p">])</span> <span class="o">/</span> <span class="n">r_ref</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calibration: at T=</span><span class="si">{</span><span class="n">T_ref</span><span class="si">}</span><span class="s2"> K, M=</span><span class="si">{</span><span class="n">M_ref</span><span class="si">}</span><span class="s2">, dt_map=</span><span class="si">{</span><span class="n">dt_map</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> gives r_map=3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Calibration: at T=</span><span class="si">{</span><span class="n">T_ref</span><span class="si">}</span><span class="s2"> K, M=</span><span class="si">{</span><span class="n">M_ref</span><span class="si">}</span><span class="s2">, dt_map=</span><span class="si">{</span><span class="n">dt_map</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> gives r_map=3"</span><span class="p">)</span>
 
 <span class="c1"># Compute r_map(T) curves for different sizes</span>
 <span class="n">T_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">270.0</span><span class="p">,</span> <span class="mf">390.0</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
@@ -1075,24 +1117,24 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <span class="k">for</span> <span class="n">M</span> <span class="ow">in</span> <span class="n">masses</span><span class="p">:</span>
     <span class="n">r_vals</span> <span class="o">=</span> <span class="n">r_TM</span><span class="p">(</span><span class="n">T_grid</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
     <span class="n">rmap_vals</span> <span class="o">=</span> <span class="n">r_map_from_r</span><span class="p">(</span><span class="n">r_vals</span><span class="p">,</span> <span class="n">dt_map</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_grid</span><span class="p">,</span> <span class="n">rmap_vals</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;M=</span><span class="si">{</span><span class="n">M</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_grid</span><span class="p">,</span> <span class="n">rmap_vals</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"M=</span><span class="si">{</span><span class="n">M</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># Add horizontal lines at bifurcation thresholds</span>
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">r_star</span> <span class="ow">in</span> <span class="n">r_thresholds</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">r_star</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">r_star</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">T_grid</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">r_star</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">4.05</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature (K)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Effective logistic-map parameter $r_{\mathrm</span><span class="si">{map}</span><span class="s2">}$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Size + temperature shift the *conditions* at which bifurcations occur&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Relative mass&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Temperature (K)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Effective logistic-map parameter $r_{\mathrm</span><span class="si">{map}</span><span class="s2">}$"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Size + temperature shift the *conditions* at which bifurcations occur"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Relative mass"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># Optional: estimate the temperature at which each bifurcation threshold is reached for each mass</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">crossing_temperature</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_star</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return approximate T where y(T) crosses y_star (assumes monotone and crossing exists).&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Return approximate T where y(T) crosses y_star (assumes monotone and crossing exists)."""</span>
     <span class="n">diff</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">y_star</span>
     <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">diff</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">diff</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -1105,12 +1147,12 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
         <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">t0</span> <span class="o">+</span> <span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">d0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">d1</span> <span class="o">-</span> <span class="n">d0</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Approx threshold temperatures (K):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Approx threshold temperatures (K):"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">M</span> <span class="ow">in</span> <span class="n">masses</span><span class="p">:</span>
     <span class="n">rmap_vals</span> <span class="o">=</span> <span class="n">r_map_from_r</span><span class="p">(</span><span class="n">r_TM</span><span class="p">(</span><span class="n">T_grid</span><span class="p">,</span> <span class="n">M</span><span class="p">),</span> <span class="n">dt_map</span><span class="p">)</span>
     <span class="n">temps</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">crossing_temperature</span><span class="p">(</span><span class="n">T_grid</span><span class="p">,</span> <span class="n">rmap_vals</span><span class="p">,</span> <span class="n">r_star</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">r_star</span> <span class="ow">in</span> <span class="n">r_thresholds</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
     <span class="n">temps_fmt</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="p">(</span><span class="kc">None</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">round</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">temps</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  M=</span><span class="si">{</span><span class="n">M</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">temps_fmt</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  M=</span><span class="si">{</span><span class="n">M</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">temps_fmt</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1184,7 +1226,7 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <span class="n">initial_conditions</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>  <span class="c1"># [Resource, Consumer]</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">resource_consumer_model</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;ODE system for a simple consumer–resource model.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""ODE system for a simple consumer–resource model."""</span>
     <span class="n">R</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">y</span>
     <span class="n">dR_dt</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">R</span> <span class="o">/</span> <span class="n">K</span><span class="p">)</span> <span class="o">-</span> <span class="n">a</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">C</span>
     <span class="n">dC_dt</span> <span class="o">=</span> <span class="n">w</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">C</span> <span class="o">-</span> <span class="n">m</span> <span class="o">*</span> <span class="n">C</span>
@@ -1195,7 +1237,7 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
     <span class="p">[</span><span class="n">t_start</span><span class="p">,</span> <span class="n">t_end</span><span class="p">],</span>
     <span class="n">initial_conditions</span><span class="p">,</span>
     <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;RK45&#39;</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">'RK45'</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">time</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">t</span>
@@ -1203,11 +1245,11 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <span class="n">consumer</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Resource (R)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">consumer</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Consumer (C)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population density&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Dynamics of a consumer–resource model&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="s1">'g-'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Resource (R)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">consumer</span><span class="p">,</span> <span class="s1">'b-'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Consumer (C)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Population density'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Dynamics of a consumer–resource model'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1244,19 +1286,19 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <span class="n">params</span><span class="p">,</span> <span class="n">cov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">logistic_solution</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="n">p0</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">))</span>
 
 <span class="n">r_hat</span><span class="p">,</span> <span class="n">K_hat</span><span class="p">,</span> <span class="n">A_hat</span> <span class="o">=</span> <span class="n">params</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fitted r = </span><span class="si">{</span><span class="n">r_hat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (time^-1)&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fitted K = </span><span class="si">{</span><span class="n">K_hat</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Fitted r = </span><span class="si">{</span><span class="n">r_hat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (time^-1)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Fitted K = </span><span class="si">{</span><span class="n">K_hat</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># Plot fit</span>
 <span class="n">t_fine</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">t</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">200</span><span class="p">)</span>
 <span class="n">N_fit</span> <span class="o">=</span> <span class="n">logistic_solution</span><span class="p">(</span><span class="n">t_fine</span><span class="p">,</span> <span class="n">r_hat</span><span class="p">,</span> <span class="n">K_hat</span><span class="p">,</span> <span class="n">A_hat</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_fine</span><span class="p">,</span> <span class="n">N_fit</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;logistic fit&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Population size $N$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Logistic curve fit&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"data"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_fine</span><span class="p">,</span> <span class="n">N_fit</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"logistic fit"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Time"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Population size $N$"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Logistic curve fit"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1279,20 +1321,20 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <span class="n">N0_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logN0_hat</span><span class="p">)</span>
 <span class="n">t_d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">r_hat</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated r = </span><span class="si">{</span><span class="n">r_hat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (time^-1)&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated N0 = </span><span class="si">{</span><span class="n">N0_hat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Doubling time t_d = </span><span class="si">{</span><span class="n">t_d</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> time units&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Estimated r = </span><span class="si">{</span><span class="n">r_hat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (time^-1)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Estimated N0 = </span><span class="si">{</span><span class="n">N0_hat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Doubling time t_d = </span><span class="si">{</span><span class="n">t_d</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> time units"</span><span class="p">)</span>
 
 <span class="c1"># Visualise fit</span>
 <span class="n">t_fine</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">t</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">200</span><span class="p">)</span>
 <span class="n">N_fit</span> <span class="o">=</span> <span class="n">N0_hat</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">r_hat</span> <span class="o">*</span> <span class="n">t_fine</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_fine</span><span class="p">,</span> <span class="n">N_fit</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;exp fit&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Population size $N$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Exponential fit (log scale)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'data'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_fine</span><span class="p">,</span> <span class="n">N_fit</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'exp fit'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">'log'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Time'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'Population size $N$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Exponential fit (log scale)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1307,7 +1349,7 @@ x_{t+1} = r_{\mathrm{map}}\,x_t(1-x_t).
 <p>Two classic examples:</p>
 <ol class="arabic simple">
 <li><p>Fibonacci’s rabbits (a 2-stage recursion)</p></li>
-<li><p>Leslie matrix (age-structured projection matrix) (<span id="id11">[<a class="reference internal" href="../references.html#id181" title="P. H. Leslie. On the use of matrices in certain population mathematics. Biometrika, 33(3):183–212, 1945. doi:10.1093/biomet/33.3.183.">Leslie, 1945</a>, <a class="reference internal" href="../references.html#id182" title="Hal Caswell. Matrix Population Models: Construction, Analysis, and Interpretation. Sinauer Associates, 2 edition, 2001.">Caswell, 2001</a>]</span>)</p></li>
+<li><p>Leslie matrix (age-structured projection matrix) (<span class="bibtex-citation" id="id11">[<a class="reference internal" href="../references.html#id181" title="P. H. Leslie. On the use of matrices in certain population mathematics. Biometrika, 33(3):183–212, 1945. doi:10.1093/biomet/33.3.183.">Leslie, 1945</a>, <a class="reference internal" href="../references.html#id182" title="Hal Caswell. Matrix Population Models: Construction, Analysis, and Interpretation. Sinauer Associates, 2 edition, 2001.">Caswell, 2001</a>]</span>)</p></li>
 </ol>
 <p>The key modelling move is to track a <em>vector</em> of abundances by class, and update it each time step with a <strong>projection matrix</strong>.</p>
 <section id="fibonacci-rabbits">
@@ -1320,7 +1362,7 @@ F_n = F_{n-1} + F_{n-2}
 <li><p><span class="math notranslate nohighlight">\(F_{n-1}\)</span>: adults last month (who survive and breed again)</p></li>
 <li><p><span class="math notranslate nohighlight">\(F_{n-2}\)</span>: babies who have just matured (and can now breed)</p></li>
 </ul>
-<p>This is a specific case of a <strong>matrix model</strong>: a 2-stage population vector updated by a fixed projection matrix (<span id="id12">[<a class="reference internal" href="../references.html#id181" title="P. H. Leslie. On the use of matrices in certain population mathematics. Biometrika, 33(3):183–212, 1945. doi:10.1093/biomet/33.3.183.">Leslie, 1945</a>, <a class="reference internal" href="../references.html#id182" title="Hal Caswell. Matrix Population Models: Construction, Analysis, and Interpretation. Sinauer Associates, 2 edition, 2001.">Caswell, 2001</a>]</span>).</p>
+<p>This is a specific case of a <strong>matrix model</strong>: a 2-stage population vector updated by a fixed projection matrix (<span class="bibtex-citation" id="id12">[<a class="reference internal" href="../references.html#id181" title="P. H. Leslie. On the use of matrices in certain population mathematics. Biometrika, 33(3):183–212, 1945. doi:10.1093/biomet/33.3.183.">Leslie, 1945</a>, <a class="reference internal" href="../references.html#id182" title="Hal Caswell. Matrix Population Models: Construction, Analysis, and Interpretation. Sinauer Associates, 2 edition, 2001.">Caswell, 2001</a>]</span>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">simulate_fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -1329,7 +1371,7 @@ F_n = F_{n-1} + F_{n-2}
         <span class="n">fib</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fib</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">fib</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">fib</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fibonacci sequence up to month 12:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Fibonacci sequence up to month 12:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">simulate_fib</span><span class="p">(</span><span class="mi">12</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1342,7 +1384,7 @@ F_n = F_{n-1} + F_{n-2}
 $<span class="math notranslate nohighlight">\(
 \mathbf{u}_t = (u_{1,t}, u_{2,t}, \dots, u_{\omega,t})^\top
 \)</span><span class="math notranslate nohighlight">\(
-for \)</span>\omega<span class="math notranslate nohighlight">\( age classes. A Leslie matrix \)</span>L<span class="math notranslate nohighlight">\( maps \)</span>\mathbf{u}_{t+1} = L\mathbf{u}_t$ (<span id="id13">[<a class="reference internal" href="../references.html#id181" title="P. H. Leslie. On the use of matrices in certain population mathematics. Biometrika, 33(3):183–212, 1945. doi:10.1093/biomet/33.3.183.">Leslie, 1945</a>]</span>; see also <span id="id14">[<a class="reference internal" href="../references.html#id182" title="Hal Caswell. Matrix Population Models: Construction, Analysis, and Interpretation. Sinauer Associates, 2 edition, 2001.">Caswell, 2001</a>]</span>).</p>
+for \)</span>\omega<span class="math notranslate nohighlight">\( age classes. A Leslie matrix \)</span>L<span class="math notranslate nohighlight">\( maps \)</span>\mathbf{u}_{t+1} = L\mathbf{u}_t$ (<span class="bibtex-citation" id="id13">[<a class="reference internal" href="../references.html#id181" title="P. H. Leslie. On the use of matrices in certain population mathematics. Biometrika, 33(3):183–212, 1945. doi:10.1093/biomet/33.3.183.">Leslie, 1945</a>]</span>; see also <span class="bibtex-citation" id="id14">[<a class="reference internal" href="../references.html#id182" title="Hal Caswell. Matrix Population Models: Construction, Analysis, and Interpretation. Sinauer Associates, 2 edition, 2001.">Caswell, 2001</a>]</span>).</p>
 <ul class="simple">
 <li><p>top row: age-specific fecundities (offspring contributions)</p></li>
 <li><p>subdiagonal: survival probabilities to next age class</p></li>
@@ -1376,10 +1418,10 @@ for \)</span>\omega<span class="math notranslate nohighlight">\( age classes. A 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">traj</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">traj</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Age class </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Individuals&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Leslie matrix dynamics (illustrative)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">traj</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Age class </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"t"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Individuals"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Leslie matrix dynamics (illustrative)"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
@@ -1396,7 +1438,7 @@ for \)</span>\omega<span class="math notranslate nohighlight">\( age classes. A 
 <p>A metapopulation is a set of habitat patches that can be occupied or empty. Let <span class="math notranslate nohighlight">\(p(t)\)</span> be the fraction of occupied patches (so <span class="math notranslate nohighlight">\(p\in[0,1]\)</span>).</p>
 <section id="levins-model">
 <h3>Levins model<a class="headerlink" href="#levins-model" title="Link to this heading">#</a></h3>
-<p>A classic starting point is the Levins patch-occupancy model (<span id="id15">[<a class="reference internal" href="../references.html#id42" title="richard Levins. Evolution in changing environments. Monographs in Population Biology. Princeton University Press, Princeton, NJ, August 1968.">Levins, 1968</a>]</span>):
+<p>A classic starting point is the Levins patch-occupancy model (<span class="bibtex-citation" id="id15">[<a class="reference internal" href="../references.html#id42" title="richard Levins. Evolution in changing environments. Monographs in Population Biology. Princeton University Press, Princeton, NJ, August 1968.">Levins, 1968</a>]</span>):
 $<span class="math notranslate nohighlight">\(
 \frac{dp}{dt} = cp(1-p) - ep
 \)</span>$</p>
@@ -1439,18 +1481,18 @@ Now equilibria are 0 and 1, with a threshold at \)</span>c=e$.</p>
 <span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">simulate_ode</span><span class="p">(</span><span class="n">levins_rhs</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;p(t)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Levins metapopulation model: $</span><span class="se">\\</span><span class="s2">dot p=cp(1-p)-ep$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"t"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"p(t)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Levins metapopulation model: $</span><span class="se">\\</span><span class="s2">dot p=cp(1-p)-ep$"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># Rescue effect</span>
 <span class="n">t</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">simulate_ode</span><span class="p">(</span><span class="n">rescue_rhs</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;p(t)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Rescue-effect model: $</span><span class="se">\\</span><span class="s2">dot p=(c-e)p(1-p)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"t"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"p(t)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Rescue-effect model: $</span><span class="se">\\</span><span class="s2">dot p=(c-e)p(1-p)$"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1479,12 +1521,12 @@ Now equilibria are 0 and 1, with a threshold at \)</span>c=e$.</p>
 <span class="n">N_log</span> <span class="o">=</span> <span class="n">K</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">K</span><span class="o">/</span><span class="n">N0</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N_exp</span><span class="o">/</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Exponential (illustrative)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N_log</span><span class="o">/</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Logistic (illustrative)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">K</span><span class="o">/</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;K&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t (years)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Population (billions)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Illustrative human population: exponential vs logistic&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N_exp</span><span class="o">/</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Exponential (illustrative)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">N_log</span><span class="o">/</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Logistic (illustrative)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">K</span><span class="o">/</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"K"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"t (years)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Population (billions)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Illustrative human population: exponential vs logistic"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1515,12 +1557,12 @@ Now equilibria are 0 and 1, with a threshold at \)</span>c=e$.</p>
 <ul class="simple">
 <li><p>Cell division is inherently discrete (integer splits), but at large population sizes overall growth can often be approximated by continuous-time models.</p></li>
 <li><p>Exponential growth describes unlimited resources and is governed by an intrinsic (per-capita) growth rate <span class="math notranslate nohighlight">\(r\)</span> (often written <span class="math notranslate nohighlight">\(\mu\)</span> in microbiology); in discrete time this corresponds to a step multiplier <span class="math notranslate nohighlight">\(R=e^{r\Delta t}\)</span>.</p></li>
-<li><p>Logistic growth incorporates resource limitation via a carrying capacity <span class="math notranslate nohighlight">\(K\)</span> (typically in abundance unless otherwise stated) (<span id="id16">[<a class="reference internal" href="../references.html#id171" title="Pierre-François Verhulst. Notice sur la loi que la population poursuit dans son accroissement. Correspondance Mathématique et Physique, 10:113–121, 1838.">Verhulst, 1838</a>]</span>).</p></li>
-<li><p>Reaction rates (and thus growth) typically increase with temperature in an Arrhenius/Eyring-like way—up to an optimum or denaturation point in real cells (<span id="id17">[<a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>, <a class="reference internal" href="../references.html#id168" title="Henry Eyring. The activated complex in chemical reactions. The Journal of Chemical Physics, 3(2):107–115, 1935. doi:10.1063/1.1749604.">Eyring, 1935</a>, <a class="reference internal" href="../references.html#id173" title="David A. Ratkowsky, John Olley, Thomas A. McMeekin, and Andrew Ball. Relationship between temperature and growth rate of bacterial cultures. Journal of Bacteriology, 1982.">Ratkowsky <em>et al.</em>, 1982</a>, <a class="reference internal" href="../references.html#id174" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Dependency on medium and temperature of cell size and chemical composition during balanced growth of Salmonella typhimurium. Journal of General Microbiology, 19:592–606, 1958.">Schaechter <em>et al.</em>, 1958</a>]</span>).</p></li>
-<li><p>Smaller organisms have higher mass-specific growth rates (<span id="id18">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>; <span class="math notranslate nohighlight">\(r\propto M^{b-1}\)</span>), linking metabolism and demography.</p></li>
-<li><p>In discrete-time density-dependent models like the logistic map, increasing the effective growth-per-step (e.g., via higher temperature) can push the system toward larger <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> and more complex dynamics (<span id="id19">[<a class="reference internal" href="../references.html#id176" title="Robert M. May. Simple mathematical models with very complicated dynamics. Nature, 261:459–467, 1976. doi:10.1038/261459a0.">May, 1976</a>, <a class="reference internal" href="../references.html#id177" title="Mitchell J. Feigenbaum. Quantitative universality for a class of nonlinear transformations. Journal of Statistical Physics, 19(1):25–52, 1978. doi:10.1007/BF01020332.">Feigenbaum, 1978</a>]</span>).</p></li>
-<li><p>Structured populations can be represented with stage/age classes (e.g., Fibonacci rabbits as a 2-stage recursion, and Leslie matrices in general), where long-run growth and stable structure are governed by the dominant eigenvalue and eigenvector (<span id="id20">[<a class="reference internal" href="../references.html#id181" title="P. H. Leslie. On the use of matrices in certain population mathematics. Biometrika, 33(3):183–212, 1945. doi:10.1093/biomet/33.3.183.">Leslie, 1945</a>, <a class="reference internal" href="../references.html#id182" title="Hal Caswell. Matrix Population Models: Construction, Analysis, and Interpretation. Sinauer Associates, 2 edition, 2001.">Caswell, 2001</a>]</span>).</p></li>
-<li><p>Metapopulations model occupancy across habitat patches; in the Levins framework <span class="math notranslate nohighlight">\(p(t)\)</span> changes via colonisation and extinction, and “rescue effect” variants capture decreasing extinction risk as occupancy increases (<span id="id21">[<a class="reference internal" href="../references.html#id42" title="richard Levins. Evolution in changing environments. Monographs in Population Biology. Princeton University Press, Princeton, NJ, August 1968.">Levins, 1968</a>]</span>).</p></li>
+<li><p>Logistic growth incorporates resource limitation via a carrying capacity <span class="math notranslate nohighlight">\(K\)</span> (typically in abundance unless otherwise stated) (<span class="bibtex-citation" id="id16">[<a class="reference internal" href="../references.html#id171" title="Pierre-François Verhulst. Notice sur la loi que la population poursuit dans son accroissement. Correspondance Mathématique et Physique, 10:113–121, 1838.">Verhulst, 1838</a>]</span>).</p></li>
+<li><p>Reaction rates (and thus growth) typically increase with temperature in an Arrhenius/Eyring-like way—up to an optimum or denaturation point in real cells (<span class="bibtex-citation" id="id17">[<a class="reference internal" href="../references.html#id166" title="Svante Arrhenius. Über die reaktionsgeschwindigkeit bei der inversion von rohrzucker durch säuren. Zeitschrift für Physikalische Chemie, 4(1):226–248, 1889. doi:10.1515/zpch-1889-0416.">Arrhenius, 1889</a>, <a class="reference internal" href="../references.html#id168" title="Henry Eyring. The activated complex in chemical reactions. The Journal of Chemical Physics, 3(2):107–115, 1935. doi:10.1063/1.1749604.">Eyring, 1935</a>, <a class="reference internal" href="../references.html#id173" title="David A. Ratkowsky, John Olley, Thomas A. McMeekin, and Andrew Ball. Relationship between temperature and growth rate of bacterial cultures. Journal of Bacteriology, 1982.">Ratkowsky <em>et al.</em>, 1982</a>, <a class="reference internal" href="../references.html#id174" title="Moselio Schaechter, Ole Maaløe, and Niels O. Kjeldgaard. Dependency on medium and temperature of cell size and chemical composition during balanced growth of Salmonella typhimurium. Journal of General Microbiology, 19:592–606, 1958.">Schaechter <em>et al.</em>, 1958</a>]</span>).</p></li>
+<li><p>Smaller organisms have higher mass-specific growth rates (<span class="bibtex-citation" id="id18">[<a class="reference internal" href="../references.html#id4" title="J H Brown, J F Gillooly, A P Allen, V M Savage, and G B West. Toward a metabolic theory of ecology. Ecology, 85(7):1771–1789, 2004. doi:10.1890/03-9000.">Brown <em>et al.</em>, 2004</a>, <a class="reference internal" href="../references.html#id172" title="Geoffrey B. West, James H. Brown, and Brian J. Enquist. A general model for the origin of allometric scaling laws in biology. Science, 276(5309):122–126, 1997. doi:10.1126/science.276.5309.122.">West <em>et al.</em>, 1997</a>]</span>; <span class="math notranslate nohighlight">\(r\propto M^{b-1}\)</span>), linking metabolism and demography.</p></li>
+<li><p>In discrete-time density-dependent models like the logistic map, increasing the effective growth-per-step (e.g., via higher temperature) can push the system toward larger <span class="math notranslate nohighlight">\(r_{\mathrm{map}}\)</span> and more complex dynamics (<span class="bibtex-citation" id="id19">[<a class="reference internal" href="../references.html#id176" title="Robert M. May. Simple mathematical models with very complicated dynamics. Nature, 261:459–467, 1976. doi:10.1038/261459a0.">May, 1976</a>, <a class="reference internal" href="../references.html#id177" title="Mitchell J. Feigenbaum. Quantitative universality for a class of nonlinear transformations. Journal of Statistical Physics, 19(1):25–52, 1978. doi:10.1007/BF01020332.">Feigenbaum, 1978</a>]</span>).</p></li>
+<li><p>Structured populations can be represented with stage/age classes (e.g., Fibonacci rabbits as a 2-stage recursion, and Leslie matrices in general), where long-run growth and stable structure are governed by the dominant eigenvalue and eigenvector (<span class="bibtex-citation" id="id20">[<a class="reference internal" href="../references.html#id181" title="P. H. Leslie. On the use of matrices in certain population mathematics. Biometrika, 33(3):183–212, 1945. doi:10.1093/biomet/33.3.183.">Leslie, 1945</a>, <a class="reference internal" href="../references.html#id182" title="Hal Caswell. Matrix Population Models: Construction, Analysis, and Interpretation. Sinauer Associates, 2 edition, 2001.">Caswell, 2001</a>]</span>).</p></li>
+<li><p>Metapopulations model occupancy across habitat patches; in the Levins framework <span class="math notranslate nohighlight">\(p(t)\)</span> changes via colonisation and extinction, and “rescue effect” variants capture decreasing extinction risk as occupancy increases (<span class="bibtex-citation" id="id21">[<a class="reference internal" href="../references.html#id42" title="richard Levins. Evolution in changing environments. Monographs in Population Biology. Princeton University Press, Princeton, NJ, August 1968.">Levins, 1968</a>]</span>).</p></li>
 <li><p>Simple human-population trajectories provide a concrete illustration of how exponential and logistic assumptions yield very different forecasts, especially over long time horizons.</p></li>
 </ul>
 </section>
@@ -1583,15 +1625,17 @@ Now equilibria are 0 and 1, with a threshold at \)</span>c=e$.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-geometric-growth">Discrete (Geometric) Growth</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-model">Basic Model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-synchronous-cell-division">Example: Synchronous Cell Division</a></li>
@@ -1686,8 +1730,8 @@ By MulQuaBio collective!
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -61,6 +64,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/appendix-mini-proj';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -68,34 +72,30 @@
     <link rel="prev" title="Computing Bootcamp Rubric" href="../rubrics/Computing_Bootcamp_Rubric.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -103,7 +103,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -111,15 +110,59 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -128,7 +171,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -158,21 +202,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MulQuaBio - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MulQuaBio - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -304,9 +344,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -485,7 +530,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -499,25 +544,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -539,7 +576,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-project">The Project</a></li>
@@ -630,7 +667,7 @@ document.write(`
 <li><p><strong>It should be fully reproducible.</strong> You will write a script that “glues” the workflow together and runs it, from data processing to model fitting to plotting to compilation of the written report (<em>more detailed instructions on the report appear below</em>). Refer back to the MulQuaBio Computing chapters to see how you would run the different components. For example, we have covered how to run R and compile <span class="math notranslate nohighlight">\(\LaTeX\)</span> using the <code class="docutils literal notranslate"><span class="pre">subprocess</span></code> module in the <a class="reference internal" href="python.html"><span class="std std-doc">Python Chapter</span></a>. The assessor should be able to run just this script and get everything to work without errors.</p></li>
 </ol>
 <p><em>You will be given lectures and practicals on model fitting using least squares before you start on your Miniproject.</em></p>
-<p><em>Please read the papers in the <strong>Readings &amp; Resources</strong> section below</em> (and in particular, the Johnson and Omland (<span id="id1">[<a class="reference internal" href="../references.html#id193" title="Jerald B. Johnson and Kristian S. Omland. Model selection in ecology and evolution. Trends in Ecology and Evolution, 19(2):101–108, 2004. doi:10.1016/j.tree.2003.10.013.">Johnson and Omland, 2004</a>]</span>) paper) — these will help orient you in the right direction for tackling your Miniproject.</p>
+<p><em>Please read the papers in the <strong>Readings &amp; Resources</strong> section below</em> (and in particular, the Johnson and Omland (<span class="bibtex-citation" id="id1">[<a class="reference internal" href="../references.html#id193" title="Jerald B. Johnson and Kristian S. Omland. Model selection in ecology and evolution. Trends in Ecology and Evolution, 19(2):101–108, 2004. doi:10.1016/j.tree.2003.10.013.">Johnson and Omland, 2004</a>]</span>) paper) — these will help orient you in the right direction for tackling your Miniproject.</p>
 </section>
 <section id="the-report">
 <h2>The Report<a class="headerlink" href="#the-report" title="Link to this heading">#</a></h2>
@@ -924,8 +961,8 @@ document.write(`
 <p>Let’s have a look at the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/logistic_growth_data.csv&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loaded </span><span class="si">{}</span><span class="s2"> columns.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/logistic_growth_data.csv"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Loaded </span><span class="si">{}</span><span class="s2"> columns."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -943,9 +980,9 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StringArray&gt;
-[           &#39;X&#39;,         &#39;Time&#39;,       &#39;PopBio&#39;,         &#39;Temp&#39;,
-   &#39;Time_units&#39;, &#39;PopBio_units&#39;,      &#39;Species&#39;,       &#39;Medium&#39;,
-          &#39;Rep&#39;,     &#39;Citation&#39;]
+[           'X',         'Time',       'PopBio',         'Temp',
+   'Time_units', 'PopBio_units',      'Species',       'Medium',
+          'Rep',     'Citation']
 Length: 10, dtype: str
 </pre></div>
 </div>
@@ -953,7 +990,7 @@ Length: 10, dtype: str
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/logistic_growth_meta_data.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/logistic_growth_meta_data.csv"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1140,7 +1177,7 @@ Length: 10, dtype: str
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StringArray&gt;
-[&#39;OD_595&#39;, &#39;N&#39;, &#39;CFU&#39;, &#39;DryWeight&#39;]
+['OD_595', 'N', 'CFU', 'DryWeight']
 Length: 4, dtype: str
 </pre></div>
 </div>
@@ -1154,7 +1191,7 @@ Length: 4, dtype: str
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StringArray&gt;
-[&#39;Hours&#39;]
+['Hours']
 Length: 1, dtype: str
 </pre></div>
 </div>
@@ -1163,7 +1200,7 @@ Length: 1, dtype: str
 <p>Unlike the previous two datasets there are no ID coulmns, so you will have to  infer single growth curves by combining <code class="docutils literal notranslate"><span class="pre">Species</span></code>, <code class="docutils literal notranslate"><span class="pre">Medium</span></code>, <code class="docutils literal notranslate"><span class="pre">Temp</span></code> and <code class="docutils literal notranslate"><span class="pre">Citation</span></code> columns (each species-medium-citation combination is unique):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">Species</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">Temp</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">Medium</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">Citation</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">"ID"</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">Species</span> <span class="o">+</span> <span class="s2">"_"</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">Temp</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"_"</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">Medium</span> <span class="o">+</span> <span class="s2">"_"</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">Citation</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1177,27 +1214,27 @@ Length: 1, dtype: str
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StringArray&gt;
-[  &#39;Chryseobacterium.balustinum_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.&#39;,
-              &#39;Enterobacter.sp._5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.&#39;,
-         &#39;Pantoea.agglomerans.1_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.&#39;,
-         &#39;Pantoea.agglomerans.2_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.&#39;,
-              &#39;Bacillus.pumilus_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.&#39;,
-     &#39;Clavibacter.michiganensis_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.&#39;,
-     &#39;Pseudomonas.fluorescens.1_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.&#39;,
-     &#39;Pseudomonas.fluorescens.2_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.&#39;,
- &#39;Acinetobacter.clacoaceticus.1_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.&#39;,
- &#39;Acinetobacter.clacoaceticus.2_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.&#39;,
+[  'Chryseobacterium.balustinum_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.',
+              'Enterobacter.sp._5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.',
+         'Pantoea.agglomerans.1_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.',
+         'Pantoea.agglomerans.2_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.',
+              'Bacillus.pumilus_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.',
+     'Clavibacter.michiganensis_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.',
+     'Pseudomonas.fluorescens.1_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.',
+     'Pseudomonas.fluorescens.2_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.',
+ 'Acinetobacter.clacoaceticus.1_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.',
+ 'Acinetobacter.clacoaceticus.2_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.',
  ...
-                                                                    &#39;Pseudomonas sp._15_APT Broth_Stannard, C.J., Williams, A.P. and Gibbs, P.A., 1985. Temperature/growth relationships for psychrotrophic food-spoilage bacteria. Food Microbiology, 2(2), pp.115-122.&#39;,
-                                                                    &#39;Pseudomonas sp._12_APT Broth_Stannard, C.J., Williams, A.P. and Gibbs, P.A., 1985. Temperature/growth relationships for psychrotrophic food-spoilage bacteria. Food Microbiology, 2(2), pp.115-122.&#39;,
-                                                                     &#39;Pseudomonas sp._8_APT Broth_Stannard, C.J., Williams, A.P. and Gibbs, P.A., 1985. Temperature/growth relationships for psychrotrophic food-spoilage bacteria. Food Microbiology, 2(2), pp.115-122.&#39;,
-                                                                     &#39;Pseudomonas sp._6_APT Broth_Stannard, C.J., Williams, A.P. and Gibbs, P.A., 1985. Temperature/growth relationships for psychrotrophic food-spoilage bacteria. Food Microbiology, 2(2), pp.115-122.&#39;,
-                                                                     &#39;Pseudomonas sp._4_APT Broth_Stannard, C.J., Williams, A.P. and Gibbs, P.A., 1985. Temperature/growth relationships for psychrotrophic food-spoilage bacteria. Food Microbiology, 2(2), pp.115-122.&#39;,
-                                                                     &#39;Pseudomonas sp._2_APT Broth_Stannard, C.J., Williams, A.P. and Gibbs, P.A., 1985. Temperature/growth relationships for psychrotrophic food-spoilage bacteria. Food Microbiology, 2(2), pp.115-122.&#39;,
-                                                      &#39;Lactobaciulus plantarum_10_MRS_Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A.M. and Van&#39;t Riet, K., 1994. Modeling of bacterial growth with shifts in temperature. Appl. Environ. Microbiol., 60(1), pp.204-213.&#39;,
-                                                      &#39;Lactobaciulus plantarum_15_MRS_Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A.M. and Van&#39;t Riet, K., 1994. Modeling of bacterial growth with shifts in temperature. Appl. Environ. Microbiol., 60(1), pp.204-213.&#39;,
-                                                      &#39;Lactobaciulus plantarum_20_MRS_Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A.M. and Van&#39;t Riet, K., 1994. Modeling of bacterial growth with shifts in temperature. Appl. Environ. Microbiol., 60(1), pp.204-213.&#39;,
-                                                      &#39;Lactobaciulus plantarum_25_MRS_Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A.M. and Van&#39;t Riet, K., 1994. Modeling of bacterial growth with shifts in temperature. Appl. Environ. Microbiol., 60(1), pp.204-213.&#39;]
+                                                                    'Pseudomonas sp._15_APT Broth_Stannard, C.J., Williams, A.P. and Gibbs, P.A., 1985. Temperature/growth relationships for psychrotrophic food-spoilage bacteria. Food Microbiology, 2(2), pp.115-122.',
+                                                                    'Pseudomonas sp._12_APT Broth_Stannard, C.J., Williams, A.P. and Gibbs, P.A., 1985. Temperature/growth relationships for psychrotrophic food-spoilage bacteria. Food Microbiology, 2(2), pp.115-122.',
+                                                                     'Pseudomonas sp._8_APT Broth_Stannard, C.J., Williams, A.P. and Gibbs, P.A., 1985. Temperature/growth relationships for psychrotrophic food-spoilage bacteria. Food Microbiology, 2(2), pp.115-122.',
+                                                                     'Pseudomonas sp._6_APT Broth_Stannard, C.J., Williams, A.P. and Gibbs, P.A., 1985. Temperature/growth relationships for psychrotrophic food-spoilage bacteria. Food Microbiology, 2(2), pp.115-122.',
+                                                                     'Pseudomonas sp._4_APT Broth_Stannard, C.J., Williams, A.P. and Gibbs, P.A., 1985. Temperature/growth relationships for psychrotrophic food-spoilage bacteria. Food Microbiology, 2(2), pp.115-122.',
+                                                                     'Pseudomonas sp._2_APT Broth_Stannard, C.J., Williams, A.P. and Gibbs, P.A., 1985. Temperature/growth relationships for psychrotrophic food-spoilage bacteria. Food Microbiology, 2(2), pp.115-122.',
+                                                      'Lactobaciulus plantarum_10_MRS_Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A.M. and Van't Riet, K., 1994. Modeling of bacterial growth with shifts in temperature. Appl. Environ. Microbiol., 60(1), pp.204-213.',
+                                                      'Lactobaciulus plantarum_15_MRS_Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A.M. and Van't Riet, K., 1994. Modeling of bacterial growth with shifts in temperature. Appl. Environ. Microbiol., 60(1), pp.204-213.',
+                                                      'Lactobaciulus plantarum_20_MRS_Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A.M. and Van't Riet, K., 1994. Modeling of bacterial growth with shifts in temperature. Appl. Environ. Microbiol., 60(1), pp.204-213.',
+                                                      'Lactobaciulus plantarum_25_MRS_Zwietering, M.H., De Wit, J.C., Cuppers, H.G.A.M. and Van't Riet, K., 1994. Modeling of bacterial growth with shifts in temperature. Appl. Environ. Microbiol., 60(1), pp.204-213.']
 Length: 285, dtype: str
 </pre></div>
 </div>
@@ -1206,7 +1243,7 @@ Length: 285, dtype: str
 <p>These are rather ungainly IDs, so you might want to replace them with numbers!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_subset</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Chryseobacterium.balustinum_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_subset</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">'ID'</span><span class="p">]</span><span class="o">==</span><span class="s1">'Chryseobacterium.balustinum_5_TSB_Bae, Y.M., Zheng, L., Hyun, J.E., Jung, K.S., Heu, S. and Lee, S.Y., 2014. Growth characteristics and biofilm formation of various spoilage bacteria isolated from fresh produce. Journal of food science, 79(10), pp.M2072-M2080.'</span><span class="p">]</span>
 <span class="n">data_subset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1320,7 +1357,7 @@ Length: 285, dtype: str
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;PopBio&quot;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data_subset</span><span class="p">,</span> <span class="n">fit_reg</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="c1"># will give warning - you can ignore it</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="s2">"Time"</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">"PopBio"</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data_subset</span><span class="p">,</span> <span class="n">fit_reg</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="c1"># will give warning - you can ignore it</span>
 </pre></div>
 </div>
 </div>
@@ -1338,10 +1375,10 @@ Length: 285, dtype: str
 <p>For this option, do not stop at reporting which model wins by AIC/BIC. Use either the fitted parameters themselves, or the pattern of model support across curves, to answer the temperature-linked biological question you posed above in light of the <a class="reference internal" href="metabolic-basis.html"><span class="std std-doc">Metabolic basis chapter</span></a> and the <a class="reference internal" href="populations.html"><span class="std std-doc">Single Populations chapter</span></a>.</p>
 <hr class="docutils" />
 <p><img alt="image" src="../_images/Pop_Grow.svg" />
-<small> <center> An example population growth curve dataset to which the modified Gompertz model (<span id="id2">[<a class="reference internal" href="../references.html#id196" title="M. H. Zwietering, I. Jongenburger, F. M. Rombouts, and K. van't Riet. Modeling of the bacterial growth curve. Applied and Environmental Microbiology, 56(6):1875–1881, 1990.">Zwietering <em>et al.</em>, 1990</a>]</span>) has been fitted. (See the <a class="reference internal" href="nlls.html"><span class="std std-doc">Model fitting in NLLS Chapter</span></a> for more information)</p>
+<small> <center> An example population growth curve dataset to which the modified Gompertz model (<span class="bibtex-citation" id="id2">[<a class="reference internal" href="../references.html#id196" title="M. H. Zwietering, I. Jongenburger, F. M. Rombouts, and K. van't Riet. Modeling of the bacterial growth curve. Applied and Environmental Microbiology, 56(6):1875–1881, 1990.">Zwietering <em>et al.</em>, 1990</a>]</span>) has been fitted. (See the <a class="reference internal" href="nlls.html"><span class="std std-doc">Model fitting in NLLS Chapter</span></a> for more information)</p>
 </center></small>
 <hr class="docutils" />
-<p>In addition to the Gompertz model, two growth rate models that also include a lag phase are the Baranyi model (<span id="id3">[<a class="reference internal" href="../references.html#id222" title="J. Baranyi, T. A. Roberts, and P. McClure. A non-autonomous differential equation to model bacterial growth. Food Microbiology, 10(1):43–59, 1993. doi:10.1006/fmic.1993.1005.">Baranyi <em>et al.</em>, 1993</a>]</span>) and the Buchanan model (also known as the three-phase logistic model; <span id="id4">[<a class="reference internal" href="../references.html#id197" title="R. L. Buchanan, R. C. Whiting, and W. C. Damert. When is simple good enough: a comparison of the Gompertz, Baranyi, and three-phase linear models for fitting bacterial growth curves. Food Microbiology, 14(4):313–326, 1997. doi:10.1006/fmic.1997.0125.">Buchanan <em>et al.</em>, 1997</a>]</span>). See the readings &amp; resources section below for further related reading.</p>
+<p>In addition to the Gompertz model, two growth rate models that also include a lag phase are the Baranyi model (<span class="bibtex-citation" id="id3">[<a class="reference internal" href="../references.html#id222" title="J. Baranyi, T. A. Roberts, and P. McClure. A non-autonomous differential equation to model bacterial growth. Food Microbiology, 10(1):43–59, 1993. doi:10.1006/fmic.1993.1005.">Baranyi <em>et al.</em>, 1993</a>]</span>) and the Buchanan model (also known as the three-phase logistic model; <span class="bibtex-citation" id="id4">[<a class="reference internal" href="../references.html#id197" title="R. L. Buchanan, R. C. Whiting, and W. C. Damert. When is simple good enough: a comparison of the Gompertz, Baranyi, and three-phase linear models for fitting bacterial growth curves. Food Microbiology, 14(4):313–326, 1997. doi:10.1006/fmic.1997.0125.">Buchanan <em>et al.</em>, 1997</a>]</span>). See the readings &amp; resources section below for further related reading.</p>
 </section>
 </section>
 <section id="functional-responses">
@@ -1366,8 +1403,8 @@ Length: 285, dtype: str
 <p>Let’s have a look at the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/cr_at.csv&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loaded </span><span class="si">{}</span><span class="s2"> columns.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/cr_at.csv"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Loaded </span><span class="si">{}</span><span class="s2"> columns."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1559,40 +1596,40 @@ Length: 285, dtype: str
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StringArray&gt;
-[                            &#39;ID&#39;,                       &#39;DataType&#39;,
-               &#39;ORIGINAL_TraitID&#39;,       &#39;ORIGINAL_TraitDefinition&#39;,
-                     &#39;TraitValue&#39;,                      &#39;TraitUnit&#39;,
-                   &#39;N_TraitValue&#39;,                        &#39;ConTaxa&#39;,
-                        &#39;ResTaxa&#39;,                   &#39;ConTaxaStage&#39;,
-                   &#39;ResTaxaStage&#39;,           &#39;Con_ForagingMovement&#39;,
- &#39;Con_RESDetectionDimensionality&#39;,           &#39;Res_ForagingMovement&#39;,
- &#39;Res_CONDetectionDimensionality&#39;,                 &#39;CON_MASS_value&#39;,
-                 &#39;RES_MASS_value&#39;,           &#39;ResArenaSize_SI_UNIT&#39;,
-            &#39;ResDensity_SI_VALUE&#39;,                 &#39;ResDensityUnit&#39;,
-                     &#39;ResDensity&#39;,          &#39;ResArenaSize_SI_VALUE&#39;,
-                        &#39;ConTemp&#39;,                        &#39;ResTemp&#39;,
-                 &#39;ResReplaceRate&#39;,                 &#39;ResReplaceUnit&#39;,
-                     &#39;ResReplace&#39;,                   &#39;TraitSIValue&#39;,
-                    &#39;TraitSIUnit&#39;,                      &#39;N_TraitID&#39;,
-              &#39;N_TraitConversion&#39;,                    &#39;N_CONVERTED&#39;,
-                    &#39;N_TraitUnit&#39;,            &#39;Original_ErrorValue&#39;,
-        &#39;Original_ErrorValueUnit&#39;,                     &#39;Replicates&#39;,
-                       &#39;ConTaxon&#39;,                       &#39;ConStage&#39;,
-                      &#39;ConCommon&#39;,     &#39;Con_MovementDimensionality&#39;,
-                     &#39;Con_Thermy&#39;,     &#39;Res_MovementDimensionality&#39;,
-                       &#39;ResTaxon&#39;,                       &#39;ResStage&#39;,
-                      &#39;ResCommon&#39;,                     &#39;Res_Thermy&#39;,
-                        &#39;Habitat&#39;,                       &#39;LabField&#39;,
-              &#39;ObservationtimeSI&#39;,         &#39;ObservationtimeSIUnits&#39;,
-            &#39;ConStarvationTimeSI&#39;,       &#39;ConStarvationTimeSIUnits&#39;,
-              &#39;ConArenaSiz_VALUE&#39;,              &#39;ConArenaSize_UNIT&#39;,
-                     &#39;ConDensity&#39;,                 &#39;ConDensityUnit&#39;,
-            &#39;ConDensity_SI_VALUE&#39;,                &#39;ConDensityConst&#39;,
-                     &#39;ConSizType&#39;,             &#39;CON_ORIGINAL_value&#39;,
-              &#39;CON_ORIGINAL_unit&#39;,              &#39;Con_Siz_reference&#39;,
-                     &#39;ResSizType&#39;,             &#39;RES_ORIGINAL_value&#39;,
-              &#39;RES_ORIGINAL_unit&#39;,              &#39;Res_Siz_reference&#39;,
-                       &#39;Citation&#39;,                    &#39;FigureTable&#39;]
+[                            'ID',                       'DataType',
+               'ORIGINAL_TraitID',       'ORIGINAL_TraitDefinition',
+                     'TraitValue',                      'TraitUnit',
+                   'N_TraitValue',                        'ConTaxa',
+                        'ResTaxa',                   'ConTaxaStage',
+                   'ResTaxaStage',           'Con_ForagingMovement',
+ 'Con_RESDetectionDimensionality',           'Res_ForagingMovement',
+ 'Res_CONDetectionDimensionality',                 'CON_MASS_value',
+                 'RES_MASS_value',           'ResArenaSize_SI_UNIT',
+            'ResDensity_SI_VALUE',                 'ResDensityUnit',
+                     'ResDensity',          'ResArenaSize_SI_VALUE',
+                        'ConTemp',                        'ResTemp',
+                 'ResReplaceRate',                 'ResReplaceUnit',
+                     'ResReplace',                   'TraitSIValue',
+                    'TraitSIUnit',                      'N_TraitID',
+              'N_TraitConversion',                    'N_CONVERTED',
+                    'N_TraitUnit',            'Original_ErrorValue',
+        'Original_ErrorValueUnit',                     'Replicates',
+                       'ConTaxon',                       'ConStage',
+                      'ConCommon',     'Con_MovementDimensionality',
+                     'Con_Thermy',     'Res_MovementDimensionality',
+                       'ResTaxon',                       'ResStage',
+                      'ResCommon',                     'Res_Thermy',
+                        'Habitat',                       'LabField',
+              'ObservationtimeSI',         'ObservationtimeSIUnits',
+            'ConStarvationTimeSI',       'ConStarvationTimeSIUnits',
+              'ConArenaSiz_VALUE',              'ConArenaSize_UNIT',
+                     'ConDensity',                 'ConDensityUnit',
+            'ConDensity_SI_VALUE',                'ConDensityConst',
+                     'ConSizType',             'CON_ORIGINAL_value',
+              'CON_ORIGINAL_unit',              'Con_Siz_reference',
+                     'ResSizType',             'RES_ORIGINAL_value',
+              'RES_ORIGINAL_unit',              'Res_Siz_reference',
+                       'Citation',                    'FigureTable']
 Length: 68, dtype: str
 </pre></div>
 </div>
@@ -1606,69 +1643,69 @@ Length: 68, dtype: str
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StringArray&gt;
-[                                            &#39;Individual/(Individual*120 mins)&#39;,
-                                              &#39;Individual/(Individual*90 mins)&#39;,
-                                           &#39;individual / (individual * second)&#39;,
-                                         &#39;individual / (5 individual * 24 hrs)&#39;,
-                                          &#39;individual / (1 individual * 3 hrs)&#39;,
-                                          &#39;individual / (1 individual * 5 hrs)&#39;,
-                                          &#39;individual / (1 individual * 8 hrs)&#39;,
-                                          &#39;individual / (1 individual * 6 hrs)&#39;,
-                                         &#39;individual / (1 individual * 24 hrs)&#39;,
-                                          &#39;individual / (1 individual *12 hrs)&#39;,
-                                          &#39;individual / (1 individual *24 hrs)&#39;,
-                                           &#39;individual / (1 individual *2 hrs)&#39;,
-     &#39;milligram (body mass - dry) / (sqrt (gram (body mass - wet)) * 1 minute)&#39;,
-                                           &#39;individual / (1 individual *3 hrs)&#39;,
- &#39;cubic micrometer (yeast cell wet volume) / (gram (body mass - wet) * 1 hour)&#39;,
-                                         &#39;individual / (1 individual *30 mins)&#39;,
-                                             &#39;individual / (1 individual *day)&#39;,
-                                             &#39;individual / (1 individual * hr)&#39;,
-                               &#39;gram (biomass - dry) / (individual * 1 minute)&#39;,
-                                               &#39;Individual/(Individual*1 mins)&#39;,
-                                                 &#39;Individual/(Individual*1 hr)&#39;,
-                                                &#39;Individual/(Individual*1 day)&#39;,
-                                  &#39;gram (biomass - wet) / (individual * 3 hrs)&#39;,
-                                               &#39;Individual/(Individual * 1 hr)&#39;,
-                                               &#39;Individual/(Individual*7 days)&#39;,
-                           &#39;gram (biomass - wet) / (individual * 22.5 minutes)&#39;,
-                                               &#39;Individual/(Individual * 8 hr)&#39;,
-                                                &#39;Individual/(Individual * day)&#39;,
-                                           &#39;Individual/(Individual * 106 days)&#39;,
-                              &#39;milligram (biomass - dry) / (individual * 1 hr)&#39;,
-                                             &#39;Individual/(Individual * 12 hrs)&#39;,
-                                              &#39;Individual/(Individual * 1 day)&#39;,
-                                              &#39;Individual/(Individual * 2 day)&#39;,
-                                              &#39;Individual/(Individual * 3 day)&#39;,
-                                            &#39;Individual/(Individual * 15 mins)&#39;,
-                                     &#39;microgram (Carbon) / (individual * 1 hr)&#39;,
-    &#39;cubic micrometer (cell wet biovolume) / (gram (body mass - wet) * 1 hour)&#39;,
-                                             &#39;Individual/(Individual * 3 mins)&#39;,
-                                                  &#39;Individual/(Individual*1 d)&#39;,
-    &#39;nanogram (chlorophyll a weight) / (milligram (body mass - dry) * 1 hour) &#39;,
-                        &#39;Individuals / (milligram (body mass - dry) * 1 hour) &#39;,
-                                          &#39;individual / (1 individual * 1 day)&#39;,
-                                         &#39;individual / (1 individual * 1 hour)&#39;,
-                                     &#39;individual / (1 individual * 15 minutes)&#39;,
-                                         &#39;individual / (1 individual * 4 hour)&#39;,
-                                      &#39;nanogram (Carbon) / (individual * 1 hr)&#39;,
-                                       &#39;individual / (1 individual * 1 minute)&#39;,
-                                       &#39;individual / (1 individual * 1 second)&#39;,
-                                              &#39;Individual/(Individual*20 mins)&#39;,
-                                             &#39;Individual/(Individual * second)&#39;,
-                                               &#39;Individual/(Individual*1 hour)&#39;,
-                                              &#39;Individual/(Individual*111 day)&#39;,
-                                               &#39;Individual/(Individual*15 min)&#39;,
-                                                &#39;Individual/(Individual*1 min)&#39;,
-                                              &#39;Individual/(Individual*12 hour)&#39;,
-                                             &#39;Individual/(Individual*168 hour)&#39;,
-                                               &#39;Individual/(Individual*12 day)&#39;,
-                                        &#39;individual / (1 individual * 24 hour)&#39;,
-                                         &#39;individual / (1 individual * 6 hour)&#39;,
-                                         &#39;individual / (1 individual * 3 hour)&#39;,
-                                           &#39;individual / (1 individual * 1 hr)&#39;,
-                                         &#39;individual / (1 individual * 15 hrs)&#39;,
-                                          &#39;individual / (1 individual *5 mins)&#39;]
+[                                            'Individual/(Individual*120 mins)',
+                                              'Individual/(Individual*90 mins)',
+                                           'individual / (individual * second)',
+                                         'individual / (5 individual * 24 hrs)',
+                                          'individual / (1 individual * 3 hrs)',
+                                          'individual / (1 individual * 5 hrs)',
+                                          'individual / (1 individual * 8 hrs)',
+                                          'individual / (1 individual * 6 hrs)',
+                                         'individual / (1 individual * 24 hrs)',
+                                          'individual / (1 individual *12 hrs)',
+                                          'individual / (1 individual *24 hrs)',
+                                           'individual / (1 individual *2 hrs)',
+     'milligram (body mass - dry) / (sqrt (gram (body mass - wet)) * 1 minute)',
+                                           'individual / (1 individual *3 hrs)',
+ 'cubic micrometer (yeast cell wet volume) / (gram (body mass - wet) * 1 hour)',
+                                         'individual / (1 individual *30 mins)',
+                                             'individual / (1 individual *day)',
+                                             'individual / (1 individual * hr)',
+                               'gram (biomass - dry) / (individual * 1 minute)',
+                                               'Individual/(Individual*1 mins)',
+                                                 'Individual/(Individual*1 hr)',
+                                                'Individual/(Individual*1 day)',
+                                  'gram (biomass - wet) / (individual * 3 hrs)',
+                                               'Individual/(Individual * 1 hr)',
+                                               'Individual/(Individual*7 days)',
+                           'gram (biomass - wet) / (individual * 22.5 minutes)',
+                                               'Individual/(Individual * 8 hr)',
+                                                'Individual/(Individual * day)',
+                                           'Individual/(Individual * 106 days)',
+                              'milligram (biomass - dry) / (individual * 1 hr)',
+                                             'Individual/(Individual * 12 hrs)',
+                                              'Individual/(Individual * 1 day)',
+                                              'Individual/(Individual * 2 day)',
+                                              'Individual/(Individual * 3 day)',
+                                            'Individual/(Individual * 15 mins)',
+                                     'microgram (Carbon) / (individual * 1 hr)',
+    'cubic micrometer (cell wet biovolume) / (gram (body mass - wet) * 1 hour)',
+                                             'Individual/(Individual * 3 mins)',
+                                                  'Individual/(Individual*1 d)',
+    'nanogram (chlorophyll a weight) / (milligram (body mass - dry) * 1 hour) ',
+                        'Individuals / (milligram (body mass - dry) * 1 hour) ',
+                                          'individual / (1 individual * 1 day)',
+                                         'individual / (1 individual * 1 hour)',
+                                     'individual / (1 individual * 15 minutes)',
+                                         'individual / (1 individual * 4 hour)',
+                                      'nanogram (Carbon) / (individual * 1 hr)',
+                                       'individual / (1 individual * 1 minute)',
+                                       'individual / (1 individual * 1 second)',
+                                              'Individual/(Individual*20 mins)',
+                                             'Individual/(Individual * second)',
+                                               'Individual/(Individual*1 hour)',
+                                              'Individual/(Individual*111 day)',
+                                               'Individual/(Individual*15 min)',
+                                                'Individual/(Individual*1 min)',
+                                              'Individual/(Individual*12 hour)',
+                                             'Individual/(Individual*168 hour)',
+                                               'Individual/(Individual*12 day)',
+                                        'individual / (1 individual * 24 hour)',
+                                         'individual / (1 individual * 6 hour)',
+                                         'individual / (1 individual * 3 hour)',
+                                           'individual / (1 individual * 1 hr)',
+                                         'individual / (1 individual * 15 hrs)',
+                                          'individual / (1 individual *5 mins)']
 Length: 63, dtype: str
 </pre></div>
 </div>
@@ -1676,38 +1713,38 @@ Length: 63, dtype: str
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ResDensityUnit&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span> <span class="c1"># units of the independent variable</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"ResDensityUnit"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span> <span class="c1"># units of the independent variable</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StringArray&gt;
-[                                     &#39;Individuals per arena&#39;,
-                            &#39;g (body - dry) per square meter&#39;,
- &#39;cubic micrometer (yeast wet cell biovolume) per milliliter&#39;,
-                                      &#39;Individuals per liter&#39;,
-                           &#39;Individuals per cubic centimeter&#39;,
-                                &#39;kg (body - dry) per hectare&#39;,
-                               &#39;Individuals per square meter&#39;,
-                                 &#39;Individuals per microliter&#39;,
-                            &#39;g (body - wet) per square meter&#39;,
-                                      &#39;individuals per arena&#39;,
-                                  &#39;individuals per square km&#39;,
-                              &#39;mg (body - dry) per square cm&#39;,
-                                      &#39;individuals per Liter&#39;,
-                                      &#39;mg (Carbon) per liter&#39;,
-       &#39;cubic micrometer (wet cell biovolume) per milliliter&#39;,
-                                     &#39;individuals per .15 ha&#39;,
-                               &#39;microgram (Carbon) per liter&#39;,
-                                         &#39;Individuals per ml&#39;,
-                 &#39;microgram (chlorophyll a weight) per liter&#39;,
-                                 &#39;Individuals per milliliter&#39;,
-                                       &#39;Individuals per 1 ha&#39;,
-                                &#39;Individuals per cubic meter&#39;,
-                                     &#39;Individuals per 100 ha&#39;,
-                              &#39;individual per milliliter (1)&#39;,
-                                   &#39;individual per arena (1)&#39;,
-                                   &#39;individual per liter (1)&#39;]
+[                                     'Individuals per arena',
+                            'g (body - dry) per square meter',
+ 'cubic micrometer (yeast wet cell biovolume) per milliliter',
+                                      'Individuals per liter',
+                           'Individuals per cubic centimeter',
+                                'kg (body - dry) per hectare',
+                               'Individuals per square meter',
+                                 'Individuals per microliter',
+                            'g (body - wet) per square meter',
+                                      'individuals per arena',
+                                  'individuals per square km',
+                              'mg (body - dry) per square cm',
+                                      'individuals per Liter',
+                                      'mg (Carbon) per liter',
+       'cubic micrometer (wet cell biovolume) per milliliter',
+                                     'individuals per .15 ha',
+                               'microgram (Carbon) per liter',
+                                         'Individuals per ml',
+                 'microgram (chlorophyll a weight) per liter',
+                                 'Individuals per milliliter',
+                                       'Individuals per 1 ha',
+                                'Individuals per cubic meter',
+                                     'Individuals per 100 ha',
+                              'individual per milliliter (1)',
+                                   'individual per arena (1)',
+                                   'individual per liter (1)']
 Length: 26, dtype: str
 </pre></div>
 </div>
@@ -1752,7 +1789,7 @@ Length: 26, dtype: str
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_subset</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">39982</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_subset</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">'ID'</span><span class="p">]</span><span class="o">==</span><span class="mi">39982</span><span class="p">]</span>
 <span class="n">data_subset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1927,7 +1964,7 @@ Length: 26, dtype: str
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;ResDensity&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;N_TraitValue&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data_subset</span><span class="p">,</span> <span class="n">fit_reg</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"ResDensity"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"N_TraitValue"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data_subset</span><span class="p">,</span> <span class="n">fit_reg</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1998,8 +2035,8 @@ Length: 26, dtype: str
 <p>Let’s have a look at the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/therm_resp_data.csv&quot;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loaded </span><span class="si">{}</span><span class="s2"> columns.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/therm_resp_data.csv"</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Loaded </span><span class="si">{}</span><span class="s2"> columns."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -2192,32 +2229,32 @@ Length: 26, dtype: str
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StringArray&gt;
-[                 &#39;Input&#39;,                     &#39;ID&#39;,       &#39;OrignalTraitName&#39;,
-       &#39;OriginalTraitDef&#39;,  &#39;StandardisedTraitName&#39;,   &#39;StandardisedTraitDef&#39;,
-     &#39;OriginalTraitValue&#39;,      &#39;OriginalTraitUnit&#39;,       &#39;OriginalErrorPos&#39;,
-       &#39;OriginalErrorNeg&#39;,      &#39;OriginalErrorUnit&#39;, &#39;StandardisedTraitValue&#39;,
-  &#39;StandardisedTraitUnit&#39;,   &#39;StandardisedErrorPos&#39;,   &#39;StandardisedErrorNeg&#39;,
-  &#39;StandardisedErrorUnit&#39;,             &#39;Replicates&#39;,               &#39;Consumer&#39;,
-              &#39;ConCommon&#39;,                &#39;Habitat&#39;,               &#39;Location&#39;,
-           &#39;LocationType&#39;,           &#39;LocationDate&#39;,         &#39;CoordinateType&#39;,
-               &#39;Latitude&#39;,              &#39;Longitude&#39;,              &#39;ConThermy&#39;,
-               &#39;ConStage&#39;,                &#39;ConSize&#39;,            &#39;ConSizeUnit&#39;,
-            &#39;ConSizeType&#39;,            &#39;ConDenValue&#39;,             &#39;ConDenUnit&#39;,
-                &#39;ConTemp&#39;,            &#39;ConTempUnit&#39;,          &#39;ConTempMethod&#39;,
-               &#39;Labfield&#39;,                &#39;Labtemp&#39;,            &#39;Labtempunit&#39;,
-                &#39;Labtime&#39;,            &#39;Labtimeunit&#39;,             &#39;ArenaValue&#39;,
-              &#39;ArenaUnit&#39;,            &#39;AmbientTemp&#39;,        &#39;AmbientTempUnit&#39;,
-           &#39;AmbientLight&#39;,       &#39;AmbientLightUnit&#39;,               &#39;Resource&#39;,
-              &#39;ResCommon&#39;,               &#39;ResStage&#39;,              &#39;ResThermy&#39;,
-                &#39;ResTemp&#39;,          &#39;ResTempMethod&#39;,                &#39;ResSize&#39;,
-            &#39;ResSizeUnit&#39;,            &#39;ResDenValue&#39;,             &#39;ResDenUnit&#39;,
-            &#39;ResRepValue&#39;,             &#39;ResRepUnit&#39;,           &#39;ObsTimeValue&#39;,
-            &#39;ObsTimeUnit&#39;,       &#39;EquilibTimeValue&#39;,        &#39;EquilibTimeUnit&#39;,
-          &#39;AcclimFixTemp&#39;,      &#39;AcclimFixTempUnit&#39;,       &#39;AcclimFixTempDur&#39;,
-   &#39;AcclimFixTempDurUnit&#39;,          &#39;AcclimVarTemp&#39;,      &#39;AcclimVarTempUnit&#39;,
-       &#39;AcclimVarTempDur&#39;,   &#39;AcclimVarTempDurUnit&#39;,          &#39;LabGrowthTemp&#39;,
-      &#39;LabGrowthTempUnit&#39;,           &#39;LabGrowthDur&#39;,       &#39;LabGrowthDurUnit&#39;,
-               &#39;Citation&#39;,            &#39;FigureTable&#39;,                  &#39;Notes&#39;]
+[                 'Input',                     'ID',       'OrignalTraitName',
+       'OriginalTraitDef',  'StandardisedTraitName',   'StandardisedTraitDef',
+     'OriginalTraitValue',      'OriginalTraitUnit',       'OriginalErrorPos',
+       'OriginalErrorNeg',      'OriginalErrorUnit', 'StandardisedTraitValue',
+  'StandardisedTraitUnit',   'StandardisedErrorPos',   'StandardisedErrorNeg',
+  'StandardisedErrorUnit',             'Replicates',               'Consumer',
+              'ConCommon',                'Habitat',               'Location',
+           'LocationType',           'LocationDate',         'CoordinateType',
+               'Latitude',              'Longitude',              'ConThermy',
+               'ConStage',                'ConSize',            'ConSizeUnit',
+            'ConSizeType',            'ConDenValue',             'ConDenUnit',
+                'ConTemp',            'ConTempUnit',          'ConTempMethod',
+               'Labfield',                'Labtemp',            'Labtempunit',
+                'Labtime',            'Labtimeunit',             'ArenaValue',
+              'ArenaUnit',            'AmbientTemp',        'AmbientTempUnit',
+           'AmbientLight',       'AmbientLightUnit',               'Resource',
+              'ResCommon',               'ResStage',              'ResThermy',
+                'ResTemp',          'ResTempMethod',                'ResSize',
+            'ResSizeUnit',            'ResDenValue',             'ResDenUnit',
+            'ResRepValue',             'ResRepUnit',           'ObsTimeValue',
+            'ObsTimeUnit',       'EquilibTimeValue',        'EquilibTimeUnit',
+          'AcclimFixTemp',      'AcclimFixTempUnit',       'AcclimFixTempDur',
+   'AcclimFixTempDurUnit',          'AcclimVarTemp',      'AcclimVarTempUnit',
+       'AcclimVarTempDur',   'AcclimVarTempDurUnit',          'LabGrowthTemp',
+      'LabGrowthTempUnit',           'LabGrowthDur',       'LabGrowthDurUnit',
+               'Citation',            'FigureTable',                  'Notes']
 Length: 78, dtype: str
 </pre></div>
 </div>
@@ -2231,84 +2268,84 @@ Length: 78, dtype: str
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StringArray&gt;
-[                  &#39;micromol m^-2 s^-1&#39;,
-                &#39;mg o2 (10 minutes^-1)&#39;,
-             &#39;micromol o2 dm^-2 min^-1&#39;,
-                    &#39;mg co2 dm^-2 h^-1&#39;,
-         &#39;micromol co2 mg(Chl)^-1 h^-1&#39;,
-                       &#39;micro (day^-1)&#39;,
-                         &#39;% of maximum&#39;,
-                 &#39;mg co2 g(FW)^-1 h^-1&#39;,
-                    &#39;ng co2 cm^-2 s^-1&#39;,
-                           &#39;gh^-1 m^-2&#39;,
-                       &#39;nmol g^-1 s^-1&#39;,
-                     &#39;mg co2 g^-1 h^-1&#39;,
-                  &#39;nmol co2 cm^-2 s^-1&#39;,
-               &#39;micromol co2 m^-2 s^-1&#39;,
-          &#39;micromol o2 mg(Chl)^-1 h^-1&#39;,
-              &#39;micromol co2 kg^-1 s^-1&#39;,
-                 &#39;mg co2 g(DW)^-1 h^-1&#39;,
-          &#39;micromol o2 g(DW)^-1 min^-1&#39;,
-                   &#39;mg C g(DW)^-1 h^-1&#39;,
-                  &#39;mg o2 g(DW)^-2 h^-1&#39;,
-                 &#39;microg co2 m^-2 s^-1&#39;,
-                &#39;micromol o2 g^-1 h^-1&#39;,
-           &#39;microg co2 g(DW)^-1 min^-1&#39;,
-   &#39;microl o2 g(DW)^-1 (10 minutes)^-1&#39;,
-                     &#39;mg co2 m^-2 s^-1&#39;,
-        &#39;micromol o2 mg(Chl)^-1 min^-1&#39;,
-            &#39;mg o2 10^-9 cells hour^-1&#39;,
-          &#39;mmol e^- [mg chl a]^-1 h^-1&#39;,
-          &#39;microg o2 mg(Chl)^-1 min^-1&#39;,
-               &#39;dpm 14C per 10^3 cells&#39;,
-                      &#39;mmol kg^-1 h^-1&#39;,
-                  &#39;microg C cm^-2 h^-1&#39;,
-                      &#39;g co2 m^-2 h^-1&#39;,
-                 &#39;microl co2 m^-2 s^-1&#39;,
-                      &#39;nmol cm^-2 s^-1&#39;,
-           &#39;micromol co2 g(FW)^-1 h^-1&#39;,
-                                    &#39;?&#39;,
-           &#39;micromol mg(Chl a)^-1 h^-1&#39;,
-               &#39;micromol g(DW)^-1 h^-1&#39;,
-                      &#39;g o2 cm^-2 h^-1&#39;,
-                 &#39;microg o2 cm^-2 h^-1&#39;,
-                                    &#39;%&#39;,
-        &#39;micromol o2 mg(Chl a)^-1 h^-1&#39;,
-             &#39;micromol co2 g^-1 min^-1&#39;,
-              &#39;cpm (microg protein)^-1&#39;,
-            &#39;microg o2 g(DW)^-1 min^-1&#39;,
-             &#39;microl o2 mg(DW)^-1 h^-1&#39;,
-                &#39;fmol C cell^-1 min^-1&#39;,
-            &#39;microl o2 mg(Chl)^-1 h^-1&#39;,
-              &#39;microl o2 g(DW)^-1 h^-1&#39;,
-                   &#39;mm^3 o2 cm^-2 h^-1&#39;,
-                &#39;nmol o2 g(DW)^-1 s^-1&#39;,
-            &#39;micromol o2 g(DW)^-1 h^-1&#39;,
- &#39;microg co2 dm^-2 (both sides) min^-1&#39;,
-                      &#39;mg o2 g^-1 h^-1&#39;,
-                        &#39;mg c g(DW)^-1&#39;,
-              &#39;microl o2 g(FW)^-1 h^-1&#39;,
-                         &#39;microW mg^-1&#39;,
-                   &#39;nmol g(DW)^-1 s^-1&#39;,
-               &#39;nmol co2 g(DW)^-1 s^-1&#39;,
-                   &#39;micromol g^-1 h^-1&#39;,
-            &#39;microl o2 g(FW)^-1 min^-1&#39;,
-                   &#39;nmol co2 g^-1 s^-1&#39;,
-                   &#39;micromol g^-1 s^-1&#39;,
-                     &#39;pgC cell^-1 h^-1&#39;,
-               &#39;pg C pg(chl a)^-1 h^-1&#39;,
-                &#39;micromol O2 g^-1 h^-1&#39;,
-            &#39;micromol o2 g(FW)^-1 h^-1&#39;,
+[                  'micromol m^-2 s^-1',
+                'mg o2 (10 minutes^-1)',
+             'micromol o2 dm^-2 min^-1',
+                    'mg co2 dm^-2 h^-1',
+         'micromol co2 mg(Chl)^-1 h^-1',
+                       'micro (day^-1)',
+                         '% of maximum',
+                 'mg co2 g(FW)^-1 h^-1',
+                    'ng co2 cm^-2 s^-1',
+                           'gh^-1 m^-2',
+                       'nmol g^-1 s^-1',
+                     'mg co2 g^-1 h^-1',
+                  'nmol co2 cm^-2 s^-1',
+               'micromol co2 m^-2 s^-1',
+          'micromol o2 mg(Chl)^-1 h^-1',
+              'micromol co2 kg^-1 s^-1',
+                 'mg co2 g(DW)^-1 h^-1',
+          'micromol o2 g(DW)^-1 min^-1',
+                   'mg C g(DW)^-1 h^-1',
+                  'mg o2 g(DW)^-2 h^-1',
+                 'microg co2 m^-2 s^-1',
+                'micromol o2 g^-1 h^-1',
+           'microg co2 g(DW)^-1 min^-1',
+   'microl o2 g(DW)^-1 (10 minutes)^-1',
+                     'mg co2 m^-2 s^-1',
+        'micromol o2 mg(Chl)^-1 min^-1',
+            'mg o2 10^-9 cells hour^-1',
+          'mmol e^- [mg chl a]^-1 h^-1',
+          'microg o2 mg(Chl)^-1 min^-1',
+               'dpm 14C per 10^3 cells',
+                      'mmol kg^-1 h^-1',
+                  'microg C cm^-2 h^-1',
+                      'g co2 m^-2 h^-1',
+                 'microl co2 m^-2 s^-1',
+                      'nmol cm^-2 s^-1',
+           'micromol co2 g(FW)^-1 h^-1',
+                                    '?',
+           'micromol mg(Chl a)^-1 h^-1',
+               'micromol g(DW)^-1 h^-1',
+                      'g o2 cm^-2 h^-1',
+                 'microg o2 cm^-2 h^-1',
+                                    '%',
+        'micromol o2 mg(Chl a)^-1 h^-1',
+             'micromol co2 g^-1 min^-1',
+              'cpm (microg protein)^-1',
+            'microg o2 g(DW)^-1 min^-1',
+             'microl o2 mg(DW)^-1 h^-1',
+                'fmol C cell^-1 min^-1',
+            'microl o2 mg(Chl)^-1 h^-1',
+              'microl o2 g(DW)^-1 h^-1',
+                   'mm^3 o2 cm^-2 h^-1',
+                'nmol o2 g(DW)^-1 s^-1',
+            'micromol o2 g(DW)^-1 h^-1',
+ 'microg co2 dm^-2 (both sides) min^-1',
+                      'mg o2 g^-1 h^-1',
+                        'mg c g(DW)^-1',
+              'microl o2 g(FW)^-1 h^-1',
+                         'microW mg^-1',
+                   'nmol g(DW)^-1 s^-1',
+               'nmol co2 g(DW)^-1 s^-1',
+                   'micromol g^-1 h^-1',
+            'microl o2 g(FW)^-1 min^-1',
+                   'nmol co2 g^-1 s^-1',
+                   'micromol g^-1 s^-1',
+                     'pgC cell^-1 h^-1',
+               'pg C pg(chl a)^-1 h^-1',
+                'micromol O2 g^-1 h^-1',
+            'micromol o2 g(FW)^-1 h^-1',
                                     nan,
-                  &#39;mg o2 g(DW)^-1 h^-1&#39;,
-                  &#39;nmol CO2 cm^-2 s^-1&#39;,
-                &#39;micromol o2 m^-2 s^-1&#39;,
-                             &#39;% of max&#39;,
-                &#39;micromol dm^-2 min^-1&#39;,
-                   &#39;microg C g^-1 h^-1&#39;,
-                     &#39;mg o2 dm^-2 h^-1&#39;,
-                     &#39;mg co2 h^-1 g^-1&#39;,
-                 &#39;g C g(Chl a)^-1 h^-1&#39;]
+                  'mg o2 g(DW)^-1 h^-1',
+                  'nmol CO2 cm^-2 s^-1',
+                'micromol o2 m^-2 s^-1',
+                             '% of max',
+                'micromol dm^-2 min^-1',
+                   'microg C g^-1 h^-1',
+                     'mg o2 dm^-2 h^-1',
+                     'mg co2 h^-1 g^-1',
+                 'g C g(Chl a)^-1 h^-1']
 Length: 78, dtype: str
 </pre></div>
 </div>
@@ -2322,7 +2359,7 @@ Length: 78, dtype: str
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StringArray&gt;
-[&#39;celsius&#39;, &#39;Celsius&#39;]
+['celsius', 'Celsius']
 Length: 2, dtype: str
 </pre></div>
 </div>
@@ -2392,7 +2429,7 @@ Length: 2, dtype: str
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_subset</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">110</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_subset</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">'ID'</span><span class="p">]</span><span class="o">==</span><span class="mi">110</span><span class="p">]</span>
 <span class="n">data_subset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2567,7 +2604,7 @@ Length: 2, dtype: str
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;ConTemp&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;OriginalTraitValue&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data_subset</span><span class="p">,</span> <span class="n">fit_reg</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"ConTemp"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"OriginalTraitValue"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data_subset</span><span class="p">,</span> <span class="n">fit_reg</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2667,40 +2704,40 @@ All complete reference details are maintained in the main book bibliography.</p>
 <section id="general">
 <h3>General<a class="headerlink" href="#general" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Model-building strategy in population biology: <span id="id11">[<a class="reference internal" href="../references.html#id192" title="Richard Levins. The strategy of model building in population biology. American Scientist, 54:421–431, 1966.">Levins, 1966</a>]</span></p></li>
-<li><p>Model selection in ecology and evolution: <span id="id12">[<a class="reference internal" href="../references.html#id193" title="Jerald B. Johnson and Kristian S. Omland. Model selection in ecology and evolution. Trends in Ecology and Evolution, 19(2):101–108, 2004. doi:10.1016/j.tree.2003.10.013.">Johnson and Omland, 2004</a>]</span></p></li>
-<li><p>Practical curve-fitting guide: <span id="id13">[<a class="reference internal" href="../references.html#id194" title="Harvey Motulsky and Arthur Christopoulos. Fitting Models to Biological Data Using Linear and Nonlinear Regression: A Practical Guide to Curve Fitting. Oxford University Press, New York, 2004.">Motulsky and Christopoulos, 2004</a>]</span></p></li>
-<li><p>Strategies for nonlinear ecological model fitting: <span id="id14">[<a class="reference internal" href="../references.html#id195" title="Benjamin M. Bolker, Beth Gardner, Mark Maunder, Casper W. Berg, Mollie Brooks, Liza Comita, Elizabeth Crone, Sarah Cubaynes, Trevor Davies, Perry de Valpine, Jessica Ford, Olivier Gimenez, Marc Kéry, Eun Jung Kim, Cleridy Lennert-Cody, Arni Magnusson, Steve Martell, John Nash, Anders Nielsen, Jim Regetz, Hans Skaug, and Elise Zipkin. Strategies for fitting nonlinear ecological models in R, AD Model Builder, and BUGS. Methods in Ecology and Evolution, 4(6):501–512, 2013. doi:10.1111/2041-210X.12044.">Bolker <em>et al.</em>, 2013</a>]</span></p></li>
+<li><p>Model-building strategy in population biology: <span class="bibtex-citation" id="id11">[<a class="reference internal" href="../references.html#id192" title="Richard Levins. The strategy of model building in population biology. American Scientist, 54:421–431, 1966.">Levins, 1966</a>]</span></p></li>
+<li><p>Model selection in ecology and evolution: <span class="bibtex-citation" id="id12">[<a class="reference internal" href="../references.html#id193" title="Jerald B. Johnson and Kristian S. Omland. Model selection in ecology and evolution. Trends in Ecology and Evolution, 19(2):101–108, 2004. doi:10.1016/j.tree.2003.10.013.">Johnson and Omland, 2004</a>]</span></p></li>
+<li><p>Practical curve-fitting guide: <span class="bibtex-citation" id="id13">[<a class="reference internal" href="../references.html#id194" title="Harvey Motulsky and Arthur Christopoulos. Fitting Models to Biological Data Using Linear and Nonlinear Regression: A Practical Guide to Curve Fitting. Oxford University Press, New York, 2004.">Motulsky and Christopoulos, 2004</a>]</span></p></li>
+<li><p>Strategies for nonlinear ecological model fitting: <span class="bibtex-citation" id="id14">[<a class="reference internal" href="../references.html#id195" title="Benjamin M. Bolker, Beth Gardner, Mark Maunder, Casper W. Berg, Mollie Brooks, Liza Comita, Elizabeth Crone, Sarah Cubaynes, Trevor Davies, Perry de Valpine, Jessica Ford, Olivier Gimenez, Marc Kéry, Eun Jung Kim, Cleridy Lennert-Cody, Arni Magnusson, Steve Martell, John Nash, Anders Nielsen, Jim Regetz, Hans Skaug, and Elise Zipkin. Strategies for fitting nonlinear ecological models in R, AD Model Builder, and BUGS. Methods in Ecology and Evolution, 4(6):501–512, 2013. doi:10.1111/2041-210X.12044.">Bolker <em>et al.</em>, 2013</a>]</span></p></li>
 </ul>
 </section>
 <section id="id15">
 <h3>Population Growth<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Modeling bacterial growth curves: <span id="id16">[<a class="reference internal" href="../references.html#id196" title="M. H. Zwietering, I. Jongenburger, F. M. Rombouts, and K. van't Riet. Modeling of the bacterial growth curve. Applied and Environmental Microbiology, 56(6):1875–1881, 1990.">Zwietering <em>et al.</em>, 1990</a>]</span></p></li>
-<li><p>Comparing Gompertz, Baranyi, and three-phase models: <span id="id17">[<a class="reference internal" href="../references.html#id197" title="R. L. Buchanan, R. C. Whiting, and W. C. Damert. When is simple good enough: a comparison of the Gompertz, Baranyi, and three-phase linear models for fitting bacterial growth curves. Food Microbiology, 14(4):313–326, 1997. doi:10.1006/fmic.1997.0125.">Buchanan <em>et al.</em>, 1997</a>]</span></p></li>
-<li><p>Estimating Baranyi model parameters: <span id="id18">[<a class="reference internal" href="../references.html#id198" title="Koen Grijspeerdt and Peter Vanrolleghem. Estimating the parameters of the Baranyi model for bacterial growth. Food Microbiology, 16(6):593–605, 1999.">Grijspeerdt and Vanrolleghem, 1999</a>]</span></p></li>
-<li><p>Interpreting limits of microbial growth models: <span id="id19">[<a class="reference internal" href="../references.html#id199" title="P. Micha and M. G. Corradini. Microbial growth curves: what the models tell us and what they cannot. Critical Reviews in Food Science and Nutrition, 2011. doi:10.1080/10408398.2011.570463.">Micha and Corradini, 2011</a>]</span></p></li>
+<li><p>Modeling bacterial growth curves: <span class="bibtex-citation" id="id16">[<a class="reference internal" href="../references.html#id196" title="M. H. Zwietering, I. Jongenburger, F. M. Rombouts, and K. van't Riet. Modeling of the bacterial growth curve. Applied and Environmental Microbiology, 56(6):1875–1881, 1990.">Zwietering <em>et al.</em>, 1990</a>]</span></p></li>
+<li><p>Comparing Gompertz, Baranyi, and three-phase models: <span class="bibtex-citation" id="id17">[<a class="reference internal" href="../references.html#id197" title="R. L. Buchanan, R. C. Whiting, and W. C. Damert. When is simple good enough: a comparison of the Gompertz, Baranyi, and three-phase linear models for fitting bacterial growth curves. Food Microbiology, 14(4):313–326, 1997. doi:10.1006/fmic.1997.0125.">Buchanan <em>et al.</em>, 1997</a>]</span></p></li>
+<li><p>Estimating Baranyi model parameters: <span class="bibtex-citation" id="id18">[<a class="reference internal" href="../references.html#id198" title="Koen Grijspeerdt and Peter Vanrolleghem. Estimating the parameters of the Baranyi model for bacterial growth. Food Microbiology, 16(6):593–605, 1999.">Grijspeerdt and Vanrolleghem, 1999</a>]</span></p></li>
+<li><p>Interpreting limits of microbial growth models: <span class="bibtex-citation" id="id19">[<a class="reference internal" href="../references.html#id199" title="P. Micha and M. G. Corradini. Microbial growth curves: what the models tell us and what they cannot. Critical Reviews in Food Science and Nutrition, 2011. doi:10.1080/10408398.2011.570463.">Micha and Corradini, 2011</a>]</span></p></li>
 </ul>
 </section>
 <section id="id20">
 <h3>Functional Responses<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Foundational functional response work: <span id="id21">[<a class="reference internal" href="../references.html#id191" title="C. S. Holling. The components of predation as revealed by a study of small-mammal predation of the European pine sawfly. The Canadian Entomologist, 91(5):293–320, 1959. doi:10.4039/Ent91293-5.">Holling, 1959</a>]</span></p></li>
-<li><p>Invertebrate predator response to prey density: <span id="id22">[<a class="reference internal" href="../references.html#id200" title="C. S. Holling. The functional response of invertebrate predators to prey density. Memoirs of the Entomological Society of Canada, 48:1–86, 1966.">Holling, 1966</a>]</span></p></li>
-<li><p>Size-dependent functional response and rescaling: <span id="id23">[<a class="reference internal" href="../references.html#id201" title="A. A. Aljetlawi, E. Sparrevik, and K. Leonardsson. Prey-predator size-dependent functional response: derivation and rescaling to the real world. Journal of Animal Ecology, 73(2):239–252, 2004.">Aljetlawi <em>et al.</em>, 2004</a>]</span></p></li>
-<li><p>Handling vs digesting prey in response models: <span id="id24">[<a class="reference internal" href="../references.html#id202" title="Jonathan M. Jeschke, Michael Kopp, and Ralph Tollrian. Predator functional responses: discriminating between handling and digesting prey. Ecological Monographs, 72(1):95–112, 2002.">Jeschke <em>et al.</em>, 2002</a>]</span></p></li>
-<li><p>Search-space dimensionality and trophic interaction strengths: <span id="id25">[<a class="reference internal" href="../references.html#id203" title="Samraat Pawar, Anthony I. Dell, and Van M. Savage. Dimensionality of consumer search space drives trophic interaction strengths. Nature, 486(7404):485–489, 2012. doi:10.1038/nature11131.">Pawar <em>et al.</em>, 2012</a>]</span></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">frair</span></code> package for fitting and comparing responses: <span id="id26">[<a class="reference internal" href="../references.html#id204" title="Daniel W. Pritchard, Robert A. Paterson, Hannah C. Bovy, and Daniel Barrios-O'Neill. Frair: an R package for fitting and comparing consumer functional responses. Methods in Ecology and Evolution, 8(11):1528–1534, 2017.">Pritchard <em>et al.</em>, 2017</a>]</span></p></li>
+<li><p>Foundational functional response work: <span class="bibtex-citation" id="id21">[<a class="reference internal" href="../references.html#id191" title="C. S. Holling. The components of predation as revealed by a study of small-mammal predation of the European pine sawfly. The Canadian Entomologist, 91(5):293–320, 1959. doi:10.4039/Ent91293-5.">Holling, 1959</a>]</span></p></li>
+<li><p>Invertebrate predator response to prey density: <span class="bibtex-citation" id="id22">[<a class="reference internal" href="../references.html#id200" title="C. S. Holling. The functional response of invertebrate predators to prey density. Memoirs of the Entomological Society of Canada, 48:1–86, 1966.">Holling, 1966</a>]</span></p></li>
+<li><p>Size-dependent functional response and rescaling: <span class="bibtex-citation" id="id23">[<a class="reference internal" href="../references.html#id201" title="A. A. Aljetlawi, E. Sparrevik, and K. Leonardsson. Prey-predator size-dependent functional response: derivation and rescaling to the real world. Journal of Animal Ecology, 73(2):239–252, 2004.">Aljetlawi <em>et al.</em>, 2004</a>]</span></p></li>
+<li><p>Handling vs digesting prey in response models: <span class="bibtex-citation" id="id24">[<a class="reference internal" href="../references.html#id202" title="Jonathan M. Jeschke, Michael Kopp, and Ralph Tollrian. Predator functional responses: discriminating between handling and digesting prey. Ecological Monographs, 72(1):95–112, 2002.">Jeschke <em>et al.</em>, 2002</a>]</span></p></li>
+<li><p>Search-space dimensionality and trophic interaction strengths: <span class="bibtex-citation" id="id25">[<a class="reference internal" href="../references.html#id203" title="Samraat Pawar, Anthony I. Dell, and Van M. Savage. Dimensionality of consumer search space drives trophic interaction strengths. Nature, 486(7404):485–489, 2012. doi:10.1038/nature11131.">Pawar <em>et al.</em>, 2012</a>]</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">frair</span></code> package for fitting and comparing responses: <span class="bibtex-citation" id="id26">[<a class="reference internal" href="../references.html#id204" title="Daniel W. Pritchard, Robert A. Paterson, Hannah C. Bovy, and Daniel Barrios-O'Neill. Frair: an R package for fitting and comparing consumer functional responses. Methods in Ecology and Evolution, 8(11):1528–1534, 2017.">Pritchard <em>et al.</em>, 2017</a>]</span></p></li>
 </ul>
 </section>
 <section id="id27">
 <h3>Thermal Performance Curves<a class="headerlink" href="#id27" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Sharpe-Schoolfield model basis: <span id="id28">[<a class="reference internal" href="../references.html#id205" title="Robert M. Schoolfield, Peter J. H. Sharpe, and Charles E. Magnuson. Non-linear regression of biological temperature-dependent rate models based on absolute reaction-rate theory. Journal of Theoretical Biology, 88(4):719–731, 1981. doi:10.1016/0022-5193(81)90246-0.">Schoolfield <em>et al.</em>, 1981</a>]</span></p></li>
-<li><p>Temperature-dependent bacterial growth modeling: <span id="id29">[<a class="reference internal" href="../references.html#id206" title="M. H. Zwietering, J. T. de Koos, B. E. Hasenack, J. C. de Wit, and K. van't Riet. Modeling of bacterial growth as a function of temperature. Applied and Environmental Microbiology, 57(4):1094–1101, 1991.">Zwietering <em>et al.</em>, 1991</a>]</span></p></li>
-<li><p>Briere development-rate model: <span id="id30">[<a class="reference internal" href="../references.html#id207" title="J. F. Briere, P. Pracros, A. Y. Le Roux, and J. S. Pierre. A novel rate model of temperature-dependent development for arthropods. Environmental Entomology, 28(1):22–29, 1999.">Briere <em>et al.</em>, 1999</a>]</span></p></li>
-<li><p>Trait temperature dependence across systems: <span id="id31">[<a class="reference internal" href="../references.html#id5" title="Anthony I Dell, Samraat Pawar, and Van M Savage. Systematic variation in the temperature dependence of physiological and ecological traits. Proceedings of the National Academy of Sciences, 108(26):10591–10596, 2011.">Dell <em>et al.</em>, 2011</a>]</span></p></li>
-<li><p>Enzyme stability and metabolic temperature dependence: <span id="id32">[<a class="reference internal" href="../references.html#id208" title="John P. DeLong, Jean P. Gibert, Thomas M. Luhring, Grant Bachman, Benjamin Reed, Alexandra Neyer, and Kristi L. Montooth. The combined effects of reactant kinetics and enzyme stability explain the temperature dependence of metabolic rates. Ecology and Evolution, 7(11):3940–3950, 2017. doi:10.1002/ece3.2955.">DeLong <em>et al.</em>, 2017</a>]</span></p></li>
+<li><p>Sharpe-Schoolfield model basis: <span class="bibtex-citation" id="id28">[<a class="reference internal" href="../references.html#id205" title="Robert M. Schoolfield, Peter J. H. Sharpe, and Charles E. Magnuson. Non-linear regression of biological temperature-dependent rate models based on absolute reaction-rate theory. Journal of Theoretical Biology, 88(4):719–731, 1981. doi:10.1016/0022-5193(81)90246-0.">Schoolfield <em>et al.</em>, 1981</a>]</span></p></li>
+<li><p>Temperature-dependent bacterial growth modeling: <span class="bibtex-citation" id="id29">[<a class="reference internal" href="../references.html#id206" title="M. H. Zwietering, J. T. de Koos, B. E. Hasenack, J. C. de Wit, and K. van't Riet. Modeling of bacterial growth as a function of temperature. Applied and Environmental Microbiology, 57(4):1094–1101, 1991.">Zwietering <em>et al.</em>, 1991</a>]</span></p></li>
+<li><p>Briere development-rate model: <span class="bibtex-citation" id="id30">[<a class="reference internal" href="../references.html#id207" title="J. F. Briere, P. Pracros, A. Y. Le Roux, and J. S. Pierre. A novel rate model of temperature-dependent development for arthropods. Environmental Entomology, 28(1):22–29, 1999.">Briere <em>et al.</em>, 1999</a>]</span></p></li>
+<li><p>Trait temperature dependence across systems: <span class="bibtex-citation" id="id31">[<a class="reference internal" href="../references.html#id5" title="Anthony I Dell, Samraat Pawar, and Van M Savage. Systematic variation in the temperature dependence of physiological and ecological traits. Proceedings of the National Academy of Sciences, 108(26):10591–10596, 2011.">Dell <em>et al.</em>, 2011</a>]</span></p></li>
+<li><p>Enzyme stability and metabolic temperature dependence: <span class="bibtex-citation" id="id32">[<a class="reference internal" href="../references.html#id208" title="John P. DeLong, Jean P. Gibert, Thomas M. Luhring, Grant Bachman, Benjamin Reed, Alexandra Neyer, and Kristi L. Montooth. The combined effects of reactant kinetics and enzyme stability explain the temperature dependence of metabolic rates. Ecology and Evolution, 7(11):3940–3950, 2017. doi:10.1002/ece3.2955.">DeLong <em>et al.</em>, 2017</a>]</span></p></li>
 </ul>
 </section>
 </section>
@@ -2763,15 +2800,17 @@ All complete reference details are maintained in the main book bibliography.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-project">The Project</a></li>
@@ -2873,8 +2912,8 @@ By MulQuaBio collective!
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>
