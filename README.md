@@ -28,7 +28,6 @@ This is the current MQB project structure:
 ├── LICENSE
 ├── Makefile
 ├── mqb_bibstyle.py
-├── notes_n_todos.md
 ├── README.md
 ├── requirements.txt
 ├── results
@@ -48,6 +47,8 @@ All code in this project was written in and tested with r 4.xx, python 3.xx and 
 **Fourth**, check the software needed to compile and deploy the MQB or run its Jupyter notebooks by peeking at the `requirements.txt` file.
 
 > ⚠️ **Note:** Please read the "Getting Started" section below before installing anything on your local computer!
+
+Maintainer planning notes are now in the private [MQB-project repository](https://github.com/MulQuaBio/MQB-project).
 
 OK, read on!
 
