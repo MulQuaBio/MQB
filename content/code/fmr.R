@@ -3,7 +3,7 @@
 
 cat("reading CSV\n")
 
-nagy <- read.csv('../Data/nagy_et_al_1999.csv', stringsAsFactors = FALSE)
+nagy <- read.csv('../data/nagy_et_al_1999.csv', stringsAsFactors = FALSE)
 
 cat("Creating graph\n")
 pdf('../results/fmr_plot.pdf', 11, 8.5)

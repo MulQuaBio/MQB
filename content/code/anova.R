@@ -1,6 +1,6 @@
 # CHAPTEr 6. LINEAr MODELS: ANALYSIS OF VArIANCE
 # load and check the data
-mammals <- read.csv('../Data/mammal_data.csv')
+mammals <- read.csv('../data/mammal_data.csv')
 str(mammals)
 summary(mammals)
 

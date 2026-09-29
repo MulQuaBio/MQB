@@ -44,7 +44,7 @@ dbGetQuery(db, "SELECT * FrOM consumer WHErE ConPhylum='Chordata'")
 # The easiest way is to read the csv files into r as data frames.
 # Then the data frames are imported into the database.
 
-resource <- read.csv("../Data/resource.csv")  # read csv files into r
+resource <- read.csv("../data/resource.csv")  # read csv files into r
 
 # Import data frames into database
  dbWriteTable(conn = db, name = "resource", value = resource, row.names = FALSE)

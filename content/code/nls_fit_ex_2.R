@@ -15,7 +15,7 @@ powMod <- function(x, a, b) {
 
 ############## Main code: NLS Fitting ##############
     
-MyData <- read.csv("../Data/genome_size.csv")
+MyData <- read.csv("../data/genome_size.csv")
 
 Data2Fit <- subset(MyData,Suborder == "Anisoptera")
 

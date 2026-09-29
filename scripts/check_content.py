@@ -111,7 +111,7 @@ def check_book(book: Path, ledger: Path) -> list[str]:
             nbformat.validate(notebook, relax_add_props=True)
         except nbformat.ValidationError as error:
             problems.append(f"{relative}: invalid notebook: {error.message}")
-        if not notebook.metadata.get("kernelspec", {}).get("name"):
+        if any(cell.cell_type == "code" for cell in notebook.cells) and not notebook.metadata.get("kernelspec", {}).get("name"):
             problems.append(f"{relative}: missing kernel name")
         for index, cell in enumerate(notebook.cells, start=1):
             if cell.cell_type in ("markdown", "code"):

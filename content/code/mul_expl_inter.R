@@ -1,6 +1,6 @@
 # Multiple variables and interactions
 # load and check the data
-load('mammals.rdata')
+load('../data/mammals.rdata')
 ls()
 str(mammals)
 

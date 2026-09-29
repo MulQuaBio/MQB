@@ -55,6 +55,9 @@ class CheckContentTests(unittest.TestCase):
             notebook = nbformat.v4.new_notebook(cells=[nbformat.v4.new_markdown_cell(
                 "Illustrative path: ../data/example.csv")])
             nbformat.write(notebook, book / "example.ipynb")
+            self.assertEqual(check_book(book, ledger), [])
+            notebook.cells.append(nbformat.v4.new_code_cell("1 + 1"))
+            nbformat.write(notebook, book / "example.ipynb")
             self.assertEqual(check_book(book, ledger), ["example.ipynb: missing kernel name"])
             (book / "example.ipynb").write_text("not a notebook")
             self.assertTrue(any("invalid notebook" in issue for issue in check_book(book, ledger)))
