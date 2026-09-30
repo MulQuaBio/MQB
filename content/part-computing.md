@@ -14,6 +14,7 @@ This part gets you comfortable with the command line, version control, and the c
 
 - None assumed.
 - If you are brand new to Jupyter, see the [Jupyter introduction appendix](notebooks/appendix-jupy-intro).
+- If a computing word is unfamiliar, use [Key computing terms](appendices/terms.md) and return to the chapter when it makes sense.
 
 ## Recommended pre-work
 

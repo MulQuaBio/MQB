@@ -105,7 +105,7 @@ Document your workflow so that small changes do not make it impossible to repeat
 
 ### Conventions used in this document
 
-Throughout these sessions, directory paths will be specified in UNIX (Mac, Linux) style, using `/` instead of the `\` used in Windows. Also, in general, we will be using [relative paths](https://en.wikipedia.org/wiki/Path_(computing)) throughout the exercises and practicals (more on this later).
+Throughout these sessions, directory paths will be specified in UNIX (Mac, Linux) style, using `/` instead of the `\` used in Windows. A path is the location of a file or folder. An [absolute path](appendices/terms.md#paths-and-the-current-directory) gives the complete location; a relative path starts from the folder you are currently using. The exercises normally use relative paths because they keep working when a project folder is moved.
 
 Commands and code snippets appear in blocks like this shell example, which prints your current directory:
 

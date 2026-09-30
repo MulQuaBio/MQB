@@ -1,7 +1,7 @@
 (macos-tools)=
 # macOS Tools and Homebrew
 
-macOS already provides a UNIX-like terminal environment. You do not need to install Linux or Homebrew merely to start the [Unix chapter](../notebooks/unix.ipynb). Homebrew is an optional package manager; official native installers are also appropriate, especially on managed machines.
+macOS already provides a UNIX-like terminal environment. You do not need to install Linux or Homebrew merely to start the [Unix chapter](../notebooks/unix.ipynb). Homebrew is an optional [package manager](terms.md#package-manager-and-package): a tool that installs, updates and removes software. Official native installers are also appropriate, especially on managed machines.
 
 (macos-check-system)=
 ## Check your system first
@@ -24,23 +24,27 @@ For a machine outside the supported configurations, prefer a compatible official
 (macos-homebrew-install)=
 ## Install Homebrew only if needed
 
-1. Check whether `command -v brew` already finds an installation. If it does, inspect `brew --prefix` and `brew config` before adding anything else.
+1. In Terminal, run `command -v brew`. This asks the shell where it would find the `brew` command. If it prints a location, Homebrew is already available in this terminal. Inspect `brew --prefix` and `brew config` before adding anything else.
 2. Follow the current installer instructions on [brew.sh](https://brew.sh/), checking the source and reading the proposed changes before accepting them. The installer can request administrator authorisation for initial provisioning. Enter passwords only into your own trusted installer prompt, never into shared notes or chats.
 3. Install Apple's Command Line Tools if Homebrew says they are required for your configuration. The official route is `xcode-select --install`; full Xcode is not automatically required for coursework. Do not repeatedly reinstall developer tools to diagnose an unrelated PATH problem.
-4. Follow the installer's **Next steps** for your actual shell and prefix. Do not copy a hardcoded path from an Intel-only guide.
+4. Follow the installer’s **Next steps** for your actual shell and installation folder. Do not copy a hardcoded path from an Intel-only guide.
 
-The usual prefixes are `/opt/homebrew` on Apple Silicon and `/usr/local` on Intel. These are installation locations, not interchangeable commands to run. Native application installers and Homebrew should not manage competing copies of the same application without a deliberate reason.
+Homebrew calls its installation folder a **prefix**. The usual prefixes are `/opt/homebrew` on Apple Silicon and `/usr/local` on Intel. These are folders, not interchangeable commands to run. Native application installers and Homebrew should not manage competing copies of the same application without a deliberate reason.
 
 (macos-shellenv)=
 ## Make brew available to your shell
 
-The installer prints a `brew shellenv` command using the correct absolute path. Run that command for the current terminal, and add the recommended initialisation to the appropriate user startup file once. For example, **only for a default Apple Silicon installation**, the command is:
+Your terminal finds commands by searching the folders listed in [`PATH`](terms.md#path). Homebrew’s installer ends with a **Next steps** section containing commands that add Homebrew’s folder to that list. Copy the commands shown by **your own** installer: they contain the right location for your Mac and tell future terminal sessions to use it too.
+
+On many Apple Silicon Macs, the command for the terminal you are using now is:
 
 ```bash
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
-Use the installer-provided path on other configurations. `shellenv` prints shell setup code; `eval` applies it, so only run it from your trusted Homebrew installation. Recent macOS Terminal sessions normally use zsh; its login setup commonly belongs in `~/.zprofile`. Bash login shells read the first available of `~/.bash_profile`, `~/.bash_login` and `~/.profile`; interactive non-login Bash reads `~/.bashrc`. Do not paste the same line into all of these files. Preserve existing content and follow the installer for your session type.
+In this example, `/opt/homebrew/bin/brew` is the program’s full location, beginning at the top of the file system (`/`). This is an [absolute path](terms.md#paths-and-the-current-directory). `brew shellenv` prints the settings that Homebrew needs; `eval` applies those settings to the current terminal. You do not need to type `shellenv` or `eval` separately. Only run the installer-provided command from a Homebrew installation you trust.
+
+Your installer may show a different location. Use its version, not the example above. It will also show a command that records the setting in the relevant [startup file](terms.md#startup-file) so new terminal windows can find `brew`. Recent macOS Terminal sessions normally use zsh, whose login setup commonly belongs in `~/.zprofile`. Bash login shells read the first available of `~/.bash_profile`, `~/.bash_login` and `~/.profile`; interactive non-login Bash reads `~/.bashrc`. Do not paste the same line into all of these files. Preserve existing content and follow the installer for your session type.
 
 Open a new terminal and check:
 
@@ -50,12 +54,12 @@ brew --prefix
 brew config
 ```
 
-If `brew` is missing, check the selected startup file and prefix before reinstalling. To undo your shell change, remove only the line you added (or restore its backup), then open a fresh terminal. Uninstalling Homebrew itself is a separate operation described in its [FAQ](https://docs.brew.sh/FAQ#how-do-i-uninstall-homebrew).
+`command -v brew` should print a location such as `/opt/homebrew/bin/brew`. `brew --prefix` should print Homebrew’s installation folder. If `brew` is missing, check the selected startup file and the location shown by your installer before reinstalling. To undo your shell change, remove only the line you added (or restore its backup), then open a fresh terminal. Uninstalling Homebrew itself is a separate operation described in its [FAQ](https://docs.brew.sh/FAQ#how-do-i-uninstall-homebrew).
 
 (macos-packages)=
 ## Formulae, casks and maintenance
 
-A **formula** usually supplies command-line software or libraries; a **cask** commonly installs a graphical application. Inspect first, then install only what you need. These are examples, not prerequisites to run together:
+A **formula** is a package that usually supplies command-line software or libraries. A **cask** is a package that commonly installs a graphical application. Inspect first, then install only what you need. These are examples, not prerequisites to run together:
 
 ```bash
 brew info wget
