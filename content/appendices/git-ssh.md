@@ -1,7 +1,7 @@
 (git-ssh-setup)=
 # Git, GitHub and SSH Setup
 
-Use this page to install and identify Git, set up access to GitHub, and connect a project to a remote. The [Git chapter](../notebooks/git.ipynb) teaches repositories, commits, branches and collaboration; return there after this one-time setup.
+Use this page to install and identify Git, set up access to GitHub, and connect a project to a [remote](terms.md#repository-and-remote): another copy of the project held elsewhere. The [Git chapter](../notebooks/git.ipynb) teaches repositories, commits, branches and collaboration; return there after this one-time setup.
 
 Git records the author name and email in every commit. SSH private keys and HTTPS tokens control access to remote repositories. Treat all three deliberately: a commit's identity is visible in its history, while a private key or token must never be shared or committed.
 
@@ -43,7 +43,7 @@ git config --global user.name "Your Name"
 git config --global user.email "you@example.ac.uk"
 ```
 
-`--global` applies to every repository owned by this operating-system account. If a particular project needs a different approved identity, run the same commands **without** `--global` from that project's root. Check the result before committing; changing configuration later does not rewrite existing commit metadata.
+`--global` saves this identity for every repository owned by this operating-system account. If a particular project needs a different approved identity, run the same commands **without** `--global` from that project’s root folder. Check the result before committing; changing configuration later does not rewrite existing commit metadata.
 
 Git may open an editor for merge or commit messages. If the `code` command is available and you want VS Code to wait until a message is saved, you can opt in:
 
@@ -55,7 +55,7 @@ This is optional. Do not copy global line-ending, default-branch or credential s
 
 ## Connect to GitHub with SSH
 
-SSH is the usual MQB route for regular GitHub work. It authenticates using a private key that remains on your computer and a public key that you add to your GitHub account.
+SSH is the usual MQB route for regular GitHub work. It uses [SSH keys](terms.md#ssh-keys): a private key that remains on your computer and a public key that you add to your GitHub account.
 
 ### Check existing keys first
 
@@ -65,7 +65,7 @@ List the SSH directory before creating anything:
 ls -al ~/.ssh
 ```
 
-Common key pairs are named `id_ed25519` and `id_ed25519.pub`. The file **without** `.pub` is private. Do not copy it into a chat, email, repository, or GitHub account. Do not overwrite an existing key merely because its filename appears in a tutorial.
+Common key pairs are named `id_ed25519` and `id_ed25519.pub`. The file **without** `.pub` is private; the matching file ending in `.pub` is public. Do not copy the private file into a chat, email, repository or GitHub account. Do not overwrite an existing key merely because its filename appears in a tutorial.
 
 If you need a new software key, generate an Ed25519 key with an account email as a label:
 
@@ -75,7 +75,7 @@ ssh-keygen -t ed25519 -C "you@example.ac.uk"
 
 Choose a passphrase when prompted. If `ssh-keygen` warns that the suggested filename already exists, stop and choose a new descriptive filename instead of replacing a key whose use you do not understand. A passphrase protects the private key if the file is copied; it is not a GitHub password.
 
-On Linux or macOS, an SSH agent can remember a passphrase for the current session:
+On Linux or macOS, an SSH agent is a helper program that can remember a key’s passphrase for the current session. Start it, then add the private key you chose:
 
 ```bash
 eval "$(ssh-agent -s)"
@@ -94,7 +94,7 @@ cat ~/.ssh/id_ed25519.pub
 
 In GitHub, open **Settings → SSH and GPG keys → New SSH key**, give it a recognisable title, and paste the public key. Never upload the private-key file or its passphrase. GitHub's [adding an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) guide covers the account step.
 
-Before accepting a new server host key, compare its fingerprint with [GitHub's published SSH fingerprints](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints). Do not disable host-key checking or accept a changed fingerprint blindly. Once the public key is added, test your account connection:
+A server’s host-key fingerprint is a short identifier for its SSH key. Before accepting a new server host key, compare its fingerprint with [GitHub’s published SSH fingerprints](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints). Do not disable host-key checking or accept a changed fingerprint blindly. Once the public key is added, test your account connection:
 
 ```bash
 ssh -T git@github.com
@@ -104,7 +104,7 @@ This contacts GitHub but does not create, modify or push a repository. A success
 
 ## HTTPS when SSH is unavailable
 
-HTTPS is useful on networks that block SSH or on managed machines where SSH setup is not permitted. GitHub no longer accepts an account password for command-line Git over HTTPS. Use a browser sign-in flow or a credential manager such as Git Credential Manager; if GitHub requests a password for HTTPS Git, a suitable personal access token is used in that password field.
+HTTPS is useful on networks that block SSH or on managed machines where SSH setup is not permitted. GitHub no longer accepts an account password for command-line Git over HTTPS. Use a browser sign-in flow or a credential manager, which stores a sign-in secret in your operating system’s approved credential store. If GitHub requests a password for HTTPS Git, a suitable personal access token is used in that password field.
 
 Keep tokens in the operating system's approved credential store, not in source files, shell history, a remote URL, or a plain-text `git-credentials` file. Use the smallest suitable scope and revoke a token you no longer need. See [GitHub's HTTPS authentication guidance](https://docs.github.com/get-started/git-basics/why-is-git-always-asking-for-my-password).
 
@@ -112,7 +112,7 @@ If a network specifically blocks SSH port 22, ask course or organisational IT wh
 
 ## Add and inspect a remote
 
-Create the repository on GitHub first, then work from the root of the local repository. Use the exact URL shown by GitHub and choose one protocol:
+Create the repository on GitHub first, then work from the root of the local [repository](terms.md#repository-and-remote). Use the exact URL shown by GitHub and choose one protocol:
 
 ```bash
 # SSH
@@ -124,7 +124,7 @@ git remote add origin https://github.com/YOUR-ACCOUNT/YOUR-REPOSITORY.git
 git remote -v
 ```
 
-`origin` is a conventional remote name, not a special server. `git remote -v` reveals remote URLs, so check it before sharing terminal output if a URL contains unexpected information. Do not paste a token into a remote URL.
+`origin` is a conventional label for a remote, not a special server. `git remote -v` reveals remote URLs, so check it before sharing terminal output if a URL contains unexpected information. Do not paste a token into a remote URL.
 
 Make the first network operation intentional. For a new repository whose branch is named `main`, it may be:
 
@@ -132,7 +132,7 @@ Make the first network operation intentional. For a new repository whose branch 
 git push -u origin main
 ```
 
-Use the actual current branch name shown by `git branch --show-current`; do not assume every repository uses `main`. A push can make commits visible to collaborators, so inspect `git status`, `git log --oneline`, and the remote name before running it.
+Use the actual current branch name shown by `git branch --show-current`; do not assume every repository uses `main`. Here, `-u` remembers `origin main` as the default destination for later pushes from this branch. A push can make commits visible to collaborators, so inspect `git status`, `git log --oneline`, and the remote name before running it.
 
 ## Diagnose without changing an account
 
