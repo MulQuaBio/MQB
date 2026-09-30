@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>VS Code for MQB &#8212; MulQuaBio</title>
+    <title>Git, GitHub and SSH Setup &#8212; MulQuaBio</title>
   
   
   
@@ -61,13 +61,13 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'appendices/vscode';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendices/git-ssh';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Git, GitHub and SSH Setup" href="git-ssh.html" />
-    <link rel="prev" title="Python Installation and Environments" href="python-environments.html" />
+    <link rel="next" title="Introduction to Jupyter" href="../notebooks/appendix-jupy-intro.html" />
+    <link rel="prev" title="VS Code for MQB" href="vscode.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -316,8 +316,8 @@
 <li class="toctree-l2"><a class="reference internal" href="terms.html">Key computing terms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="macos-tools.html">macOS Tools and Homebrew</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python-environments.html">Python Installation and Environments</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">VS Code for MQB</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git-ssh.html">Git, GitHub and SSH Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vscode.html">VS Code for MQB</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Git, GitHub and SSH Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-jupy-intro.html">Introduction to Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
 </ul>
@@ -416,7 +416,7 @@
       
       
       
-      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fappendices/vscode.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fappendices/git-ssh.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -446,7 +446,7 @@
       
       
       
-      <li><a href="../_sources/appendices/vscode.md" target="_blank"
+      <li><a href="../_sources/appendices/git-ssh.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -522,7 +522,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>VS Code for MQB</h1>
+    <h1>Git, GitHub and SSH Setup</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -532,12 +532,16 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-start">Before you start</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-vs-code-and-open-a-project">Install VS Code and open a project</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-scripts-select-run-and-debug">Python scripts: select, run and debug</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebooks-choose-a-kernel-deliberately">Jupyter notebooks: choose a kernel deliberately</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-r-in-vs-code">Using R in VS Code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-small-setup-check">A small setup check</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-check-git">Install and check Git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-the-identity-recorded-in-commits">Choose the identity recorded in commits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-github-with-ssh">Connect to GitHub with SSH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-existing-keys-first">Check existing keys first</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-only-the-public-key-to-github">Add only the public key to GitHub</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#https-when-ssh-is-unavailable">HTTPS when SSH is unavailable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-and-inspect-a-remote">Add and inspect a remote</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnose-without-changing-an-account">Diagnose without changing an account</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-verification">Sources and verification</a></li>
 </ul>
             </nav>
@@ -550,128 +554,138 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="vs-code-for-mqb">
-<span id="vscode-setup"></span><h1>VS Code for MQB<a class="headerlink" href="#vs-code-for-mqb" title="Link to this heading">#</a></h1>
-<p>Visual Studio Code (VS Code) is a multilingual editor that can work with Python scripts, R scripts, terminals and Jupyter notebooks in one project folder. It is an option, not a requirement: use RStudio where that better suits your R work. This page assumes that you already have the Python environment from <a class="reference internal" href="python-environments.html#python-environments"><span class="std std-ref">Python Installation and Environments</span></a> and, for the R route, a working R installation. A separate R setup guide will cover installing R itself.</p>
-<section id="before-you-start">
-<h2>Before you start<a class="headerlink" href="#before-you-start" title="Link to this heading">#</a></h2>
-<p>Keep each piece of coursework or project in its own folder, containing its code, data and results. Do not open the MQB book source or a <code class="docutils literal notranslate"><span class="pre">code</span></code> subfolder when you mean to work on a whole project: opening the <a class="reference internal" href="terms.html#project-root"><span class="std std-ref">project root</span></a> makes relative paths and the integrated terminal easier to understand.</p>
-<p>These are separate things:</p>
-<ul class="simple">
-<li><p>the <strong>integrated terminal</strong> runs shell commands such as <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">script.py</span></code> or <code class="docutils literal notranslate"><span class="pre">R</span></code>;</p></li>
-<li><p>a language <strong>REPL</strong> (read-eval-print loop) is an interactive Python or R session in that terminal: you enter one command, it runs, and you see the result; and</p></li>
-<li><p>a notebook <strong>kernel</strong> executes cells in an <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file.</p></li>
-</ul>
-<p>Selecting a Python interpreter does not automatically select an existing notebook kernel, and launching an R terminal does not create an R notebook kernel.</p>
-</section>
-<section id="install-vs-code-and-open-a-project">
-<h2>Install VS Code and open a project<a class="headerlink" href="#install-vs-code-and-open-a-project" title="Link to this heading">#</a></h2>
-<ol class="arabic">
-<li><p>Install the current stable <a class="reference external" href="https://code.visualstudio.com/download">Visual Studio Code</a> for your operating system, or use the version provided on a managed course machine. Do not use an administrator account merely to install extensions for your own account.</p></li>
-<li><p>Start VS Code and choose <strong>File → Open Folder…</strong>. Select the root of a disposable practice project or your own coursework project.</p></li>
-<li><p>Open <strong>Terminal → New Terminal</strong> and check where it starts:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="git-github-and-ssh-setup">
+<span id="git-ssh-setup"></span><h1>Git, GitHub and SSH Setup<a class="headerlink" href="#git-github-and-ssh-setup" title="Link to this heading">#</a></h1>
+<p>Use this page to install and identify Git, set up access to GitHub, and connect a project to a <a class="reference internal" href="terms.html#repository-and-remote"><span class="std std-ref">remote</span></a>: another copy of the project held elsewhere. The <a class="reference internal" href="../notebooks/git.html"><span class="std std-doc">Git chapter</span></a> teaches repositories, commits, branches and collaboration; return there after this one-time setup.</p>
+<p>Git records the author name and email in every commit. SSH private keys and HTTPS tokens control access to remote repositories. Treat all three deliberately: a commit’s identity is visible in its history, while a private key or token must never be shared or committed.</p>
+<section id="install-and-check-git">
+<h2>Install and check Git<a class="headerlink" href="#install-and-check-git" title="Link to this heading">#</a></h2>
+<p>Open a terminal and check whether Git is already available:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>--version
 </pre></div>
 </div>
-<p>On Windows PowerShell, use <code class="docutils literal notranslate"><span class="pre">Get-Location</span></code>. If this is not the folder you opened, use the terminal’s <code class="docutils literal notranslate"><span class="pre">cd</span></code> command deliberately rather than assuming an editor button has changed every process’s directory.</p>
-</li>
-<li><p>When VS Code asks whether you trust a folder, trust only work you obtained from a course, collaborator or source you understand. Restricted Mode can prevent extensions, tasks and debugging configurations from running unfamiliar code. Do not make a folder globally trusted just to remove the prompt.</p></li>
-</ol>
-<p>Install only the extensions that you need from the Extensions view. For MQB, the usual minimum is:</p>
+<p>Use a supported package or installer for your platform if it is missing:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Work</p></th>
-<th class="head"><p>Extension</p></th>
+<tr class="row-odd"><th class="head"><p>Platform</p></th>
+<th class="head"><p>Usual route</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Python scripts</p></td>
-<td><p><strong>Python</strong> by Microsoft</p></td>
+<tr class="row-even"><td><p>Ubuntu/Linux</p></td>
+<td><p>Use your distribution package manager; Ubuntu guidance is in <a class="reference internal" href="ubuntu-admin.html#ubuntu-packages"><span class="std std-ref">Install from configured Ubuntu repositories</span></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Jupyter notebooks</p></td>
-<td><p><strong>Jupyter</strong> by Microsoft</p></td>
+<tr class="row-odd"><td><p>macOS</p></td>
+<td><p>Install the Xcode Command Line Tools, the official Git installer, or the Git formula from <a class="reference internal" href="macos-tools.html#macos-tools"><span class="std std-ref">macOS Tools and Homebrew</span></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p>R scripts</p></td>
-<td><p><strong>R</strong> by REditorSupport (<code class="docutils literal notranslate"><span class="pre">REditorSupport.r</span></code>)</p></td>
+<tr class="row-even"><td><p>Windows</p></td>
+<td><p>Install <a class="reference external" href="https://git-scm.com/downloads/win">Git for Windows</a>, then use Git Bash or a terminal where <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">--version</span></code> works.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Managed machine</p></td>
+<td><p>Use the provided Git client or ask IT before installing software.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>The Python and Jupyter extensions may offer supporting extensions. Accept only the publisher-verified prompts that you understand. The R extension already integrates language-service support; do not install the obsolete separate <code class="docutils literal notranslate"><span class="pre">vscode-R-lsp</span></code> extension alongside it.</p>
+<p>Do not use <code class="docutils literal notranslate"><span class="pre">sudo</span></code> or an administrator account merely to configure Git for yourself. VS Code’s source-control interface uses the same Git installation; see <a class="reference internal" href="vscode.html#vscode-setup"><span class="std std-ref">VS Code for MQB</span></a> for the editor workflow.</p>
 </section>
-<section id="python-scripts-select-run-and-debug">
-<h2>Python scripts: select, run and debug<a class="headerlink" href="#python-scripts-select-run-and-debug" title="Link to this heading">#</a></h2>
-<p>Create or activate a project environment using <a class="reference internal" href="python-environments.html#python-venv"><span class="std std-ref">Create and activate one environment</span></a> before selecting it in VS Code. Open a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file, then select the interpreter shown in the status bar (the strip along the bottom of the window) or run <strong>Python: Select Interpreter</strong> from the Command Palette (VS Code’s searchable command menu). Choose the <code class="docutils literal notranslate"><span class="pre">.venv</span></code> belonging to the project, not simply the first Python version in the list.</p>
-<p>Check the selected interpreter in both the editor and a new integrated terminal:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">prefix</span><span class="p">)</span>
+<section id="choose-the-identity-recorded-in-commits">
+<h2>Choose the identity recorded in commits<a class="headerlink" href="#choose-the-identity-recorded-in-commits" title="Link to this heading">#</a></h2>
+<p>Before making a commit, decide which name and email the repository should show. For public repositories, do not accidentally expose a private address. A GitHub account can provide a no-reply address; use the address appropriate to the course, project and account.</p>
+<p>Inspect existing values and where they came from:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--list<span class="w"> </span>--show-origin
+git<span class="w"> </span>config<span class="w"> </span>--get<span class="w"> </span>user.name
+git<span class="w"> </span>config<span class="w"> </span>--get<span class="w"> </span>user.email
 </pre></div>
 </div>
-<p>The displayed executable should be inside the intended <code class="docutils literal notranslate"><span class="pre">.venv</span></code>. Also run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">--version</span></code> in the terminal; it should name that same environment. If it does not, return to <a class="reference internal" href="python-environments.html#python-identity"><span class="std std-ref">Verify Python and pip agree</span></a> rather than installing packages into an uncertain interpreter.</p>
-<p>Use the editor’s Python run control for a small script, then make the working directory explicit in your explanation of any input paths. To inspect a fault, set a breakpoint in the left margin and choose <strong>Python Debugger: Debug Python File</strong>, or use <strong>Run and Debug</strong>. The debugger normally uses the selected interpreter. A <code class="docutils literal notranslate"><span class="pre">launch.json</span></code> is optional; do not copy a generic configuration until you know why the script needs it.</p>
+<p>For one personal identity on this computer, set global values using your own details:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"Your Name"</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"you@example.ac.uk"</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--global</span></code> saves this identity for every repository owned by this operating-system account. If a particular project needs a different approved identity, run the same commands <strong>without</strong> <code class="docutils literal notranslate"><span class="pre">--global</span></code> from that project’s root folder. Check the result before committing; changing configuration later does not rewrite existing commit metadata.</p>
+<p>Git may open an editor for merge or commit messages. If the <code class="docutils literal notranslate"><span class="pre">code</span></code> command is available and you want VS Code to wait until a message is saved, you can opt in:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span><span class="s2">"code --wait"</span>
+</pre></div>
+</div>
+<p>This is optional. Do not copy global line-ending, default-branch or credential settings from an old guide: follow the requirements of the repository you are working in.</p>
 </section>
-<section id="jupyter-notebooks-choose-a-kernel-deliberately">
-<h2>Jupyter notebooks: choose a kernel deliberately<a class="headerlink" href="#jupyter-notebooks-choose-a-kernel-deliberately" title="Link to this heading">#</a></h2>
-<p>With the Microsoft Jupyter extension installed, open an existing <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file or create a new notebook. A <a class="reference internal" href="terms.html#notebook-kernel"><span class="std std-ref">kernel</span></a> is the program that will run its cells. Select <strong>Select Kernel</strong> in the notebook’s upper-right corner, then choose the intended entry under <strong>Python Environments</strong> or <strong>Jupyter Kernels</strong>. A remembered kernel is a convenience, not evidence that it is correct for a new project.</p>
-<p>Run this in the first Python cell:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">prefix</span><span class="p">)</span>
+<section id="connect-to-github-with-ssh">
+<h2>Connect to GitHub with SSH<a class="headerlink" href="#connect-to-github-with-ssh" title="Link to this heading">#</a></h2>
+<p>SSH is the usual MQB route for regular GitHub work. It uses <a class="reference internal" href="terms.html#ssh-keys"><span class="std std-ref">SSH keys</span></a>: a private key that remains on your computer and a public key that you add to your GitHub account.</p>
+<section id="check-existing-keys-first">
+<h3>Check existing keys first<a class="headerlink" href="#check-existing-keys-first" title="Link to this heading">#</a></h3>
+<p>List the SSH directory before creating anything:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-al<span class="w"> </span>~/.ssh
 </pre></div>
 </div>
-<p>Compare the result with the project interpreter selected for scripts. If it is wrong, use <strong>Notebook: Select Notebook Kernel</strong> and choose again. A Python environment can be offered as a notebook kernel without installing a separate browser Jupyter server into that environment; use <a class="reference internal" href="python-environments.html#python-jupyter-install"><span class="std std-ref">Add a Jupyter interface</span></a> only when you need the browser Notebook or JupyterLab interface.</p>
-<p>Save notebooks before switching kernels or closing VS Code. A kernel may continue to hold variables until it is restarted or stopped, so rerun the notebook from a clean kernel before treating an analysis as reproducible. See <a class="reference internal" href="../notebooks/appendix-jupy-intro.html#jupyter-kernels"><span class="std std-ref">Language Kernels</span></a> for named Python kernels and R notebook kernels.</p>
+<p>Common key pairs are named <code class="docutils literal notranslate"><span class="pre">id_ed25519</span></code> and <code class="docutils literal notranslate"><span class="pre">id_ed25519.pub</span></code>. The file <strong>without</strong> <code class="docutils literal notranslate"><span class="pre">.pub</span></code> is private; the matching file ending in <code class="docutils literal notranslate"><span class="pre">.pub</span></code> is public. Do not copy the private file into a chat, email, repository or GitHub account. Do not overwrite an existing key merely because its filename appears in a tutorial.</p>
+<p>If you need a new software key, generate an Ed25519 key with an account email as a label:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">"you@example.ac.uk"</span>
+</pre></div>
+</div>
+<p>Choose a passphrase when prompted. If <code class="docutils literal notranslate"><span class="pre">ssh-keygen</span></code> warns that the suggested filename already exists, stop and choose a new descriptive filename instead of replacing a key whose use you do not understand. A passphrase protects the private key if the file is copied; it is not a GitHub password.</p>
+<p>On Linux or macOS, an SSH agent is a helper program that can remember a key’s passphrase for the current session. Start it, then add the private key you chose:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">"</span>
+ssh-add<span class="w"> </span>~/.ssh/id_ed25519
+</pre></div>
+</div>
+<p>Substitute a deliberately chosen key name where applicable. Windows, managed devices, hardware keys and persistent agent configuration have platform-specific requirements; follow <a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">GitHub’s current SSH instructions</a> rather than copying another operating system’s startup-file changes.</p>
 </section>
-<section id="using-r-in-vs-code">
-<h2>Using R in VS Code<a class="headerlink" href="#using-r-in-vs-code" title="Link to this heading">#</a></h2>
-<p>This route requires R to be installed and usable before VS Code is involved. In the integrated terminal, check:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>R<span class="w"> </span>--version
+<section id="add-only-the-public-key-to-github">
+<h3>Add only the public key to GitHub<a class="headerlink" href="#add-only-the-public-key-to-github" title="Link to this heading">#</a></h3>
+<p>Print the public key and copy that single line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>~/.ssh/id_ed25519.pub
 </pre></div>
 </div>
-<p>Install the <strong>R</strong> extension by REditorSupport. In an R console using the intended R installation, install its language-service package in your user library:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">"languageserver"</span><span class="p">)</span>
+<p>In GitHub, open <strong>Settings → SSH and GPG keys → New SSH key</strong>, give it a recognisable title, and paste the public key. Never upload the private-key file or its passphrase. GitHub’s <a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">adding an SSH key</a> guide covers the account step.</p>
+<p>A server’s host-key fingerprint is a short identifier for its SSH key. Before accepting a new server host key, compare its fingerprint with <a class="reference external" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints">GitHub’s published SSH fingerprints</a>. Do not disable host-key checking or accept a changed fingerprint blindly. Once the public key is added, test your account connection:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com
 </pre></div>
 </div>
-<p>The extension may ask to install or update its session-support package; read the package prompt before accepting. <code class="docutils literal notranslate"><span class="pre">languageserver</span></code> provides code analysis, completion and diagnostics. It does not run your analysis or replace a working R session.</p>
-<p>Open an <code class="docutils literal notranslate"><span class="pre">.R</span></code> file, run <strong>R: Create R Terminal</strong> from the Command Palette, and check the session before sending coursework code to it:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">R.home</span><span class="p">()</span>
-<span class="nf">.libPaths</span><span class="p">()</span>
-<span class="nf">Sys.which</span><span class="p">(</span><span class="s">"R"</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Use the extension command for running the selected line(s) or selection, or source a known script explicitly:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">source</span><span class="p">(</span><span class="s">"code/example.R"</span><span class="p">)</span>
-<span class="nf">plot</span><span class="p">(</span><span class="n">cars</span><span class="p">)</span>
-<span class="o">?</span><span class="n">mean</span>
-</pre></div>
-</div>
-<p>The R extension can expose workspace, plot and help views when it is connected to the R terminal. Check a plot and an object before relying on those views; the exact layout depends on the extension version and session state. Ordinary plots do not require <code class="docutils literal notranslate"><span class="pre">httpgd</span></code>. <code class="docutils literal notranslate"><span class="pre">httpgd</span></code> is optional for an interactive viewer, and <code class="docutils literal notranslate"><span class="pre">radian</span></code> is optional; neither is required for MQB.</p>
-<p>If <strong>R: Create R Terminal</strong> cannot find R, first run <code class="docutils literal notranslate"><span class="pre">R</span> <span class="pre">--version</span></code> in the VS Code integrated terminal. On Windows, the extension normally discovers a standard CRAN installation from the registry. Only if that fails, set the documented <code class="docutils literal notranslate"><span class="pre">r.rterm.windows</span></code> value to the exact <code class="docutils literal notranslate"><span class="pre">R.exe</span></code> path, for example:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">"r.rterm.windows"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C:\\Program Files\\R\\R-4.3.3\\bin\\x64\\R.exe"</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Use your installed version and path; do not paste the example unchanged. On macOS or Linux, resolve the path visible to VS Code’s terminal before adding any extension setting. A dedicated R setup page will cover installation and user-library troubleshooting.</p>
-<p>R debugging is separate from the R language extension and needs its own supported debugger and prerequisites. Do not claim a script has been debugged merely because it ran. An R <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> notebook uses an IRkernel chosen in the notebook kernel picker; it is distinct from sending code to an <code class="docutils literal notranslate"><span class="pre">.R</span></code> terminal.</p>
+<p>This contacts GitHub but does not create, modify or push a repository. A successful GitHub authentication message does not give shell access to GitHub.</p>
 </section>
-<section id="a-small-setup-check">
-<h2>A small setup check<a class="headerlink" href="#a-small-setup-check" title="Link to this heading">#</a></h2>
-<p>Before beginning assessed work, use a scratch project with synthetic data:</p>
-<ol class="arabic simple">
-<li><p>Open the project root and verify the terminal location.</p></li>
-<li><p>Run a short Python script using the selected project interpreter and print <code class="docutils literal notranslate"><span class="pre">sys.executable</span></code>.</p></li>
-<li><p>Open a small notebook, select its kernel and print <code class="docutils literal notranslate"><span class="pre">sys.executable</span></code> again.</p></li>
-<li><p>If using R, create an R terminal, inspect <code class="docutils literal notranslate"><span class="pre">R.home()</span></code> and <code class="docutils literal notranslate"><span class="pre">.libPaths()</span></code>, source a small script and view a simple plot.</p></li>
-</ol>
-<p>If any of these checks identifies a different interpreter, R installation or working directory than expected, stop and correct that mismatch before installing packages or running coursework. Record the OS, VS Code version, interpreter/R version and relevant extensions when reporting a setup problem to teaching staff.</p>
+</section>
+<section id="https-when-ssh-is-unavailable">
+<h2>HTTPS when SSH is unavailable<a class="headerlink" href="#https-when-ssh-is-unavailable" title="Link to this heading">#</a></h2>
+<p>HTTPS is useful on networks that block SSH or on managed machines where SSH setup is not permitted. GitHub no longer accepts an account password for command-line Git over HTTPS. Use a browser sign-in flow or a credential manager, which stores a sign-in secret in your operating system’s approved credential store. If GitHub requests a password for HTTPS Git, a suitable personal access token is used in that password field.</p>
+<p>Keep tokens in the operating system’s approved credential store, not in source files, shell history, a remote URL, or a plain-text <code class="docutils literal notranslate"><span class="pre">git-credentials</span></code> file. Use the smallest suitable scope and revoke a token you no longer need. See <a class="reference external" href="https://docs.github.com/get-started/git-basics/why-is-git-always-asking-for-my-password">GitHub’s HTTPS authentication guidance</a>.</p>
+<p>If a network specifically blocks SSH port 22, ask course or organisational IT whether HTTPS is the supported route. GitHub also documents <a class="reference external" href="https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port">SSH over port 443</a>, but do not add a global SSH configuration workaround unless you understand and need it.</p>
+</section>
+<section id="add-and-inspect-a-remote">
+<h2>Add and inspect a remote<a class="headerlink" href="#add-and-inspect-a-remote" title="Link to this heading">#</a></h2>
+<p>Create the repository on GitHub first, then work from the root of the local <a class="reference internal" href="terms.html#repository-and-remote"><span class="std std-ref">repository</span></a>. Use the exact URL shown by GitHub and choose one protocol:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># SSH</span>
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:YOUR-ACCOUNT/YOUR-REPOSITORY.git
+
+<span class="c1"># Or HTTPS</span>
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/YOUR-ACCOUNT/YOUR-REPOSITORY.git
+
+git<span class="w"> </span>remote<span class="w"> </span>-v
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">origin</span></code> is a conventional label for a remote, not a special server. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-v</span></code> reveals remote URLs, so check it before sharing terminal output if a URL contains unexpected information. Do not paste a token into a remote URL.</p>
+<p>Make the first network operation intentional. For a new repository whose branch is named <code class="docutils literal notranslate"><span class="pre">main</span></code>, it may be:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+<p>Use the actual current branch name shown by <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">--show-current</span></code>; do not assume every repository uses <code class="docutils literal notranslate"><span class="pre">main</span></code>. Here, <code class="docutils literal notranslate"><span class="pre">-u</span></code> remembers <code class="docutils literal notranslate"><span class="pre">origin</span> <span class="pre">main</span></code> as the default destination for later pushes from this branch. A push can make commits visible to collaborators, so inspect <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--oneline</span></code>, and the remote name before running it.</p>
+</section>
+<section id="diagnose-without-changing-an-account">
+<h2>Diagnose without changing an account<a class="headerlink" href="#diagnose-without-changing-an-account" title="Link to this heading">#</a></h2>
+<p>These checks do not contact GitHub or alter Git configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--list<span class="w"> </span>--show-origin
+git<span class="w"> </span>remote<span class="w"> </span>-v
+ssh<span class="w"> </span>-G<span class="w"> </span>git@github.com
+</pre></div>
+</div>
+<p>If Git cannot find your identity, set or correct the appropriate global or repository-local <code class="docutils literal notranslate"><span class="pre">user.name</span></code> and <code class="docutils literal notranslate"><span class="pre">user.email</span></code>. If <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-T</span> <span class="pre">git&#64;github.com</span></code> fails, read the exact error before regenerating keys or changing settings. Typical causes are a missing public key in GitHub, an agent without the intended private key, a changed host key, or a restricted network. Course staff or IT can help with managed-device and network policy; never send them a private key, passphrase or token.</p>
 </section>
 <section id="sources-and-verification">
-<span id="vscode-setup-resources"></span><h2>Sources and verification<a class="headerlink" href="#sources-and-verification" title="Link to this heading">#</a></h2>
-<p>Adapted from the FoNS <a class="reference external" href="https://imperial-fons-computing.github.io/vscode.html">VS Code guidance</a>; see <a class="reference internal" href="tooling.html#setup-attribution"><span class="std std-ref">Setup Guide Attribution</span></a> for the source revision and licence. MQB revision: 30 September 2026.</p>
-<p>Operational references: <a class="reference external" href="https://code.visualstudio.com/docs/setup/setup-overview">VS Code installation</a>, <a class="reference external" href="https://code.visualstudio.com/docs/editing/workspaces/workspace-trust">workspace trust</a>, <a class="reference external" href="https://code.visualstudio.com/docs/languages/python">Python in VS Code</a>, <a class="reference external" href="https://code.visualstudio.com/docs/python/environments">Python environments</a>, <a class="reference external" href="https://code.visualstudio.com/docs/datascience/jupyter-kernel-management">Jupyter kernel selection</a>, <a class="reference external" href="https://code.visualstudio.com/docs/python/debugging">Python debugging</a>, and the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=REditorSupport.r">REditorSupport R extension</a>.</p>
-<p>Verified locally on Linux on 30 September 2026: VS Code 1.139.1 and R 4.3.3 were available. No extension was installed into the maintainer’s editor profile, and no graphical editor, macOS, Windows or R-notebook workflow was runtime-tested. Check current official support and extension requirements on your own platform.</p>
+<span id="git-ssh-setup-resources"></span><h2>Sources and verification<a class="headerlink" href="#sources-and-verification" title="Link to this heading">#</a></h2>
+<p>Adapted from the FoNS <a class="reference external" href="https://imperial-fons-computing.github.io/git.html">Git setup guidance</a>; see <a class="reference internal" href="tooling.html#setup-attribution"><span class="std std-ref">Setup Guide Attribution</span></a> for source revision and licence. MQB revision: 30 September 2026.</p>
+<p>Operational references: <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup">Git first-time setup</a>, <a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">GitHub SSH setup</a>, <a class="reference external" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints">GitHub SSH fingerprints</a>, <a class="reference external" href="https://docs.github.com/get-started/git-basics/why-is-git-always-asking-for-my-password">HTTPS authentication</a>, and <a class="reference external" href="https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port">SSH over port 443</a>.</p>
+<p>Validation uses an isolated local Git configuration and toy repository, plus <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-G</span></code> only; it does not contact GitHub, create keys, change an account, authenticate, or push.</p>
 </section>
 </section>
 
@@ -706,20 +720,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="python-environments.html"
+       href="vscode.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Python Installation and Environments</p>
+        <p class="prev-next-title">VS Code for MQB</p>
       </div>
     </a>
     <a class="right-next"
-       href="git-ssh.html"
+       href="../notebooks/appendix-jupy-intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Git, GitHub and SSH Setup</p>
+        <p class="prev-next-title">Introduction to Jupyter</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -741,12 +755,16 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-start">Before you start</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-vs-code-and-open-a-project">Install VS Code and open a project</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-scripts-select-run-and-debug">Python scripts: select, run and debug</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebooks-choose-a-kernel-deliberately">Jupyter notebooks: choose a kernel deliberately</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-r-in-vs-code">Using R in VS Code</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-small-setup-check">A small setup check</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-check-git">Install and check Git</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-the-identity-recorded-in-commits">Choose the identity recorded in commits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-github-with-ssh">Connect to GitHub with SSH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-existing-keys-first">Check existing keys first</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-only-the-public-key-to-github">Add only the public key to GitHub</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#https-when-ssh-is-unavailable">HTTPS when SSH is unavailable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-and-inspect-a-remote">Add and inspect a remote</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnose-without-changing-an-account">Diagnose without changing an account</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-verification">Sources and verification</a></li>
 </ul>
   </nav></div>

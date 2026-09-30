@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -318,6 +318,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../appendices/macos-tools.html">macOS Tools and Homebrew</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/python-environments.html">Python Installation and Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/vscode.html">VS Code for MQB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/git-ssh.html">Git, GitHub and SSH Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-jupy-intro.html">Introduction to Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
 </ul>
@@ -617,10 +618,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitignore-ng-after-commit-ing"><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>-ng after <code class="docutils literal notranslate"><span class="pre">commit</span></code>-ing</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-remote-repositories">Working with remote repositories</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-a-remote-git-repository">Set up a remote Git repository</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-remote-repositories">Working with remote repositories</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-binary-files">Dealing with binary files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-large-files">Dealing with large files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-commit-git-hook">Pre-Commit Git Hook</a></li>
@@ -761,7 +759,7 @@
 <p class="admonition-title">Warning</p>
 <p>This is a JupyterLite notebook. Code cells here will not work for this particular chapter. Follow the instructions and run the commands in your terminal/console.</p>
 </div>
-<p>But first things first: install Git and set up your first repository.</p>
+<p>But first install Git and complete the one-time <a class="reference internal" href="../appendices/git-ssh.html"><span class="std std-doc">Git, GitHub and SSH Setup</span></a>. Return here to create and work with your first repository.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p><strong>Installing Git on your machine</strong> (if you do not have <code class="docutils literal notranslate"><span class="pre">git</span></code> installed already):</p>
@@ -1096,52 +1094,9 @@ nothing added to commit but untracked files present (use "git add" to track)
 - **Code reviews:** Collaborators review code changes before they are merged.
  --><section id="your-remote-repository">
 <h3>Your remote repository<a class="headerlink" href="#your-remote-repository" title="Link to this heading">#</a></h3>
-<p>Remote repositories are versions of your project hosted on the internet (or another network). Common platforms include GitHub, GitLab, and Bitbucket.
-Nothing has been sent to the remote server yet (more on the remote server below).
-So let’s go to your online Git service (e.g., GitHub) and set up.</p>
-<p>Note that GitHub and Bitbucket both give you unlimited free private repositories if you register with an academic email. Not a big deal if you will not be writing private code, handy if you are (<em>can you think of examples when you would need to write private code?</em>).</p>
-<p>So let’s proceed with connecting your local Git repository to your remote server:</p>
-<ul class="simple">
-<li><p>Login to your GitHub or Bitbucket account</p></li>
-<li><p>Set up your <code class="docutils literal notranslate"><span class="pre">ssh</span></code>-based access. SSH (<code class="docutils literal notranslate"><span class="pre">S</span></code>ecure <code class="docutils literal notranslate"><span class="pre">S</span></code>ocket <code class="docutils literal notranslate"><span class="pre">Sh</span></code>ell) is a protocol that allows you to connect to and interact with remote servers. Here are two sets of guidelines (you can use whichever seems easier to you, irrespective of whether you are using GitHub or Bitbucket):</p>
-<ul>
-<li><p><a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">GitHub</a></p></li>
-<li><p><a class="reference external" href="https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html">Bitbucket</a> (most of you will want the “Set up SSH on macOS/Linux” option)</p></li>
-</ul>
-</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>When accessing remote git repositories, you have the option to use either HTTPS or SSH protocols. Both methods have their own advantages and disadvantages, and the better choice depends on your specific needs and circumstances.</p>
-<ul class="simple">
-<li><p><strong>In general, use SSH if:</strong></p>
-<ul>
-<li><p>You interact with git repositories frequently.</p></li>
-<li><p>You prefer a secure, key-based authentication method.</p></li>
-<li><p>You’re setting up automated scripts or development workflows.</p></li>
-</ul>
-</li>
-<li><p><strong>Use HTTPS if:</strong></p>
-<ul>
-<li><p>You’re in a restrictive network environment where SSH is blocked.</p></li>
-<li><p>You prefer a simpler setup without managing SSH keys.</p></li>
-<li><p>You’re accessing repositories infrequently or from different machines.</p></li>
-</ul>
-</li>
-</ul>
-<p>We will use SSH because it is generally better for regular code development due to its security and convenience after the initial setup. You may need to use HTTPS in situations where network restrictions apply.</p>
-</div>
-<ul class="simple">
-<li><p>Next, create a new repository on your remote service with the same name as your local project (e.g., <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code>), and push your new project to this newly created remote Git repository. Instructions for this step are here:</p>
-<ul>
-<li><p><a class="reference external" href="https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github">GitHub</a></p></li>
-<li><p><em>Note that you have already done the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> step, so no need to repeat those bits.</em></p></li>
-</ul>
-</li>
-</ul>
-<p>You are done. Now you can really start to use Git!</p>
-<p>The first step after having created your remote repository and added your ssh key to it, is to link the remote to your local repo (as the instructions in web pages linked above will already have told you).
-The command will look like this:</p>
+<p>Remote repositories are versions of your project hosted on the internet (or another network). Common platforms include GitHub, GitLab and Bitbucket. Nothing has been sent to a remote server yet.</p>
+<p>Before creating or connecting your first remote, complete <a class="reference internal" href="../appendices/git-ssh.html"><span class="std std-doc">Git, GitHub and SSH Setup</span></a>. It covers Git identity, privacy, SSH keys, host verification, HTTPS on restricted networks and the account steps. Create a remote repository with the same project name after completing <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code>; do not repeat the initialisation step.</p>
+<p>Once you have the exact remote URL and understand its protocol, link it to the local repository:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:YourgithubUsername/CMEECourseWork.git
 </pre></div>
 </div>
@@ -1158,7 +1113,7 @@ origin<span class="w">  </span>git@github.com:YourgithubUsername/CMEECourseWork.
 <p>In the above example output:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">origin</span></code> is the name of the remote (the default name for the main remote when cloning the repository).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">https://github.com/username/repo-name.git</span></code> is the UrL for the remote repository on gitHub.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git&#64;github.com:username/repo-name.git</span></code> is an SSH URL for the remote repository on GitHub.</p></li>
 <li><p>In this case <code class="docutils literal notranslate"><span class="pre">fetch</span></code> and <code class="docutils literal notranslate"><span class="pre">push</span></code> have that the same UrL for both fetching updates and pushing commits.</p></li>
 </ul>
 <p>No you can <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> all your local commits:</p>
@@ -1567,36 +1522,8 @@ New branches can be created at any point in the project’s history (we will lea
 </section>
 <section id="working-with-remote-repositories">
 <h2>Working with remote repositories<a class="headerlink" href="#working-with-remote-repositories" title="Link to this heading">#</a></h2>
-<p>Remote repositories are versions of your project hosted on the internet or another network. Common platforms include GitHub, GitLab, and Bitbucket.</p>
-<section id="set-up-a-remote-git-repository">
-<h3>Set up a remote Git repository<a class="headerlink" href="#set-up-a-remote-git-repository" title="Link to this heading">#</a></h3>
-<p>So let’s go to your online Git service (e.g., GitHub) and set up. Note that GitHub and Bitbucket both give you unlimited free private repositories if you register with an academic email. Not a big deal if you will not be writing private code, handy if you are (<em>can you think of examples when you would need to write private code?</em>).</p>
-<ul class="simple">
-<li><p>Login to your GitHub or Bitbucket account</p></li>
-<li><p>Follow the instructions to set up an SSH key to enable cryptography-based interfacing with your remote Git repository</p>
-<ul>
-<li><p><a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">GitHub</a></p></li>
-<li><p><a class="reference external" href="https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html">Bitbucket</a></p></li>
-</ul>
-</li>
-</ul>
-<p>An alternative, safer technique (though one which is definitely more work to maintain) is a whitelist-based approach. This is not necessarily a better or worse way to do things, you are in the end trading your time and effort for increased safety and cleanliness of your repository.</p>
-<ul class="simple">
-<li><p>Create your remote Git repository:</p>
-<ul>
-<li><p><a class="reference external" href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository">GitHub</a></p></li>
-<li><p><a class="reference external" href="https://confluence.atlassian.com/bitbucket/create-a-git-repository-759857290.html">Bitbucket</a></p></li>
-</ul>
-</li>
-<li><p>Now, following the instructions:</p>
-<ul>
-<li><p><a class="reference external" href="https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github">GitHub</a></p></li>
-<li><p><a class="reference external" href="https://confluence.atlassian.com/bitbucket/push-updates-to-a-repo-221449503.html">Bitbucket</a></p></li>
-</ul>
-</li>
-</ul>
-<p>The first step after having created your remote repository and added your ssh key to it, is to link the remote to your local repo (as the instructions in web pages linked above will already have told you).</p>
-</section>
+<p>A remote is a named connection to a repository on another machine or service. Revisit <a class="reference internal" href="../appendices/git-ssh.html"><span class="std std-doc">Git, GitHub and SSH Setup</span></a> when you are connecting a new account, choosing SSH versus HTTPS, or diagnosing authentication.</p>
+<p>In the workflow below, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-v</span></code> to check the existing remote, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code> to download remote history, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> to integrate changes, and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> only after inspecting what will become visible to collaborators.</p>
 </section>
 <section id="dealing-with-binary-files">
 <h2>Dealing with binary files<a class="headerlink" href="#dealing-with-binary-files" title="Link to this heading">#</a></h2>
@@ -2313,10 +2240,7 @@ git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </sp
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitignore-ng-after-commit-ing"><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>-ng after <code class="docutils literal notranslate"><span class="pre">commit</span></code>-ing</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-remote-repositories">Working with remote repositories</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-a-remote-git-repository">Set up a remote Git repository</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-remote-repositories">Working with remote repositories</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-binary-files">Dealing with binary files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-large-files">Dealing with large files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-commit-git-hook">Pre-Commit Git Hook</a></li>
