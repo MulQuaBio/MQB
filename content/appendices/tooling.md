@@ -6,6 +6,7 @@ Use these pages when you need help getting set up, running notebooks, or working
 
 - Choosing a Linux environment or configuring Ubuntu: [Linux Setup and Ubuntu Administration](ubuntu-admin.md)
 - Setting up macOS command-line tools: [macOS Tools and Homebrew](macos-tools.md)
+- Installing Python and managing project packages: [Python Installation and Environments](python-environments.md)
 - If you’re new to notebooks/Jupyter: [Jupyter / notebooks intro](../notebooks/appendix-jupy-intro)
 
 ## Common tasks
