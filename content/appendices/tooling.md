@@ -8,6 +8,7 @@ Use these pages when you need help getting set up, running notebooks, or working
 - Setting up macOS command-line tools: [macOS Tools and Homebrew](macos-tools.md)
 - Installing Python and managing project packages: [Python Installation and Environments](python-environments.md)
 - Working with Python, R and notebooks in an editor: [VS Code for MQB](vscode.md)
+- Setting up GitHub access and project remotes: [Git, GitHub and SSH Setup](git-ssh.md)
 - If you’re new to notebooks/Jupyter: [Jupyter / notebooks intro](../notebooks/appendix-jupy-intro)
 
 ## Common tasks
