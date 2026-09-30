@@ -8,7 +8,7 @@ Installation and package-management steps here are optional for the lessons, but
 (ubuntu-environment)=
 ## Choose an environment
 
-Ubuntu is a Linux distribution derived from Debian. They share tools such as APT, but their releases, repositories and packages are not interchangeable. Do not add an Ubuntu repository to Debian simply because both use `.deb` files.
+Ubuntu is a Linux distribution: an operating system built from Linux and a set of associated software. It is derived from Debian. They share tools such as APT, but their releases, repositories and packages are not interchangeable. Do not add an Ubuntu repository to Debian simply because both use `.deb` files.
 
 | Your starting point | A suitable route |
 | :--- | :--- |
@@ -110,7 +110,7 @@ Test with `echo oak`, `pwd`, then `echo ` and Up before making the change persis
 (ubuntu-shell-customisation)=
 ## User-local shell customisation
 
-Try a change for the current session first. If it helps, put it in the appropriate **user** startup file, preserving the existing content and keeping a backup. Never replace an entire profile with a short course example.
+Try a change for the current session first. If it helps, put it in the appropriate **user** [startup file](terms.md#startup-file), preserving the existing content and keeping a backup. Never replace an entire profile with a short course example.
 
 For interactive Bash terminals on Ubuntu, `~/.bashrc` is the usual home for aliases. Ubuntu's supplied `.bashrc` often already sources `~/.bash_aliases`; inspect it before adding another source line. For zsh, interactive setup belongs in `~/.zshrc` (or under a custom `ZDOTDIR`). Bash login sessions instead read the first readable file among `~/.bash_profile`, `~/.bash_login` and `~/.profile`; their relationship to `.bashrc` depends on the existing setup. See also {ref}`macos-shellenv` for Homebrew. Edit the file your shell actually reads, not every profile you can find.
 
@@ -129,7 +129,7 @@ Type `f` to use it; `unalias f` removes it from the current session. Only add it
 (shell-persistent-path)=
 ### A personal script directory on PATH
 
-The shell chapter's `export PATH="$PATH:$HOME/.local/bin"` affects only that session and its children. A directory on PATH is searched for executable programs; putting a directory there does not make every file inside it executable.
+[`PATH`](terms.md#path) is the list of folders a shell searches for commands. The shell chapter’s `export PATH="$PATH:$HOME/.local/bin"` affects only that session and its children. Putting a directory on PATH does not make every file inside it executable.
 
 Create the directory with `mkdir -p "$HOME/.local/bin"`. Inspect your existing startup file first: Ubuntu's `~/.profile` may already add it at login when it exists. If no existing setup does so, add the following to the appropriate user startup file once:
 
@@ -163,7 +163,7 @@ On managed systems, ask the administrator for required software. Some tools can 
 (ubuntu-packages)=
 ## Install from configured Ubuntu repositories
 
-APT obtains software from configured repositories and resolves package dependencies. A package name need not match its executable name. For example, the package `r-base` provides R. Inspect availability first:
+APT is Ubuntu’s [package manager](terms.md#package-manager-and-package). It obtains software from configured repositories—sources that supply packages for your system—and works out which additional packages a requested package needs. A package name need not match its executable name. For example, the package `r-base` provides R. Inspect availability first:
 
 ```bash
 apt show r-base

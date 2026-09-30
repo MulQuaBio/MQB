@@ -1,7 +1,7 @@
 (python-environments)=
 # Python Installation and Environments
 
-Use a separate Python environment for your coursework or project. The default route here is a supported Python 3 interpreter, the standard-library `venv` tool and interpreter-bound `pip`. Anaconda is not required; {ref}`python-conda` describes an alternative when your course or project already uses conda.
+A Python [interpreter](terms.md#python-environment-and-interpreter) is the program that runs Python code. Use a separate Python environment for your coursework or project so its packages are kept with that project. The default route here is a supported Python 3 interpreter, the standard-library `venv` tool and interpreter-bound `pip`. Anaconda is not required; {ref}`python-conda` describes an alternative when your course or project already uses conda.
 
 These are **student runtime** instructions. The MQB repository's own `.venv` and `requirements.txt` support building the book; do not replace or upgrade them to follow this page. Work in your own coursework directory, keeping scripts, notebooks, data and results outside the environment directory.
 
@@ -40,7 +40,7 @@ On native Windows, use `py --version` and `py -c "import sys; print(sys.executab
 (python-venv)=
 ## Create and activate one environment
 
-In your terminal, change to your **own coursework/project root**, not its `code` subdirectory. Start outside another active environment (`deactivate` for `venv`, or `conda deactivate` for conda). The examples use `.venv` in this current directory. If it already exists, inspect and reuse it; do not recreate an unknown environment over the top of it.
+In your terminal, change to your **own coursework/project root**: the main folder for that piece of work, not its `code` subdirectory. Start outside another active environment (`deactivate` for `venv`, or `conda deactivate` for conda). The examples use `.venv` in this current directory. If it already exists, inspect and reuse it; do not recreate an unknown environment over the top of it.
 
 For **Bash or zsh on Linux/macOS/WSL**, create it once:
 
@@ -58,7 +58,7 @@ py -m venv .venv
 
 For Windows Command Prompt, activation is `.venv\Scripts\activate.bat`. Git Bash with Windows Python uses `source .venv/Scripts/activate`; it is not the same as WSL's Linux environment.
 
-Activation changes command lookup in the current terminal. In each new terminal, return to the same project root and run **only the activation command**, not environment creation. For other shells, consult the [venv activation table](https://docs.python.org/3/library/venv.html#how-venvs-work).
+Activation changes command lookup in the current terminal so that this project’s Python is used first. In each new terminal, return to the same project root and run **only the activation command**, not environment creation. For other shells, consult the [venv activation table](https://docs.python.org/3/library/venv.html#how-venvs-work).
 
 If PowerShell blocks activation, do not change machine-wide or persistent execution policy just for this lesson. Activation is optional: run the environment's Python directly instead:
 
@@ -80,9 +80,9 @@ python -c "import sys; print(sys.executable); print(sys.prefix); print(sys.base_
 python -m pip --version
 ```
 
-For a `venv`, the executable and `sys.prefix` should point into your project's `.venv`; `sys.base_prefix` identifies the underlying Python installation and should differ. The path printed by `python -m pip --version` should also be inside that environment. A changed terminal prompt alone is not proof. A notebook or editor may select a different interpreter independently; check `sys.executable` there too.
+For a `venv`, `sys.executable` and `sys.prefix` should point into your project’s `.venv`; these show the Python program and environment currently in use. `sys.base_prefix` identifies the underlying Python installation and should differ. The path printed by `python -m pip --version` should also be inside that environment. A changed terminal prompt alone is not proof. A notebook or editor may select a different interpreter independently; check `sys.executable` there too.
 
-`python -m pip` uses the Python you just inspected, avoiding ambiguity between separate `pip`, `pip3` and Python installations. An *externally managed environment* error normally means you are trying to modify a distributor-managed Python rather than your project environment. Check the paths and activate or recreate the intended environment; do not work around it with `sudo pip`, `--break-system-packages` or a blanket `--user` installation.
+`python -m pip` asks the Python you just inspected to run `pip`, avoiding ambiguity between separate `pip`, `pip3` and Python installations. An *externally managed environment* error normally means you are trying to modify a distributor-managed Python rather than your project environment. Check the paths and activate or recreate the intended environment; do not work around it with `sudo pip`, `--break-system-packages` or a blanket `--user` installation.
 
 ```{warning}
 A virtual environment separates Python packages, not permissions. Code run inside it can still read, modify or delete files accessible to your account and use the network. It is not a security sandbox. Install packages from trusted sources and inspect unfamiliar scripts/notebooks before executing them.
@@ -113,7 +113,7 @@ Choose **one** interface initially. These commands assume the same activated, ve
 | Jupyter Notebook 7 or newer | `python -m pip install notebook ipykernel` | `python -m notebook` |
 | JupyterLab | `python -m pip install jupyterlab ipykernel` | `python -m jupyterlab` |
 
-Notebook is a focused notebook interface; JupyterLab adds a tabbed workspace for notebooks, editors and terminals. Both use kernels to run code. They can coexist, but neither requires installing the other as a separate course step. Old classic-Notebook extensions are not a reason to install both.
+Notebook is a focused notebook interface; JupyterLab adds a tabbed workspace for notebooks, editors and terminals. Both use [kernels](terms.md#notebook-kernel) to run code. They can coexist, but neither requires installing the other as a separate course step. Old classic-Notebook extensions are not a reason to install both.
 
 Continue with the [Jupyter appendix](../notebooks/appendix-jupy-intro.ipynb) for launching from your coursework directory, selecting and checking a kernel, saving work and shutting down. Installing into the environment does not select that environment in every editor or existing notebook server.
 
