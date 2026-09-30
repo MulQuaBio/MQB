@@ -1,0 +1,94 @@
+(macos-tools)=
+# macOS Tools and Homebrew
+
+macOS already provides a UNIX-like terminal environment. You do not need to install Linux or Homebrew merely to start the [Unix chapter](../notebooks/unix.ipynb). Homebrew is an optional package manager; official native installers are also appropriate, especially on managed machines.
+
+(macos-check-system)=
+## Check your system first
+
+Open Terminal through Spotlight (`Cmd + Space`, then search for Terminal). Inspect the operating system and the architecture of the current process:
+
+```bash
+sw_vers
+uname -m
+command -v bash
+command -v brew
+```
+
+Apple Silicon normally reports `arm64`; Intel reports `x86_64`. A terminal running under Rosetta can report `x86_64` on Apple Silicon, so also check Apple menu > About This Mac. Prefer native Apple Silicon tools; do not install Rosetta or a second Intel Homebrew just to follow these lessons.
+
+Consult Homebrew's current [installation requirements](https://docs.brew.sh/Installation) and [support tiers](https://docs.brew.sh/Support-Tiers) before installing. At the 30 September 2026 documentation check, supported macOS installations centred on Apple Silicon with macOS 15 or newer; Intel configurations were Tier 3. Support changes over time. Do not treat an old course note or a successful install on an unsupported OS as a compatibility guarantee.
+
+For a machine outside the supported configurations, prefer a compatible official application installer, a supported remote environment, or advice from your institution's IT service. Do not disable OS security controls to force a package to install.
+
+(macos-homebrew-install)=
+## Install Homebrew only if needed
+
+1. Check whether `command -v brew` already finds an installation. If it does, inspect `brew --prefix` and `brew config` before adding anything else.
+2. Follow the current installer instructions on [brew.sh](https://brew.sh/), checking the source and reading the proposed changes before accepting them. The installer can request administrator authorisation for initial provisioning. Enter passwords only into your own trusted installer prompt, never into shared notes or chats.
+3. Install Apple's Command Line Tools if Homebrew says they are required for your configuration. The official route is `xcode-select --install`; full Xcode is not automatically required for coursework. Do not repeatedly reinstall developer tools to diagnose an unrelated PATH problem.
+4. Follow the installer's **Next steps** for your actual shell and prefix. Do not copy a hardcoded path from an Intel-only guide.
+
+The usual prefixes are `/opt/homebrew` on Apple Silicon and `/usr/local` on Intel. These are installation locations, not interchangeable commands to run. Native application installers and Homebrew should not manage competing copies of the same application without a deliberate reason.
+
+(macos-shellenv)=
+## Make brew available to your shell
+
+The installer prints a `brew shellenv` command using the correct absolute path. Run that command for the current terminal, and add the recommended initialisation to the appropriate user startup file once. For example, **only for a default Apple Silicon installation**, the command is:
+
+```bash
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+Use the installer-provided path on other configurations. `shellenv` prints shell setup code; `eval` applies it, so only run it from your trusted Homebrew installation. Recent macOS Terminal sessions normally use zsh; its login setup commonly belongs in `~/.zprofile`. Bash login shells read the first available of `~/.bash_profile`, `~/.bash_login` and `~/.profile`; interactive non-login Bash reads `~/.bashrc`. Do not paste the same line into all of these files. Preserve existing content and follow the installer for your session type.
+
+Open a new terminal and check:
+
+```bash
+command -v brew
+brew --prefix
+brew config
+```
+
+If `brew` is missing, check the selected startup file and prefix before reinstalling. To undo your shell change, remove only the line you added (or restore its backup), then open a fresh terminal. Uninstalling Homebrew itself is a separate operation described in its [FAQ](https://docs.brew.sh/FAQ#how-do-i-uninstall-homebrew).
+
+(macos-packages)=
+## Formulae, casks and maintenance
+
+A **formula** usually supplies command-line software or libraries; a **cask** commonly installs a graphical application. Inspect first, then install only what you need. These are examples, not prerequisites to run together:
+
+```bash
+brew info wget
+brew install wget
+brew info --cask visual-studio-code
+brew install --cask visual-studio-code
+```
+
+The current syntax is `brew install --cask`, not `brew cask install`. Do not run `sudo brew ...`. Some casks use their own privileged installers; review any request for authorisation and check managed-machine policy.
+
+```bash
+brew update
+brew outdated
+brew upgrade wget
+brew list
+brew doctor
+```
+
+`brew update` refreshes Homebrew and package information; it does not itself upgrade every installed formula. `brew upgrade wget` upgrades that named package and may affect dependencies. Read diagnostics from `brew doctor`; do not blindly apply every suggested change during a project. Remove an unneeded formula with `brew uninstall wget`, or a cask with `brew uninstall --cask visual-studio-code`, only after checking that you no longer need it. For projects, record tool versions before upgrading.
+
+(macos-command-resolution)=
+## Check which command you are running
+
+```bash
+command -v git
+type -a git
+```
+
+`PATH` order can select a Homebrew executable instead of an Apple-provided one. Do not delete or replace programs under system directories. macOS/BSD utilities and GNU utilities can accept different options; read the local manual and test scripts on their target platform. Installing Homebrew does not automatically make every command identical to Linux.
+
+(macos-resources)=
+## Sources and verification
+
+Adapted from the FoNS [Homebrew](https://imperial-fons-computing.github.io/homebrew.html) and [terminal](https://imperial-fons-computing.github.io/terminal.html) guidance. See {ref}`setup-attribution` for the source revision and licence. MQB revision: 30 September 2026. Operational guidance was checked against the official Homebrew [installation documentation](https://docs.brew.sh/Installation), [manual](https://docs.brew.sh/Manpage) and [FAQ](https://docs.brew.sh/FAQ).
+
+These instructions were reviewed from Linux, not runtime-tested on macOS. No installer or Homebrew package operation was run during that review. Check current support and institutional policy before making changes.
