@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -315,10 +315,12 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Introduction &amp; prerequisites</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/macos-tools.html">macOS Tools and Homebrew</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-jupy-intro.html">Introduction to Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/ubuntu-admin.html">Linux Setup and Ubuntu Administration</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
 </ul>
@@ -589,20 +591,16 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-files-and-directories">Exploring files and directories</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-your-coursework-directory-structure">Building your coursework directory structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-your-coursework-directory-structure">Building your coursework directory structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-a-file-and-changing-permissions">Editing a file and changing permissions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#returning-to-the-project-root">Returning to the project root</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-arguments">Command arguments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redirection-and-pipes">redirection and pipes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wildcards">Wildcards</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-grep">Using <code class="docutils literal notranslate"><span class="pre">grep</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-files">Finding files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-or-removing-software-in-ubuntu">Installing or removing software in Ubuntu</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-from-the-main-repository">Installing from the main repository</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-additional-repositories">Enabling additional repositories</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-from-other-repositories">Installing from other repositories</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-from-downloaded-deb-files">Installing from downloaded <code class="docutils literal notranslate"><span class="pre">*.deb</span></code> files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-software">removing software</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particularly-useful-unix-tools">Particularly useful UNIX tools</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals">Practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
@@ -612,7 +610,6 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">readings &amp; resources</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general">General</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repositories-and-packages-in-ubuntu">repositories and packages in Ubuntu</a></li>
 </ul>
 </li>
 </ul>
@@ -663,36 +660,36 @@ And whether pigs have wings.’</p>
 </div>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>Here we are going to learn about the UNIX operating system, and in particular, it’s most popular user-friendly avatar, Linux (and even more specifically, Debian based Linux distributions, with focus on Ubuntu). If you are not a unix/Linux user, you still need to learn the UNIX environment because under the hood, all other operating systems that need to do <em>serious</em> computing have to use unix. Indeed, MacOS is built on UNIX, and Windows now a days has a UNIX sub-system to enable users to things that can only really be done in UNIX (like Genomics!).</p>
+<p>Here we are going to learn to work in a UNIX-like environment, with examples from Linux and macOS. Where administration differs, our Linux examples focus on Ubuntu, a Debian-based distribution. UNIX-style tools are widely used in scientific computing: they let us organise data, combine small programs and automate repetitive tasks. They are not the only way to do serious computing or genomics! Windows users can follow the shell examples in an appropriate Linux environment such as WSL; PowerShell is a different shell with different syntax.</p>
 <section id="what-is-unix">
 <h3>What is UNIX?<a class="headerlink" href="#what-is-unix" title="Link to this heading">#</a></h3>
-<p>UNIX is a machine-independent operating system (OS) developed in the 1970s by AT&amp;T programmers (notably Brian Kernighan and Dennis ritchie, fathers of <code class="docutils literal notranslate"><span class="pre">C</span></code>) for programmers (you!). It is multi-user and network-oriented by design, uses plain text files for storing data (no proprietary file formats), and has a strictly hierarchical directory structure (more on this below). This makes it an ideal environment for developing your code and storing your data.</p>
-<p>Linux and Mac OS are unix-like (or UN*X or *nix) operating systems that have evolved from UNIX. Ubuntu is a Linux distribution.</p>
+<p>UNIX began at Bell Labs in 1969, led by Ken Thompson and Dennis Ritchie. Its later implementation largely in C helped make it portable across different machines. Its multi-user design, hierarchical filesystem and tools that can exchange plain text make it a useful environment for developing code and handling data. UNIX-like systems can also store and process binary and proprietary file formats; plain text is a useful convention, not a restriction.</p>
+<p>Linux is an independently developed UNIX-like kernel, not a direct descendant of the original UNIX source. A Linux distribution such as Ubuntu combines that kernel with command-line tools, libraries and applications. macOS has UNIX foundations through Darwin and BSD, but macOS as a whole is not open-source.</p>
 </section>
 <section id="why-unix">
 <h3>Why UNIX?<a class="headerlink" href="#why-unix" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>It was designed for developing code and storing data – an ideal native habitat for programming languages like Python and r</p></li>
-<li><p>robust, stable, secure (very few UNIX viruses and malware – I am yet to encounter one after almost 15 years!)</p></li>
-<li><p>Its free and open-source</p></li>
-<li><p>Scores of small programs available to perform simple tasks – can be combined easily</p></li>
-<li><p>Easy to automate tasks (e.g., using shell scripts)</p></li>
-<li><p>Multi-user (multiple users can log in and concurrently use computer)</p></li>
-<li><p>Multi-tasking (can perform many tasks at the same time)</p></li>
-<li><p>Network-ready (easy to communicate between computers)</p></li>
-<li><p>Amazing support – a large body of tutorials and support web sites are readily available online</p></li>
-<li><p>Basically all resources for High-Performance Computing (computer clusters, large workstations, etc.) run a UNIX or Linux operating system</p></li>
-<li><p><strong>UNIX has been around since the early 1970’s and will likely be around at the end of your career (the hard work you are putting into learning UNIX will pay off over a lifetime!)</strong></p></li>
+<li><p>Small tools can be combined to explore and transform data.</p></li>
+<li><p>Shell scripts make repetitive tasks easier to automate and reproduce.</p></li>
+<li><p>Multi-user and multitasking systems support shared machines and concurrent work.</p></li>
+<li><p>Network tools help us work on remote computers; Linux is especially common on scientific computing clusters.</p></li>
+<li><p>Linux and many command-line tools are free and open-source. That does not describe every UNIX system or every application installed on one.</p></li>
+<li><p>There is a large body of documentation, tutorials and community support.</p></li>
+<li><p>These skills transfer between local work, servers and high-performance computing systems.</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>UNIX-like systems are not immune to malware or intrusion. Security depends on updates, permissions, configuration and what you choose to run. An open-source licence permits inspection and reuse; it does not by itself guarantee safety.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>32-bit vs 64-bit:</strong> The terms 32-bit and 64-bit refer to the way a computer’s processor (also called a CPU), handles information. A 64-bit OS handles large amounts of random access memory (rAM) more effectively than a 32-bit system. Specifically, while 32 bits of information can only access 4 GB of rAM, a 64-bit machine can access essentially unlimited system memory (though this is not yet physically possible)! The combination of your operating system, and processor bit count is often called the “Platform”.</p>
+<p><strong>32-bit vs 64-bit:</strong> A 32-bit address space can address <span class="math notranslate nohighlight">\(2^{32}\)</span> bytes (4 GiB). A 64-bit address space is much larger, but real memory limits depend on the processor, operating system and hardware. When installing software, match both the operating system and CPU architecture, for example x86-64 or ARM64; “64-bit” alone does not identify a compatible package.</p>
 </div>
 </section>
 </section>
 <section id="unix-directory-structure">
 <h2>UNIX directory structure<a class="headerlink" href="#unix-directory-structure" title="Link to this heading">#</a></h2>
-<p>The key UNIX directories are:</p>
+<p>Some key directories on a typical Linux system are:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Directory</p></th>
@@ -701,27 +698,28 @@ And whether pigs have wings.’</p>
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
-<td class="text-left"><p>Is the “root” directory</p></td>
+<td class="text-left"><p>The root of the filesystem tree.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">/bin</span></code></p></td>
-<td class="text-left"><p>Contains basic programs</p></td>
+<td class="text-left"><p>Basic programs; on many Linux systems this is a link to <code class="docutils literal notranslate"><span class="pre">/usr/bin</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">/etc</span></code></p></td>
-<td class="text-left"><p>Contains configuration files</p></td>
+<td class="text-left"><p>System configuration files.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">/dev</span></code></p></td>
-<td class="text-left"><p>Contains files connecting to devices (keyboard, mouse, screen, etc.)</p></td>
+<td class="text-left"><p>Device files.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">/home</span></code></p></td>
-<td class="text-left"><p>Your home directory; this is where all your documents are and where you will usually work</p></td>
+<td class="text-left"><p>Usually contains users’ home directories on Linux, such as <code class="docutils literal notranslate"><span class="pre">/home/yourname</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">/tmp</span></code></p></td>
-<td class="text-left"><p>Contains temporary files</p></td>
+<td class="text-left"><p>Temporary files; do not keep important work here.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>This hierarchical directory structure makes navigating your computer from the terminal/shell (coming up next!) or encoding this navigation in your computer programs easier.</p>
+<p>Your own home directory is not <code class="docutils literal notranslate"><span class="pre">/home</span></code> itself. It is often <code class="docutils literal notranslate"><span class="pre">/Users/yourname</span></code> on macOS, and may be elsewhere on a managed system. Use <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;$HOME&quot;</span></code> to see its path, or <code class="docutils literal notranslate"><span class="pre">cd</span></code> to go there. The shorthand <code class="docutils literal notranslate"><span class="pre">~</span></code> refers to your home directory when expanded by the shell.</p>
+<p>This hierarchical structure lets you describe locations with paths, both at the command line and in programs.</p>
 <hr class="docutils" />
 <figure class="align-default" id="id1">
 <a class="bg-primary reference internal image-reference" href="../_images/unix-tree.png"><img alt="UNIX directory structure" class="bg-primary" src="../_images/unix-tree.png" style="width: 400px;" />
@@ -734,125 +732,125 @@ And whether pigs have wings.’</p>
 <hr class="docutils" />
 <section id="meet-the-unix-shell">
 <h2>Meet the UNIX shell<a class="headerlink" href="#meet-the-unix-shell" title="Link to this heading">#</a></h2>
-<p>The shell (or terminal) is a text command processor that can run commands to interface with the Operating System’s “kernel” – the core software that “talks” to the harware, including the CPU, rAM and hard drive. We will use the popular (yes, it’s <em>very</em> popular in the new universe you are entering!) <code class="docutils literal notranslate"><span class="pre">bash</span></code> shell.</p>
+<p>A <strong>terminal emulator</strong> is the application window in which you type commands and see output. The <strong>shell</strong> is the program that interprets those commands, runs other programs and connects them together. The operating system’s <strong>kernel</strong> manages resources such as processes, memory, files and access to hardware. These are different layers, not different names for the same thing.</p>
+<p>We will use <strong>Bash</strong>, the Bourne Again Shell, named after the earlier Bourne shell (<code class="docutils literal notranslate"><span class="pre">sh</span></code>).</p>
+<p>On Ubuntu’s usual desktop, <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">T</span></code> opens a terminal. On macOS, use <code class="docutils literal notranslate"><span class="pre">Cmd</span> <span class="pre">+</span> <span class="pre">Space</span></code>, search for Terminal and press Return. Other desktops may use different shortcuts.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">bash</span></code> stand for the “<code class="docutils literal notranslate"><span class="pre">B</span></code>ourne <code class="docutils literal notranslate"><span class="pre">A</span></code>gain <code class="docutils literal notranslate"><span class="pre">Sh</span></code>ell”, a pun (“born again” oh, us geeks!) on the name of the original Bourne shell (<code class="docutils literal notranslate"><span class="pre">sh</span></code>) that it replaces.</p>
+<p>Recent macOS installations normally start an interactive zsh shell. To follow this chapter’s Bash examples consistently, type <code class="docutils literal notranslate"><span class="pre">bash</span></code> in your terminal. This starts a Bash session without changing your login-shell configuration; type <code class="docutils literal notranslate"><span class="pre">exit</span></code> when finished. <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;$BASH_VERSION&quot;</span></code> reports the version in Bash. <code class="docutils literal notranslate"><span class="pre">$SHELL</span></code> usually describes your configured login shell, not necessarily the shell currently interpreting your commands.</p>
 </div>
-<p><span class="math notranslate nohighlight">\(\star\)</span> To launch a <code class="docutils literal notranslate"><span class="pre">bash</span></code> shell, do <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">t</span></code> (or use <code class="docutils literal notranslate"> <span class="pre">Meta</span></code> key) – try it now. (On Mac: <code class="docutils literal notranslate"><span class="pre">Cmd+Space</span></code> to open spotlight search, and type “terminal” and hit return).</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>In Mac OS, the default shell will likely be <code class="docutils literal notranslate"><span class="pre">zsh</span></code> shell, assuming you are using one of the newer versions of the operating system. Most of the commands will be the same between these shells, but some may differ (look out for tips about this, and also <a class="reference external" href="https://apple.stackexchange.com/questions/361870/what-are-the-practical-differences-between-bash-and-zsh">read this</a>).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Need a working terminal? See <a class="reference internal" href="../appendices/ubuntu-admin.html#ubuntu-environment"><span class="std std-ref">Choose an environment</span></a> for Linux, macOS, Windows/WSL, ChromeOS and managed-machine routes, then <a class="reference internal" href="../appendices/ubuntu-admin.html#linux-terminal"><span class="std std-ref">Open a terminal and identify the shell</span></a>. Installing Ubuntu or changing your disk partitions is not required for these lessons.</p>
 </div>
-<p>OK, so you have met the shell. Isn’t it <em>lovely</em>?</p>
-<p>Let’s look at key features of the bash shell/terminal:</p>
+<p>Let’s look at the command prompt:</p>
 <ul class="simple">
-<li><p>The shell, by default, automatically starts in your home directory <code class="docutils literal notranslate"><span class="pre">/home/yourname/</span></code></p></li>
-<li><p>The start of the command prompt, where you will type your commands is indicated by a <code class="docutils literal notranslate"><span class="pre">:~$</span></code>)</p></li>
-<li><p>The text before the <code class="docutils literal notranslate"><span class="pre">:~$</span></code> tells you what the name of the current user is (the part before the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>), and the name of the computer (the part after the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> upto the <code class="docutils literal notranslate"><span class="pre">:~$</span></code>).</p></li>
+<li><p>A new terminal often starts in your home directory, but an editor’s terminal may start in a project directory. Use <code class="docutils literal notranslate"><span class="pre">pwd</span></code> to check.</p></li>
+<li><p>A prompt such as <code class="docutils literal notranslate"><span class="pre">yourname&#64;computer:~$</span></code> shows the user, computer and current directory. Its appearance is configurable, so yours may differ.</p></li>
+<li><p>The prompt is not part of a command: type only the command that follows it.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>The path <code class="docutils literal notranslate"><span class="pre">/home/yourname/</span></code> can be replaced with shorthand <code class="docutils literal notranslate"><span class="pre">~</span></code> (important to remember!). So, for example, the command <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/home/yourname/Documents</span></code> is the same as the command <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/Documents</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">cd</span></code> and <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~</span></code> take you home. <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/Documents</span></code> and <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">&quot;$HOME/Documents&quot;</span></code> refer to the Documents directory in your home, if that directory exists. Do not type a literal <code class="docutils literal notranslate"><span class="pre">/home/yourname</span></code> path unless that is actually your account’s path.</p>
 </div>
-<p>Some useful keyboard shortcuts that work in the bash terminal are:</p>
+<p>Useful shortcuts in Bash’s usual Emacs-style line-editing mode include:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-left"><p>Command</p></th>
-<th class="head text-left"><p>What it means</p></th>
+<tr class="row-odd"><th class="head text-left"><p>Shortcut</p></th>
+<th class="head text-left"><p>Action</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">A</span></code></p></td>
-<td class="text-left"><p>Go to the beginning of the line</p></td>
+<td class="text-left"><p>Go to the beginning of the line.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">E</span></code></p></td>
-<td class="text-left"><p>Go to the end of the line</p></td>
+<td class="text-left"><p>Go to the end of the line.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">L</span></code></p></td>
-<td class="text-left"><p>Clear the screen</p></td>
+<td class="text-left"><p>Clear/redraw the screen.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">U</span></code></p></td>
-<td class="text-left"><p>Clear the line before cursor position</p></td>
+<td class="text-left"><p>Remove text before the cursor.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">K</span></code></p></td>
-<td class="text-left"><p>Clear the line after the cursor</p></td>
+<td class="text-left"><p>Remove text after the cursor.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">C</span></code></p></td>
-<td class="text-left"><p>Kill whatever you are running</p></td>
+<td class="text-left"><p>Request interruption of the foreground command, or cancel the input line.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">D</span></code></p></td>
-<td class="text-left"><p>Exit (close) the current shell</p></td>
+<td class="text-left"><p>Signal end of input; at an empty prompt this normally exits the shell.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">right</span> <span class="pre">arrow</span></code></p></td>
-<td class="text-left"><p>Move cursor forward one whole word</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">left</span> <span class="pre">arrow</span></code></p></td>
-<td class="text-left"><p>Move cursor backward one whole word</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">F</span></code> / <code class="docutils literal notranslate"><span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">B</span></code></p></td>
+<td class="text-left"><p>Move forward/backward a word, if the terminal sends these key combinations.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Also, note that:</p>
-<ul class="simple">
-<li><p>Use the <code class="docutils literal notranslate"><span class="pre">Tab</span></code> key – very handy (try <code class="docutils literal notranslate"><span class="pre">ls</span></code> with a double <code class="docutils literal notranslate"><span class="pre">Tab</span></code> <code class="docutils literal notranslate"><span class="pre">Tab</span></code>).</p></li>
-<li><p>You can navigate commands you previously typed using the up/down arrows</p></li>
-</ul>
+<p>Use <code class="docutils literal notranslate"><span class="pre">Tab</span></code> to complete command names and paths; when completion is ambiguous, pressing it again often lists alternatives. Try typing <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">/et</span></code> and pressing <code class="docutils literal notranslate"><span class="pre">Tab</span></code> before Return. Up/down arrows recall earlier commands. Bindings can differ with terminal settings and line-editing mode.</p>
+<div class="tip admonition">
+<p class="admonition-title">Enabling auto-complete in terminal</p>
+<p>Ordinary Tab completion needs no administrator setup. It differs from optional application-specific completion, arrow-key history recall and <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">R</span></code> history search. The FoNS “auto-complete” example is actually history-prefix search. See <a class="reference internal" href="../appendices/ubuntu-admin.html#ubuntu-terminal-completion"><span class="std std-ref">Completion and command history</span></a> for the distinctions and optional user-local Bash or zsh configuration, including how to test and undo it.</p>
+</div>
 </section>
 <section id="special-characters">
 <h2>Special Characters<a class="headerlink" href="#special-characters" title="Link to this heading">#</a></h2>
-<p>Certain “special” characters have a particular meaning (and use) to the UNIX shell. The forward slash <code class="docutils literal notranslate"><span class="pre">/</span></code> that separates parts of file/ directory paths, and the tilde <code class="docutils literal notranslate"><span class="pre">~</span></code> that serves as a shorthand for your <code class="docutils literal notranslate"><span class="pre">home</span></code> directory path are two examples that you have already seen.</p>
-<p>The following table gives the meanings of important (not all) special characters in shell command lines that you should know about  (we will see more or different special characters as we go through the Shell scripting and Python chapters):</p>
+<p>The shell interprets some characters before it runs a command. Their meaning depends on context and quoting; we will practise these gradually.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-left"><p>Special character</p></th>
+<tr class="row-odd"><th class="head text-left"><p>Character</p></th>
 <th class="head text-left"><p>Meaning</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">~</span></code></p></td>
-<td class="text-left"><p>Home directory path</p></td>
+<td class="text-left"><p>Home-directory shorthand at the start of an unquoted path.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
-<td class="text-left"><p>Path names separator</p></td>
+<td class="text-left"><p>Separates path components.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">#</span></code></p></td>
-<td class="text-left"><p>Comment (anything after this will be ignored by the shell interpreter; in fact, this serves the same purpose across shell scripts, <code class="docutils literal notranslate"><span class="pre">r</span></code> and <code class="docutils literal notranslate"><span class="pre">python</span></code>)</p></td>
+<td class="text-left"><p>Starts a comment when unquoted at the beginning of a shell word.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">$</span></code></p></td>
-<td class="text-left"><p>Variable, expression or command to follow this</p></td>
+<td class="text-left"><p>Introduces expansions, such as <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>, <code class="docutils literal notranslate"><span class="pre">$(date)</span></code> or <code class="docutils literal notranslate"><span class="pre">$((1</span> <span class="pre">+</span> <span class="pre">2))</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">{</span></code> and <code class="docutils literal notranslate"><span class="pre">}</span></code></p></td>
-<td class="text-left"><p>Start and end of an expression or command block</p></td>
+<td class="text-left"><p>Used in several constructs, including brace expansion and command groups.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
-<td class="text-left"><p>Wildcard for strings; for example, <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">nam*</span></code> lists all files and and directories starting with <code class="docutils literal notranslate"><span class="pre">nam</span></code></p></td>
+<td class="text-left"><p>Filename wildcard matching zero or more characters.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">?</span></code></p></td>
-<td class="text-left"><p>Single-character wildcard</p></td>
+<td class="text-left"><p>Filename wildcard matching one character.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">\</span></code></p></td>
-<td class="text-left"><p>Escape character; any character following this will be quoted; for example, <code class="docutils literal notranslate"><span class="pre">#</span></code> indicates the start of a comment, but <code class="docutils literal notranslate"><span class="pre">\#</span></code> indicates a literal <code class="docutils literal notranslate"><span class="pre">#</span></code></p></td>
+<td class="text-left"><p>Escapes the next character outside single quotes; a backslash-newline continues a command.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">;</span></code></p></td>
-<td class="text-left"><p>Command separator; commands can be entered sequentially in a single command line separated by this</p></td>
+<td class="text-left"><p>Separates commands, running the next even if the previous one failed.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>`</p></td>
-<td class="text-left"><p>`</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code></p></td>
+<td class="text-left"><p>Runs the next command only if the previous one succeeded.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
-<td class="text-left"><p>redirect output to (any valid) target following this</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">|</span></code></p></td>
+<td class="text-left"><p>Pipes standard output from one command to standard input of the next.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">!</span></code></p></td>
-<td class="text-left"><p>Pipeline logical NOT</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td class="text-left"><p>Redirects standard output, creating or truncating the target file.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">!</span></code></p></td>
+<td class="text-left"><p>Negates a pipeline’s exit status; interactive Bash also uses it for history expansion.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>Quote paths containing spaces, for example <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">&quot;field</span> <span class="pre">notes.txt&quot;</span></code>. Single quotes preserve literal text; double quotes preserve spaces while still allowing expansions such as <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>. Filename wildcard rules and regular-expression rules are different.</p>
 </section>
 <section id="basic-unix-commands">
 <h2>Basic UNIX commands<a class="headerlink" href="#basic-unix-commands" title="Link to this heading">#</a></h2>
-<p>Here are some basic commands, many of which you will use frequently.</p>
+<p>Here are some basic commands, many of which you will use frequently. Uppercase names below are placeholders for your own paths or values.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Command</p></th>
@@ -861,18 +859,18 @@ And whether pigs have wings.’</p>
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">COMMAND</span></code></p></td>
-<td class="text-left"><p>Show help page of a command.</p></td>
+<td class="text-left"><p>Show a command’s manual page.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">whoami</span></code></p></td>
-<td class="text-left"><p>Display your user-name.</p></td>
+<td class="text-left"><p>Display your user name.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">pwd</span></code></p></td>
 <td class="text-left"><p>Show the current directory.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ls</span></code></p></td>
-<td class="text-left"><p>List the files in the directory.</p></td>
+<td class="text-left"><p>List directory entries; hidden names are omitted by default.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">DIrNAME</span></code></p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">DIRNAME</span></code></p></td>
 <td class="text-left"><p>Change directory.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code></p></td>
@@ -881,68 +879,75 @@ And whether pigs have wings.’</p>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/</span></code></p></td>
 <td class="text-left"><p>Go to the root directory.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~</span></code>or just <code class="docutils literal notranslate"><span class="pre">cd</span> </code></p></td>
-<td class="text-left"><p>Go to the home directory.</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~</span></code> or <code class="docutils literal notranslate"><span class="pre">cd</span></code></p></td>
+<td class="text-left"><p>Go to your home directory.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">FrOM</span> <span class="pre">TO</span></code></p></td>
-<td class="text-left"><p>Copy a file, or a directory non-recursively (what’s this? Google it!).</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">FROM</span> <span class="pre">TO</span></code></p></td>
+<td class="text-left"><p>Copy a file. Copying a directory requires a recursive option.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">FrOM</span> <span class="pre">TO</span></code></p></td>
-<td class="text-left"><p>Copy a directory recursively (what’s this? Google it!).</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-R</span> <span class="pre">FROM</span> <span class="pre">TO</span></code></p></td>
+<td class="text-left"><p>Copy a directory and its contents recursively.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">FrOM</span> <span class="pre">TO</span></code></p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">FROM</span> <span class="pre">TO</span></code></p></td>
 <td class="text-left"><p>Move or rename a file or directory.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">FILENAME</span></code></p></td>
-<td class="text-left"><p>Create an empty file.</p></td>
+<td class="text-left"><p>Update timestamps; create an empty file if it does not exist.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;My</span> <span class="pre">string&quot;</span></code></p></td>
-<td class="text-left"><p>Print a string (in this example, “My string”).</p></td>
+<td class="text-left"><p>Print a simple string.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">FILEorDIrNAME</span></code></p></td>
-<td class="text-left"><p>remove a file or directory non-recursively.</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">FILENAME</span></code></p></td>
+<td class="text-left"><p>Remove a file, not an ordinary directory.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">DIrNAME</span></code></p></td>
-<td class="text-left"><p>remove a directory recursively.</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">rmdir</span> <span class="pre">DIRNAME</span></code></p></td>
+<td class="text-left"><p>Remove an empty directory.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">FILENAME</span></code></p></td>
-<td class="text-left"><p>Count the number of lines and words in a file.</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">DIRNAME</span></code></p></td>
+<td class="text-left"><p>Remove a directory and its contents recursively.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">sort</span> <span class="pre">FILENAME</span></code></p></td>
-<td class="text-left"><p>Sort the lines of a file and print result.</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">FILENAME</span></code></p></td>
+<td class="text-left"><p>Count newline characters, words and bytes. <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span></code> counts newlines.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">uniq</span> </code></p></td>
-<td class="text-left"><p>Shows only unique elements of a list.</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">sort</span> <span class="pre">FILENAME</span></code></p></td>
+<td class="text-left"><p>Sort lines and print the result.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">FILENAME</span></code></p></td>
-<td class="text-left"><p>Print the file on the screen.</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">uniq</span> <span class="pre">FILENAME</span></code></p></td>
+<td class="text-left"><p>Collapse adjacent repeated lines; separated duplicates remain.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">less</span> <span class="pre">FILENAME</span></code></p></td>
-<td class="text-left"><p>Progressively print a file on the screen (“q” to exit).</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">FILENAME</span></code></p></td>
+<td class="text-left"><p>Print a file’s contents.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">FILENAME</span></code></p></td>
-<td class="text-left"><p>Print the first few lines of a file.</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">less</span> <span class="pre">FILENAME</span></code></p></td>
+<td class="text-left"><p>Browse a file; press <code class="docutils literal notranslate"><span class="pre">q</span></code> to exit.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">FILENAME</span></code></p></td>
-<td class="text-left"><p>Print the last few lines of a file.</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">FILENAME</span></code></p></td>
+<td class="text-left"><p>Print the first ten lines by default.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">history</span></code></p></td>
-<td class="text-left"><p>Show the last commands you typed.</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">FILENAME</span></code></p></td>
+<td class="text-left"><p>Print the last ten lines by default.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
-<td class="text-left"><p>Print current date.</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">history</span></code></p></td>
+<td class="text-left"><p>Show the shell’s recorded command history.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">file</span> <span class="pre">FILENAME</span></code></p></td>
-<td class="text-left"><p>Determine the type of a file.</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
+<td class="text-left"><p>Print the current date and time.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">passwd</span></code></p></td>
-<td class="text-left"><p>Change user password.</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">file</span> <span class="pre">FILENAME</span></code></p></td>
+<td class="text-left"><p>Identify a file’s type from its contents and other information.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">FILENAME</span></code></p></td>
-<td class="text-left"><p>Change file permissions.</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">passwd</span></code></p></td>
+<td class="text-left"><p>Change your password, subject to the system’s account policy.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">MODE</span> <span class="pre">FILENAME</span></code></p></td>
+<td class="text-left"><p>Change permissions; for example, <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">u+x</span> <span class="pre">script.sh</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">rm</span></code> does not normally move files to a desktop Trash folder. We will practise deletion only on files created for the exercise. Check <code class="docutils literal notranslate"><span class="pre">pwd</span></code> and the target before running a destructive command.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -973,61 +978,47 @@ Hello on 2025-10-21
 </div>
 <section id="exploring-files-and-directories">
 <h3>Exploring files and directories<a class="headerlink" href="#exploring-files-and-directories" title="Link to this heading">#</a></h3>
-<p>A fundamental command that you will probably use the most frequently of all is <code class="docutils literal notranslate"><span class="pre">ls</span></code> (this stands for <em>list</em> files and directories in current directory).</p>
-<p><span class="math notranslate nohighlight">\(\star\)</span> Type the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command in at the command prompt (which will have opened in your <code class="docutils literal notranslate"><span class="pre">home</span></code> directory) and hit Enter.</p>
-<p>You will see a number of directories and maybe some files in the output (this is currently what you have in your user account’s <code class="docutils literal notranslate"><span class="pre">home</span></code>).</p>
-<p><span class="math notranslate nohighlight">\(\star\)</span> Next try <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">/</span></code></p>
-<p>This will list what you have in your root, including the directories listed in the table <a class="reference internal" href="#id1"><span class="std std-ref">above</span></a> .</p>
-<p><span class="math notranslate nohighlight">\(\star\)</span> The <code class="docutils literal notranslate"><span class="pre">ls</span></code> command by default does not list hidden directories and files. To see these, use</p>
+<p>A fundamental command is <code class="docutils literal notranslate"><span class="pre">ls</span></code>, which lists directory entries. Check where you are with <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, then try <code class="docutils literal notranslate"><span class="pre">ls</span></code> and <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">/</span></code>. The latter lists entries in the root directory shown in the <a class="reference internal" href="#id1"><span class="std std-ref">filesystem figure</span></a>.</p>
+<p>By default <code class="docutils literal notranslate"><span class="pre">ls</span></code> omits hidden names, which start with a dot. Compare:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-a
+ls<span class="w"> </span>-l
+ls<span class="w"> </span>-al
 </pre></div>
 </div>
-<p>This will list all files and directories that start with a <code class="docutils literal notranslate"><span class="pre">.</span></code>, such as <code class="docutils literal notranslate"><span class="pre">.config</span></code> (this contains sub-directories and files containing the configuration settings for applications).</p>
-<p><span class="math notranslate nohighlight">\(\star\)</span> To see more info on the files and directories, use</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-l
+<p><code class="docutils literal notranslate"><span class="pre">-a</span></code> includes hidden entries; <code class="docutils literal notranslate"><span class="pre">-l</span></code> uses the long format. You can combine these flags. An example long-format entry is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>drwxr-xr-x  9 mhasoba mhasoba 4096 Oct 11 10:45 Desktop
 </pre></div>
 </div>
-<p>And if you want to see detailed info on ALL files and directories including hidden ones, combine the <code class="docutils literal notranslate"><span class="pre">-a</span></code> and <code class="docutils literal notranslate"><span class="pre">-l</span></code> flags:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-al
-</pre></div>
-</div>
-<p>An example line in the output of <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code> is:</p>
-<p><code class="docutils literal notranslate"><span class="pre">drwxr-xr-x</span>&#160; <span class="pre">9</span> <span class="pre">mhasoba</span> <span class="pre">mhasoba</span> <span class="pre">4096</span> <span class="pre">Oct</span> <span class="pre">11</span> <span class="pre">10:45</span> <span class="pre">Desktop</span></code></p>
-<p>This is what all that text preceding the folder name (in his case, <code class="docutils literal notranslate"><span class="pre">Desktop</span></code>) means (you will get similar info for files):</p>
+<p>From left to right:</p>
 <ul class="simple">
-<li><p>Item type and permissions (<code class="docutils literal notranslate"><span class="pre">drwxr-xr-x</span></code>)</p>
-<ul>
-<li><p>The first letter is <code class="docutils literal notranslate"><span class="pre">d</span></code> because this is a directory. This will most often be <code class="docutils literal notranslate"><span class="pre">d</span></code> (directory), <code class="docutils literal notranslate"><span class="pre">-</span></code> (file), or <code class="docutils literal notranslate"><span class="pre">l</span></code> (a symbolic link – a file that contains a reference to another file or directory, similar to a “shortcut” in Windows OS).</p></li>
-<li><p>Following this, there are three triplets of letters (<code class="docutils literal notranslate"><span class="pre">rwx</span></code>,<code class="docutils literal notranslate"><span class="pre">r-x</span></code>,<code class="docutils literal notranslate"><span class="pre">r-x</span></code>), with each letter in each of the three indicating read, write and execute permissions for the owner, the group, and anybody else.</p>
-<ul>
-<li><p>The first, <code class="docutils literal notranslate"><span class="pre">rwx</span></code>, indicates that the owner (<code class="docutils literal notranslate"><span class="pre">mhasoba</span></code>, see below) has read (<code class="docutils literal notranslate"><span class="pre">r</span></code>), write (<code class="docutils literal notranslate"><span class="pre">w</span></code>) and execute (<code class="docutils literal notranslate"><span class="pre">x</span></code>) permissions for the Desktop directory</p></li>
-<li><p>The second and third <code class="docutils literal notranslate"><span class="pre">r-x</span></code> mean that the group and everybody else have read and execute but not write permission (they can view the Desktop, but not modify anything in it)</p></li>
+<li><p>The first character is the type: <code class="docutils literal notranslate"><span class="pre">d</span></code> for directory, <code class="docutils literal notranslate"><span class="pre">-</span></code> for regular file, or <code class="docutils literal notranslate"><span class="pre">l</span></code> for symbolic link (a reference to another path).</p></li>
+<li><p>The next three triplets are permissions for the owner, the file’s group and everyone else. <code class="docutils literal notranslate"><span class="pre">rwx</span></code> means read, write and execute/search permission; a dash means that permission is absent.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">9</span></code> is the hard-link count, not a count of all items inside the directory. Regular files can have more than one hard link. Directory link counts depend on filesystem conventions.</p></li>
+<li><p>The next fields name the owner and the group associated with this entry. Matching names do not make that user <code class="docutils literal notranslate"><span class="pre">root</span></code>; groups allow permissions to be shared among users.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">4096</span></code> is the entry’s size in bytes. For a directory this is not the total size of the files below it.</p></li>
+<li><p>The remaining fields show the modification time and name.</p></li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>Number of links or directories inside this directory (<code class="docutils literal notranslate"><span class="pre">9</span></code>) (for files this value would be 1)</p></li>
-<li><p>Who owns it (user <code class="docutils literal notranslate"><span class="pre">mhasoba</span></code>),</p></li>
-<li><p>The owner’s group (also <code class="docutils literal notranslate"><span class="pre">mhasoba</span></code>; on this machine the root is the (single) user <code class="docutils literal notranslate"><span class="pre">mhasoba</span></code>),</p></li>
-<li><p>File size in bytes (<code class="docutils literal notranslate"><span class="pre">4096</span></code>),</p></li>
-<li><p>Time of last modification (<code class="docutils literal notranslate"><span class="pre">Oct</span> <span class="pre">11</span> <span class="pre">10:45</span></code>), and</p></li>
-<li><p>File/directory name (<code class="docutils literal notranslate"><span class="pre">Desktop</span></code>)</p></li>
-</ul>
+<p>For a <strong>regular file</strong>, read permits reading its contents, write permits changing them, and execute permits attempting to run it as a program. For a <strong>directory</strong>, read permits listing names, execute (search) permits traversing it and accessing named entries, and write together with search normally permits creating, renaming or deleting entries. Changing a file’s contents still depends on that file’s permissions. Thus <code class="docutils literal notranslate"><span class="pre">r-x</span></code> on Desktop does not guarantee that every file inside it is read-only. Additional controls, such as ACLs and the sticky bit, may also apply.</p>
+<p>We will try a small permissions experiment on a disposable file below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing permissions on your own practice files is different from administering the system. Do not add <code class="docutils literal notranslate"><span class="pre">sudo</span></code> automatically when a command fails; first check the path, ownership and intended operation. See <a class="reference internal" href="../appendices/ubuntu-admin.html#ubuntu-privileges"><span class="std std-ref">Administrator privileges</span></a> for that boundary.</p>
+</div>
 </section>
 </section>
 <section id="building-your-coursework-directory-structure">
 <h2>Building your coursework directory structure<a class="headerlink" href="#building-your-coursework-directory-structure" title="Link to this heading">#</a></h2>
-<p>It is time to start building your CMEE coursework directory structure. Please follow these rules:</p>
-<ul class="simple">
-<li><p>Do all your work in a single directory with the abbreviation of your course followed by <code class="docutils literal notranslate"><span class="pre">CourseWork</span></code> (no spaces please) located in a suitable place in your <code class="docutils literal notranslate"><span class="pre">/home</span></code>. So for example, for CMEE students, the directory would be <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code>.</p></li>
-<li><p>Each week’s coursework should be in its respective directory; e.g., <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/week1</span></code>, <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/week2</span></code>, etc.</p></li>
-<li><p>Each week’s directory should contain directories called <code class="docutils literal notranslate"><span class="pre">code</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">results</span></code>, and <code class="docutils literal notranslate"><span class="pre">sandbox</span></code> (can be all small(like in these example names), sentence (first letter capitalized), or all large case, but <em>be consistent</em>)</p></li>
-</ul>
-<p>You will bring your <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code> and all it’s contents under version control using Git (coming up in the <a class="reference internal" href="git.html"><span class="std std-doc">Version Control Chapter</span></a>.</p>
-<p><span class="math notranslate nohighlight">\(\star\)</span> OK, make your coursework directory now. First, <code class="docutils literal notranslate"><span class="pre">cd</span></code> to an appropriate place (e.g., <code class="docutils literal notranslate"><span class="pre">Documents</span></code> on your <code class="docutils literal notranslate"><span class="pre">home</span></code>):</p>
+<p>For CMEE coursework, use a single <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code> directory in a suitable location in your home directory, such as Documents. Within it use <code class="docutils literal notranslate"><span class="pre">week1</span></code>, <code class="docutils literal notranslate"><span class="pre">week2</span></code>, etc., each containing <code class="docutils literal notranslate"><span class="pre">code</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">results</span></code> and <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>. Keep names lowercase exactly as shown. <code class="docutils literal notranslate"><span class="pre">sandbox</span></code> is for scratch work, not assessed files you need to retain. You will bring coursework under version control in the <a class="reference internal" href="git.html"><span class="std std-doc">Version Control chapter</span></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>First rehearse the following file operations in a <strong>fresh temporary directory</strong>. The next cell creates one and enters it; everything through the search exercises should be done in this practice tree, not in existing coursework. Keep this terminal session open so its variables remain available. Do not copy real coursework into it or delete an existing coursework sandbox to repeat the lesson.</p>
+</div>
+<p>After practising, create the same structure in your chosen permanent coursework location, or use your existing structure. Temporary directories are not suitable for storing submissions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/Documents<span class="w"> </span><span class="c1"># same as /home/YourUserName/Documents</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">practice_root</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="w"> </span>-d<span class="k">)</span>
+<span class="nb">cd</span><span class="w"> </span><span class="s2">"</span><span class="nv">$practice_root</span><span class="s2">"</span>
+<span class="nb">pwd</span>
 </pre></div>
 </div>
 </div>
@@ -1036,7 +1027,7 @@ Hello on 2025-10-21
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls
 </pre></div>
 </div>
-<p>(You should see the contents of your <code class="docutils literal notranslate"><span class="pre">Documents</span></code> directory)</p>
+<p>The fresh practice directory should be empty.</p>
 <p>Now make the directory and <code class="docutils literal notranslate"><span class="pre">cd</span></code> to it</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1053,11 +1044,15 @@ Hello on 2025-10-21
 </div>
 </div>
 </div>
-<p>You can also combine commands using <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>. For example,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>CMEECourseWork<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>CMEECourseWork
+<p>You are now inside the practice <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code>. Commands joined with <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> run the right-hand command only if the left-hand command succeeds; <code class="docutils literal notranslate"><span class="pre">;</span></code> runs the next command regardless of that status.</p>
+<p>Predict the output of these two lines before trying them. <code class="docutils literal notranslate"><span class="pre">missing-directory</span></code> does not exist in this fresh tree:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>missing-directory<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Reached the next command"</span>
+<span class="nb">cd</span><span class="w"> </span>missing-directory<span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Reached the next command"</span>
+<span class="nb">pwd</span>
 </pre></div>
 </div>
-<p>Next, create your week1 sub-directory:</p>
+<p>Both <code class="docutils literal notranslate"><span class="pre">cd</span></code> attempts should fail and leave the working directory unchanged. Which <code class="docutils literal notranslate"><span class="pre">echo</span></code> runs? Why would <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">TARGET</span> <span class="pre">&amp;&amp;</span> <span class="pre">COMMAND</span></code> matter before a command that writes files?</p>
+<p>Next, create your <code class="docutils literal notranslate"><span class="pre">week1</span></code> subdirectory:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>week1
@@ -1079,20 +1074,28 @@ Hello on 2025-10-21
 </div>
 </div>
 </div>
-<p>Then, try to cd to it:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>Sandbox
+<p>From <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/week1</span></code>, predict what happens when the spelling differs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="nb">cd</span><span class="w"> </span>Sandbox<span class="o">)</span>
+<span class="nb">pwd</span>
 </pre></div>
 </div>
-<p>You will get <code class="docutils literal notranslate"><span class="pre">bash:</span> <span class="pre">cd:</span> <span class="pre">Sandbox:</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code> error, because in the UNIX/Linux file system, commands are case-sensitive. So “<code class="docutils literal notranslate"><span class="pre">Sandbox</span></code>” is not the same as “<code class="docutils literal notranslate"><span class="pre">sandbox</span></code>”.</p>
+<p>The parentheses run <code class="docutils literal notranslate"><span class="pre">cd</span></code> in a subshell, so your main shell stays in <code class="docutils literal notranslate"><span class="pre">week1</span></code> even if it succeeds. On a case-sensitive filesystem, <code class="docutils literal notranslate"><span class="pre">Sandbox</span></code> and <code class="docutils literal notranslate"><span class="pre">sandbox</span></code> are different names, so this produces a ‘No such file or directory’ error. On a case-insensitive filesystem it may succeed. What did you observe?</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>Mac OS has case insensitive commands</strong>: Unlike UNIX/Linux, MacOS allows execution of commands and file/directory names in a case-insensitive way. Keep this in mind from the perspective of platform independence - if you write your code to call a directory called, say, <code class="docutils literal notranslate"><span class="pre">Sandbox</span></code>, but the directory is actually called <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>, then you will not get an error, but your collaborator (me!) will, if she/he uses Linux!</p>
+<p><strong>Case sensitivity depends on the filesystem, not simply the OS.</strong> Many macOS volumes are case-insensitive while preserving the spelling of names; Linux filesystems are usually case-sensitive. This does not make all macOS commands or shell variables case-insensitive. Match case exactly in commands and paths so your work transfers between systems.</p>
 </div>
-<p>Next, try and remove <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>sandbox
+<p>Stay in the temporary tree’s <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/week1</span></code>. Predict what each command will do, then run it and explain any error:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>
+mkdir<span class="w"> </span>sandbox
+rm<span class="w"> </span>sandbox
+rmdir<span class="w"> </span>sandbox
+mkdir<span class="w"> </span>sandbox
+touch<span class="w"> </span>sandbox/disposable.txt
+rmdir<span class="w"> </span>sandbox
 </pre></div>
 </div>
-<p>You will get a <code class="docutils literal notranslate"><span class="pre">rm:</span> <span class="pre">cannot</span> <span class="pre">remove</span> <span class="pre">'sandbox':</span> <span class="pre">Is</span> <span class="pre">a</span> <span class="pre">directory</span></code> error because UNIX is conservative about allowing users to delete directories (this is one of the reasons why it is so stable). To delete it, you will need to use the <code class="docutils literal notranslate"><span class="pre">-r</span></code> (for <em>recursive</em>) flag:</p>
+<p>The first <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> fails because <code class="docutils literal notranslate"><span class="pre">sandbox</span></code> already exists. Plain <code class="docutils literal notranslate"><span class="pre">rm</span></code> refuses an ordinary directory. <code class="docutils literal notranslate"><span class="pre">rmdir</span></code> removes the empty directory, but its second attempt fails because the recreated directory contains a file. These are expected failures, not reasons to add <code class="docutils literal notranslate"><span class="pre">sudo</span></code> or <code class="docutils literal notranslate"><span class="pre">-f</span></code>.</p>
+<p>Inspect <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">sandbox</span></code> before the next command. It should contain only the disposable file created above. Now try removing this nonempty practice directory recursively:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-r<span class="w"> </span>sandbox
@@ -1109,7 +1112,7 @@ Hello on 2025-10-21
 </div>
 </div>
 </div>
-<p>Let’s try renaming it:</p>
+<p>Let’s try renaming it. On some case-insensitive filesystems, changing only the spelling’s case with <code class="docutils literal notranslate"><span class="pre">mv</span></code> may report that the source and destination are the same. If that happens, rename via a distinct unused name: <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">sandbox</span> <span class="pre">rename-demo</span> <span class="pre">&amp;&amp;</span> <span class="pre">mv</span> <span class="pre">rename-demo</span> <span class="pre">Sandbox</span></code>. Apply the same two-step approach when changing it back below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mv<span class="w"> </span>sandbox<span class="w"> </span>Sandbox
@@ -1160,7 +1163,7 @@ ls
 </div>
 </div>
 </div>
-<p>Note the hash mark (<code class="docutils literal notranslate"><span class="pre">#</span></code>) after the command above – anything after a <code class="docutils literal notranslate"><span class="pre">#</span></code> is ignored (so you can use it for commenting).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">#</span></code> above starts a comment because it is unquoted and begins a shell word. The shell ignores the rest of that line. A quoted <code class="docutils literal notranslate"><span class="pre">'#'</span></code>, or a hash inside a word such as <code class="docutils literal notranslate"><span class="pre">sample#1</span></code>, is literal text instead.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>touch<span class="w"> </span>TestFile<span class="w"> </span><span class="c1"># Or, "touch TestFile.txt"</span>
@@ -1199,73 +1202,87 @@ ls
 </div>
 </div>
 </div>
-<p>You could have made your project directories and subdirectories in one swoop by using the <code class="docutils literal notranslate"><span class="pre">-p</span></code> option of <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> (<code class="docutils literal notranslate"><span class="pre">cd</span></code> back up to <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code> first) with the <code class="docutils literal notranslate"><span class="pre">-p</span></code> flag for <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>Week1/<span class="o">{</span>Data,Code,results,Sandbox<span class="o">}</span>
+<section id="editing-a-file-and-changing-permissions">
+<h3>Editing a file and changing permissions<a class="headerlink" href="#editing-a-file-and-changing-permissions" title="Link to this heading">#</a></h3>
+<p>You should still be in the practice <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/week1/sandbox</span></code>. Create <code class="docutils literal notranslate"><span class="pre">notes.txt</span></code> with a plain-text editor (for example <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">notes.txt</span></code>, if installed), enter a sentence and save it. In nano, <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">O</span></code> then Return saves, and <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">X</span></code> exits. You can instead use your graphical editor to open this exact directory and save the same filename.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>
+cat<span class="w"> </span>notes.txt
+ls<span class="w"> </span>-l<span class="w"> </span>notes.txt
+chmod<span class="w"> </span>u-w<span class="w"> </span>notes.txt
+ls<span class="w"> </span>-l<span class="w"> </span>notes.txt
+chmod<span class="w"> </span>u+w<span class="w"> </span>notes.txt
+ls<span class="w"> </span>-l<span class="w"> </span>notes.txt
 </pre></div>
 </div>
-<p><em>How would you <code class="docutils literal notranslate"><span class="pre">cd</span></code> to <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code>?</em></p>
-<p>There are two reasonable options:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>../../../CMEECourseWork
+<p>Predict which permission character changes. <code class="docutils literal notranslate"><span class="pre">u</span></code> selects the owner; <code class="docutils literal notranslate"><span class="pre">-w</span></code> removes write permission and <code class="docutils literal notranslate"><span class="pre">+w</span></code> restores it. This does not prevent deletion by someone with the appropriate directory permissions. Edit and save a second sentence after restoring write permission.</p>
+</section>
+<section id="returning-to-the-project-root">
+<h3>Returning to the project root<a class="headerlink" href="#returning-to-the-project-root" title="Link to this heading">#</a></h3>
+<p>From <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/week1/sandbox</span></code>, <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">../..</span></code> takes you to <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code>. A second option uses the absolute path saved when we created the temporary directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">"</span><span class="nv">$practice_root</span><span class="s2">/CMEECourseWork"</span>
+<span class="nb">pwd</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>week1/<span class="o">{</span>data,code,results,sandbox<span class="o">}</span>
 </pre></div>
 </div>
-<p>Or,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/home/YourUserName/Documents/CMEECourseWork
-</pre></div>
-</div>
-<p>Try them both.</p>
-<p>Which is the same as <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/Documents/CMEECourseWork</span></code></p>
-<p><em>Which of these two would you choose and why?</em></p>
+<p>Bash expands the braces into four paths. <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span></code> creates missing parents and accepts directories that already exist. Compare that with the earlier plain <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> error. Use exactly the same lowercase spelling throughout. Remain at this practice project root for the next section.</p>
+</section>
 </section>
 <section id="command-arguments">
 <h2>Command arguments<a class="headerlink" href="#command-arguments" title="Link to this heading">#</a></h2>
-<p>Most UNIX commands accept arguments that modify their behavior. E.g., <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code> (ls “minus”l) lists the files in longer format. Some useful arguments:</p>
+<p>Most commands accept arguments. Options such as <code class="docutils literal notranslate"><span class="pre">-l</span></code> modify behaviour; operands such as paths specify what to act on. Options are command-specific: the same letter can mean different things to different commands.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-left"><p>Command/Argument</p></th>
+<tr class="row-odd"><th class="head text-left"><p>Command</p></th>
 <th class="head text-left"><p>What it does</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">DIr1</span> <span class="pre">DIr2</span></code></p></td>
-<td class="text-left"><p>Copy a directory recursively (i.e., including all the sub-directories and files).</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-R</span> <span class="pre">DIR1</span> <span class="pre">DIR2</span></code></p></td>
+<td class="text-left"><p>Copy recursively, including files and subdirectories.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-i</span> <span class="pre">FILENAME</span></code></p></td>
-<td class="text-left"><p>removes a file, but asks first (for safety).</p></td>
+<td class="text-left"><p>Ask before removing a file.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">DIr</span></code></p></td>
-<td class="text-left"><p>remove a directory recursively (i.e., including all the sub-directories and files).</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">DIR</span></code></p></td>
+<td class="text-left"><p>Remove a directory and its contents recursively.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-a</span></code></p></td>
-<td class="text-left"><p>List all files, including hidden ones.</p></td>
+<td class="text-left"><p>Include hidden entries.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-h</span></code></p></td>
-<td class="text-left"><p>List all files, with human-readable sizes (Mb, Gb).</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-lh</span></code></p></td>
+<td class="text-left"><p>Long format with human-readable sizes, such as K, M and G.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code></p></td>
-<td class="text-left"><p>List all files, long format.</p></td>
+<td class="text-left"><p>Long format.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-S</span></code></p></td>
-<td class="text-left"><p>List all files, order by size.</p></td>
+<td class="text-left"><p>Order by size, largest first.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-t</span></code></p></td>
-<td class="text-left"><p>List all files, order by modification time.</p></td>
+<td class="text-left"><p>Order by modification time, newest first.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-1</span></code></p></td>
-<td class="text-left"><p>List all files, one file per line.</p></td>
+<td class="text-left"><p>One entry per line (the option is the digit one).</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">Dir1/Dir2/Dir3</span></code></p></td>
-<td class="text-left"><p>Create the directory Dir3 and Dir1 and Dir2 if they do not already exist.</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-r</span></code></p></td>
+<td class="text-left"><p>Reverse the sorting order.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-R</span></code></p></td>
+<td class="text-left"><p>List subdirectories recursively.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">DIR1/DIR2/DIR3</span></code></p></td>
+<td class="text-left"><p>Create missing directories along this path.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">sort</span> <span class="pre">-n</span></code></p></td>
-<td class="text-left"><p>Sort all the lines, but use numeric values instead of dictionary (i.e., 11 follows 2).</p></td>
+<td class="text-left"><p>Sort using numeric values: 2 precedes 11.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>You can also combine command arguments / flags. Try:</p>
+<p>You should be at the practice <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code> root. You can combine options; compare the following commands:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>../../<span class="w"> </span><span class="c1"># cd two directory levels higher, assuming you are currently in CMEECourseWork/Week1/sandbox</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>
 </pre></div>
 </div>
 </div>
@@ -1294,7 +1311,7 @@ ls
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">-r</span></code> flag lists directory tree  recursively (through all subdirectories)</p>
+<p><code class="docutils literal notranslate"><span class="pre">-r</span></code> reverses the listing order; it does <strong>not</strong> descend into subdirectories. Compare with <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-R</span></code>, whose uppercase <code class="docutils literal notranslate"><span class="pre">R</span></code> means recursive. Options are case-sensitive.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lr<span class="w"> </span><span class="c1"># same as ls -l -r</span>
@@ -1328,7 +1345,7 @@ total 0
 </div>
 </div>
 </div>
-<p>The combines <code class="docutils literal notranslate"><span class="pre">-l</span></code> and <code class="docutils literal notranslate"><span class="pre">-r</span></code> to give you both the directory permissions info and when it was modfied while listing the directories and files recursively.</p>
+<p>This combines long format (<code class="docutils literal notranslate"><span class="pre">-l</span></code>) with reverse order (<code class="docutils literal notranslate"><span class="pre">-r</span></code>). It shows permissions and modification times, but does not list directory contents recursively. What would <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-lR</span></code> change?</p>
 </section>
 <section id="redirection-and-pipes">
 <h2>redirection and pipes<a class="headerlink" href="#redirection-and-pipes" title="Link to this heading">#</a></h2>
@@ -1379,7 +1396,7 @@ cat<span class="w"> </span>ListrootDir.txt
 </pre></div>
 </div>
 <p><em>What do you see?</em> Cool!</p>
-<p>We can also concatenate commands using “pipes” with “<code class="docutils literal notranslate"><span class="pre">|</span></code>” e.g., to count how many files are in root (<code class="docutils literal notranslate"><span class="pre">/</span></code>) directory:</p>
+<p>A pipe, <code class="docutils literal notranslate"><span class="pre">|</span></code>, connects the standard output of one command to the standard input of another. For example, <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">/</span> <span class="pre">|</span> <span class="pre">wc</span> <span class="pre">-l</span></code> counts newline characters in the listing, usually one per visible entry here. It is not a general file counter: entries can be directories, hidden names are omitted, and names can themselves contain newlines. Error messages normally go to a separate stream, standard error, and are not sent through this pipe.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>/<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
 </pre></div>
 </div>
@@ -1403,7 +1420,7 @@ cat<span class="w"> </span>ListrootDir.txt
 </section>
 <section id="wildcards">
 <h2>Wildcards<a class="headerlink" href="#wildcards" title="Link to this heading">#</a></h2>
-<p>We can use wildcards to find files based on their names (still in <code class="docutils literal notranslate"><span class="pre">Week1/Sandbox</span></code>):</p>
+<p>We can use wildcards to match filenames. You should still be in the practice <code class="docutils literal notranslate"><span class="pre">week1/sandbox</span></code>; the next commands create and enter a new <code class="docutils literal notranslate"><span class="pre">TestWild</span></code> directory. These fixtures are empty files because here we are investigating <strong>names</strong>, not contents or sizes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>TestWild
@@ -1479,7 +1496,12 @@ File1.csv  File1.txt  File2.csv  File2.txt  File4.csv  File4.txt
 </section>
 <section id="using-grep">
 <span id="id2"></span><h2>Using <code class="docutils literal notranslate"><span class="pre">grep</span></code><a class="headerlink" href="#using-grep" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">grep</span></code> is a command that matches strings in a file (why is this useful?). It is based on regular expressions (more on this <a class="reference internal" href="python.html#python-ii-python-regex"><span class="std std-ref">later</span></a>). Let’s explore some basic usage of <code class="docutils literal notranslate"><span class="pre">grep</span></code>. For a test file let’s download a list of protected species from the web (to <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>):</p>
+<p><code class="docutils literal notranslate"><span class="pre">grep</span></code> searches text and normally prints lines matching a pattern. Its patterns use regular expressions, which we will explore further in the <a class="reference internal" href="python.html#python-ii-python-regex"><span class="std std-ref">Python chapter</span></a>. Here we will use the supplied protected-species list.</p>
+<p>From <code class="docutils literal notranslate"><span class="pre">TestWild</span></code>, the next cell returns to <code class="docutils literal notranslate"><span class="pre">sandbox</span></code> and downloads the file. If <code class="docutils literal notranslate"><span class="pre">wget</span></code> is unavailable (as on many macOS installations), run the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command and use this alternative there:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fL<span class="w"> </span>-o<span class="w"> </span>spawannxs.txt<span class="w"> </span>https://raw.githubusercontent.com/MulQuaBio/MQB/main/content/data/spawannxs.txt
+</pre></div>
+</div>
+<p>Alternatively, copy the repository’s <code class="docutils literal notranslate"><span class="pre">content/data/spawannxs.txt</span></code> into this practice sandbox with your file manager. Choose one method, check that the file is present, then continue with the move to <code class="docutils literal notranslate"><span class="pre">../data</span></code> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>../<span class="w"> </span><span class="c1"># move one level up from TestWild, back to sandbox</span>
@@ -1719,11 +1741,15 @@ Psittacidae	<span class=" -Color -Color-Bold -Color-Bold-Red">Ara</span>		chloro
 <p>To print all the lines that do not match a pattern, use <span>-v</span>:</p>
 <p>Also try <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">-i</span> <span class="pre">-w</span> <span class="pre">-v</span> <span class="pre">ara</span> <span class="pre">spawannxs.txt</span></code></p>
 <p>This will produce a lot of output (which I will not show)! <em>What does this command do?</em></p>
-<p>To match one of several strings, use <code class="docutils literal notranslate"><span class="pre">grep&quot;string1\|string2”</span> <span class="pre">file</span></code>. <code class="docutils literal notranslate"><span class="pre">grep</span></code> can be used on multiple files, all files, using wildcards for filenames, etc – explore as and when you need.</p>
+<p>To match either of two patterns, use extended regular expressions with straight quotes and a space after the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grep<span class="w"> </span>-i<span class="w"> </span>-E<span class="w"> </span><span class="s1">'falco|ara'</span><span class="w"> </span>spawannxs.txt
+</pre></div>
+</div>
+<p>The quotes keep the shell from interpreting <code class="docutils literal notranslate"><span class="pre">|</span></code> as a pipe; here it means alternation to <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">-E</span></code>. Compare with <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">-i</span> <span class="pre">-w</span> <span class="pre">-E</span> <span class="pre">'falco|ara'</span> <span class="pre">spawannxs.txt</span></code>. Does matching a substring answer the same question as matching a whole word? <code class="docutils literal notranslate"><span class="pre">grep</span></code> prints matching <strong>lines</strong>, even when a line contains several matches. A status of 1 means no lines matched, not a syntax error.</p>
 </section>
 <section id="finding-files">
 <h2>Finding files<a class="headerlink" href="#finding-files" title="Link to this heading">#</a></h2>
-<p>It’s easy to find files in UNIX using, well, the <code class="docutils literal notranslate"><span class="pre">find</span></code> command! Let’s test it (make sure you are in <code class="docutils literal notranslate"><span class="pre">Sandbox</span></code>, not <code class="docutils literal notranslate"><span class="pre">Data</span></code>!)</p>
+<p><code class="docutils literal notranslate"><span class="pre">find</span></code> walks a directory tree and tests entries. You should currently be in the practice <code class="docutils literal notranslate"><span class="pre">week1/data</span></code>. The next command takes you to <code class="docutils literal notranslate"><span class="pre">week1/sandbox</span></code>; check with <code class="docutils literal notranslate"><span class="pre">pwd</span></code> before creating <code class="docutils literal notranslate"><span class="pre">TestFind</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>../sandbox<span class="w"> </span><span class="c1"># again, note the relative path!</span>
@@ -1823,7 +1849,7 @@ File3.txt
 </div>
 </div>
 </div>
-<p>You can limit the search to exclude sub-directories:</p>
+<p>You can limit how deeply <code class="docutils literal notranslate"><span class="pre">find</span></code> descends. The starting point <code class="docutils literal notranslate"><span class="pre">.</span></code> has depth 0, its immediate entries depth 1, and entries inside those directories depth 2. Thus <code class="docutils literal notranslate"><span class="pre">-maxdepth</span> <span class="pre">2</span></code> includes files in <code class="docutils literal notranslate"><span class="pre">Dir1</span></code>, <code class="docutils literal notranslate"><span class="pre">Dir2</span></code> and <code class="docutils literal notranslate"><span class="pre">Dir3</span></code>, but not the deeper <code class="docutils literal notranslate"><span class="pre">File111.txt</span></code>. <code class="docutils literal notranslate"><span class="pre">-maxdepth</span> <span class="pre">1</span></code> would restrict the search to immediate entries. <code class="docutils literal notranslate"><span class="pre">-maxdepth</span></code> is available in GNU find and current macOS find, but is not a POSIX option; check <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">find</span></code> on other systems.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>.<span class="w"> </span>-maxdepth<span class="w"> </span><span class="m">2</span><span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.txt"</span>
@@ -1838,7 +1864,7 @@ File3.txt
 </div>
 </div>
 </div>
-<p>You can exclude certain files:</p>
+<p>Negating a name test excludes matching names. Predict the following output: without <code class="docutils literal notranslate"><span class="pre">-type</span> <span class="pre">f</span></code>, directories (including <code class="docutils literal notranslate"><span class="pre">.</span></code>) can appear as well as files. How would adding <code class="docutils literal notranslate"><span class="pre">-type</span> <span class="pre">f</span></code> change the result?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>.<span class="w"> </span>-maxdepth<span class="w"> </span><span class="m">2</span><span class="w"> </span>-not<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.txt"</span>
@@ -1859,10 +1885,10 @@ File3.txt
 </div>
 </div>
 </div>
-<p>To find only directories:</p>
+<p>To find only directories whose names contain <code class="docutils literal notranslate"><span class="pre">dir</span></code>, ignoring case, use <code class="docutils literal notranslate"><span class="pre">-type</span> <span class="pre">d</span></code> with <code class="docutils literal notranslate"><span class="pre">-iname</span></code>. Quote the pattern so <strong>find</strong>, not the shell, interprets the wildcard. The same quoting rule applies to the earlier <code class="docutils literal notranslate"><span class="pre">-name</span></code> examples:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-iname<span class="w"> </span>*dir*
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-iname<span class="w"> </span><span class="s1">'*dir*'</span>
 </pre></div>
 </div>
 </div>
@@ -1877,96 +1903,13 @@ File3.txt
 </div>
 </div>
 </section>
-<section id="installing-or-removing-software-in-ubuntu">
-<h2>Installing or removing software in Ubuntu<a class="headerlink" href="#installing-or-removing-software-in-ubuntu" title="Link to this heading">#</a></h2>
-<p>You can install software in your <code class="docutils literal notranslate"><span class="pre">/home</span></code> directory. In UNIX you originally had to login as <code class="docutils literal notranslate"><span class="pre">root</span></code> (administrator). But in Ubuntu, it is sufficient to add <code class="docutils literal notranslate"><span class="pre">sudo</span></code> (<code class="docutils literal notranslate"><span class="pre">s</span></code>uper <code class="docutils literal notranslate"><span class="pre">u</span></code>ser <code class="docutils literal notranslate"><span class="pre">do</span></code>) in front of a command. To install packages in all Debian (including Ubuntu) distributions you need to use the <code class="docutils literal notranslate"><span class="pre">apt</span></code> group of commands which allow you to deal with various installation (and un-installation) tasks.</p>
-<hr class="docutils" />
-<figure class="align-default" id="unix-sudo">
-<a class="reference internal image-reference" href="../_images/sudo.png"><img alt="sudo" src="../_images/sudo.png" style="width: 250px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text"><strong><code class="docutils literal notranslate"><span class="pre">sudo</span></code> rules.</strong> <small>(Source: <a class="reference external" href="http://xkcd.com/149/">XKCD</a>)</small></span><a class="headerlink" href="#unix-sudo" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<hr class="docutils" />
-<section id="installing-from-the-main-repository">
-<h3>Installing from the main repository<a class="headerlink" href="#installing-from-the-main-repository" title="Link to this heading">#</a></h3>
-<p>You can install anything that is in the main Ubuntu package/software repository.</p>
-<p>★ Try installing r, which is pre-packaged the main Ubuntu repository:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>r-base
-</pre></div>
-</div>
-<p>This will prompt you for your password.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><strong>Using the <code class="docutils literal notranslate"><span class="pre">tab</span></code> key in terminal</strong>: Don’t forget to use the <code class="docutils literal notranslate"><span class="pre">tab</span></code> key in the terminal. It aut-ocompletes directory/file names for you (same in <code class="docutils literal notranslate"><span class="pre">r</span></code>and <code class="docutils literal notranslate"><span class="pre">python</span></code>, and/or provides a list of files in the current directory (hit <code class="docutils literal notranslate"><span class="pre">tab</span></code> twice after certain commands. For example, try double tab after typing <code class="docutils literal notranslate"><span class="pre">ls</span></code>at the bash prompt.)</p>
-</div>
-</section>
-<section id="enabling-additional-repositories">
-<h3>Enabling additional repositories<a class="headerlink" href="#enabling-additional-repositories" title="Link to this heading">#</a></h3>
-<p>You can enable additonal repositories that are already present (but not enabled by default) by using the Ubuntu “Software Centre” GUI. Launch Ubuntu Software Centre, and then Edit &gt; Software Sources &gt; Other Software (the exact approach will vary depnding on your Debian or Ubuntu distribution).</p>
-</section>
-<section id="installing-from-other-repositories">
-<h3>Installing from other repositories<a class="headerlink" href="#installing-from-other-repositories" title="Link to this heading">#</a></h3>
-<p>In addition there are other repositories you can access, but which first need to be auhtenticated locally for your system’s security and stability. There are typically available in the form of <em>Personal Package Archives</em> (PPAs). The general approach is:</p>
-<ul class="simple">
-<li><p>Find the repository’s web page (it’s Launchpad page)</p></li>
-<li><p>Look for “Adding this PPA to your system” on the page. Make a note of the PPA’s location, which has the format ppa:user/ppa-name.</p></li>
-<li><p>Open a terminal and enter: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">add-apt-repository</span> <span class="pre">ppa:user/ppa-name</span></code>. (replace ‘ppa:user/ppa-name’ with the PPA’s location that you noted above)</p></li>
-</ul>
-<p>Your system will now fetch the PPA’s key. This enables your system to verify that the packages in the PPA have not been interfered with since they were built.</p>
-<ul class="simple">
-<li><p>Finally, download the latest list of software from each repository archive on your system (all of them: main, additional, and extra ones you have added manually such as the PPA you just added. To do this, use:</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-</pre></div>
-</div>
-<p>You can now start installing software from the new repository.</p>
-<p>★ Try installing something that isn’t in the main repository – a weather indicator.</p>
-<p>For this, you first have to add the repository:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>ppa:atareao/atareao
-</pre></div>
-</div>
-<p>This will ask you to first approve the addition of this repository. Then, <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">update</span></code>, and then, finally,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>my-weather-indicator
-</pre></div>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><strong>Ubuntu repositories:</strong> Official repositories are defined in <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list</span></code>. You can enable or disable individual repositories by editing that file.</p>
-</div>
-</section>
-<section id="installing-from-downloaded-deb-files">
-<h3>Installing from downloaded <code class="docutils literal notranslate"><span class="pre">*.deb</span></code> files<a class="headerlink" href="#installing-from-downloaded-deb-files" title="Link to this heading">#</a></h3>
-<p>You can also install software from third-party sources by downloading an installable package archive. Such archives come with a <code class="docutils literal notranslate"><span class="pre">*.deb</span></code> extension.</p>
-<p>For example, you can install <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> this way. Let’s try it.</p>
-<p>★ First download and install the .deb package (64-bit) from their website (google it!). This will save it to your <code class="docutils literal notranslate"><span class="pre">Downloads</span></code> directory.Then <code class="docutils literal notranslate"><span class="pre">cd</span></code> to its location:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/Downloads
-</pre></div>
-</div>
-<p>This is same as typing <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/home/&lt;YourUserName&gt;/Downloads</span></code>. Then, you can install using:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>code_1.71.2-1663191218_amd64.deb<span class="w"> </span><span class="c1"># install, including dependencies</span>
-</pre></div>
-</div>
-<p>Installing the <code class="docutils literal notranslate"><span class="pre">.deb</span></code> package will automatically also install the softwarre’s apt repository and authorize it. That means henceforth, the program <code class="docutils literal notranslate"><span class="pre">code</span></code> will automatically auto-update during the regular system updates.</p>
-</section>
-<section id="removing-software">
-<h3>removing software<a class="headerlink" href="#removing-software" title="Link to this heading">#</a></h3>
-<p>You can also easily remove software by, well, using the <code class="docutils literal notranslate"><span class="pre">remove</span></code> command!</p>
-<p>You will find that the list of UNIX commands are quite exhaustive, and their names quite intuitive, as they should be. If you think a certain command with a certain name should exist, it very often does!</p>
-<p>★ Try removing the totem video player and installing the more versatile VLC player instead:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>remove<span class="w"> </span>totem
-</pre></div>
-</div>
-<p>and then,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>vlc
-</pre></div>
-</div>
-</section>
-</section>
 <section id="particularly-useful-unix-tools">
 <h2>Particularly useful UNIX tools<a class="headerlink" href="#particularly-useful-unix-tools" title="Link to this heading">#</a></h2>
-<p>That’s it for our introduction to UNIX. We have just scratched the surface, but hopefully you have seen the potential for using the the UNIX/Linux terminal in particular for performing important tasks efficiently. UNIX has an incredibly wide array of commandline tools that can make your life easier. Here is a list of particularly useful commands (that often belong to a bigger toolkit; some of these will have to be installed using <code class="docutils literal notranslate"><span class="pre">apt</span></code> as you have learned above):</p>
+<p>We have only scratched the surface. Many small command-line tools can be combined for scientific work. Some are already installed; others require platform-appropriate installation.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For a missing tool, first check its name and <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">-v</span></code> result. Ubuntu installation belongs in <a class="reference internal" href="../appendices/ubuntu-admin.html#ubuntu-packages"><span class="std std-ref">Install from configured Ubuntu repositories</span></a>, or <a class="reference internal" href="../appendices/ubuntu-admin.html#ubuntu-local-packages"><span class="std std-ref">Install a downloaded .deb only when needed</span></a> for a trusted downloaded package. macOS users should see <a class="reference internal" href="../appendices/macos-tools.html#macos-packages"><span class="std std-ref">Formulae, casks and maintenance</span></a>. On managed machines, ask the administrator rather than changing repositories or system permissions.</p>
+</div>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Tool</p></th>
@@ -1975,116 +1918,120 @@ File3.txt
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">top</span></code></p></td>
-<td class="text-left"><p>Find which processes are using your memory and cpu</p></td>
+<td class="text-left"><p>Inspect processes and their CPU/memory use.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">killall</span></code></p></td>
-<td class="text-left"><p>Kill processes (use with caution)</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">kill</span></code></p></td>
+<td class="text-left"><p>Send a signal to a process; check the process ID and use with care.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">grep</span></code></p></td>
-<td class="text-left"><p>Find patterns in directory and file names, as well as file contents; really useful for combining with other tools to perform operations on specific subsets of files and directories</p></td>
+<td class="text-left"><p>Search text for patterns, including text received through a pipe.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">find</span></code></p></td>
-<td class="text-left"><p>Find files and directories</p></td>
+<td class="text-left"><p>Search filesystem entries by name and other properties.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">pandoc</span></code></p></td>
-<td class="text-left"><p>Convert between document formats (e.g., \LaTeX and Word or Markdown and PDF)</p></td>
+<td class="text-left"><p>Convert document formats; some output formats require additional tools.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">convert</span></code></p></td>
-<td class="text-left"><p>Convert between file</p></td>
+<tr class="row-odd"><td class="text-left"><p>ImageMagick</p></td>
+<td class="text-left"><p>Convert and manipulate images (<code class="docutils literal notranslate"><span class="pre">magick</span></code> in version 7; older examples use <code class="docutils literal notranslate"><span class="pre">convert</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">pdftk</span></code></p></td>
-<td class="text-left"><p>Manipulate PDF files, like merging multple ones or splitting them</p></td>
+<td class="text-left"><p>Manipulate PDFs, such as merging or splitting documents.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">wget</span></code></p></td>
-<td class="text-left"><p>Download files from the web</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">wget</span></code> / <code class="docutils literal notranslate"><span class="pre">curl</span></code></p></td>
+<td class="text-left"><p>Transfer data, including downloading files from the web.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">rsync</span></code></p></td>
-<td class="text-left"><p>Sync folders on your computer, including on any atatched devices (like an external hard drive)</p></td>
+<td class="text-left"><p>Copy and synchronise files locally or over a network.</p></td>
 </tr>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">cron</span></code></p></td>
-<td class="text-left"><p>Set up automated tasks (like run a backup script based on <code class="docutils literal notranslate"><span class="pre">rsync</span></code>)</p></td>
+<td class="text-left"><p>Schedule recurring tasks on systems that provide it.</p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">unison</span></code></p></td>
-<td class="text-left"><p>Keep multiple computers synced</p></td>
+<td class="text-left"><p>Synchronise files between locations.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>You will next learn to automate the use of such tools using <a class="reference internal" href="shell-scripting.html"><span class="std std-doc">shell scripts</span></a>.</p>
-<p>To find out more about these commands and tools, look at their <code class="docutils literal notranslate"><span class="pre">man</span></code> pages. You can also use <code class="docutils literal notranslate"><span class="pre">whatis</span></code> for a brief description, or<code class="docutils literal notranslate"><span class="pre">--help</span></code> <em>after</em> the command for usage syntax.</p>
-<p>An of course, you can use the internet to get help on practically everything about UNIX – there is huge (and fast growing) community out there.</p>
+<p>Next you will learn to automate tools using <a class="reference internal" href="shell-scripting.html"><span class="std std-doc">shell scripts</span></a>. Consult <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">COMMAND</span></code> or <code class="docutils literal notranslate"><span class="pre">whatis</span> <span class="pre">COMMAND</span></code>. Many programs support <code class="docutils literal notranslate"><span class="pre">--help</span></code>, but that option is not universal; shell builtins in Bash can instead be explored with <code class="docutils literal notranslate"><span class="pre">help</span></code>, for example <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">cd</span></code>.</p>
 </section>
 <section id="practicals">
 <h2>Practicals<a class="headerlink" href="#practicals" title="Link to this heading">#</a></h2>
 <section id="instructions">
 <h3>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>review (especially if you got lost along the way) and make sure you can run and understand all the commands and get the expected outputs we have covered above.</p></li>
-<li><p>Make sure you have your directory organized with <code class="docutils literal notranslate"><span class="pre">code</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code> etc and the necessary files, under your coursework directory (e.g., <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/week1</span></code>).</p></li>
-<li><p>Along with the completeness of the practicals/exercises themselves, you will be marked on the basis of how complete and well-organized your directory structure and content is – in all coming weeks as well.</p></li>
-<li><p><em>Please put (judicious) comments in all of your script files.</em></p></li>
+<li><p>Review the commands above and explain their outcomes, including the deliberately failing examples. System-specific output may differ from the stored illustrations.</p></li>
+<li><p>Make sure your <strong>permanent</strong> coursework directory (e.g., <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/week1</span></code>) is organised with <code class="docutils literal notranslate"><span class="pre">code</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">results</span></code> and <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>, and contains the necessary files. The temporary rehearsal tree is not your submission directory.</p></li>
+<li><p>Along with completeness of the practicals/exercises themselves, you will be marked on how complete and well-organised your directory structure and content is, in all coming weeks as well.</p></li>
+<li><p>Please put judicious comments in all your script files.</p></li>
 </ul>
 </section>
 <section id="bash-command-challenge">
 <h3>Bash command challenge<a class="headerlink" href="#bash-command-challenge" title="Link to this heading">#</a></h3>
-<p>Here is a somewhat complicated bash command using two pipes:</p>
+<p>Here is a deliberately inefficient Bash pipeline using two pipes:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>ls<span class="w"> </span>-s<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-n<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-10
 </pre></div>
 </div>
-<p>Try it on the test directories and files we created in <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>.</p>
-<p>Here’s what this command does:</p>
+<p>The earlier empty files are useful for testing names, but poor fixtures for investigating sizes. In the <strong>temporary practice tree</strong>, create some different nonempty files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">"</span><span class="nv">$practice_root</span><span class="s2">/CMEECourseWork/week1/sandbox"</span>
+mkdir<span class="w"> </span>SizeChallenge
+<span class="nb">cd</span><span class="w"> </span>SizeChallenge
+<span class="nb">printf</span><span class="w"> </span><span class="s1">'oak\n'</span><span class="w"> </span>&gt;<span class="w"> </span>small.txt
+<span class="nb">printf</span><span class="w"> </span><span class="s1">'two field observations\n'</span><span class="w"> </span>&gt;<span class="w"> </span><span class="s2">"field notes.txt"</span>
+dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/zero<span class="w"> </span><span class="nv">of</span><span class="o">=</span>medium.bin<span class="w"> </span><span class="nv">bs</span><span class="o">=</span><span class="m">1024</span><span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">8</span>
+dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/zero<span class="w"> </span><span class="nv">of</span><span class="o">=</span>large.bin<span class="w"> </span><span class="nv">bs</span><span class="o">=</span><span class="m">1024</span><span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">32</span>
+ls<span class="w"> </span>-ls
+</pre></div>
+</div>
+<p>Run the original pipeline here. Predict the ordering first, and investigate ties. There are only four files, so <code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">-10</span></code> will display all four lines. Keep this exercise inside <code class="docutils literal notranslate"><span class="pre">SizeChallenge</span></code>, not a directory containing valuable data.</p>
+<p>Here’s what the original pipeline does:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">.</span> <span class="pre">-type</span> <span class="pre">f</span></code>:</p>
-<ul>
-<li><p>This searches recursively from the current directory (<code class="docutils literal notranslate"><span class="pre">.</span></code>) for all regular files (denoted by <code class="docutils literal notranslate"><span class="pre">-type</span> <span class="pre">f</span></code>).</p></li>
-<li><p>It doesn’t include directories or other file types in the result, just files.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">find</span></code> command is terminated by <code class="docutils literal notranslate"><span class="pre">;</span></code> (escaped here with <code class="docutils literal notranslate"><span class="pre">\</span></code> to prevent the shell from interpreting it)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">.</span> <span class="pre">-type</span> <span class="pre">f</span></code> searches recursively from <code class="docutils literal notranslate"><span class="pre">.</span></code> for regular files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-exec</span> <span class="pre">ls</span> <span class="pre">-s</span> <span class="pre">{}</span> <span class="pre">\;</span></code> runs a separate <code class="docutils literal notranslate"><span class="pre">ls</span></code> for each file. <code class="docutils literal notranslate"><span class="pre">{}</span></code> is replaced by the path; the escaped semicolon terminates the <code class="docutils literal notranslate"><span class="pre">-exec</span></code> action, not the whole shell command.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-s</span></code> reports <strong>allocated disk space in blocks</strong>, not the logical length of the file in bytes. GNU ls normally uses 1024-byte blocks; macOS/BSD ls normally uses 512-byte blocks. Environment settings can change units. <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-sk</span></code> requests 1024-byte units on these systems; consult <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">ls</span></code>. Compare with the byte-size column of <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code>. Small files can occupy the same number of blocks even when their contents differ in length; sparse files can have large logical sizes but little allocated space.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sort</span> <span class="pre">-n</span></code> sorts numerically by the leading block count, smallest first.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">-10</span></code> keeps up to ten lines. Under these controlled filename assumptions, these represent the files with the smallest allocated sizes, not necessarily the shortest contents.</p></li>
 </ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-exec</span> <span class="pre">ls</span> <span class="pre">-s</span> <span class="pre">{}</span> <span class="pre">\;</span></code>:</p>
-<ul>
-<li><p>For each file found, it executes the command <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-s</span> <span class="pre">{}</span></code>.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">{}</span></code> is a placeholder for the current file found by <code class="docutils literal notranslate"><span class="pre">find</span></code> - basically <code class="docutils literal notranslate"><span class="pre">{}</span></code> is replaced with the name of each file found.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-s</span></code> command lists the size of the file (in blocks, typically 512-byte blocks, but this can vary by system) followed by the file name on each of the files found in the current directory.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\;</span></code> signifies the end of the <code class="docutils literal notranslate"><span class="pre">-exec</span></code> command; ensures that the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command is run for each file found individually.</p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">|</span> <span class="pre">sort</span> <span class="pre">-n</span></code>:</p>
-<ul>
-<li><p>The output of the <code class="docutils literal notranslate"><span class="pre">find</span></code> command (which is a list of file sizes and names) is piped to the <code class="docutils literal notranslate"><span class="pre">sort</span> <span class="pre">-n</span></code> command.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">-n</span></code> option sorts the lines numerically based on the file sizes (the first column of the output of <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-s</span></code>).</p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">|</span> <span class="pre">head</span> <span class="pre">-10</span></code>:</p>
-<ul>
-<li><p>After sorting the file sizes in ascending order, the <code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">-10</span></code> command takes the first 10 lines.</p></li>
-<li><p>This effectively shows the 10 smallest files (by size, in blocks) found by the command.</p></li>
-</ul>
-</li>
-</ul>
-<p>Now do the following (and explain each of your answers in words):</p>
+<p>Before optimising, explore batching on a <strong>different task</strong>: displaying the paths of the text files in the earlier <code class="docutils literal notranslate"><span class="pre">TestWild</span></code> fixture.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>../TestWild<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s1">'*.txt'</span><span class="w"> </span>-exec<span class="w"> </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'path: %s\n'</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+find<span class="w"> </span>../TestWild<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s1">'*.txt'</span><span class="w"> </span>-exec<span class="w"> </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'path: %s\n'</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span>+
+</pre></div>
+</div>
+<p>Both should display the same paths (traversal order need not be fixed). The first invokes the command for each path; the second passes batches of paths as separate arguments. Batches respect command-line size limits, so <code class="docutils literal notranslate"><span class="pre">+</span></code> does not guarantee exactly one invocation. The path containing spaces in <code class="docutils literal notranslate"><span class="pre">SizeChallenge</span></code> provides a useful check when you apply this idea yourself.</p>
+<p>Now do the following, explaining each answer in words:</p>
 <ol class="arabic simple">
-<li><p>Modify the command so that it prints file sizes in human-readable format (kb, mb, etc.) (Hint: in what format does <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-s</span></code> print file sizes?).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\;</span></code> ensures that the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command is run for each file found individually; this can be slow since a new process is created for each file. Modify the command so that it runs faster. Basically so that <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-s</span></code> is run as many files as possible (not one at a time) (Hint: note that <code class="docutils literal notranslate"><span class="pre">ls</span></code> can take multiple file names as input, much like many other UNIX commands; look up  <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">find</span></code>, especially the part about the <code class="docutils literal notranslate"><span class="pre">-exec</span></code> option; for example, what does <code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">.</span> <span class="pre">-type</span> <span class="pre">f</span> <span class="pre">-exec</span> <span class="pre">ls</span> <span class="pre">-l</span> <span class="pre">{}</span> <span class="pre">+</span></code> do instead of <code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">.</span> <span class="pre">-type</span> <span class="pre">f</span> <span class="pre">-exec</span> <span class="pre">ls</span> <span class="pre">-l</span> <span class="pre">{}</span> <span class="pre">\;</span></code>?</p></li>
-<li><p>Can you find another, faster solution for doing this task (which also avoids calling <code class="docutils literal notranslate"><span class="pre">ls</span></code> repeatedly)? (Hint: look up <code class="docutils literal notranslate"><span class="pre">xargs</span></code>; you might need another pipe!)</p></li>
+<li><p>Modify the original pipeline so it prints sizes in human-readable units. Keep the intended size ordering: <code class="docutils literal notranslate"><span class="pre">sort</span> <span class="pre">-n</span></code> does not interpret unit suffixes, so compare values such as <code class="docutils literal notranslate"><span class="pre">900K</span></code> and <code class="docutils literal notranslate"><span class="pre">2M</span></code>. Consult <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">sort</span></code> for human-numeric sorting (<code class="docutils literal notranslate"><span class="pre">-h</span></code> where available), or consider when to format numbers for display.</p></li>
+<li><p>Modify the original pipeline so that <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-s</span></code> handles as many files per invocation as possible, instead of one at a time. Use <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">find</span></code> and the separate batching example above. Inspect the output when changing invocation shape: <code class="docutils literal notranslate"><span class="pre">ls</span></code> may add headings or a <code class="docutils literal notranslate"><span class="pre">total</span></code> line in some modes. Which lines actually represent files?</p></li>
+<li><p>Find another solution that avoids calling <code class="docutils literal notranslate"><span class="pre">ls</span></code> once per file. Investigate <code class="docutils literal notranslate"><span class="pre">xargs</span></code>. Before relying on your result, check how it handles <code class="docutils literal notranslate"><span class="pre">field</span> <span class="pre">notes.txt</span></code>: ordinary whitespace-separated input can split a single filename into several arguments, and quotes/backslashes can also be interpreted.</p></li>
 </ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Optional extension: investigate <code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">-print0</span></code> and <code class="docutils literal notranslate"><span class="pre">xargs</span> <span class="pre">-0</span></code> for transporting filenames separated by NUL bytes, including names with spaces or newlines. This protects argument boundaries; it does not automatically make a later line-based <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">|</span> <span class="pre">sort</span> <span class="pre">|</span> <span class="pre">head</span></code> report safe for newline-containing names. Our displayed-size exercise uses filenames without newlines. Do not confuse robust filename transport with sorting a human-readable report.</p>
+</div>
 </section>
 <section id="fasta-exercise">
 <h3>FASTA exercise<a class="headerlink" href="#fasta-exercise" title="Link to this heading">#</a></h3>
-<p>In the directory <code class="docutils literal notranslate"><span class="pre">/data/fasta</span></code> you will find some <a class="reference external" href="https://en.wikipedia.org/wiki/FASTA_format">FASTA files</a>. These files have an header starting with <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> followed by the name of the sequence and other metadata.  The sequence data start from the second line. Write a file called <code class="docutils literal notranslate"><span class="pre">unixPrac1.txt</span></code> with UNIX shell commands that do the following (number each command with a hashed comment like so – <code class="docutils literal notranslate"><span class="pre">#1</span></code>, <code class="docutils literal notranslate"><span class="pre">#2</span></code>, etc):</p>
+<p>The supplied files are in the book repository’s <code class="docutils literal notranslate"><span class="pre">content/data/fasta</span></code> directory, not an absolute <code class="docutils literal notranslate"><span class="pre">/data/fasta</span></code> directory on your computer. Copy the <code class="docutils literal notranslate"><span class="pre">fasta</span></code> directory into your permanent coursework <code class="docutils literal notranslate"><span class="pre">week1/data</span></code>, leaving the supplied originals unchanged. Work from <code class="docutils literal notranslate"><span class="pre">week1/code</span></code>, referring to inputs under <code class="docutils literal notranslate"><span class="pre">../data/fasta/</span></code>. The three filenames are <code class="docutils literal notranslate"><span class="pre">407228326.fasta</span></code>, <code class="docutils literal notranslate"><span class="pre">407228412.fasta</span></code> and <code class="docutils literal notranslate"><span class="pre">e_coli.fasta</span></code>.</p>
+<p>Each supplied <a class="reference external" href="https://en.wikipedia.org/wiki/FASTA_format">FASTA file</a> contains <strong>one record</strong>: a header starting with <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, followed by sequence data wrapped across lines. Removing just the first line is appropriate for these inputs, not for arbitrary multi-record FASTA files. Wrapping is a presentation choice, not part of the biological sequence.</p>
+<p>Write <code class="docutils literal notranslate"><span class="pre">unixPrac1.txt</span></code> with single-line UNIX commands, numbering each answer with a comment such as <code class="docutils literal notranslate"><span class="pre">#1</span></code>, <code class="docutils literal notranslate"><span class="pre">#2</span></code>, etc.:</p>
 <ul class="simple">
-<li><p>Count how many lines there are in each file</p></li>
-<li><p>Print everything starting from the second line for the <code class="docutils literal notranslate"><span class="pre">E.</span> <span class="pre">coli</span></code> genome</p></li>
-<li><p>Count the sequence length of this genome</p></li>
-<li><p>Count the matches of a particular sequence, “ATGC” in the genome of <em>E. coli</em> (hint: Start by removing the first line and removing newline characters)</p></li>
-<li><p>Compute the AT/GC ratio. That is, the (A+T)/(G+C) ratio (as a single number). This is a summary measure of base composition of double-stranded DNA. DNA from different organisms and lineages has different ratios of the A-to-T and G-to-C base pairs  (google “Chargaff’s rule”). For example, DNA from organisms that live in hot springs have a higher GC content, the GC base pair is more thermally stable.</p></li>
+<li><p>Count the lines in each file. Interpret <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span></code> as a <strong>newline count</strong>: an unterminated final line is not included in that count. The two numbered FASTA files lack a final newline; explain the distinction from counting displayed text lines.</p></li>
+<li><p>Print everything starting from the second line of <code class="docutils literal notranslate"><span class="pre">e_coli.fasta</span></code>.</p></li>
+<li><p>Count the sequence length of this genome: exclude its header and line endings, but include ambiguous nucleotide positions.</p></li>
+<li><p>Count occurrences of the literal motif <code class="docutils literal notranslate"><span class="pre">ATGC</span></code> in the <em>E. coli</em> sequence, not just the number of lines containing it. Remove the header and line breaks first so wrapping does not hide a motif. <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">-c</span></code> counts matching lines. Treat case consistently; ambiguity codes are not literal A, T, G or C matches. This particular motif cannot overlap with itself.</p></li>
+<li><p>Compute the AT/GC ratio, <span class="math notranslate nohighlight">\((A+T)/(G+C)\)</span>, as a single number, using counts of the four canonical DNA bases. This is not the same as the GC fraction, <span class="math notranslate nohighlight">\((G+C)/(A+T+G+C)\)</span>. Exclude ambiguous positions from these four counts without guessing their identities.</p></li>
 </ul>
-<p>Note that there may be some <code class="docutils literal notranslate"><span class="pre">Y</span></code> and <code class="docutils literal notranslate"><span class="pre">r</span></code>’s in DNA sequences, denoting bases where there is uncertainty about identity, with r denoting purine (A or G) and Y pyrimidine (C or T) ribonucleotides. No agreed symbols exist for the other possible combinations, but these too may arbitrarily be reprsented by some non ATGC letters. To handle these, the calculation should be done by keeping these extra letters in place. That is, <em>do not delete</em> them before calculating the ratio, as this will shift the sequences.</p>
+<p>DNA ambiguity codes are standardised by IUPAC: <code class="docutils literal notranslate"><span class="pre">R</span></code> means A or G, <code class="docutils literal notranslate"><span class="pre">Y</span></code> means C or T, <code class="docutils literal notranslate"><span class="pre">M</span></code> means A or C, <code class="docutils literal notranslate"><span class="pre">W</span></code> means A or T, and <code class="docutils literal notranslate"><span class="pre">N</span></code> means any base; other defined codes cover the remaining combinations. They denote DNA bases here, not ribonucleotides. Keep ambiguous symbols in the sequence used for length and motif calculations: deleting them could join previously separated bases and create a false motif. For example, removing <code class="docutils literal notranslate"><span class="pre">N</span></code> from <code class="docutils literal notranslate"><span class="pre">ATNGC</span></code> would invent <code class="docutils literal notranslate"><span class="pre">ATGC</span></code>.</p>
+<p>GC content affects duplex melting behaviour under specified conditions, but thermal stability also depends on sequence, salt and other factors. It is not valid to infer that every thermophile has a GC-rich genome, or to use a genome’s AT/GC ratio alone to diagnose its habitat.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For interpretation beyond these supplied inputs: when <code class="docutils literal notranslate"><span class="pre">G+C</span></code> is zero, the AT/GC ratio has no finite value; report it as undefined rather than zero. The supplied files have nonzero GC counts. This is a discussion of an edge case, not an additional submission task.</p>
+</div>
 <ul class="simple">
-<li><p>Save <code class="docutils literal notranslate"><span class="pre">unixPrac1.txt</span></code> in the <code class="docutils literal notranslate"><span class="pre">code</span></code> directory.</p></li>
-<li><p>Please make sure that each command calls the data from the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory!</p></li>
+<li><p>Save <code class="docutils literal notranslate"><span class="pre">unixPrac1.txt</span></code> in your permanent <code class="docutils literal notranslate"><span class="pre">code</span></code> directory.</p></li>
+<li><p>Each command must read its input from the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory via the appropriate relative path.</p></li>
 </ul>
-<p><em>Do not write any of the above as shell scripts</em> (that’s not been covered yet; see <a class="reference internal" href="shell-scripting.html"><span class="std std-doc">Shell Scripting Chapter</span></a> – each answer should be a single line solution made of (potentially piped together) UNIX commands.</p>
+<p>Do <strong>not</strong> turn these answers into shell scripts yet; each answer should be a single-line solution made of potentially piped UNIX commands. Automation comes next in the <a class="reference internal" href="shell-scripting.html"><span class="std std-doc">Shell Scripting chapter</span></a>.</p>
 </section>
 </section>
 <section id="readings-resources">
@@ -2097,14 +2044,7 @@ File3.txt
 <li><p>Lots of UNIX tutorials out there. Try <a class="reference external" href="http://software-carpentry.org/lessons.html">http://software-carpentry.org/lessons.html</a> (Chapter “shell”).</p></li>
 <li><p>The bash reference manual: <a class="reference external" href="https://www.gnu.org/software/bash/manual/bash.html">https://www.gnu.org/software/bash/manual/bash.html</a></p></li>
 </ul>
-</section>
-<section id="repositories-and-packages-in-ubuntu">
-<h3>repositories and packages in Ubuntu<a class="headerlink" href="#repositories-and-packages-in-ubuntu" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>read about <a class="reference external" href="https://help.ubuntu.com/community/SecureApt">Apt authentication</a> in Debian Linux distributions (including Ubuntu).</p></li>
-<li><p><a class="reference external" href="https://help.ubuntu.com/community/repositories/Ubuntu">What are repositories in Ubuntu?</a></p></li>
-<li><p><a class="reference external" href="https://help.ubuntu.com/community/repositories/Ubuntu">How to use repositories</a></p></li>
-</ul>
+<p>For Ubuntu installation, repositories and package-management reading, see <a class="reference internal" href="../appendices/ubuntu-admin.html#ubuntu-admin-resources"><span class="std std-ref">Sources and verification</span></a>.</p>
 </section>
 </section>
 </section>
@@ -2187,20 +2127,16 @@ File3.txt
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-files-and-directories">Exploring files and directories</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-your-coursework-directory-structure">Building your coursework directory structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-your-coursework-directory-structure">Building your coursework directory structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-a-file-and-changing-permissions">Editing a file and changing permissions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#returning-to-the-project-root">Returning to the project root</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-arguments">Command arguments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redirection-and-pipes">redirection and pipes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wildcards">Wildcards</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-grep">Using <code class="docutils literal notranslate"><span class="pre">grep</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-files">Finding files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-or-removing-software-in-ubuntu">Installing or removing software in Ubuntu</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-from-the-main-repository">Installing from the main repository</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-additional-repositories">Enabling additional repositories</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-from-other-repositories">Installing from other repositories</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-from-downloaded-deb-files">Installing from downloaded <code class="docutils literal notranslate"><span class="pre">*.deb</span></code> files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-software">removing software</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particularly-useful-unix-tools">Particularly useful UNIX tools</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals">Practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
@@ -2210,7 +2146,6 @@ File3.txt
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">readings &amp; resources</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general">General</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repositories-and-packages-in-ubuntu">repositories and packages in Ubuntu</a></li>
 </ul>
 </li>
 </ul>

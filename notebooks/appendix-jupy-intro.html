@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -69,7 +69,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Databases" href="appendix-databases.html" />
-    <link rel="prev" title="Tooling and Environments" href="../appendices/tooling.html" />
+    <link rel="prev" title="Python Installation and Environments" href="../appendices/python-environments.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -315,10 +315,13 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Introduction &amp; prerequisites</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../appendices/macos-tools.html">macOS Tools and Homebrew</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/python-environments.html">Python Installation and Environments</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Introduction to Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/ubuntu-admin.html">Linux Setup and Ubuntu Administration</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
 </ul>
@@ -587,12 +590,12 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-jupyter">Installing Jupyter</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-jupyter-interfaces">Modern Jupyter Interfaces</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-running-jupyter-in-a-virtual-environment">Installing and running jupyter in a virtual environment</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ubuntu-linux-installation">Ubuntu/Linux Installation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#macos-installation">macOS Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-running-jupyter-in-a-virtual-environment">Installing and running Jupyter in a virtual environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#language-kernels">Language Kernels</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-named-python-kernel">Optional named Python kernel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-r-kernel">The R kernel</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#language-kernels">Language Kernels</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-extensions-to-jupyter">Adding extensions to Jupyter</a></li>
 </ul>
 </li>
@@ -656,7 +659,7 @@
 <p>The Jupyter Notebook offers an interactive interface to multiple programming languages (including Python and r) that can be viewed and manipulated in web browsers.</p>
 <p>Jupyter notebooks can run code, and also store the code and a current snapshot of the output (graphics and text), together with notes (in markdown), in an editable document called a <em>notebook</em> (like this one you are currently reading).</p>
 <p>Thus a Jupyter notebook is similar to a <a class="reference external" href="https://www.wolfram.com/mathematica/">Mathematica</a>
-or <a class="reference external" href="https://www.maplesoft.com/">Maple</a> notebook. The difference is that Jupyter is free, fast improving, and unlike Mathematica or Maple notebooks, the Jupyter notebook can support <a class="reference external" href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">over 100 programming languages</a> (more on this <a class="reference internal" href="#Language-Kernels"><span class="xref myst">below</span></a>). Furthermore, Jupyter notebooks are saved on disk as a <a class="reference external" href="https://www.json.org/">JSON</a> files (with a .ipynb extension), so are fully open source and can be kept under version control.</p>
+or <a class="reference external" href="https://www.maplesoft.com/">Maple</a> notebook. The difference is that Jupyter is free, fast improving, and unlike Mathematica or Maple notebooks, the Jupyter notebook can support <a class="reference external" href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">over 100 programming languages</a> (more on this <a class="reference internal" href="#jupyter-kernels"><span class="std std-ref">below</span></a>). Furthermore, Jupyter notebooks are saved on disk as a <a class="reference external" href="https://www.json.org/">JSON</a> files (with a .ipynb extension), so are fully open source and can be kept under version control.</p>
 <section id="why-use-interactive-notebooks">
 <h3>Why use interactive notebooks?<a class="headerlink" href="#why-use-interactive-notebooks" title="Link to this heading">#</a></h3>
 <p>Jupyter is a great tool for “literate programming”; a software development style pioneered by (yes, again!) Donald Knuth. In his words:</p>
@@ -695,138 +698,62 @@ or <a class="reference external" href="https://www.maplesoft.com/">Maple</a> not
 </section>
 </section>
 <section id="installing-jupyter">
-<h2>Installing Jupyter<a class="headerlink" href="#installing-jupyter" title="Link to this heading">#</a></h2>
-<p>Please see project Jupyter’s <a class="reference external" href="http://jupyter.readthedocs.io/en/latest/install.html">instructions for installation</a>. Also, see <a class="reference external" href="https://imperial-fons-computing.github.io/jupyter.html">this</a>.</p>
+<span id="jupyter-installation"></span><h2>Installing Jupyter<a class="headerlink" href="#installing-jupyter" title="Link to this heading">#</a></h2>
+<p>First follow <a class="reference internal" href="../appendices/python-environments.html#python-environments"><span class="std std-ref">Python Installation and Environments</span></a> to choose Python, create a coursework environment and verify its interpreter. Then use <a class="reference internal" href="../appendices/python-environments.html#python-jupyter-install"><span class="std std-ref">Add a Jupyter interface</span></a> to install <strong>one</strong> interface into that environment.</p>
 <section id="modern-jupyter-interfaces">
 <h3>Modern Jupyter Interfaces<a class="headerlink" href="#modern-jupyter-interfaces" title="Link to this heading">#</a></h3>
-<p>While this tutorial focuses on Jupyter Notebook, you should be aware of modern alternatives:</p>
 <ul class="simple">
-<li><p><strong>JupyterLab</strong>: The next-generation interface for Jupyter, now the recommended default. It provides a more flexible, IDE-like environment with tabs, file browser, and extensible interface. Install with: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyterlab</span></code> and launch with: <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code></p></li>
-<li><p><strong>VS Code Jupyter Extension</strong>: VS Code provides excellent built-in support for Jupyter notebooks with features like IntelliSense, debugging, Git integration, and no need for a separate browser. This is covered in detail <a class="reference internal" href="#Using-Jupyter-in-VS-Code"><span class="xref myst">below</span></a>.</p></li>
-<li><p><strong>Classic Jupyter Notebook</strong>: The original interface (covered in this tutorial), still widely used and great for learning the basics.</p></li>
+<li><p><strong>Jupyter Notebook 7 and newer</strong> provides a focused browser-based notebook interface. It is not the old classic Notebook 6 interface.</p></li>
+<li><p><strong>JupyterLab</strong> provides a tabbed workspace for notebooks, text editors and terminals. It uses the same notebook format and kernel system.</p></li>
+<li><p><strong>VS Code</strong> can open notebooks through its Jupyter extension. Its notebook kernel must be selected independently of any terminal environment. Dedicated VS Code guidance will be added with the editor-setup phase.</p></li>
 </ul>
+<p>The cell-based lessons below apply to both browser interfaces. Some historical screenshots show classic Notebook menus; use the equivalent command in your installed interface rather than downgrading to match an image. There is no need to install both browser interfaces to use obsolete extensions.</p>
 </section>
 <section id="installing-and-running-jupyter-in-a-virtual-environment">
-<h3>Installing and running jupyter in a virtual environment<a class="headerlink" href="#installing-and-running-jupyter-in-a-virtual-environment" title="Link to this heading">#</a></h3>
-<p>It is recommended that you install Jupyter in a virtual environment (like <code class="docutils literal notranslate"><span class="pre">venv</span></code>) on Ubuntu or macOS because:</p>
-<ol class="arabic simple">
-<li><p><em>Dependency Isolation</em>: Jupyter requires various Python packages (like <code class="docutils literal notranslate"><span class="pre">notebook</span></code>, <code class="docutils literal notranslate"><span class="pre">ipykernel</span></code>, and others), which may depend on specific versions of libraries. By installing Jupyter in a virtual environment, you avoid conflicts between versions of these libraries that other projects or system applications might require. This isolation ensures that your Jupyter environment runs smoothly without interfering with or being affected by other Python projects.</p></li>
-<li><p><em>Easy Upgrades and Uninstallations</em>: Virtual environments allow you to manage, upgrade, or uninstall packages without affecting the global Python environment. You can test updates to Jupyter or other libraries without risk to your system’s stability.</p></li>
-<li><p><em>Security</em>: running Jupyter in a virtual environment minimizes security risks, as it reduces the exposure of the system’s core libraries to potentially vulnerable or outdated packages. If something goes wrong, the impact is contained within the virtual environment.</p></li>
-<li><p><em>Environment Customization</em>: Different projects may require specific versions of Jupyter or different sets of dependencies. By using virtual environments, you can easily switch between environments tailored for each project, helping to maintain consistency across teams or over time.</p></li>
-</ol>
-<p>This setup is particularly useful for data science and software development workflows, where dependencies and library versions change frequently.</p>
-<section id="ubuntu-linux-installation">
-<h4>Ubuntu/Linux Installation<a class="headerlink" href="#ubuntu-linux-installation" title="Link to this heading">#</a></h4>
-<p>Here are the steps to use <code class="docutils literal notranslate"><span class="pre">venv</span></code> to install and run Jupyter on Ubuntu:</p>
-<ol class="arabic">
-<li><p><em>Install Python and venv (if not already installed):</em></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-venv<span class="w"> </span>-y
-</pre></div>
+<h3>Installing and running Jupyter in a virtual environment<a class="headerlink" href="#installing-and-running-jupyter-in-a-virtual-environment" title="Link to this heading">#</a></h3>
+<p>A project environment keeps its Python packages separate from other projects. Use the creation and activation steps in <a class="reference internal" href="../appendices/python-environments.html#python-venv"><span class="std std-ref">Create and activate one environment</span></a>, then confirm Python and pip agree using <a class="reference internal" href="../appendices/python-environments.html#python-identity"><span class="std std-ref">Verify Python and pip agree</span></a>. Keep your notebooks outside the environment directory. Reopen an existing environment by activating it; you do not need to recreate or reinstall it each time.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A virtual environment is not a security sandbox. Notebook code still runs with your account’s permissions and can access your files and network. Dependency isolation does not make unfamiliar code safe.</p>
 </div>
-</li>
-</ol>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">-y</span></code> flag in the apt command on Ubuntu (and other Debian-based systems) automatically answers “yes” to any prompts that would normally appear during the installation, upgrade, or removal process. This is particularly useful when scripting installations, as it allows apt to run non-interactively without waiting for user input to confirm actions.</p>
-</div>
-<ol class="arabic" start="2">
-<li><p><em>Create a virtual environment:</em></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>myenv
-</pre></div>
-</div>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This will automatically create a <code class="docutils literal notranslate"><span class="pre">myenv</span></code> directory in your current location. You can create it in your home directory: <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">~/myenv</span></code>. Check this by using <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">~/</span></code></p>
-</div>
-<ol class="arabic" start="3">
-<li><p><em>Activate the virtual environment:</em></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/myenv/bin/activate
-</pre></div>
-</div>
-</li>
-<li><p><em>Install Jupyter within the virtual environment:</em></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>jupyter
-</pre></div>
-</div>
-<p>Or for JupyterLab (recommended):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab
-</pre></div>
-</div>
-</li>
-<li><p><em>(Optional) Deactivate the Virtual Environment:</em></p>
-<p>When you’re done installing / running (see below) jupyter, you can deactivate the virtual environment with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deactivate
-</pre></div>
-</div>
-</li>
-</ol>
-</section>
-<section id="macos-installation">
-<h4>macOS Installation<a class="headerlink" href="#macos-installation" title="Link to this heading">#</a></h4>
-<p>The process is very similar on macOS, with a few platform-specific notes:</p>
-<ol class="arabic">
-<li><p><em>Install Python (if not already installed):</em></p>
-<p>Python 3 comes pre-installed on recent macOS versions. Check with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>--version
-</pre></div>
-</div>
-<p>If you need to install or update Python, use <a class="reference external" href="https://brew.sh/">Homebrew</a>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>python3
-</pre></div>
-</div>
-</li>
-<li><p><em>Create a virtual environment:</em></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>myenv
-</pre></div>
-</div>
-<p>Or in your home directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>~/myenv
-</pre></div>
-</div>
-</li>
-<li><p><em>Activate the virtual environment:</em></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/myenv/bin/activate
-</pre></div>
-</div>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>On macOS, you’ll see <code class="docutils literal notranslate"><span class="pre">(myenv)</span></code> prepended to your terminal prompt when the environment is active, just like on Linux.</p>
-</div>
-<ol class="arabic" start="4">
-<li><p><em>Install Jupyter:</em></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>jupyter
-</pre></div>
-</div>
-<p>Or for JupyterLab:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab
-</pre></div>
-</div>
-</li>
-<li><p><em>Deactivate when done:</em></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deactivate
-</pre></div>
-</div>
-</li>
-</ol>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>macOS users: If you’re using the default Terminal app, the activation command works the same as on Linux. If you’re using <code class="docutils literal notranslate"><span class="pre">zsh</span></code> (the default shell on macOS Catalina and later), the activation process is identical.</p>
-</div>
-</section>
+<p>The notebook <strong>document</strong>, the browser/editor <strong>interface</strong>, the Jupyter <strong>server</strong>, and the language <strong>kernel</strong> are distinct. The server manages documents and connections; the kernel executes code and holds variables in memory. Installing a package into the server’s environment does not install it into every kernel environment.</p>
+<p>For package installation, interpreter diagnostics and recreating an environment, use <a class="reference internal" href="../appendices/python-environments.html#python-packages"><span class="std std-ref">Install the packages you need</span></a> and <a class="reference internal" href="../appendices/python-environments.html#python-recreate"><span class="std std-ref">Record and recreate an environment</span></a>. Do not modify the MQB book-build environment to run your coursework.</p>
 </section>
 <section id="language-kernels">
-<h3>Language Kernels<a class="headerlink" href="#language-kernels" title="Link to this heading">#</a></h3>
-<p>See <a class="reference external" href="https://imperial-fons-computing.github.io/jupyter.html">this</a> for instructions for installing the Python and r kernels. Or you can <a class="reference external" href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">go through here</a> (and install additional language kernels if you want).</p>
+<span id="jupyter-kernels"></span><h3>Language Kernels<a class="headerlink" href="#language-kernels" title="Link to this heading">#</a></h3>
+<p>The <strong>IPython kernel</strong> (<code class="docutils literal notranslate"><span class="pre">ipykernel</span></code>) runs Python code; other languages need their own kernels. Choose a Python kernel in the notebook’s kernel selector, then run this in a <strong>Python code cell</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">prefix</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Compare the executable with your terminal’s <a class="reference internal" href="../appendices/python-environments.html#python-identity"><span class="std std-ref">Verify Python and pip agree</span></a> check. A kernel name such as “Python 3” is a label, not proof of which environment is running. If imports fail, first check this path, install the package into that interpreter’s environment, and restart the kernel if needed. Changing environments in a separate terminal does not change an already-running kernel.</p>
+<section id="optional-named-python-kernel">
+<h4>Optional named Python kernel<a class="headerlink" href="#optional-named-python-kernel" title="Link to this heading">#</a></h4>
+<p>When the server and coursework kernel use the same environment, the supplied Python kernel is usually enough. If Jupyter runs elsewhere, activate the <strong>coursework Python environment</strong> and register its already-installed <code class="docutils literal notranslate"><span class="pre">ipykernel</span></code>. First inspect <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">kernelspec</span> <span class="pre">list</span></code> and choose an unused name; registration overwrites an existing spec with the same name.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>mqb-course<span class="w"> </span>--display-name<span class="w"> </span><span class="s2">"Python (MQB coursework)"</span>
+jupyter<span class="w"> </span>kernelspec<span class="w"> </span>list
+</pre></div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">--user</span></code> writes a small kernel registration for your account; it is <strong>not</strong> a <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">--user</span></code> package installation. Select “Python (MQB coursework)” in Jupyter and repeat the executable check. The <a class="reference external" href="https://ipython.readthedocs.io/en/stable/install/kernel_install.html">IPython kernel installation guide</a> also documents registration into a specific server environment with <code class="docutils literal notranslate"><span class="pre">--prefix</span></code>.</p>
+<p>Before retiring an environment, stop its kernels, inspect <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">kernelspec</span> <span class="pre">list</span></code>, and remove only its own obsolete registration with <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">kernelspec</span> <span class="pre">uninstall</span> <span class="pre">mqb-course</span></code> (substitute the exact name). Review the path and confirmation. This removes the registration, not the Python environment or notebooks; deleting an environment alone can leave a stale kernel entry.</p>
+</section>
+<section id="the-r-kernel">
+<span id="jupyter-r-kernel"></span><h4>The R kernel<a class="headerlink" href="#the-r-kernel" title="Link to this heading">#</a></h4>
+<p>R needs a separate R installation and the <code class="docutils literal notranslate"><span class="pre">IRkernel</span></code> R package; installing <code class="docutils literal notranslate"><span class="pre">ipykernel</span></code> does not provide R. Start <code class="docutils literal notranslate"><span class="pre">R</span></code> from a terminal where the intended Jupyter installation is available. In the <strong>R console</strong>, inspect <code class="docutils literal notranslate"><span class="pre">R.home()</span></code>, <code class="docutils literal notranslate"><span class="pre">.libPaths()</span></code> and <code class="docutils literal notranslate"><span class="pre">Sys.which(&quot;jupyter&quot;)</span></code>. If Jupyter is missing, fix that terminal’s environment before registration.</p>
+<p>For a machine with the required R/compiler/system-library prerequisites, install the released CRAN package into your writable R library and register it for your account:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">"IRkernel"</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"https://cloud.r-project.org"</span><span class="p">)</span>
+<span class="n">IRkernel</span><span class="o">::</span><span class="nf">installspec</span><span class="p">(</span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"mqb-r"</span><span class="p">,</span><span class="w"> </span><span class="n">displayname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"R (MQB)"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Choose an unused registration name first. Follow the current <a class="reference external" href="https://irkernel.github.io/installation/">IRkernel installation and platform requirements</a> when dependencies need compiling; do not install arbitrary system libraries merely because an R installation failed. A development GitHub install via <code class="docutils literal notranslate"><span class="pre">devtools</span></code> is not the normal CRAN route. After selecting “R (MQB)” in Jupyter, check <code class="docutils literal notranslate"><span class="pre">R.version.string</span></code>, <code class="docutils literal notranslate"><span class="pre">R.home()</span></code> and <code class="docutils literal notranslate"><span class="pre">.libPaths()</span></code> in an <strong>R cell</strong>, not a Python cell. Python virtual environments do not isolate R packages. R-kernel runtime verification is separate from the Python checks.</p>
+</section>
 </section>
 <section id="adding-extensions-to-jupyter">
-<h3>Adding extensions to Jupyter<a class="headerlink" href="#adding-extensions-to-jupyter" title="Link to this heading">#</a></h3>
-<p>Again, see <a class="reference external" href="https://imperial-fons-computing.github.io/jupyter.html">this</a> for installing jupyter extensions.</p>
+<span id="jupyter-extensions"></span><h3>Adding extensions to Jupyter<a class="headerlink" href="#adding-extensions-to-jupyter" title="Link to this heading">#</a></h3>
+<p>Start with the interface’s built-in facilities, including its table of contents, before adding extensions. Classic Notebook extensions such as <code class="docutils literal notranslate"><span class="pre">jupyter_contrib_nbextensions</span></code> and its configurator are not drop-in additions to Notebook 7 or JupyterLab. Consult the <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/migrate_to_notebook7.html">Notebook 7 migration guide</a> and each extension’s supported interface/version before installing it.</p>
+<p>For an extension you actually need, review its publisher and permissions, follow its current installation instructions in the <strong>server/interface environment</strong>, and test it on a disposable notebook. Record how to disable or uninstall it. An extension that can execute code has your account’s permissions. Do not enable all extensions or downgrade the main coursework environment just to reproduce a classic screenshot.</p>
 </section>
 </section>
 <section id="launching-running-a-jupyter-notebook">
@@ -1127,7 +1054,7 @@ pip<span class="w"> </span>install<span class="w"> </span>jupyter<span class="w"
 </section>
 <section id="exiting-a-jupyter-notebook">
 <h2>Exiting a Jupyter Notebook<a class="headerlink" href="#exiting-a-jupyter-notebook" title="Link to this heading">#</a></h2>
-<p>Exiting is easy. Just <code class="docutils literal notranslate"><span class="pre">CTrL+S</span></code> (or <code class="docutils literal notranslate"><span class="pre">Cmd+S</span></code> on macOS) to save and close the browser. The server will still be active in the bash terminal. You may then relaunch by typing the local url (e.g., by typing <code class="docutils literal notranslate"><span class="pre">http://localhost:8888/notebooks/MyJupyterNbName.ipynb</span></code>) in your web browser window, or by exiting the kernel with <code class="docutils literal notranslate"><span class="pre">CTrL+C</span></code> (or <code class="docutils literal notranslate"><span class="pre">Cmd+C</span></code> on macOS) and then relaunching as you <a class="reference internal" href="#Launching/running-a-Jupyter-Notebook"><span class="xref myst">originally did</span></a>.</p>
+<p>Exiting is easy. Just <code class="docutils literal notranslate"><span class="pre">Ctrl+S</span></code> (or <code class="docutils literal notranslate"><span class="pre">Cmd+S</span></code> on macOS) to save and close the browser. The server will still be active in the bash terminal. You may then relaunch by typing the local url (e.g., by typing <code class="docutils literal notranslate"><span class="pre">http://localhost:8888/notebooks/MyJupyterNbName.ipynb</span></code>) in your web browser window, or by exiting the kernel with <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> (or <code class="docutils literal notranslate"><span class="pre">Cmd+C</span></code> on macOS) and then relaunching as described in <a class="reference internal" href="#jupyter-installation"><span class="std std-ref">the installation guidance</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you’re using VS Code, simply close the notebook tab. The kernel will stop automatically when VS Code closes, or you can manually stop it using the kernel status button in the top right of the notebook.</p>
@@ -1315,12 +1242,12 @@ nbstripout<span class="w"> </span>--install
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../appendices/tooling.html"
+       href="../appendices/python-environments.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Tooling and Environments</p>
+        <p class="prev-next-title">Python Installation and Environments</p>
       </div>
     </a>
     <a class="right-next"
@@ -1360,12 +1287,12 @@ nbstripout<span class="w"> </span>--install
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-jupyter">Installing Jupyter</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-jupyter-interfaces">Modern Jupyter Interfaces</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-running-jupyter-in-a-virtual-environment">Installing and running jupyter in a virtual environment</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ubuntu-linux-installation">Ubuntu/Linux Installation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#macos-installation">macOS Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-running-jupyter-in-a-virtual-environment">Installing and running Jupyter in a virtual environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#language-kernels">Language Kernels</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-named-python-kernel">Optional named Python kernel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-r-kernel">The R kernel</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#language-kernels">Language Kernels</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-extensions-to-jupyter">Adding extensions to Jupyter</a></li>
 </ul>
 </li>

@@ -1,0 +1,915 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Linux Setup and Ubuntu Administration &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendices/ubuntu-admin';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Analysis in Python (Optional)" href="data-python.html" />
+    <link rel="prev" title="Databases" href="../notebooks/appendix-databases.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MulQuaBio - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-computing.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/python.html">Biological Computing in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/object-oriented-programming.html">Object-Oriented Programming</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/r.html">Biological Computing in R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-basic-stats.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/data-r.html">Data Management and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/exp-design.html">Experimental design and Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced E&amp;E Modelling and Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-eemodelling.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/populations.html">Single Populations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/micrm-to-logistic.html">From consumer–resource dynamics to logistic growth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/populations-practicals.html">Populations: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/interactions.html">Species interactions</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/competitive-dynamics.html">Competitive dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/competitive-dynamics-practicals.html">Competitive Dynamics: Practicals</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/predator-prey.html">Predator–prey dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/predator-prey-practicals.html">Predator–prey dynamics: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/epidemiology.html">Epidemiological dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/epidemiology-practicals.html">Epidemiological dynamics: Practicals</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/microbial-growth.html">Microbial Growth rates in R</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/mle.html">Model Fitting using Maximum Likelihood</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/appendix-assessment.html">MQB Coursework Assessment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_Bootcamp_Rubric.html">Computing Bootcamp Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/appendix-mini-proj.html">The Computing Miniproject</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_MiniProject_Rubric.html">Computing MiniProject Rubric</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="macos-tools.html">macOS Tools and Homebrew</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Linux Setup and Ubuntu Administration</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fappendices/ubuntu-admin.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/appendices/ubuntu-admin.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Linux Setup and Ubuntu Administration</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-an-environment">Choose an environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-a-terminal-and-identify-the-shell">Open a terminal and identify the shell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-ubuntu-installation">Optional Ubuntu installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#completion-and-command-history">Completion and command history</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-history-prefix-search-in-bash">Optional history-prefix search in Bash</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zsh-is-configured-separately">zsh is configured separately</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-local-shell-customisation">User-local shell customisation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-file-manager-shortcut">A file-manager shortcut</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-personal-script-directory-on-path">A personal script directory on PATH</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#administrator-privileges">Administrator privileges</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-configured-ubuntu-repositories">Install from configured Ubuntu repositories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repositories-components-and-trust">Repositories, components and trust</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-a-downloaded-deb-only-when-needed">Install a downloaded .deb only when needed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-packages-deliberately">Remove packages deliberately</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-verification">Sources and verification</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="linux-setup-and-ubuntu-administration">
+<span id="ubuntu-admin"></span><h1>Linux Setup and Ubuntu Administration<a class="headerlink" href="#linux-setup-and-ubuntu-administration" title="Link to this heading">#</a></h1>
+<p>This appendix is meant to help you set up your Linux operating system and tools. The <a class="reference internal" href="../notebooks/unix.html"><span class="std std-doc">Unix chapter</span></a> teaches everyday commands on Linux and macOS.</p>
+<p>Installation and package-management steps here are optional for the lessons, but important to understand if you administer your own or a course machine. Make system-wide changes only when you are authorised to do so.</p>
+<section id="choose-an-environment">
+<span id="ubuntu-environment"></span><h2>Choose an environment<a class="headerlink" href="#choose-an-environment" title="Link to this heading">#</a></h2>
+<p>Ubuntu is a Linux distribution derived from Debian. They share tools such as APT, but their releases, repositories and packages are not interchangeable. Do not add an Ubuntu repository to Debian simply because both use <code class="docutils literal notranslate"><span class="pre">.deb</span></code> files.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Your starting point</p></th>
+<th class="head text-left"><p>A suitable route</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Linux already installed</p></td>
+<td class="text-left"><p>Use its terminal. Follow your distribution’s documentation for software installation.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>macOS</p></td>
+<td class="text-left"><p>Use Terminal for the Unix lessons; see <a class="reference internal" href="macos-tools.html#macos-tools"><span class="std std-ref">macOS Tools and Homebrew</span></a> for optional additional tools. A Linux installation is not required.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Windows</p></td>
+<td class="text-left"><p>On a supported Windows system, <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/install">WSL</a> provides a Linux environment without repartitioning. Use WSL 2 where supported and permitted by your institution.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>ChromeOS</p></td>
+<td class="text-left"><p>On supported devices, enable the <a class="reference external" href="https://support.google.com/chromebook/answer/9145439">Linux development environment</a>. It normally provides Debian, not Ubuntu. Managed devices may restrict this feature.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>A managed or unsuitable personal machine</p></td>
+<td class="text-left"><p>Use an institution-provided Linux machine or approved remote environment. Ask your instructor for the supported access route.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>A need for an isolated Linux system</p></td>
+<td class="text-left"><p>A virtual machine runs a guest OS within your host OS. Choose a maintained virtualisation tool and an image compatible with your CPU architecture; check current licensing and institutional policy.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Git Bash on Windows is useful for Git and some shell commands, but it is not an Ubuntu system and does not supply Ubuntu’s APT environment. PowerShell is a different shell with different syntax. macOS utilities also differ from GNU/Linux utilities in some options and output.</p>
+</section>
+<section id="open-a-terminal-and-identify-the-shell">
+<span id="linux-terminal"></span><h2>Open a terminal and identify the shell<a class="headerlink" href="#open-a-terminal-and-identify-the-shell" title="Link to this heading">#</a></h2>
+<p>The <strong>terminal</strong> is the window; the <strong>shell</strong> interprets commands inside it. Ubuntu desktops commonly launch a terminal with <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">T</span></code>, or by searching for Terminal in the application menu. In Windows Terminal, choose your installed WSL distribution’s profile, not a PowerShell tab. On ChromeOS, open Terminal after enabling Linux. In VS Code, use Terminal &gt; New Terminal and check the selected profile and whether you are working locally or remotely.</p>
+<p>On macOS, use Spotlight (<code class="docutils literal notranslate"><span class="pre">Cmd</span> <span class="pre">+</span> <span class="pre">Space</span></code>) to find Terminal. Recent macOS installations normally start zsh, whereas these chapters use Bash. Enter <code class="docutils literal notranslate"><span class="pre">bash</span></code> to start a Bash session, then run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$BASH_VERSION</span><span class="s2">"</span>
+<span class="nb">pwd</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">exit</span></code> to leave that Bash session. This does not change your configured login shell. <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;$SHELL&quot;</span></code> usually reports the login-shell setting, not necessarily the interpreter currently running. On Linux, <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/etc/os-release</span></code> identifies the distribution; do not use an Ubuntu package command just because the terminal looks familiar.</p>
+</section>
+<section id="optional-ubuntu-installation">
+<span id="ubuntu-installation"></span><h2>Optional Ubuntu installation<a class="headerlink" href="#optional-ubuntu-installation" title="Link to this heading">#</a></h2>
+<p>For learning commands, an existing system, WSL or a virtual machine is usually enough. Native installation and dual boot are separate projects, not prerequisites for the practicals.</p>
+<ol class="arabic simple">
+<li><p>Read the current <a class="reference external" href="https://ubuntu.com/desktop/docs/en/latest/tutorial/install-ubuntu-desktop/">Ubuntu Desktop installation guide</a> and check supported hardware, image architecture, storage requirements and the release’s support period. Use an official Ubuntu download and its verification instructions.</p></li>
+<li><p>Back up important data to a separate device or service and check that it can be restored. Save any disk-encryption recovery keys somewhere safe before changing boot or disk settings. On a managed device, obtain IT approval first.</p></li>
+<li><p>For a virtual machine, create a new virtual disk rather than passing through a real disk. For a USB installer, remember that writing the image erases the selected USB drive. Check the target carefully.</p></li>
+<li><p>Try the live environment where available to check networking and hardware. Follow the current installer rather than an old screenshot sequence. <strong>Erase disk</strong> destroys the selected disk’s contents; choose it only for a disk you explicitly intend to replace.</p></li>
+<li><p>For dual boot, follow the guide’s current encryption and partitioning advice with assistance if needed. Do not improvise disk resizing during a class.</p></li>
+</ol>
+<p>Swap need not be a separate partition: Linux can use a swap file, and some configurations use compressed memory such as zram. A separate <code class="docutils literal notranslate"><span class="pre">/home</span></code> partition can help organise reinstalls, but <strong>is not a backup</strong> and does not protect against drive failure or selecting the wrong partition. The guided defaults are normally a better starting point than a course-specific partition recipe.</p>
+</section>
+<section id="completion-and-command-history">
+<span id="ubuntu-terminal-completion"></span><h2>Completion and command history<a class="headerlink" href="#completion-and-command-history" title="Link to this heading">#</a></h2>
+<p>These features solve different problems:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Feature</p></th>
+<th class="head text-left"><p>What it does</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Ordinary <code class="docutils literal notranslate"><span class="pre">Tab</span></code> completion</p></td>
+<td class="text-left"><p>Completes command names or paths; another press often lists ambiguous matches. No administrator setup is required.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Programmable completion</p></td>
+<td class="text-left"><p>Adds application-specific suggestions, such as options or Git branch names. Optional shell/package configuration may be needed.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Up/down arrows</p></td>
+<td class="text-left"><p>Usually recall previous/next commands in history.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">R</span></code> in usual Emacs-style bindings</p></td>
+<td class="text-left"><p>Searches backwards for text anywhere in a previous command; press again for another match. <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">G</span></code> cancels the search.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>History-prefix search</p></td>
+<td class="text-left"><p>Finds previous commands beginning with the text typed before the cursor. This is an optional alternative arrow-key binding, not Tab completion.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Try <code class="docutils literal notranslate"><span class="pre">Tab</span></code> and ordinary history recall first, in an interactive terminal rather than a notebook code cell. Read a recalled command before pressing Return. Do not put passwords or tokens in commands that may be recorded in shell history.</p>
+<section id="optional-history-prefix-search-in-bash">
+<span id="bash-history-prefix"></span><h3>Optional history-prefix search in Bash<a class="headerlink" href="#optional-history-prefix-search-in-bash" title="Link to this heading">#</a></h3>
+<p>The FoNS guide calls this “auto-complete”, but its example changes history search. Here we use <strong>your own</strong> Readline configuration, not <code class="docutils literal notranslate"><span class="pre">sudo</span></code> or an edit to <code class="docutils literal notranslate"><span class="pre">/etc/inputrc</span></code>.</p>
+<ol class="arabic simple">
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">printf</span> <span class="pre">'%s\n'</span> <span class="pre">&quot;${INPUTRC:-$HOME/.inputrc}&quot;</span></code> in Bash. If <code class="docutils literal notranslate"><span class="pre">INPUTRC</span></code> is explicitly set, it overrides the usual path; understand that configuration before continuing with the default-path example below.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">~/.inputrc</span></code> exists, make a backup under an unused name and open it in your text editor. Keep its current settings. If you create it for the first time on Ubuntu, put <code class="docutils literal notranslate"><span class="pre">$include</span> <span class="pre">/etc/inputrc</span></code> at the top to retain system defaults. On another platform, include that file only if it exists. This is Readline syntax, not a shell command.</p></li>
+<li><p>Add the following block <strong>once</strong>, outside any existing conditional block. It targets Bash’s Emacs editing mode, not vi mode or every Readline application:</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$if Bash
+$if mode=emacs
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\eOA": history-search-backward
+"\eOB": history-search-forward
+$endif
+$endif
+</pre></div>
+</div>
+<p>The two pairs cover common normal/application cursor-key sequences. Reload in your interactive Bash session:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">bind</span><span class="w"> </span>-f<span class="w"> </span>~/.inputrc
+</pre></div>
+</div>
+<p>Run <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">oak</span></code>, then <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, then type <code class="docutils literal notranslate"><span class="pre">echo</span> </code> without Return and press Up. It should recall <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">oak</span></code>, skipping <code class="docutils literal notranslate"><span class="pre">pwd</span></code>. Press Down to move towards newer matches; an empty prefix searches all history. <code class="docutils literal notranslate"><span class="pre">Tab</span></code> still completes names. If your terminal sends different key sequences, or a shell customisation overrides them, check the terminal settings and <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">bind</span></code> rather than editing system files.</p>
+<p>To undo, remove just the added block or restore your backup, then open a <strong>fresh Bash session</strong>. Merely rereading a file after deleting bindings does not necessarily restore the old bindings in an already-running shell. If the file was newly created solely for this change, remove that file to return to the previous default setup. Keep other changes you made later.</p>
+</section>
+<section id="zsh-is-configured-separately">
+<span id="zsh-history-prefix"></span><h3>zsh is configured separately<a class="headerlink" href="#zsh-is-configured-separately" title="Link to this heading">#</a></h3>
+<p>zsh uses its own line editor, not Bash’s Readline configuration. In an interactive zsh session, the following optional bindings implement prefix search for the same common arrow-key sequences:</p>
+<div class="highlight-zsh notranslate"><div class="highlight"><pre><span></span>bindkey<span class="w"> </span><span class="s1">'\e[A'</span><span class="w"> </span>history-beginning-search-backward
+bindkey<span class="w"> </span><span class="s1">'\e[B'</span><span class="w"> </span>history-beginning-search-forward
+bindkey<span class="w"> </span><span class="s1">'\eOA'</span><span class="w"> </span>history-beginning-search-backward
+bindkey<span class="w"> </span><span class="s1">'\eOB'</span><span class="w"> </span>history-beginning-search-forward
+</pre></div>
+</div>
+<p>Test with <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">oak</span></code>, <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, then <code class="docutils literal notranslate"><span class="pre">echo</span> </code> and Up before making the change persistent. These commands affect the current keymap. Custom editing modes, plugins and terminal key sequences can change the result; consult the <a class="reference external" href="https://zsh.sourceforge.io/Doc/Release/Zsh-Line-Editor.html">zsh line-editor manual</a>. To retain the bindings, back up and edit your user <code class="docutils literal notranslate"><span class="pre">~/.zshrc</span></code> once, placing them after any plugin setup that changes these keys. If you use a custom <code class="docutils literal notranslate"><span class="pre">ZDOTDIR</span></code>, its <code class="docutils literal notranslate"><span class="pre">.zshrc</span></code> is the relevant file instead. Open a new terminal to check. To undo, remove the added lines and open a fresh zsh session. Do not paste Readline configuration into <code class="docutils literal notranslate"><span class="pre">.zshrc</span></code>.</p>
+</section>
+</section>
+<section id="user-local-shell-customisation">
+<span id="ubuntu-shell-customisation"></span><h2>User-local shell customisation<a class="headerlink" href="#user-local-shell-customisation" title="Link to this heading">#</a></h2>
+<p>Try a change for the current session first. If it helps, put it in the appropriate <strong>user</strong> startup file, preserving the existing content and keeping a backup. Never replace an entire profile with a short course example.</p>
+<p>For interactive Bash terminals on Ubuntu, <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> is the usual home for aliases. Ubuntu’s supplied <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> often already sources <code class="docutils literal notranslate"><span class="pre">~/.bash_aliases</span></code>; inspect it before adding another source line. For zsh, interactive setup belongs in <code class="docutils literal notranslate"><span class="pre">~/.zshrc</span></code> (or under a custom <code class="docutils literal notranslate"><span class="pre">ZDOTDIR</span></code>). Bash login sessions instead read the first readable file among <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code>, <code class="docutils literal notranslate"><span class="pre">~/.bash_login</span></code> and <code class="docutils literal notranslate"><span class="pre">~/.profile</span></code>; their relationship to <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> depends on the existing setup. See also <a class="reference internal" href="macos-tools.html#macos-shellenv"><span class="std std-ref">Make brew available to your shell</span></a> for Homebrew. Edit the file your shell actually reads, not every profile you can find.</p>
+<section id="a-file-manager-shortcut">
+<h3>A file-manager shortcut<a class="headerlink" href="#a-file-manager-shortcut" title="Link to this heading">#</a></h3>
+<p>On an Ubuntu graphical desktop, <code class="docutils literal notranslate"><span class="pre">xdg-open</span> <span class="pre">.</span></code> normally opens the current directory in the preferred file manager; <code class="docutils literal notranslate"><span class="pre">nautilus</span> <span class="pre">.</span></code> is a GNOME Files-specific alternative. First check <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">-v</span> <span class="pre">xdg-open</span></code> and try it in a harmless directory. Neither is a suitable expectation on a headless server. On macOS the equivalent is <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">.</span></code>.</p>
+<p>If you want a short alias, check <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">f</span></code> for an existing command or alias, then try this <strong>Linux desktop</strong> example in your current Bash or zsh session:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span><span class="w"> </span><span class="nv">f</span><span class="o">=</span><span class="s1">'xdg-open .'</span>
+</pre></div>
+</div>
+<p>Type <code class="docutils literal notranslate"><span class="pre">f</span></code> to use it; <code class="docutils literal notranslate"><span class="pre">unalias</span> <span class="pre">f</span></code> removes it from the current session. Only add it to your chosen startup file if you want it in future terminals. Open a fresh terminal to verify persistence. Remove the added line and reopen the shell to undo. Aliases are conveniences for interactive use, not a dependency to assume in scripts.</p>
+</section>
+<section id="a-personal-script-directory-on-path">
+<span id="shell-persistent-path"></span><h3>A personal script directory on PATH<a class="headerlink" href="#a-personal-script-directory-on-path" title="Link to this heading">#</a></h3>
+<p>The shell chapter’s <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PATH=&quot;$PATH:$HOME/.local/bin&quot;</span></code> affects only that session and its children. A directory on PATH is searched for executable programs; putting a directory there does not make every file inside it executable.</p>
+<p>Create the directory with <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">&quot;$HOME/.local/bin&quot;</span></code>. Inspect your existing startup file first: Ubuntu’s <code class="docutils literal notranslate"><span class="pre">~/.profile</span></code> may already add it at login when it exists. If no existing setup does so, add the following to the appropriate user startup file once:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="s2">":</span><span class="nv">$PATH</span><span class="s2">:"</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span>*<span class="s2">":</span><span class="nv">$HOME</span><span class="s2">/.local/bin:"</span>*<span class="o">)</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">    </span>*<span class="o">)</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PATH</span><span class="s2">:</span><span class="nv">$HOME</span><span class="s2">/.local/bin"</span><span class="w"> </span><span class="p">;;</span>
+<span class="k">esac</span>
+</pre></div>
+</div>
+<p>This avoids duplicate entries when the file is reread and appends the directory so existing commands take precedence. Log out and back in for login-profile changes, or open a new terminal for interactive startup changes. Then check <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">-v</span> <span class="pre">boilerplate.sh</span></code> after placing your executable practice script there. Use <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">-a</span> <span class="pre">boilerplate.sh</span></code> to inspect competing definitions. Keep <code class="docutils literal notranslate"><span class="pre">.</span></code> and empty entries out of PATH; do not add your data or download directory. To undo, remove only the added block and start a fresh session of the relevant kind.</p>
+</section>
+</section>
+<section id="administrator-privileges">
+<span id="ubuntu-privileges"></span><h2>Administrator privileges<a class="headerlink" href="#administrator-privileges" title="Link to this heading">#</a></h2>
+<p>Your normal account owns its files under your home directory. System package management generally changes shared directories and requires administrator authorisation. <code class="docutils literal notranslate"><span class="pre">sudo</span></code> runs a permitted command as another user, normally root; it does not grant every account unlimited access. Read a command and its target before authorising it. A missing command or a permissions error is not, by itself, a reason to add <code class="docutils literal notranslate"><span class="pre">sudo</span></code>.</p>
+<p>On managed systems, ask the administrator for required software. Some tools can instead be installed in a user environment, but that is different from installing a system <code class="docutils literal notranslate"><span class="pre">.deb</span></code> package. Never use recursive permission changes to make system directories writable for coursework.</p>
+<figure class="align-default" id="unix-sudo">
+<a class="reference internal image-reference" href="../_images/sudo.png"><img alt="sudo" src="../_images/sudo.png" style="width: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text"><strong><code class="docutils literal notranslate"><span class="pre">sudo</span></code> rules.</strong> <small>(Source: <a class="reference external" href="https://xkcd.com/149/">XKCD</a>)</small></span><a class="headerlink" href="#unix-sudo" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="install-from-configured-ubuntu-repositories">
+<span id="ubuntu-packages"></span><h2>Install from configured Ubuntu repositories<a class="headerlink" href="#install-from-configured-ubuntu-repositories" title="Link to this heading">#</a></h2>
+<p>APT obtains software from configured repositories and resolves package dependencies. A package name need not match its executable name. For example, the package <code class="docutils literal notranslate"><span class="pre">r-base</span></code> provides R. Inspect availability first:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt<span class="w"> </span>show<span class="w"> </span>r-base
+apt<span class="w"> </span>policy<span class="w"> </span>r-base
+</pre></div>
+</div>
+<p>If you administer this Ubuntu machine and need R, the installation example is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>r-base
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">update</span></code> refreshes the local package index; it <strong>does not upgrade installed packages</strong>. <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">install</span></code> shows the proposed installation and dependencies for approval. Review the list and any removals before agreeing. Afterwards, <code class="docutils literal notranslate"><span class="pre">R</span> <span class="pre">--version</span></code> checks the executable. If <code class="docutils literal notranslate"><span class="pre">r-base</span></code> is unavailable, check your Ubuntu release and enabled components (it is normally in Universe), rather than adding a random PPA.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">upgrade</span></code> is the separate operation for upgrading installed packages within the configured release. It is not a release upgrade, and an update check does not mean it has already happened. Schedule upgrades sensibly and follow your institution’s policy. These are interactive <code class="docutils literal notranslate"><span class="pre">apt</span></code> examples; for automation consult <code class="docutils literal notranslate"><span class="pre">apt-get</span></code>’s documented interface.</p>
+</section>
+<section id="repositories-components-and-trust">
+<span id="ubuntu-repositories"></span><h2>Repositories, components and trust<a class="headerlink" href="#repositories-components-and-trust" title="Link to this heading">#</a></h2>
+<p>Ubuntu archive components include Main, Restricted, Universe and Multiverse, with differing maintenance, support and licensing arrangements. The Software &amp; Updates application, where available, can manage enabled sources; names and menus vary by release. Recent Ubuntu releases commonly use <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d/ubuntu.sources</span></code> in deb822 format. Older configurations use <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list</span></code>; additional sources can also live under <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d/</span></code>. Do not overwrite these files with a list from another machine or release.</p>
+<p>A Personal Package Archive (PPA) is a third-party source, usually hosted on Launchpad, not an automatic endorsement by Ubuntu. Adding any repository expands who supplies executable code and future updates to your system. Before doing so, identify the maintainer, check your release and architecture are supported, and read current signing-key and removal instructions. Modern instructions should scope trust to that source, for example with <code class="docutils literal notranslate"><span class="pre">Signed-By</span></code>, rather than importing an arbitrary globally trusted key.</p>
+<p>APT verifies signed repository metadata and the package hashes it authenticates. This establishes provenance and integrity relative to a trusted key, <strong>not that the software is safe or appropriate</strong>. Do not bypass signature checks to make an installation succeed.</p>
+<p>No third-party repository is required for these lessons. As an optional investigation, read a provider’s repository instructions and identify its trust, compatibility and update implications <strong>without adding it</strong>. Actual repository experiments belong on a disposable system with an understood recovery route. Removing a repository does not automatically uninstall or downgrade the packages it supplied.</p>
+</section>
+<section id="install-a-downloaded-deb-only-when-needed">
+<span id="ubuntu-local-packages"></span><h2>Install a downloaded .deb only when needed<a class="headerlink" href="#install-a-downloaded-deb-only-when-needed" title="Link to this heading">#</a></h2>
+<p>Prefer the distribution repository or the software provider’s current official instructions. For a downloaded package, verify its source and choose the correct architecture (<code class="docutils literal notranslate"><span class="pre">dpkg</span> <span class="pre">--print-architecture</span></code> reports the system’s package architecture). A checksum from the same untrusted download location is not independent proof of authenticity.</p>
+<p>After downloading a trusted package, open a terminal in its directory. <strong>Replace <code class="docutils literal notranslate"><span class="pre">package-name.deb</span></code> with the actual filename</strong>; these are example commands, not a download or a required exercise:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dpkg<span class="w"> </span>--info<span class="w"> </span>./package-name.deb
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./package-name.deb
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">./</span></code> tells APT this is a local file. APT can obtain available dependencies from configured repositories. By contrast, <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">dpkg</span> <span class="pre">-i</span> <span class="pre">./package-name.deb</span></code> does <strong>not</strong> fetch missing dependencies and can leave a package unconfigured. If installation fails, read the error rather than retrying with force options.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">.deb</span></code> can run privileged installation scripts. Some providers offer to add their update repository during installation; others do not. For <a class="reference external" href="https://code.visualstudio.com/docs/setup/linux">VS Code on Linux</a>, follow the vendor’s current instructions and review any repository prompt. Installing a local file neither guarantees future updates nor authorises every repository automatically.</p>
+</section>
+<section id="remove-packages-deliberately">
+<span id="ubuntu-removing-software"></span><h2>Remove packages deliberately<a class="headerlink" href="#remove-packages-deliberately" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">remove</span> <span class="pre">PACKAGE</span></code> removes a named installed package but normally leaves its system configuration. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">purge</span> <span class="pre">PACKAGE</span></code> also removes package-managed configuration, not necessarily user-created files in home directories. Replace <code class="docutils literal notranslate"><span class="pre">PACKAGE</span></code> with a package you deliberately intend to remove; read the proposed dependency changes before confirming. <code class="docutils literal notranslate"><span class="pre">autoremove</span></code> deals with dependencies no longer needed and also deserves review.</p>
+<p>Do not remove your desktop’s video player or other preinstalled software merely to practise. For a hands-on exercise, use a disposable VM: install one small optional package, inspect its files with <code class="docutils literal notranslate"><span class="pre">dpkg</span> <span class="pre">-L</span> <span class="pre">PACKAGE</span></code>, and remove that same package after checking the proposed changes. Stop if the plan removes essential or unrelated software. A VM snapshot can help undo the experiment; it is not a backup of your working data.</p>
+</section>
+<section id="sources-and-verification">
+<span id="ubuntu-admin-resources"></span><h2>Sources and verification<a class="headerlink" href="#sources-and-verification" title="Link to this heading">#</a></h2>
+<p>Adapted from the FoNS <a class="reference external" href="https://imperial-fons-computing.github.io/linux.html">Linux environment guide</a> (environment choices, installation and shell conveniences) and <a class="reference external" href="https://imperial-fons-computing.github.io/terminal.html">terminal guide</a>, alongside MQB’s relocated Ubuntu administration material. See <a class="reference internal" href="tooling.html#setup-attribution"><span class="std std-ref">Setup Guide Attribution</span></a> for the source revision and full licence. MQB revision: 30 September 2026.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ubuntu.com/desktop/docs/en/latest/tutorial/install-ubuntu-desktop/">Ubuntu Desktop installation</a>: current installation and hardware guidance.</p></li>
+<li><p><a class="reference external" href="https://ubuntu.com/server/docs/how-to/software/package-management/">Ubuntu package management</a>: APT, dpkg and repository configuration.</p></li>
+<li><p><a class="reference external" href="https://help.ubuntu.com/community/Repositories/Ubuntu">Ubuntu repositories</a> and <a class="reference external" href="https://help.ubuntu.com/community/SecureApt">APT authentication</a>: background reading; check dates and current release documentation before using historical commands.</p></li>
+<li><p><a class="reference external" href="https://www.gnu.org/software/bash/manual/bash.html">Bash reference manual</a> and local <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">bash</span></code>: startup files, Readline and history.</p></li>
+<li><p><a class="reference external" href="https://zsh.sourceforge.io/Doc/Release/Zsh-Line-Editor.html">zsh line editor</a>: zsh keybindings and history widgets.</p></li>
+</ul>
+<p>The user-local Bash examples were checked on Linux in a temporary home directory. Installation, partitioning, repositories and package changes were reviewed against documentation, not performed on the reviewer’s machine. zsh, macOS, Windows/WSL and ChromeOS setup were not runtime-tested. Return to the <a class="reference internal" href="../notebooks/unix.html"><span class="std std-doc">Unix lesson</span></a> or <a class="reference internal" href="../notebooks/shell-scripting.html"><span class="std std-doc">Shell Scripting</span></a> after any setup you need.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./appendices"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../notebooks/appendix-databases.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Databases <span class="tocSkip"></span></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="data-python.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Analysis in Python (Optional)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-an-environment">Choose an environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-a-terminal-and-identify-the-shell">Open a terminal and identify the shell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-ubuntu-installation">Optional Ubuntu installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#completion-and-command-history">Completion and command history</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-history-prefix-search-in-bash">Optional history-prefix search in Bash</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zsh-is-configured-separately">zsh is configured separately</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-local-shell-customisation">User-local shell customisation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-file-manager-shortcut">A file-manager shortcut</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-personal-script-directory-on-path">A personal script directory on PATH</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#administrator-privileges">Administrator privileges</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-configured-ubuntu-repositories">Install from configured Ubuntu repositories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repositories-components-and-trust">Repositories, components and trust</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-a-downloaded-deb-only-when-needed">Install a downloaded .deb only when needed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-packages-deliberately">Remove packages deliberately</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-verification">Sources and verification</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

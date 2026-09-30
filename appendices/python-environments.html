@@ -1,0 +1,838 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Python Installation and Environments &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendices/python-environments';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction to Jupyter" href="../notebooks/appendix-jupy-intro.html" />
+    <link rel="prev" title="macOS Tools and Homebrew" href="macos-tools.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MulQuaBio - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-computing.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/python.html">Biological Computing in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/object-oriented-programming.html">Object-Oriented Programming</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/r.html">Biological Computing in R</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-basic-stats.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/data-r.html">Data Management and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/exp-design.html">Experimental design and Data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced E&amp;E Modelling and Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-eemodelling.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/populations.html">Single Populations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/micrm-to-logistic.html">From consumer–resource dynamics to logistic growth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/populations-practicals.html">Populations: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/interactions.html">Species interactions</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/competitive-dynamics.html">Competitive dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/competitive-dynamics-practicals.html">Competitive Dynamics: Practicals</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/predator-prey.html">Predator–prey dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/predator-prey-practicals.html">Predator–prey dynamics: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/epidemiology.html">Epidemiological dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/epidemiology-practicals.html">Epidemiological dynamics: Practicals</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/microbial-growth.html">Microbial Growth rates in R</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/mle.html">Model Fitting using Maximum Likelihood</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/appendix-assessment.html">MQB Coursework Assessment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_Bootcamp_Rubric.html">Computing Bootcamp Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/appendix-mini-proj.html">The Computing Miniproject</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_MiniProject_Rubric.html">Computing MiniProject Rubric</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="tooling.html">Tooling and Environments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="macos-tools.html">macOS Tools and Homebrew</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Python Installation and Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="ubuntu-admin.html">Linux Setup and Ubuntu Administration</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fappendices/python-environments.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/appendices/python-environments.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Python Installation and Environments</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-and-check-an-interpreter">Choose and check an interpreter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-and-activate-one-environment">Create and activate one environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-python-and-pip-agree">Verify Python and pip agree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-packages-you-need">Install the packages you need</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-jupyter-interface">Add a Jupyter interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#record-and-recreate-an-environment">Record and recreate an environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-conda-route">Optional conda route</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-verification">Sources and verification</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python-installation-and-environments">
+<span id="python-environments"></span><h1>Python Installation and Environments<a class="headerlink" href="#python-installation-and-environments" title="Link to this heading">#</a></h1>
+<p>Use a separate Python environment for your coursework or project. The default route here is a supported Python 3 interpreter, the standard-library <code class="docutils literal notranslate"><span class="pre">venv</span></code> tool and interpreter-bound <code class="docutils literal notranslate"><span class="pre">pip</span></code>. Anaconda is not required; <a class="reference internal" href="#python-conda"><span class="std std-ref">Optional conda route</span></a> describes an alternative when your course or project already uses conda.</p>
+<p>These are <strong>student runtime</strong> instructions. The MQB repository’s own <code class="docutils literal notranslate"><span class="pre">.venv</span></code> and <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> support building the book; do not replace or upgrade them to follow this page. Work in your own coursework directory, keeping scripts, notebooks, data and results outside the environment directory.</p>
+<section id="choose-and-check-an-interpreter">
+<span id="python-interpreter"></span><h2>Choose and check an interpreter<a class="headerlink" href="#choose-and-check-an-interpreter" title="Link to this heading">#</a></h2>
+<p>Use the Python version specified by your course or project when one is given. Otherwise choose a stable, supported Python 3 release for which the packages you need provide compatible builds. Check the <a class="reference external" href="https://devguide.python.org/versions/">Python release status</a>; a newly released or prerelease interpreter is not automatically the best choice for an existing scientific project. Record the version you actually use.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Platform</p></th>
+<th class="head text-left"><p>Route</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Ubuntu/Linux</p></td>
+<td class="text-left"><p>Check <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">--version</span></code> first. Use your distribution’s supported Python and <code class="docutils literal notranslate"><span class="pre">venv</span></code> package, or an institution-provided interpreter. Do not replace <code class="docutils literal notranslate"><span class="pre">/usr/bin/python3</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>macOS</p></td>
+<td class="text-left"><p>Do not assume Python is preinstalled or suitable for coursework. Use the official <a class="reference external" href="https://www.python.org/downloads/macos/">python.org installer</a> or the Python formula from <a class="reference internal" href="macos-tools.html#macos-tools"><span class="std std-ref">macOS Tools and Homebrew</span></a>; inspect existing installations before adding another.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Native Windows</p></td>
+<td class="text-left"><p>Follow Python’s current <a class="reference external" href="https://docs.python.org/3/using/windows.html">Windows installation guide</a>. It now documents the Python install manager from <a class="reference external" href="http://python.org">python.org</a> or the Microsoft Store. Distinguish that manager from the older <code class="docutils literal notranslate"><span class="pre">py</span></code> launcher; use <code class="docutils literal notranslate"><span class="pre">py</span> <span class="pre">--version</span></code> to check your selected interpreter.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Windows/WSL or ChromeOS Linux</p></td>
+<td class="text-left"><p>Choose the Linux environment first via <a class="reference internal" href="ubuntu-admin.html#ubuntu-environment"><span class="std std-ref">Choose an environment</span></a>, then use its Linux interpreter and paths. A Windows Python environment is not interchangeable with one inside WSL. ChromeOS’s Linux container is usually Debian, not Ubuntu.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Managed machine</p></td>
+<td class="text-left"><p>Use the institution’s supplied interpreter or ask IT for the required packages. Administrator access is not needed just to create an environment in a writable directory.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>On Ubuntu, if Python or <code class="docutils literal notranslate"><span class="pre">venv</span></code> is missing, an authorised administrator can install the distribution packages below after reviewing <a class="reference internal" href="ubuntu-admin.html#ubuntu-packages"><span class="std std-ref">Install from configured Ubuntu repositories</span></a>. These are Ubuntu system-package commands, not <code class="docutils literal notranslate"><span class="pre">pip</span></code> commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3<span class="w"> </span>python3-venv
+</pre></div>
+</div>
+<p>Other distributions and separately installed Python versions may need differently named packages. Read any <code class="docutils literal notranslate"><span class="pre">ensurepip</span></code>/<code class="docutils literal notranslate"><span class="pre">venv</span></code> error rather than trying unrelated system changes.</p>
+<p>In a Linux/macOS terminal, inspect the interpreter you intend to use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>python3
+python3<span class="w"> </span>--version
+python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sys; print(sys.executable)"</span>
+</pre></div>
+</div>
+<p>On native Windows, use <code class="docutils literal notranslate"><span class="pre">py</span> <span class="pre">--version</span></code> and <code class="docutils literal notranslate"><span class="pre">py</span> <span class="pre">-c</span> <span class="pre">&quot;import</span> <span class="pre">sys;</span> <span class="pre">print(sys.executable)&quot;</span></code>. With the new install manager, <code class="docutils literal notranslate"><span class="pre">py</span> <span class="pre">list</span></code> lists runtimes; the older launcher supports <code class="docutils literal notranslate"><span class="pre">py</span> <span class="pre">--list</span></code>. Follow the corresponding guide if commands resolve unexpectedly. You can always create an environment using the full path of a verified Python executable.</p>
+</section>
+<section id="create-and-activate-one-environment">
+<span id="python-venv"></span><h2>Create and activate one environment<a class="headerlink" href="#create-and-activate-one-environment" title="Link to this heading">#</a></h2>
+<p>In your terminal, change to your <strong>own coursework/project root</strong>, not its <code class="docutils literal notranslate"><span class="pre">code</span></code> subdirectory. Start outside another active environment (<code class="docutils literal notranslate"><span class="pre">deactivate</span></code> for <code class="docutils literal notranslate"><span class="pre">venv</span></code>, or <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code> for conda). The examples use <code class="docutils literal notranslate"><span class="pre">.venv</span></code> in this current directory. If it already exists, inspect and reuse it; do not recreate an unknown environment over the top of it.</p>
+<p>For <strong>Bash or zsh on Linux/macOS/WSL</strong>, create it once:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</pre></div>
+</div>
+<p>For <strong>native Windows PowerShell</strong>, create it once:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">py</span> <span class="n">-m</span> <span class="n">venv</span> <span class="p">.</span><span class="n">venv</span>
+<span class="p">.\.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
+</pre></div>
+</div>
+<p>For Windows Command Prompt, activation is <code class="docutils literal notranslate"><span class="pre">.venv\Scripts\activate.bat</span></code>. Git Bash with Windows Python uses <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">.venv/Scripts/activate</span></code>; it is not the same as WSL’s Linux environment.</p>
+<p>Activation changes command lookup in the current terminal. In each new terminal, return to the same project root and run <strong>only the activation command</strong>, not environment creation. For other shells, consult the <a class="reference external" href="https://docs.python.org/3/library/venv.html#how-venvs-work">venv activation table</a>.</p>
+<p>If PowerShell blocks activation, do not change machine-wide or persistent execution policy just for this lesson. Activation is optional: run the environment’s Python directly instead:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">.\.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-m</span> <span class="n">pip</span> <span class="p">-</span><span class="n">-version</span>
+<span class="p">.\.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">-c</span> <span class="s2">"import sys; print(sys.executable)"</span>
+</pre></div>
+</div>
+<p>Use that executable in place of <code class="docutils literal notranslate"><span class="pre">python</span></code> in subsequent commands when working without activation. On Linux/macOS the equivalent is <code class="docutils literal notranslate"><span class="pre">.venv/bin/python</span></code> from the project root. With a quoted PowerShell executable path, use the call operator <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>.</p>
+</section>
+<section id="verify-python-and-pip-agree">
+<span id="python-identity"></span><h2>Verify Python and pip agree<a class="headerlink" href="#verify-python-and-pip-agree" title="Link to this heading">#</a></h2>
+<p>After activation, run these in the <strong>terminal</strong>, not at Python’s <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> prompt:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>--version
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sys; print(sys.executable); print(sys.prefix); print(sys.base_prefix)"</span>
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>For a <code class="docutils literal notranslate"><span class="pre">venv</span></code>, the executable and <code class="docutils literal notranslate"><span class="pre">sys.prefix</span></code> should point into your project’s <code class="docutils literal notranslate"><span class="pre">.venv</span></code>; <code class="docutils literal notranslate"><span class="pre">sys.base_prefix</span></code> identifies the underlying Python installation and should differ. The path printed by <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">--version</span></code> should also be inside that environment. A changed terminal prompt alone is not proof. A notebook or editor may select a different interpreter independently; check <code class="docutils literal notranslate"><span class="pre">sys.executable</span></code> there too.</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span></code> uses the Python you just inspected, avoiding ambiguity between separate <code class="docutils literal notranslate"><span class="pre">pip</span></code>, <code class="docutils literal notranslate"><span class="pre">pip3</span></code> and Python installations. An <em>externally managed environment</em> error normally means you are trying to modify a distributor-managed Python rather than your project environment. Check the paths and activate or recreate the intended environment; do not work around it with <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pip</span></code>, <code class="docutils literal notranslate"><span class="pre">--break-system-packages</span></code> or a blanket <code class="docutils literal notranslate"><span class="pre">--user</span></code> installation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A virtual environment separates Python packages, not permissions. Code run inside it can still read, modify or delete files accessible to your account and use the network. It is not a security sandbox. Install packages from trusted sources and inspect unfamiliar scripts/notebooks before executing them.</p>
+</div>
+</section>
+<section id="install-the-packages-you-need">
+<span id="python-packages"></span><h2>Install the packages you need<a class="headerlink" href="#install-the-packages-you-need" title="Link to this heading">#</a></h2>
+<p>With identity checks passing, a small starting set for the Python lessons is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>matplotlib<span class="w"> </span>ipython
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>check
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import numpy, matplotlib; print(numpy.__version__); print(matplotlib.__version__)"</span>
+</pre></div>
+</div>
+<p>Add packages such as <code class="docutils literal notranslate"><span class="pre">scipy</span></code> or <code class="docutils literal notranslate"><span class="pre">pandas</span></code> when the relevant lesson requires them. Use a project’s supplied dependency file when available instead of choosing unrelated versions. Installing packages downloads and runs third-party software; follow institutional network and package-source policies. If an install tries to compile a package, check interpreter/architecture support and available wheels before installing a large compiler toolchain.</p>
+<p>To enter IPython, run <code class="docutils literal notranslate"><span class="pre">ipython</span></code> in the activated terminal; <code class="docutils literal notranslate"><span class="pre">exit()</span></code> returns to the shell. Run coursework scripts with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">code/script_name.py</span></code>, substituting your actual filename and respecting any working-directory requirements stated by the lesson.</p>
+</section>
+<section id="add-a-jupyter-interface">
+<span id="python-jupyter-install"></span><h2>Add a Jupyter interface<a class="headerlink" href="#add-a-jupyter-interface" title="Link to this heading">#</a></h2>
+<p>Choose <strong>one</strong> interface initially. These commands assume the same activated, verified environment:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Interface</p></th>
+<th class="head text-left"><p>Install</p></th>
+<th class="head text-left"><p>Launch</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Jupyter Notebook 7 or newer</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">notebook</span> <span class="pre">ipykernel</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">notebook</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>JupyterLab</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyterlab</span> <span class="pre">ipykernel</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">jupyterlab</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Notebook is a focused notebook interface; JupyterLab adds a tabbed workspace for notebooks, editors and terminals. Both use kernels to run code. They can coexist, but neither requires installing the other as a separate course step. Old classic-Notebook extensions are not a reason to install both.</p>
+<p>Continue with the <a class="reference internal" href="../notebooks/appendix-jupy-intro.html"><span class="std std-doc">Jupyter appendix</span></a> for launching from your coursework directory, selecting and checking a kernel, saving work and shutting down. Installing into the environment does not select that environment in every editor or existing notebook server.</p>
+</section>
+<section id="record-and-recreate-an-environment">
+<span id="python-recreate"></span><h2>Record and recreate an environment<a class="headerlink" href="#record-and-recreate-an-environment" title="Link to this heading">#</a></h2>
+<p>Keep <code class="docutils literal notranslate"><span class="pre">.venv/</span></code> out of version control, adding an ignore entry if needed. Keep notebooks, code, input data and generated results elsewhere. Environment directories are generally not portable between machines, paths or operating systems; recreate them instead of copying or committing them.</p>
+<p>From your project root and active environment, record the package versions under an <strong>unused filename</strong> (shell redirection overwrites an existing file):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements-coursework.txt
+python<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>Review the file before sharing: it can contain local paths or private package URLs. Record the Python version, operating system, relevant external tools and direct dependencies alongside it. <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">freeze</span></code> is a snapshot, not a cross-platform lockfile or a guarantee that an analysis is reproducible.</p>
+<p>Try recreation alongside the original, using the <strong>same chosen base interpreter</strong> and a new name such as <code class="docutils literal notranslate"><span class="pre">.venv-recreated</span></code>. On Linux/macOS, after recording dependencies:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deactivate
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv-recreated
+<span class="nb">source</span><span class="w"> </span>.venv-recreated/bin/activate
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-coursework.txt
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>check
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">python3</span></code> now names a different base interpreter, use the verified original interpreter’s path instead. Native Windows uses <code class="docutils literal notranslate"><span class="pre">py</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">.venv-recreated</span></code> and the matching Windows activation command above. Repeat the identity/import checks and run a small trusted script or notebook before retiring the old environment. Keep the dependency record in your project; it is not the MQB book-build requirements file.</p>
+<p>When finished, <code class="docutils literal notranslate"><span class="pre">deactivate</span></code> leaves the current <code class="docutils literal notranslate"><span class="pre">venv</span></code> without deleting it or stopping running notebooks. To remove an obsolete environment, first stop its kernels/servers, confirm the exact directory contains only the disposable environment, then remove that directory using your file manager. Do not delete a whole coursework folder. Remove obsolete kernel registrations separately as explained in the Jupyter appendix.</p>
+</section>
+<section id="optional-conda-route">
+<span id="python-conda"></span><h2>Optional conda route<a class="headerlink" href="#optional-conda-route" title="Link to this heading">#</a></h2>
+<p>Use this <strong>instead of</strong> the <code class="docutils literal notranslate"><span class="pre">venv</span></code> route when your course/project already has a conda specification or needs conda-managed native libraries. Follow the current <a class="reference external" href="https://docs.conda.io/projects/conda/en/stable/user-guide/install/index.html">conda installation guide</a>, choosing an installer for your OS and architecture and reviewing distribution/channel terms. A full Anaconda distribution is not compulsory. Do not paste old <code class="docutils literal notranslate"><span class="pre">/usr/local/anaconda3</span></code> PATH commands into multiple startup files.</p>
+<p>In a terminal where conda is available, first use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code> and choose an unused environment name. For a new project without its own specification:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>mqb-course<span class="w"> </span>python<span class="w"> </span>numpy<span class="w"> </span>matplotlib<span class="w"> </span>ipython
+conda<span class="w"> </span>activate<span class="w"> </span>mqb-course
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sys; print(sys.executable)"</span>
+conda<span class="w"> </span>list
+</pre></div>
+</div>
+<p>Review the solver’s Python version and package plan before confirming; use the version required by your project when specified. Do not install coursework packages into <code class="docutils literal notranslate"><span class="pre">base</span></code> or nest an activated <code class="docutils literal notranslate"><span class="pre">venv</span></code> inside conda. Use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">notebook</span> <span class="pre">ipykernel</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">jupyterlab</span> <span class="pre">ipykernel</span></code> in the chosen environment for Jupyter. If pip is genuinely needed, install <code class="docutils literal notranslate"><span class="pre">pip</span></code> into that environment with conda and use <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span></code>; follow conda’s <a class="reference external" href="https://docs.conda.io/projects/conda/en/stable/user-guide/tasks/manage-environments.html#using-pip-in-an-environment">guidance on mixing package managers</a>. Prefer recreating an environment to repeatedly alternating conda and pip mutations.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code> when finished. For sharing/recreation, follow conda’s environment export documentation; a conda environment file records information that <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">freeze</span></code> cannot capture.</p>
+</section>
+<section id="sources-and-verification">
+<span id="python-setup-resources"></span><h2>Sources and verification<a class="headerlink" href="#sources-and-verification" title="Link to this heading">#</a></h2>
+<p>Adapted from the FoNS <a class="reference external" href="https://imperial-fons-computing.github.io/python.html#python-virtual-environments">Python installation and virtual environments</a> and <a class="reference external" href="https://imperial-fons-computing.github.io/jupyter.html#installing">Jupyter installation</a> guidance. See <a class="reference internal" href="tooling.html#setup-attribution"><span class="std std-ref">Setup Guide Attribution</span></a> for source revision and MIT licence. MQB revision: 30 September 2026.</p>
+<p>Operational references: <a class="reference external" href="https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/">PyPA pip/venv guide</a>, <a class="reference external" href="https://docs.python.org/3/library/venv.html">Python venv</a>, <a class="reference external" href="https://packaging.python.org/en/latest/specifications/externally-managed-environments/">externally managed environments</a>, <a class="reference external" href="https://jupyter.org/install">Jupyter installation</a> and the platform/conda sources linked above. Platform-specific procedures require checking current official support; Linux validation does not verify Windows, macOS or conda behaviour.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./appendices"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="macos-tools.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">macOS Tools and Homebrew</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../notebooks/appendix-jupy-intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to Jupyter</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-and-check-an-interpreter">Choose and check an interpreter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-and-activate-one-environment">Create and activate one environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-python-and-pip-agree">Verify Python and pip agree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-packages-you-need">Install the packages you need</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-jupyter-interface">Add a Jupyter interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#record-and-recreate-an-environment">Record and recreate an environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-conda-route">Optional conda route</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-verification">Sources and verification</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

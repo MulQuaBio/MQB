@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Tooling and Environments &#8212; MulQuaBio</title>
+    <title>macOS Tools and Homebrew &#8212; MulQuaBio</title>
   
   
   
@@ -61,15 +61,13 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'appendices/tooling';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendices/macos-tools';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="macOS Tools and Homebrew" href="macos-tools.html" />
-    <link rel="prev" title="Introduction &amp; prerequisites" href="../part-appendices.html" />
+    <link rel="next" title="Introduction to Jupyter" href="../notebooks/appendix-jupy-intro.html" />
+    <link rel="prev" title="Tooling and Environments" href="tooling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -314,9 +312,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Introduction &amp; prerequisites</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Tooling and Environments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="macos-tools.html">macOS Tools and Homebrew</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python-environments.html">Python Installation and Environments</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="tooling.html">Tooling and Environments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">macOS Tools and Homebrew</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-jupy-intro.html">Introduction to Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
 </ul>
@@ -415,7 +412,7 @@
       
       
       
-      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fappendices/tooling.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fappendices/macos-tools.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -445,7 +442,7 @@
       
       
       
-      <li><a href="../_sources/appendices/tooling.md" target="_blank"
+      <li><a href="../_sources/appendices/macos-tools.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -521,7 +518,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Tooling and Environments</h1>
+    <h1>macOS Tools and Homebrew</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -531,9 +528,12 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-here">Start here</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-tasks">Common tasks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-guide-attribution">Setup Guide Attribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-system-first">Check your system first</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-homebrew-only-if-needed">Install Homebrew only if needed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-brew-available-to-your-shell">Make brew available to your shell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulae-casks-and-maintenance">Formulae, casks and maintenance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-which-command-you-are-running">Check which command you are running</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-verification">Sources and verification</a></li>
 </ul>
             </nav>
         </div>
@@ -545,55 +545,79 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="tooling-and-environments">
-<h1>Tooling and Environments<a class="headerlink" href="#tooling-and-environments" title="Link to this heading">#</a></h1>
-<p>Use these pages when you need help getting set up, running notebooks, or working with core tools.</p>
-<section id="start-here">
-<h2>Start here<a class="headerlink" href="#start-here" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Choosing a Linux environment or configuring Ubuntu: <a class="reference internal" href="ubuntu-admin.html"><span class="std std-doc">Linux Setup and Ubuntu Administration</span></a></p></li>
-<li><p>Setting up macOS command-line tools: <a class="reference internal" href="macos-tools.html"><span class="std std-doc">macOS Tools and Homebrew</span></a></p></li>
-<li><p>Installing Python and managing project packages: <a class="reference internal" href="python-environments.html"><span class="std std-doc">Python Installation and Environments</span></a></p></li>
-<li><p>If you’re new to notebooks/Jupyter: <a class="reference internal" href="../notebooks/appendix-jupy-intro.html"><span class="doc std std-doc">Jupyter / notebooks intro</span></a></p></li>
-</ul>
-</section>
-<section id="common-tasks">
-<h2>Common tasks<a class="headerlink" href="#common-tasks" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Working with databases: <a class="reference internal" href="../notebooks/appendix-databases.html"><span class="doc std std-doc">Databases</span></a></p></li>
-</ul>
-</section>
-<section id="setup-guide-attribution">
-<span id="setup-attribution"></span><h2>Setup Guide Attribution<a class="headerlink" href="#setup-guide-attribution" title="Link to this heading">#</a></h2>
-<p>The platform setup appendices adapt selected material from the <a class="reference external" href="https://imperial-fons-computing.github.io/">Imperial FoNS computing installation guide</a> and its <a class="reference external" href="https://github.com/Imperial-FoNS-Computing/FoNS-installation-instructions">source repository</a>. Source revision verified on 30 September 2026: <a class="reference external" href="https://github.com/Imperial-FoNS-Computing/FoNS-installation-instructions/tree/1be8fde4644644ddbae5766028167fd33dc38854"><code class="docutils literal notranslate"><span class="pre">1be8fde4644644ddbae5766028167fd33dc38854</span></code></a>.</p>
-<p>MQB adaptations dated 30 September 2026 update platform choices, user-local shell configuration and package-management procedures. Each adapted page names its source sections, current operational references and verification limitations. Old institutional software-licensing promises are not carried forward. No FoNS screenshots have been copied; separately credited MQB figures retain their own licences.</p>
-<p>The source’s <a class="reference external" href="https://github.com/Imperial-FoNS-Computing/FoNS-installation-instructions/blob/1be8fde4644644ddbae5766028167fd33dc38854/LICENSE">MIT licence</a> is reproduced below for the adapted material. This does not change the licence of the rest of MQB or of third-party images.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>MIT License
-
-Copyright (c) 2020 Imperial-Maths-Computing
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+  <section class="tex2jax_ignore mathjax_ignore" id="macos-tools-and-homebrew">
+<span id="macos-tools"></span><h1>macOS Tools and Homebrew<a class="headerlink" href="#macos-tools-and-homebrew" title="Link to this heading">#</a></h1>
+<p>macOS already provides a UNIX-like terminal environment. You do not need to install Linux or Homebrew merely to start the <a class="reference internal" href="../notebooks/unix.html"><span class="std std-doc">Unix chapter</span></a>. Homebrew is an optional package manager; official native installers are also appropriate, especially on managed machines.</p>
+<section id="check-your-system-first">
+<span id="macos-check-system"></span><h2>Check your system first<a class="headerlink" href="#check-your-system-first" title="Link to this heading">#</a></h2>
+<p>Open Terminal through Spotlight (<code class="docutils literal notranslate"><span class="pre">Cmd</span> <span class="pre">+</span> <span class="pre">Space</span></code>, then search for Terminal). Inspect the operating system and the architecture of the current process:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sw_vers
+uname<span class="w"> </span>-m
+<span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>bash
+<span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>brew
 </pre></div>
 </div>
+<p>Apple Silicon normally reports <code class="docutils literal notranslate"><span class="pre">arm64</span></code>; Intel reports <code class="docutils literal notranslate"><span class="pre">x86_64</span></code>. A terminal running under Rosetta can report <code class="docutils literal notranslate"><span class="pre">x86_64</span></code> on Apple Silicon, so also check Apple menu &gt; About This Mac. Prefer native Apple Silicon tools; do not install Rosetta or a second Intel Homebrew just to follow these lessons.</p>
+<p>Consult Homebrew’s current <a class="reference external" href="https://docs.brew.sh/Installation">installation requirements</a> and <a class="reference external" href="https://docs.brew.sh/Support-Tiers">support tiers</a> before installing. At the 30 September 2026 documentation check, supported macOS installations centred on Apple Silicon with macOS 15 or newer; Intel configurations were Tier 3. Support changes over time. Do not treat an old course note or a successful install on an unsupported OS as a compatibility guarantee.</p>
+<p>For a machine outside the supported configurations, prefer a compatible official application installer, a supported remote environment, or advice from your institution’s IT service. Do not disable OS security controls to force a package to install.</p>
 </section>
-<div class="toctree-wrapper compound">
+<section id="install-homebrew-only-if-needed">
+<span id="macos-homebrew-install"></span><h2>Install Homebrew only if needed<a class="headerlink" href="#install-homebrew-only-if-needed" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Check whether <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">-v</span> <span class="pre">brew</span></code> already finds an installation. If it does, inspect <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">--prefix</span></code> and <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">config</span></code> before adding anything else.</p></li>
+<li><p>Follow the current installer instructions on <a class="reference external" href="https://brew.sh/">brew.sh</a>, checking the source and reading the proposed changes before accepting them. The installer can request administrator authorisation for initial provisioning. Enter passwords only into your own trusted installer prompt, never into shared notes or chats.</p></li>
+<li><p>Install Apple’s Command Line Tools if Homebrew says they are required for your configuration. The official route is <code class="docutils literal notranslate"><span class="pre">xcode-select</span> <span class="pre">--install</span></code>; full Xcode is not automatically required for coursework. Do not repeatedly reinstall developer tools to diagnose an unrelated PATH problem.</p></li>
+<li><p>Follow the installer’s <strong>Next steps</strong> for your actual shell and prefix. Do not copy a hardcoded path from an Intel-only guide.</p></li>
+</ol>
+<p>The usual prefixes are <code class="docutils literal notranslate"><span class="pre">/opt/homebrew</span></code> on Apple Silicon and <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code> on Intel. These are installation locations, not interchangeable commands to run. Native application installers and Homebrew should not manage competing copies of the same application without a deliberate reason.</p>
+</section>
+<section id="make-brew-available-to-your-shell">
+<span id="macos-shellenv"></span><h2>Make brew available to your shell<a class="headerlink" href="#make-brew-available-to-your-shell" title="Link to this heading">#</a></h2>
+<p>The installer prints a <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">shellenv</span></code> command using the correct absolute path. Run that command for the current terminal, and add the recommended initialisation to the appropriate user startup file once. For example, <strong>only for a default Apple Silicon installation</strong>, the command is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>/opt/homebrew/bin/brew<span class="w"> </span>shellenv<span class="k">)</span><span class="s2">"</span>
+</pre></div>
 </div>
+<p>Use the installer-provided path on other configurations. <code class="docutils literal notranslate"><span class="pre">shellenv</span></code> prints shell setup code; <code class="docutils literal notranslate"><span class="pre">eval</span></code> applies it, so only run it from your trusted Homebrew installation. Recent macOS Terminal sessions normally use zsh; its login setup commonly belongs in <code class="docutils literal notranslate"><span class="pre">~/.zprofile</span></code>. Bash login shells read the first available of <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code>, <code class="docutils literal notranslate"><span class="pre">~/.bash_login</span></code> and <code class="docutils literal notranslate"><span class="pre">~/.profile</span></code>; interactive non-login Bash reads <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>. Do not paste the same line into all of these files. Preserve existing content and follow the installer for your session type.</p>
+<p>Open a new terminal and check:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>brew
+brew<span class="w"> </span>--prefix
+brew<span class="w"> </span>config
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">brew</span></code> is missing, check the selected startup file and prefix before reinstalling. To undo your shell change, remove only the line you added (or restore its backup), then open a fresh terminal. Uninstalling Homebrew itself is a separate operation described in its <a class="reference external" href="https://docs.brew.sh/FAQ#how-do-i-uninstall-homebrew">FAQ</a>.</p>
+</section>
+<section id="formulae-casks-and-maintenance">
+<span id="macos-packages"></span><h2>Formulae, casks and maintenance<a class="headerlink" href="#formulae-casks-and-maintenance" title="Link to this heading">#</a></h2>
+<p>A <strong>formula</strong> usually supplies command-line software or libraries; a <strong>cask</strong> commonly installs a graphical application. Inspect first, then install only what you need. These are examples, not prerequisites to run together:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>info<span class="w"> </span>wget
+brew<span class="w"> </span>install<span class="w"> </span>wget
+brew<span class="w"> </span>info<span class="w"> </span>--cask<span class="w"> </span>visual-studio-code
+brew<span class="w"> </span>install<span class="w"> </span>--cask<span class="w"> </span>visual-studio-code
+</pre></div>
+</div>
+<p>The current syntax is <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">--cask</span></code>, not <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">cask</span> <span class="pre">install</span></code>. Do not run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">brew</span> <span class="pre">...</span></code>. Some casks use their own privileged installers; review any request for authorisation and check managed-machine policy.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>update
+brew<span class="w"> </span>outdated
+brew<span class="w"> </span>upgrade<span class="w"> </span>wget
+brew<span class="w"> </span>list
+brew<span class="w"> </span>doctor
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">update</span></code> refreshes Homebrew and package information; it does not itself upgrade every installed formula. <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">upgrade</span> <span class="pre">wget</span></code> upgrades that named package and may affect dependencies. Read diagnostics from <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">doctor</span></code>; do not blindly apply every suggested change during a project. Remove an unneeded formula with <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">uninstall</span> <span class="pre">wget</span></code>, or a cask with <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">uninstall</span> <span class="pre">--cask</span> <span class="pre">visual-studio-code</span></code>, only after checking that you no longer need it. For projects, record tool versions before upgrading.</p>
+</section>
+<section id="check-which-command-you-are-running">
+<span id="macos-command-resolution"></span><h2>Check which command you are running<a class="headerlink" href="#check-which-command-you-are-running" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>git
+<span class="nb">type</span><span class="w"> </span>-a<span class="w"> </span>git
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">PATH</span></code> order can select a Homebrew executable instead of an Apple-provided one. Do not delete or replace programs under system directories. macOS/BSD utilities and GNU utilities can accept different options; read the local manual and test scripts on their target platform. Installing Homebrew does not automatically make every command identical to Linux.</p>
+</section>
+<section id="sources-and-verification">
+<span id="macos-resources"></span><h2>Sources and verification<a class="headerlink" href="#sources-and-verification" title="Link to this heading">#</a></h2>
+<p>Adapted from the FoNS <a class="reference external" href="https://imperial-fons-computing.github.io/homebrew.html">Homebrew</a> and <a class="reference external" href="https://imperial-fons-computing.github.io/terminal.html">terminal</a> guidance. See <a class="reference internal" href="tooling.html#setup-attribution"><span class="std std-ref">Setup Guide Attribution</span></a> for the source revision and licence. MQB revision: 30 September 2026. Operational guidance was checked against the official Homebrew <a class="reference external" href="https://docs.brew.sh/Installation">installation documentation</a>, <a class="reference external" href="https://docs.brew.sh/Manpage">manual</a> and <a class="reference external" href="https://docs.brew.sh/FAQ">FAQ</a>.</p>
+<p>These instructions were reviewed from Linux, not runtime-tested on macOS. No installer or Homebrew package operation was run during that review. Check current support and institutional policy before making changes.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -627,20 +651,20 @@ SOFTWARE.
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../part-appendices.html"
+       href="tooling.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction &amp; prerequisites</p>
+        <p class="prev-next-title">Tooling and Environments</p>
       </div>
     </a>
     <a class="right-next"
-       href="macos-tools.html"
+       href="../notebooks/appendix-jupy-intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">macOS Tools and Homebrew</p>
+        <p class="prev-next-title">Introduction to Jupyter</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -662,9 +686,12 @@ SOFTWARE.
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-here">Start here</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-tasks">Common tasks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-guide-attribution">Setup Guide Attribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-system-first">Check your system first</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-homebrew-only-if-needed">Install Homebrew only if needed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-brew-available-to-your-shell">Make brew available to your shell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulae-casks-and-maintenance">Formulae, casks and maintenance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-which-command-you-are-running">Check which command you are running</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-verification">Sources and verification</a></li>
 </ul>
   </nav></div>
 
