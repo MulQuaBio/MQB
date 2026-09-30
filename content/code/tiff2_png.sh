@@ -1,15 +1,6 @@
 #!/bin/bash
-echo $#
-if [[ -d $1 ]]
-then
-   echo $1
-   cd $DIr
-   for f in *.tif
-      do
-         echo "Converting $f";
-         convert "$f" "$(basename "$f" .tif).png";
-      done
-else
-   echo "no directory provided"
-   exit
-fi
+for filename in *.tif
+do
+    echo "Converting $filename"
+    convert "$filename" "$(basename "$filename" .tif).png"
+done
