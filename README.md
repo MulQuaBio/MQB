@@ -10,26 +10,28 @@ This is the current MQB project structure:
 .
 ├── CONDUCT.md
 ├── content
+│   ├── appendices
 │   ├── code
 │   ├── _config.yml
 │   ├── data
-│   ├── HPC
+│   ├── hpc
 │   ├── images
 │   ├── intro.md
 │   ├── lectures
-│   ├── mathscourse
 │   ├── notebooks
 │   ├── readings
 │   ├── references.bib
 │   ├── results
+│   ├── rubrics
 │   ├── _static
-│   ├── Stats-Intro.md
 │   └── _toc.yml
 ├── LICENSE
-├── MQB.code-workspace
-├── notes_n_todos.md
-├── readme.md
-└── requirements.txt
+├── Makefile
+├── mqb_bibstyle.py
+├── README.md
+├── requirements.txt
+├── results
+└── scripts
 ```
 
 ## requirements
@@ -45,6 +47,8 @@ All code in this project was written in and tested with r 4.xx, python 3.xx and 
 **Fourth**, check the software needed to compile and deploy the MQB or run its Jupyter notebooks by peeking at the `requirements.txt` file.
 
 > ⚠️ **Note:** Please read the "Getting Started" section below before installing anything on your local computer!
+
+Maintainer planning notes are now in the private [MQB-project repository](https://github.com/MulQuaBio/MQB-project).
 
 OK, read on!
 

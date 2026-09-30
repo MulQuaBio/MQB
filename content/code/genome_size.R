@@ -6,7 +6,7 @@
 
 ######################## (1) ##########################
 # LOAD THE DATA FrOM THE CSV TEXT FILE INTO A DATA FrAME:
-genome <- read.csv('../Data/genome_size.csv') #assumes that you are working from your Code directory
+genome <- read.csv('../data/genome_size.csv') #assumes that you are working from your Code directory
 
 ######################## (2) ##########################
 # LOOK AT AND MANIPULATE THE DATA:
