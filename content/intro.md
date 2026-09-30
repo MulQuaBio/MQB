@@ -169,7 +169,7 @@ You will benefit a lot if you use a code editor that can also offer an IDE. At t
 * Debugging
 
 
-If you use multiple programming languages, choose an editor that can handle them. We will use [Visual Studio Code](https://code.visualstudio.com) in this course because it is freely available and supports extensions for multilingual development. Vim and Emacs are also powerful editors, though they can take more time to learn.
+If you use multiple programming languages, choose an editor that can handle them. We will use [Visual Studio Code](https://code.visualstudio.com) in this course because it is freely available and supports extensions for multilingual development; see [VS Code for MQB](appendices/vscode.md) for project, Python, notebook and R setup. Vim and Emacs are also powerful editors, though they can take more time to learn.
 
 #### Gooey IDEs
 
