@@ -69,7 +69,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Databases" href="appendix-databases.html" />
-    <link rel="prev" title="Python Installation and Environments" href="../appendices/python-environments.html" />
+    <link rel="prev" title="VS Code for MQB" href="../appendices/vscode.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -317,6 +317,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../appendices/macos-tools.html">macOS Tools and Homebrew</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/python-environments.html">Python Installation and Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/vscode.html">VS Code for MQB</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Introduction to Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
 </ul>
@@ -607,14 +608,7 @@
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-jupyter-in-vs-code">Using Jupyter in VS Code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-vs-code-for-jupyter">Advantages of VS Code for Jupyter</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-jupyter-in-vs-code">Setting Up Jupyter in VS Code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-running-notebooks-in-vs-code">Creating and running Notebooks in VS Code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-code-specific-features">VS Code-Specific Features</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-for-macos-users">Tips for macOS Users</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-jupyter-in-vs-code">Using Jupyter in VS Code</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-elements-of-the-jupyter-nb-content">Key elements of the Jupyter nb content</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-cells">Text cells</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#equations">Equations</a></li>
@@ -804,99 +798,8 @@ jupyter<span class="w"> </span>kernelspec<span class="w"> </span>list
 </section>
 <section id="using-jupyter-in-vs-code">
 <h2>Using Jupyter in VS Code<a class="headerlink" href="#using-jupyter-in-vs-code" title="Link to this heading">#</a></h2>
-<p>Visual Studio Code provides excellent built-in support for Jupyter notebooks, offering a modern alternative to the browser-based interface. This approach is increasingly popular in educational and professional settings.</p>
-<section id="advantages-of-vs-code-for-jupyter">
-<h3>Advantages of VS Code for Jupyter<a class="headerlink" href="#advantages-of-vs-code-for-jupyter" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Integrated Development Environment</strong>: Work with notebooks, scripts, and terminal all in one window</p></li>
-<li><p><strong>IntelliSense</strong>: Advanced code completion and suggestions as you type</p></li>
-<li><p><strong>Debugging</strong>: Full debugging support with breakpoints in notebook cells</p></li>
-<li><p><strong>Git Integration</strong>: Built-in version control without leaving the editor</p></li>
-<li><p><strong>No Browser required</strong>: Everything runs within VS Code</p></li>
-<li><p><strong>Variable Explorer</strong>: View and inspect variables without printing them</p></li>
-<li><p><strong>Outline View</strong>: Navigate large notebooks easily using the outline sidebar</p></li>
-</ul>
-</section>
-<section id="setting-up-jupyter-in-vs-code">
-<h3>Setting Up Jupyter in VS Code<a class="headerlink" href="#setting-up-jupyter-in-vs-code" title="Link to this heading">#</a></h3>
-<ol class="arabic">
-<li><p><strong>Install VS Code</strong>: Download from <a class="reference external" href="https://code.visualstudio.com/">code.visualstudio.com</a></p></li>
-<li><p><strong>Install Python Extension</strong>:</p>
-<ul class="simple">
-<li><p>Open VS Code</p></li>
-<li><p>Click the Extensions icon (or press <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+X</span></code> / <code class="docutils literal notranslate"><span class="pre">Cmd+Shift+X</span></code> on Mac)</p></li>
-<li><p>Search for “Python”</p></li>
-<li><p>Install the official Microsoft Python extension (this includes Jupyter support)</p></li>
-</ul>
-</li>
-<li><p><strong>Install Jupyter</strong>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>jupyter<span class="w"> </span>ipykernel
-</pre></div>
-</div>
-<p>Or if using a virtual environment:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/myenv/bin/activate<span class="w">  </span><span class="c1"># macOS/Linux</span>
-pip<span class="w"> </span>install<span class="w"> </span>jupyter<span class="w"> </span>ipykernel
-</pre></div>
-</div>
-</li>
-<li><p><strong>Select Python Interpreter</strong>:</p>
-<ul class="simple">
-<li><p>Open VS Code</p></li>
-<li><p>Press <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+P</span></code> / <code class="docutils literal notranslate"><span class="pre">Cmd+Shift+P</span></code> (Mac) to open Command Palette</p></li>
-<li><p>Type “Python: Select Interpreter”</p></li>
-<li><p>Choose your Python installation or virtual environment</p></li>
-</ul>
-</li>
-</ol>
-</section>
-<section id="creating-and-running-notebooks-in-vs-code">
-<h3>Creating and running Notebooks in VS Code<a class="headerlink" href="#creating-and-running-notebooks-in-vs-code" title="Link to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p><strong>Create a New Notebook</strong>:</p>
-<ul class="simple">
-<li><p>Press <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+P</span></code> / <code class="docutils literal notranslate"><span class="pre">Cmd+Shift+P</span></code> (Mac)</p></li>
-<li><p>Type “Create: New Jupyter Notebook”</p></li>
-<li><p>Or create a file with <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> extension</p></li>
-</ul>
-</li>
-<li><p><strong>run Cells</strong>:</p>
-<ul class="simple">
-<li><p>Click the ▶️ play button next to each cell</p></li>
-<li><p>Or press <code class="docutils literal notranslate"><span class="pre">Shift+Enter</span></code> to run cell and move to next</p></li>
-<li><p>Or press <code class="docutils literal notranslate"><span class="pre">Ctrl+Enter</span></code> / <code class="docutils literal notranslate"><span class="pre">Cmd+Enter</span></code> (Mac) to run cell and stay</p></li>
-</ul>
-</li>
-<li><p><strong>Add Cells</strong>:</p>
-<ul class="simple">
-<li><p>Hover between cells and click <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Code</span></code> or <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">Markdown</span></code></p></li>
-<li><p>Or use keyboard shortcuts similar to classic Jupyter</p></li>
-</ul>
-</li>
-</ol>
-</section>
-<section id="vs-code-specific-features">
-<h3>VS Code-Specific Features<a class="headerlink" href="#vs-code-specific-features" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Variable Explorer</strong>: Click the “Variables” button at the top of the notebook to view all variables</p></li>
-<li><p><strong>Outline</strong>: Use the outline view in the sidebar to navigate to specific cells</p></li>
-<li><p><strong>Cell Toolbar</strong>: Each cell has a toolbar with options for cell type, run, debug, etc.</p></li>
-<li><p><strong>Notebook Diff</strong>: View differences between notebook versions with Git integration</p></li>
-<li><p><strong>Interactive Window</strong>: run Python scripts interactively with <code class="docutils literal notranslate"><span class="pre">#%%</span></code> cell markers</p></li>
-</ul>
-</section>
-<section id="tips-for-macos-users">
-<h3>Tips for macOS Users<a class="headerlink" href="#tips-for-macos-users" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">Cmd</span></code> instead of <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> for most shortcuts</p></li>
-<li><p>Terminal integration works seamlessly with both bash and zsh</p></li>
-<li><p>VS Code respects your system Python installations and virtual environments</p></li>
-<li><p>For best performance, add VS Code to your Dock for quick access</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>VS Code’s Jupyter support is particularly useful when working on coursework that involves both code development and notebook-based analysis, as you can switch between files without changing applications.</p>
-</div>
-</section>
+<p>VS Code can keep notebooks, scripts and an integrated terminal in one project window. Follow <a class="reference internal" href="../appendices/vscode.html"><span class="std std-doc">VS Code for MQB</span></a> to install the Microsoft Python and Jupyter extensions, open a project folder, select the intended interpreter and choose a notebook kernel.</p>
+<p>A notebook’s kernel is separate from the terminal and can retain variables between runs. Check <code class="docutils literal notranslate"><span class="pre">sys.executable</span></code> in the first Python cell, save before changing kernels, and restart the kernel before a clean reproducibility run. The setup page explains this process; <a class="reference internal" href="#jupyter-kernels"><span class="std std-ref">Language Kernels</span></a> covers named Python and R kernels.</p>
 </section>
 <section id="key-elements-of-the-jupyter-nb-content">
 <h2>Key elements of the Jupyter nb content<a class="headerlink" href="#key-elements-of-the-jupyter-nb-content" title="Link to this heading">#</a></h2>
@@ -1242,12 +1145,12 @@ nbstripout<span class="w"> </span>--install
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../appendices/python-environments.html"
+       href="../appendices/vscode.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Python Installation and Environments</p>
+        <p class="prev-next-title">VS Code for MQB</p>
       </div>
     </a>
     <a class="right-next"
@@ -1304,14 +1207,7 @@ nbstripout<span class="w"> </span>--install
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-jupyter-in-vs-code">Using Jupyter in VS Code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-vs-code-for-jupyter">Advantages of VS Code for Jupyter</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-jupyter-in-vs-code">Setting Up Jupyter in VS Code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-running-notebooks-in-vs-code">Creating and running Notebooks in VS Code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-code-specific-features">VS Code-Specific Features</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-for-macos-users">Tips for macOS Users</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-jupyter-in-vs-code">Using Jupyter in VS Code</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-elements-of-the-jupyter-nb-content">Key elements of the Jupyter nb content</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-cells">Text cells</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#equations">Equations</a></li>
