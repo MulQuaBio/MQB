@@ -315,11 +315,9 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Introduction &amp; prerequisites</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../appendices/terms.html">Key computing terms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/macos-tools.html">macOS Tools and Homebrew</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/python-environments.html">Python Installation and Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/vscode.html">VS Code for MQB</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../appendices/git-ssh.html">Git, GitHub and SSH Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-jupy-intro.html">Introduction to Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
 </ul>
@@ -1561,8 +1559,8 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 <section id="one-population-exponential-growth">
 <h3>One population: Exponential growth<a class="headerlink" href="#one-population-exponential-growth" title="Link to this heading">#</a></h3>
 <p>Let’s look at how populations grow when there are no environmental constraints. The differential equation model is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fe002e88-c196-448c-a596-2227cd972ae4">
-<span class="eqno">(19)<a class="headerlink" href="#equation-fe002e88-c196-448c-a596-2227cd972ae4" title="Permalink to this equation">#</a></span>\[\begin{equation}\label{eq:exp_growth}
+<div class="amsmath math notranslate nohighlight" id="equation-9f224eb9-74a1-4525-8b9e-6425a20c31b0">
+<span class="eqno">(19)<a class="headerlink" href="#equation-9f224eb9-74a1-4525-8b9e-6425a20c31b0" title="Permalink to this equation">#</a></span>\[\begin{equation}\label{eq:exp_growth}
 	\frac{\text{d}N}{\text{d}t} = r_m N
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(r_m\)</span> is the intrinsic, constant rate of population gowth (units of 1/time), and <span class="math notranslate nohighlight">\(N\)</span> is population size (or biomass abundance). I use the subscript <span class="math notranslate nohighlight">\(m\)</span> in <span class="math notranslate nohighlight">\(r_m\)</span> to denote both <a class="reference external" href="https://en.wikipedia.org/wiki/Malthusianism">Malthusian</a> and maximal population growth rate because, in theory, without any constraints, this growth rate is expected to at its theoretical/biological maximum.</p>
@@ -1626,8 +1624,8 @@ SymPy has predefined expressions for a number of mathematical constants, such as
 <div class="math notranslate nohighlight">
 \[C_1 = N_0\]</div>
 <p>That is,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dda37804-475d-4c60-8c38-92dd18654c52">
-<span class="eqno">(20)<a class="headerlink" href="#equation-dda37804-475d-4c60-8c38-92dd18654c52" title="Permalink to this equation">#</a></span>\[\begin{equation}\label{eq:exp_growth_sol}
+<div class="amsmath math notranslate nohighlight" id="equation-1c883f2c-b341-4752-8b6a-d834294452ec">
+<span class="eqno">(20)<a class="headerlink" href="#equation-1c883f2c-b341-4752-8b6a-d834294452ec" title="Permalink to this equation">#</a></span>\[\begin{equation}\label{eq:exp_growth_sol}
 N{\left (t \right )} = N_0 e^{r_m t}
 \end{equation}\]</div>
 <p>We could use Sympy for this last step as well (using <code class="docutils literal notranslate"><span class="pre">subs()</span></code> like you learned above), but that would be just plain silly – like using a sledge-hammer to drive in a nail!</p>
@@ -1736,8 +1734,8 @@ N{\left (t \right )} = N_0 e^{r_m t}
 </div>
 </div>
 <p>This is a bit more complicated than the solution for exponential growth above. But we can solve it the same way. First substitute <span class="math notranslate nohighlight">\(t = 0\)</span>, and then solve the resulting equation for the initital condition of <span class="math notranslate nohighlight">\(N_0\)</span>, which then gives This the time-dependent solution:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c64de2d5-a2e4-4a40-81a4-afba5c6bf5fe">
-<span class="eqno">(22)<a class="headerlink" href="#equation-c64de2d5-a2e4-4a40-81a4-afba5c6bf5fe" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-adf30985-9bcb-4607-a580-86315fd64c0f">
+<span class="eqno">(22)<a class="headerlink" href="#equation-adf30985-9bcb-4607-a580-86315fd64c0f" title="Permalink to this equation">#</a></span>\[\begin{equation}
     N_t = \frac{N_0 K\mathrm{e}^{r_m t}}{K + N_0(\mathrm{e}^{r_m t}-1)}
 \end{equation}\]</div>
 <p>You can do the last steps to obtain this solution using Sympy as well (I leave it to you to try it).</p>
@@ -1781,8 +1779,8 @@ N{\left (t \right )} = N_0 e^{r_m t}
 <section id="two-interacting-populations-the-lotka-volterra-predator-prey-model">
 <h3>Two interacting populations: The Lotka-Volterra predator-prey model<a class="headerlink" href="#two-interacting-populations-the-lotka-volterra-predator-prey-model" title="Link to this heading">#</a></h3>
 <p>Now for the classical Lotka-Volterra model that you encountered in the advanced Python week (without logistic growth for the consumer, <span class="math notranslate nohighlight">\(C\)</span>).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8456ed98-0810-408d-8160-8ce60dcf230b">
-<span class="eqno">(23)<a class="headerlink" href="#equation-8456ed98-0810-408d-8160-8ce60dcf230b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3d022059-2599-46e8-adcb-0875b08e170d">
+<span class="eqno">(23)<a class="headerlink" href="#equation-3d022059-2599-46e8-adcb-0875b08e170d" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{dN}{dt} &amp;= r_m N \left(1-\frac{N}{K}\right) - a N C\\
 \frac{dC}{dt} &amp;= e a N C - z C
 \end{align}\]</div>

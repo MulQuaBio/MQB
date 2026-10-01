@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -583,10 +583,17 @@
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-shell-scripts-are-good-for">What shell scripts are good for</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-scripts-you-might-actually-keep">Utility scripts you might actually keep</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-these-are-shell-utilities">Why these are shell utilities</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-shell-script">Your first shell script</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-conventions-and-syntax-rules">Some conventions and syntax rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-minimal-bash-script">A minimal Bash script</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#who-should-read-the-script">1. Who should read the script?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-this-file">2. What is this file?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-should-happen">3. What should happen?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#did-the-script-report-success">4. Did the script report success?</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-characters">Special characters</a></li>
@@ -601,9 +608,19 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-examples-of-variables">Some examples of variables</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decisions-loops-and-useful-failures">Decisions, loops and useful failures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decisions-loops-and-useful-failures">Decisions, loops and useful failures</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-small-for-loop">A small <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-useful-shell-scripting-example">A useful shell-scripting example</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-diagnose-improve">Predict, diagnose, improve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-attempt-tabtocsv-sh">First attempt: <code class="docutils literal notranslate"><span class="pre">tabtocsv.sh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-diagnose-improve">Predict, diagnose, improve</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reruns">Reruns</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-fields">Empty fields</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-space-in-the-path">A space in the path</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wildcard-characters-in-a-value">Wildcard characters in a value</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-more-examples">Some more examples</a><ul class="nav section-nav flex-column">
@@ -658,10 +675,60 @@
 </div>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>Instead of typing the same UNIX commands repeatedly, we can save them in a file (a <strong>script</strong>) and run them in sequence. Recall from the <a class="reference internal" href="unix.html"><span class="std std-doc">UNIX and Linux chapter</span></a> that Bash is a command interpreter; the terminal is the interface through which we interact with it. Bash is also a programming language, with variables, tests and loops that let us combine command-line tools into repeatable workflows.</p>
+<p>A shell script is a <strong>text file containing commands</strong>. Instead of typing the same commands again, save them in order and ask Bash to run them.</p>
+<p>This makes a workflow easier to repeat, inspect and improve.</p>
 <section id="what-shell-scripts-are-good-for">
 <h3>What shell scripts are good for<a class="headerlink" href="#what-shell-scripts-are-good-for" title="Link to this heading">#</a></h3>
-<p>Shell scripts are particularly useful for coordinating existing programs: running analyses in sequence, handling files, converting formats and repeating commands. They are not required for every computing task. When a task needs complex data structures, numerical modelling or a format-aware parser, Python or R may be a clearer choice. A small Bash script can still organise those programs into a workflow.</p>
+<p>Shell scripts are good at joining small command-line jobs:</p>
+<ul class="simple">
+<li><p>run programs in sequence,</p></li>
+<li><p>work with several files, and</p></li>
+<li><p>repeat the same steps.</p></li>
+</ul>
+<p>For complex data analysis or modelling, Python or R will usually be clearer. A shell script can still organise those programs into one workflow.</p>
+</section>
+<section id="utility-scripts-you-might-actually-keep">
+<h3>Utility scripts you might actually keep<a class="headerlink" href="#utility-scripts-you-might-actually-keep" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Utility script</p></th>
+<th class="head text-left"><p>Job</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">auto-backup-on-mount.sh</span></code></p></td>
+<td class="text-left"><p>Backup when a recognised disk appears.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">sync-laptop-desktop.sh</span></code></p></td>
+<td class="text-left"><p>Synchronise selected folders across computers.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">rename-files.sh</span></code></p></td>
+<td class="text-left"><p>Rename matching files predictably.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">pdf-to-text.sh</span></code></p></td>
+<td class="text-left"><p>Extract text from PDFs.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">tiff-to-png.sh</span></code></p></td>
+<td class="text-left"><p>Convert TIFF images to PNG.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">compile-latex.sh</span></code></p></td>
+<td class="text-left"><p>Build a LaTeX project PDF.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="why-these-are-shell-utilities">
+<h3>Why these are shell utilities<a class="headerlink" href="#why-these-are-shell-utilities" title="Link to this heading">#</a></h3>
+<p>A shell script fits when the job is mostly:</p>
+<ul class="simple">
+<li><p>choose paths,</p></li>
+<li><p>run an existing command,</p></li>
+<li><p>repeat it, and</p></li>
+<li><p>check that it finished.</p></li>
+</ul>
+<p>The shell coordinates. <code class="docutils literal notranslate"><span class="pre">rsync</span></code>, <code class="docutils literal notranslate"><span class="pre">pdftotext</span></code>, ImageMagick and LaTeX do the specialised work.</p>
+<p>Use Python or R when the job needs to understand data, perform analysis, or build a complex in-memory result. A shell script can call either one.</p>
 <p>In this chapter we will start with simple examples, predict their behaviour, test them on disposable data, and identify what needs improving. Keep the assessed scripts in your coursework repository; the temporary fixtures used to investigate them are not submissions.</p>
 </section>
 </section>
@@ -673,7 +740,10 @@
 <li><p>Choose descriptive variable names. Lowercase <code class="docutils literal notranslate"><span class="pre">snake_case</span></code> is useful for your own variables; uppercase names are common for environment variables such as <code class="docutils literal notranslate"><span class="pre">HOME</span></code> and <code class="docutils literal notranslate"><span class="pre">PATH</span></code>. Do not overwrite those accidentally. Names are case-sensitive.</p></li>
 <li><p>There must be no spaces around <code class="docutils literal notranslate"><span class="pre">=</span></code> in an assignment: <code class="docutils literal notranslate"><span class="pre">sample_name=oak</span></code> works; <code class="docutils literal notranslate"><span class="pre">sample_name</span> <span class="pre">=</span> <span class="pre">oak</span></code> attempts to run a command named <code class="docutils literal notranslate"><span class="pre">sample_name</span></code>.</p></li>
 </ul>
-<p>Write <code class="docutils literal notranslate"><span class="pre">boilerplate.sh</span></code> in your permanent <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/week1/code</span></code> directory. Use your own author details and date in the header:</p>
+</section>
+<section id="a-minimal-bash-script">
+<h3>A minimal Bash script<a class="headerlink" href="#a-minimal-bash-script" title="Link to this heading">#</a></h3>
+<p>This small script is our starting template:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
 <span class="c1"># Author: Your Name &lt;your.login@your.email.domain&gt;</span>
 <span class="c1"># Script: boilerplate.sh</span>
@@ -686,13 +756,45 @@
 <span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">.sh</span></code> extension helps readers and editors recognise shell scripts; it does not select the interpreter.</p>
+<p>Save it as <code class="docutils literal notranslate"><span class="pre">boilerplate.sh</span></code> in your permanent <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/week1/code</span></code> directory, using your own author details and date.</p>
+</section>
+<section id="who-should-read-the-script">
+<h3>1. Who should read the script?<a class="headerlink" href="#who-should-read-the-script" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+</pre></div>
+</div>
+<p>The first line tells the computer to use <strong>Bash</strong> when the file is run directly. This special first line is called the <strong>shebang</strong>.</p>
+</section>
+<section id="what-is-this-file">
+<h3>2. What is this file?<a class="headerlink" href="#what-is-this-file" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Author: Your Name</span>
+<span class="c1"># Script: boilerplate.sh</span>
+<span class="c1"># Desc: Simple boilerplate for shell scripts</span>
+<span class="c1"># Arguments: None</span>
+<span class="c1"># Date: Month YYYY</span>
+</pre></div>
+</div>
+<p>These are notes for people. Apart from the shebang, Bash ignores text after <code class="docutils literal notranslate"><span class="pre">#</span></code>, so comments can explain the script without changing what it does.</p>
+</section>
+<section id="what-should-happen">
+<h3>3. What should happen?<a class="headerlink" href="#what-should-happen" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">"\nThis is a shell script! \n"</span>
+</pre></div>
+</div>
+<p>This is the script’s <strong>body</strong>: the commands that do the work. Bash reads them in order, just as if you had typed them in the terminal.</p>
+</section>
+<section id="did-the-script-report-success">
+<h3>4. Did the script report success?<a class="headerlink" href="#did-the-script-report-success" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">exit</span></code> stops the script and returns a status to whatever started it. By convention, <code class="docutils literal notranslate"><span class="pre">0</span></code> means success; a nonzero value means that something went wrong.</p>
+<p>A few details are worth keeping in mind:</p>
 <ul class="simple">
-<li><p>When you execute a script directly, its first line (the <strong>shebang</strong>) selects the interpreter. <code class="docutils literal notranslate"><span class="pre">#!/usr/bin/env</span> <span class="pre">bash</span></code> finds Bash through <code class="docutils literal notranslate"><span class="pre">PATH</span></code>; <code class="docutils literal notranslate"><span class="pre">#!/bin/bash</span></code> selects that specific installed Bash. We use Bash in this chapter, regardless of your interactive login shell.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">#!/bin/sh</span></code> requests the system’s POSIX-style shell, not necessarily Bash. Ubuntu normally uses dash for <code class="docutils literal notranslate"><span class="pre">/bin/sh</span></code>; macOS’s interactive zsh default does not make <code class="docutils literal notranslate"><span class="pre">/bin/sh</span></code> zsh. Do not expect Bash-specific syntax to work under <code class="docutils literal notranslate"><span class="pre">sh</span></code>.</p></li>
-<li><p>Lines beginning with <code class="docutils literal notranslate"><span class="pre">#</span></code> after the shebang are documentation/comments, not commands to run.</p></li>
-<li><p>Bash’s <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">-e</span></code> interprets backslash escapes such as <code class="docutils literal notranslate"><span class="pre">\n</span></code>. Try removing <code class="docutils literal notranslate"><span class="pre">-e</span></code> and compare. For predictable formatting across shells, <code class="docutils literal notranslate"><span class="pre">printf</span> <span class="pre">'\nThis</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">shell</span> <span class="pre">script!</span> <span class="pre">\n\n'</span></code> is preferable; we retain <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">-e</span></code> here to investigate its behaviour.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">exit</span> <span class="pre">0</span></code> ends this script and reports success. A nonzero status indicates failure. Bare <code class="docutils literal notranslate"><span class="pre">exit</span></code> uses the preceding command’s status; reaching the end of a script usually does likewise. An unconditional <code class="docutils literal notranslate"><span class="pre">exit</span> <span class="pre">0</span></code> after a failing command would hide that failure, so do not add it as a universal repair.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">.sh</span></code> extension helps readers and editors recognise shell scripts; it does not choose the interpreter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#!/usr/bin/env</span> <span class="pre">bash</span></code> finds Bash through <code class="docutils literal notranslate"><span class="pre">PATH</span></code>; <code class="docutils literal notranslate"><span class="pre">#!/bin/bash</span></code> names a particular installed path. <code class="docutils literal notranslate"><span class="pre">#!/bin/sh</span></code> requests the system’s POSIX-style shell, which is not necessarily Bash.</p></li>
+<li><p>Bash’s <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">-e</span></code> interprets escapes such as <code class="docutils literal notranslate"><span class="pre">\n</span></code>. For predictable formatting across shells, <code class="docutils literal notranslate"><span class="pre">printf</span> <span class="pre">'\nThis</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">shell</span> <span class="pre">script!</span> <span class="pre">\n\n'</span></code> is preferable; we retain <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">-e</span></code> here to investigate its behaviour.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">exit</span> <span class="pre">0</span></code> reports success, but it does not prove the output is scientifically correct. An unconditional <code class="docutils literal notranslate"><span class="pre">exit</span> <span class="pre">0</span></code> after a failed command would hide that failure. Bare <code class="docutils literal notranslate"><span class="pre">exit</span></code>, or simply reaching the end, normally uses the preceding command’s status.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -707,26 +809,23 @@
 </section>
 <section id="running-shell-scripts">
 <h2>Running shell scripts<a class="headerlink" href="#running-shell-scripts" title="Link to this heading">#</a></h2>
-<p>There are two common ways to run a Bash script. From the directory containing <code class="docutils literal notranslate"><span class="pre">boilerplate.sh</span></code>:</p>
-<ol class="arabic simple">
-<li><p>Select Bash explicitly:</p></li>
-</ol>
+<p>The simplest way to run this lesson’s script is:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>boilerplate.sh
 </pre></div>
 </div>
-<p>The file needs to be readable, but this method does not require its executable permission bit. <code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">boilerplate.sh</span></code> is not an interchangeable spelling: it selects the shell provided by <code class="docutils literal notranslate"><span class="pre">sh</span></code>, even if the file’s shebang names Bash. Differences can include syntax errors and different behaviour, not just presentation.</p>
+<p>Read this as: <strong>ask Bash to run the commands in <code class="docutils literal notranslate"><span class="pre">boilerplate.sh</span></code>.</strong></p>
+<p>The file must be readable, but it does not need executable permission for this method. <code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">boilerplate.sh</span></code> is not an interchangeable spelling: it selects the system’s <code class="docutils literal notranslate"><span class="pre">sh</span></code>, even when the script was written for Bash.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Bash, dash and zsh are distinct shells with overlapping command languages. On macOS, you can run <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">boilerplate.sh</span></code> from a zsh prompt: the child process interpreting the script is Bash. This does not change your login shell. Use Bash for the examples here and document any external programs your script needs.</p>
 </div>
-<ol class="arabic simple" start="2">
-<li><p>Make the script executable by its owner, then execute it directly:</p></li>
-</ol>
+<p>You can also make the file executable and run it directly:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span>u+x<span class="w"> </span>boilerplate.sh
 ./boilerplate.sh
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">./</span></code> supplies a path in the current directory; the current directory is not normally searched automatically for commands. This method uses the shebang. Either method can be used for project-specific or reusable scripts; choose deliberately rather than assuming one is only for a particular kind of task.</p>
+<p>This method uses the shebang to choose Bash.</p>
+<p>Here <code class="docutils literal notranslate"><span class="pre">./</span></code> gives the path to the file in the current directory. The current directory is not normally searched automatically for commands. Either invocation method is valid; choose deliberately.</p>
 <section id="finding-commands-with-path">
 <h3>Finding commands with PATH<a class="headerlink" href="#finding-commands-with-path" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">PATH</span></code> is an environment variable containing a colon-separated list of directories searched for executable commands. It is not a directory itself. Inspect it and the Bash command your shell resolves:</p>
@@ -776,6 +875,11 @@ bash<span class="w"> </span>-c<span class="w"> </span><span class="s1">'printf "
 </section>
 <section id="positional-and-special-parameters">
 <h3>Positional and special parameters<a class="headerlink" href="#positional-and-special-parameters" title="Link to this heading">#</a></h3>
+<p>A script can receive information after its filename:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>greet.sh<span class="w"> </span>oak
+</pre></div>
+</div>
+<p>Inside <code class="docutils literal notranslate"><span class="pre">greet.sh</span></code>, <code class="docutils literal notranslate"><span class="pre">$1</span></code> means <strong>the first value supplied by the caller</strong>—here, <code class="docutils literal notranslate"><span class="pre">oak</span></code>. <code class="docutils literal notranslate"><span class="pre">$2</span></code> would mean the second value, and <code class="docutils literal notranslate"><span class="pre">$#</span></code> tells us how many values were supplied.</p>
 <p>These are not ordinary named variables:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -812,14 +916,15 @@ bash<span class="w"> </span>-c<span class="w"> </span><span class="s1">'printf "
 <li><p><code class="docutils literal notranslate"><span class="pre">read</span> <span class="pre">-r</span> <span class="pre">sample_name</span></code>: read a line from standard input; interactively this waits for you to type and press Return. <code class="docutils literal notranslate"><span class="pre">-r</span></code> keeps backslashes literal. <code class="docutils literal notranslate"><span class="pre">IFS=</span> <span class="pre">read</span> <span class="pre">-r</span> <span class="pre">sample_name</span></code> additionally preserves leading/trailing whitespace.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">today=$(date</span> <span class="pre">+%F)</span></code>: run a command and capture its standard output, removing trailing newlines.</p></li>
 </ul>
-<p>Predict the number of output lines in each of these:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">sample_name</span><span class="o">=</span><span class="s1">'field notes'</span>
-<span class="nb">printf</span><span class="w"> </span><span class="s1">'&lt;%s&gt;\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$sample_name</span><span class="s2">"</span>
-<span class="nb">printf</span><span class="w"> </span><span class="s1">'&lt;%s&gt;\n'</span><span class="w"> </span><span class="nv">$sample_name</span>
-<span class="nb">printf</span><span class="w"> </span><span class="s1">'&lt;%s&gt;\n'</span><span class="w"> </span><span class="s1">'$sample_name'</span>
+<p>A filename can contain a space:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">input_file</span><span class="o">=</span><span class="s1">'field notes.csv'</span>
+<span class="nb">printf</span><span class="w"> </span><span class="s1">'&lt;%s&gt;\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$input_file</span><span class="s2">"</span>
+<span class="nb">printf</span><span class="w"> </span><span class="s1">'&lt;%s&gt;\n'</span><span class="w"> </span><span class="nv">$input_file</span>
 </pre></div>
 </div>
-<p>Double quotes preserve the value as one argument; the unquoted expansion splits it into two; single quotes print the literal variable reference. Unquoted expansions can also expand wildcard characters into filenames. This is why <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">$sample_name</span></code> and <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;$sample_name&quot;</span></code> can look identical even though they pass different arguments.</p>
+<p><strong>How many pieces does each <code class="docutils literal notranslate"><span class="pre">printf</span></code> receive?</strong></p>
+<p>Double quotes keep <code class="docutils literal notranslate"><span class="pre">field</span> <span class="pre">notes.csv</span></code> together as <strong>one filename</strong>. Without quotes, Bash splits it at the space and sends two pieces: <code class="docutils literal notranslate"><span class="pre">field</span></code> and <code class="docutils literal notranslate"><span class="pre">notes.csv</span></code>.</p>
+<p><strong>Simple habit:</strong> quote a variable when you want its value to remain one thing.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Learn more about <a class="reference external" href="https://www.gnu.org/software/bash/manual/html_node/Shell-Expansions.html">shell expansion</a> and <a class="reference external" href="https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html">parameter expansion</a>. Quoting matters at the point of use, not just when a value is assigned.</p>
@@ -870,6 +975,13 @@ bash<span class="w"> </span>variables.sh<span class="w"> </span><span class="m">
 <section id="decisions-loops-and-useful-failures">
 <h2>Decisions, loops and useful failures<a class="headerlink" href="#decisions-loops-and-useful-failures" title="Link to this heading">#</a></h2>
 <p>An <code class="docutils literal notranslate"><span class="pre">if</span></code> statement chooses a branch based on a command’s status. Bash’s <code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">...</span> <span class="pre">]]</span></code> is a test construct: zero means the test is true. In numeric tests, <code class="docutils literal notranslate"><span class="pre">-ne</span></code> means “not equal”; for strings, <code class="docutils literal notranslate"><span class="pre">!=</span></code> means “different”. Spaces around these tokens matter. This is Bash syntax, not portable <code class="docutils literal notranslate"><span class="pre">sh</span></code> syntax.</p>
+<p>An <code class="docutils literal notranslate"><span class="pre">if</span></code> statement lets a script choose what to do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"oak"</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Selected oak\n'</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+<p>Read it as: <strong>if the first input is <code class="docutils literal notranslate"><span class="pre">oak</span></code>, print the message</strong>. <code class="docutils literal notranslate"><span class="pre">fi</span></code> marks the end of the choice.</p>
 <p>Here is a complete validation example on a different task. Save it as <code class="docutils literal notranslate"><span class="pre">CheckLabel.sh</span></code> for experimentation; it is not an additional assessed submission. It accepts exactly one of two species labels:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
@@ -899,18 +1011,22 @@ bash<span class="w"> </span>CheckLabel.sh<span class="w"> </span>oak<span class=
 </pre></div>
 </div>
 <p>These should report 0, 2, 1 and 2. <code class="docutils literal notranslate"><span class="pre">&gt;&amp;2</span></code> sends diagnostics to <strong>standard error</strong>, keeping them separate from useful output on standard output. Status values 1 and 2 are choices for this example, not universal meanings. A successful final <code class="docutils literal notranslate"><span class="pre">echo</span></code> can mask an earlier failure in a limited starter script, so a printed “Done!” is not evidence that the work succeeded.</p>
-<p>A <code class="docutils literal notranslate"><span class="pre">for</span></code> loop repeats a body for each word in a list:</p>
+<section id="a-small-for-loop">
+<h3>A small <code class="docutils literal notranslate"><span class="pre">for</span></code> loop<a class="headerlink" href="#a-small-for-loop" title="Link to this heading">#</a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">for</span></code> loop repeats the same commands for each item:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>species<span class="w"> </span><span class="k">in</span><span class="w"> </span>oak<span class="w"> </span>pine<span class="w"> </span>birch
 <span class="k">do</span>
 <span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s1">'Considering %s\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$species</span><span class="s2">"</span>
 <span class="k">done</span>
 </pre></div>
 </div>
+<p>Read it as: <strong>for each species in this list, print its name</strong>.</p>
 <p>Later we will replace the explicit list with a filename pattern. In ordinary Bash, an unmatched wildcard remains literal unless options such as <code class="docutils literal notranslate"><span class="pre">nullglob</span></code> or <code class="docutils literal notranslate"><span class="pre">failglob</span></code> change that behaviour.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Check syntax with <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">-n</span> <span class="pre">script.sh</span></code>; this does not run the script or check whether its data and commands exist. Trace a disposable example with <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">-x</span> <span class="pre">script.sh</span></code>, but avoid tracing secrets. ShellCheck, when available, can flag suspicious constructs; a warning on an intentionally limited starter is a prompt to investigate, not a reason to skip the experiment.</p>
 </div>
+</section>
 </section>
 <section id="a-useful-shell-scripting-example">
 <h2>A useful shell-scripting example<a class="headerlink" href="#a-useful-shell-scripting-example" title="Link to this heading">#</a></h2>
@@ -960,6 +1076,8 @@ bash<span class="w"> </span>CheckLabel.sh<span class="w"> </span>oak<span class=
 <p class="admonition-title">Warning</p>
 <p>This is a <strong>limited teaching starter</strong>, not a converter to trust with research data. For the first run, supply one readable file whose path has no spaces or wildcard characters, with one tab between fields and no quoted delimiters. Use only the disposable fixtures below. Keep input and output distinct; the output name is the input name with <code class="docutils literal notranslate"><span class="pre">.csv</span></code> appended. We will deliberately break these assumptions next.</p>
 </div>
+<section id="first-attempt-tabtocsv-sh">
+<h3>First attempt: <code class="docutils literal notranslate"><span class="pre">tabtocsv.sh</span></code><a class="headerlink" href="#first-attempt-tabtocsv-sh" title="Link to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1"># Author: Your name you.login@imperial.ac.uk</span>
 <span class="c1"># Script: tabtocsv.sh</span>
@@ -996,36 +1114,57 @@ cat<span class="w"> </span><span class="s2">"</span><span class="nv">$shell_prac
 </div>
 </div>
 </div>
+</section>
 <section id="predict-diagnose-improve">
 <h3>Predict, diagnose, improve<a class="headerlink" href="#predict-diagnose-improve" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">$1</span></code> is the first argument supplied to the script, not a general placeholder definition. The output lands beside the input because the starter appends <code class="docutils literal notranslate"><span class="pre">.csv</span></code> to that whole path. The resulting <code class="docutils literal notranslate"><span class="pre">.txt.csv</span></code> name is deliberately left for the extension-renaming exercise.</p>
 <p>Try these probes one at a time, still from <code class="docutils literal notranslate"><span class="pre">week1/code</span></code>:</p>
-<p><strong>Reruns:</strong> run the script again on the same temporary input, then inspect the output:</p>
+<section id="reruns">
+<h4>Reruns<a class="headerlink" href="#reruns" title="Link to this heading">#</a></h4>
+<p>Run the script again on the same temporary input, then inspect the output:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>tabtocsv.sh<span class="w"> </span><span class="s2">"</span><span class="nv">$shell_practice</span><span class="s2">/test.txt"</span>
 cat<span class="w"> </span><span class="s2">"</span><span class="nv">$shell_practice</span><span class="s2">/test.txt.csv"</span>
 </pre></div>
 </div>
 <p>Why are there duplicate rows? Which redirection operator caused that? The original input should remain unchanged.</p>
-<p><strong>Empty fields:</strong> compare these tiny streams, separate from the converter script:</p>
+</section>
+<section id="empty-fields">
+<h4>Empty fields<a class="headerlink" href="#empty-fields" title="Link to this heading">#</a></h4>
+<p>Suppose two tabs mean that the middle value is missing:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>oak    [missing]    12
+</pre></div>
+</div>
+<p>The starter’s <code class="docutils literal notranslate"><span class="pre">tr</span> <span class="pre">-s</span></code> command squeezes repeated tabs, producing:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>oak,12
+</pre></div>
+</div>
+<p>The missing field has disappeared. A script can run without errors and still change the meaning of the data.</p>
+<p>Compare the underlying commands on a disposable stream:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">printf</span><span class="w"> </span><span class="s1">'oak\t\t12\n'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-s<span class="w"> </span><span class="s1">'\t'</span><span class="w"> </span><span class="s1">','</span>
 <span class="nb">printf</span><span class="w"> </span><span class="s1">'oak\t\t12\n'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">'\t'</span><span class="w"> </span><span class="s1">','</span>
 </pre></div>
 </div>
-<p>The first produces <code class="docutils literal notranslate"><span class="pre">oak,12</span></code>; the second <code class="docutils literal notranslate"><span class="pre">oak,,12</span></code>. Adjacent tabs can represent a missing middle field. Squeezing destroys that information. Even unsqueezed character substitution cannot correctly serialise fields that themselves contain commas or quotes.</p>
-<p><strong>A space in the path:</strong></p>
+<p>The first produces <code class="docutils literal notranslate"><span class="pre">oak,12</span></code>; the second <code class="docutils literal notranslate"><span class="pre">oak,,12</span></code>. Even unsqueezed character substitution cannot correctly serialise fields that themselves contain commas, quotes or embedded newlines. Use a format-aware tool for general CSV data.</p>
+</section>
+<section id="a-space-in-the-path">
+<h4>A space in the path<a class="headerlink" href="#a-space-in-the-path" title="Link to this heading">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span><span class="s2">"</span><span class="nv">$shell_practice</span><span class="s2">/test.txt"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$shell_practice</span><span class="s2">/field notes.txt"</span>
 bash<span class="w"> </span>tabtocsv.sh<span class="w"> </span><span class="s2">"</span><span class="nv">$shell_practice</span><span class="s2">/field notes.txt"</span>
 <span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$?</span><span class="s2">"</span>
 </pre></div>
 </div>
 <p>The caller quotes the filename, but the starter expands <code class="docutils literal notranslate"><span class="pre">$1</span></code> without quotes internally. Expect errors, potentially an empty output file, and possibly a misleading success status. Quoting must be correct at each use, not just at the call site.</p>
-<p><strong>Wildcard characters in a value:</strong> inspect argument boundaries without running the converter:</p>
+</section>
+<section id="wildcard-characters-in-a-value">
+<h4>Wildcard characters in a value<a class="headerlink" href="#wildcard-characters-in-a-value" title="Link to this heading">#</a></h4>
+<p>Inspect argument boundaries without running the converter:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">sample_pattern</span><span class="o">=</span><span class="s2">"</span><span class="nv">$shell_practice</span><span class="s2">/*.txt"</span>
 <span class="nb">printf</span><span class="w"> </span><span class="s1">'&lt;%s&gt;\n'</span><span class="w"> </span><span class="s2">"</span><span class="nv">$sample_pattern</span><span class="s2">"</span>
 <span class="nb">printf</span><span class="w"> </span><span class="s1">'&lt;%s&gt;\n'</span><span class="w"> </span><span class="nv">$sample_pattern</span>
 </pre></div>
 </div>
 <p>The quoted form prints one literal pattern; the unquoted form expands to matching paths. Use <code class="docutils literal notranslate"><span class="pre">printf</span></code> to see what a command actually receives. We will apply these observations in the practical improvements, rather than supplying a finished converter here.</p>
+</section>
 </section>
 </section>
 <section id="some-more-examples">
@@ -1226,10 +1365,17 @@ mkdir<span class="w"> </span><span class="s2">"</span><span class="nv">$shell_pr
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-shell-scripts-are-good-for">What shell scripts are good for</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-scripts-you-might-actually-keep">Utility scripts you might actually keep</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-these-are-shell-utilities">Why these are shell utilities</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-shell-script">Your first shell script</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-conventions-and-syntax-rules">Some conventions and syntax rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-minimal-bash-script">A minimal Bash script</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#who-should-read-the-script">1. Who should read the script?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-this-file">2. What is this file?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-should-happen">3. What should happen?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#did-the-script-report-success">4. Did the script report success?</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-characters">Special characters</a></li>
@@ -1244,9 +1390,19 @@ mkdir<span class="w"> </span><span class="s2">"</span><span class="nv">$shell_pr
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-examples-of-variables">Some examples of variables</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decisions-loops-and-useful-failures">Decisions, loops and useful failures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decisions-loops-and-useful-failures">Decisions, loops and useful failures</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-small-for-loop">A small <code class="docutils literal notranslate"><span class="pre">for</span></code> loop</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-useful-shell-scripting-example">A useful shell-scripting example</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-diagnose-improve">Predict, diagnose, improve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-attempt-tabtocsv-sh">First attempt: <code class="docutils literal notranslate"><span class="pre">tabtocsv.sh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-diagnose-improve">Predict, diagnose, improve</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reruns">Reruns</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-fields">Empty fields</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-space-in-the-path">A space in the path</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wildcard-characters-in-a-value">Wildcard characters in a value</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-more-examples">Some more examples</a><ul class="nav section-nav flex-column">
