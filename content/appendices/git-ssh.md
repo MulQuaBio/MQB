@@ -126,6 +126,8 @@ git remote -v
 
 `origin` is a conventional label for a remote, not a special server. `git remote -v` reveals remote URLs, so check it before sharing terminal output if a URL contains unexpected information. Do not paste a token into a remote URL.
 
+If you already have commits locally, create the new GitHub repository without initializing it with a README, licence, or `.gitignore`. Those files would create a separate initial commit and the first push would be rejected until the histories are reconciled. If the remote is already non-empty, clone it first or follow a deliberate history-reconciliation workflow.
+
 Make the first network operation intentional. For a new repository whose branch is named `main`, it may be:
 
 ```bash

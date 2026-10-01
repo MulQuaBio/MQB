@@ -33,7 +33,7 @@ A **project root** is the main folder for one piece of coursework or project. It
 (terms-startup-file)=
 ## Startup file
 
-A **startup file** is a settings file that a shell reads when a new terminal session starts. A line added there affects future sessions as well as the one you are using now. Your shell and the kind of terminal session determine which startup file it reads; follow the setup instructions for your own system and change only the line you added.
+A **startup file** is a settings file that a shell reads when a new terminal session starts. A line added there affects future sessions. To apply the change to the current terminal, source the file explicitly or close and reopen the terminal. Your shell and the kind of terminal session determine which startup file it reads; follow the setup instructions for your own system and change only the line you added.
 
 (terms-package-manager)=
 ## Package manager and package
