@@ -38,6 +38,25 @@ Install only the extensions that you need from the Extensions view. For MQB, the
 
 The Python and Jupyter extensions may offer supporting extensions. Accept only the publisher-verified prompts that you understand. The R extension already integrates language-service support; do not install the obsolete separate `vscode-R-lsp` extension alongside it.
 
+## Use VS Code as a Git GUI
+
+VS Code's built-in Git support uses the same Git installation and repository as the terminal. Install and configure Git first using {ref}`git-ssh-setup`. Open the project root, then select **Source Control** in the Activity Bar or run **View: Show Source Control** from the Command Palette.
+
+The Source Control view lists changed files. Select a file to inspect its diff: removed lines appear on one side and added lines on the other. Stage only the files you intend to include in the next commit by selecting the **+** beside each file. Review the files under **Staged Changes** before entering a commit message and selecting **Commit**. A commit records changes locally; it does not upload them.
+
+Before sharing work, check the current branch in the status bar and make sure the intended remote is configured. Use the Source Control **…** menu or status-bar controls to push or pull. Pulling can bring in other commits and may produce conflicts; commit or deliberately set aside your own work first, and inspect any conflicts before continuing. See the [Git chapter](../notebooks/git.ipynb) for the underlying concepts and practice workflow.
+
+:::{figure-md} vscode-source-control
+
+```{image} ../images/vscode-source-control.png
+:alt: VS Code Source Control view showing staged and unstaged files beside a side-by-side diff.
+:width: 100%
+```
+
+**Source Control view and diff editor.** <small>(Source: [VS Code documentation](https://code.visualstudio.com/docs/sourcecontrol/overview); screenshot licensed under [CC BY 3.0 US](https://creativecommons.org/licenses/by/3.0/us/).)</small>
+
+:::
+
 ## Python scripts: select, run and debug
 
 Create or activate a project environment using {ref}`python-venv` before selecting it in VS Code. Open a `.py` file, then select the interpreter shown in the status bar (the strip along the bottom of the window) or run **Python: Select Interpreter** from the Command Palette (VS Code’s searchable command menu). Choose the `.venv` belonging to the project, not simply the first Python version in the list.

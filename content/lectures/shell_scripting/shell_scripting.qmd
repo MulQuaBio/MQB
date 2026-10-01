@@ -1,0 +1,627 @@
+---
+title: "Shell Scripting"
+author: "A MQB Lecture"
+subtitle: "Turn repeated commands into a reusable recipe"
+lang: en-GB
+format:
+  revealjs:
+    theme: simple
+    css: slides.css
+    slide-level: 2
+    width: 1280
+    height: 720
+    margin: 0.06
+    center: false
+    transition: none
+    slide-number: c/t
+    show-slide-number: all
+    incremental: false
+    navigation-mode: linear
+    controls: true
+    progress: true
+    history: true
+    embed-resources: true
+    auto-stretch: false
+    default-timing: 180
+execute:
+  enabled: false
+notebook-links: false
+---
+
+## Why save commands? {data-timing="75"}
+
+Today we will build and test a shell script together in VS Code.
+
+Next week, another 100 files arrive. You will not want to type the same recipe
+100 times, and future-you will not remember what present-you typed.
+
+::: {.big-question}
+How will you repeat exactly the same steps?
+:::
+
+::: notes
+Time: 00:00-01:15.
+
+Ask for one or two suggestions. Connect “save the commands” with a recipe:
+someone should be able to inspect it, follow it and improve it.
+:::
+
+## The workflow for today {data-timing="180"}
+
+::: {.flow .workflow-box}
+create → run → inspect → break deliberately → improve
+:::
+
+We will use one small converter as our running example:
+
+::: {.flow}
+tab-delimited file → `tabtocsv.sh` → comma-delimited file
+:::
+
+The converter is intentionally limited. That is useful: a small failure is easier
+to see than a giant mysterious pipeline.
+
+::: notes
+Time: 01:15-04:15.
+
+Explain that Bash coordinates commands; specialist programs do specialist work.
+Python or R become better choices when the task needs substantial data analysis.
+Tell students this is a live-coding lecture: keep VS Code and a terminal visible,
+and pause at each checkpoint rather than advancing on a fixed clock.
+:::
+
+## Preflight: open the right place {data-timing="300"}
+
+In VS Code:
+
+1. Open your coursework folder, for example `CMEECourseWork`.
+2. Open a terminal in VS Code.
+3. Check where the terminal actually is:
+
+```bash
+pwd
+```
+
+4. Create the working folders if they do not already exist:
+
+```bash
+mkdir -p week1/{code,data,results,sandbox}
+cd week1/code
+pwd
+```
+
+::: {.checkpoint}
+**Checkpoint:** everyone should be in `week1/code` with the editor and terminal visible.
+:::
+
+::: notes
+Time: 04:15-09:15.
+
+This is a live setup step. Ask students to substitute their own coursework path
+if it differs. If somebody is lost, have them run `pwd`, then use the VS Code
+Explorer to open the `week1/code` directory.
+:::
+
+## A script is a saved recipe {data-timing="60"}
+
+{{< embed ../../notebooks/shell-scripting.ipynb#shell-purpose >}}
+
+::: {.flow}
+commands → script → repeatable workflow
+:::
+
+::: notes
+Time: 09:15-10:15.
+
+Bash reads the recipe. The terminal is simply where we ask Bash to run it.
+:::
+
+## Utilities you might actually keep {.smaller data-timing="75"}
+
+{{< embed ../../notebooks/shell-scripting.ipynb#shell-utility-examples >}}
+
+These are examples of suitable jobs, not scripts to copy blindly. Backup and
+synchronisation scripts should begin with a dry run and disposable directories;
+be explicit about which direction data moves before trusting them.
+
+::: notes
+Time: 10:15-11:30.
+
+These are ordinary utilities that save time and reduce repeated manual work.
+They are deliberately not analyses: each has one practical job.
+:::
+
+## Why are these shell jobs? {data-timing="75"}
+
+{{< embed ../../notebooks/shell-scripting.ipynb#shell-utility-fit >}}
+
+::: notes
+Time: 11:30-12:45.
+
+Use the image converter as the key example: Bash chooses image paths and calls
+a converter; it does not itself understand image pixels. Python or R are not
+wrong alternatives—they are better when the task becomes an analysis.
+:::
+
+## Meet the boilerplate {.smaller data-timing="60"}
+
+{{< embed ../../notebooks/shell-scripting.ipynb#shell-anatomy >}}
+
+| Part | Question it answers |
+|:--|:--|
+| Shebang | Who should read the script? |
+| Comments | What is this file? |
+| Commands | What should happen? |
+| Exit status | Did the script report success? |
+
+::: notes
+Time: 12:45-13:45.
+
+“Boilerplate” means a starting pattern. Read the script once from top to bottom,
+then unpack its four parts on the next slides.
+:::
+
+## Create `boilerplate.sh` in VS Code {data-timing="420"}
+
+Create a new file called `boilerplate.sh` in `week1/code` and type this with me:
+
+```bash
+#!/usr/bin/env bash
+# Author: Your Name <your.login@your.email.domain>
+# Script: boilerplate.sh
+# Desc: Simple boilerplate for shell scripts
+# Arguments: None
+# Date: Month YYYY
+
+printf '\nThis is a shell script!\n\n'
+```
+
+::: {.live-demo}
+**Do this now:** create the file in the editor, save it, then compare your filename and first line.
+:::
+
+::: notes
+Time: 13:45-20:45.
+
+Create the file visibly in VS Code and let students type or paste it. Explain that
+the `.sh` suffix helps people and editors recognise the file; the shebang matters
+when the file is executed directly.
+:::
+
+## Who should read it? {data-timing="60"}
+
+{{< embed ../../notebooks/shell-scripting.ipynb#shell-boilerplate-interpreter >}}
+
+::: notes
+Time: 20:45-21:45.
+
+Pronounce `#!` as “hash-bang” if useful. The main idea is simply that this line
+selects Bash when the file itself is executed.
+:::
+
+## Notes for people {data-timing="60"}
+
+{{< embed ../../notebooks/shell-scripting.ipynb#shell-boilerplate-comments >}}
+
+::: notes
+Time: 21:45-22:45.
+
+Good comments answer practical questions: who wrote this, what is it for, and
+what input does it expect? Comments explain the recipe to its readers.
+:::
+
+## Commands do the work {data-timing="60"}
+
+{{< embed ../../notebooks/shell-scripting.ipynb#shell-boilerplate-body >}}
+
+::: notes
+Time: 22:45-23:45.
+
+The body can contain commands students already know. A script becomes useful by
+putting those familiar commands in a deliberate order.
+:::
+
+## Report success or failure {data-timing="60"}
+
+```bash
+exit 0
+```
+
+`exit` stops the script and returns a status to whatever started it. By convention,
+`0` means success; a nonzero value means that something went wrong.
+
+::: {.plain-language}
+`0` = “I finished successfully”<br>
+nonzero = “Something went wrong”
+:::
+
+::: notes
+Time: 23:45-24:45.
+
+This is a message to the calling shell or program. It does not prove that the
+scientific result is correct, and `exit 0` should not be used to hide failure.
+:::
+
+## Run the script {data-timing="60"}
+
+{{< embed ../../notebooks/shell-scripting.ipynb#shell-run-bash >}}
+
+Expected output:
+
+```text
+This is a shell script!
+```
+
+::: notes
+Time: 24:45-25:45.
+
+Keep this first run simple. Direct execution, permissions and PATH remain in the
+chapter and practical material.
+:::
+
+## Execute it through the shebang {data-timing="300"}
+
+Now make the file executable and run it directly:
+
+```bash
+chmod u+x boilerplate.sh
+./boilerplate.sh
+```
+
+Here `./` names the file in the current directory. The current directory is not
+normally searched automatically for commands.
+
+::: {.checkpoint}
+**Checkpoint:** both invocation methods should print the same message.
+:::
+
+::: notes
+Time: 25:45-30:45.
+
+If direct execution fails, check `ls -l boilerplate.sh` and confirm that the
+terminal is still in `week1/code`. Do not turn this into a PATH detour yet.
+:::
+
+## Add an explicit status {data-timing="240"}
+
+Add this line to the bottom of the script:
+
+```bash
+exit 0
+```
+
+::: {.plain-language}
+`0` = “I finished successfully”<br>
+nonzero = “Something went wrong”
+:::
+
+Check the status immediately:
+
+```bash
+./boilerplate.sh
+echo "$?"
+```
+
+`exit 0` reports success; it does not prove that a scientific result is correct.
+
+## Recovery checkpoint {data-timing="180"}
+
+If your file has drifted, recreate this minimum version in the editor:
+
+```bash
+#!/usr/bin/env bash
+printf 'This is a shell script!\n'
+exit 0
+```
+
+Then save it as `boilerplate.sh` in `week1/code` and run:
+
+```bash
+bash -n boilerplate.sh
+bash boilerplate.sh
+```
+
+`bash -n` checks syntax without running the script. It does not check whether
+input files or external commands exist.
+
+::: {.checkpoint}
+**Checkpoint:** a syntax check passes and the script prints one line.
+:::
+
+::: notes
+Time: 34:45-37:45.
+
+Ask students to predict the status before running `echo "$?"`. Keep this as a
+recovery route, not a second exercise students must type from scratch.
+:::
+
+## Give the script some information {data-timing="75"}
+
+{{< embed ../../notebooks/shell-scripting.ipynb#shell-first-argument >}}
+
+::: {.flow}
+caller supplies `oak` → script sees it as `$1`
+:::
+
+::: notes
+Time: 37:45-39:00.
+
+Use a physical analogy if helpful: arguments are labelled slots. The first
+supplied value goes into slot `$1`, the second into `$2`, and so on.
+:::
+
+## A filename with a space {data-timing="75"}
+
+{{< embed ../../notebooks/shell-scripting.ipynb#shell-quoting-prompt >}}
+
+::: notes
+Time: 39:00-40:15.
+
+Give students twenty seconds to predict. Ask whether `field notes.csv` should
+be treated as one filename or two separate words.
+:::
+
+## Quotes keep one thing together {data-timing="60"}
+
+{{< embed ../../notebooks/shell-scripting.ipynb#shell-quoting-explanation >}}
+
+::: notes
+Time: 40:15-41:15.
+
+This is the memorable rule for today. The chapter later explains word splitting
+and filename expansion more precisely.
+:::
+
+## Make a choice {data-timing="75"}
+
+{{< embed ../../notebooks/shell-scripting.ipynb#shell-if-choice >}}
+
+::: {.plain-language}
+`if` asks a question; `then` introduces the action.
+:::
+
+::: notes
+Time: 41:15-42:30.
+
+Read the example aloud as ordinary language. Students do not need to memorise
+every bracket or space yet.
+:::
+
+## Repeat an action {data-timing="75"}
+
+{{< embed ../../notebooks/shell-scripting.ipynb#shell-for-loop >}}
+
+::: notes
+Time: 42:30-43:45.
+
+Again, translate the code into a sentence. Each trip through the loop gives
+`species` the next value in the list.
+:::
+
+## Create disposable input data {data-timing="300"}
+
+Before touching a converter, make data that can be destroyed without regret:
+
+```bash
+mkdir -p ../sandbox/shell-demo
+printf 'species\tcount\noak\t12\n' > ../sandbox/shell-demo/test.txt
+cat ../sandbox/shell-demo/test.txt
+```
+
+::: {.checkpoint}
+**Checkpoint:** the input is under `week1/sandbox`, not inside `week1/data` or `week1/results`.
+:::
+
+::: notes
+Time: 43:45-48:45.
+
+Explain why disposable fixtures matter. Students should not debug a converter by
+experimenting on the only copy of assessed or irreplaceable data.
+:::
+
+## Build the first `tabtocsv.sh` {data-timing="420"}
+
+Create `tabtocsv.sh` in `week1/code`:
+
+```bash
+#!/usr/bin/env bash
+echo "Creating a comma delimited version of $1 ..."
+cat $1 | tr -s "\t" "," >> $1.csv
+echo "Done!"
+exit 0
+```
+
+Run it on the disposable input:
+
+```bash
+bash tabtocsv.sh ../sandbox/shell-demo/test.txt
+cat ../sandbox/shell-demo/test.txt.csv
+```
+
+::: {.live-demo}
+**Do this now:** run the starter once, inspect the output, and think about + discuss what the script assumes.
+:::
+
+::: notes
+Time: 48:45-55:45.
+
+Do not present this as a finished converter. The unquoted `$1`, squeezing `tr`,
+append redirection and unconditional success are deliberate teaching problems.
+:::
+
+## A useful script has a clear job {data-timing="60"}
+
+The practical starter `tabtocsv.sh` has one intended job:
+
+::: {.flow .workflow-box}
+tab-delimited file → `tabtocsv.sh` → comma-delimited file
+:::
+
+Before trusting it, ask:
+
+- What input does it expect?
+- Where will it put the result?
+- What could make it fail?
+
+::: notes
+Time: 55:45-56:45.
+
+Do not inspect every line of the starter here. Establish its intended input and
+output first; students will investigate the implementation in the practical.
+:::
+
+## Break it deliberately: reruns {data-timing="300"}
+
+Run the same command again:
+
+```bash
+bash tabtocsv.sh ../sandbox/shell-demo/test.txt
+cat ../sandbox/shell-demo/test.txt.csv
+```
+
+Why are rows duplicated? `>>` appends instead of replacing the output.
+
+::: {.live-demo}
+**Pause:** predict the second output before running the command, then discuss your prediction.
+:::
+
+::: notes
+Time: 56:45-61:45.
+
+Use this to introduce the distinction between `>` and `>>`. The original input
+should remain unchanged, while the generated output is deliberately not idempotent.
+:::
+
+## Running is not the same as being right {data-timing="90"}
+
+{{< embed ../../notebooks/shell-scripting.ipynb#tabtocsv-empty-fields >}}
+
+::: notes
+Time: 61:45-63:15.
+
+This is the key scientific warning. The command completes, but the missing value
+vanishes. Successful execution and correct data are different claims.
+:::
+
+## Break it deliberately: a space in the path {data-timing="300"}
+
+Make a copy with a space in its name:
+
+```bash
+cp ../sandbox/shell-demo/test.txt '../sandbox/shell-demo/field notes.txt'
+bash tabtocsv.sh '../sandbox/shell-demo/field notes.txt'
+echo "$?"
+```
+
+The caller quoted the path, but the script used `$1` without quotes internally.
+Quoting must be correct at every use. This is a useful failure to fix in the
+practical, not an argument for avoiding spaces in real filenames.
+
+::: notes
+Time: 63:15-68:15.
+
+Let students observe the error and status. If the demonstration behaves slightly
+differently across systems, focus on the principle: unquoted expansion can split
+one path into multiple words.
+:::
+
+## The improvement checklist {data-timing="300"}
+
+Before calling a script reliable, ask:
+
+- Does it check the number of arguments?
+- Does it check that the input exists and is readable?
+- Are variables quoted when they should remain one value?
+- Does it keep input and output distinct?
+- Does it handle reruns deliberately?
+- Does its exit status reflect failure?
+- Have we inspected the output, not merely seen a zero status?
+
+::: {.flow}
+predict → test on disposable data → inspect → improve
+:::
+
+::: notes
+Time: 68:15-73:15.
+
+This is the bridge from demonstration to practical. Do not live-code every fix;
+ask students to apply the checklist to the starter and compare approaches.
+:::
+
+## Practical: your next shell script {data-timing="420"}
+
+::: {.flow}
+predict → test on disposable data → inspect → improve
+:::
+
+Write `csvtospace.sh` to convert comma-separated values to space-separated values.
+
+It must:
+
+- accept and validate its input,
+- leave the input unchanged,
+- write to a differently named output,
+- handle missing and invalid inputs with useful messages, and
+- state the limitations of simple delimiter substitution.
+
+Test it on disposable copies before using coursework data. Keep the script in
+`CMEECourseWork/week1/code`; temporary fixtures belong in `week1/sandbox`.
+
+::: {.checkpoint}
+**Before you leave:** run a valid case, a missing-file case, a missing-argument case and a path-with-spaces case.
+:::
+
+::: notes
+Time: 73:15-80:15.
+
+Return to the recipe idea. Students should now be able to read the boilerplate.
+Point them to the chapter's practical instructions and parameter-expansion
+resources. The lecture has demonstrated the method; the practical is where they
+make design decisions and document limitations.
+:::
+
+## If you fall behind {data-timing="180"}
+
+Use the recovery route:
+
+```bash
+pwd
+cd ~/Documents/CMEECourseWork/week1/code
+bash -n boilerplate.sh
+bash boilerplate.sh
+```
+
+If your coursework path differs, use the VS Code Explorer or `pwd` to locate it.
+You can also recreate the disposable input:
+
+```bash
+mkdir -p ../sandbox/shell-demo
+printf 'species\tcount\noak\t12\n' > ../sandbox/shell-demo/test.txt
+```
+
+::: notes
+Time: 80:15-83:15.
+
+Keep this slide visible while students catch up. A recovery route is part of the
+lecture design, not an admission that anyone has failed.
+:::
+
+## The method to keep {data-timing="180"}
+
+::: {.big-question}
+What should this script do, what input will I test, and how will I know it worked?
+:::
+
+```text
+create → run → inspect → break deliberately → improve
+```
+
+Shell scripts are small recipes. Small recipes still deserve tests, useful error
+messages and a cautious cook (you!).
+
+::: notes
+Time: 83:15-86:15.
+
+Close by returning to the opening question. The goal is not to memorise Bash
+punctuation; it is to turn repeatable command-line work into an inspectable recipe.
+:::

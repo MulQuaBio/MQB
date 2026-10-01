@@ -1,6 +1,6 @@
 # Shell Scripting: Turn Repeated Commands into a Reusable Recipe
 
-[shell_scripting.qmd](shell_scripting.qmd) is a 20-minute Reveal.js lecture
+[shell_scripting.qmd](shell_scripting.qmd) is an approximately 86-minute Reveal.js lecture
 for students who have completed the MQB Unix chapter. It introduces
 shell scripts through a recipe metaphor. It explains the four parts of the
 boilerplate before introducing one input, quoting, choices, repetition and a
@@ -25,6 +25,15 @@ Rendering creates `shell_scripting.html` beside the QMD. The HTML embeds
 Reveal.js and local styles, so it is usable offline. The presentation does not
 execute a notebook or run its shell examples; rehearse any live terminal work
 separately on disposable data.
+
+Before sharing or publishing the rendered HTML, remove the absolute source
+notebook paths Quarto adds to embedded cells:
+
+```bash
+python3 content/lectures/shell_scripting/sanitize_html.py content/lectures/shell_scripting/shell_scripting.html
+```
+
+Run this after every render; the helper is safe to rerun.
 
 Press `S` during the presentation to open speaker view, including the timing
 notes and next-slide preview. Do not edit the generated HTML directly; edit the

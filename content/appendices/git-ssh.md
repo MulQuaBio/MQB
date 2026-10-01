@@ -75,6 +75,8 @@ ssh-keygen -t ed25519 -C "you@example.ac.uk"
 
 Choose a passphrase when prompted. If `ssh-keygen` warns that the suggested filename already exists, stop and choose a new descriptive filename instead of replacing a key whose use you do not understand. A passphrase protects the private key if the file is copied; it is not a GitHub password.
 
+**Tip:** A passphrase is optional. Press Enter at both passphrase prompts to leave the key unencrypted; anyone who obtains that private-key file can then use it without a passphrase. With a passphrase, an SSH agent or system keyring can remember it for a session so you do not have to type it for every push or pull.
+
 On Linux or macOS, an SSH agent is a helper program that can remember a key’s passphrase for the current session. Start it, then add the private key you chose:
 
 ```bash
