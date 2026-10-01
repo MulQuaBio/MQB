@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -532,16 +532,73 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal">Terminal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell">Shell</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paths-and-the-current-directory">Paths and the current directory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-root">Project root</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path">PATH</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#startup-file">Startup file</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-manager-and-package">Package manager and package</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-environment-and-interpreter">Python environment and interpreter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-kernel">Notebook kernel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-and-remote">Repository and remote</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal-and-shell">Terminal and shell</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Terminal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shell">Shell</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paths-files-and-systems">Paths, files and systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Paths and the current directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-root">Project root</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#path">PATH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#startup-file">Startup file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package-manager-and-package">Package manager and package</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-and-notebooks">Python and notebooks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Python environment and interpreter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-kernel">Notebook kernel</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-and-github">Git and GitHub</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Repository and remote</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#command-option-and-argument">Command, option and argument</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-input-output-and-error">Standard input, output and error</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipe-and-redirection">Pipe and redirection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exit-status">Exit status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-system">Operating system</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cpu-and-processor">CPU and processor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ram-and-memory">RAM and memory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storage">Storage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-system">File system</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#process">Process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permissions-and-executable-files">Permissions and executable files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-variable">Environment variable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editors-and-development-tools">Editors and development tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-editor">Code editor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrated-development-environment-ide">Integrated development environment (IDE)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrated-terminal">Integrated terminal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repl">REPL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debugger">Debugger</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linter-and-formatter">Linter and formatter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-or-plugin">Extension or plugin</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#language-server">Language server</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#script-module-and-package">Script, module and package</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency">Dependency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip">pip</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook">Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-cell-and-markdown-cell">Code cell and Markdown cell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#restart">Restart</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-tree">Working tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#staging-area-and-index">Staging area and index</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commit">Commit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branch">Branch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#head">HEAD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clone-fetch-pull-and-push">Clone, fetch, pull and push</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-conflict">Merge conflict</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitignore"><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fork-and-pull-request">Fork and pull request</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-configuration">Data and configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-json-and-yaml">CSV, JSON and YAML</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">Reproducibility</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-keys">SSH keys</a></li>
 </ul>
             </nav>
@@ -557,49 +614,223 @@
   <section class="tex2jax_ignore mathjax_ignore" id="key-computing-terms">
 <span id="mqb-terms"></span><h1>Key computing terms<a class="headerlink" href="#key-computing-terms" title="Link to this heading">#</a></h1>
 <p>Use this page when an unfamiliar computing term appears in MQB. Each chapter explains a term again when it is needed for an activity; this page is a short place to look it up.</p>
-<section id="terminal">
-<span id="terms-terminal"></span><h2>Terminal<a class="headerlink" href="#terminal" title="Link to this heading">#</a></h2>
-<p>A <strong>terminal</strong> is an application window where you type commands and see their output. On macOS it is usually called Terminal; on Linux it may be Terminal, GNOME Terminal or a similar name. VS Code also has an integrated terminal.</p>
+<section id="terminal-and-shell">
+<span id="terminal"></span><h2>Terminal and shell<a class="headerlink" href="#terminal-and-shell" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Terminal<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>A <strong>terminal</strong> is an application window where you type commands and see their output. On macOS it is usually called Terminal; on Linux it may be Terminal, GNOME Terminal or a similar name. VS Code and other modern code editors also have an integrated terminal.</p>
 </section>
 <section id="shell">
-<span id="terms-shell"></span><h2>Shell<a class="headerlink" href="#shell" title="Link to this heading">#</a></h2>
+<span id="id2"></span><h3>Shell<a class="headerlink" href="#shell" title="Link to this heading">#</a></h3>
 <p>A <strong>shell</strong> is the program inside a terminal that reads the commands you type and starts other programs. MQB mainly uses Bash. A terminal is the window; the shell is the command-reading program in that window.</p>
 </section>
-<section id="paths-and-the-current-directory">
-<span id="terms-paths"></span><h2>Paths and the current directory<a class="headerlink" href="#paths-and-the-current-directory" title="Link to this heading">#</a></h2>
+</section>
+<section id="paths-files-and-systems">
+<span id="paths-and-the-current-directory"></span><h2>Paths, files and systems<a class="headerlink" href="#paths-files-and-systems" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3>Paths and the current directory<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>A <strong>path</strong> names the location of a file or folder. The <strong>current directory</strong> is the folder a terminal or program is using right now. The <code class="docutils literal notranslate"><span class="pre">pwd</span></code> command prints that folder.</p>
 <p>An <strong>absolute path</strong> gives the complete location, starting at the top of the file system. For example, <code class="docutils literal notranslate"><span class="pre">/opt/homebrew/bin/brew</span></code> is an absolute path on many Apple Silicon Macs. A <strong>relative path</strong> starts from the current directory, such as <code class="docutils literal notranslate"><span class="pre">data/observations.csv</span></code>.</p>
 </section>
 <section id="project-root">
-<span id="terms-project-root"></span><h2>Project root<a class="headerlink" href="#project-root" title="Link to this heading">#</a></h2>
+<span id="id4"></span><h3>Project root<a class="headerlink" href="#project-root" title="Link to this heading">#</a></h3>
 <p>A <strong>project root</strong> is the main folder for one piece of coursework or project. It commonly contains folders such as <code class="docutils literal notranslate"><span class="pre">code</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">results</span></code>. Open this folder in VS Code and return to it before following project-level commands.</p>
 </section>
 <section id="path">
-<span id="terms-path"></span><h2>PATH<a class="headerlink" href="#path" title="Link to this heading">#</a></h2>
+<span id="id5"></span><h3>PATH<a class="headerlink" href="#path" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">PATH</span></code> is a list of folders that a shell searches when you type a command name. If the folder containing a program is on <code class="docutils literal notranslate"><span class="pre">PATH</span></code>, you can type the program’s short name, such as <code class="docutils literal notranslate"><span class="pre">brew</span></code>, instead of its full path. <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">-v</span> <span class="pre">NAME</span></code> shows the location the shell would use for a command named <code class="docutils literal notranslate"><span class="pre">NAME</span></code>.</p>
 </section>
 <section id="startup-file">
-<span id="terms-startup-file"></span><h2>Startup file<a class="headerlink" href="#startup-file" title="Link to this heading">#</a></h2>
-<p>A <strong>startup file</strong> is a settings file that a shell reads when a new terminal session starts. A line added there affects future sessions as well as the one you are using now. Your shell and the kind of terminal session determine which startup file it reads; follow the setup instructions for your own system and change only the line you added.</p>
+<span id="id6"></span><h3>Startup file<a class="headerlink" href="#startup-file" title="Link to this heading">#</a></h3>
+<p>A <strong>startup file</strong> is a settings file that a shell reads when a new terminal session starts. A line added there affects future sessions. To apply the change to the current terminal, source the file explicitly or close and reopen the terminal. Your shell and the kind of terminal session determine which startup file it reads; follow the setup instructions for your own system and change only the line you added.</p>
 </section>
 <section id="package-manager-and-package">
-<span id="terms-package-manager"></span><h2>Package manager and package<a class="headerlink" href="#package-manager-and-package" title="Link to this heading">#</a></h2>
+<span id="id7"></span><h3>Package manager and package<a class="headerlink" href="#package-manager-and-package" title="Link to this heading">#</a></h3>
 <p>A <strong>package manager</strong> installs, updates and removes software in a controlled way. Homebrew on macOS and APT on Ubuntu are package managers. A <strong>package</strong> is one unit of software managed this way; it may provide a command, a library or an application.</p>
 </section>
-<section id="python-environment-and-interpreter">
-<span id="terms-environment"></span><h2>Python environment and interpreter<a class="headerlink" href="#python-environment-and-interpreter" title="Link to this heading">#</a></h2>
+</section>
+<section id="python-and-notebooks">
+<span id="python-environment-and-interpreter"></span><h2>Python and notebooks<a class="headerlink" href="#python-and-notebooks" title="Link to this heading">#</a></h2>
+<section id="id8">
+<h3>Python environment and interpreter<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>A Python <strong>interpreter</strong> is the program that runs Python code. A Python <strong>environment</strong> is a project-specific place where that interpreter uses its own installed packages. A <code class="docutils literal notranslate"><span class="pre">venv</span></code> is the standard Python tool for creating such an environment. Activating it tells the current terminal to use that project’s Python first.</p>
 </section>
 <section id="notebook-kernel">
-<span id="terms-kernel"></span><h2>Notebook kernel<a class="headerlink" href="#notebook-kernel" title="Link to this heading">#</a></h2>
+<span id="id9"></span><h3>Notebook kernel<a class="headerlink" href="#notebook-kernel" title="Link to this heading">#</a></h3>
 <p>A notebook <strong>kernel</strong> is the running program that executes notebook cells and keeps variables in memory. A Python interpreter selected for a script and a kernel selected for a notebook can be different, so check both when working in an editor.</p>
 </section>
-<section id="repository-and-remote">
-<span id="terms-repository"></span><h2>Repository and remote<a class="headerlink" href="#repository-and-remote" title="Link to this heading">#</a></h2>
-<p>A Git <strong>repository</strong> is a project folder together with its saved history of changes. A <strong>remote</strong> is another copy of that repository, usually hosted on a service such as GitHub. <code class="docutils literal notranslate"><span class="pre">origin</span></code> is a conventional name for a remote; it is a label chosen in your local repository, not the name of a special GitHub server.</p>
+</section>
+<section id="git-and-github">
+<span id="repository-and-remote"></span><h2>Git and GitHub<a class="headerlink" href="#git-and-github" title="Link to this heading">#</a></h2>
+<section id="id10">
+<h3>Repository and remote<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>A Git <strong>repository</strong> is a project folder together with its saved history of changes. A <strong>remote</strong> is a named local connection to another repository, usually represented by a URL. <code class="docutils literal notranslate"><span class="pre">origin</span></code> is a conventional name for that connection; it is a label chosen in your local repository, not the name of a special GitHub server.</p>
+</section>
+<section id="command-option-and-argument">
+<span id="command"></span><h3>Command, option and argument<a class="headerlink" href="#command-option-and-argument" title="Link to this heading">#</a></h3>
+<p>A <strong>command</strong> is an instruction given to a shell, such as <code class="docutils literal notranslate"><span class="pre">pwd</span></code> or <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>. An <strong>option</strong> or <strong>flag</strong> changes how a command behaves, often beginning with <code class="docutils literal notranslate"><span class="pre">-</span></code> or <code class="docutils literal notranslate"><span class="pre">--</span></code>. An <strong>argument</strong> is an input supplied to a command, such as a filename or directory.</p>
+</section>
+<section id="standard-input-output-and-error">
+<span id="standard-input-output-error"></span><h3>Standard input, output and error<a class="headerlink" href="#standard-input-output-and-error" title="Link to this heading">#</a></h3>
+<p><strong>Standard input</strong> is data read by a program, normally from the keyboard or another command. <strong>Standard output</strong> is normal program output, and <strong>standard error</strong> is diagnostic output. They are commonly abbreviated as <code class="docutils literal notranslate"><span class="pre">stdin</span></code>, <code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code>.</p>
+</section>
+<section id="pipe-and-redirection">
+<span id="id11"></span><h3>Pipe and redirection<a class="headerlink" href="#pipe-and-redirection" title="Link to this heading">#</a></h3>
+<p>A <strong>pipe</strong>, written <code class="docutils literal notranslate"><span class="pre">|</span></code>, sends the output of one command to the input of another. <strong>Redirection</strong> sends input or output to a file, using operators such as <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>.</p>
+</section>
+<section id="exit-status">
+<span id="id12"></span><h3>Exit status<a class="headerlink" href="#exit-status" title="Link to this heading">#</a></h3>
+<p>An <strong>exit status</strong> is the numeric result a command returns to the shell. Zero normally means success; a non-zero value normally indicates an error or another condition.</p>
+</section>
+<section id="operating-system">
+<span id="id13"></span><h3>Operating system<a class="headerlink" href="#operating-system" title="Link to this heading">#</a></h3>
+<p>An <strong>operating system</strong> manages a computer’s hardware and provides services for programs. Linux, macOS and Windows are operating systems.</p>
+</section>
+<section id="cpu-and-processor">
+<span id="id14"></span><h3>CPU and processor<a class="headerlink" href="#cpu-and-processor" title="Link to this heading">#</a></h3>
+<p>The <strong>central processing unit (CPU)</strong>, or <strong>processor</strong>, executes program instructions. A CPU may contain multiple cores that can run independent tasks concurrently.</p>
+</section>
+<section id="ram-and-memory">
+<span id="id15"></span><h3>RAM and memory<a class="headerlink" href="#ram-and-memory" title="Link to this heading">#</a></h3>
+<p><strong>RAM</strong> is fast temporary working space used by running programs. Its contents are normally lost when the computer shuts down. RAM is different from persistent storage such as an SSD.</p>
+</section>
+<section id="storage">
+<span id="id16"></span><h3>Storage<a class="headerlink" href="#storage" title="Link to this heading">#</a></h3>
+<p><strong>Storage</strong> is persistent space for files and programs, such as an SSD, hard drive or network drive. Storage retains data when the computer is turned off.</p>
+</section>
+<section id="file-system">
+<span id="id17"></span><h3>File system<a class="headerlink" href="#file-system" title="Link to this heading">#</a></h3>
+<p>A <strong>file system</strong> is the structure and set of rules an operating system uses to organise files and folders on storage.</p>
+</section>
+<section id="architecture">
+<span id="id18"></span><h3>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h3>
+<p>Computer <strong>architecture</strong> is the design and instruction set targeted by software, such as <code class="docutils literal notranslate"><span class="pre">x86_64</span></code> or <code class="docutils literal notranslate"><span class="pre">ARM64</span></code>. Programs and packages must be compatible with the system architecture.</p>
+</section>
+<section id="process">
+<span id="id19"></span><h3>Process<a class="headerlink" href="#process" title="Link to this heading">#</a></h3>
+<p>A <strong>process</strong> is a running instance of a program, with its own memory and system resources.</p>
+</section>
+<section id="permissions-and-executable-files">
+<span id="permissions-and-executable"></span><h3>Permissions and executable files<a class="headerlink" href="#permissions-and-executable-files" title="Link to this heading">#</a></h3>
+<p>File <strong>permissions</strong> control who can read, modify or run a file. An <strong>executable</strong> is a program or script that the operating system is allowed to run.</p>
+</section>
+<section id="environment-variable">
+<span id="id20"></span><h3>Environment variable<a class="headerlink" href="#environment-variable" title="Link to this heading">#</a></h3>
+<p>An <strong>environment variable</strong> is a named value made available to programs started by a shell. <code class="docutils literal notranslate"><span class="pre">PATH</span></code> is one example. Commands such as <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">NAME=value</span></code> set variables for the current shell and its child processes.</p>
+</section>
+</section>
+<section id="editors-and-development-tools">
+<h2>Editors and development tools<a class="headerlink" href="#editors-and-development-tools" title="Link to this heading">#</a></h2>
+<section id="code-editor">
+<span id="id21"></span><h3>Code editor<a class="headerlink" href="#code-editor" title="Link to this heading">#</a></h3>
+<p>A <strong>code editor</strong> is a program for writing and editing source code. Examples include VS Code, Vim and Emacs.</p>
+</section>
+<section id="integrated-development-environment-ide">
+<span id="ide"></span><h3>Integrated development environment (IDE)<a class="headerlink" href="#integrated-development-environment-ide" title="Link to this heading">#</a></h3>
+<p>An <strong>integrated development environment (IDE)</strong> combines tools for writing, running, debugging and testing code. Examples include VS Code, RStudio, PyCharm and Visual Studio. An IDE can still use a separately selected interpreter or environment.</p>
+</section>
+<section id="integrated-terminal">
+<span id="id22"></span><h3>Integrated terminal<a class="headerlink" href="#integrated-terminal" title="Link to this heading">#</a></h3>
+<p>An <strong>integrated terminal</strong> is a terminal panel inside an editor such as VS Code. It still runs a shell separately from the editor itself.</p>
+</section>
+<section id="repl">
+<span id="id23"></span><h3>REPL<a class="headerlink" href="#repl" title="Link to this heading">#</a></h3>
+<p>A <strong>REPL</strong> is a read-evaluate-print loop: an interactive prompt that reads code, evaluates it and displays the result. The Python prompt and R console are examples.</p>
+</section>
+<section id="debugger">
+<span id="id24"></span><h3>Debugger<a class="headerlink" href="#debugger" title="Link to this heading">#</a></h3>
+<p>A <strong>debugger</strong> is a tool for pausing a program, stepping through execution, inspecting variables and locating errors.</p>
+</section>
+<section id="linter-and-formatter">
+<span id="id25"></span><h3>Linter and formatter<a class="headerlink" href="#linter-and-formatter" title="Link to this heading">#</a></h3>
+<p>A <strong>linter</strong> detects possible errors or style problems. A <strong>formatter</strong> automatically rewrites code into a consistent layout.</p>
+</section>
+<section id="extension-or-plugin">
+<span id="id26"></span><h3>Extension or plugin<a class="headerlink" href="#extension-or-plugin" title="Link to this heading">#</a></h3>
+<p>An <strong>extension</strong> or <strong>plugin</strong> is an add-on that provides language support, debugging, notebook integration or other editor features.</p>
+</section>
+<section id="language-server">
+<span id="id27"></span><h3>Language server<a class="headerlink" href="#language-server" title="Link to this heading">#</a></h3>
+<p>A <strong>language server</strong> is a background service that provides features such as syntax checking, completion, documentation, navigation and refactoring.</p>
+</section>
+<section id="script-module-and-package">
+<span id="id28"></span><h3>Script, module and package<a class="headerlink" href="#script-module-and-package" title="Link to this heading">#</a></h3>
+<p>A <strong>script</strong> is a file intended to be run as a program. A <strong>module</strong> is a file or collection of code that can be imported and reused. A <strong>package</strong> is a collection of related modules distributed as a unit.</p>
+</section>
+<section id="dependency">
+<span id="id29"></span><h3>Dependency<a class="headerlink" href="#dependency" title="Link to this heading">#</a></h3>
+<p>A <strong>dependency</strong> is software that a program or project relies on, such as a Python package or an external command. Dependencies should be recorded so another person can reproduce the environment.</p>
+</section>
+<section id="pip">
+<span id="id30"></span><h3>pip<a class="headerlink" href="#pip" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span></code> is a tool for installing and managing Python packages. Use the interpreter-bound form, such as <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span></code>, when several Python installations may exist.</p>
+</section>
+<section id="notebook">
+<span id="id31"></span><h3>Notebook<a class="headerlink" href="#notebook" title="Link to this heading">#</a></h3>
+<p>A <strong>notebook</strong> is a document that combines explanatory text, executable code, visualisations and saved output. Jupyter Notebook, JupyterLab and VS Code provide notebook interfaces.</p>
+</section>
+<section id="code-cell-and-markdown-cell">
+<span id="code-cell"></span><h3>Code cell and Markdown cell<a class="headerlink" href="#code-cell-and-markdown-cell" title="Link to this heading">#</a></h3>
+<p>A <strong>code cell</strong> contains executable code. A <strong>Markdown cell</strong> contains formatted explanatory text, links, equations or other documentation.</p>
+</section>
+<section id="restart">
+<span id="id32"></span><h3>Restart<a class="headerlink" href="#restart" title="Link to this heading">#</a></h3>
+<p>To <strong>restart</strong> a notebook kernel is to stop and start it again. Restarting clears variables, imports and other state held in memory.</p>
+</section>
+<section id="working-tree">
+<span id="id33"></span><h3>Working tree<a class="headerlink" href="#working-tree" title="Link to this heading">#</a></h3>
+<p>The <strong>working tree</strong> is the set of files currently checked out on disk. It can contain changes that have not yet been staged or committed.</p>
+</section>
+<section id="staging-area-and-index">
+<span id="staging-area"></span><h3>Staging area and index<a class="headerlink" href="#staging-area-and-index" title="Link to this heading">#</a></h3>
+<p>The <strong>staging area</strong>, also called the <strong>index</strong>, is the proposed content for the next commit. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> places changes there; <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">--cached</span></code> shows what is staged.</p>
+</section>
+<section id="commit">
+<span id="id34"></span><h3>Commit<a class="headerlink" href="#commit" title="Link to this heading">#</a></h3>
+<p>A <strong>commit</strong> is a saved snapshot of selected project changes with a message, author and position in the repository history.</p>
+</section>
+<section id="branch">
+<span id="id35"></span><h3>Branch<a class="headerlink" href="#branch" title="Link to this heading">#</a></h3>
+<p>A <strong>branch</strong> is a movable name pointing to a line of commits. Branches allow work to be developed and reviewed separately from another branch such as <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
+</section>
+<section id="head">
+<span id="id36"></span><h3>HEAD<a class="headerlink" href="#head" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">HEAD</span></code> identifies the commit, branch or other revision currently checked out. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> reports the current <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> and branch.</p>
+</section>
+<section id="clone-fetch-pull-and-push">
+<span id="id37"></span><h3>Clone, fetch, pull and push<a class="headerlink" href="#clone-fetch-pull-and-push" title="Link to this heading">#</a></h3>
+<p>To <strong>clone</strong> is to create a local repository from a remote. To <strong>fetch</strong> is to download remote commits without changing the current files. To <strong>pull</strong> usually means fetch followed by an integration step. To <strong>push</strong> is to send local commits to a remote.</p>
+</section>
+<section id="merge-conflict">
+<span id="id38"></span><h3>Merge conflict<a class="headerlink" href="#merge-conflict" title="Link to this heading">#</a></h3>
+<p>A <strong>merge conflict</strong> occurs when Git cannot combine changes automatically, often because two changes affect the same lines. A person must choose the intended result, then stage and commit the resolution.</p>
+</section>
+<section id="gitignore">
+<span id="id39"></span><h3><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code><a class="headerlink" href="#gitignore" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> lists files and folders that Git should normally leave untracked, such as build output, caches, local environments and secrets. It does not stop tracking a file that was already committed.</p>
+</section>
+<section id="fork-and-pull-request">
+<span id="id40"></span><h3>Fork and pull request<a class="headerlink" href="#fork-and-pull-request" title="Link to this heading">#</a></h3>
+<p>A <strong>fork</strong> is a separate GitHub copy of a repository under another account or organisation. A <strong>pull request</strong> proposes changes from one branch or repository to another for review and possible merging.</p>
+</section>
+</section>
+<section id="data-and-configuration">
+<h2>Data and configuration<a class="headerlink" href="#data-and-configuration" title="Link to this heading">#</a></h2>
+<section id="csv-json-and-yaml">
+<span id="id41"></span><h3>CSV, JSON and YAML<a class="headerlink" href="#csv-json-and-yaml" title="Link to this heading">#</a></h3>
+<p><strong>CSV</strong> stores tabular data as rows and delimiters. <strong>JSON</strong> stores structured data using objects, arrays and values. <strong>YAML</strong> stores structured, human-readable configuration and data. Each format has different rules for quoting, nesting and data types.</p>
+</section>
+<section id="metadata">
+<span id="id42"></span><h3>Metadata<a class="headerlink" href="#metadata" title="Link to this heading">#</a></h3>
+<p><strong>Metadata</strong> is information that describes other data, such as units, column meanings, provenance, collection methods or software versions.</p>
+</section>
+<section id="reproducibility">
+<span id="id43"></span><h3>Reproducibility<a class="headerlink" href="#reproducibility" title="Link to this heading">#</a></h3>
+<p><strong>Reproducibility</strong> means that another person can repeat an analysis and obtain the same or appropriately equivalent results using the recorded code, data, environment and instructions.</p>
+</section>
 </section>
 <section id="ssh-keys">
-<span id="terms-ssh"></span><h2>SSH keys<a class="headerlink" href="#ssh-keys" title="Link to this heading">#</a></h2>
+<span id="id44"></span><h2>SSH keys<a class="headerlink" href="#ssh-keys" title="Link to this heading">#</a></h2>
 <p>SSH uses a pair of related files to prove that you control an account. The <strong>private key</strong> stays on your computer and must remain secret. The <strong>public key</strong> can be added to GitHub. A <strong>passphrase</strong> protects a private key if the file is copied; it is not your GitHub password.</p>
 </section>
 </section>
@@ -670,16 +901,73 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal">Terminal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell">Shell</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paths-and-the-current-directory">Paths and the current directory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-root">Project root</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#path">PATH</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#startup-file">Startup file</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-manager-and-package">Package manager and package</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-environment-and-interpreter">Python environment and interpreter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-kernel">Notebook kernel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-and-remote">Repository and remote</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal-and-shell">Terminal and shell</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Terminal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shell">Shell</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paths-files-and-systems">Paths, files and systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Paths and the current directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-root">Project root</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#path">PATH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#startup-file">Startup file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package-manager-and-package">Package manager and package</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-and-notebooks">Python and notebooks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Python environment and interpreter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-kernel">Notebook kernel</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-and-github">Git and GitHub</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Repository and remote</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#command-option-and-argument">Command, option and argument</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-input-output-and-error">Standard input, output and error</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipe-and-redirection">Pipe and redirection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exit-status">Exit status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-system">Operating system</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cpu-and-processor">CPU and processor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ram-and-memory">RAM and memory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#storage">Storage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-system">File system</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#process">Process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permissions-and-executable-files">Permissions and executable files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-variable">Environment variable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editors-and-development-tools">Editors and development tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-editor">Code editor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrated-development-environment-ide">Integrated development environment (IDE)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrated-terminal">Integrated terminal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repl">REPL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debugger">Debugger</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linter-and-formatter">Linter and formatter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-or-plugin">Extension or plugin</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#language-server">Language server</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#script-module-and-package">Script, module and package</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency">Dependency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip">pip</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook">Notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-cell-and-markdown-cell">Code cell and Markdown cell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#restart">Restart</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-tree">Working tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#staging-area-and-index">Staging area and index</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commit">Commit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branch">Branch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#head">HEAD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clone-fetch-pull-and-push">Clone, fetch, pull and push</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-conflict">Merge conflict</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gitignore"><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fork-and-pull-request">Fork and pull request</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-configuration">Data and configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-json-and-yaml">CSV, JSON and YAML</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility">Reproducibility</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-keys">SSH keys</a></li>
 </ul>
   </nav></div>

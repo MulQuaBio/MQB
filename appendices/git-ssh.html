@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -556,7 +556,7 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="git-github-and-ssh-setup">
 <span id="git-ssh-setup"></span><h1>Git, GitHub and SSH Setup<a class="headerlink" href="#git-github-and-ssh-setup" title="Link to this heading">#</a></h1>
-<p>Use this page to install and identify Git, set up access to GitHub, and connect a project to a <a class="reference internal" href="terms.html#repository-and-remote"><span class="std std-ref">remote</span></a>: another copy of the project held elsewhere. The <a class="reference internal" href="../notebooks/git.html"><span class="std std-doc">Git chapter</span></a> teaches repositories, commits, branches and collaboration; return there after this one-time setup.</p>
+<p>Use this page to install and identify Git, set up access to GitHub, and connect a project to a <a class="reference internal" href="terms.html#id10"><span class="std std-ref">remote</span></a>: a named local connection to another repository. The <a class="reference internal" href="../notebooks/git.html"><span class="std std-doc">Git chapter</span></a> teaches repositories, commits, branches and collaboration; return there after this one-time setup.</p>
 <p>Git records the author name and email in every commit. SSH private keys and HTTPS tokens control access to remote repositories. Treat all three deliberately: a commit’s identity is visible in its history, while a private key or token must never be shared or committed.</p>
 <section id="install-and-check-git">
 <h2>Install and check Git<a class="headerlink" href="#install-and-check-git" title="Link to this heading">#</a></h2>
@@ -612,14 +612,14 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 </section>
 <section id="connect-to-github-with-ssh">
 <h2>Connect to GitHub with SSH<a class="headerlink" href="#connect-to-github-with-ssh" title="Link to this heading">#</a></h2>
-<p>SSH is the usual MQB route for regular GitHub work. It uses <a class="reference internal" href="terms.html#ssh-keys"><span class="std std-ref">SSH keys</span></a>: a private key that remains on your computer and a public key that you add to your GitHub account.</p>
+<p>SSH is the usual MQB route for regular GitHub work. It uses <a class="reference internal" href="terms.html#id44"><span class="std std-ref">SSH keys</span></a>: a private key that remains on your computer and a public key that you add to your GitHub account.</p>
 <section id="check-existing-keys-first">
 <h3>Check existing keys first<a class="headerlink" href="#check-existing-keys-first" title="Link to this heading">#</a></h3>
 <p>List the SSH directory before creating anything:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-al<span class="w"> </span>~/.ssh
 </pre></div>
 </div>
-<p>Common key pairs are named <code class="docutils literal notranslate"><span class="pre">id_ed25519</span></code> and <code class="docutils literal notranslate"><span class="pre">id_ed25519.pub</span></code>. The file <strong>without</strong> <code class="docutils literal notranslate"><span class="pre">.pub</span></code> is private; the matching file ending in <code class="docutils literal notranslate"><span class="pre">.pub</span></code> is public. Do not copy the private file into a chat, email, repository or GitHub account. Do not overwrite an existing key merely because its filename appears in a tutorial.</p>
+<p>Common key pairs are named <code class="docutils literal notranslate"><span class="pre">id_ed25519</span></code> and <code class="docutils literal notranslate"><span class="pre">id_ed25519.pub</span></code>. Here, <code class="docutils literal notranslate"><span class="pre">ed25519</span></code> is the cryptographic key type, not a username or placeholder to replace. The file <strong>without</strong> <code class="docutils literal notranslate"><span class="pre">.pub</span></code> is private; the matching file ending in <code class="docutils literal notranslate"><span class="pre">.pub</span></code> is public. Do not copy the private file into a chat, email, repository or GitHub account. Do not overwrite an existing key merely because its filename appears in a tutorial.</p>
 <p>If you need a new software key, generate an Ed25519 key with an account email as a label:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">"you@example.ac.uk"</span>
 </pre></div>
@@ -639,7 +639,7 @@ ssh-add<span class="w"> </span>~/.ssh/id_ed25519
 </pre></div>
 </div>
 <p>In GitHub, open <strong>Settings → SSH and GPG keys → New SSH key</strong>, give it a recognisable title, and paste the public key. Never upload the private-key file or its passphrase. GitHub’s <a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">adding an SSH key</a> guide covers the account step.</p>
-<p>A server’s host-key fingerprint is a short identifier for its SSH key. Before accepting a new server host key, compare its fingerprint with <a class="reference external" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints">GitHub’s published SSH fingerprints</a>. Do not disable host-key checking or accept a changed fingerprint blindly. Once the public key is added, test your account connection:</p>
+<p>A server’s host-key fingerprint is a short identifier for its SSH key. It is not biometric information such as a fingerprint used by Touch ID. Before accepting a new server host key, compare its fingerprint with <a class="reference external" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints">GitHub’s published SSH fingerprints</a>. Do not disable host-key checking or accept a changed fingerprint blindly. Once the public key is added, test your account connection:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com
 </pre></div>
 </div>
@@ -654,7 +654,11 @@ ssh-add<span class="w"> </span>~/.ssh/id_ed25519
 </section>
 <section id="add-and-inspect-a-remote">
 <h2>Add and inspect a remote<a class="headerlink" href="#add-and-inspect-a-remote" title="Link to this heading">#</a></h2>
-<p>Create the repository on GitHub first, then work from the root of the local <a class="reference internal" href="terms.html#repository-and-remote"><span class="std std-ref">repository</span></a>. Use the exact URL shown by GitHub and choose one protocol:</p>
+<p>If this directory is not already a Git repository, create one from its root first:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init
+</pre></div>
+</div>
+<p>Then create the repository on GitHub, work from the root of the local <a class="reference internal" href="terms.html#id10"><span class="std std-ref">repository</span></a>, and use the exact URL shown by GitHub with one protocol:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># SSH</span>
 git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:YOUR-ACCOUNT/YOUR-REPOSITORY.git
 
@@ -665,6 +669,7 @@ git<span class="w"> </span>remote<span class="w"> </span>-v
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">origin</span></code> is a conventional label for a remote, not a special server. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-v</span></code> reveals remote URLs, so check it before sharing terminal output if a URL contains unexpected information. Do not paste a token into a remote URL.</p>
+<p>If you already have commits locally, create the new GitHub repository without initializing it with a README, licence, or <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>. Those files would create a separate initial commit and the first push would be rejected until the histories are reconciled. If the remote is already non-empty, clone it first or follow a deliberate history-reconciliation workflow.</p>
 <p>Make the first network operation intentional. For a new repository whose branch is named <code class="docutils literal notranslate"><span class="pre">main</span></code>, it may be:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
 </pre></div>

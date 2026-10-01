@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
@@ -315,6 +315,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Introduction &amp; prerequisites</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/terms.html">Key computing terms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/macos-tools.html">macOS Tools and Homebrew</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/python-environments.html">Python Installation and Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/vscode.html">VS Code for MQB</a></li>
@@ -582,11 +583,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-configuring-git">Installing and configuring Git</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-version-control">Why version control?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-git">Why Git?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-get-started">Let’s get started!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-configuring-git">Installing and configuring Git</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-repository">Your first repository</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-good-commit-messages">Writing Good Commit Messages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commits">Commits</a></li>
@@ -677,22 +678,37 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="version-control-with-git">
 <h1>Version control with Git<a class="headerlink" href="#version-control-with-git" title="Link to this heading">#</a></h1>
-<div class="admonition-learning-goals-common-pitfalls admonition">
-<p class="admonition-title">Learning goals + common pitfalls</p>
-<p><strong>By the end of this chapter you should be able to:</strong></p>
+<section id="installing-and-configuring-git">
+<h2>Installing and configuring Git<a class="headerlink" href="#installing-and-configuring-git" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is a JupyterLite notebook. Code cells here will not work for this particular chapter. Follow the instructions and run the commands in your terminal/console.</p>
+</div>
+<p>First install Git and complete the installation, identity, and authentication parts of the one-time <a class="reference internal" href="../appendices/git-ssh.html"><span class="std std-doc">Git, GitHub and SSH Setup</span></a>. Return here to create and work with your first repository. When you are ready to connect that local repository to GitHub, return to the appendix’s <a class="reference internal" href="../appendices/git-ssh.html#add-and-inspect-a-remote"><span class="std std-ref">remote setup section</span></a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Installing Git on your machine</strong> (if you do not have <code class="docutils literal notranslate"><span class="pre">git</span></code> installed already):</p>
 <ul class="simple">
-<li><p>Explain the difference between the <em>working tree</em>, <em>staging area (index)</em>, and <em>repository</em></p></li>
-<li><p>Create a repo, make commits, and connect/push to a remote (e.g. GitHub)</p></li>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> to understand what will be committed</p></li>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> <em>before</em> your first commit to avoid tracking generated files</p></li>
-</ul>
-<p><strong>Common pitfalls to watch for:</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-am</span> <span class="pre">...</span></code> does <strong>not</strong> include new/untracked files (you still need <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> first)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">*</span></code> can miss dotfiles and behaves differently than you might expect; prefer <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code> or <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">.</span></code></p></li>
-<li><p>Don’t commit large data/output files; keep code + small inputs under version control</p></li>
+<li><p>On <strong>Linux</strong>, use a package manager (e.g., <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">git</span></code> on Ubuntu).</p></li>
+<li><p>On <strong>Mac</strong>, install Homebrew first (if you haven’t already) and then run <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">git</span></code>.</p></li>
+<li><p>On <strong>Windows</strong>, install Git from <a class="reference external" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>. You can also install <a class="reference external" href="https://desktop.github.com/">GitHub Desktop</a>, which includes Git as well.</p></li>
 </ul>
 </div>
+<p>Let’s install and configure <code class="docutils literal notranslate"><span class="pre">git</span></code> and create a repository.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In what follows, I will sometimes show the expected output from a command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```bash
+pwd
+```
+
+```
+/home/YourUserName
+```
+</pre></div>
+</div>
+</div>
+</section>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Version control (also called revision control or source control) is the management and tracking of changes to code and other project files over time.</p>
@@ -752,37 +768,6 @@
 </figcaption>
 </figure>
 <p>There are several core Git concepts and commands that you need to understand. But first things first: let’s install <code class="docutils literal notranslate"><span class="pre">git</span></code> and set up your first Git repository!</p>
-</section>
-<section id="installing-and-configuring-git">
-<h2>Installing and configuring Git<a class="headerlink" href="#installing-and-configuring-git" title="Link to this heading">#</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This is a JupyterLite notebook. Code cells here will not work for this particular chapter. Follow the instructions and run the commands in your terminal/console.</p>
-</div>
-<p>But first install Git and complete the one-time <a class="reference internal" href="../appendices/git-ssh.html"><span class="std std-doc">Git, GitHub and SSH Setup</span></a>. Return here to create and work with your first repository.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><strong>Installing Git on your machine</strong> (if you do not have <code class="docutils literal notranslate"><span class="pre">git</span></code> installed already):</p>
-<ul class="simple">
-<li><p>On <strong>Linux</strong>, use a package manager (e.g., <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">git</span></code> on Ubuntu).</p></li>
-<li><p>On <strong>Mac</strong>, install Homebrew first (if you haven’t already) and then run <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">git</span></code>.</p></li>
-<li><p>On <strong>Windows</strong>, install Git from <a class="reference external" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>. You can also install <a class="reference external" href="https://desktop.github.com/">GitHub Desktop</a>, which includes Git as well.</p></li>
-</ul>
-</div>
-<p>Let’s install and configure <code class="docutils literal notranslate"><span class="pre">git</span></code> and create a repository.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In what follows, I will sometimes show the expected output from a command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```bash
-pwd
-```
-
-```
-/home/YourUserName
-```
-</pre></div>
-</div>
-</div>
 </section>
 <section id="your-first-repository">
 <h2>Your first repository<a class="headerlink" href="#your-first-repository" title="Link to this heading">#</a></h2>
@@ -2204,11 +2189,11 @@ git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </sp
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-configuring-git">Installing and configuring Git</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-version-control">Why version control?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-git">Why Git?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-get-started">Let’s get started!</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-configuring-git">Installing and configuring Git</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-repository">Your first repository</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-good-commit-messages">Writing Good Commit Messages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commits">Commits</a></li>
