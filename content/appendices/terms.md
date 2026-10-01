@@ -61,12 +61,7 @@ A notebook **kernel** is the running program that executes notebook cells and ke
 
 ### Repository and remote
 
-A Git **repository** is a project folder together with its saved history of changes. A **remote** is another copy of that repository, usually hosted on a service such as GitHub. `origin` is a conventional name for a remote; it is a label chosen in your local repository, not the name of a special GitHub server.
-
-(ssh-keys)=
-## SSH keys
-
-SSH uses a pair of related files to prove that you control an account. The **private key** stays on your computer and must remain secret. The **public key** can be added to GitHub. A **passphrase** protects a private key if the file is copied; it is not your GitHub password.
+A Git **repository** is a project folder together with its saved history of changes. A **remote** is a named local connection to another repository, usually represented by a URL. `origin` is a conventional name for that connection; it is a label chosen in your local repository, not the name of a special GitHub server.
 
 (command)=
 ### Command, option and argument
@@ -266,3 +261,8 @@ A **fork** is a separate GitHub copy of a repository under another account or or
 ### Reproducibility
 
 **Reproducibility** means that another person can repeat an analysis and obtain the same or appropriately equivalent results using the recorded code, data, environment and instructions.
+
+(ssh-keys)=
+## SSH keys
+
+SSH uses a pair of related files to prove that you control an account. The **private key** stays on your computer and must remain secret. The **public key** can be added to GitHub. A **passphrase** protects a private key if the file is copied; it is not your GitHub password.

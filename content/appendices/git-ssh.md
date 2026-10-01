@@ -1,7 +1,7 @@
 (git-ssh-setup)=
 # Git, GitHub and SSH Setup
 
-Use this page to install and identify Git, set up access to GitHub, and connect a project to a [remote](terms.md#repository-and-remote): another copy of the project held elsewhere. The [Git chapter](../notebooks/git.ipynb) teaches repositories, commits, branches and collaboration; return there after this one-time setup.
+Use this page to install and identify Git, set up access to GitHub, and connect a project to a [remote](terms.md#repository-and-remote): a named local connection to another repository. The [Git chapter](../notebooks/git.ipynb) teaches repositories, commits, branches and collaboration; return there after this one-time setup.
 
 Git records the author name and email in every commit. SSH private keys and HTTPS tokens control access to remote repositories. Treat all three deliberately: a commit's identity is visible in its history, while a private key or token must never be shared or committed.
 
