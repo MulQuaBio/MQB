@@ -5,12 +5,12 @@ Visual Studio Code (VS Code) is a multilingual editor that can work with Python 
 
 ## Before you start
 
-Keep each piece of coursework or project in its own folder, containing its code, data and results. Do not open the MQB book source or a `code` subfolder when you mean to work on a whole project: opening the project root makes relative paths and the integrated terminal easier to understand.
+Keep each piece of coursework or project in its own folder, containing its code, data and results. Do not open the MQB book source or a `code` subfolder when you mean to work on a whole project: opening the [project root](terms.md#project-root) makes relative paths and the integrated terminal easier to understand.
 
 These are separate things:
 
 - the **integrated terminal** runs shell commands such as `python script.py` or `R`;
-- a language **REPL** is an interactive Python or R session in that terminal; and
+- a language **REPL** (read-eval-print loop) is an interactive Python or R session in that terminal: you enter one command, it runs, and you see the result; and
 - a notebook **kernel** executes cells in an `.ipynb` file.
 
 Selecting a Python interpreter does not automatically select an existing notebook kernel, and launching an R terminal does not create an R notebook kernel.
@@ -40,7 +40,7 @@ The Python and Jupyter extensions may offer supporting extensions. Accept only t
 
 ## Python scripts: select, run and debug
 
-Create or activate a project environment using {ref}`python-venv` before selecting it in VS Code. Open a `.py` file, then select the interpreter shown in the status bar or run **Python: Select Interpreter** from the Command Palette. Choose the `.venv` belonging to the project, not simply the first Python version in the list.
+Create or activate a project environment using {ref}`python-venv` before selecting it in VS Code. Open a `.py` file, then select the interpreter shown in the status bar (the strip along the bottom of the window) or run **Python: Select Interpreter** from the Command Palette (VS Code’s searchable command menu). Choose the `.venv` belonging to the project, not simply the first Python version in the list.
 
 Check the selected interpreter in both the editor and a new integrated terminal:
 
@@ -56,7 +56,7 @@ Use the editor's Python run control for a small script, then make the working di
 
 ## Jupyter notebooks: choose a kernel deliberately
 
-With the Microsoft Jupyter extension installed, open an existing `.ipynb` file or create a new notebook. Select **Select Kernel** in the notebook's upper-right corner, then choose the intended entry under **Python Environments** or **Jupyter Kernels**. A remembered kernel is a convenience, not evidence that it is correct for a new project.
+With the Microsoft Jupyter extension installed, open an existing `.ipynb` file or create a new notebook. A [kernel](terms.md#notebook-kernel) is the program that will run its cells. Select **Select Kernel** in the notebook’s upper-right corner, then choose the intended entry under **Python Environments** or **Jupyter Kernels**. A remembered kernel is a convenience, not evidence that it is correct for a new project.
 
 Run this in the first Python cell:
 

@@ -4,10 +4,13 @@ Use these pages when you need help getting set up, running notebooks, or working
 
 ## Start here
 
+If a setup page uses a word you do not know, look it up in [Key computing terms](terms.md) and then return to the step you were following.
+
 - Choosing a Linux environment or configuring Ubuntu: [Linux Setup and Ubuntu Administration](ubuntu-admin.md)
 - Setting up macOS command-line tools: [macOS Tools and Homebrew](macos-tools.md)
 - Installing Python and managing project packages: [Python Installation and Environments](python-environments.md)
 - Working with Python, R and notebooks in an editor: [VS Code for MQB](vscode.md)
+- Setting up GitHub access and project remotes: [Git, GitHub and SSH Setup](git-ssh.md)
 - If you’re new to notebooks/Jupyter: [Jupyter / notebooks intro](../notebooks/appendix-jupy-intro)
 
 ## Common tasks
