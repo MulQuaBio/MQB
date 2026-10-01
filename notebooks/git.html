@@ -971,7 +971,7 @@ analyses identify the problematic input rather than returning NA.
 <p>Choose the setup path that matches where you started:</p>
 <ul class="simple">
 <li><p><strong>Local project first:</strong> If your project already exists on your computer, inspect it, create or review <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> before staging project files, initialize Git only if needed, and make your first commit. Then create a GitHub repository with the name you want. For this route, leave GitHub’s options to add a README, licence, or <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> unchecked so the remote starts empty. The commands below show how to connect this local repository.</p></li>
-<li><p><strong>GitHub repository first:</strong> If you created the GitHub repository first, clone it with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">&lt;remote-url&gt;</span></code>. Cloning creates the local directory, its <code class="docutils literal notranslate"><span class="pre">.git</span></code> history, and the <code class="docutils literal notranslate"><span class="pre">origin</span></code> remote. Do not also run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> or <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">add</span> <span class="pre">origin</span></code>. If you have existing local files, copy the project files (not the local <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory) into the clone, then inspect, ignore and commit them.</p></li>
+<li><p><strong>GitHub repository first:</strong> If you created the GitHub repository first, clone it with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">&lt;remote-url&gt;</span></code>. Cloning creates the local directory, its <code class="docutils literal notranslate"><span class="pre">.git</span></code> history, and the <code class="docutils literal notranslate"><span class="pre">origin</span></code> remote. Do not also run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code> or <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">add</span> <span class="pre">origin</span></code>. If the project files exist only as ordinary, uncommitted files, copy the files you want into the clone; do not copy the <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory. If your local project already has Git commits, use the local-first path with an empty remote, or get help reconciling the histories. Copying files alone does not transfer commits.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -982,16 +982,17 @@ analyses identify the problematic input rather than returning NA.
 <p>Do not independently initialize both sides and then try to join them with a first push. A README or <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> created on GitHub is already a commit, separate from any local history, so Git may reject the push. For a local project with commits, use an empty remote; if the GitHub repository already has commits, clone it or follow a deliberate history-reconciliation workflow. Do not force-push to bypass this mismatch.</p>
 </div>
 <p>Before connecting, complete <a class="reference internal" href="../appendices/git-ssh.html"><span class="std std-doc">Git, GitHub and SSH Setup</span></a> for identity and authentication. The commands below continue the <strong>local project first</strong> path; if you cloned instead, <code class="docutils literal notranslate"><span class="pre">origin</span></code> is already set up.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:YourgithubUsername/CMEECourseWork.git
+<p>Copy the SSH URL from the GitHub repository page. Replace the capitalized placeholders below with the account and repository names from that URL:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:YOUR-ACCOUNT/YOUR-REPOSITORY.git
 </pre></div>
 </div>
 <p>List the URLs associated with the remote:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>-v
 </pre></div>
 </div>
-<p>The output should look like:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>origin  git@github.com:YourgithubUsername/CMEECourseWork.git (fetch)
-origin  git@github.com:YourgithubUsername/CMEECourseWork.git (push)
+<p>The output should show the same URL for fetching and pushing, for example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>origin  git@github.com:YOUR-ACCOUNT/YOUR-REPOSITORY.git (fetch)
+origin  git@github.com:YOUR-ACCOUNT/YOUR-REPOSITORY.git (push)
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">origin</span></code> is merely a conventional nickname for this remote, not a special internet location ordained by Git. The two lines show where Git fetches from and pushes to; they usually use the same URL.</p>
