@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=cf591445" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
@@ -66,6 +66,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/python';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <script src="../_static/sidebar-toggles.js?v=98d0e6e2"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Object-Oriented Programming" href="object-oriented-programming.html" />
@@ -775,7 +776,7 @@
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-and-resources">readings and resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">Readings &amp; Resources</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages">Python packages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general">General</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Ipython</a></li>
@@ -827,11 +828,6 @@
 <li><p>Have Python installed and be able to run simple scripts</p></li>
 </ul>
 </div>
-<blockquote class="epigraph">
-<div><p>…some things in life are bad. They can really make you mad. Other things just make you swear and curse. When you’re chewing on life’s gristle, don’t grumble; give a whistle, and this’ll help things turn out for the best. And… always look on the bright side of life…</p>
-<p class="attribution">—Monty python
-</p>
-</div></blockquote>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Python is a modern, easy-to-write, interpreted (semi-compiled) programming language that was conceived with readability of code in mind. It has a numerous of feature-rich packages that can be used for a wide variety of biological applications and analyses.</p>
@@ -4824,8 +4820,8 @@ from the end of an array:</p>
 <section id="the-lotka-volterra-model">
 <h5>The Lotka-Volterra model<a class="headerlink" href="#the-lotka-volterra-model" title="Link to this heading">#</a></h5>
 <p>Now let’s try numerical integration in Python for solving a classical model in biology — the Lotka-Volterra (LV) model for a predator-prey system in two-dimensional space (e.g., on land). The LV model is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-76cdc240-d418-4886-a7a2-2f47b2b4c378">
-<span class="eqno">(2)<a class="headerlink" href="#equation-76cdc240-d418-4886-a7a2-2f47b2b4c378" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d20c5223-21b2-4fe3-9ad3-59ce3df94d84">
+<span class="eqno">(2)<a class="headerlink" href="#equation-d20c5223-21b2-4fe3-9ad3-59ce3df94d84" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dr}{dt} &amp;= r r - a C r  \nonumber \\
     \frac{dC}{dt} &amp;= - z C + e a C r
 \end{align}\]</div>
@@ -5305,8 +5301,8 @@ from the end of an array:</p>
 <h3>The Lotka-Volterra model revisited<a class="headerlink" href="#the-lotka-volterra-model-revisited" title="Link to this heading">#</a></h3>
 <p><em>What happens when the consumer population <span class="math notranslate nohighlight">\(C\)</span> goes extinct in the Lotka-Volterra that you encountered above</em>?</p>
 <p>If the consumer population goes extinct, the resources grow to infinity! This is not biologically realistic, of course. To address this, we can introduce density dependence to the resource population <span class="math notranslate nohighlight">\(\left(1 - \frac{r} {K}\right)\)</span>, which changes the ODE system to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-06c9660f-0456-498a-b95e-31fb1991fe1b">
-<span class="eqno">(3)<a class="headerlink" href="#equation-06c9660f-0456-498a-b95e-31fb1991fe1b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9078ff59-8689-4f34-80ea-da843ef3a307">
+<span class="eqno">(3)<a class="headerlink" href="#equation-9078ff59-8689-4f34-80ea-da843ef3a307" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dr}{dt} &amp;= r r \left(1 - \frac{r} {K}\right) - a C r\\
     \frac{dC}{dt} &amp;= - z C + e a C r
 \end{align}\]</div>
@@ -5336,8 +5332,8 @@ from the end of an array:</p>
 <ul class="simple">
 <li><p>Write a discrete-time version of the LV model called <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>. The discrete-time model is:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-086da279-5121-43e9-97a9-5d93722c2895">
-<span class="eqno">(4)<a class="headerlink" href="#equation-086da279-5121-43e9-97a9-5d93722c2895" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-2fb90654-b1c7-4edf-a298-d189820fd3a6">
+<span class="eqno">(4)<a class="headerlink" href="#equation-2fb90654-b1c7-4edf-a298-d189820fd3a6" title="Permalink to this equation">#</a></span>\[\begin{align} 
     r_{t+1} &amp;= r_t (1 + r \left(1 - \frac{r_t}{K}\right) - a C_t)\\ 
     C_{t+1} &amp;= C_t (1 - z + e a r_t) 
 \end{align}\]</div>
@@ -5348,14 +5344,14 @@ from the end of an array:</p>
 <ul class="simple">
 <li><p>Write a version of the discrete-time model (which you implemented in <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>) simulation with a random gaussian fluctuation in resource’s growth rate at each time-step:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-7b809c5f-79db-4f86-b033-cd14feadd45c">
-<span class="eqno">(5)<a class="headerlink" href="#equation-7b809c5f-79db-4f86-b033-cd14feadd45c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-32a02393-b007-4445-8585-ec126c40bd78">
+<span class="eqno">(5)<a class="headerlink" href="#equation-32a02393-b007-4445-8585-ec126c40bd78" title="Permalink to this equation">#</a></span>\[\begin{align}
         r_{t+1} &amp;= r_t (1 + (r + \epsilon) \left(1 - \frac{r_t}{K}\right)- a C_t)\\
         C_{t+1} &amp;= C_t (1 - z + e a r_t)
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random fluctuation drawn from a gaussian distribution (use <code class="docutils literal notranslate"><span class="pre">sc.stats</span></code> or <code class="docutils literal notranslate"><span class="pre">np.random</span></code>). Include this script in <code class="docutils literal notranslate"> <span class="pre">run_LV.py</span></code>, and profile it as well. You can also add fluctuations to both populations simultaneously this way:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2f147f69-4ef8-4e5b-8d03-80383465a15e">
-<span class="eqno">(6)<a class="headerlink" href="#equation-2f147f69-4ef8-4e5b-8d03-80383465a15e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-eaca2b55-b64d-4526-a98b-eda6e2ca0100">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eaca2b55-b64d-4526-a98b-eda6e2ca0100" title="Permalink to this equation">#</a></span>\[\begin{align}
     r_{t+1} &amp;= r_t (1 + (r + \epsilon)  \left(1 - \frac{r_t}{K}\right) - a C_t)\\
     C_{t+1} &amp;= C_t (1 - (z + \epsilon) + e a r_t)
 \end{align}\]</div>
@@ -6193,8 +6189,8 @@ Python script. A simple example, where the output is a platform-dependent direct
 </section>
 </section>
 </section>
-<section id="readings-and-resources">
-<h2>readings and resources<a class="headerlink" href="#readings-and-resources" title="Link to this heading">#</a></h2>
+<section id="readings-resources">
+<h2>Readings &amp; Resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
 <section id="python-packages">
 <h3>Python packages<a class="headerlink" href="#python-packages" title="Link to this heading">#</a></h3>
 <p>A Python package is simply a directory of Python modules (quite like an <code class="docutils literal notranslate"><span class="pre">R</span></code> package). A number of packages, such as the following particularly useful ones, are always available as standard libraries (just require <code class="docutils literal notranslate"><span class="pre">import</span></code> from within Python or ipython):</p>
@@ -6267,9 +6263,9 @@ for efficient data crunching</p></li>
 <ul class="simple">
 <li><p>In general, scores of good module/package-specific cookbooks are out there — google “cookbook” along with the name of the package you are interested in (e.g., “scipy cookbook”).</p></li>
 <li><p>For SciPy, read the <a class="reference external" href="https://docs.scipy.org/doc/">official documentation</a>; in particular, read about the scipy <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/">modules</a> you think will be important to you.</p></li>
-<li><p>The “ecosystem” for Scientific computing in Python: <a class="reference external" href="http://www.scipy-lectures.org/">http://www.scipy-lectures.org/</a></p></li>
+<li><p>The “ecosystem” for Scientific computing in Python: <a class="reference external" href="https://scipy-lectures.org/">https://scipy-lectures.org/</a></p></li>
 <li><p>Many great examples of applications in the <a class="reference external" href="https://scipy-cookbook.readthedocs.io/">scipy cookbook</a></p></li>
-<li><p>Scipy stats: <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/tutorial/stats.html">https://docs.scipy.org/doc/scipy/reference/tutorial/stats.html</a></p></li>
+<li><p>Scipy stats: <a class="reference external" href="https://docs.scipy.org/doc/scipy/tutorial/stats.html">https://docs.scipy.org/doc/scipy/tutorial/stats.html</a></p></li>
 <li><p>A Primer on Scientific Programming with Python <a class="reference external" href="http://www.springer.com/us/book/9783642549595">http://www.springer.com/us/book/9783642549595</a>; Multiple copies of this book are available from the central library and can be requested to Silwood from the IC library website. You can also find a pdf - seach online.</p></li>
 </ul>
 </section>
@@ -6277,8 +6273,8 @@ for efficient data crunching</p></li>
 <h3>regular expressions<a class="headerlink" href="#regular-expressions" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Python regex documentation: <a class="reference external" href="https://docs.python.org/3.6/howto/regex.html">https://docs.python.org/3.6/howto/regex.html</a></p></li>
-<li><p>Google’s short class on regex in Python: <a class="reference external" href="https://developers.google.com/edu/Python/regular-expressions">https://developers.google.com/edu/Python/regular-expressions</a>
-And this exercise: <a class="reference external" href="https://developers.google.com/edu/Python/exercises/baby-names">https://developers.google.com/edu/Python/exercises/baby-names</a></p></li>
+<li><p>Python regex examples in the standard library docs: <a class="reference external" href="https://docs.python.org/3/library/re.html#regular-expression-examples">https://docs.python.org/3/library/re.html#regular-expression-examples</a></p></li>
+<li><p>Python’s <a class="reference external" href="https://docs.python.org/3/howto/regex.html">regular expression HOWTO</a></p></li>
 <li><p>Good intro to regex, tips and a great array of canned solutions: <a class="reference external" href="http://www.regular-expressions.info">http://www.regular-expressions.info</a></p></li>
 <li><p>Use and abuse of regex: <a class="reference external" href="https://blog.codinghorror.com/regex-use-vs-regex-abuse/">https://blog.codinghorror.com/regex-use-vs-regex-abuse/</a></p></li>
 </ul>
@@ -6287,8 +6283,8 @@ And this exercise: <a class="reference external" href="https://developers.google
 <h3>Other stuff<a class="headerlink" href="#other-stuff" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="http://matplotlib.org">The matplotlib website</a></p></li>
-<li><p>Alternatives to matplotlib for plotting in Python: <a class="reference external" href="https://towardsdatascience.com/matplotlib-vs-seaborn-vs-plotly-f2b79f5bddb">https://towardsdatascience.com/matplotlib-vs-seaborn-vs-plotly-f2b79f5bddb</a></p></li>
 <li><p>Some of you might find the Python package <code class="docutils literal notranslate"><span class="pre">biopython</span></code> particularly useful — check out <a class="reference external" href="http://biopython.org/">http://biopython.org/</a>, and especially, the cookbook</p></li>
+<li><p>Alternatives to matplotlib for plotting in Python: <a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a> and <a class="reference external" href="https://plotly.com/python/">Plotly</a></p></li>
 </ul>
 </section>
 </section>
@@ -6554,7 +6550,7 @@ And this exercise: <a class="reference external" href="https://developers.google
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-and-resources">readings and resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">Readings &amp; Resources</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-packages">Python packages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general">General</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Ipython</a></li>

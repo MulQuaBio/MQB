@@ -34,10 +34,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=cf591445" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
@@ -66,6 +66,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/data-r';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <script src="../_static/sidebar-toggles.js?v=98d0e6e2"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Experimental design and Data exploration" href="exp-design.html" />
@@ -315,9 +316,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Introduction &amp; prerequisites</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/terms.html">Key computing terms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/macos-tools.html">macOS Tools and Homebrew</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/python-environments.html">Python Installation and Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/vscode.html">VS Code for MQB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/git-ssh.html">Git, GitHub and SSH Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-jupy-intro.html">Introduction to Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
 </ul>
@@ -617,7 +620,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-your-graphics">Saving your graphics</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Practicals</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#body-mass-distributions">Body mass distributions</a></li>
 </ul>
 </li>
@@ -627,7 +630,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aesthetic-mappings">Aesthetic mappings</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-transparency">Setting transparency</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-smoothers-and-regression-lines">Adding smoothers and regression lines</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Boxplots</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Boxplots</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms-and-density-plots">Histograms and density plots</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-faceted-plots">Multi-faceted plots</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithmic-axes">Logarithmic axes</a></li>
@@ -646,7 +649,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ggthemes">ggthemes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Practicals</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-regression-analyses">Visualizing Regression analyses</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping">Mapping</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupwork-practical-regression-analysis">Groupwork practical: Regression analysis</a></li>
@@ -655,7 +658,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">Readings &amp; Resources</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-management-reformatting-and-cleaning">Data management, reformatting and cleaning</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis">Data analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Data visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Data visualization</a></li>
 </ul>
 </li>
 </ul>
@@ -671,12 +674,6 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-management-and-visualization">
 <h1>Data Management and Visualization<a class="headerlink" href="#data-management-and-visualization" title="Link to this heading">#</a></h1>
-<blockquote>
-<div><p><em>Clutter and confusion are failures of design, not attributes of information.</em> – Edward Tufte</p>
-</div></blockquote>
-<blockquote>
-<div><p><em>Tidy datasets are all alike, but every messy dataset is messy in its own way.</em> – Hadley Wickham</p>
-</div></blockquote>
 <div class="admonition-learning-goals admonition">
 <p class="admonition-title">Learning goals</p>
 <p><strong>By the end of this chapter you should be able to:</strong></p>
@@ -702,8 +699,17 @@
 </div>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>This chapter aims at introducing you to key principles and methods for data processing, storage, exploration and visualization.</p>
-<p>In this modern world, massive amounts of data are being generated in biology due to rapid advances in technologies for collecting new, as well as for digitizing old data. Some prominent examples are <em>Genomic</em>, <em>Ecosystem respiration</em>, <em>Climatic</em>, and <em>Animal tracking</em> data. Ultimately, the goal of quantitative biology is to both, discover patterns in these data, and fit mathematical models to them. Reproducible data manipulation, analyses and visualization are particularly necessary when data are so large and complex, and few are more so than biological data, which are extremely heterogeneous in their structure and quality.  Furthermore, when these data are “big” (more below on what makes a dataset “big”), computationally-efficient data handling, manipulation and analysis techniques are needed.</p>
+<p>Rapid advances in data collection and the digitization of historical records are generating vast and varied biological datasets. Genomic, ecosystem respiration, climatic, and animal-tracking data are prominent examples. Quantitative biology seeks to discover patterns in such data and fit mathematical models to them, but the reliability of those results depends on how observations are organized and transformed before analysis.</p>
+<p>Hadley Wickham captures the challenge of organizing data consistently:</p>
+<blockquote>
+<div><p><em>Tidy datasets are all alike, but every messy dataset is messy in its own way.</em> – Hadley Wickham <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../references.html#id9" title="Hadley Wickham. Tidy data. Journal of Statistical Software, 59(10):1–23, 2014. doi:10.18637/jss.v059.i10.">Wickham, 2014</a>]</span></p>
+</div></blockquote>
+<p>A tidy structure makes the roles of variables and observations explicit, allowing data-processing steps to be automated, inspected, and reproduced. This is especially important for biological data, which are often heterogeneous in structure and quality, and reduces the errors introduced by repeated manual editing.</p>
+<p>Once data are well structured, the next challenge is to reveal and communicate the patterns they contain. As Edward Tufte argues:</p>
+<blockquote>
+<div><p><em>Clutter and confusion are failures of design, not attributes of information.</em> – Edward Tufte <span class="bibtex-citation" id="id2">[<a class="reference internal" href="../references.html#id8" title="Edward R. Tufte. Envisioning Information. Graphics Press, Cheshire, CT, 1990.">Tufte, 1990</a>]</span></p>
+</div></blockquote>
+<p>Effective visualization is therefore not merely decorative: its design should clarify relationships in the data without adding unnecessary distraction. This chapter follows that progression, introducing methods for data processing and storage before turning to exploration and visualization. Throughout, the emphasis is on reproducible workflows and, where datasets are large, computationally efficient techniques.</p>
 </section>
 <section id="data-wrangling">
 <h2>Data wrangling<a class="headerlink" href="#data-wrangling" title="Link to this heading">#</a></h2>
@@ -1984,8 +1990,8 @@ clicking on the figure, doing “save as”, etc. So let’s save the figure as 
 <p>You can also try other graphic output formats. For example, <code class="docutils literal notranslate"><span class="pre">png()</span></code> (a raster format) instead of <code class="docutils literal notranslate"><span class="pre">pdf()</span></code>. As always, look at the help documentation of each of these commands!</p>
 </section>
 </section>
-<section id="id1">
-<h2>Practicals<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h2>Practicals<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <section id="body-mass-distributions">
 <h3>Body mass distributions<a class="headerlink" href="#body-mass-distributions" title="Link to this heading">#</a></h3>
 <p>Write a script that draws and saves three figures, each containing subplots of distributions of predator mass, prey mass, and the size ratio of prey mass over predator mass <em>by feeding interaction type</em>. Use logarithms of masses (or size ratios)for all three plots. In addition, the script should calculate the (log) mean and median predator mass, prey mass and predator-prey size-ratios to a csv file.</p>
@@ -2268,8 +2274,8 @@ idea of the spread:</p>
 </div>
 </div>
 </section>
-<section id="id2">
-<h4>Boxplots<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<section id="id4">
+<h4>Boxplots<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
 <p>Or we can draw a boxplot of the data (note the <code class="docutils literal notranslate"><span class="pre">geom</span></code> argument, which stands for <code class="docutils literal notranslate"><span class="pre">geom</span></code>etry):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3194,8 +3200,8 @@ Warning message:
 <p>Go to <a class="github reference external" href="https://github.com/jrnold/ggthemes">jrnold/ggthemes</a> for more information and a list of <code class="docutils literal notranslate"><span class="pre">geom</span></code>s, <code class="docutils literal notranslate"><span class="pre">theme</span></code>s, and <code class="docutils literal notranslate"><span class="pre">scale</span></code>s.</p>
 </section>
 </section>
-<section id="id3">
-<h2>Practicals<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h2>Practicals<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <section id="visualizing-regression-analyses">
 <h3>Visualizing Regression analyses<a class="headerlink" href="#visualizing-regression-analyses" title="Link to this heading">#</a></h3>
 <p>In this practical, you will write script that draws and saves a pdf file of the following figure, and writes the accompanying regression results to a formatted table in csv. Note that as the plot suggests, that the analysis must be subsetted by the <code class="docutils literal notranslate"><span class="pre">Predator.lifestage</span></code> field of the dataset.</p>
@@ -3245,7 +3251,7 @@ script should result in one pdf file containing the following figure being saved
 <h3>Data management, reformatting and cleaning<a class="headerlink" href="#data-management-reformatting-and-cleaning" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Brian McGill’s <a class="reference external" href="https://dynamicecology.wordpress.com/2016/08/22/ten-commandments-for-good-data-management">Ten commandments for data management</a></p></li>
-<li><p>This paper covers similar ground (available in the readings directory): <span class="bibtex-citation" id="id4">[<a class="reference internal" href="../references.html#id225" title="Elizabeth T. Borer, Eric W. Seabloom, Matthew B. Jones, and Mark Schildhauer. Some simple guidelines for effective data management. The Bulletin of the Ecological Society of America, 90(2):205–214, 2009. doi:10.1890/0012-9623-90.2.205.">Borer <em>et al.</em>, 2009</a>]</span>.</p></li>
+<li><p>This paper covers similar ground (available in the readings directory): <span class="bibtex-citation" id="id6">[<a class="reference internal" href="../references.html#id229" title="Elizabeth T. Borer, Eric W. Seabloom, Matthew B. Jones, and Mark Schildhauer. Some simple guidelines for effective data management. The Bulletin of the Ecological Society of America, 90(2):205–214, 2009. doi:10.1890/0012-9623-90.2.205.">Borer <em>et al.</em>, 2009</a>]</span>.</p></li>
 <li><p><a class="reference external" href="https://onlinelibrary.wiley.com/doi/book/10.1002/0471448354">Dasu, T. &amp; Johnson, T. Exploratory Data Mining and Data Cleaning. (John Wiley &amp; Sons, Inc., 2003). doi:10.1002/0471448354</a></p></li>
 <li><p><a class="reference external" href="http://www.theanalysisfactor.com/wide-and-long-data/">Wide vs. long data</a></p></li>
 <li><p><a class="reference external" href="http://vita.had.co.nz/papers/tidy-data.pdf">Hadley Wickham’s excellent article about “tidy” data</a>.</p></li>
@@ -3259,8 +3265,8 @@ script should result in one pdf file containing the following figure being saved
 <li><p><a class="reference external" href="https://r4ds.had.co.nz/index.html">R for Data Science</a></p></li>
 </ul>
 </section>
-<section id="id5">
-<h3>Data visualization<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<section id="id7">
+<h3>Data visualization<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833">Ten Simple Rules for Better Figures</a></p></li>
 <li><p><a class="reference external" href="https://clauswilke.com/dataviz/">https://clauswilke.com/dataviz/</a></p></li>
@@ -3374,7 +3380,7 @@ script should result in one pdf file containing the following figure being saved
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-your-graphics">Saving your graphics</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Practicals</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#body-mass-distributions">Body mass distributions</a></li>
 </ul>
 </li>
@@ -3384,7 +3390,7 @@ script should result in one pdf file containing the following figure being saved
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aesthetic-mappings">Aesthetic mappings</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-transparency">Setting transparency</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-smoothers-and-regression-lines">Adding smoothers and regression lines</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Boxplots</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Boxplots</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms-and-density-plots">Histograms and density plots</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-faceted-plots">Multi-faceted plots</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithmic-axes">Logarithmic axes</a></li>
@@ -3403,7 +3409,7 @@ script should result in one pdf file containing the following figure being saved
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ggthemes">ggthemes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Practicals</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-regression-analyses">Visualizing Regression analyses</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping">Mapping</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupwork-practical-regression-analysis">Groupwork practical: Regression analysis</a></li>
@@ -3412,7 +3418,7 @@ script should result in one pdf file containing the following figure being saved
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">Readings &amp; Resources</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-management-reformatting-and-cleaning">Data management, reformatting and cleaning</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis">Data analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Data visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Data visualization</a></li>
 </ul>
 </li>
 </ul>

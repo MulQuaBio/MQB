@@ -34,10 +34,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=cf591445" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
@@ -66,6 +66,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/model-simp';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <script src="../_static/sidebar-toggles.js?v=98d0e6e2"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Introduction &amp; prerequisites" href="../part-prework.html" />
@@ -315,9 +316,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Introduction &amp; prerequisites</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/terms.html">Key computing terms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/macos-tools.html">macOS Tools and Homebrew</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/python-environments.html">Python Installation and Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/vscode.html">VS Code for MQB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/git-ssh.html">Git, GitHub and SSH Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-jupy-intro.html">Introduction to Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
 </ul>
@@ -589,7 +592,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example">An example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-maximal-model">A Maximal model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-better-maximal-model">A better maximal model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Model simplification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Model simplification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 </ul>
             </nav>
@@ -604,6 +607,10 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="model-simplification">
 <h1>Model simplification<a class="headerlink" href="#model-simplification" title="Link to this heading">#</a></h1>
+<blockquote class="epigraph">
+<div><p>“It can scarcely be denied that the supreme goal of all theory is to make the irreducible basic elements as simple and as few as possible without having to surrender the adequate representation of a single datum of experience.”</p>
+<p class="attribution">—Albert Einstein, Herbert Spencer Lecture, Oxford (1933) <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../references.html#id10" title="Albert Einstein. On the method of theoretical physics. Philosophy of Science, 1(2):163–169, 1934.">Einstein, 1934</a>]</span></p>
+</div></blockquote>
 <div class="admonition-learning-goals admonition">
 <p class="admonition-title">Learning goals</p>
 <p><strong>By the end of this chapter you should be able to:</strong></p>
@@ -629,21 +636,13 @@
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>In biology, we often use statistics to compare competing hypotheses in order to work out the simplest explanation for some data. This often involves collecting several explanatory variables that describe different hypotheses and then fitting them together in a single model, and often including interactions between those variables.</p>
 <p>In all likelihood, not all of these model <em>terms</em> will be important. If we remove unimportant terms, then the explanatory power of the model will get worse, but might not get significantly worse.</p>
-<blockquote class="epigraph">
-<div><p>“It can scarcely be denied that the supreme goal of all theory is to make the irreducible basic elements as simple and as few as possible without having to surrender the adequate representation of a single datum of experience.”</p>
-<p class="attribution">—Albert Einstein</p>
-</div></blockquote>
-<p>Or to paraphrase:</p>
-<blockquote class="epigraph">
-<div><p>“Everything should be made as simple as possible, but no simpler.”</p>
-</div></blockquote>
-<p>The approach we will look at is to start with a <em>maximal model</em> — the model that contains everything that might be important — and simplify it towards the <em>null model</em> — the
-model that says that none of your variables are important. Hopefully, there is a point somewhere in between where you can’t remove any further terms without making the model significantly worse: this is called the <em>minimum adequate model</em>.</p>
+<p>Model simplification is not simplicity for its own sake: a reduced model must still represent the data adequately. We will use this principle to decide which terms can be removed.</p>
+<p>The approach we will look at is to start with a <em>maximal model</em> — the model that contains everything that might be important — and simplify it towards the <em>null model</em> — the model that says that none of your variables are important. Hopefully, there is a point somewhere in between where you can’t remove any further terms without making the model significantly worse: this is called the <em>minimum adequate model</em>.</p>
 <a class="reference internal image-reference" href="../_images/minmodflow.png"><img alt="../_images/minmodflow.png" src="../_images/minmodflow.png" style="width: 600px;" />
 </a>
 <section id="chapter-aims">
 <h3>Chapter aims<a class="headerlink" href="#chapter-aims" title="Link to this heading">#</a></h3>
-<p>The main aim of this chapter<a class="footnote-reference brackets" href="#fn1-c1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> is to learn how to build and then simplify complex models by removing non-explanatory terms, to arrive at the <em>Minimum Adequate Model</em>.</p>
+<p>The main aim of this chapter<a class="footnote-reference brackets" href="#fn1-c1" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> is to learn how to build and then simplify complex models by removing non-explanatory terms, to arrive at the <em>Minimum Adequate Model</em>.</p>
 </section>
 <section id="the-process-of-model-simplification">
 <h3>The process of model simplification<a class="headerlink" href="#the-process-of-model-simplification" title="Link to this heading">#</a></h3>
@@ -778,8 +777,8 @@ which suggests that the slope of log C value with body mass differs between grou
 <p><span class="math notranslate nohighlight">\(\star\)</span> Look at the output of <code class="docutils literal notranslate"><span class="pre">anova(model)</span></code> and <code class="docutils literal notranslate"><span class="pre">summary(model)</span></code>.</p>
 <p><span class="math notranslate nohighlight">\(\star\)</span> Generate and inspect the model diagnostic plots.</p>
 </section>
-<section id="id2">
-<h2>Model simplification<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h2>Model simplification<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>Now let’s simplify the model we fitted above. Model simplification is not as straightforward as just dropping terms. Each time you remove a term from a model, the model will change: the model will get worse, since some of the sums of squares are no longer explained, but the remaining variables may partly compensate for this loss of explanatory power. The main point is that if it gets only a little worse, its OK, as the tiny amount of additional variation explained by the term you removed is not really worth it.</p>
 <p>But how much is “tiny amount”? This is what we will learn now by using the <span class="math notranslate nohighlight">\(F\)</span>-test.   Again, remember: significance of the <span class="math notranslate nohighlight">\(F\)</span>-test used to compare a model and its simplified counterpart is a <em>bad</em> thing — it means that we’ve removed a term from the fitted model that makes the it <em>significantly</em> worse.</p>
 <p>The first question is: <em>what terms can you remove from a model</em>? Obviously, you only want to remove non-significant terms, but there is another rule – you cannot remove a main effect or an interaction while those main effects or interactions are present in a more complex interaction. For example, in the model <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">~</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">c</span> <span class="pre">+</span> <span class="pre">a:b</span> <span class="pre">+</span> <span class="pre">a:c</span> <span class="pre">+</span> <span class="pre">b:c</span></code>, you cannot drop <code class="docutils literal notranslate"><span class="pre">c</span></code> without dropping both <code class="docutils literal notranslate"><span class="pre">a:c</span></code> and <code class="docutils literal notranslate"><span class="pre">b:c</span></code>.</p>
@@ -943,7 +942,7 @@ which suggests that the slope of log C value with body mass differs between grou
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="fn1-c1" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>(See footnote definition below.)</p>
 </aside>
 </aside>
@@ -1024,7 +1023,7 @@ which suggests that the slope of log C value with body mass differs between grou
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example">An example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-maximal-model">A Maximal model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-better-maximal-model">A better maximal model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Model simplification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Model simplification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 </ul>
   </nav></div>

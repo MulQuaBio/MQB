@@ -34,10 +34,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=01a0bdc2" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=cf591445" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
@@ -66,6 +66,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/nlls';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <script src="../_static/sidebar-toggles.js?v=98d0e6e2"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Nonlinear least squares (NLLS) in Python" href="nlls-python.html" />
@@ -315,9 +316,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Introduction &amp; prerequisites</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/terms.html">Key computing terms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/macos-tools.html">macOS Tools and Homebrew</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/python-environments.html">Python Installation and Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/vscode.html">VS Code for MQB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/git-ssh.html">Git, GitHub and SSH Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-jupy-intro.html">Introduction to Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
 </ul>
@@ -647,7 +650,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bounding-parameters-revisited">Bounding parameters revisited</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-and-resources">Readings and resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">Readings &amp; Resources</a></li>
 </ul>
             </nav>
         </div>
@@ -2224,7 +2227,7 @@ Achieved convergence tolerance: 1.49e-08
 </div>
 <p>The above seen deviation of the Logistic model from the data is because this model assumes that the population is growing right from the start (Time = 0), while in “reality” (in our synthetic “data”), this is not what’s happening; the population takes a while to grow truly exponentially (i.e., there is a time lag in the population growth). This time lag is seen frequently in the lab, and is also expected in nature, because when bacteria encounter fresh growth media (in the lab) or a new resource/environment (in the field), they take some time to acclimate, activating genes involved in nutrient uptake and metabolic processes, before beginning exponential growth. This is called the lag phase and can be seen in our example data where exponential growth doesn’t properly begin until around the 4th hour.</p>
 <p>To capture the lag phase, more complicated bacterial growth models have been designed.</p>
-<p>One of these is the modified Gompertz model (<span class="bibtex-citation" id="id4">[<a class="reference internal" href="../references.html#id196" title="M. H. Zwietering, I. Jongenburger, F. M. Rombouts, and K. van't Riet. Modeling of the bacterial growth curve. Applied and Environmental Microbiology, 56(6):1875–1881, 1990.">Zwietering <em>et al.</em>, 1990</a>]</span>), which has been used frequently in the literature to model bacterial growth:</p>
+<p>One of these is the modified Gompertz model (<span class="bibtex-citation" id="id4">[<a class="reference internal" href="../references.html#id200" title="M. H. Zwietering, I. Jongenburger, F. M. Rombouts, and K. van't Riet. Modeling of the bacterial growth curve. Applied and Environmental Microbiology, 56(6):1875–1881, 1990.">Zwietering <em>et al.</em>, 1990</a>]</span>), which has been used frequently in the literature to model bacterial growth:</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}:label: eq:Gompertz\\\log(N_t) = N_0 + (N_{max} - N_0) e^{-e^{r_{max} \exp(1) \frac{t_{lag} - t}{(N_{max} - N_0) \log(10)} + 1}}\end{aligned}\end{align} \]</div>
 <p>Here maximum growth rate (<span class="math notranslate nohighlight">\(r_{max}\)</span>) is the tangent to the inflection point, <span class="math notranslate nohighlight">\(t_{lag}\)</span> is the x-axis intercept to this tangent (duration of the delay before the population starts growing exponentially) and <span class="math notranslate nohighlight">\(\log\left(\frac{N_{max}}{N_0}\right)\)</span> is the asymptote of the log-transformed population growth trajectory, i.e., the log ratio of maximum population density <span class="math notranslate nohighlight">\(N_{max}\)</span> (aka “carrying capacity”) and initial cell (Population) <span class="math notranslate nohighlight">\(N_0\)</span> density.</p>
@@ -2460,8 +2463,8 @@ In both cases, the <em>mean</em> of the sampling distribution will be the starti
 </div>
 </section>
 </section>
-<section id="readings-and-resources">
-<h2>Readings and resources<a class="headerlink" href="#readings-and-resources" title="Link to this heading">#</a></h2>
+<section id="readings-resources">
+<h2>Readings &amp; Resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Motulsky, Harvey, and Arthur Christopoulos. Fitting models to biological data using linear and nonlinear regression: a practical guide to curve fitting. OUP USA, 2004: <a class="reference external" href="https://www.facm.ucl.ac.be/cooperation/Vietnam/WBI-Vietnam-October-2011/Modelling/regressionBook.pdf">https://www.facm.ucl.ac.be/cooperation/Vietnam/WBI-Vietnam-October-2011/Modelling/regressionBook.pdf</a></p></li>
 <li><p>These are a pretty good series of notes on nlls (even if you are using R instead of Python): <a class="reference external" href="https://lmfit.github.io/lmfit-py/intro.html">https://lmfit.github.io/lmfit-py/intro.html</a></p></li>
@@ -2610,7 +2613,7 @@ In both cases, the <em>mean</em> of the sampling distribution will be the starti
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bounding-parameters-revisited">Bounding parameters revisited</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-and-resources">Readings and resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">Readings &amp; Resources</a></li>
 </ul>
   </nav></div>
 
