@@ -1,12 +1,6 @@
 Welcome to The Multilingual Quantitative Biologist!
 ===================================================
 
-```{epigraph}
-"It is hard for me to say confidently that, after fifty more years of explosive growth of computer science, there will still be a lot of fascinating unsolved problems at peoples' fingertips, that it won't be pretty much working on refinements of well-explored things. Maybe all of the simple stuff and the really great stuff has been discovered. It may not be true, but I can't predict an unending growth. I can't be as confident about computer science as I can about biology. Biology easily has 500 years of exciting problems to work on, it's at that level." 
-
--- Donald Knuth
-```
-
 ## About
 
 These notes have emerged from the development of content for modules on Biological Computing taught in various past and present courses at the

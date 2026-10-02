@@ -46,7 +46,7 @@ A typical sequence is:
 - [Experimental design](notebooks/exp-design) → [t-tests](notebooks/t-f-tests) → [Regression](notebooks/regress)
 - Then [ANOVA](notebooks/anova) and the multiple explanatory variable chapters.
 
-## Readings & resources
+## Readings & Resources
 
 Look up the `readings/` directory on [MulQuaBio](https://github.com/MulQuaBio/MQB).
 
