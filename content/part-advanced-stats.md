@@ -7,6 +7,7 @@ This part builds toward modern statistical modelling and inference workflows use
 By the end of this part, you will be able to:
 
 - Extend linear models to non-Gaussian responses via generalised linear models (GLMs)
+- Fit and interpret mixed-effects models for grouped and repeated observations
 - Fit and interpret logistic regression (binary) and Poisson regression (count data) models
 - Recognise and handle temporal autocorrelation in time-series data
 - Fit nonlinear models using nonlinear least squares (NLLS) with appropriate starting values
