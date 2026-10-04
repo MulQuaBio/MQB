@@ -95,7 +95,7 @@ jobs:
         env:
           MQB_NOTEBOOK_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
           MQB_NOTEBOOK_REF: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: PYTHONPATH="$GITHUB_WORKSPACE:$GITHUB_WORKSPACE/content/code" make test BOOK_CONFIG=content/_config_ci.yml BOOK_BUILD_ARGS=--all
+        run: PYTHONPATH="$GITHUB_WORKSPACE" make test BOOK_CONFIG=content/_config_ci.yml BOOK_BUILD_ARGS=--all
 
       - name: Upload built book
         uses: actions/upload-artifact@v7
