@@ -390,7 +390,7 @@ To get started, you will need 4 things:
 
 ------------------------------------------------------------------------
 
-## running a job on the Imperial HPC
+## Running a job on the Imperial HPC
 
 You first must determine the task at hand. Are you running your own
 script or software that natively parallelises tasks? Is your job an

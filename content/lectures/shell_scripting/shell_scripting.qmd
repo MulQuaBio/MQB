@@ -85,13 +85,13 @@ pwd
 4. Create the working folders if they do not already exist:
 
 ```bash
-mkdir -p week1/{code,data,results,sandbox}
-cd week1/code
+mkdir -p code data results sandbox
+cd code
 pwd
 ```
 
 ::: {.checkpoint}
-**Checkpoint:** everyone should be in `week1/code` with the editor and terminal visible.
+**Checkpoint:** everyone should be in `code/` with the editor and terminal visible.
 :::
 
 ::: notes
@@ -99,7 +99,7 @@ Time: 04:15-09:15.
 
 This is a live setup step. Ask students to substitute their own coursework path
 if it differs. If somebody is lost, have them run `pwd`, then use the VS Code
-Explorer to open the `week1/code` directory.
+Explorer to open the `code/` directory inside the coursework project root.
 :::
 
 ## A script is a saved recipe {data-timing="60"}
@@ -163,7 +163,7 @@ then unpack its four parts on the next slides.
 
 ## Create `boilerplate.sh` in VS Code {data-timing="420"}
 
-Create a new file called `boilerplate.sh` in `week1/code` and type this with me:
+Create a new file called `boilerplate.sh` in `code/` and type this with me:
 
 ```bash
 #!/usr/bin/env bash
@@ -279,7 +279,7 @@ normally searched automatically for commands.
 Time: 25:45-30:45.
 
 If direct execution fails, check `ls -l boilerplate.sh` and confirm that the
-terminal is still in `week1/code`. Do not turn this into a PATH detour yet.
+terminal is still in `code/`. Do not turn this into a PATH detour yet.
 :::
 
 ## Add an explicit status {data-timing="240"}
@@ -314,7 +314,7 @@ printf 'This is a shell script!\n'
 exit 0
 ```
 
-Then save it as `boilerplate.sh` in `week1/code` and run:
+Then save it as `boilerplate.sh` in `code/` and run:
 
 ```bash
 bash -n boilerplate.sh
@@ -409,7 +409,7 @@ cat ../sandbox/shell-demo/test.txt
 ```
 
 ::: {.checkpoint}
-**Checkpoint:** the input is under `week1/sandbox`, not inside `week1/data` or `week1/results`.
+**Checkpoint:** the input is under `sandbox/`, not inside `data/` or `results/`.
 :::
 
 ::: notes
@@ -421,7 +421,7 @@ experimenting on the only copy of assessed or irreplaceable data.
 
 ## Build the first `tabtocsv.sh` {data-timing="420"}
 
-Create `tabtocsv.sh` in `week1/code`:
+Create `tabtocsv.sh` in `code/`:
 
 ```bash
 #!/usr/bin/env bash
@@ -462,6 +462,8 @@ Before trusting it, ask:
 - What input does it expect?
 - Where will it put the result?
 - What could make it fail?
+
+The live demo shows the starter as it is, including its limitations. In the practical, you will improve it and save the result in `results/`; the notebook walks through that work.
 
 ::: notes
 Time: 55:45-56:45.
@@ -554,18 +556,19 @@ ask students to apply the checklist to the starter and compare approaches.
 predict → test on disposable data → inspect → improve
 :::
 
-Write `csvtospace.sh` to convert comma-separated values to space-separated values.
+Write `csvtospace.sh` to convert a comma-separated input to a space-separated output. Run it from `code/` and pass one readable input path.
 
 It must:
 
-- accept and validate its input,
-- leave the input unchanged,
-- write to a differently named output,
-- handle missing and invalid inputs with useful messages, and
+- leave the input unchanged and write `../results/<input-filename>.txt` (for example, `1800.csv` produces `1800.csv.txt`),
+- create `../results/` if it does not exist and replace the generated output on reruns,
+- preserve repeated commas as repeated spaces so empty fields are not silently removed,
+- report missing, unreadable or invalid inputs to standard error and return a non-zero status, and
 - state the limitations of simple delimiter substitution.
 
-Test it on disposable copies before using coursework data. Keep the script in
-`CMEECourseWork/week1/code`; temporary fixtures belong in `week1/sandbox`.
+The supplied temperature CSVs do not contain quoted commas. This is not a general CSV parser: quoted commas are data, and fields containing spaces cannot be represented unambiguously in the space-separated output. Test with disposable copies, including an empty field, a path with spaces, a rerun, missing arguments and a nonexistent file. Check that the input is unchanged and the output is in `results/`. Keep the script in the coursework root `code/`; temporary fixtures belong in `sandbox/`.
+
+This live session introduces the converter workflow. Use the shell-scripting notebook for the full practical instructions and test sequence; the lecture examples demonstrate the ideas without listing every exercise step.
 
 ::: {.checkpoint}
 **Before you leave:** run a valid case, a missing-file case, a missing-argument case and a path-with-spaces case.
@@ -586,7 +589,7 @@ Use the recovery route:
 
 ```bash
 pwd
-cd ~/Documents/CMEECourseWork/week1/code
+cd ~/Documents/CMEECourseWork/code
 bash -n boilerplate.sh
 bash boilerplate.sh
 ```

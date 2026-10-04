@@ -130,6 +130,10 @@ make init
 make test
 ```
 
+`make test` runs the content checker before building the book. It checks links and
+referenced paths in the book source; run `make check-content` to run this check
+without building the book.
+
 If you prefer to activate the environment explicitly:
 
 ```bash
