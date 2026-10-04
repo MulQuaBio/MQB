@@ -51,6 +51,7 @@ jobs:
         env:
           CRAN_REPO: https://packagemanager.posit.co/cran/__linux__/noble/2026-10-01
         run: |
+          . .venv/bin/activate
           Rscript -e 'options(repos = c(CRAN = Sys.getenv("CRAN_REPO"))); install.packages(readLines("requirements-r.txt"))'
           Rscript -e 'IRkernel::installspec(name = "ir", displayname = "R", user = TRUE)'
 
