@@ -20,6 +20,8 @@ $$
 
 Here, $p(\theta)$ is the prior, $p(y \mid \theta)$ is the likelihood, and $p(\theta \mid y)$ is the posterior. The evidence $p(y)$ is the normalizing constant that makes the posterior integrate to one. The posterior is conditional on the model, prior, and observed data; it does not remove the need to question those assumptions.
 
+For how the likelihood is constructed and maximized without a prior, see the [maximum-likelihood chapter](mle). Bayesian inference uses that same likelihood but combines it with a prior, producing a distribution over plausible parameter values rather than just the likelihood-maximizing estimate.
+
 ## Worked example: a binomial proportion
 
 Suppose 7 of 10 sampled seeds germinate. Let $p$ be the probability that a seed germinates. A binomial likelihood is appropriate if the trials are independent and share the same probability:
