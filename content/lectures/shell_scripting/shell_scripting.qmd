@@ -85,13 +85,13 @@ pwd
 4. Create the working folders if they do not already exist:
 
 ```bash
-mkdir -p week1/{code,data,results,sandbox}
-cd week1/code
+mkdir -p code data results sandbox
+cd code
 pwd
 ```
 
 ::: {.checkpoint}
-**Checkpoint:** everyone should be in `week1/code` with the editor and terminal visible.
+**Checkpoint:** everyone should be in `code/` with the editor and terminal visible.
 :::
 
 ::: notes
@@ -99,7 +99,7 @@ Time: 04:15-09:15.
 
 This is a live setup step. Ask students to substitute their own coursework path
 if it differs. If somebody is lost, have them run `pwd`, then use the VS Code
-Explorer to open the `week1/code` directory.
+Explorer to open the `code/` directory inside the coursework project root.
 :::
 
 ## A script is a saved recipe {data-timing="60"}
@@ -163,7 +163,7 @@ then unpack its four parts on the next slides.
 
 ## Create `boilerplate.sh` in VS Code {data-timing="420"}
 
-Create a new file called `boilerplate.sh` in `week1/code` and type this with me:
+Create a new file called `boilerplate.sh` in `code/` and type this with me:
 
 ```bash
 #!/usr/bin/env bash
@@ -279,7 +279,7 @@ normally searched automatically for commands.
 Time: 25:45-30:45.
 
 If direct execution fails, check `ls -l boilerplate.sh` and confirm that the
-terminal is still in `week1/code`. Do not turn this into a PATH detour yet.
+terminal is still in `code/`. Do not turn this into a PATH detour yet.
 :::
 
 ## Add an explicit status {data-timing="240"}
@@ -314,7 +314,7 @@ printf 'This is a shell script!\n'
 exit 0
 ```
 
-Then save it as `boilerplate.sh` in `week1/code` and run:
+Then save it as `boilerplate.sh` in `code/` and run:
 
 ```bash
 bash -n boilerplate.sh
@@ -409,7 +409,7 @@ cat ../sandbox/shell-demo/test.txt
 ```
 
 ::: {.checkpoint}
-**Checkpoint:** the input is under `week1/sandbox`, not inside `week1/data` or `week1/results`.
+**Checkpoint:** the input is under `sandbox/`, not inside `data/` or `results/`.
 :::
 
 ::: notes
@@ -421,7 +421,7 @@ experimenting on the only copy of assessed or irreplaceable data.
 
 ## Build the first `tabtocsv.sh` {data-timing="420"}
 
-Create `tabtocsv.sh` in `week1/code`:
+Create `tabtocsv.sh` in `code/`:
 
 ```bash
 #!/usr/bin/env bash
@@ -565,7 +565,7 @@ It must:
 - state the limitations of simple delimiter substitution.
 
 Test it on disposable copies before using coursework data. Keep the script in
-`CMEECourseWork/week1/code`; temporary fixtures belong in `week1/sandbox`.
+`CMEECourseWork/code`; temporary fixtures belong in `sandbox/`.
 
 ::: {.checkpoint}
 **Before you leave:** run a valid case, a missing-file case, a missing-argument case and a path-with-spaces case.
@@ -586,7 +586,7 @@ Use the recovery route:
 
 ```bash
 pwd
-cd ~/Documents/CMEECourseWork/week1/code
+cd ~/Documents/CMEECourseWork/code
 bash -n boilerplate.sh
 bash boilerplate.sh
 ```

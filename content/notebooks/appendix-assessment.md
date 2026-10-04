@@ -14,15 +14,15 @@ Both the correctness and quality of your practical work/solutions, and whether y
 Lowercase for directory names below is a suggestion—just be consistent with whatever you choose, such as [CamelCase](https://en.wikipedia.org/wiki/Camel_case); for example, you may choose to name your `code` directory `Code` instead.
 ```
 
-The basic rules you must follow, irrespective of the week or project's content, are:
+The basic rules you must follow, irrespective of the submission or project's content, are:
 
-* All code/scripts go in a `code` directory.
+* Keep one coursework project repository for the related assignments. Put all code and scripts in its root-level `code/` directory.
     
-* All data go in a `data` directory.
+* Keep supplied or created input data in the root-level `data/` directory.
     
-* All results go to the `results` directory. The results directory should be empty when you submit your week's work, as it will be populated automatically when the assessment script runs.
+* Put generated outputs in the root-level `results/` directory. Do not commit generated results unless the assignment brief explicitly asks for them. Because Git does not track empty directories, `results/` may be absent in a clean clone; scripts or the assessment runner should create it when needed.
     
-* If you have files that don't fit in these categories, put them in additional, meaningfully named directories. For example, you can create a `sandbox` directory to hold your experimental work (and perhaps [`.gitignore`](./git) it).
+* Keep temporary experiments and disposable test fixtures in an optional root-level `sandbox/` directory, and use [`.gitignore`](./git) to keep them out of submissions. Give any other necessary directories meaningful names.
     
 * No single file should be greater than 100 MB, whether data or script/code. If a script needs a data file, but the example data file is >100 MB, reduce it to a minimally sized working dataset and upload that, keeping the main data file(s) in `.gitignore`. Keep all your data backed up elsewhere, of course!
     
@@ -38,9 +38,9 @@ Do this after you finish an assignment, and before submission:
     
 * review your code files and annotate/comment code lines as much and as often as necessary using `#`.
     
-* Check that all code, data, and results files are organised as instructed above in your weekly directory.
+* Check that required code, input data, and generated outputs follow the shared project layout and the current assignment brief.
     
-* `git add`, `commit`, and `push` your work after every major change to your weekly work, and make a final push by the given deadline.
+* `git add`, commit and push after each major change to the coursework repository, and make a final push by the given deadline.
     
 
 ```{Note}
@@ -49,9 +49,9 @@ An _in-class script_ is one that is either given to you in class, or which you b
 
 ### Code testing and feedback
 
-Your project (e.g., weekly) directories will be checked for how neat and organised they are in a logical workflow, and all the scripts tested and screened for how well they adhere to good project structure and coding principles; in particular, that:
+Your coursework project repository will be checked for a clear, logical structure, and its required scripts will be tested and screened for good project structure and coding practice; in particular, that:
 
-* All in-class and assigned scripts are in the appropriate `code` directory.
+* All in-class and assigned scripts are in the project root's `code/` directory.
     
 * All code/script files are functional (no errors, correct output) when run on the assessor's (Linux) computer.
     
@@ -226,13 +226,28 @@ Every "Group work" question/script completed will be assessed using the criteria
 * Peer assessment feedback
 * Individual contribution patterns and engagement
 
+### Computing bootcamp assessment timeline
+
+The bootcamp coursework comprises four submissions: three formative submissions followed by one cumulative summative submission. Check the course timetable and released briefs for submission deadlines and feedback dates.
+
+| Submission | Focus | Type | Deadline | Feedback target |
+| --- | --- | --- | --- | --- |
+| 1 | Unix, shell and individual Git portfolio. | Formative | See course timetable/brief | See course timetable/brief |
+| 2 | Python I work and any corrections specified in the assignment brief. | Formative | See course timetable/brief | See course timetable/brief |
+| 3 | R data workflow, reproducible figure and interpretation, as specified in the brief. | Formative | See course timetable/brief | See course timetable/brief |
+| 4 | Cumulative portfolio of required work from Submissions 1-3, plus only the Python II tasks listed in the final brief. | Summative | See course timetable/brief | See course timetable/brief |
+
+Submissions 1-3 are formative feedback checkpoints and receive no numeric mark. Submission 4 is the single cumulative summative assessment and accounts for 100% of the bootcamp coursework mark. Its rubric totals 100 points when assessed group-work criteria apply; otherwise the individual rubric subtotal is converted from 85 points to a percentage. Group-work criteria are N/A, not zero, when group work is not part of the released brief.
+
+You will have reasonable time to use formative feedback before the cumulative summative submission. You will not be penalised for feedback that has not yet been returned.
+
 ### Final assessment of computing coursework
 
-A written summative assessment of your overall performance will be sent at the end of your computing module or course (e.g., the CMEE computing bootcamp; please refer to your course documentation for specific dates). For this, all the weeks' scripts (including the Group work scripts) will be run/re-run (and logs and feedback returned).
+A written summative assessment of your overall performance will be sent at the end of your computing module or course (e.g., the CMEE computing bootcamp; please refer to your course documentation for specific dates). For this, all required scripts and project artifacts (including any assigned group work) will be run or reviewed, with logs and feedback returned.
 
-Using the testing results, the assessor will exercise their judgment to deduct marks if the weekly directory structure is disorganised, the code inadequately commented or insufficiently documented, the solution is not optimal or correct, or the written components of practicals are not up to the mark (see _The Weekly Feedback_ section).
+Using the testing results, the assessor will exercise their judgment to deduct marks if the coursework project layout is disorganised, the code inadequately commented or insufficiently documented, the solution is not correct, or the written components of practicals are not up to the mark (see _The Weekly Feedback_ section).
 
-The weekly log files are provided to help you spot general, as well as programming language-specific, issues with your computing coursework. You may and should fix bugs and other problems that the feedback logs bring to your attention. The assessor will have a look at how much you addressed the issues in the final assessment (by re-running all the weeks' scripts). The final assessment will necessarily be more subjective than the weekly assessments, because the goal is to provide an overall, summative picture of how you did and what you can improve on. You will get feedback if these issues need to be addressed in the final written assessment. The final marks will be based upon your particular coursework marking criteria (please ask your course/module instructor and administrator for them).
+Feedback logs for each submission are provided to help you spot general and programming-language-specific issues. You may and should fix bugs and other problems they identify. The assessor will review how you addressed the feedback in the final assessment by Weeklyrerunning the required scripts from the coursework project. The final assessment is more holistic than formative feedback: it gives an overall summative picture of your work and what you can improve. Final marks follow the coursework criteria published for your course; ask your course or module instructor if those criteria are unclear.
 
 ## Plagiarism
 
