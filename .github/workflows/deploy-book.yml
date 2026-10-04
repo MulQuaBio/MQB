@@ -1,0 +1,131 @@
+name: Build and deploy book
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: book-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-execution.lock.txt
+
+      - name: Install dependencies
+        run: make init REQUIREMENTS_FILE=requirements-execution.lock.txt
+
+      - name: Register Python and Bash kernels
+        run: |
+          . .venv/bin/activate
+          python -m ipykernel install --sys-prefix --name python3 --display-name "Python 3"
+          python -m bash_kernel.install
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.3.3'
+          use-public-rspm: true
+
+      - name: Install R packages and register kernel
+        env:
+          CRAN_REPO: https://packagemanager.posit.co/cran/__linux__/noble/2026-10-01
+        run: |
+          Rscript -e 'options(repos = c(CRAN = Sys.getenv("CRAN_REPO"))); install.packages(readLines("requirements-r.txt"))'
+          Rscript -e 'IRkernel::installspec(name = "ir", displayname = "R", user = TRUE)'
+
+      - name: Verify notebook kernels
+        run: |
+          . .venv/bin/activate
+          python - <<'PY'
+          import json
+          import subprocess
+
+          kernels = json.loads(subprocess.check_output(["jupyter", "kernelspec", "list", "--json"]))["kernelspecs"]
+          missing = {"python3", "ir", "bash"} - kernels.keys()
+          if missing:
+              raise SystemExit(f"Missing notebook kernels: {', '.join(sorted(missing))}")
+          PY
+
+      - name: Configure strict notebook execution
+        run: |
+          . .venv/bin/activate
+          python - <<'PY'
+          from pathlib import Path
+
+          import yaml
+
+          config_path = Path("content/_config.yml")
+          config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
+          execution = config.setdefault("execute", {})
+          execution["execute_notebooks"] = "force"
+          execution["allow_errors"] = False
+          execution["timeout"] = 180
+          config.setdefault("sphinx", {}).setdefault("config", {})[
+              "nb_execution_raise_on_error"
+          ] = True
+          Path("content/_config_ci.yml").write_text(
+              yaml.safe_dump(config, sort_keys=False), encoding="utf-8"
+          )
+          PY
+
+      - name: Check, execute, and build book
+        env:
+          MQB_NOTEBOOK_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          MQB_NOTEBOOK_REF: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: PYTHONPATH="$GITHUB_WORKSPACE:$GITHUB_WORKSPACE/content/code" make test BOOK_CONFIG=content/_config_ci.yml BOOK_BUILD_ARGS=--all
+
+      - name: Upload built book
+        uses: actions/upload-artifact@v7
+        with:
+          name: book-html
+          path: content/_build/html
+          if-no-files-found: error
+          retention-days: 1
+
+  deploy:
+    needs: build
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Download built book
+        uses: actions/download-artifact@v8
+        with:
+          name: book-html
+          path: site
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4.1.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: site
