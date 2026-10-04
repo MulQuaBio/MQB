@@ -239,7 +239,7 @@ The bootcamp coursework comprises four submissions: three formative submissions 
 
 Submissions 1-3 are formative feedback checkpoints and receive no numeric mark. Submission 4 is the single cumulative summative assessment and accounts for 100% of the bootcamp coursework mark. Its rubric totals 100 points when assessed group-work criteria apply; otherwise the individual rubric subtotal is converted from 85 points to a percentage. Group-work criteria are N/A, not zero, when group work is not part of the released brief.
 
-You will have reasonable time to use formative feedback before the cumulative summative submission. You will not be penalised for feedback that has not yet been returned.
+You will have reasonable time to use formative feedback before the cumulative summative submission. You will not be penalised for not acting on feedback that has not been returned before final, summative assessment.
 
 ### Final assessment of computing coursework
 

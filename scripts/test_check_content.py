@@ -62,6 +62,25 @@ class CheckContentTests(unittest.TestCase):
             (book / "example.ipynb").write_text("not a notebook")
             self.assertTrue(any("invalid notebook" in issue for issue in check_book(book, ledger)))
 
+    def test_case_only_directory_rename_keeps_current_filename_valid(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            book = root / "content"
+            temperature_dir = book / "data" / "temperatures"
+            temperature_dir.mkdir(parents=True)
+            (book / "_toc.yml").write_text("root: intro\n")
+            (book / "intro.md").write_text(
+                "Use `../data/temperatures/1800.csv` as the current input.\n"
+            )
+            (temperature_dir / "1800.csv").write_text("year,value\n1800,1\n")
+            ledger = root / "mapping.tsv"
+            ledger.write_text(
+                "content/data/Temperatures/1800.csv\t"
+                "content/data/temperatures/1800.csv\n"
+            )
+
+            self.assertEqual(check_book(book, ledger), [])
+
 
 if __name__ == "__main__":
     unittest.main()

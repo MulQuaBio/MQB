@@ -45,8 +45,13 @@ def old_names(ledger: Path) -> set[str]:
     names = set()
     for line in ledger.read_text(encoding="utf-8").splitlines():
         previous, current = line.split("\t", 1)
-        if previous.startswith("content/data/") and previous != current:
-            names.add(Path(previous).name)
+        previous_name = Path(previous).name
+        current_name = Path(current).name
+        if (
+            previous.startswith("content/data/")
+            and previous_name != current_name
+        ):
+            names.add(previous_name)
     return names
 
 

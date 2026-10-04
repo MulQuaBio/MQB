@@ -1811,6 +1811,7 @@ display:block!important;
 <li>Where will it put the result?</li>
 <li>What could make it fail?</li>
 </ul>
+<p>The live demo shows the starter as it is, including its limitations. In the practical, you will improve it and save the result in <code>results/</code>; the notebook walks through that work.</p>
 <aside class="notes">
 <p>Time: 55:45-56:45.</p>
 <p>Do not inspect every line of the starter here. Establish its intended input and output first; students will investigate the implementation in the practical.</p>
@@ -1931,16 +1932,17 @@ display:block!important;
 <div class="flow">
 <p>predict → test on disposable data → inspect → improve</p>
 </div>
-<p>Write <code>csvtospace.sh</code> to convert comma-separated values to space-separated values.</p>
+<p>Write <code>csvtospace.sh</code> to convert a comma-separated input to a space-separated output. Run it from <code>code/</code> and pass one readable input path.</p>
 <p>It must:</p>
 <ul>
-<li>accept and validate its input,</li>
-<li>leave the input unchanged,</li>
-<li>write to a differently named output,</li>
-<li>handle missing and invalid inputs with useful messages, and</li>
+<li>leave the input unchanged and write <code>../results/&lt;input-filename&gt;.txt</code> (for example, <code>1800.csv</code> produces <code>1800.csv.txt</code>),</li>
+<li>create <code>../results/</code> if it does not exist and replace the generated output on reruns,</li>
+<li>preserve repeated commas as repeated spaces so empty fields are not silently removed,</li>
+<li>report missing, unreadable or invalid inputs to standard error and return a non-zero status, and</li>
 <li>state the limitations of simple delimiter substitution.</li>
 </ul>
-<p>Test it on disposable copies before using coursework data. Keep the script in <code>CMEECourseWork/code</code>; temporary fixtures belong in <code>sandbox/</code>.</p>
+<p>The supplied temperature CSVs do not contain quoted commas. This is not a general CSV parser: quoted commas are data, and fields containing spaces cannot be represented unambiguously in the space-separated output. Test with disposable copies, including an empty field, a path with spaces, a rerun, missing arguments and a nonexistent file. Check that the input is unchanged and the output is in <code>results/</code>. Keep the script in the coursework root <code>code/</code>; temporary fixtures belong in <code>sandbox/</code>.</p>
+<p>This live session introduces the converter workflow. Use the shell-scripting notebook for the full practical instructions and test sequence; the lecture examples demonstrate the ideas without listing every exercise step.</p>
 <div class="checkpoint">
 <p><strong>Before you leave:</strong> run a valid case, a missing-file case, a missing-argument case and a path-with-spaces case.</p>
 </div>
