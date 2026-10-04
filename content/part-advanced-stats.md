@@ -12,6 +12,7 @@ By the end of this part, you will be able to:
 - Recognise and handle temporal autocorrelation in time-series data
 - Fit nonlinear models using nonlinear least squares (NLLS) with appropriate starting values
 - Construct likelihood functions and estimate parameters via maximum likelihood estimation (MLE)
+- Combine priors and likelihoods to derive and interpret Bayesian posterior distributions
 - Compare models using information criteria (AIC, BIC) and likelihood ratio tests
 - Apply modern statistical workflows for model fitting, checking, and inference in quantitative biology
 
@@ -32,3 +33,4 @@ By the end of this part, you will be able to:
 1. [GLMs](notebooks/glms)
 2. [NLLS](notebooks/nlls)
 3. [MLE](notebooks/mle)
+4. [Bayesian inference](notebooks/bayesian)
