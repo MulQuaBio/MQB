@@ -53,7 +53,8 @@ jobs:
         run: |
           . .venv/bin/activate
           Rscript -e 'options(repos = c(CRAN = Sys.getenv("CRAN_REPO"))); install.packages(readLines("requirements-r.txt"))'
-          Rscript -e 'IRkernel::installspec(name = "ir", displayname = "R", user = TRUE)'
+          ir_kernel_spec=$(Rscript -e 'cat(system.file("kernelspec", package = "IRkernel"))')
+          jupyter kernelspec install --user --replace --name ir "$ir_kernel_spec"
 
       - name: Verify notebook kernels
         run: |
