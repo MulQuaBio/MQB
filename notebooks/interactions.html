@@ -299,6 +299,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayesian.html">Bayesian inference for biological data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
@@ -597,7 +598,8 @@
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-and-consumer-resource-interactions">Temperature and consumer-resource interactions</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consumer-resource-dynamics-macarthur-s-theory">consumer-resource Dynamics &amp; MacArthur’s theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-birth-and-death-to-logistic-growth">From birth and death to logistic growth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consumer-resource-dynamics-macarthur-s-theory">Consumer-resource Dynamics &amp; MacArthur’s theory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-questions">Discussion Questions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-code">Simulation Code</a></li>
@@ -711,8 +713,27 @@ B = B_0 M^b,
 <div class="math notranslate nohighlight">
 \[ k = A e^{-\frac{E_a}{k_B T}}, \]</div>
 <p>where <span class="math notranslate nohighlight">\(k\)</span> is the reaction rate, <span class="math notranslate nohighlight">\(A\)</span> is a constant, <span class="math notranslate nohighlight">\(E_a\)</span> is activation energy, <span class="math notranslate nohighlight">\(k_B\)</span> is Boltzmann’s constant, and <span class="math notranslate nohighlight">\(T\)</span> is temperature. Higher temperatures generally increase foraging velocity and reduce handling time, leading to higher consumption rates. For example, ectothermic organisms show a strong temperature dependence in their foraging activities, while endotherms have a more stable consumption rate due to thermal regulation.</p>
+<section id="from-birth-and-death-to-logistic-growth">
+<h2>From birth and death to logistic growth<a class="headerlink" href="#from-birth-and-death-to-logistic-growth" title="Link to this heading">#</a></h2>
+<p>Start with a population of size <span class="math notranslate nohighlight">\(N\)</span>. Suppose each individual produces offspring at a constant per-capita rate <span class="math notranslate nohighlight">\(b\)</span>, while its per-capita death rate is a baseline <span class="math notranslate nohighlight">\(d_0\)</span> plus an increase <span class="math notranslate nohighlight">\(cN\)</span> from competition for limited resources. The total birth and death rates are then</p>
+<div class="math notranslate nohighlight">
+\[
+B=bN, \qquad D=(d_0+cN)N.
+\]</div>
+<p>Population change is births minus deaths:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dN}{dt}=B-D=(b-d_0)N-cN^2.
+\]</div>
+<p>Let <span class="math notranslate nohighlight">\(r=b-d_0\)</span> be the low-density per-capita growth rate. If <span class="math notranslate nohighlight">\(r&gt;0\)</span> and <span class="math notranslate nohighlight">\(c&gt;0\)</span>, define the carrying capacity <span class="math notranslate nohighlight">\(K=r/c\)</span>. Factoring the equation gives the logistic model:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dN}{dt}=rN-cN^2=rN\left(1-\frac{N}{K}\right).
+\]</div>
+<p>Equivalently, the per-capita growth rate is <span class="math notranslate nohighlight">\(r(1-N/K)\)</span>: it is positive below <span class="math notranslate nohighlight">\(K\)</span>, zero at <span class="math notranslate nohighlight">\(K\)</span>, and negative above it. Here, competition is modelled as a density-dependent death rate that grows linearly with <span class="math notranslate nohighlight">\(N\)</span>; this is a simplifying assumption, not a universal law. The consumer-resource model below starts with this logistic resource growth and adds losses to consumers.</p>
+</section>
 <section id="consumer-resource-dynamics-macarthur-s-theory">
-<h2>consumer-resource Dynamics &amp; MacArthur’s theory<a class="headerlink" href="#consumer-resource-dynamics-macarthur-s-theory" title="Link to this heading">#</a></h2>
+<h2>Consumer-resource Dynamics &amp; MacArthur’s theory<a class="headerlink" href="#consumer-resource-dynamics-macarthur-s-theory" title="Link to this heading">#</a></h2>
 <p>The logistic model primarily focuses on the intrinsic dynamics of a species, which are influenced by a variety of factors. To enhance the accuracy and comprehensiveness of the model, we incorporate the effects of predators (consumers) on the population dynamics of the species:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1772,7 +1793,8 @@ Interaction matrix (Alpha):
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-and-consumer-resource-interactions">Temperature and consumer-resource interactions</a><ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consumer-resource-dynamics-macarthur-s-theory">consumer-resource Dynamics &amp; MacArthur’s theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-birth-and-death-to-logistic-growth">From birth and death to logistic growth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consumer-resource-dynamics-macarthur-s-theory">Consumer-resource Dynamics &amp; MacArthur’s theory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-questions">Discussion Questions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-code">Simulation Code</a></li>

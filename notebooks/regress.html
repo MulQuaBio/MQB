@@ -299,6 +299,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayesian.html">Bayesian inference for biological data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
@@ -593,14 +594,14 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformations-and-allometric-scaling">Transformations and allometric scaling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-the-regression-analysis">Performing the regression analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-the-model">Fitting the model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-an-anova-on-the-fitted-model">running an anova on the fitted model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-an-anova-on-the-fitted-model">Running an anova on the fitted model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sums-of-squares">The Sums of Squares</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-fitted-regression-model">Plotting the fitted regression model</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-diagnostics">Model diagnostics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-the-model">reporting the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-the-model">Reporting the model</a></li>
 </ul>
             </nav>
         </div>
@@ -637,29 +638,33 @@
 </div>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>Linear regression is a class of <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_model">Linear Models</a> that is frequently a good choice if both, your response (dependent) and your predictor (independent) variables are continuous. In this Chapter you will learn:</p>
-<ul>
-<li><p>To <em>explore</em> your data in order to determine whether a Linear Model is a good choice by</p>
+<p>Linear regression is a class of <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_model">Linear Models</a> that is frequently a good choice for ecological and evolutionary data if both your response (dependent) and predictor (independent) variables are continuous. In this chapter you will learn:</p>
 <ul class="simple">
+<li><p>To <em>explore</em> your data to determine whether a Linear Model is a good choice by</p>
+<ul>
 <li><p>Visualizing your data (in R)</p></li>
 <li><p>Calculating correlations between variables</p></li>
 </ul>
 </li>
 <li><p>To <em>fit</em> a Linear regression Model to data</p></li>
-<li><p>To determine whether the Model adequately fits your data (its “significance”), and also whether is it is at all an appropriate model for those data, by</p>
-<ul class="simple">
+<li><p>To determine whether the Model adequately fits your data (its “significance”), and whether it is appropriate for those data, by</p>
+<ul>
 <li><p>Plotting the data and the fitted Model together</p></li>
-<li><p>Calculating goodness of fit measures and statistics</p></li>
+<li><p>Calculating goodness-of-fit measures and statistics</p></li>
 <li><p>Using diagnostic plots</p></li>
 </ul>
-<p>“It is expected that you have already been introduced to, or are familiar with the concepts (and/or theory) underlying Linear Models. If not, you may want to see the <a class="reference external" href="https://github.com/MulQuaBio/MQB/tree/main/content/lectures/linearmodels">Linear Models lecture</a> (you can also watch the <a class="reference external" href="https://drive.google.com/drive/folders/12Sj56wHX6vcAnp9GE9qQ1gIXbn7QrHU2?usp=sharing">video</a>).\n”,</p>
 </li>
 </ul>
-<p>As with the previous chapters, we’ll start with creating a new blank script for you to fill in during the practical (the script file <code class="docutils literal notranslate"><span class="pre">regress.R</span></code> is also available from <a class="reference external" href="https://github.com/MulQuaBio/MQB/tree/main/content/code">MQB repository</a>).</p>
-<p>We will use the genome size data (from the <a class="reference internal" href="t-f-tests.html"><span class="std std-doc">previous chapter</span></a>) again. So,</p>
-<p>★ Open r and <code class="docutils literal notranslate"><span class="pre">setwd</span></code> to your <code class="docutils literal notranslate"><span class="pre">code</span></code> directory.</p>
+<p>If you are unfamiliar with Linear Models, see the <a class="reference download internal" download="" href="../_downloads/a0f85fc2b67a4610fdb2be6d2ee8f39e/Pawar_LinMods.pdf"><span class="xref download myst">lecture slides (PDF)</span></a>.</p>
+<p>As with previous chapters, we’ll start by creating a new blank script for you to fill in during the practical (the script file <code class="docutils literal notranslate"><span class="pre">regress.R</span></code> is also available from the <a class="reference external" href="https://github.com/MulQuaBio/MQB/tree/main/content/code">MQB repository</a>).</p>
+<p>We will use the genome size data from the <a class="reference internal" href="t-f-tests.html"><span class="std std-doc">previous chapter</span></a> again. So:</p>
+<p>★ Open R and <code class="docutils literal notranslate"><span class="pre">setwd</span></code> to your <code class="docutils literal notranslate"><span class="pre">code</span></code> directory.</p>
 <p>★ Create a new blank script called <code class="docutils literal notranslate"><span class="pre">regression.R</span></code> and add some introductory comments.</p>
-<p>★ Add code to your script to load the genome size data into r and check it (again, using the relative path prefix <code class="docutils literal notranslate"><span class="pre">../</span></code>, assuming that you working directory is <code class="docutils literal notranslate"><span class="pre">code</span></code>):</p>
+<p>★ Add code to your script to load and check your data, using the relative path prefix <code class="docutils literal notranslate"><span class="pre">../</span></code> if your working directory is <code class="docutils literal notranslate"><span class="pre">code</span></code>:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>“Linear” describes how the model uses its coefficients, not necessarily the shape of the graph.</strong> Coefficients are the values estimated from data. In <span class="math notranslate nohighlight">\(y = \beta_0 + \beta_1 x + \beta_2 x^2\)</span>, the coefficients are only added and multiplied by known quantities, so the model is linear in its coefficients even though it can curve as <span class="math notranslate nohighlight">\(x\)</span> changes. In <span class="math notranslate nohighlight">\(y = \beta_0 + \beta_1^2 x\)</span>, a coefficient is squared, so the model is nonlinear in its coefficients. Likewise, <span class="math notranslate nohighlight">\(\log(y) = \beta_0 + \beta_1 \log(x)\)</span> is linear in its coefficients, although it usually describes a curved relationship on the original scales.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">genome</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">'../data/genome_size.csv'</span><span class="p">,</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
@@ -1108,7 +1113,7 @@ Thus you can see that the regression slope is proportional to the correlation co
 <p>The main take-away from all this is that the standard errors of the coefficients are directly proportional to the standard error of the regression and inversely proportional to the square root of the sample size (<span class="math notranslate nohighlight">\(n\)</span>). Thus, that “noise” in the data (measured by the residual standard error) affects the errors in the coefficient estimates in exactly the same way. Thus, 4 times as much data will tend to reduce the standard errors of the all coefficients by approximately a factor of 2.</p>
 </section>
 <section id="running-an-anova-on-the-fitted-model">
-<h3>running an anova on the fitted model<a class="headerlink" href="#running-an-anova-on-the-fitted-model" title="Link to this heading">#</a></h3>
+<h3>Running an anova on the fitted model<a class="headerlink" href="#running-an-anova-on-the-fitted-model" title="Link to this heading">#</a></h3>
 <p>Now we will look at the <em>terms</em> of the model using the <code class="docutils literal notranslate"><span class="pre">anova</span></code> function.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1290,7 +1295,7 @@ Thus you can see that the regression slope is proportional to the correlation co
 record of the code and run it.</p>
 </section>
 <section id="reporting-the-model">
-<h2>reporting the model<a class="headerlink" href="#reporting-the-model" title="Link to this heading">#</a></h2>
+<h2>Reporting the model<a class="headerlink" href="#reporting-the-model" title="Link to this heading">#</a></h2>
 <p>Now we know that the models are appropriate and we have a plot, the last thing is to report the statistics. For the damselfly model, here is one summary that would do: log genome size explains significant variation in log body weight in dameselflies (F=10.5, df=1,36, p=0.0025) and shows that body weight decreases with genome size (intercept: -4.65, se=0.09;
 slope: -1.14, se=0.35).</p>
 </section>
@@ -1371,14 +1376,14 @@ slope: -1.14, se=0.35).</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformations-and-allometric-scaling">Transformations and allometric scaling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-the-regression-analysis">Performing the regression analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-the-model">Fitting the model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-an-anova-on-the-fitted-model">running an anova on the fitted model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-an-anova-on-the-fitted-model">Running an anova on the fitted model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-sums-of-squares">The Sums of Squares</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-fitted-regression-model">Plotting the fitted regression model</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-diagnostics">Model diagnostics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-the-model">reporting the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-the-model">Reporting the model</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Data analyses with Python &amp; Jupyter &#8212; MulQuaBio</title>
+    <title>Bayesian inference for biological data &#8212; MulQuaBio</title>
   
   
   
@@ -61,14 +61,16 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/appendix-data-python';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/bayesian';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
     <script src="../_static/sidebar-toggles.js?v=98d0e6e2"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Maths and Quantitative Foundations" href="../appendices/maths.html" />
-    <link rel="prev" title="Data Analysis in Python (Optional)" href="../appendices/data-python.html" />
+    <link rel="next" title="Introduction &amp; prerequisites" href="../part-assignments.html" />
+    <link rel="prev" title="Model Fitting using Maximum Likelihood" href="mle.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -288,7 +290,7 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Introduction &amp; prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glms.html">Generalised Linear Models</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -297,6 +299,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bayesian inference for biological data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
@@ -311,7 +314,7 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Introduction &amp; prerequisites</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/terms.html">Key computing terms</a></li>
@@ -324,8 +327,8 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendices/ubuntu-admin.html">Linux Setup and Ubuntu Administration</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../appendices/data-python.html">Data Analysis in Python (Optional)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Data analyses  with Python &amp; Jupyter</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -392,55 +395,6 @@
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://mybinder.org/v2/gh/MulQuaBio/MQB/master?urlpath=lab/tree/notebooks/appendix-data-python.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Binder"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
-  </span>
-<span class="btn__text-container">Binder</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/MulQuaBio/MQB/blob/master/notebooks/appendix-data-python.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img alt="Colab logo" src="../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -466,7 +420,7 @@
       
       
       
-      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/appendix-data-python.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/bayesian.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -496,7 +450,7 @@
       
       
       
-      <li><a href="../_sources/notebooks/appendix-data-python.ipynb" target="_blank"
+      <li><a href="../_sources/notebooks/bayesian.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -506,7 +460,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -572,7 +526,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Data analyses  with Python & Jupyter</h1>
+    <h1>Bayesian inference for biological data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -582,18 +536,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-pandas">Installing Pandas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder-about-tabbing-and-help">Reminder about tabbing and help!</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframes">Pandas <code class="docutils literal notranslate"><span class="pre">dataframes</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-data">importing data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-dataframes">Creating dataframes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-your-data">Examining your data</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">Readings &amp; Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-likelihood-to-posterior">From likelihood to posterior</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worked-example-a-binomial-proportion">Worked example: a binomial proportion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-future-observations">Predicting future observations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-computation-is-needed">When computation is needed</a></li>
 </ul>
             </nav>
         </div>
@@ -605,441 +551,86 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="data-analyses-with-python-jupyter">
-<h1>Data analyses  with Python &amp; Jupyter<a class="headerlink" href="#data-analyses-with-python-jupyter" title="Link to this heading">#</a></h1>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>You can do complex biological data manipulation and analyses using the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> Python package (or by switching kernels, using <code class="docutils literal notranslate"><span class="pre">R</span></code>!)</p>
-<p>We will look at pandas here, which provides <code class="docutils literal notranslate"><span class="pre">R</span></code>-like functions for data manipulation and analyses. <code class="docutils literal notranslate"><span class="pre">pandas</span></code> is built on top of NumPy. Most importantly, it offers an R-like <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object: a multidimensional array with explicit row and column names that can contain heterogeneous types of data as well as  missing values, which would not be possible using numpy arrays.</p>
-<p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> also implements a number of powerful data operations for filtering, grouping and reshaping data similar to r or spreadsheet programs.</p>
-</section>
-<section id="installing-pandas">
-<h2>Installing Pandas<a class="headerlink" href="#installing-pandas" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> requires NumPy. See the <a class="reference external" href="http://pandas.pydata.org/">Pandas documentation</a>.
-If you installed Anaconda, you already have Pandas installed. Otherwise, you can <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span></code> it.</p>
-<p>Assuming <code class="docutils literal notranslate"><span class="pre">pandas</span></code> is installed, you can import it and check the version:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">__version__</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'0.17.1'
-</pre></div>
-</div>
-</div>
-</div>
-<p>Also import scipy:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sc</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="reminder-about-tabbing-and-help">
-<h3>Reminder about tabbing and help!<a class="headerlink" href="#reminder-about-tabbing-and-help" title="Link to this heading">#</a></h3>
-<p>As you read through these chapters, don’t forget that Jupyter gives you the ability to quickly explore the contents of a package or methods applicable to an an object by using the tab-completion feature. Also documentation of various functions can be accessed using the <code class="docutils literal notranslate"><span class="pre">?</span></code> character. For example, to display all the contents of the pandas namespace, you can type</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">pd</span><span class="o">.&lt;</span><span class="n">TAB</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>And to display Pandas’s built-in documentation, you can use this:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> pd<span class="o">?</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="pandas-dataframes">
-<h2>Pandas <code class="docutils literal notranslate"><span class="pre">dataframes</span></code><a class="headerlink" href="#pandas-dataframes" title="Link to this heading">#</a></h2>
-<p>The dataframes is the main data object in pandas.</p>
-<section id="importing-data">
-<h3>importing data<a class="headerlink" href="#importing-data" title="Link to this heading">#</a></h3>
-<p>Dataframes can be created from multiple sources - e.g. CSV files, excel files, and JSON.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MyDF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/testcsv.csv'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">','</span><span class="p">)</span>
-<span class="n">MyDF</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Species</th>
-      <th>Infraorder</th>
-      <th>Family</th>
-      <th>Distribution</th>
-      <th>Body mass male (Kg)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Daubentonia_madagascariensis</td>
-      <td>Chiromyiformes</td>
-      <td>Daubentoniidae</td>
-      <td>Madagascar</td>
-      <td>2.700</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Allocebus_trichotis</td>
-      <td>Lemuriformes</td>
-      <td>Cheirogaleidae</td>
-      <td>Madagascar</td>
-      <td>0.100</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Avahi_laniger</td>
-      <td>Lemuriformes</td>
-      <td>Indridae</td>
-      <td>America</td>
-      <td>1.030</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Avahi_occidentalis</td>
-      <td>Lemuriformes</td>
-      <td>Indridae</td>
-      <td>Madagascar</td>
-      <td>0.814</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Avahi_unicolor</td>
-      <td>Lemuriformes</td>
-      <td>Indridae</td>
-      <td>America</td>
-      <td>0.830</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Cheirogaleus_adipicaudatus</td>
-      <td>Lemuriformes</td>
-      <td>Cheirogaleidae</td>
-      <td>Madagascar</td>
-      <td>0.200</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Cheirogaleus_crossleyi</td>
-      <td>Lemuriformes</td>
-      <td>Cheirogaleidae</td>
-      <td>Madagascar</td>
-      <td>0.400</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Cheirogaleus_major</td>
-      <td>Lemuriformes</td>
-      <td>Cheirogaleidae</td>
-      <td>Madagascar</td>
-      <td>0.450</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Cheirogaleus_medius</td>
-      <td>Lemuriformes</td>
-      <td>Cheirogaleidae</td>
-      <td>Madagascar</td>
-      <td>0.217</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-</section>
-<section id="creating-dataframes">
-<h3>Creating dataframes<a class="headerlink" href="#creating-dataframes" title="Link to this heading">#</a></h3>
-<p>You can also create dataframes using a Python dictionary like syntax:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MyDF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-   <span class="s1">'col1'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Var1'</span><span class="p">,</span> <span class="s1">'Var2'</span><span class="p">,</span> <span class="s1">'Var3'</span><span class="p">,</span> <span class="s1">'Var4'</span><span class="p">],</span>
-   <span class="s1">'col2'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Grass'</span><span class="p">,</span> <span class="s1">'rabbit'</span><span class="p">,</span> <span class="s1">'Fox'</span><span class="p">,</span> <span class="s1">'Wolf'</span><span class="p">],</span>
-   <span class="s1">'col3'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sc</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="p">})</span>
-
-<span class="n">MyDF</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>col1</th>
-      <th>col2</th>
-      <th>col3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Var1</td>
-      <td>Grass</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Var2</td>
-      <td>rabbit</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Var3</td>
-      <td>Fox</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Var4</td>
-      <td>Wolf</td>
-      <td>4</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-</section>
-<section id="examining-your-data">
-<h3>Examining your data<a class="headerlink" href="#examining-your-data" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Displays the top 5 rows. Accepts an optional int parameter - num. of rows to show</span>
-<span class="n">MyDF</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>col1</th>
-      <th>col2</th>
-      <th>col3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Var1</td>
-      <td>Grass</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Var2</td>
-      <td>rabbit</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Var3</td>
-      <td>Fox</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Var4</td>
-      <td>Wolf</td>
-      <td>4</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Similar to head, but displays the last rows</span>
-<span class="n">MyDF</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>col1</th>
-      <th>col2</th>
-      <th>col3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Var1</td>
-      <td>Grass</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Var2</td>
-      <td>rabbit</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Var3</td>
-      <td>Fox</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Var4</td>
-      <td>Wolf</td>
-      <td>4</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The dimensions of the dataframe as a (rows, cols) tuple</span>
-<span class="n">MyDF</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 3)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The number of columns. Equal to df.shape[0]</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">MyDF</span><span class="p">)</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># An array of the column names</span>
-<span class="n">MyDF</span><span class="o">.</span><span class="n">columns</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index(['col1', 'col2', 'col3'], dtype='object')
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Columns and their types</span>
-<span class="n">MyDF</span><span class="o">.</span><span class="n">dtypes</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>col1     object
-col2     object
-col3    float64
-dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Converts the frame to a two-dimensional table</span>
-<span class="n">MyDF</span><span class="o">.</span><span class="n">values</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([['Var1', 'Grass', 1.0],
-       ['Var2', 'rabbit', 2.0],
-       ['Var3', 'Fox', nan],
-       ['Var4', 'Wolf', 4.0]], dtype=object)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Displays descriptive stats for all columns</span>
-<span class="n">MyDF</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>col3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>3.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>2.333333</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>1.527525</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>1.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>1.500000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>2.000000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>3.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>4.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>OK, I am going to stop this brief intro to Jupyter with pandas here! I think you can already see the potential value of Jupyter for data analyses and visualization. As I mentioned above, you can also use r (e.g., using <code class="docutils literal notranslate"><span class="pre">tidyr</span></code> + <code class="docutils literal notranslate"><span class="pre">ggplot</span></code>) for this.</p>
-</section>
-</section>
-<section id="readings-resources">
-<h2>Readings &amp; Resources<a class="headerlink" href="#readings-resources" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="bayesian-inference-for-biological-data">
+<h1>Bayesian inference for biological data<a class="headerlink" href="#bayesian-inference-for-biological-data" title="Link to this heading">#</a></h1>
+<div class="admonition-learning-goals admonition">
+<p class="admonition-title">Learning goals</p>
+<p>By the end of this chapter, you should be able to:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/jakevdp/pythonDataScienceHandbook">Python Data Science Handbook</a></p></li>
-<li><p>A <a class="reference external" href="http://nikgrozev.com/2015/12/27/pandas-in-jupyter-quickstart-and-useful-snippets/">Jupyter + pandas quickstart tutorial</a></p></li>
+<li><p>Explain how prior information and data combine to form a posterior distribution</p></li>
+<li><p>Derive and interpret a Beta-Binomial posterior</p></li>
+<li><p>Distinguish a credible interval from a frequentist confidence interval</p></li>
+<li><p>Use posterior predictions to describe plausible future observations</p></li>
+<li><p>Recognise when computational methods such as Markov chain Monte Carlo (MCMC) are needed</p></li>
 </ul>
+</div>
+<section id="from-likelihood-to-posterior">
+<h2>From likelihood to posterior<a class="headerlink" href="#from-likelihood-to-posterior" title="Link to this heading">#</a></h2>
+<p>A likelihood describes how compatible observed data are with each possible parameter value. Bayesian inference combines this likelihood with a prior distribution, which represents information about the parameter before these data are observed:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\theta \mid y) = \frac{p(y \mid \theta)p(\theta)}{p(y)} \propto p(y \mid \theta)p(\theta).
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(p(\theta)\)</span> is the prior, <span class="math notranslate nohighlight">\(p(y \mid \theta)\)</span> is the likelihood, and <span class="math notranslate nohighlight">\(p(\theta \mid y)\)</span> is the posterior. The evidence <span class="math notranslate nohighlight">\(p(y)\)</span> is the normalizing constant that makes the posterior integrate to one. The posterior is conditional on the model, prior, and observed data; it does not remove the need to question those assumptions.</p>
+<p>For how the likelihood is constructed and maximized without a prior, see the <a class="reference internal" href="mle.html"><span class="doc std std-doc">maximum-likelihood chapter</span></a>. Bayesian inference uses that same likelihood but combines it with a prior, producing a distribution over plausible parameter values rather than just the likelihood-maximizing estimate.</p>
+</section>
+<section id="worked-example-a-binomial-proportion">
+<h2>Worked example: a binomial proportion<a class="headerlink" href="#worked-example-a-binomial-proportion" title="Link to this heading">#</a></h2>
+<p>Suppose 7 of 10 sampled seeds germinate. Let <span class="math notranslate nohighlight">\(p\)</span> be the probability that a seed germinates. A binomial likelihood is appropriate if the trials are independent and share the same probability:</p>
+<div class="math notranslate nohighlight">
+\[
+X \mid p \sim \operatorname{Binomial}(n,p), \qquad p \sim \operatorname{Beta}(\alpha,\beta).
+\]</div>
+<p>The Beta prior is conjugate to the binomial likelihood, so the posterior has a simple form:</p>
+<div class="math notranslate nohighlight">
+\[
+p \mid X=x \sim \operatorname{Beta}(\alpha+x,\;\beta+n-x).
+\]</div>
+<p>Use a <span class="math notranslate nohighlight">\(\operatorname{Beta}(2,2)\)</span> prior. It is centered at 0.5 and gives less weight to probabilities near 0 or 1 than a uniform prior. With <span class="math notranslate nohighlight">\(x=7\)</span> germinated seeds out of <span class="math notranslate nohighlight">\(n=10\)</span>, the posterior is <span class="math notranslate nohighlight">\(\operatorname{Beta}(9,5)\)</span>.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">successes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">7</span>
+<span class="n">trials</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">10</span>
+<span class="n">alpha_prior</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">2</span>
+<span class="n">beta_prior</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">2</span>
+
+<span class="n">alpha_posterior</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">alpha_prior</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">successes</span>
+<span class="n">beta_posterior</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">beta_prior</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">trials</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">successes</span>
+
+<span class="n">posterior_mean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">alpha_posterior</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">alpha_posterior</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">beta_posterior</span><span class="p">)</span>
+<span class="n">credible_interval</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">qbeta</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.025</span><span class="p">,</span><span class="w"> </span><span class="m">0.975</span><span class="p">),</span><span class="w"> </span><span class="n">alpha_posterior</span><span class="p">,</span><span class="w"> </span><span class="n">beta_posterior</span><span class="p">)</span>
+<span class="n">probability_p_above_half</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">pbeta</span><span class="p">(</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">alpha_posterior</span><span class="p">,</span><span class="w"> </span><span class="n">beta_posterior</span><span class="p">)</span>
+
+<span class="nf">c</span><span class="p">(</span><span class="n">mle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">successes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">trials</span><span class="p">,</span>
+<span class="w">  </span><span class="n">posterior_mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">posterior_mean</span><span class="p">,</span>
+<span class="w">  </span><span class="n">probability_p_above_half</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">probability_p_above_half</span><span class="p">)</span>
+<span class="n">credible_interval</span>
+</pre></div>
+</div>
+<p>The maximum-likelihood estimate is <span class="math notranslate nohighlight">\(7/10=0.70\)</span>; the posterior mean is <span class="math notranslate nohighlight">\(9/14\approx0.64\)</span>. The prior pulls the estimate toward 0.5, with a larger effect when the sample is small or the prior is more concentrated. The 95% credible interval from <code class="docutils literal notranslate"><span class="pre">qbeta</span></code> is an interval containing 95% of the posterior probability for <span class="math notranslate nohighlight">\(p\)</span>, given this model, prior, and data. It is not a statement about 95% of intervals from repeated samples containing a fixed parameter.</p>
+<p>Plot the prior and posterior to see how the data update the distribution:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">curve</span><span class="p">(</span><span class="nf">dbeta</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">alpha_prior</span><span class="p">,</span><span class="w"> </span><span class="n">beta_prior</span><span class="p">),</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span>
+<span class="w">      </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Germination probability (p)"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Density"</span><span class="p">)</span>
+<span class="nf">curve</span><span class="p">(</span><span class="nf">dbeta</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">alpha_posterior</span><span class="p">,</span><span class="w"> </span><span class="n">beta_posterior</span><span class="p">),</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+<span class="w">      </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"steelblue"</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+<span class="nf">legend</span><span class="p">(</span><span class="s">"topright"</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"Prior"</span><span class="p">,</span><span class="w"> </span><span class="s">"Posterior"</span><span class="p">),</span>
+<span class="w">       </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"black"</span><span class="p">,</span><span class="w"> </span><span class="s">"steelblue"</span><span class="p">),</span><span class="w"> </span><span class="n">bty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"n"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="predicting-future-observations">
+<h2>Predicting future observations<a class="headerlink" href="#predicting-future-observations" title="Link to this heading">#</a></h2>
+<p>A posterior prediction includes both uncertainty about <span class="math notranslate nohighlight">\(p\)</span> and the binomial variability of future observations. Draw parameter values from the posterior, then draw future counts conditional on each value:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+<span class="n">p_draws</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbeta</span><span class="p">(</span><span class="m">10000</span><span class="p">,</span><span class="w"> </span><span class="n">alpha_posterior</span><span class="p">,</span><span class="w"> </span><span class="n">beta_posterior</span><span class="p">)</span>
+<span class="n">future_successes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbinom</span><span class="p">(</span><span class="m">10000</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trials</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_draws</span><span class="p">)</span>
+<span class="nf">quantile</span><span class="p">(</span><span class="n">future_successes</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.025</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="m">0.975</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>These quantiles summarize plausible counts in a new sample of 10 seeds under the same assumptions. They describe future data, not uncertainty in the parameter itself.</p>
+</section>
+<section id="when-computation-is-needed">
+<h2>When computation is needed<a class="headerlink" href="#when-computation-is-needed" title="Link to this heading">#</a></h2>
+<p>Some models have no convenient closed-form posterior. Markov chain Monte Carlo (MCMC) methods then generate dependent draws whose long-run distribution approximates the posterior. Check trace plots for chains that explore the same range without persistent trends, and assess mixing and effective sample size before summarizing draws. Also compare replicated data from the fitted model with the observations; a well-sampled posterior cannot rescue a model that poorly describes the data.</p>
+<p>For further biological examples, see the course lectures on <a class="reference download internal" download="" href="../_downloads/163153d62287c6a4e6b435a8bf15c176/BayesianInference_1_ProbabilityTheory.pdf"><span class="xref download myst">Bayesian probability theory</span></a>, <a class="reference download internal" download="" href="../_downloads/8097b372acb5ba5ca6ef61ebf0b74cbd/BayesianInference_2_MCMC_Populations.pdf"><span class="xref download myst">MCMC and populations</span></a>, and <a class="reference download internal" download="" href="../_downloads/a37245d62456a805680f080ab905c902/BayesianInference_3_HypothesisTesting_Phylogeny.pdf"><span class="xref download myst">hypothesis testing and phylogeny</span></a>.</p>
 </section>
 </section>
 
@@ -1074,20 +665,20 @@ dtype: object
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../appendices/data-python.html"
+       href="mle.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Data Analysis in Python (Optional)</p>
+        <p class="prev-next-title">Model Fitting using Maximum Likelihood</p>
       </div>
     </a>
     <a class="right-next"
-       href="../appendices/maths.html"
+       href="../part-assignments.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Maths and Quantitative Foundations</p>
+        <p class="prev-next-title">Introduction &amp; prerequisites</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1109,18 +700,10 @@ dtype: object
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-pandas">Installing Pandas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder-about-tabbing-and-help">Reminder about tabbing and help!</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframes">Pandas <code class="docutils literal notranslate"><span class="pre">dataframes</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-data">importing data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-dataframes">Creating dataframes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-your-data">Examining your data</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">Readings &amp; Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-likelihood-to-posterior">From likelihood to posterior</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worked-example-a-binomial-proportion">Worked example: a binomial proportion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-future-observations">Predicting future observations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-computation-is-needed">When computation is needed</a></li>
 </ul>
   </nav></div>
 

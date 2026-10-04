@@ -603,10 +603,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overdispersion">Overdispersion</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-glm-using-a-quasi-poisson-distribution">Fitting a GLM using a quasi-poisson distribution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-predictions">Model predictions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-the-model">reporting the model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-the-model">Reporting the model</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#halos-and-lawns">Halos and lawns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-effects-models">Mixed-effects models</a></li>
 </ul>
             </nav>
         </div>
@@ -1328,7 +1329,7 @@ colonies?</p>
 <p>Those are the same values as the means we calculated for the barplot. Adding standard errors to barplots is more difficult for glms and we won’t go into it here.</p>
 </section>
 <section id="reporting-the-model">
-<h3>reporting the model<a class="headerlink" href="#reporting-the-model" title="Link to this heading">#</a></h3>
+<h3>Reporting the model<a class="headerlink" href="#reporting-the-model" title="Link to this heading">#</a></h3>
 <p>reporting complicated statistics is a difficult business. There is a lot of detail involved and you want the reader to understand what you have done well enough to repeat the analysis if needed. You also have to summarise and explain the results without pages of r output.</p>
 <p>Here are some pointers:</p>
 <ul class="simple">
@@ -1456,6 +1457,24 @@ Halo 421 712 881 899 TA102
 </div>
 <p>So, lawns and halos are never recorded from nitroguanisine or the control. They’re nearly always found with histidine and different strains have different response to streptomysin. Again, treatment and strain interact. Although you can use a <span class="math notranslate nohighlight">\(\chi^2\)</span> test with two-dimensional contingency tables to look for independence between factors, you can’t with a three-way table without using more specialized tests.</p>
 <p>We will not go any further into this, but be aware that such gnarly statistical challenges may arise at times!</p>
+</section>
+<section id="mixed-effects-models">
+<h2>Mixed-effects models<a class="headerlink" href="#mixed-effects-models" title="Link to this heading">#</a></h2>
+<p>Measurements from the same subject, site, or plot are often more alike than measurements from different groups. Treating every row as independent can understate uncertainty. A mixed-effects model combines <strong>fixed effects</strong>, which describe average relationships of interest, with <strong>random effects</strong>, which model group-to-group variation as draws from a shared distribution. This partial pooling is useful when measurements are clustered or repeated within the same group.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Orthodont</span></code> data in the R package <code class="docutils literal notranslate"><span class="pre">nlme</span></code> contain repeated dental-distance measurements for subjects at different ages. Compare an ordinary linear model, which treats rows as independent, with a model that includes a subject-specific random intercept:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">nlme</span><span class="p">)</span>
+<span class="nf">data</span><span class="p">(</span><span class="n">Orthodont</span><span class="p">)</span>
+
+<span class="n">independent_fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">distance</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Sex</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Orthodont</span><span class="p">)</span>
+<span class="n">mixed_fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lme</span><span class="p">(</span><span class="n">distance</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Sex</span><span class="p">,</span>
+<span class="w">                 </span><span class="n">random</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Subject</span><span class="p">,</span>
+<span class="w">                 </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Orthodont</span><span class="p">)</span>
+
+<span class="nf">summary</span><span class="p">(</span><span class="n">independent_fit</span><span class="p">)</span><span class="o">$</span><span class="n">coefficients</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">mixed_fit</span><span class="p">)</span><span class="o">$</span><span class="n">tTable</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">Sex</span></code> are fixed effects: they describe average differences across subjects. <code class="docutils literal notranslate"><span class="pre">random</span> <span class="pre">=</span> <span class="pre">~</span> <span class="pre">1</span> <span class="pre">|</span> <span class="pre">Subject</span></code> allows each subject’s baseline distance to vary and accounts for dependence among that subject’s repeated measurements. This is a linear mixed-effects model with a continuous response. For count or binary responses, a <strong>generalized linear mixed model (GLMM)</strong> combines a GLM family and link with random effects (for example, using <code class="docutils literal notranslate"><span class="pre">lme4::glmer()</span></code>). Choose the grouping structure to match how the observations were sampled.</p>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="fn1-c2" role="doc-footnote">
@@ -1551,10 +1570,11 @@ Halo 421 712 881 899 TA102
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overdispersion">Overdispersion</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-glm-using-a-quasi-poisson-distribution">Fitting a GLM using a quasi-poisson distribution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-predictions">Model predictions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-the-model">reporting the model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-the-model">Reporting the model</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#halos-and-lawns">Halos and lawns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-effects-models">Mixed-effects models</a></li>
 </ul>
   </nav></div>
 

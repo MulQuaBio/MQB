@@ -299,6 +299,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayesian.html">Bayesian inference for biological data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
@@ -1141,9 +1142,10 @@ git<span class="w"> </span>commit
 <h3>Hashes<a class="headerlink" href="#hashes" title="Link to this heading">#</a></h3>
 <p>Git identifies commits and other stored objects with hashes. A full commit hash is long, but a unique short prefix such as <code class="docutils literal notranslate"><span class="pre">d94cd91</span></code> is normally sufficient in commands. Think of it as a catalogue number, not a spell you are expected to memorize.</p>
 <figure class="align-center" id="id2">
-<img alt="Diagram showing changes moving among the working directory, staging area, local repository and remote repository" src="../_images/git_data_transport.svg" />
+<a class="reference internal image-reference" href="../_images/git_data_flow_simplified.svg"><img alt="Diagram showing changes moving among the working directory, staging area, local repository and remote repository" src="../_images/git_data_flow_simplified.svg" style="width: 250px;" />
+</a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">The main Git locations and the commands that move changes between them. <a class="reference external" href="https://commons.wikimedia.org/wiki/File:git_data_flow_simplified.svg">Source</a>.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">The main Git locations and the commands that move changes between them. <em>Git data flow simplified</em> by <a class="reference external" href="https://commons.wikimedia.org/wiki/User:Cmglee">Cmglee</a>, via <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Git_data_flow_simplified.svg">Wikimedia Commons</a>, licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>. Used unmodified.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The local database, staging information and repository-specific configuration live inside <code class="docutils literal notranslate"><span class="pre">.git</span></code>. Run Git commands from the repository directory or one of its subdirectories; Git searches upward for that directory.</p>
@@ -1233,8 +1235,19 @@ git<span class="w"> </span>commit
 git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>--cached<span class="w"> </span>&lt;directory&gt;
 </pre></div>
 </div>
-<p>Then commit the removal. Collaborators who pull that commit may have the tracked copy removed from their working tree, so coordinate before doing this to shared files. Also remember that earlier commits still contain the data.</p>
-<p>Avoid whitelist-style ignore files unless you genuinely need them. They are easy to forget when a new source-file type is introduced, at which point Git silently ignores work you meant to keep. Your feedback arrives as <code class="docutils literal notranslate"><span class="pre">.txt</span></code> files, for example, so a broad <code class="docutils literal notranslate"><span class="pre">*.txt</span></code> rule would be educational in the least enjoyable sense.</p>
+<p>Then commit the removal. Collaborators who pull that commit may have the tracked copy removed from their working tree, so coordinate before doing this on shared files. Also remember that earlier commits still contain the data.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Whitelist-style <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> files can hide course feedback.</strong> A catch-all rule such as <code class="docutils literal notranslate"><span class="pre">*</span></code> ignores file types unless they are explicitly re-included. For example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>*
+!*/
+!*.py
+!*.R
+!*.txt
+</pre></div>
+</div>
+<p>Without <code class="docutils literal notranslate"><span class="pre">!*.txt</span></code>, a feedback file such as <code class="docutils literal notranslate"><span class="pre">feedback.txt</span></code> remains ignored. The <code class="docutils literal notranslate"><span class="pre">!*/</span></code> rule re-includes directories so Git can reach files below them. Check a missing file with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">check-ignore</span> <span class="pre">-v</span> <span class="pre">feedback.txt</span></code>.</p>
+</div>
 </section>
 </section>
 <section id="binary-and-large-files">

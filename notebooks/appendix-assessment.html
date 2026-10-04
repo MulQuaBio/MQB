@@ -297,6 +297,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayesian.html">Bayesian inference for biological data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="current nav bd-sidenav">
@@ -555,6 +556,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#group-work-assessment">Group work assessment</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-bootcamp-assessment-timeline">Computing bootcamp assessment timeline</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-assessment-of-computing-coursework">Final assessment of computing coursework</a></li>
 </ul>
 </li>
@@ -585,12 +587,12 @@
 <p class="admonition-title">Note</p>
 <p>Lowercase for directory names below is a suggestion—just be consistent with whatever you choose, such as <a class="reference external" href="https://en.wikipedia.org/wiki/Camel_case">CamelCase</a>; for example, you may choose to name your <code class="docutils literal notranslate"><span class="pre">code</span></code> directory <code class="docutils literal notranslate"><span class="pre">Code</span></code> instead.</p>
 </div>
-<p>The basic rules you must follow, irrespective of the week or project’s content, are:</p>
+<p>The basic rules you must follow, irrespective of the submission or project’s content, are:</p>
 <ul class="simple">
-<li><p>All code/scripts go in a <code class="docutils literal notranslate"><span class="pre">code</span></code> directory.</p></li>
-<li><p>All data go in a <code class="docutils literal notranslate"><span class="pre">data</span></code> directory.</p></li>
-<li><p>All results go to the <code class="docutils literal notranslate"><span class="pre">results</span></code> directory. The results directory should be empty when you submit your week’s work, as it will be populated automatically when the assessment script runs.</p></li>
-<li><p>If you have files that don’t fit in these categories, put them in additional, meaningfully named directories. For example, you can create a <code class="docutils literal notranslate"><span class="pre">sandbox</span></code> directory to hold your experimental work (and perhaps <a class="reference internal" href="git.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code></span></a> it).</p></li>
+<li><p>Keep one coursework project repository for the related assignments. Put all code and scripts in its root-level <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory.</p></li>
+<li><p>Keep supplied or created input data in the root-level <code class="docutils literal notranslate"><span class="pre">data/</span></code> directory.</p></li>
+<li><p>Put generated outputs in the root-level <code class="docutils literal notranslate"><span class="pre">results/</span></code> directory. Do not commit generated results unless the assignment brief explicitly asks for them. Because Git does not track empty directories, <code class="docutils literal notranslate"><span class="pre">results/</span></code> may be absent in a clean clone; scripts or the assessment runner should create it when needed.</p></li>
+<li><p>Keep temporary experiments and disposable test fixtures in an optional root-level <code class="docutils literal notranslate"><span class="pre">sandbox/</span></code> directory, and use <a class="reference internal" href="git.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code></span></a> to keep them out of submissions. Give any other necessary directories meaningful names.</p></li>
 <li><p>No single file should be greater than 100 MB, whether data or script/code. If a script needs a data file, but the example data file is &gt;100 MB, reduce it to a minimally sized working dataset and upload that, keeping the main data file(s) in <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>. Keep all your data backed up elsewhere, of course!</p></li>
 <li><p>Most importantly, all scripts should run without errors, taking in data and spitting out the results as necessary.</p></li>
 </ul>
@@ -601,8 +603,8 @@
 <ul class="simple">
 <li><p>review and make sure you can run all the commands, code fragments, and named scripts you have built so far and get the expected outputs.</p></li>
 <li><p>review your code files and annotate/comment code lines as much and as often as necessary using <code class="docutils literal notranslate"><span class="pre">#</span></code>.</p></li>
-<li><p>Check that all code, data, and results files are organised as instructed above in your weekly directory.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">commit</span></code>, and <code class="docutils literal notranslate"><span class="pre">push</span></code> your work after every major change to your weekly work, and make a final push by the given deadline.</p></li>
+<li><p>Check that required code, input data, and generated outputs follow the shared project layout and the current assignment brief.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>, commit and push after each major change to the coursework repository, and make a final push by the given deadline.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -611,9 +613,9 @@
 </section>
 <section id="code-testing-and-feedback">
 <h3>Code testing and feedback<a class="headerlink" href="#code-testing-and-feedback" title="Link to this heading">#</a></h3>
-<p>Your project (e.g., weekly) directories will be checked for how neat and organised they are in a logical workflow, and all the scripts tested and screened for how well they adhere to good project structure and coding principles; in particular, that:</p>
+<p>Your coursework project repository will be checked for a clear, logical structure, and its required scripts will be tested and screened for good project structure and coding practice; in particular, that:</p>
 <ul class="simple">
-<li><p>All in-class and assigned scripts are in the appropriate <code class="docutils literal notranslate"><span class="pre">code</span></code> directory.</p></li>
+<li><p>All in-class and assigned scripts are in the project root’s <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory.</p></li>
 <li><p>All code/script files are functional (no errors, correct output) when run on the assessor’s (Linux) computer.</p></li>
 <li><p>The scripts are all up to the mark in terms of internal documentation (e.g., docstrings in the case of Python) and commenting.</p></li>
 <li><p>There is a good <code class="docutils literal notranslate"><span class="pre">readme</span></code> file for the overall repository and for each of the weekly directories.</p></li>
@@ -779,11 +781,54 @@
 </ul>
 </section>
 </section>
+<section id="computing-bootcamp-assessment-timeline">
+<h3>Computing bootcamp assessment timeline<a class="headerlink" href="#computing-bootcamp-assessment-timeline" title="Link to this heading">#</a></h3>
+<p>The bootcamp coursework comprises four submissions: three formative submissions followed by one cumulative summative submission. Check the course timetable and released briefs for submission deadlines and feedback dates.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Submission</p></th>
+<th class="head"><p>Focus</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Deadline</p></th>
+<th class="head"><p>Feedback target</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Unix, shell and individual Git portfolio.</p></td>
+<td><p>Formative</p></td>
+<td><p>See course timetable/brief</p></td>
+<td><p>See course timetable/brief</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Python I work and any corrections specified in the assignment brief.</p></td>
+<td><p>Formative</p></td>
+<td><p>See course timetable/brief</p></td>
+<td><p>See course timetable/brief</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>R data workflow, reproducible figure and interpretation, as specified in the brief.</p></td>
+<td><p>Formative</p></td>
+<td><p>See course timetable/brief</p></td>
+<td><p>See course timetable/brief</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Cumulative portfolio of required work from Submissions 1-3, plus only the Python II tasks listed in the final brief.</p></td>
+<td><p>Summative</p></td>
+<td><p>See course timetable/brief</p></td>
+<td><p>See course timetable/brief</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Submissions 1-3 are formative feedback checkpoints and receive no numeric mark. Submission 4 is the single cumulative summative assessment and accounts for 100% of the bootcamp coursework mark. Its rubric totals 100 points when assessed group-work criteria apply; otherwise the individual rubric subtotal is converted from 85 points to a percentage. Group-work criteria are N/A, not zero, when group work is not part of the released brief.</p>
+<p>You will have reasonable time to use formative feedback before the cumulative summative submission. You will not be penalised for not acting on feedback that has not been returned before final, summative assessment.</p>
+</section>
 <section id="final-assessment-of-computing-coursework">
 <h3>Final assessment of computing coursework<a class="headerlink" href="#final-assessment-of-computing-coursework" title="Link to this heading">#</a></h3>
-<p>A written summative assessment of your overall performance will be sent at the end of your computing module or course (e.g., the CMEE computing bootcamp; please refer to your course documentation for specific dates). For this, all the weeks’ scripts (including the Group work scripts) will be run/re-run (and logs and feedback returned).</p>
-<p>Using the testing results, the assessor will exercise their judgment to deduct marks if the weekly directory structure is disorganised, the code inadequately commented or insufficiently documented, the solution is not optimal or correct, or the written components of practicals are not up to the mark (see <em>The Weekly Feedback</em> section).</p>
-<p>The weekly log files are provided to help you spot general, as well as programming language-specific, issues with your computing coursework. You may and should fix bugs and other problems that the feedback logs bring to your attention. The assessor will have a look at how much you addressed the issues in the final assessment (by re-running all the weeks’ scripts). The final assessment will necessarily be more subjective than the weekly assessments, because the goal is to provide an overall, summative picture of how you did and what you can improve on. You will get feedback if these issues need to be addressed in the final written assessment. The final marks will be based upon your particular coursework marking criteria (please ask your course/module instructor and administrator for them).</p>
+<p>A written summative assessment of your overall performance will be sent at the end of your computing module or course (e.g., the CMEE computing bootcamp; please refer to your course documentation for specific dates). For this, all required scripts and project artifacts (including any assigned group work) will be run or reviewed, with logs and feedback returned.</p>
+<p>Using the testing results, the assessor will exercise their judgment to deduct marks if the coursework project layout is disorganised, the code inadequately commented or insufficiently documented, the solution is not correct, or the written components of practicals are not up to the mark (see <em>The Weekly Feedback</em> section).</p>
+<p>Feedback logs for each submission are provided to help you spot general and programming-language-specific issues. You may and should fix bugs and other problems they identify. The assessor will review how you addressed the feedback in the final assessment by Weeklyrerunning the required scripts from the coursework project. The final assessment is more holistic than formative feedback: it gives an overall summative picture of your work and what you can improve. Final marks follow the coursework criteria published for your course; ask your course or module instructor if those criteria are unclear.</p>
 </section>
 </section>
 <section id="plagiarism">
@@ -950,6 +995,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#group-work-assessment">Group work assessment</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-bootcamp-assessment-timeline">Computing bootcamp assessment timeline</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-assessment-of-computing-coursework">Final assessment of computing coursework</a></li>
 </ul>
 </li>

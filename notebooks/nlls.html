@@ -299,6 +299,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayesian.html">Bayesian inference for biological data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
@@ -596,7 +597,7 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-inference-using-nlls-fits">Statistical inference using nlls fits</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-fit">Goodness of fit</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#r-squared-values">r-squared values</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#r-squared-values">R-squared values</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals">Confidence Intervals</a></li>
@@ -689,7 +690,7 @@
 </div>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>In this Chapter, you will learn to fit non-linear mathematical models to data using Non-Linear Least Squares (nlls).</p>
+<p>In this chapter, you will learn to fit non-linear mathematical models to data using Non-Linear Least Squares (NLLS).</p>
 <p>Specifically, you will learn to</p>
 <ul class="simple">
 <li><p>Visualize the data and the mathematical model you want to fit to them</p></li>
@@ -697,8 +698,8 @@
 <li><p>Assess the quality of the fit, and whether the model is appropriate for your data</p></li>
 <li><p>Compare and select between competing models</p></li>
 </ul>
-<p>We will work through various examples. These assume that you have at least a conceptual understanding of what Linear vs Non-linear models are, how they are fitted to data, and how the fits can be assessed statistically. You may want to see the <a class="reference external" href="https://github.com/MulQuaBio/MQB/tree/main/content/lectures/linearmodels">Linear Models lecture</a> (you can also watch the <a class="reference external" href="https://drive.google.com/drive/folders/12Sj56wHX6vcAnp9GE9qQ1gIXbn7QrHU2?usp=sharing">video</a>), and the <a class="reference external" href="https://github.com/MulQuaBio/MQB/blob/main/content/lectures/nlls">nlls Lecture</a> lecture first (you can also watch the <a class="reference external" href="https://web.microsoftstream.com/video/529b2560-4f45-4675-ae8b-28487d63ac41">video</a>).</p>
-<p>You may also (optionally) want to see the  <a class="reference external" href="https://github.com/MulQuaBio/MQB/tree/main/content/lectures/linearmodels">lecture on model fitting in Ecology and Evolution in general</a>.</p>
+<p>We will work through various examples. These assume that you have at least a conceptual understanding of what Linear vs Non-linear models are, how they are fitted to data, and how the fits can be assessed statistically. You may want to see the <a class="reference external" href="https://github.com/MulQuaBio/MQB/tree/main/content/lectures/linearmodels">Linear Models lecture</a> and its <a class="reference download internal" download="" href="../_downloads/a0f85fc2b67a4610fdb2be6d2ee8f39e/Pawar_LinMods.pdf"><span class="xref download myst">lecture slides (PDF)</span></a>, plus the <a class="reference external" href="https://github.com/MulQuaBio/MQB/blob/main/content/lectures/nlls">NLLS lecture</a>.</p>
+<p>You may also want to see the lecture on model fitting in Ecology and Evolution in general in the <a class="reference external" href="https://github.com/MulQuaBio/MQB/tree/main/content/lectures/linearmodels">Linear Models lecture directory</a>.</p>
 <p>We will use r. For starters, clear all variables and graphic devices and load necessary packages:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -915,7 +916,7 @@ Achieved convergence tolerance: 9.535e-06
 <section id="goodness-of-fit">
 <h3>Goodness of fit<a class="headerlink" href="#goodness-of-fit" title="Link to this heading">#</a></h3>
 <p>Assessing whether an nlls-fitted model is “significant” based on an F-value, by performing an Analysis of Variance (anova) on the regression results as one can do for a Linear Model using the <a class="reference internal" href="regress.html#regress-perform"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">anova()</span></code> function on a linear model fit</span></a> is not advisable. Try <code class="docutils literal notranslate"><span class="pre">anova(MM_model)</span></code>, and see what happens:</p>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">anova</span><span class="p">(</span><span class="n">MM_model</span><span class="p">)</span>
 </pre></div>
@@ -948,7 +949,7 @@ Achieved convergence tolerance: 9.535e-06
 <li><p>Examine whether the fitted coefficients are reliable, i.e., are significant, based on their (low) standard errors, (high) t-values, and (low) p-values (see the example model’s summary above).</p></li>
 </ul>
 <section id="r-squared-values">
-<h4>r-squared values<a class="headerlink" href="#r-squared-values" title="Link to this heading">#</a></h4>
+<h4>R-squared values<a class="headerlink" href="#r-squared-values" title="Link to this heading">#</a></h4>
 <p>To put it simply, unlike an r<span class="math notranslate nohighlight">\(^2\)</span> value obtained by fitting a linear model, that obtained from nlls fitting is not reliable, and should not be used. The reason for this is somewhat technical (e.g., see this <a class="reference external" href="https://dx.doi.org/10.1186%2F1471-2210-10-6">paper</a>) and we won’t go into it here. But basically, nlls r<span class="math notranslate nohighlight">\(^2\)</span> values do not always accurately reflect the quality of fit, and definitely cannot be used to select between competing models (Model selection, as you learned <a class="reference internal" href="model-simp.html"><span class="std std-doc">previously</span></a>). Indeed r<span class="math notranslate nohighlight">\(^2\)</span> values obtained from nlls fitting even be negative when the model fits very poorly! We will learn more about model selection with non-linear models later below.</p>
 </section>
 </section>
@@ -1088,7 +1089,7 @@ Achieved convergence tolerance: 9.535e-06
 <p>As you would have guessed from the really funky coefficient estimates that were obtained in <code class="docutils literal notranslate"><span class="pre">MM_model3</span></code>, this is a pretty poor model fit to the data, with the negative value of <code class="docutils literal notranslate"><span class="pre">K_M</span></code> causing the fitted version of the Michaelis-Menten model to behave strangely.</p>
 <p><em>Also, you could have used the nicer plotting approach that was introduced before.</em></p>
 <p>Let’s try with even more different starting values.</p>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">nls</span><span class="p">(</span><span class="n">V_data</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">V_max</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">S_data</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">K_M</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">S_data</span><span class="p">),</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">V_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">K_M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.1</span><span class="p">))</span>
 </pre></div>
@@ -1108,7 +1109,7 @@ Achieved convergence tolerance: 9.535e-06
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">singular</span> <span class="pre">gradient</span> <span class="pre">matrix</span> <span class="pre">at</span> <span class="pre">initial</span> <span class="pre">parameter</span> <span class="pre">estimates</span></code> error arises from the fact that the starting values you provided were so far from the optimal solution, that the parameter searching in <code class="docutils literal notranslate"><span class="pre">nls()</span></code> failed at the very first step. The algorithm could not figure out where to go from those starting values. In fact, the starting value we gave it is biologically/ physically impossible, because <code class="docutils literal notranslate"><span class="pre">V_max</span></code> can’t equal 0.</p>
 <p>Let’s look at another pair of starting values that causes the model fitting to fail:</p>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">nls</span><span class="p">(</span><span class="n">V_data</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">V_max</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">S_data</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">K_M</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">S_data</span><span class="p">),</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">V_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-0.1</span><span class="p">,</span><span class="w"> </span><span class="n">K_M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">))</span>
 </pre></div>
@@ -1270,7 +1271,7 @@ Achieved convergence tolerance: 9.535e-06
 </div>
 <p>Nice, these all worked with <code class="docutils literal notranslate"><span class="pre">nlsLM</span></code> even though they had failed with <code class="docutils literal notranslate"><span class="pre">nls</span></code>!</p>
 <p>But <code class="docutils literal notranslate"><span class="pre">nlsLM</span></code> also has its limits. Let’s try more absurd starting values:</p>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">nlsLM</span><span class="p">(</span><span class="n">V_data</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">V_max</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">S_data</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">K_M</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">S_data</span><span class="p">),</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">V_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-10</span><span class="p">,</span><span class="w"> </span><span class="n">K_M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-100</span><span class="p">))</span>
 </pre></div>
@@ -2559,7 +2560,7 @@ In both cases, the <em>mean</em> of the sampling distribution will be the starti
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-inference-using-nlls-fits">Statistical inference using nlls fits</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-fit">Goodness of fit</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#r-squared-values">r-squared values</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#r-squared-values">R-squared values</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals">Confidence Intervals</a></li>

@@ -23,8 +23,7 @@ alt: xkcd comic about a programmer trying to solve a general problem instead of 
 align: center
 ---
 Solve the problem at hand before designing a general-purpose solution.
-<small> <center>(Source: [xkcd](http://xkcd.com/974)) 
-</center></small>
+(Source: [xkcd](http://xkcd.com/974))
 ```
 
 It is important that you work through the exercises and problems in each chapter. This document does not tell you every single thing you need to know to perform the exercises in it. In programming and computing, you learn faster by trying to solve problems (including computer crashes!) on your own, often by liberally googling the problem!
@@ -91,8 +90,7 @@ alt: xkcd comic about a fragile workflow breaking when a small detail changes
 align: center
 ---
 Document your workflow so that small changes do not make it impossible to repeat.
-<small> <center>(Source: [xkcd](https://xkcd.com/1172/)) 
-</center></small>
+(Source: [xkcd](https://xkcd.com/1172/))
 ```
 
 ---

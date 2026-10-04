@@ -299,6 +299,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayesian.html">Bayesian inference for biological data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
@@ -619,13 +620,17 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-running-blocks-of-code">Testing/running blocks of code</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">loops</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">Loops</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iterator-vs-iterable">Iterator vs Iterable</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-loops-examples">Some loops examples</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-python-scripts">running Python scripts</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-code-compartmentalization">Modules and code compartmentalization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing modules</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-python-scripts">Running Python scripts</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-unix-shell">Using the UNIX shell</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-the-unix-shell-using-ipython">From the UNIX shell, using ipython</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-within-the-ipython-shell">From within the ipython shell</a></li>
@@ -647,10 +652,6 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-csv-s">Handling <code class="docutils literal notranslate"><span class="pre">csv</span></code>’s</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-code-compartmentalization">Modules and code compartmentalization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing Modules</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-python-programs">Writing Python programs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-python-program">Components of the Python program</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shebang">The shebang</a></li>
@@ -689,7 +690,7 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Practicals</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#align-dna-sequences">Align DNA sequences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#align-dna-sequenceopen-align-seqs-py-from-mqb-s-code-directory-this-script-aligns-two-dna-sequences-such-that-they-are-as-similar-as-possible-run-the-script-and-make-sure-you-understand-what-every-line-is-doing-a-good-way-to-do-this-now-that-you-have-learnt-debugging-is-to-insert-a-breakpoint-import-ipdb-ipdb-set-trace-at-key-locations-in-the-script-and-examine-what-is-going-on-for-example-inserting-one-just-after-the-start-of-the-for-loop-of-the-calculate-score-function-module-is-a-good-place">Align DNA sequenceOpen <code class="docutils literal notranslate"><span class="pre">align_seqs.py</span></code> from MQB’s code directory. This script aligns two DNA sequences such that they are as similar as possible. Run the script and make sure you understand what every line is doing. A good way to do this, now that you have learnt debugging, is to insert a breakpoint (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">ipdb;</span> <span class="pre">ipdb.set_trace()</span></code>) at key locations in the script and examine what is going on. For example, inserting one just after the start of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop of the <code class="docutils literal notranslate"><span class="pre">calculate_score</span></code> function/module is a good place.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupwork-practical-on-align-dna-sequences">Groupwork Practical on Align DNA sequences</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupwork-practical-on-align-dna-sequences-2">Groupwork Practical on Align DNA sequences 2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-oaks-problem">Missing oaks problem</a></li>
@@ -701,7 +702,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">Numpy</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-accessing-arrays">Indexing and accessing arrays</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-arrays">Manipulating arrays</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-adding-or-deleting-elements">replacing, adding or deleting elements</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-adding-or-deleting-elements">Replacing, adding or deleting elements</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#flattening-or-reshaping-arrays">Flattening or reshaping arrays</a></li>
 </ul>
 </li>
@@ -755,7 +756,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-in-files">Finding in files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groups-within-multiple-matches">Groups within multiple matches</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-text-from-webpages">Extracting text from webpages</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-text">replacing text</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-text">Replacing text</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#blackbirds-problem">Blackbirds problem</a></li>
 </ul>
@@ -764,10 +765,10 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-to-build-workflows">Using Python to build workflows</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-subprocess">Using <code class="docutils literal notranslate"><span class="pre">subprocess</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-processes">running processes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-processes">Running processes</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-r">running <code class="docutils literal notranslate"><span class="pre">R</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-r">Running <code class="docutils literal notranslate"><span class="pre">R</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-directory-and-file-paths">Handling directory and file paths</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-subprocess-to-run-a-r-script">Using <code class="docutils literal notranslate"><span class="pre">subprocess</span></code> to run a r script</a></li>
@@ -785,7 +786,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-and-debugging">Errors and Debugging</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-modules-and-classes">Functions, Modules, and Classes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scientific-computing">Scientific computing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-expressions">regular expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-expressions">Regular expressions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-stuff">Other stuff</a></li>
 </ul>
 </li>
@@ -1272,71 +1273,84 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 </div>
 </div>
 </div>
-<p><em>Thus, Python has integer, float (real numbers, with different precision levels) string and boolean variables.</em></p>
-<p>Also, try <code class="docutils literal notranslate"><span class="pre">?a</span></code> after defining <code class="docutils literal notranslate"><span class="pre">a</span></code> to be a boolean variable, and note this output in particular:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">builtins</span> <span class="kc">True</span> <span class="ow">and</span> <span class="kc">False</span> <span class="n">are</span> <span class="n">the</span> <span class="n">only</span> <span class="n">two</span> <span class="n">instances</span> <span class="n">of</span> <span class="n">the</span> <span class="k">class</span><span class="w"> </span><span class="nc">bool</span><span class="o">.</span> <span class="n">The</span> <span class="k">class</span><span class="w"> </span><span class="nc">bool</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">subclass</span> <span class="n">of</span> <span class="n">the</span> <span class="k">class</span><span class="w"> </span><span class="nc">int</span><span class="p">,</span> <span class="n">but</span> <span class="k">with</span> <span class="n">only</span> <span class="n">two</span> <span class="n">possible</span> <span class="n">values</span><span class="o">.</span> 
+<p><em>Thus, Python has integer, float (real numbers, with different precision levels), string and Boolean variables.</em></p>
+<p>Also try <code class="docutils literal notranslate"><span class="pre">?a</span></code> after defining <code class="docutils literal notranslate"><span class="pre">a</span></code> as a Boolean variable, and note this output in particular:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">builtins</span> <span class="kc">True</span> <span class="ow">and</span> <span class="kc">False</span> <span class="n">are</span> <span class="n">the</span> <span class="n">only</span> <span class="n">two</span> <span class="n">instances</span> <span class="n">of</span> <span class="n">the</span> <span class="k">class</span><span class="w"> </span><span class="nc">bool</span><span class="o">.</span> <span class="n">The</span> <span class="k">class</span><span class="w"> </span><span class="nc">bool</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">subclass</span> <span class="n">of</span> <span class="n">the</span> <span class="k">class</span><span class="w"> </span><span class="nc">int</span><span class="p">,</span> <span class="n">but</span> <span class="k">with</span> <span class="n">only</span> <span class="n">two</span> <span class="n">possible</span> <span class="n">values</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>The idea of what a class is hopefully be a little bit clearer to you now.</p>
+<p>The idea of what a class is should be clearer now.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In python, the type of a variable is determined when the program or command is running (dynamic typing) (like <code class="docutils literal notranslate"><span class="pre">R</span></code>, unlike <code class="docutils literal notranslate"><span class="pre">C</span></code> or <code class="docutils literal notranslate"><span class="pre">FOrTrAN</span></code>). This is convenient, but can make programs slow. More on efficient computing <a class="reference internal" href="#"><span class="std std-doc">later</span></a>.</p>
+<p>In Python, a variable’s type is determined while the program runs (dynamic typing), as in R and unlike C or Fortran. Dynamic typing is convenient, but it can add runtime overhead. More on efficient computing <a class="reference internal" href="#"><span class="std std-doc">later</span></a>.</p>
 </div>
 <section id="python-operators">
 <h3>Python operators<a class="headerlink" href="#python-operators" title="Link to this heading">#</a></h3>
-<p>Here are the operators that you can use on variables in Python:</p>
+<p>Here are common arithmetic, comparison, and Boolean operators in Python:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-left"><p>Operator</p></th>
-<th class="head text-left"><p></p></th>
+<tr class="row-odd"><th class="head"><p>Operator</p></th>
+<th class="head"><p>Meaning</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
-<td class="text-left"><p>Addition</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p>Addition</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
-<td class="text-left"><p>Subtraction</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p>Subtraction</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
-<td class="text-left"><p>Multiplication</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p>Multiplication</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
-<td class="text-left"><p>Division</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+<td><p>True division</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">**</span></code></p></td>
-<td class="text-left"><p>Power</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">**</span></code></p></td>
+<td><p>Exponentiation</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
-<td class="text-left"><p>Modulo</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
+<td><p>Remainder (modulo)</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">//</span></code></p></td>
-<td class="text-left"><p>Integer division</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">//</span></code></p></td>
+<td><p>Floor division</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
-<td class="text-left"><p>Equals</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>Equal to</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
-<td class="text-left"><p>Differs</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+<td><p>Not equal to</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
-<td class="text-left"><p>Greater</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>Greater than</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
-<td class="text-left"><p>Greater or equal</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p>Greater than or equal to</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">&amp;,</span> <span class="pre">and</span></code></p></td>
-<td class="text-left"><p>Logical AND</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">and</span></code></p></td>
+<td><p>Logical AND</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(\vert\)</span> , <code class="docutils literal notranslate"><span class="pre">or</span></code></p></td>
-<td class="text-left"><p>Logical Or</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">or</span></code></p></td>
+<td><p>Logical OR</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">!,</span> <span class="pre">not</span></code></p></td>
-<td class="text-left"><p>Logical NOT</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">not</span></code></p></td>
+<td><p>Logical NOT</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, and <code class="docutils literal notranslate"><span class="pre">not</span></code> for Boolean logic. <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> is bitwise AND, while <code class="docutils literal notranslate"><span class="pre">!</span></code> is not a Python operator.</p>
+<p>At the Python prompt:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">7</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="go">3.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">7</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">-</span><span class="mi">7</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="go">-4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">7</span> <span class="o">%</span> <span class="mi">2</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">/</span></code> keeps the fractional part; <code class="docutils literal notranslate"><span class="pre">//</span></code> rounds down to the next whole number, so <code class="docutils literal notranslate"><span class="pre">-7</span> <span class="pre">//</span> <span class="pre">2</span></code> is <code class="docutils literal notranslate"><span class="pre">-4</span></code>, not <code class="docutils literal notranslate"><span class="pre">-3</span></code>. <code class="docutils literal notranslate"><span class="pre">%</span></code> gives the remainder, so <code class="docutils literal notranslate"><span class="pre">7</span> <span class="pre">%</span> <span class="pre">2</span></code> is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 </section>
 <section id="assigning-and-manipulating-variables">
 <h3>Assigning and manipulating variables<a class="headerlink" href="#assigning-and-manipulating-variables" title="Link to this heading">#</a></h3>
@@ -1642,7 +1656,7 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In python3 there is no difference between “class” and “type”. They are in most cases used as synonyms.</p>
+<p>In Python, every class is an object, usually created by the metaclass <code class="docutils literal notranslate"><span class="pre">type</span></code>. Calling <code class="docutils literal notranslate"><span class="pre">type(value)</span></code> reports the class of <code class="docutils literal notranslate"><span class="pre">value</span></code>. Classes and types are closely related, but the terms are not interchangeable.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2262,7 +2276,7 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 </section>
 </section>
 <section id="loops">
-<span id="python-loops"></span><h2>loops<a class="headerlink" href="#loops" title="Link to this heading">#</a></h2>
+<span id="python-loops"></span><h2>Loops<a class="headerlink" href="#loops" title="Link to this heading">#</a></h2>
 <p>What exactly is going on in the piece of code above? What is <code class="docutils literal notranslate"><span class="pre">i</span></code>? What does <code class="docutils literal notranslate"><span class="pre">range(x)</span></code> do?</p>
 <p>Basically, this piece of code runs a <a class="reference external" href="https://en.wikipedia.org/wiki/Control_flow#loops">loop</a> (“loops”) over the full range of <code class="docutils literal notranslate"><span class="pre">x</span></code> numbers, printing each one of them.</p>
 <p>First, let’s understand the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function. This function generates, as the name suggests, a range of integers depending on the input to it. So, for example, range(10) generates 10 numbers, starting at 0:</p>
@@ -2308,7 +2322,7 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 <p>Play around with range a bit, and also check out its documentation. This is a very important function that you will use again and again!</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">range()</span></code> function in  python 2 vs python 3 are entirely different. The python 3 range() function is actually what is called <code class="docutils literal notranslate"><span class="pre">xrange</span></code> in python 2. There are in fact both <code class="docutils literal notranslate"><span class="pre">range</span></code> and <code class="docutils literal notranslate"><span class="pre">xrange</span></code> functions in python 2. <code class="docutils literal notranslate"><span class="pre">xrange</span></code>, renamed as <code class="docutils literal notranslate"><span class="pre">range</span></code>, is now the default in python 3 because it is more memory efficient.</p>
+<p>In Python 2, <code class="docutils literal notranslate"><span class="pre">range()</span></code> creates a list, while <code class="docutils literal notranslate"><span class="pre">xrange()</span></code> provides a lazy sequence. In Python 3, <code class="docutils literal notranslate"><span class="pre">range()</span></code> is lazy, like Python 2’s <code class="docutils literal notranslate"><span class="pre">xrange()</span></code>, but it is not simply a renamed version. Use <code class="docutils literal notranslate"><span class="pre">range()</span></code> in Python 3.</p>
 </div>
 <p>OK, on to the variable <code class="docutils literal notranslate"><span class="pre">i</span></code> in our loop. This is a temporary placeholder for the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> at each iteration of the loop (AKA the “iterator” variable). So, in the first iteration of the loop, i = 0, which is also the “index” value of the loop at that point. We have used <code class="docutils literal notranslate"><span class="pre">i</span></code>, but you can use any valid variable name, such as <code class="docutils literal notranslate"><span class="pre">j</span></code>, <code class="docutils literal notranslate"><span class="pre">k</span></code>, or even <code class="docutils literal notranslate"><span class="pre">num</span></code> (try it).</p>
 <section id="iterator-vs-iterable">
@@ -2483,8 +2497,24 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 </div>
 <p>So, if we don’t explicitly <code class="docutils literal notranslate"><span class="pre">return</span></code> the value of <code class="docutils literal notranslate"><span class="pre">x</span></code>, the output of <code class="docutils literal notranslate"><span class="pre">foo</span></code> cannot be stored.</p>
 </section>
+<section id="modules-and-code-compartmentalization">
+<h2>Modules and code compartmentalization<a class="headerlink" href="#modules-and-code-compartmentalization" title="Link to this heading">#</a></h2>
+<p>A Python module is a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file containing reusable definitions, such as functions and variables. Importing a module lets another script or notebook use those definitions without copying the code.</p>
+<p>Modules help keep programs organized, reduce repeated code, and make functions easier to test and reuse.</p>
+<section id="importing-modules">
+<h3>Importing modules<a class="headerlink" href="#importing-modules" title="Link to this heading">#</a></h3>
+<p>There are several ways to import a module or one of its functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_module</span></code> makes the module available; call a function as <code class="docutils literal notranslate"><span class="pre">my_module.my_function()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">my_module</span> <span class="pre">import</span> <span class="pre">my_function</span></code> imports one function, which can then be called as <code class="docutils literal notranslate"><span class="pre">my_function()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_module</span> <span class="pre">as</span> <span class="pre">mm</span></code> gives a long module name a shorter alias; call its function as <code class="docutils literal notranslate"><span class="pre">mm.my_function()</span></code>.</p></li>
+</ul>
+<p>Avoid <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">my_module</span> <span class="pre">import</span> <span class="pre">*</span></code>: it can overwrite names and make it unclear where a function came from. You can also access a module variable with <code class="docutils literal notranslate"><span class="pre">my_module.my_variable</span></code>.</p>
+<p>The later <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code> example uses these import forms with a real module from this chapter.</p>
+</section>
+</section>
 <section id="running-python-scripts">
-<h2>running Python scripts<a class="headerlink" href="#running-python-scripts" title="Link to this heading">#</a></h2>
+<h2>Running Python scripts<a class="headerlink" href="#running-python-scripts" title="Link to this heading">#</a></h2>
 <p>Instead of pasting or sending code to the Python command prompt like you did above, let’s learn how to write it into a script and run it.</p>
 <p><span class="math notranslate nohighlight">\(\star\)</span> Write the following code into a file called <code class="docutils literal notranslate"><span class="pre">MyExampleScript.py</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
@@ -3257,8 +3287,8 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 </section>
 <section id="python-input-output">
 <h2>Python Input/Output<a class="headerlink" href="#python-input-output" title="Link to this heading">#</a></h2>
-<p>Let’s learn to import and export data in Python (and write code to do it) .</p>
-<p><span class="math notranslate nohighlight">\(\star\)</span> Make a text file called <code class="docutils literal notranslate"><span class="pre">test.txt</span></code> in <code class="docutils literal notranslate"><span class="pre">week2/sandbox/</span></code> with the following content (including the empty lines):</p>
+<p>Let’s learn to import and export data in Python (and write code to do it).</p>
+<p>Make a text file called <code class="docutils literal notranslate"><span class="pre">test.txt</span></code> in your coursework project’s root-level <code class="docutils literal notranslate"><span class="pre">sandbox/</span></code> directory with the following content (including the empty lines):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">First</span> <span class="n">Line</span>
 <span class="n">Second</span> <span class="n">Line</span>
 
@@ -3267,7 +3297,7 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 <span class="n">Fourth</span> <span class="n">Line</span>
 </pre></div>
 </div>
-<p>Then, type the following in <code class="docutils literal notranslate"><span class="pre">week2/code/basic_io1.py</span></code>:</p>
+<p>Then, type the following in <code class="docutils literal notranslate"><span class="pre">code/basic_io1.py</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#############################</span>
 <span class="c1"># FILE INPUT</span>
 <span class="c1">#############################</span>
@@ -3291,19 +3321,19 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 
 </pre></div>
 </div>
-<p>run the two code blocks (that end in <code class="docutils literal notranslate"><span class="pre">f.close()</span></code>) separately in ipython (you will learn about running whole scripts below) and examine the outputs (changes in <code class="docutils literal notranslate"><span class="pre">test.txt</span></code>). Then run the whole code (both blocks) at one go in ipython.  Then also run the whole script file al well.</p>
+<p>Run the two code blocks (that end in <code class="docutils literal notranslate"><span class="pre">f.close()</span></code>) separately in IPython, then run them together. For the paths above to resolve, start IPython and run the script from the coursework project’s <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory. The output demonstrates file iteration and blank-line handling; it does not change <code class="docutils literal notranslate"><span class="pre">test.txt</span></code>.</p>
 <p>Note the following:</p>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">line</span> <span class="pre">in</span> <span class="pre">f</span></code> is an implicit loop — implicit because stating the range of things in <code class="docutils literal notranslate"><span class="pre">f</span></code> to loop over in this way allows Python to handle any kind of objects to loop through.</p>
 <ul>
-<li><p>For example, if <code class="docutils literal notranslate"><span class="pre">f</span></code> was an array of numbers 1 to 10, it would loop through them</p></li>
+<li><p>For example, if <code class="docutils literal notranslate"><span class="pre">f</span></code> was an array of numbers 1 to 10, it would loop through them.</p></li>
 <li><p>Another example: if <code class="docutils literal notranslate"><span class="pre">f</span></code> is a file, as in the case of the script above, it will loop through the lines in the file.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">len(line.strip())</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> checks if the line is empty. Try <code class="docutils literal notranslate"><span class="pre">?</span></code> to see what <code class="docutils literal notranslate"><span class="pre">.strip()</span></code> does.</p></li>
-<li><p>There are indentations in the code that determine what is and is not in side the <code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">if</span></code> statements. If you get errors or unexpected outputs, it will very likely be because of wrong or missing indentations.</p></li>
+<li><p>There are indentations in the code that determine what is and is not inside the <code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">if</span></code> statements. If you get errors or unexpected outputs, it will very likely be because of wrong or missing indentations.</p></li>
 </ul>
-<p>Next, type the following code in a file called <code class="docutils literal notranslate"><span class="pre">basic_io2.py</span></code> and run it.</p>
+<p>Next, type the following code in a file called <code class="docutils literal notranslate"><span class="pre">basic_io2.py</span></code> in <code class="docutils literal notranslate"><span class="pre">code/</span></code> and run it from that directory.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#############################</span>
 <span class="c1"># FILE OUTPUT</span>
 <span class="c1">#############################</span>
@@ -3317,7 +3347,7 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Finally, type the following code in <code class="docutils literal notranslate"><span class="pre">basic_io3.py</span></code> and run it.</p>
+<p>Finally, type the following code in <code class="docutils literal notranslate"><span class="pre">code/basic_io3.py</span></code> and run it from the <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#############################</span>
 <span class="c1"># STOrING OBJECTS</span>
 <span class="c1">#############################</span>
@@ -3341,7 +3371,7 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">b</span></code> flag for reading the file above stands for “binary”. Basically, binary files are machine readable, but not human readable. For example, try opening <code class="docutils literal notranslate"><span class="pre">testp.p</span></code> in a text reader (e.g., your code editor)  and reading it - you will see considerable gibberish (compare with <code class="docutils literal notranslate"><span class="pre">testout.txt</span></code>)!</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">b</span></code> flag for reading the file above stands for “binary”. Basically, binary files are machine readable, but not human readable. For example, try opening <code class="docutils literal notranslate"><span class="pre">testp.p</span></code> in a text reader (e.g., your code editor) and reading it - you will see considerable gibberish (compare with <code class="docutils literal notranslate"><span class="pre">testout.txt</span></code>).</p>
 </div>
 <section id="safely-opening-files-using-with-open">
 <h3>Safely opening files using <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">open()</span></code><a class="headerlink" href="#safely-opening-files-using-with-open" title="Link to this heading">#</a></h3>
@@ -3412,33 +3442,12 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 </div>
 <p><span class="math notranslate nohighlight">\(\star\)</span> run this script from bash, bash with ipython, and from within ipython, like you did above for the <code class="docutils literal notranslate"><span class="pre">basic_io*.py</span></code> scripts.</p>
 </section>
-<section id="modules-and-code-compartmentalization">
-<h2>Modules and code compartmentalization<a class="headerlink" href="#modules-and-code-compartmentalization" title="Link to this heading">#</a></h2>
-<p>Ideally you should aim to compartmentalize your code into a bunch of functions, typically written in a single <code class="docutils literal notranslate"><span class="pre">.py</span></code> file: these are Python “modules”, which you were introduced to previously.</p>
-<p>Why bother with modules? Because:</p>
-<ul class="simple">
-<li><p>Keeping code compartmentalized is good for debugging, unit testing, and profiling (coming up later)</p></li>
-<li><p>Makes code more compact by minimizing redundancies (write repeatedly used code segments as a module)</p></li>
-<li><p>Allows you to import and use useful functions that you yourself wrote, just like you would from standard Python packages (coming up)</p></li>
-</ul>
-<section id="importing-modules">
-<h3>Importing Modules<a class="headerlink" href="#importing-modules" title="Link to this heading">#</a></h3>
-<p>There are different ways to <em>import</em> a module:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_module</span></code>, then functions in the module can be called as <code class="docutils literal notranslate"><span class="pre">my_module.one_of_my_functions()</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">my_module</span> <span class="pre">import</span> <span class="pre">my_function</span></code> imports only the function <code class="docutils literal notranslate"><span class="pre">my_function</span></code> in the module <code class="docutils literal notranslate"><span class="pre">my_module</span></code>. It can then be called as if it were part of the main file: <code class="docutils literal notranslate"><span class="pre">my_function()</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_module</span> <span class="pre">as</span> <span class="pre">mm</span></code> imports the module <code class="docutils literal notranslate"><span class="pre">my_module</span></code> and calls it <code class="docutils literal notranslate"><span class="pre">mm</span></code>. Convenient when the name of the module is very long. The functions in the module can be called as <code class="docutils literal notranslate"><span class="pre">mm.one_of_my_functions()</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">my_module</span> <span class="pre">import</span> <span class="pre">*</span></code>. Avoid doing this! <em>Why?</em> – to avoid name conflicts!</p></li>
-</ul>
-<p>You can also access variables written into modules: <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_module</span></code>, then do: <code class="docutils literal notranslate"><span class="pre">my_module.one_of_my_variables</span></code></p>
-</section>
-</section>
 <section id="writing-python-programs">
 <h2>Writing Python programs<a class="headerlink" href="#writing-python-programs" title="Link to this heading">#</a></h2>
 <p>Now let’s start with proper Python programs.</p>
 <p>The difference between scripts (which you have been writing till now) and programs is that the latter can be “compiled” into a self standing application or utility. This distinction will not mean much to you currently, but eventually will, once you have converted a script to a program below!</p>
 <p>We will start with a “boilerplate” (template) program, just as we did in the <a class="reference internal" href="shell-scripting.html#your-first-shell-script"><span class="std std-ref">shell scripting chapter</span></a>.</p>
-<p><span class="math notranslate nohighlight">\(\star\)</span> Type the code below and save as <code class="docutils literal notranslate"><span class="pre">boilerplate.py</span></code> in <code class="docutils literal notranslate"><span class="pre">week2/code</span></code>:</p>
+<p><span class="math notranslate nohighlight">\(\star\)</span> Type the code below and save as <code class="docutils literal notranslate"><span class="pre">boilerplate.py</span></code> in the coursework project’s root-level <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="sd">"""Description of this program or application.</span>
@@ -3764,10 +3773,10 @@ this main function where the printing of the line “This is a boilerplate” ha
 </div>
 </div>
 </div>
-<p>Just one function can be imported and used to be more efficient</p>
+<p>To import one function directly, name it explicitly:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">control_flow</span><span class="w"> </span><span class="kn">import</span> <span class="n">odd_or_even</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">control_flow</span><span class="w"> </span><span class="kn">import</span> <span class="n">even_or_odd</span>
 <span class="n">even_or_odd</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3879,14 +3888,26 @@ this main function where the printing of the line “This is a boilerplate” ha
 </div>
 </div>
 </div>
-<p>You can also run doctest “on the fly”, without writing <code class="docutils literal notranslate"><span class="pre">doctest.testmod()</span></code> in the code, by typing in a terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>doctest<span class="w"> </span>-v<span class="w"> </span>your_function_to_test.py
+<p>You can also run doctest from a terminal without adding <code class="docutils literal notranslate"><span class="pre">doctest.testmod()</span></code> to your script. First, put examples and their expected results in a function’s docstring:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Return the square of a number.</span>
+
+<span class="sd">    &gt;&gt;&gt; square(4)</span>
+<span class="sd">    16</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">number</span> <span class="o">*</span> <span class="n">number</span>
 </pre></div>
 </div>
+<p>Save this as <code class="docutils literal notranslate"><span class="pre">example.py</span></code>, then run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>doctest<span class="w"> </span>-v<span class="w"> </span>example.py
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">python3</span></code> starts Python 3, <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">doctest</span></code> runs the standard-library doctest module on the named file, and <code class="docutils literal notranslate"><span class="pre">-v</span></code> prints each example, its expected result, and a pass/fail summary. Without <code class="docutils literal notranslate"><span class="pre">-v</span></code>, doctest is quieter and reports failures. Run the command from the directory containing the file, or give the file’s path.</p>
+<p>Doctest imports the file before checking its docstrings, so its top-level code runs. Put program startup code under <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> to keep it from running just because doctest imports the file.</p>
 </section>
 <section id="other-unit-testing-approaches">
 <h4>Other unit testing approaches<a class="headerlink" href="#other-unit-testing-approaches" title="Link to this heading">#</a></h4>
-<p>For more complex testing, see documentation of <code class="docutils literal notranslate"><span class="pre">doctest</span></code> <a class="reference external" href="https://docs.python.org/3.8/library/doctest.html">here</a>.</p>
+<p>For more complex testing, see documentation of <code class="docutils literal notranslate"><span class="pre">doctest</span></code> <a class="reference external" href="https://docs.python.org/3/library/doctest.html">here</a>.</p>
 <p>Also check out the packages <code class="docutils literal notranslate"><span class="pre">pytest</span></code> and <code class="docutils literal notranslate"><span class="pre">unittest</span></code> (and maybe <code class="docutils literal notranslate"><span class="pre">nose</span></code>, though the first two are more widely used and more intuitive) for more comprehensive and flexible unit testing.</p>
 <p>Please start testing as early as possible, but don’t try to test everything either! remember, it is easier to test if code is compartmentalized into functions.</p>
 </section>
@@ -4099,13 +4120,12 @@ Automatic<span class="w"> </span>pdb<span class="w"> </span>calling<span class="
 <section id="id1">
 <h2>Practicals<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>As always, test, add, commit and push all your new code and data to your Git repository.</p>
-<section id="align-dna-sequences">
-<h3>Align DNA sequences<a class="headerlink" href="#align-dna-sequences" title="Link to this heading">#</a></h3>
-<p>Open <code class="docutils literal notranslate"><span class="pre">align_seqs.py</span></code> from MQB’s code directory. This script aligns two DNA sequences such that they are as similar as possible. run the script and make sure you understand what every line is doing. A good way to do this, now that you have learnt debugging, is to insert a breakpoint (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">ipdb;</span> <span class="pre">ipdb.set_trace()</span></code>) at key locations in the script and examine what is going on. For example, inserting one just after the start of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop of the <code class="docutils literal notranslate"><span class="pre">calculate_score</span></code> function/module is a good place.</p>
-<p>The aligning algorithm is simple. Start by positioning the beginning of the shorter sequence at all positions (bases) of the longer one (the start position), and count the number of bases matched downstream. Then, for each start position, count the “score” as total of number of bases matched. The alignment with the highest score wins. Ties are possible, in which case, you just take the an arbitrary alignment (e.g., first or last) with the highest score.</p>
+<section id="align-dna-sequenceopen-align-seqs-py-from-mqb-s-code-directory-this-script-aligns-two-dna-sequences-such-that-they-are-as-similar-as-possible-run-the-script-and-make-sure-you-understand-what-every-line-is-doing-a-good-way-to-do-this-now-that-you-have-learnt-debugging-is-to-insert-a-breakpoint-import-ipdb-ipdb-set-trace-at-key-locations-in-the-script-and-examine-what-is-going-on-for-example-inserting-one-just-after-the-start-of-the-for-loop-of-the-calculate-score-function-module-is-a-good-place">
+<h3>Align DNA sequenceOpen <code class="docutils literal notranslate"><span class="pre">align_seqs.py</span></code> from MQB’s code directory. This script aligns two DNA sequences such that they are as similar as possible. Run the script and make sure you understand what every line is doing. A good way to do this, now that you have learnt debugging, is to insert a breakpoint (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">ipdb;</span> <span class="pre">ipdb.set_trace()</span></code>) at key locations in the script and examine what is going on. For example, inserting one just after the start of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop of the <code class="docutils literal notranslate"><span class="pre">calculate_score</span></code> function/module is a good place.<a class="headerlink" href="#align-dna-sequenceopen-align-seqs-py-from-mqb-s-code-directory-this-script-aligns-two-dna-sequences-such-that-they-are-as-similar-as-possible-run-the-script-and-make-sure-you-understand-what-every-line-is-doing-a-good-way-to-do-this-now-that-you-have-learnt-debugging-is-to-insert-a-breakpoint-import-ipdb-ipdb-set-trace-at-key-locations-in-the-script-and-examine-what-is-going-on-for-example-inserting-one-just-after-the-start-of-the-for-loop-of-the-calculate-score-function-module-is-a-good-place" title="Link to this heading">#</a></h3>
+<p>The aligning algorithm is simple. Start by positioning the beginning of the shorter sequence at all positions (bases) of the longer one (the start position), and count the number of bases matched downstream. Then, for each start position, count the “score” as total of number of bases matched. The alignment with the highest score wins. Ties are possible, in which case, you just take the arbitrary alignment (e.g., first or last) with the highest score.</p>
 <p>Your tasks:</p>
 <ul class="simple">
-<li><p>Convert <code class="docutils literal notranslate"><span class="pre">align_seqs.py</span></code> to a Python program that takes the DNA sequences as an input from a single external file and saves the best alignment along with its corresponding score in a single text file (your choice of format and file type) to an appropriate location. No external input should be required; that is, you should still only need to use <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">align_seq.py</span></code> to run it.
+<li><p>Convert <code class="docutils literal notranslate"><span class="pre">align_seqs.py</span></code> to a Python program that takes the DNA sequences as input from a single external file and saves the best alignment along with its corresponding score in a single text file (your choice of format and file type) to an appropriate location. No external input should be required; that is, you should still only need to use <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">align_seq.py</span></code> to run it.
 For example, the input file can be a single <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file with the two example sequences given at the top of the original script.</p></li>
 </ul>
 </section>
@@ -4141,7 +4161,7 @@ For example, the input file can be a single <code class="docutils literal notran
 </ul>
 <p>If you wrote good doctests, you will find another bug that you might not have by just debugging (hint: what happens if you try the doctest with “Quercuss” instead of “Quercus”? Should this pass or fail?).</p>
 <ul class="simple">
-<li><p>Modify your doctests approriately, and  modify your script such that it can handle cases where there is a typo (such as ‘Quercuss’) or there is a genus name that is not strictly ‘Quercus’.</p></li>
+<li><p>Modify your doctests appropriately, and modify your script such that it can handle cases where there is a typo (such as ‘Quercuss’) or there is a genus name that is not strictly ‘Quercus’.</p></li>
 </ul>
 </section>
 <section id="groupwork-practical-on-missing-oaks-problem">
@@ -4160,20 +4180,21 @@ Genus
 <section id="practicals-wrap-up">
 <h3>Practicals wrap-up<a class="headerlink" href="#practicals-wrap-up" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>review and make sure you can run all the commands, code fragments, and scripts we have till now and get the expected outputs — all scripts should work on any other linux laptop.</p></li>
+<li><p>Review and make sure you can run all the commands, code fragments, and scripts we have till now and get the expected outputs — all scripts should work on any other Linux laptop.</p></li>
 <li><p><em>Don’t forget to add docstrings where necessary/appropriate.</em></p></li>
-<li><p>Test all your scripts by running from the bash terminal in additon to from within the ipython shell (and try both <code class="docutils literal notranslate"><span class="pre">python</span></code> and <code class="docutils literal notranslate"><span class="pre">ipython</span></code> to run in the bash terminal)</p></li>
-<li><p>Include an appropriate docstring (if one is missing) at the beginning of <code class="docutils literal notranslate"><span class="pre">*each*</span></code> of each of the Python script/ module files you have written, as well as at the start of every function (sub-module) in a module.</p></li>
+<li><p>Test all your scripts by running from the bash terminal in addition to from within the ipython shell (and try both <code class="docutils literal notranslate"><span class="pre">python</span></code> and <code class="docutils literal notranslate"><span class="pre">ipython</span></code> to run in the bash terminal).</p></li>
+<li><p>Include an appropriate docstring (if one is missing) at the beginning of <em>each</em> Python script/module file you have written, as well as at the start of every function (sub-module) in a module.</p></li>
 <li><p>Also annotate your code lines as much and as often as necessary using <code class="docutils literal notranslate"><span class="pre">#</span></code>.</p></li>
-<li><p>Keep all code files organized in <code class="docutils literal notranslate"><span class="pre">code</span></code> in your weekly directory in your coursework repository (e.g., in CMEECourseWork/Week2).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">commit</span></code> and <code class="docutils literal notranslate"><span class="pre">push</span></code> all your code and data files to your Git repository by given deadline.</p></li>
+<li><p>Keep all code files in the coursework project’s root <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory, input files in root <code class="docutils literal notranslate"><span class="pre">data/</span></code>, and generated outputs in root <code class="docutils literal notranslate"><span class="pre">results/</span></code>. Run scripts from <code class="docutils literal notranslate"><span class="pre">code/</span></code> so relative paths such as <code class="docutils literal notranslate"><span class="pre">../data/</span></code> and <code class="docutils literal notranslate"><span class="pre">../results/</span></code> work. Include a root <code class="docutils literal notranslate"><span class="pre">README.md</span></code> describing the project and a <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> that excludes generated files; use <code class="docutils literal notranslate"><span class="pre">sandbox/</span></code> for temporary experiments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">commit</span></code> and <code class="docutils literal notranslate"><span class="pre">push</span></code> all your code and data files to your Git repository by the given deadline.</p></li>
 </ul>
 <hr class="docutils" />
 <figure class="align-default" id="xkcd-on-python">
 <a class="reference internal image-reference" href="../_images/python.png"><img alt="XKCD on Python" src="../_images/python.png" style="width: 300px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text"><strong>Is Python the most common answer to your daily programming needs?</strong> Possibly! <br>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text"><strong>Is Python the most common answer to your daily programming needs?</strong> Possibly!
+<br>
 (Source: <a class="reference external" href="http://xkcd.com">XKCD</a>)</span><a class="headerlink" href="#xkcd-on-python" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
@@ -4232,14 +4253,13 @@ Genus
 </div>
 </div>
 </div>
-<p>Thus the last two outputs tell you that firstly, that numpy arrays belong to a data structure type (and a class) called <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>, and secondly, that at position <code class="docutils literal notranslate"><span class="pre">0</span></code> (remember, Python indexing starts at 0) it holds an <a class="reference external" href="https://en.wikipedia.org/wiki/9,223,372,036,854,775,807">64 bit integer</a>. All elements in <code class="docutils literal notranslate"><span class="pre">a</span></code> are of type <code class="docutils literal notranslate"><span class="pre">int</span></code> because that is what <code class="docutils literal notranslate"><span class="pre">range()</span></code> returns (try <code class="docutils literal notranslate"><span class="pre">?range</span></code>).</p>
+<p>The last two outputs show that <code class="docutils literal notranslate"><span class="pre">a</span></code> is a <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> and that <code class="docutils literal notranslate"><span class="pre">a[0]</span></code> is a NumPy integer scalar (often <code class="docutils literal notranslate"><span class="pre">numpy.int64</span></code> on a 64-bit system), not a built-in Python <code class="docutils literal notranslate"><span class="pre">int</span></code>. The array’s <code class="docutils literal notranslate"><span class="pre">dtype</span></code> describes the type used for its elements. <code class="docutils literal notranslate"><span class="pre">range()</span></code> yields Python integers, but NumPy converts them to an array dtype when it creates <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p>
 <hr class="docutils" />
 <figure class="align-default" id="python-numpy-array">
 <a class="reference internal image-reference" href="../_images/numpyarray.png"><img alt="Python numpy array" src="../_images/numpyarray.png" style="width: 700px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text"><strong>A graphical depiction of numpy/numpy arrays.</strong> These can have multiple dimensions (even greater than 3). <br>
-(Source: <a class="reference external" href="http://pages.physics.cornell.edu/~myers/teaching/ComputationalMethods/Python/arrays.html">http://pages.physics.cornell.edu/~myers/teaching/ComputationalMethods/Python/arrays.html</a>)</span><a class="headerlink" href="#python-numpy-array" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text"><strong>A graphical depiction of NumPy arrays.</strong> These can have multiple dimensions (even greater than 3). Source: <a class="reference external" href="http://pages.physics.cornell.edu/~myers/teaching/ComputationalMethods/Python/arrays.html">Cornell Computational Methods</a></span><a class="headerlink" href="#python-numpy-array" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <hr class="docutils" />
@@ -4402,7 +4422,7 @@ from the end of an array:</p>
 <p><strong>Why numpy arrays are computationally efficient:</strong>  The data associated with a numpy array object (its metadata  – number of dimensions, shape, data type, etc – as well as the actual data) are stored in a homogeneous and contiguous block of memory (a “data buffer”), at a particular address in the system’s rAM (random Access Memory). This makes numpy arrays more efficient than a pure python data structures like lists whose data are scattered across the system memory.</p>
 </div>
 <section id="replacing-adding-or-deleting-elements">
-<h4>replacing, adding or deleting elements<a class="headerlink" href="#replacing-adding-or-deleting-elements" title="Link to this heading">#</a></h4>
+<h4>Replacing, adding or deleting elements<a class="headerlink" href="#replacing-adding-or-deleting-elements" title="Link to this heading">#</a></h4>
 <p>Let’s look at how you can replace, add, or delete an array element (a single entry, or whole row(s) or whole column(s)):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4820,8 +4840,8 @@ from the end of an array:</p>
 <section id="the-lotka-volterra-model">
 <h5>The Lotka-Volterra model<a class="headerlink" href="#the-lotka-volterra-model" title="Link to this heading">#</a></h5>
 <p>Now let’s try numerical integration in Python for solving a classical model in biology — the Lotka-Volterra (LV) model for a predator-prey system in two-dimensional space (e.g., on land). The LV model is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d20c5223-21b2-4fe3-9ad3-59ce3df94d84">
-<span class="eqno">(2)<a class="headerlink" href="#equation-d20c5223-21b2-4fe3-9ad3-59ce3df94d84" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f2d6ea86-3daa-4e8c-b521-ab997012fd12">
+<span class="eqno">(2)<a class="headerlink" href="#equation-f2d6ea86-3daa-4e8c-b521-ab997012fd12" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dr}{dt} &amp;= r r - a C r  \nonumber \\
     \frac{dC}{dt} &amp;= - z C + e a C r
 \end{align}\]</div>
@@ -5301,8 +5321,8 @@ from the end of an array:</p>
 <h3>The Lotka-Volterra model revisited<a class="headerlink" href="#the-lotka-volterra-model-revisited" title="Link to this heading">#</a></h3>
 <p><em>What happens when the consumer population <span class="math notranslate nohighlight">\(C\)</span> goes extinct in the Lotka-Volterra that you encountered above</em>?</p>
 <p>If the consumer population goes extinct, the resources grow to infinity! This is not biologically realistic, of course. To address this, we can introduce density dependence to the resource population <span class="math notranslate nohighlight">\(\left(1 - \frac{r} {K}\right)\)</span>, which changes the ODE system to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9078ff59-8689-4f34-80ea-da843ef3a307">
-<span class="eqno">(3)<a class="headerlink" href="#equation-9078ff59-8689-4f34-80ea-da843ef3a307" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-dd9dfee1-430a-4d30-b7d0-3ebd2932ae27">
+<span class="eqno">(3)<a class="headerlink" href="#equation-dd9dfee1-430a-4d30-b7d0-3ebd2932ae27" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dr}{dt} &amp;= r r \left(1 - \frac{r} {K}\right) - a C r\\
     \frac{dC}{dt} &amp;= - z C + e a C r
 \end{align}\]</div>
@@ -5332,8 +5352,8 @@ from the end of an array:</p>
 <ul class="simple">
 <li><p>Write a discrete-time version of the LV model called <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>. The discrete-time model is:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-2fb90654-b1c7-4edf-a298-d189820fd3a6">
-<span class="eqno">(4)<a class="headerlink" href="#equation-2fb90654-b1c7-4edf-a298-d189820fd3a6" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-0197115f-f61c-47f7-b098-842ee97d26b3">
+<span class="eqno">(4)<a class="headerlink" href="#equation-0197115f-f61c-47f7-b098-842ee97d26b3" title="Permalink to this equation">#</a></span>\[\begin{align} 
     r_{t+1} &amp;= r_t (1 + r \left(1 - \frac{r_t}{K}\right) - a C_t)\\ 
     C_{t+1} &amp;= C_t (1 - z + e a r_t) 
 \end{align}\]</div>
@@ -5344,14 +5364,14 @@ from the end of an array:</p>
 <ul class="simple">
 <li><p>Write a version of the discrete-time model (which you implemented in <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>) simulation with a random gaussian fluctuation in resource’s growth rate at each time-step:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-32a02393-b007-4445-8585-ec126c40bd78">
-<span class="eqno">(5)<a class="headerlink" href="#equation-32a02393-b007-4445-8585-ec126c40bd78" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5cdf3720-63e0-45b9-82b4-d056e2d98418">
+<span class="eqno">(5)<a class="headerlink" href="#equation-5cdf3720-63e0-45b9-82b4-d056e2d98418" title="Permalink to this equation">#</a></span>\[\begin{align}
         r_{t+1} &amp;= r_t (1 + (r + \epsilon) \left(1 - \frac{r_t}{K}\right)- a C_t)\\
         C_{t+1} &amp;= C_t (1 - z + e a r_t)
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random fluctuation drawn from a gaussian distribution (use <code class="docutils literal notranslate"><span class="pre">sc.stats</span></code> or <code class="docutils literal notranslate"><span class="pre">np.random</span></code>). Include this script in <code class="docutils literal notranslate"> <span class="pre">run_LV.py</span></code>, and profile it as well. You can also add fluctuations to both populations simultaneously this way:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eaca2b55-b64d-4526-a98b-eda6e2ca0100">
-<span class="eqno">(6)<a class="headerlink" href="#equation-eaca2b55-b64d-4526-a98b-eda6e2ca0100" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bc45cba1-6535-4ecf-a24d-c4fabffca751">
+<span class="eqno">(6)<a class="headerlink" href="#equation-bc45cba1-6535-4ecf-a24d-c4fabffca751" title="Permalink to this equation">#</a></span>\[\begin{align}
     r_{t+1} &amp;= r_t (1 + (r + \epsilon)  \left(1 - \frac{r_t}{K}\right) - a C_t)\\
     C_{t+1} &amp;= C_t (1 - (z + \epsilon) + e a r_t)
 \end{align}\]</div>
@@ -5983,7 +6003,7 @@ from the end of an array:</p>
 <p>Of course, you can match and extract other types of patterns as well, such as urls and email addresses (though this example web page does not have email addresses).</p>
 </section>
 <section id="replacing-text">
-<h3>replacing text<a class="headerlink" href="#replacing-text" title="Link to this heading">#</a></h3>
+<h3>Replacing text<a class="headerlink" href="#replacing-text" title="Link to this heading">#</a></h3>
 <p>Using the same web page data, let’s try using the <code class="docutils literal notranslate"><span class="pre">re.sub</span></code> command on the same web page data (<code class="docutils literal notranslate"><span class="pre">My_Data</span></code>) to replace text:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6018,7 +6038,7 @@ from the end of an array:</p>
 </div>
 </div>
 <section id="running-processes">
-<h4>running processes<a class="headerlink" href="#running-processes" title="Link to this heading">#</a></h4>
+<h4>Running processes<a class="headerlink" href="#running-processes" title="Link to this heading">#</a></h4>
 <p>There are two main ways to run commands through subprocess: <code class="docutils literal notranslate"><span class="pre">run</span></code> (available in Python 3.5 onwards) for basic usage, and <code class="docutils literal notranslate"><span class="pre">Popen</span></code> (<code class="docutils literal notranslate"><span class="pre">P</span></code>rocess <code class="docutils literal notranslate"><span class="pre">open</span></code>) for more advanced usage. We will work directly with <code class="docutils literal notranslate"><span class="pre">popen</span></code> because <code class="docutils literal notranslate"><span class="pre">run()</span></code> is a wrapper around <code class="docutils literal notranslate"><span class="pre">Popen</span></code>. Using <code class="docutils literal notranslate"><span class="pre">Popen</span></code> directly gives more control over how the command is run, and how its input and output are processed.</p>
 <p>Let’s try running some commands in the UNIX bash.</p>
 <p><span class="math notranslate nohighlight">\(\star\)</span> In a terminal, first <code class="docutils literal notranslate"><span class="pre">cd</span></code> to your <code class="docutils literal notranslate"><span class="pre">code</span></code> directory,  launch <code class="docutils literal notranslate"><span class="pre">ipython3</span></code>, then and type:</p>
@@ -6093,7 +6113,7 @@ from the end of an array:</p>
 </section>
 </section>
 <section id="running-r">
-<h3>running <code class="docutils literal notranslate"><span class="pre">R</span></code><a class="headerlink" href="#running-r" title="Link to this heading">#</a></h3>
+<h3>Running <code class="docutils literal notranslate"><span class="pre">R</span></code><a class="headerlink" href="#running-r" title="Link to this heading">#</a></h3>
 <p>r is likely an important part of your project’s analysis and data visualization components in particular — for example for statistical analyses and plotting. You can run <code class="docutils literal notranslate"><span class="pre">R</span></code> from Python easily:</p>
 <p><span class="math notranslate nohighlight">\(\star\)</span> Create an r script file called <code class="docutils literal notranslate"><span class="pre">test_r.R</span></code> in your <code class="docutils literal notranslate"><span class="pre">code</span></code> directory with the following content:</p>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="s">"Hello, this is r!"</span><span class="p">)</span>
@@ -6270,7 +6290,7 @@ for efficient data crunching</p></li>
 </ul>
 </section>
 <section id="regular-expressions">
-<h3>regular expressions<a class="headerlink" href="#regular-expressions" title="Link to this heading">#</a></h3>
+<h3>Regular expressions<a class="headerlink" href="#regular-expressions" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Python regex documentation: <a class="reference external" href="https://docs.python.org/3.6/howto/regex.html">https://docs.python.org/3.6/howto/regex.html</a></p></li>
 <li><p>Python regex examples in the standard library docs: <a class="reference external" href="https://docs.python.org/3/library/re.html#regular-expression-examples">https://docs.python.org/3/library/re.html#regular-expression-examples</a></p></li>
@@ -6393,13 +6413,17 @@ for efficient data crunching</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-running-blocks-of-code">Testing/running blocks of code</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">loops</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">Loops</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iterator-vs-iterable">Iterator vs Iterable</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-loops-examples">Some loops examples</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-python-scripts">running Python scripts</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-code-compartmentalization">Modules and code compartmentalization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing modules</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-python-scripts">Running Python scripts</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-unix-shell">Using the UNIX shell</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-the-unix-shell-using-ipython">From the UNIX shell, using ipython</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-within-the-ipython-shell">From within the ipython shell</a></li>
@@ -6421,10 +6445,6 @@ for efficient data crunching</p></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-csv-s">Handling <code class="docutils literal notranslate"><span class="pre">csv</span></code>’s</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-code-compartmentalization">Modules and code compartmentalization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing Modules</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-python-programs">Writing Python programs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-python-program">Components of the Python program</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shebang">The shebang</a></li>
@@ -6463,7 +6483,7 @@ for efficient data crunching</p></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Practicals</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#align-dna-sequences">Align DNA sequences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#align-dna-sequenceopen-align-seqs-py-from-mqb-s-code-directory-this-script-aligns-two-dna-sequences-such-that-they-are-as-similar-as-possible-run-the-script-and-make-sure-you-understand-what-every-line-is-doing-a-good-way-to-do-this-now-that-you-have-learnt-debugging-is-to-insert-a-breakpoint-import-ipdb-ipdb-set-trace-at-key-locations-in-the-script-and-examine-what-is-going-on-for-example-inserting-one-just-after-the-start-of-the-for-loop-of-the-calculate-score-function-module-is-a-good-place">Align DNA sequenceOpen <code class="docutils literal notranslate"><span class="pre">align_seqs.py</span></code> from MQB’s code directory. This script aligns two DNA sequences such that they are as similar as possible. Run the script and make sure you understand what every line is doing. A good way to do this, now that you have learnt debugging, is to insert a breakpoint (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">ipdb;</span> <span class="pre">ipdb.set_trace()</span></code>) at key locations in the script and examine what is going on. For example, inserting one just after the start of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop of the <code class="docutils literal notranslate"><span class="pre">calculate_score</span></code> function/module is a good place.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupwork-practical-on-align-dna-sequences">Groupwork Practical on Align DNA sequences</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupwork-practical-on-align-dna-sequences-2">Groupwork Practical on Align DNA sequences 2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-oaks-problem">Missing oaks problem</a></li>
@@ -6475,7 +6495,7 @@ for efficient data crunching</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">Numpy</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-accessing-arrays">Indexing and accessing arrays</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-arrays">Manipulating arrays</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-adding-or-deleting-elements">replacing, adding or deleting elements</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-adding-or-deleting-elements">Replacing, adding or deleting elements</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#flattening-or-reshaping-arrays">Flattening or reshaping arrays</a></li>
 </ul>
 </li>
@@ -6529,7 +6549,7 @@ for efficient data crunching</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-in-files">Finding in files</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groups-within-multiple-matches">Groups within multiple matches</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-text-from-webpages">Extracting text from webpages</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-text">replacing text</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-text">Replacing text</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#blackbirds-problem">Blackbirds problem</a></li>
 </ul>
@@ -6538,10 +6558,10 @@ for efficient data crunching</p></li>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-python-to-build-workflows">Using Python to build workflows</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-subprocess">Using <code class="docutils literal notranslate"><span class="pre">subprocess</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-processes">running processes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-processes">Running processes</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-r">running <code class="docutils literal notranslate"><span class="pre">R</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-r">Running <code class="docutils literal notranslate"><span class="pre">R</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-directory-and-file-paths">Handling directory and file paths</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-subprocess-to-run-a-r-script">Using <code class="docutils literal notranslate"><span class="pre">subprocess</span></code> to run a r script</a></li>
@@ -6559,7 +6579,7 @@ for efficient data crunching</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-and-debugging">Errors and Debugging</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-modules-and-classes">Functions, Modules, and Classes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scientific-computing">Scientific computing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-expressions">regular expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-expressions">Regular expressions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-stuff">Other stuff</a></li>
 </ul>
 </li>

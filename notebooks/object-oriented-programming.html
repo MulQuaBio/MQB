@@ -297,6 +297,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayesian.html">Bayesian inference for biological data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
@@ -739,7 +740,7 @@
 </div>
 <p>In fact it is like a normal variable in every way except that it is encapsulated in this class.</p>
 <p>Notice how we cannot access attributes which are not there…</p>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">square1</span><span class="o">.</span><span class="n">area</span>
 </pre></div>
@@ -1953,7 +1954,7 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">say_woof</span><span class="p">(</span><span class="n">subject</span><span class="p">):</span>
     <span class="n">subject</span> <span class="o">=</span> <span class="n">subject</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
@@ -1985,7 +1986,7 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 </div>
 </div>
 <p>This did the job very well, however it is quite broad. Anything that triggers an attribute error looks the same here, so if you try to set the subject to <code class="docutils literal notranslate"><span class="pre">1</span></code> then we will also get an attribute error.</p>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">say_woof</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -2009,7 +2010,7 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 </div>
 </div>
 <p>We may want to catch when the error is expected, but fail when it is unexpected, and at present we cannot differentiate between one of our own raised errors and an error that is triggered from some other operation failing. This is where a custom exception comes in. Let’s define a new one:</p>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">WoofError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>    <span class="c1"># Hey look, a subclass!!</span>
     <span class="k">pass</span>
@@ -2043,7 +2044,7 @@ A 6 legged, 0.48796006249702173m tall, green chair.
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">say_woof</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>

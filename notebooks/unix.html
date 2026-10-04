@@ -299,6 +299,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayesian.html">Bayesian inference for biological data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
 <ul class="nav bd-sidenav">
@@ -602,7 +603,7 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-arguments">Command arguments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redirection-and-pipes">redirection and pipes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redirection-and-pipes">Redirection and pipes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wildcards">Wildcards</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-grep">Using <code class="docutils literal notranslate"><span class="pre">grep</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-files">Finding files</a></li>
@@ -610,7 +611,11 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals">Practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-command-challenge">Bash command challenge</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fasta-exercise">FASTA exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fasta-exercise-inspect-and-summarize-genome-sequences">FASTA exercise: inspect and summarize genome sequences</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose-and-file-structure">Purpose and file structure</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">Readings &amp; Resources</a><ul class="nav section-nav flex-column">
@@ -1003,12 +1008,12 @@ ls<span class="w"> </span>-al
 </section>
 <section id="building-your-coursework-directory-structure">
 <h2>Building your coursework directory structure<a class="headerlink" href="#building-your-coursework-directory-structure" title="Link to this heading">#</a></h2>
-<p>For CMEE coursework, use a single <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code> directory in a suitable location in your home directory, such as Documents. Within it use <code class="docutils literal notranslate"><span class="pre">week1</span></code>, <code class="docutils literal notranslate"><span class="pre">week2</span></code>, etc., each containing <code class="docutils literal notranslate"><span class="pre">code</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">results</span></code> and <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>. Keep names lowercase exactly as shown. <code class="docutils literal notranslate"><span class="pre">sandbox</span></code> is for scratch work, not assessed files you need to retain. You will bring coursework under version control in the <a class="reference internal" href="git.html"><span class="std std-doc">Version Control chapter</span></a>.</p>
+<p>For CMEE coursework, use one <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code> directory in a suitable location in your home directory, such as Documents. Keep one project repository for the whole bootcamp instead of creating a new directory for each week or submission. At the project root, use <code class="docutils literal notranslate"><span class="pre">README.md</span></code>, <code class="docutils literal notranslate"><span class="pre">code/</span></code>, <code class="docutils literal notranslate"><span class="pre">data/</span></code>, <code class="docutils literal notranslate"><span class="pre">results/</span></code> and an optional <code class="docutils literal notranslate"><span class="pre">sandbox/</span></code>. Put scripts for all taught languages in <code class="docutils literal notranslate"><span class="pre">code/</span></code>, keep inputs in <code class="docutils literal notranslate"><span class="pre">data/</span></code>, and use <code class="docutils literal notranslate"><span class="pre">results/</span></code> for generated outputs. <code class="docutils literal notranslate"><span class="pre">sandbox/</span></code> is for disposable experiments, not assessed files you need to retain. Keep names lowercase exactly as shown, and bring the project under version control in the <a class="reference internal" href="git.html"><span class="std std-doc">Version Control chapter</span></a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>First rehearse the following file operations in a <strong>fresh temporary directory</strong>. The next cell creates one and enters it; everything through the search exercises should be done in this practice tree, not in existing coursework. Keep this terminal session open so its variables remain available. Do not copy real coursework into it or delete an existing coursework sandbox to repeat the lesson.</p>
 </div>
-<p>After practising, create the same structure in your chosen permanent coursework location, or use your existing structure. Temporary directories are not suitable for storing submissions.</p>
+<p>After practising, create the same structure in your chosen permanent coursework project root, or use an existing root that already follows this layout. If you already have week-specific coursework folders, follow the course’s supervised migration instructions rather than moving them ad hoc.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">practice_root</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="w"> </span>-d<span class="k">)</span>
@@ -1039,7 +1044,7 @@ ls<span class="w"> </span>-al
 </div>
 </div>
 </div>
-<p>You are now inside the practice <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code>. Commands joined with <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> run the right-hand command only if the left-hand command succeeds; <code class="docutils literal notranslate"><span class="pre">;</span></code> runs the next command regardless of that status.</p>
+<p>You are now inside the practice <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code> project root. Commands joined with <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> run the right-hand command only if the left-hand command succeeds; <code class="docutils literal notranslate"><span class="pre">;</span></code> runs the next command regardless of that status.</p>
 <p>Predict the output of these two lines before trying them. <code class="docutils literal notranslate"><span class="pre">missing-directory</span></code> does not exist in this fresh tree:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>missing-directory<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Reached the next command"</span>
 <span class="nb">cd</span><span class="w"> </span>missing-directory<span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Reached the next command"</span>
@@ -1047,39 +1052,39 @@ ls<span class="w"> </span>-al
 </pre></div>
 </div>
 <p>Both <code class="docutils literal notranslate"><span class="pre">cd</span></code> attempts should fail and leave the working directory unchanged. Which <code class="docutils literal notranslate"><span class="pre">echo</span></code> runs? Why would <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">TARGET</span> <span class="pre">&amp;&amp;</span> <span class="pre">COMMAND</span></code> matter before a command that writes files?</p>
-<p>Next, create your <code class="docutils literal notranslate"><span class="pre">week1</span></code> subdirectory:</p>
+<p>Now create the shared project directories at this root:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>week1
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>code<span class="w"> </span>data<span class="w"> </span>results<span class="w"> </span>sandbox
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>week1
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>sandbox<span class="w"> </span>code<span class="w"> </span>data<span class="w"> </span>results
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls
 </pre></div>
 </div>
 </div>
 </div>
-<p>From <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/week1</span></code>, predict what happens when the spelling differs:</p>
+<p>From the <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code> project root, predict what happens when the spelling differs:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="nb">cd</span><span class="w"> </span>Sandbox<span class="o">)</span>
 <span class="nb">pwd</span>
 </pre></div>
 </div>
-<p>The parentheses run <code class="docutils literal notranslate"><span class="pre">cd</span></code> in a subshell, so your main shell stays in <code class="docutils literal notranslate"><span class="pre">week1</span></code> even if it succeeds. On a case-sensitive filesystem, <code class="docutils literal notranslate"><span class="pre">Sandbox</span></code> and <code class="docutils literal notranslate"><span class="pre">sandbox</span></code> are different names, so this produces a ‘No such file or directory’ error. On a case-insensitive filesystem it may succeed. What did you observe?</p>
+<p>The parentheses run <code class="docutils literal notranslate"><span class="pre">cd</span></code> in a subshell, so your main shell stays in the project root even if it succeeds. On a case-sensitive filesystem, <code class="docutils literal notranslate"><span class="pre">Sandbox</span></code> and <code class="docutils literal notranslate"><span class="pre">sandbox</span></code> are different names, so this produces a ‘No such file or directory’ error. On a case-insensitive filesystem it may succeed. What did you observe?</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong>Case sensitivity depends on the filesystem, not simply the OS.</strong> Many macOS volumes are case-insensitive while preserving the spelling of names; Linux filesystems are usually case-sensitive. This does not make all macOS commands or shell variables case-insensitive. Match case exactly in commands and paths so your work transfers between systems.</p>
 </div>
-<p>Stay in the temporary tree’s <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/week1</span></code>. Predict what each command will do, then run it and explain any error:</p>
+<p>Stay in the temporary <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code> project root. Predict what each command will do, then run it and explain any error:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>
 mkdir<span class="w"> </span>sandbox
 rm<span class="w"> </span>sandbox
@@ -1199,7 +1204,7 @@ ls
 </div>
 <section id="editing-a-file-and-changing-permissions">
 <h3>Editing a file and changing permissions<a class="headerlink" href="#editing-a-file-and-changing-permissions" title="Link to this heading">#</a></h3>
-<p>You should still be in the practice <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/week1/sandbox</span></code>. Create <code class="docutils literal notranslate"><span class="pre">notes.txt</span></code> with a plain-text editor (for example <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">notes.txt</span></code>, if installed), enter a sentence and save it. In nano, <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">O</span></code> then Return saves, and <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">X</span></code> exits. You can instead use your graphical editor to open this exact directory and save the same filename.</p>
+<p>You should still be in the practice <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/sandbox</span></code>. Create <code class="docutils literal notranslate"><span class="pre">notes.txt</span></code> with a plain-text editor (for example <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">notes.txt</span></code>, if installed), enter a sentence and save it. In nano, <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">O</span></code> then Return saves, and <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">X</span></code> exits. You can instead use your graphical editor to open this exact directory and save the same filename.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>
 cat<span class="w"> </span>notes.txt
 ls<span class="w"> </span>-l<span class="w"> </span>notes.txt
@@ -1213,13 +1218,13 @@ ls<span class="w"> </span>-l<span class="w"> </span>notes.txt
 </section>
 <section id="returning-to-the-project-root">
 <h3>Returning to the project root<a class="headerlink" href="#returning-to-the-project-root" title="Link to this heading">#</a></h3>
-<p>From <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/week1/sandbox</span></code>, <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">../..</span></code> takes you to <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code>. A second option uses the absolute path saved when we created the temporary directory:</p>
+<p>From <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/sandbox</span></code>, <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code> takes you to <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code>. A second option uses the absolute path saved when we created the temporary directory:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">"</span><span class="nv">$practice_root</span><span class="s2">/CMEECourseWork"</span>
 <span class="nb">pwd</span>
-mkdir<span class="w"> </span>-p<span class="w"> </span>week1/<span class="o">{</span>data,code,results,sandbox<span class="o">}</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>code<span class="w"> </span>data<span class="w"> </span>results<span class="w"> </span>sandbox
 </pre></div>
 </div>
-<p>Bash expands the braces into four paths. <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span></code> creates missing parents and accepts directories that already exist. Compare that with the earlier plain <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> error. Use exactly the same lowercase spelling throughout. Remain at this practice project root for the next section.</p>
+<p>Bash’s <code class="docutils literal notranslate"><span class="pre">-p</span></code> creates missing directories and accepts directories that already exist. Compare that with the earlier plain <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> error. Use exactly the same lowercase spelling throughout. Remain at this practice project root for the next section.</p>
 </section>
 </section>
 <section id="command-arguments">
@@ -1343,7 +1348,7 @@ total 0
 <p>This combines long format (<code class="docutils literal notranslate"><span class="pre">-l</span></code>) with reverse order (<code class="docutils literal notranslate"><span class="pre">-r</span></code>). It shows permissions and modification times, but does not list directory contents recursively. What would <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-lR</span></code> change?</p>
 </section>
 <section id="redirection-and-pipes">
-<h2>redirection and pipes<a class="headerlink" href="#redirection-and-pipes" title="Link to this heading">#</a></h2>
+<h2>Redirection and pipes<a class="headerlink" href="#redirection-and-pipes" title="Link to this heading">#</a></h2>
 <p>Output of programs can also be “redirected” to a file in two ways:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code>: redirect output from a command to a file on disk. If the file already exists, it will be overwritten.</p></li>
@@ -1353,7 +1358,7 @@ total 0
 <p>First make sure you are back in <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>week1/sandbox
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sandbox
 </pre></div>
 </div>
 </div>
@@ -1415,7 +1420,7 @@ cat<span class="w"> </span>ListrootDir.txt
 </section>
 <section id="wildcards">
 <h2>Wildcards<a class="headerlink" href="#wildcards" title="Link to this heading">#</a></h2>
-<p>We can use wildcards to match filenames. You should still be in the practice <code class="docutils literal notranslate"><span class="pre">week1/sandbox</span></code>; the next commands create and enter a new <code class="docutils literal notranslate"><span class="pre">TestWild</span></code> directory. These fixtures are empty files because here we are investigating <strong>names</strong>, not contents or sizes.</p>
+<p>We can use wildcards to match filenames. You should still be in the practice <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/sandbox</span></code>; the next commands create and enter a new <code class="docutils literal notranslate"><span class="pre">TestWild</span></code> directory. These fixtures are empty files because here we are investigating <strong>names</strong>, not contents or sizes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>TestWild
@@ -1500,7 +1505,7 @@ File1.csv  File1.txt  File2.csv  File2.txt  File4.csv  File4.txt
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>../<span class="w"> </span><span class="c1"># move one level up from TestWild, back to sandbox</span>
-wget<span class="w"> </span>https://raw.githubusercontent.com/MulQuaBio/MQB/main/content/data/spawannxs.txt<span class="w"> </span><span class="c1">#Cool!</span>
+wget<span class="w"> </span><span class="s2">"https://raw.githubusercontent.com/</span><span class="si">${</span><span class="nv">MQB_NOTEBOOK_REPOSITORY</span><span class="k">:-</span><span class="nv">MulQuaBio</span><span class="p">/MQB</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">MQB_NOTEBOOK_REF</span><span class="k">:-</span><span class="nv">main</span><span class="si">}</span><span class="s2">/content/data/spawannxs.txt"</span><span class="w"> </span><span class="c1">#Cool!</span>
 </pre></div>
 </div>
 </div>
@@ -1744,7 +1749,7 @@ Psittacidae	<span class=" -Color -Color-Bold -Color-Bold-Red">Ara</span>		chloro
 </section>
 <section id="finding-files">
 <h2>Finding files<a class="headerlink" href="#finding-files" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">find</span></code> walks a directory tree and tests entries. You should currently be in the practice <code class="docutils literal notranslate"><span class="pre">week1/data</span></code>. The next command takes you to <code class="docutils literal notranslate"><span class="pre">week1/sandbox</span></code>; check with <code class="docutils literal notranslate"><span class="pre">pwd</span></code> before creating <code class="docutils literal notranslate"><span class="pre">TestFind</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">find</span></code> walks a directory tree and tests entries. You should currently be in the practice <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/data</span></code>. The next command takes you to the sibling <code class="docutils literal notranslate"><span class="pre">sandbox/</span></code>; check with <code class="docutils literal notranslate"><span class="pre">pwd</span></code> before creating <code class="docutils literal notranslate"><span class="pre">TestFind</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>../sandbox<span class="w"> </span><span class="c1"># again, note the relative path!</span>
@@ -1956,8 +1961,9 @@ File3.txt
 <h3>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Review the commands above and explain their outcomes, including the deliberately failing examples. System-specific output may differ from the stored illustrations.</p></li>
-<li><p>Make sure your <strong>permanent</strong> coursework directory (e.g., <code class="docutils literal notranslate"><span class="pre">CMEECourseWork/week1</span></code>) is organised with <code class="docutils literal notranslate"><span class="pre">code</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">results</span></code> and <code class="docutils literal notranslate"><span class="pre">sandbox</span></code>, and contains the necessary files. The temporary rehearsal tree is not your submission directory.</p></li>
-<li><p>Along with completeness of the practicals/exercises themselves, you will be marked on how complete and well-organised your directory structure and content is, in all coming weeks as well.</p></li>
+<li><p>Make sure your <strong>permanent</strong> coursework project root (e.g., <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code>) contains <code class="docutils literal notranslate"><span class="pre">README.md</span></code>, <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>, <code class="docutils literal notranslate"><span class="pre">code/</span></code>, <code class="docutils literal notranslate"><span class="pre">data/</span></code>, generated <code class="docutils literal notranslate"><span class="pre">results/</span></code> and optional <code class="docutils literal notranslate"><span class="pre">sandbox/</span></code>.</p></li>
+<li><p>Along with completeness of the practicals/exercises themselves, you will be marked on how complete and well-organised your project structure and content are across the bootcamp.</p></li>
+<li><p>Keep submission guidance in the root README rather than making a new coursework directory or README for each week.</p></li>
 <li><p>Please put judicious comments in all your script files.</p></li>
 </ul>
 </section>
@@ -1967,8 +1973,8 @@ File3.txt
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>ls<span class="w"> </span>-s<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-n<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-10
 </pre></div>
 </div>
-<p>The earlier empty files are useful for testing names, but poor fixtures for investigating sizes. In the <strong>temporary practice tree</strong>, create some different nonempty files:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">"</span><span class="nv">$practice_root</span><span class="s2">/CMEECourseWork/week1/sandbox"</span>
+<p>In the <strong>temporary practice tree</strong>, create some nonempty files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="s2">"</span><span class="nv">$practice_root</span><span class="s2">/CMEECourseWork/sandbox"</span>
 mkdir<span class="w"> </span>SizeChallenge
 <span class="nb">cd</span><span class="w"> </span>SizeChallenge
 <span class="nb">printf</span><span class="w"> </span><span class="s1">'oak\n'</span><span class="w"> </span>&gt;<span class="w"> </span>small.txt
@@ -2004,29 +2010,55 @@ find<span class="w"> </span>../TestWild<span class="w"> </span>-type<span class=
 <p>Optional extension: investigate <code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">-print0</span></code> and <code class="docutils literal notranslate"><span class="pre">xargs</span> <span class="pre">-0</span></code> for transporting filenames separated by NUL bytes, including names with spaces or newlines. This protects argument boundaries; it does not automatically make a later line-based <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">|</span> <span class="pre">sort</span> <span class="pre">|</span> <span class="pre">head</span></code> report safe for newline-containing names. Our displayed-size exercise uses filenames without newlines. Do not confuse robust filename transport with sorting a human-readable report.</p>
 </div>
 </section>
-<section id="fasta-exercise">
-<h3>FASTA exercise<a class="headerlink" href="#fasta-exercise" title="Link to this heading">#</a></h3>
-<p>The supplied files are in the book repository’s <code class="docutils literal notranslate"><span class="pre">content/data/fasta</span></code> directory, not an absolute <code class="docutils literal notranslate"><span class="pre">/data/fasta</span></code> directory on your computer. Copy the <code class="docutils literal notranslate"><span class="pre">fasta</span></code> directory into your permanent coursework <code class="docutils literal notranslate"><span class="pre">week1/data</span></code>, leaving the supplied originals unchanged. Work from <code class="docutils literal notranslate"><span class="pre">week1/code</span></code>, referring to inputs under <code class="docutils literal notranslate"><span class="pre">../data/fasta/</span></code>. The three filenames are <code class="docutils literal notranslate"><span class="pre">407228326.fasta</span></code>, <code class="docutils literal notranslate"><span class="pre">407228412.fasta</span></code> and <code class="docutils literal notranslate"><span class="pre">e_coli.fasta</span></code>.</p>
-<p>Each supplied <a class="reference external" href="https://en.wikipedia.org/wiki/FASTA_format">FASTA file</a> contains <strong>one record</strong>: a header starting with <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, followed by sequence data wrapped across lines. Removing just the first line is appropriate for these inputs, not for arbitrary multi-record FASTA files. Wrapping is a presentation choice, not part of the biological sequence.</p>
-<p>Write <code class="docutils literal notranslate"><span class="pre">unixPrac1.txt</span></code> with single-line UNIX commands, numbering each answer with a comment such as <code class="docutils literal notranslate"><span class="pre">#1</span></code>, <code class="docutils literal notranslate"><span class="pre">#2</span></code>, etc.:</p>
-<ul class="simple">
-<li><p>Count the lines in each file. Interpret <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span></code> as a <strong>newline count</strong>: an unterminated final line is not included in that count. The two numbered FASTA files lack a final newline; explain the distinction from counting displayed text lines.</p></li>
-<li><p>Print everything starting from the second line of <code class="docutils literal notranslate"><span class="pre">e_coli.fasta</span></code>.</p></li>
-<li><p>Count the sequence length of this genome: exclude its header and line endings, but include ambiguous nucleotide positions.</p></li>
-<li><p>Count occurrences of the literal motif <code class="docutils literal notranslate"><span class="pre">ATGC</span></code> in the <em>E. coli</em> sequence, not just the number of lines containing it. Remove the header and line breaks first so wrapping does not hide a motif. <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">-c</span></code> counts matching lines. Treat case consistently; ambiguity codes are not literal A, T, G or C matches. This particular motif cannot overlap with itself.</p></li>
-<li><p>Compute the AT/GC ratio, <span class="math notranslate nohighlight">\((A+T)/(G+C)\)</span>, as a single number, using counts of the four canonical DNA bases. This is not the same as the GC fraction, <span class="math notranslate nohighlight">\((G+C)/(A+T+G+C)\)</span>. Exclude ambiguous positions from these four counts without guessing their identities.</p></li>
-</ul>
-<p>DNA ambiguity codes are standardised by IUPAC: <code class="docutils literal notranslate"><span class="pre">R</span></code> means A or G, <code class="docutils literal notranslate"><span class="pre">Y</span></code> means C or T, <code class="docutils literal notranslate"><span class="pre">M</span></code> means A or C, <code class="docutils literal notranslate"><span class="pre">W</span></code> means A or T, and <code class="docutils literal notranslate"><span class="pre">N</span></code> means any base; other defined codes cover the remaining combinations. They denote DNA bases here, not ribonucleotides. Keep ambiguous symbols in the sequence used for length and motif calculations: deleting them could join previously separated bases and create a false motif. For example, removing <code class="docutils literal notranslate"><span class="pre">N</span></code> from <code class="docutils literal notranslate"><span class="pre">ATNGC</span></code> would invent <code class="docutils literal notranslate"><span class="pre">ATGC</span></code>.</p>
-<p>GC content affects duplex melting behaviour under specified conditions, but thermal stability also depends on sequence, salt and other factors. It is not valid to infer that every thermophile has a GC-rich genome, or to use a genome’s AT/GC ratio alone to diagnose its habitat.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For interpretation beyond these supplied inputs: when <code class="docutils literal notranslate"><span class="pre">G+C</span></code> is zero, the AT/GC ratio has no finite value; report it as undefined rather than zero. The supplied files have nonzero GC counts. This is a discussion of an edge case, not an additional submission task.</p>
+<section id="fasta-exercise-inspect-and-summarize-genome-sequences">
+<h3>FASTA exercise: inspect and summarize genome sequences<a class="headerlink" href="#fasta-exercise-inspect-and-summarize-genome-sequences" title="Link to this heading">#</a></h3>
+<section id="purpose-and-file-structure">
+<h4>Purpose and file structure<a class="headerlink" href="#purpose-and-file-structure" title="Link to this heading">#</a></h4>
+<p>FASTA is a plain-text format for biological sequences. A record has a header line beginning with <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> followed by sequence data. The supplied files each contain one record, but FASTA can contain multiple records; this exercise is specifically about the supplied one-record files. Sequence lines may be wrapped for readability. When interpreting the DNA sequence, join those lines without adding spaces: the line breaks are not bases.</p>
+<p>For example, this small, invented record has six sequence positions:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&gt;toy-record
+ATN
+GCA
+</pre></div>
 </div>
-<ul class="simple">
-<li><p>Save <code class="docutils literal notranslate"><span class="pre">unixPrac1.txt</span></code> in your permanent <code class="docutils literal notranslate"><span class="pre">code</span></code> directory.</p></li>
-<li><p>Each command must read its input from the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory via the appropriate relative path.</p></li>
-</ul>
-<p>Do <strong>not</strong> turn these answers into shell scripts yet; each answer should be a single-line solution made of potentially piped UNIX commands. Automation comes next in the <a class="reference internal" href="shell-scripting.html"><span class="std std-doc">Shell Scripting chapter</span></a>.</p>
+<p>The header is not part of the sequence; the wrapped sequence is <code class="docutils literal notranslate"><span class="pre">ATNGCA</span></code>. The <code class="docutils literal notranslate"><span class="pre">N</span></code> is a real sequence position with an ambiguous identity, not a character to delete before counting length.</p>
+<p>The supplied files are in the book repository’s <code class="docutils literal notranslate"><span class="pre">content/data/fasta</span></code> directory, not an absolute <code class="docutils literal notranslate"><span class="pre">/data/fasta</span></code> directory on your computer. Copy the <code class="docutils literal notranslate"><span class="pre">fasta</span></code> directory into your permanent coursework project’s root-level <code class="docutils literal notranslate"><span class="pre">data/</span></code>, leaving the supplied originals unchanged. Work from the project’s <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory and refer to files under <code class="docutils literal notranslate"><span class="pre">../data/fasta/</span></code>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Contents</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">407228326.fasta</span></code></p></td>
+<td><p>Supplied numbered genome sequence</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">407228412.fasta</span></code></p></td>
+<td><p>Supplied numbered genome sequence</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">e_coli.fasta</span></code></p></td>
+<td><p>Supplied <em>E. coli</em> genome sequence</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Before solving the questions, inspect the beginning of a file and identify its header and sequence lines. The numbered FASTA files do not end with a newline; this matters for <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span></code>.</p>
+</section>
+<section id="questions">
+<h4>Questions<a class="headerlink" href="#questions" title="Link to this heading">#</a></h4>
+<p>Write <code class="docutils literal notranslate"><span class="pre">unixPrac1.txt</span></code> in the permanent project’s root <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory. Give one single-line UNIX command for each numbered answer (<code class="docutils literal notranslate"><span class="pre">#1</span></code>, <code class="docutils literal notranslate"><span class="pre">#2</span></code>, and so on), followed by a short explanation of what it does and what the result counts. A pipeline still counts as one command. Read the input files from <code class="docutils literal notranslate"><span class="pre">../data/fasta/</span></code>; do not modify the supplied data or turn these answers into shell scripts yet.</p>
+<ol class="arabic simple">
+<li><p><strong>Count file lines.</strong> Use <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span></code> on each supplied FASTA file. This counts newline characters, not visual lines or sequence positions. Explain why the two numbered files’ counts are one lower than their displayed line counts: their final lines are not newline-terminated.</p></li>
+<li><p><strong>Display the <em>E. coli</em> sequence lines.</strong> Print everything starting from the second line of <code class="docutils literal notranslate"><span class="pre">e_coli.fasta</span></code>. Explain why the header is excluded and what <code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-n</span> <span class="pre">+2</span></code> means.</p></li>
+<li><p><strong>Count sequence length.</strong> For <code class="docutils literal notranslate"><span class="pre">e_coli.fasta</span></code>, exclude the header and line-ending characters, then count all sequence symbols. Include ambiguous nucleotide positions such as <code class="docutils literal notranslate"><span class="pre">N</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code>, <code class="docutils literal notranslate"><span class="pre">M</span></code>, and <code class="docutils literal notranslate"><span class="pre">W</span></code>: length counts positions, not only confidently identified A/C/G/T bases.</p></li>
+<li><p><strong>Count a literal motif.</strong> Count every occurrence of <code class="docutils literal notranslate"><span class="pre">ATGC</span></code> in the <em>E. coli</em> sequence, not just the number of lines containing it. Remove the header and line breaks first so wrapping cannot hide a match. <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">-c</span></code> counts matching lines; a match-only output such as <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">-o</span></code> lets you count occurrences. Keep ambiguous symbols in the sequence: deleting one could join separated bases and invent a match. The supplied motif cannot overlap with itself.</p></li>
+<li><p><strong>Calculate the AT/GC ratio.</strong> Report <span class="math notranslate nohighlight">\((A+T)/(G+C)\)</span> as one number, using counts of the four canonical DNA bases. This is not the GC fraction, <span class="math notranslate nohighlight">\((G+C)/(A+T+G+C)\)</span>. Count only A, T, G, and C for this calculation; do not guess the identities of ambiguous positions. If <code class="docutils literal notranslate"><span class="pre">G+C</span></code> is zero, the ratio is undefined rather than zero; the supplied <em>E. coli</em> sequence has nonzero GC count.</p></li>
+</ol>
+<p>IUPAC ambiguity codes stand for possible DNA bases: <code class="docutils literal notranslate"><span class="pre">R</span></code> means A or G, <code class="docutils literal notranslate"><span class="pre">Y</span></code> means C or T, <code class="docutils literal notranslate"><span class="pre">M</span></code> means A or C, <code class="docutils literal notranslate"><span class="pre">W</span></code> means A or T, and <code class="docutils literal notranslate"><span class="pre">N</span></code> means any base. Other codes cover the remaining combinations. Keep these symbols when counting sequence length or searching for a literal motif; exclude them only from the four-base AT/GC calculation.</p>
+<p>GC content affects duplex melting behaviour under specified conditions, but thermal stability also depends on sequence, salt, and other factors. Do not infer that every thermophile has a GC-rich genome, or use one genome’s AT/GC ratio alone to diagnose its habitat.</p>
+<p>Work through all five questions in order. Together, they practice inspecting record structure, distinguishing text lines from sequence positions, counting motifs, and interpreting base composition.</p>
+<p>Automation comes next in the <a class="reference internal" href="shell-scripting.html"><span class="std std-doc">Shell Scripting chapter</span></a>.</p>
+</section>
 </section>
 </section>
 <section id="readings-resources">
@@ -2128,7 +2160,7 @@ find<span class="w"> </span>../TestWild<span class="w"> </span>-type<span class=
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-arguments">Command arguments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redirection-and-pipes">redirection and pipes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redirection-and-pipes">Redirection and pipes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wildcards">Wildcards</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-grep">Using <code class="docutils literal notranslate"><span class="pre">grep</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-files">Finding files</a></li>
@@ -2136,7 +2168,11 @@ find<span class="w"> </span>../TestWild<span class="w"> </span>-type<span class=
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals">Practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-command-challenge">Bash command challenge</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fasta-exercise">FASTA exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fasta-exercise-inspect-and-summarize-genome-sequences">FASTA exercise: inspect and summarize genome sequences</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose-and-file-structure">Purpose and file structure</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">Readings &amp; Resources</a><ul class="nav section-nav flex-column">
