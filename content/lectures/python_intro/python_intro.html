@@ -1171,8 +1171,8 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="write-a-plan-before-writing-python" class="slide level2" data-timing="120">
-<h2>Write a plan before writing Python</h2>
+<section id="write-an-algorithm-before-writing-python" class="slide level2" data-timing="120">
+<h2>Write an algorithm before writing Python</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href aria-label="1"></a>INPUT: observations with site, date and count</span>
 <span id="cb1-2"><a href aria-label="2"></a>Check that the expected fields are present</span>
 <span id="cb1-3"><a href aria-label="3"></a>Identify exact duplicate records</span>
@@ -1181,9 +1181,11 @@ display:block!important;
 <span id="cb1-6"><a href aria-label="6"></a>    report how many counts are missing</span>
 <span id="cb1-7"><a href aria-label="7"></a>    add the counts that are present</span>
 <span id="cb1-8"><a href aria-label="8"></a>OUTPUT: known-count total and missing-count number per site</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>This plain-language outline is pseudocode:</strong> an informal sketch of the algorithm, not executable Python. See the book’s <a href="https://mulquabio.github.io/MQB/notebooks/python.html#what-is-an-algorithm">algorithm example</a>.</p>
 <p><strong>Expected here:</strong> A: total 2, one missing; B: total 0, none missing.</p>
+<p><strong>Zen connection:</strong> “Explicit is better than implicit”; “Readability counts.” State assumptions and use steps a classmate can follow.</p>
 <aside class="notes">
-<p>04:00-06:00. Define pseudocode as ordinary-language steps precise enough to translate into code. Work through the four rows by hand. A sum of 4 at A would reveal double counting; reporting no missing values would lose evidence. For a site with every count missing, do not silently interpret a zero sum as an observed zero: flag that no known count is available. This is a boundary case to specify before implementation. Today students need not implement the whole validation workflow; functions and richer tests follow later this week.</p>
+<p>04:00-06:00. Define an algorithm as a sequence of steps for solving a problem; pseudocode is an informal way to write those steps before coding. It has no fixed syntax and is not executable Python. Work through the four rows by hand. A sum of 4 at A would reveal double counting; reporting no missing values would lose evidence. For a site with every count missing, do not silently interpret a zero sum as an observed zero: flag that no known count is available. This is a boundary case to specify before implementation. Today students need not implement the whole validation workflow; functions and richer tests follow later this week.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1296,7 +1298,7 @@ display:block!important;
 <tr class="odd">
 <td style="text-align: left;">10:00-11:00</td>
 <td style="text-align: left;"><a href="https://mulquabio.github.io/MQB/notebooks/python.html#introduction">Introduction</a>; <a href="https://mulquabio.github.io/MQB/notebooks/python.html#getting-started-with-python">Getting started with Python</a>; <a href="https://mulquabio.github.io/MQB/notebooks/python.html#the-zen-of-python-and-good-programming-practices">The Zen of Python and good programming practices</a>; <a href="https://mulquabio.github.io/MQB/notebooks/python.html#ipython">ipython</a></td>
-<td style="text-align: left;">Run small expressions; distinguish shell from Python; predict outputs</td>
+<td style="text-align: left;">Predict outputs; connect two Zen aphorisms to clear steps; distinguish shell from Python</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">11:25-12:25</td>
@@ -1307,7 +1309,7 @@ display:block!important;
 </table>
 <p>Start small: one value, one list, one decision, one loop.</p>
 <aside class="notes">
-<p>11:30-13:30. The first row includes this 20-minute opening, leaving 40 minutes for the live chapter walkthrough. Use Why Python? briefly; Python versions and terminology are orientation, not a long historical diversion. In ipython, prioritise evaluating expressions and determining an object’s type; defer the magic-command catalogue. In data structures, prioritise Lists, Python with strings, and Getting help. Show what dictionaries represent only if time permits; tuples, sets and copying mutable objects can wait. Jump forward to the introductory conditional section intentionally: chapter order need not dictate teaching order.</p>
+<p>11:30-13:30. The first row includes this 20-minute opening, leaving 40 minutes for the live chapter walkthrough. Use Why Python? briefly; Python versions and terminology are orientation, not a long historical diversion. In ipython, prioritise evaluating expressions and determining an object’s type; defer the magic-command catalogue. In data structures, prioritise Lists, Python with strings, and Getting help. Show what dictionaries represent only if time permits; tuples, sets and copying mutable objects can wait. Jump forward to the introductory conditional section intentionally: chapter order need not dictate teaching order. In the Zen section, focus on “Explicit is better than implicit” and “Readability counts.” Point back to the site-count plan: stated assumptions make the result checkable, and readable steps make it easier to explain. The full list is optional reading; functions and formal testing come later.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1345,9 +1347,9 @@ display:block!important;
 </tr>
 </tbody>
 </table>
-<p>Compare predictions with a partner; keep ownership of your own code. <a href="https://mulquabio.github.io/MQB/notebooks/python.html#getting-help">Getting help</a>.</p>
+<p>Compare predictions with a partner; state one assumption, check one result, and save your code so you can rerun it. Commit your work as you go; keep ownership of your code. <a href="https://mulquabio.github.io/MQB/notebooks/python.html#getting-help">Getting help</a>.</p>
 <aside class="notes">
-<p>13:30-15:00. Begin the actual afternoon by saving and committing current work, then help students move files deliberately, not with blanket move commands. Use the 14:30-15:30 Python block for Python variables, Lists, Python with strings, Getting help, Writing Python code and <a href="https://mulquabio.github.io/MQB/notebooks/python.html#testing-running-blocks-of-code">Testing/running blocks of code</a>. Choose a small example rather than trying to complete every section in an hour. Trace a loop or conditional and outline a site-count summary if time permits. Introduce the common synthetic observations data only when the checked example input is available. If it is not, the tiny table above supports planning without implying example data have been published. From 15:30, protect Assignment 1 work time and answer questions using the posted brief. Students should write their own plan and small attempt in the Python block; there is no requirement to finish the whole week’s summary function today. Getting help means built-in help and documentation as well as a GTA, not live AI.</p>
+<p>13:30-15:00. Begin the actual afternoon by saving and committing current work, then help students move files deliberately, not with blanket move commands. Connect the practice to the opening-week routine: inspect, correct, rerun, share. Git commits keep useful checkpoints, but do not by themselves show that a result is correct. Use the 14:30-15:30 Python block for Python variables, Lists, Python with strings, Getting help, Writing Python code and <a href="https://mulquabio.github.io/MQB/notebooks/python.html#testing-running-blocks-of-code">Testing/running blocks of code</a>. Choose a small example rather than trying to complete every section in an hour. Trace a loop or conditional and outline a site-count summary if time permits. Introduce the common synthetic observations data only when the checked example input is available. If it is not, the tiny table above supports planning without implying example data have been published. From 15:30, protect Assignment 1 work time and answer questions using the posted brief. Students should write their own plan and small attempt in the Python block; there is no requirement to finish the whole week’s summary function today. Getting help means built-in help and documentation as well as a GTA, not live AI.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;

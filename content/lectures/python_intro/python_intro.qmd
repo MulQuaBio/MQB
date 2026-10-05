@@ -78,7 +78,7 @@ An identical row could be a genuine replicate in another study. Counts alone
 do not establish abundance differences without sampling-effort information.
 :::
 
-## Write a plan before writing Python {data-timing="120"}
+## Write an algorithm before writing Python {data-timing="120"}
 
 ```text
 INPUT: observations with site, date and count
@@ -91,11 +91,16 @@ For each site:
 OUTPUT: known-count total and missing-count number per site
 ```
 
+**This plain-language outline is pseudocode:** an informal sketch of the algorithm, not executable Python. See the book's [algorithm example](https://mulquabio.github.io/MQB/notebooks/python.html#what-is-an-algorithm).
+
 **Expected here:** A: total 2, one missing; B: total 0, none missing.
 
+**Zen connection:** “Explicit is better than implicit”; “Readability counts.” State assumptions and use steps a classmate can follow.
+
 ::: notes
-04:00-06:00. Define pseudocode as ordinary-language steps precise enough to
-translate into code. Work through the four rows by hand. A sum of 4 at A
+04:00-06:00. Define an algorithm as a sequence of steps for solving a problem;
+pseudocode is an informal way to write those steps before coding. It has no
+fixed syntax and is not executable Python. Work through the four rows by hand. A sum of 4 at A
 would reveal double counting; reporting no missing values would lose evidence.
 For a site with every count missing, do not silently interpret a zero sum as
 an observed zero: flag that no known count is available. This is a boundary
@@ -186,7 +191,7 @@ Open [Biological Computing in Python](https://mulquabio.github.io/MQB/notebooks/
 
 | Booking | Chapter sections | Aim |
 |:--|:--|:--|
-| 10:00-11:00 | [Introduction](https://mulquabio.github.io/MQB/notebooks/python.html#introduction); [Getting started with Python](https://mulquabio.github.io/MQB/notebooks/python.html#getting-started-with-python); [The Zen of Python and good programming practices](https://mulquabio.github.io/MQB/notebooks/python.html#the-zen-of-python-and-good-programming-practices); [ipython](https://mulquabio.github.io/MQB/notebooks/python.html#ipython) | Run small expressions; distinguish shell from Python; predict outputs |
+| 10:00-11:00 | [Introduction](https://mulquabio.github.io/MQB/notebooks/python.html#introduction); [Getting started with Python](https://mulquabio.github.io/MQB/notebooks/python.html#getting-started-with-python); [The Zen of Python and good programming practices](https://mulquabio.github.io/MQB/notebooks/python.html#the-zen-of-python-and-good-programming-practices); [ipython](https://mulquabio.github.io/MQB/notebooks/python.html#ipython) | Predict outputs; connect two Zen aphorisms to clear steps; distinguish shell from Python |
 | 11:25-12:25 | [Python variables](https://mulquabio.github.io/MQB/notebooks/python.html#python-variables); selected [Python data structures](https://mulquabio.github.io/MQB/notebooks/python.html#python-data-structures); introductory [Loops](https://mulquabio.github.io/MQB/notebooks/python.html#loops) and [Control flow tools](https://mulquabio.github.io/MQB/notebooks/python.html#control-flow-tools) | Assign values; use lists and strings; trace a loop and a conditional |
 
 Start small: one value, one list, one decision, one loop.
@@ -200,6 +205,10 @@ magic-command catalogue. In data structures, prioritise Lists, Python with
 strings, and Getting help. Show what dictionaries represent only if time permits;
 tuples, sets and copying mutable objects can wait. Jump forward to the introductory
 conditional section intentionally: chapter order need not dictate teaching order.
+In the Zen section, focus on “Explicit is better than implicit” and “Readability
+counts.” Point back to the site-count plan: stated assumptions make the result
+checkable, and readable steps make it easier to explain. The full list is optional
+reading; functions and formal testing come later.
 :::
 
 ## Today's afternoon: your turn {data-timing="90"}
@@ -212,11 +221,14 @@ conditional section intentionally: chapter order need not dictate teaching order
 | 14:30-15:30 | Focused Python practice: [values](https://mulquabio.github.io/MQB/notebooks/python.html#python-variables), [lists](https://mulquabio.github.io/MQB/notebooks/python.html#lists), [strings](https://mulquabio.github.io/MQB/notebooks/python.html#python-with-strings) and a [small saved example](https://mulquabio.github.io/MQB/notebooks/python.html#writing-python-code) |
 | 15:30-17:00 | Assignment 1 work and help |
 
-Compare predictions with a partner; keep ownership of your own code. [Getting help](https://mulquabio.github.io/MQB/notebooks/python.html#getting-help).
+Compare predictions with a partner; state one assumption, check one result, and save your code so you can rerun it. Commit your work as you go; keep ownership of your code. [Getting help](https://mulquabio.github.io/MQB/notebooks/python.html#getting-help).
 
 ::: notes
 13:30-15:00. Begin the actual afternoon by saving and committing current work,
 then help students move files deliberately, not with blanket move commands.
+Connect the practice to the opening-week routine: inspect, correct, rerun, share.
+Git commits keep useful checkpoints, but do not by themselves show that a result
+is correct.
 Use the 14:30-15:30 Python block for Python variables, Lists, Python with strings,
 Getting help, Writing Python code and [Testing/running blocks of code](https://mulquabio.github.io/MQB/notebooks/python.html#testing-running-blocks-of-code). Choose a
 small example rather than trying to complete every section in an hour. Trace a
