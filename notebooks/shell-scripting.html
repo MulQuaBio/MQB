@@ -584,6 +584,7 @@
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-a-task-to-an-algorithm">From a task to an algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-shell-scripts-are-good-for">What shell scripts are good for</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-scripts-you-might-actually-keep">Utility scripts you might actually keep</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-these-are-shell-utilities">Why these are shell utilities</a></li>
@@ -683,6 +684,19 @@
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>A shell script is a <strong>text file containing commands</strong>. Instead of typing the same commands again, save them in order and ask Bash to run them.</p>
 <p>This makes a workflow easier to repeat, inspect and improve.</p>
+<section id="from-a-task-to-an-algorithm">
+<h3>From a task to an algorithm<a class="headerlink" href="#from-a-task-to-an-algorithm" title="Link to this heading">#</a></h3>
+<p>Suppose you have several observation files and want to report the number of lines in each one. You have already met commands such as <code class="docutils literal notranslate"><span class="pre">wc</span></code> in the <a class="reference internal" href="unix.html"><span class="std std-doc">UNIX chapter</span></a>. Before choosing commands, how would you describe the task to someone else?</p>
+<ol class="arabic simple">
+<li><p>Select the files to inspect.</p></li>
+<li><p>For each file, count its lines.</p></li>
+<li><p>Report each filename alongside its line count.</p></li>
+<li><p>Finish after all selected files have been processed.</p></li>
+</ol>
+<p>These steps form an <strong>algorithm</strong>: a precise, ordered procedure for solving a specified problem. Here, the inputs are the selected files and the output is a line count for each filename. An algorithm describes what to do; a <strong>program</strong>, such as a shell script, expresses those steps as instructions a computer can run. The same algorithm could also be implemented in Python or R.</p>
+<p>Be clear about what the result means: a line count is not necessarily an observation count. A file may contain a header, blank lines, or records spanning several lines.</p>
+<p>Saving the implementation lets you repeat the procedure on new files without reconstructing the commands each time. To reproduce a result, you also need the input files and the relevant software and settings. A repeatable procedure still needs checking: repeating the same mistake does not make the answer correct.</p>
+</section>
 <section id="what-shell-scripts-are-good-for">
 <h3>What shell scripts are good for<a class="headerlink" href="#what-shell-scripts-are-good-for" title="Link to this heading">#</a></h3>
 <p>Shell scripts are good at joining small command-line jobs:</p>
@@ -1419,6 +1433,7 @@ mkdir<span class="w"> </span><span class="s2">"</span><span class="nv">$shell_pr
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-a-task-to-an-algorithm">From a task to an algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-shell-scripts-are-good-for">What shell scripts are good for</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-scripts-you-might-actually-keep">Utility scripts you might actually keep</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-these-are-shell-utilities">Why these are shell utilities</a></li>

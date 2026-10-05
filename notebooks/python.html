@@ -586,6 +586,7 @@
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-algorithm">What is an algorithm?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-python">Why Python?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-versions">Python versions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-terminology">Some terminology</a></li>
@@ -639,6 +640,11 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-flow-tools">Control flow tools</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditionals">Conditionals</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-examples-of-loops-and-conditionals-combined">More examples of loops and conditionals combined</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-an-algorithm-to-python">From an algorithm to Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#designing-an-algorithm-for-imperfect-data">Designing an algorithm for imperfect data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-summarize-observations-by-site">Example: summarize observations by site</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comprehensions">Comprehensions</a></li>
@@ -689,7 +695,7 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Practicals</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#align-dna-sequenceopen-align-seqs-py-from-mqb-s-code-directory-this-script-aligns-two-dna-sequences-such-that-they-are-as-similar-as-possible-run-the-script-and-make-sure-you-understand-what-every-line-is-doing-a-good-way-to-do-this-now-that-you-have-learnt-debugging-is-to-insert-a-breakpoint-import-ipdb-ipdb-set-trace-at-key-locations-in-the-script-and-examine-what-is-going-on-for-example-inserting-one-just-after-the-start-of-the-for-loop-of-the-calculate-score-function-module-is-a-good-place">Align DNA sequenceOpen <code class="docutils literal notranslate"><span class="pre">align_seqs.py</span></code> from MQB’s code directory. This script aligns two DNA sequences such that they are as similar as possible. Run the script and make sure you understand what every line is doing. A good way to do this, now that you have learnt debugging, is to insert a breakpoint (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">ipdb;</span> <span class="pre">ipdb.set_trace()</span></code>) at key locations in the script and examine what is going on. For example, inserting one just after the start of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop of the <code class="docutils literal notranslate"><span class="pre">calculate_score</span></code> function/module is a good place.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#align-dna-sequences">Align DNA sequences</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupwork-practical-on-align-dna-sequences">Groupwork Practical on Align DNA sequences</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupwork-practical-on-align-dna-sequences-2">Groupwork Practical on Align DNA sequences 2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-oaks-problem">Missing oaks problem</a></li>
@@ -806,6 +812,7 @@
 <p class="admonition-title">Learning goals</p>
 <p><strong>By the end of this chapter you should be able to:</strong></p>
 <ul class="simple">
+<li><p>Describe a simple algorithm in plain language and check it against a worked example</p></li>
 <li><p>Write and execute Python scripts and understand basic syntax</p></li>
 <li><p>Work with Python data structures (lists, tuples, dictionaries, sets)</p></li>
 <li><p>Implement control flow (conditionals, loops) in Python</p></li>
@@ -822,16 +829,28 @@
 <p class="admonition-title">Prerequisites</p>
 <p><strong>Before starting this chapter, you should:</strong></p>
 <ul class="simple">
-<li><p>Be comfortable with basic programming concepts (variables, functions, loops)</p></li>
 <li><p>Have experience using UNIX/Linux command line (covered in <a class="reference internal" href="unix.html"><span class="std std-doc">UNIX and Linux</span></a>)</p></li>
 <li><p>Understand basic file operations</p></li>
-<li><p>Have Python installed and be able to run simple scripts</p></li>
+<li><p>Have Python installed</p></li>
 </ul>
+<p>No prior Python knowledge is assumed. Variables, functions and loops are introduced in this chapter. The <a class="reference internal" href="shell-scripting.html#from-a-task-to-an-algorithm"><span class="std std-ref">shell-scripting chapter</span></a> introduces algorithms, but the introduction below also provides a self-contained example.</p>
 </div>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>Python is a modern, easy-to-write, interpreted (semi-compiled) programming language that was conceived with readability of code in mind. It has a numerous of feature-rich packages that can be used for a wide variety of biological applications and analyses.</p>
-<p>This chapter is intended to teach you scientific programming in biology using python. Specifically, you will learn:</p>
+<p>Python is a modern, easy-to-write, interpreted (semi-compiled) programming language that was conceived with readability of code in mind. It has numerous feature-rich packages that can be used for a wide variety of biological applications and analyses.</p>
+<section id="what-is-an-algorithm">
+<h3>What is an algorithm?<a class="headerlink" href="#what-is-an-algorithm" title="Link to this heading">#</a></h3>
+<p>In <a class="reference internal" href="shell-scripting.html#from-a-task-to-an-algorithm"><span class="std std-ref">shell scripting</span></a>, we described a task as a sequence of steps before expressing it as commands. That sequence is an <strong>algorithm</strong>. We will now use Python to implement algorithms for biological problems.</p>
+<p>If you are starting here, consider four plant heights: 8, 12, 10 and 15 cm. <strong>How many exceed 10 cm?</strong> Work out the answer, then describe the steps that someone else could follow on a thousand measurements:</p>
+<ol class="arabic simple">
+<li><p>Start a counter at zero.</p></li>
+<li><p>Examine each height in turn.</p></li>
+<li><p>If the height is greater than 10 cm, increase the counter by one.</p></li>
+<li><p>After the last height, report the counter.</p></li>
+</ol>
+<p>These steps form an algorithm: a precise, ordered procedure for solving a specified problem. Its input is a collection of recorded heights in centimetres; its output is the number greater than 10 cm. Here, the expected answer is <strong>2</strong>. The height of exactly 10 cm is not counted because the question says “exceed”, not “equal or exceed”.</p>
+<p>The algorithm is independent of the programming language. A <strong>program</strong> implements the steps as instructions a computer can run. You do not need Python syntax to plan this procedure; later, we will express its counter, repetition and decision using variables, loops and conditionals.</p>
+<p>Turning plans like this into reliable programs is the focus of this chapter. You will learn to use Python to implement, test and refine algorithms for biological questions, from small calculations to complete scientific workflows. Specifically, you will learn:</p>
 <ul class="simple">
 <li><p>Basics of Python syntax and data structures</p></li>
 <li><p>Python’s object-oriented features</p></li>
@@ -845,6 +864,7 @@
 <li><p>Using Python to run other, non-Python tasks and code</p></li>
 <li><p>Using Python to patch together data analysis and/or numerical simulation work flows</p></li>
 </ul>
+</section>
 <section id="why-python">
 <span id="python-why-python"></span><h3>Why Python?<a class="headerlink" href="#why-python" title="Link to this heading">#</a></h3>
 <p>Python was designed with readability and re-usability in mind. Time taken by programming + debugging + running is likely to be relatively lower in Python than less intuitive or cluttered languages (e.g., FOrTrAN, Perl).</p>
@@ -1027,11 +1047,11 @@ Namespaces are one honking great idea -- let's do more of those!
 </div>
 </div>
 <p>They are Python’s programming principles. The Dutch reference is to Guido van Rossum, Python’s creator.</p>
-<p>Use these aphorisms as prompts, not a checklist to master today (!):</p>
+<p>Use these aphorisms as prompts for discussion, not as an exhaustive checklist:</p>
 <ul class="simple">
 <li><p><strong>Explicit is better than implicit:</strong> state the inputs, assumptions and steps before coding. This builds on the opening-week idea of a program as an explicit recipe.</p></li>
 <li><p><strong>Readability counts:</strong> choose clear names and layout so another person can follow the steps. See <a class="reference internal" href="#python-variables">Python variables</a> and <a class="reference internal" href="#writing-python-code">Writing Python code</a>, and consult the official <a class="reference external" href="https://peps.python.org/pep-0008/">PEP 8 style guide</a>.</p></li>
-<li><p><strong>Check before trusting a result:</strong> predict what a short expression will do, run it, and compare the output with your prediction. Try <a class="reference internal" href="#baby-steps">Baby steps</a> and <a class="reference internal" href="#testing-running-blocks-of-code"><span class="xref myst">testing/running blocks of code</span></a>.</p></li>
+<li><p><strong>Check before trusting a result:</strong> predict what a short expression will do, run it, and compare the output with your prediction. Try <a class="reference internal" href="#baby-steps">Baby steps</a> and <a class="reference external" href="https://mulquabio.github.io/MQB/notebooks/python.html#testing-running-blocks-of-code">testing/running blocks of code</a>.</p></li>
 <li><p><strong>Keep a useful work history:</strong> use <a class="reference internal" href="git.html#why-version-control"><span class="std std-ref">Git</span></a> to record changes, with clear <a class="reference internal" href="git.html#write-useful-commit-messages"><span class="std std-ref">commit messages</span></a>. This supports the opening-week routine: inspect, correct, rerun and share.</p></li>
 </ul>
 <p>Later this week, <a class="reference internal" href="#functions">functions</a> will help you break a larger task into smaller reusable steps. Formal unit testing and other techniques follow later in the course.</p>
@@ -2678,6 +2698,70 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 <p>Note how, in the last function above, the <code class="docutils literal notranslate"><span class="pre">break</span></code> directive exits <em>the loop</em> when the condition is met. If you did not have this, you would get an infinite loop! (and would need to use <code class="docutils literal notranslate"><span class="pre">Ctrl+c</span></code> to stop it). Note also that <code class="docutils literal notranslate"><span class="pre">break</span></code> only breaks out of the current loop. It does not stop the execution of the rest of the code that may be in that program or script.</p>
 </div>
 </section>
+<section id="from-an-algorithm-to-python">
+<h3>From an algorithm to Python<a class="headerlink" href="#from-an-algorithm-to-python" title="Link to this heading">#</a></h3>
+<p>Return to the plant-height question from the introduction. Trace this program by hand: what value does <code class="docutils literal notranslate"><span class="pre">above_threshold</span></code> have after each height?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">heights_cm</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+<span class="n">above_threshold</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">height_cm</span> <span class="ow">in</span> <span class="n">heights_cm</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">height_cm</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">above_threshold</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">above_threshold</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The counter starts at zero, the loop examines each height, and the conditional decides whether to increase the counter. The successive counter values are 0, 1, 1 and 2, so the program reports <strong>2</strong>, matching the result predicted before coding. What would change if the question asked for heights of at least 10 cm?</p>
+</section>
+<section id="designing-an-algorithm-for-imperfect-data">
+<h3>Designing an algorithm for imperfect data<a class="headerlink" href="#designing-an-algorithm-for-imperfect-data" title="Link to this heading">#</a></h3>
+<p>The height example assumed that all measurements were present and in centimetres. Real biological data require additional decisions before we write code.</p>
+<section id="example-summarize-observations-by-site">
+<h4>Example: summarize observations by site<a class="headerlink" href="#example-summarize-observations-by-site" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Site</p></th>
+<th class="head text-left"><p>Date</p></th>
+<th class="head text-right"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>A</p></td>
+<td class="text-left"><p>2026-10-01</p></td>
+<td class="text-right"><p>2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>B</p></td>
+<td class="text-left"><p>2026-10-01</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>A</p></td>
+<td class="text-left"><p>2026-10-02</p></td>
+<td class="text-right"><p>missing</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>A</p></td>
+<td class="text-left"><p>2026-10-01</p></td>
+<td class="text-right"><p>2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>What is the total recorded count at each site? Before coding, decide how to treat repeated rows and missing values. For this example, an exact repeated row is a duplicate record, missing counts are reported separately, and only known counts are summed. These are example assumptions, not universal rules; an identical row could be a genuine replicate in another study.</p>
+<p>We can record the plan as <strong>pseudocode</strong>: an informal sketch of an algorithm, not executable Python. There is no required syntax; the aim is to make the steps and decisions explicit.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>INPUT: observations with site, date and count
+Check that the expected fields are present; stop and report an error if not
+Identify exact duplicate records
+Keep one copy of each record for this example
+For each site:
+    report how many counts are missing
+    if at least one count is present:
+        add the counts that are present and report the known-count total
+    otherwise:
+        report that no known total is available
+OUTPUT: known-count total (or unavailable) and missing-count number per site
+</pre></div>
+</div>
+<p>Work through the rows by hand before attempting an implementation. <strong>Expected:</strong> Site A has a known-count total of 2 and one missing count; site B has a total of 0 and no missing counts. If every count for a site is missing, no known total is available: this is different from an observed zero.</p>
+<p>The plan combines repetition (for each site) and decisions (whether any counts are present), but it does not yet specify the Python data structures and functions needed to implement every step. Keep the expected results as checks when developing the program.</p>
+</section>
+</section>
 </section>
 <section id="comprehensions">
 <span id="python-comprehensions"></span><h2>Comprehensions<a class="headerlink" href="#comprehensions" title="Link to this heading">#</a></h2>
@@ -4051,8 +4135,9 @@ Automatic<span class="w"> </span>pdb<span class="w"> </span>calling<span class="
 <section id="id2">
 <h2>Practicals<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>As always, test, add, commit and push all your new code and data to your Git repository.</p>
-<section id="align-dna-sequenceopen-align-seqs-py-from-mqb-s-code-directory-this-script-aligns-two-dna-sequences-such-that-they-are-as-similar-as-possible-run-the-script-and-make-sure-you-understand-what-every-line-is-doing-a-good-way-to-do-this-now-that-you-have-learnt-debugging-is-to-insert-a-breakpoint-import-ipdb-ipdb-set-trace-at-key-locations-in-the-script-and-examine-what-is-going-on-for-example-inserting-one-just-after-the-start-of-the-for-loop-of-the-calculate-score-function-module-is-a-good-place">
-<h3>Align DNA sequenceOpen <code class="docutils literal notranslate"><span class="pre">align_seqs.py</span></code> from MQB’s code directory. This script aligns two DNA sequences such that they are as similar as possible. Run the script and make sure you understand what every line is doing. A good way to do this, now that you have learnt debugging, is to insert a breakpoint (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">ipdb;</span> <span class="pre">ipdb.set_trace()</span></code>) at key locations in the script and examine what is going on. For example, inserting one just after the start of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop of the <code class="docutils literal notranslate"><span class="pre">calculate_score</span></code> function/module is a good place.<a class="headerlink" href="#align-dna-sequenceopen-align-seqs-py-from-mqb-s-code-directory-this-script-aligns-two-dna-sequences-such-that-they-are-as-similar-as-possible-run-the-script-and-make-sure-you-understand-what-every-line-is-doing-a-good-way-to-do-this-now-that-you-have-learnt-debugging-is-to-insert-a-breakpoint-import-ipdb-ipdb-set-trace-at-key-locations-in-the-script-and-examine-what-is-going-on-for-example-inserting-one-just-after-the-start-of-the-for-loop-of-the-calculate-score-function-module-is-a-good-place" title="Link to this heading">#</a></h3>
+<section id="align-dna-sequences">
+<h3>Align DNA sequences<a class="headerlink" href="#align-dna-sequences" title="Link to this heading">#</a></h3>
+<p>Open <code class="docutils literal notranslate"><span class="pre">align_seqs.py</span></code> from MQB’s code directory. This script aligns two DNA sequences such that they are as similar as possible. Run the script and make sure you understand what every line is doing. A good way to do this, now that you have learnt debugging, is to insert a breakpoint (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">ipdb;</span> <span class="pre">ipdb.set_trace()</span></code>) at key locations in the script and examine what is going on. For example, inserting one just after the start of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop of the <code class="docutils literal notranslate"><span class="pre">calculate_score</span></code> function/module is a good place.</p>
 <p>The aligning algorithm is simple. Start by positioning the beginning of the shorter sequence at all positions (bases) of the longer one (the start position), and count the number of bases matched downstream. Then, for each start position, count the “score” as total of number of bases matched. The alignment with the highest score wins. Ties are possible, in which case, you just take the arbitrary alignment (e.g., first or last) with the highest score.</p>
 <p>Your tasks:</p>
 <ul class="simple">
@@ -4771,8 +4856,8 @@ from the end of an array:</p>
 <section id="the-lotka-volterra-model">
 <h5>The Lotka-Volterra model<a class="headerlink" href="#the-lotka-volterra-model" title="Link to this heading">#</a></h5>
 <p>Now let’s try numerical integration in Python for solving a classical model in biology — the Lotka-Volterra (LV) model for a predator-prey system in two-dimensional space (e.g., on land). The LV model is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a47aed73-e9eb-4274-bb15-080b69525cc7">
-<span class="eqno">(2)<a class="headerlink" href="#equation-a47aed73-e9eb-4274-bb15-080b69525cc7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b5df4db3-7503-4fde-bb1b-9d63f366ae96">
+<span class="eqno">(2)<a class="headerlink" href="#equation-b5df4db3-7503-4fde-bb1b-9d63f366ae96" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dr}{dt} &amp;= r r - a C r  \nonumber \\
     \frac{dC}{dt} &amp;= - z C + e a C r
 \end{align}\]</div>
@@ -5252,8 +5337,8 @@ from the end of an array:</p>
 <h3>The Lotka-Volterra model revisited<a class="headerlink" href="#the-lotka-volterra-model-revisited" title="Link to this heading">#</a></h3>
 <p><em>What happens when the consumer population <span class="math notranslate nohighlight">\(C\)</span> goes extinct in the Lotka-Volterra that you encountered above</em>?</p>
 <p>If the consumer population goes extinct, the resources grow to infinity! This is not biologically realistic, of course. To address this, we can introduce density dependence to the resource population <span class="math notranslate nohighlight">\(\left(1 - \frac{r} {K}\right)\)</span>, which changes the ODE system to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-91019bee-db3a-4d47-8a3f-a3963d05b5dd">
-<span class="eqno">(3)<a class="headerlink" href="#equation-91019bee-db3a-4d47-8a3f-a3963d05b5dd" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d0e769f6-10a7-42a8-8cef-23616d2298a1">
+<span class="eqno">(3)<a class="headerlink" href="#equation-d0e769f6-10a7-42a8-8cef-23616d2298a1" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dr}{dt} &amp;= r r \left(1 - \frac{r} {K}\right) - a C r\\
     \frac{dC}{dt} &amp;= - z C + e a C r
 \end{align}\]</div>
@@ -5283,8 +5368,8 @@ from the end of an array:</p>
 <ul class="simple">
 <li><p>Write a discrete-time version of the LV model called <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>. The discrete-time model is:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-6f041f86-158f-447e-ae78-0417bf4566ec">
-<span class="eqno">(4)<a class="headerlink" href="#equation-6f041f86-158f-447e-ae78-0417bf4566ec" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-eaae8aa2-17d8-4f82-be85-3a9b087f24ee">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eaae8aa2-17d8-4f82-be85-3a9b087f24ee" title="Permalink to this equation">#</a></span>\[\begin{align} 
     r_{t+1} &amp;= r_t (1 + r \left(1 - \frac{r_t}{K}\right) - a C_t)\\ 
     C_{t+1} &amp;= C_t (1 - z + e a r_t) 
 \end{align}\]</div>
@@ -5295,14 +5380,14 @@ from the end of an array:</p>
 <ul class="simple">
 <li><p>Write a version of the discrete-time model (which you implemented in <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>) simulation with a random gaussian fluctuation in resource’s growth rate at each time-step:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-7bc431ce-e1f1-404a-93d6-e1547144e6e0">
-<span class="eqno">(5)<a class="headerlink" href="#equation-7bc431ce-e1f1-404a-93d6-e1547144e6e0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-83d2791b-29b3-463c-8fbe-56a69e8812e8">
+<span class="eqno">(5)<a class="headerlink" href="#equation-83d2791b-29b3-463c-8fbe-56a69e8812e8" title="Permalink to this equation">#</a></span>\[\begin{align}
         r_{t+1} &amp;= r_t (1 + (r + \epsilon) \left(1 - \frac{r_t}{K}\right)- a C_t)\\
         C_{t+1} &amp;= C_t (1 - z + e a r_t)
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random fluctuation drawn from a gaussian distribution (use <code class="docutils literal notranslate"><span class="pre">sc.stats</span></code> or <code class="docutils literal notranslate"><span class="pre">np.random</span></code>). Include this script in <code class="docutils literal notranslate"> <span class="pre">run_LV.py</span></code>, and profile it as well. You can also add fluctuations to both populations simultaneously this way:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1d862838-7a2a-4dcf-9cc8-46d899305472">
-<span class="eqno">(6)<a class="headerlink" href="#equation-1d862838-7a2a-4dcf-9cc8-46d899305472" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f1d518ca-69f3-4fbb-adfb-0245397618d6">
+<span class="eqno">(6)<a class="headerlink" href="#equation-f1d518ca-69f3-4fbb-adfb-0245397618d6" title="Permalink to this equation">#</a></span>\[\begin{align}
     r_{t+1} &amp;= r_t (1 + (r + \epsilon)  \left(1 - \frac{r_t}{K}\right) - a C_t)\\
     C_{t+1} &amp;= C_t (1 - (z + \epsilon) + e a r_t)
 \end{align}\]</div>
@@ -6310,6 +6395,7 @@ for efficient data crunching</p></li>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-algorithm">What is an algorithm?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-python">Why Python?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-versions">Python versions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-terminology">Some terminology</a></li>
@@ -6363,6 +6449,11 @@ for efficient data crunching</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-flow-tools">Control flow tools</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditionals">Conditionals</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-examples-of-loops-and-conditionals-combined">More examples of loops and conditionals combined</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-an-algorithm-to-python">From an algorithm to Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#designing-an-algorithm-for-imperfect-data">Designing an algorithm for imperfect data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-summarize-observations-by-site">Example: summarize observations by site</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comprehensions">Comprehensions</a></li>
@@ -6413,7 +6504,7 @@ for efficient data crunching</p></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Practicals</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#align-dna-sequenceopen-align-seqs-py-from-mqb-s-code-directory-this-script-aligns-two-dna-sequences-such-that-they-are-as-similar-as-possible-run-the-script-and-make-sure-you-understand-what-every-line-is-doing-a-good-way-to-do-this-now-that-you-have-learnt-debugging-is-to-insert-a-breakpoint-import-ipdb-ipdb-set-trace-at-key-locations-in-the-script-and-examine-what-is-going-on-for-example-inserting-one-just-after-the-start-of-the-for-loop-of-the-calculate-score-function-module-is-a-good-place">Align DNA sequenceOpen <code class="docutils literal notranslate"><span class="pre">align_seqs.py</span></code> from MQB’s code directory. This script aligns two DNA sequences such that they are as similar as possible. Run the script and make sure you understand what every line is doing. A good way to do this, now that you have learnt debugging, is to insert a breakpoint (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">ipdb;</span> <span class="pre">ipdb.set_trace()</span></code>) at key locations in the script and examine what is going on. For example, inserting one just after the start of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop of the <code class="docutils literal notranslate"><span class="pre">calculate_score</span></code> function/module is a good place.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#align-dna-sequences">Align DNA sequences</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupwork-practical-on-align-dna-sequences">Groupwork Practical on Align DNA sequences</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupwork-practical-on-align-dna-sequences-2">Groupwork Practical on Align DNA sequences 2</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-oaks-problem">Missing oaks problem</a></li>

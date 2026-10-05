@@ -586,6 +586,7 @@
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-the-task-before-writing-r">Plan the task before writing R</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-r">Why r?</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#would-you-ever-need-anything-other-than-r">Would you ever need anything other than r?</a></li>
 </ul>
@@ -608,7 +609,10 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r-data-structures">R Data Structures</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors">Vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors">Vectors</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-an-algorithm-to-r">From an algorithm to R</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-and-arrays">Matrices and Arrays</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-frames">Data frames</a></li>
@@ -730,6 +734,7 @@
 <p class="admonition-title">Learning goals</p>
 <p><strong>By the end of this chapter you should be able to:</strong></p>
 <ul class="simple">
+<li><p>Describe a simple algorithm and check its R implementation against an expected result</p></li>
 <li><p>Write and execute R scripts and understand R syntax</p></li>
 <li><p>Work with R data structures (vectors, matrices, data frames, lists)</p></li>
 <li><p>Import, manipulate, and export data in R</p></li>
@@ -746,16 +751,28 @@
 <p class="admonition-title">Prerequisites</p>
 <p><strong>Before starting this chapter, you should:</strong></p>
 <ul class="simple">
-<li><p>Be comfortable with basic programming concepts (variables, functions, loops)</p></li>
 <li><p>Have experience using UNIX/Linux command line (covered in <a class="reference internal" href="unix.html"><span class="std std-doc">UNIX and Linux</span></a>)</p></li>
 <li><p>Understand basic statistical concepts (helpful but not essential)</p></li>
 <li><p>Have R and RStudio installed on your system</p></li>
 <li><p>Know how to navigate the RStudio interface</p></li>
 </ul>
+<p>No prior R or Python knowledge is assumed. Variables, functions and loops are introduced in this chapter. The <a class="reference internal" href="shell-scripting.html#from-a-task-to-an-algorithm"><span class="std std-ref">shell-scripting chapter</span></a> introduces algorithms, but the introduction below also provides a self-contained example.</p>
 </div>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>r is a freely available statistical software with strong  programming capabilities widely used by professional scientists around  the world. It was based on the commercial statistical software <code class="docutils literal notranslate"><span class="pre">S</span></code> by robert Gentleman and ross Ihaka. The first stable version appeared  in 2000. It was essentially designed for <em>programming</em> statistical analysis and data-mining. It became the standard tool for data analysis and visualization in biology in a matter of just 10 years or so. It is also frequently used for mathematical modelling in biology.</p>
+<section id="plan-the-task-before-writing-r">
+<h3>Plan the task before writing R<a class="headerlink" href="#plan-the-task-before-writing-r" title="Link to this heading">#</a></h3>
+<p>In <a class="reference internal" href="shell-scripting.html#from-a-task-to-an-algorithm"><span class="std std-ref">shell scripting</span></a>, we described a task as a sequence of steps before expressing it as commands. These steps form an <strong>algorithm</strong>: a precise, ordered procedure for solving a specified problem. A <strong>program</strong> implements the steps as instructions a computer can run. An algorithm is independent of the programming language, so you do not need to have studied Python to plan a task in R.</p>
+<p>For example, suppose four plant heights are 8, 12, 10 and 15 cm. <strong>How many exceed 10 cm?</strong> You can solve this without any R syntax:</p>
+<ol class="arabic simple">
+<li><p>Start a counter at zero.</p></li>
+<li><p>Examine each height in turn.</p></li>
+<li><p>If the height is greater than 10 cm, increase the counter by one.</p></li>
+<li><p>After the last height, report the counter.</p></li>
+</ol>
+<p>The inputs are the recorded heights in centimetres and the output is the number greater than 10 cm. The expected answer is <strong>2</strong>: the height of exactly 10 cm does not exceed the threshold. We assume that all four measurements are present and in the same units.</p>
+<p>After introducing vectors and logical comparisons, we will implement this task in R and check the answer. The <a class="reference internal" href="python.html#what-is-an-algorithm"><span class="std std-ref">Python chapter</span></a> uses the same example: the question, decision rule and expected answer stay the same, while the language and implementation change.</p>
 <p>This chapter aims to lay down the foundations for you to use r for scientific computing in biology by exploiting its full potential as a fully featured object-oriented programming language. Specifically, this chapter aims at teaching you:</p>
 <ul class="simple">
 <li><p>Basic r syntax and programming conventions, assuming you have never set your eyes on r</p></li>
@@ -768,6 +785,7 @@
 <li><p>To make data wrangling and analyses more efficient and convenient using special packages</p></li>
 <li><p>Some additional, advanced topics (accessing databases, building your own packages, etc.).</p></li>
 </ul>
+</section>
 <section id="why-r">
 <h3>Why r?<a class="headerlink" href="#why-r" title="Link to this heading">#</a></h3>
 <p>There are many commercial statistical (minitab, SPSS, etc) software  packages in the world that are mouse-driven, warm, and friendly, and  have lots of statistical tests and plotting/graphing capabilities. Why not just use them? Here are some very good reasons:</p>
@@ -1580,6 +1598,19 @@ text), and Boolean (“logical”; <code class="docutils literal notranslate"><s
 <ol class=list-inline><li>0</li><li>0</li><li>0</li></ol>
 </div></div>
 </div>
+<section id="from-an-algorithm-to-r">
+<h4>From an algorithm to R<a class="headerlink" href="#from-an-algorithm-to-r" title="Link to this heading">#</a></h4>
+<p>Return to the introduction’s question: how many of the heights 8, 12, 10 and 15 cm exceed 10 cm? We predicted <strong>2</strong> before writing code. Now store the heights in a vector and compare every element with the threshold:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">heights_cm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="p">)</span>
+<span class="n">above_threshold</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">heights_cm</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">10</span>
+<span class="n">above_threshold</span>
+<span class="nf">sum</span><span class="p">(</span><span class="n">above_threshold</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">heights_cm</span> <span class="pre">&gt;</span> <span class="pre">10</span></code> applies the same comparison to each height and produces <code class="docutils literal notranslate"><span class="pre">FALSE</span> <span class="pre">TRUE</span> <span class="pre">FALSE</span> <span class="pre">TRUE</span></code>. When <code class="docutils literal notranslate"><span class="pre">sum</span></code> adds logical values, <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> contributes 1 and <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> contributes 0, so the result is <strong>2</strong>, matching our prediction. The height of exactly 10 cm is not counted. What would change if the question asked for heights of at least 10 cm?</p>
+<p>This is a <strong>vectorized implementation</strong>: R applies the comparison across the vector without an explicit loop in our code. The introduction’s counter procedure and this compare-and-sum procedure solve the same problem using different steps. The decision rule and expected result are unchanged; a loop is not the only way to implement the task.</p>
+<p>All measurements here are present and in centimetres. If a measurement is missing (<code class="docutils literal notranslate"><span class="pre">NA</span></code>), the comparison and sum can also be <code class="docutils literal notranslate"><span class="pre">NA</span></code>. Deciding whether to exclude missing measurements is a scientific choice, not merely a way to obtain a number.</p>
+</section>
 </section>
 <section id="matrices-and-arrays">
 <span id="r-matrices"></span><h3>Matrices and Arrays<a class="headerlink" href="#matrices-and-arrays" title="Link to this heading">#</a></h3>
@@ -5341,6 +5372,7 @@ Error in doit(popn) : Couldn't calculate mean: too few unique values!
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-the-task-before-writing-r">Plan the task before writing R</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-r">Why r?</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#would-you-ever-need-anything-other-than-r">Would you ever need anything other than r?</a></li>
 </ul>
@@ -5363,7 +5395,10 @@ Error in doit(popn) : Couldn't calculate mean: too few unique values!
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r-data-structures">R Data Structures</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors">Vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors">Vectors</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-an-algorithm-to-r">From an algorithm to R</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-and-arrays">Matrices and Arrays</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-frames">Data frames</a></li>
