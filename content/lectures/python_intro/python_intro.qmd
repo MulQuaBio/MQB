@@ -1,0 +1,318 @@
+---
+pagetitle: "Biological Computing in Python | Monday 5 October 2026"
+lang: en-GB
+format:
+  revealjs:
+    theme: simple
+    title-slide: false
+    slide-level: 2
+    width: 1280
+    height: 720
+    margin: 0.08
+    center: false
+    transition: none
+    slide-number: c/t
+    show-slide-number: all
+    incremental: false
+    navigation-mode: linear
+    controls: true
+    progress: true
+    history: true
+    embed-resources: true
+    auto-stretch: false
+execute:
+  enabled: false
+---
+
+## Biological Computing in Python {data-timing="30"}
+
+### From a biological question to a checked result
+
+**Computing Bootcamp | Monday 5 October 2026**
+
+Today: plan a small analysis, meet Python, and predict what code will do.
+
+::: notes
+00:00-00:30. This is the 20-minute opening within the booked 10:00-11:00
+introduction, not a replacement for the whole morning. No Python experience
+is assumed. Students can watch this opening without typing along.
+:::
+
+## Three weeks, one scientific routine {.smaller data-timing="90"}
+
+| Week | Main work | What you should be able to explain |
+|:--|:--|:--|
+| 2: Python I | Small functions and reproducible scripts | Inputs, decisions, outputs and checks |
+| 3: R | Data validation, summaries and figures | Missing values and scientific interpretation |
+| 4: Python II | Scientific workflows, debugging and profiling | Correctness before speed; verified improvements |
+
+**Plan → implement → test → explain → rerun**
+
+::: notes
+00:30-02:00. Explain each verb: write down the question and steps; express them
+in code; compare with a known case; explain assumptions and results; repeat
+from a fresh start. R is another route to related questions, not a restart.
+Week 4 introduces hands-on AI after an independent working baseline.
+:::
+
+## What are we actually trying to calculate? {data-timing="120"}
+
+**What is the total recorded count at each site?**
+
+| Site | Date | Count |
+|:--|:--|--:|
+| A | 2026-10-01 | 2 |
+| B | 2026-10-01 | 0 |
+| A | 2026-10-02 | missing |
+| A | 2026-10-01 | 2 |
+
+Before coding: **is missing the same as zero? Is the last row a new observation?**
+
+::: notes
+02:00-04:00. This is a synthetic illustration, not an assessed fixture or a
+released data schema. Ask students to identify the missing value and repeated
+row. For this worked example, assume an exact repeat is a duplicate recording,
+exclude it once, report missing observations separately, and sum only known
+counts. These are declared example choices, not universal ecological rules.
+An identical row could be a genuine replicate in another study. Counts alone
+do not establish abundance differences without sampling-effort information.
+:::
+
+## Write a plan before writing Python {data-timing="120"}
+
+```text
+INPUT: observations with site, date and count
+Check that the expected fields are present
+Identify exact duplicate records
+Keep one copy of each record for this example
+For each site:
+    report how many counts are missing
+    add the counts that are present
+OUTPUT: known-count total and missing-count number per site
+```
+
+**Expected here:** A: total 2, one missing; B: total 0, none missing.
+
+::: notes
+04:00-06:00. Define pseudocode as ordinary-language steps precise enough to
+translate into code. Work through the four rows by hand. A sum of 4 at A
+would reveal double counting; reporting no missing values would lose evidence.
+For a site with every count missing, do not silently interpret a zero sum as
+an observed zero: flag that no known count is available. This is a boundary
+case to specify before implementation. Today students need not implement the
+whole validation workflow; functions and richer tests follow later this week.
+:::
+
+## Baby steps: Python as a calculator {data-timing="120"}
+
+From the MQB chapter: [Getting started with Python / Baby steps](https://mulquabio.github.io/MQB/notebooks/python.html#baby-steps).
+
+```python
+2 + 2
+2 * 2
+2 / 2
+```
+
+**VS Code:** Terminal → New Terminal → enter `python3`.
+
+What do you expect each line to return? Let's try them one at a time at the `>>>` prompt.
+
+::: notes
+06:00-08:00. These expressions are taken directly from the chapter's Baby steps
+code cells, with explanatory comments omitted. Demonstrate in VS Code, which
+the cohort is already using. Before class, select the course interpreter using
+Python: Select Interpreter, open a new integrated terminal with the course
+environment activated, and check that python3 uses that environment. Do not
+turn the opening into an installation or environment-setup exercise.
+In VS Code, choose Terminal > New Terminal. At its shell prompt, enter python3,
+as in Getting started with Python. Keep the terminal text large enough to read.
+Point out the >>> prompt; it is displayed by Python, not something to type.
+Ask for a prediction, enter one expression, then read the result together.
+The outputs are 4, 4 and 1.0. Explain only that + adds, * multiplies and / divides.
+Python displays a division result with a decimal point; detailed types come later.
+Invite predictions and discuss the results; there is no need to type along. No lists, loops,
+variables or print call are needed to evaluate these expressions interactively.
+:::
+
+## Baby steps: asking a yes-or-no question {data-timing="120"}
+
+```python
+2 > 3
+2 >= 2
+```
+
+Is 2 greater than 3? Is 2 greater than or equal to 2?
+
+Python answers **`False`** or **`True`**.
+
+::: notes
+08:00-10:00. Stay in the same Python session in VS Code's integrated terminal.
+These are the next simple comparison examples from Baby steps,
+again with comments omitted. Read each question aloud and ask for a prediction
+before running it. Outputs are False and True. Define a comparison as asking
+whether a statement is true, rather than teaching conditional branches here.
+Point out the >= symbol at the moment it is used. Allow a pause for questions.
+Defer variables, lists, None, if/else and indentation to the chapter walkthrough.
+The earlier ecological table remains a plain-language planning example; students
+are not expected to translate it into Python during this opening.
+:::
+
+## Know which program is listening {data-timing="90"}
+
+| Where | Example | What accepts the instruction? |
+|:--|:--|:--|
+| VS Code terminal: shell | `python3` | The shell starts Python |
+| Python prompt | `2 + 2` | Python evaluates the expression |
+| IPython | `2 * 2` | An interactive Python session |
+
+**VS Code is the editor; its terminal can run a shell or Python.**
+
+::: notes
+10:00-11:30. VS Code is the editor; its integrated terminal hosts the shell and,
+after python3 starts, the Python session. The terminal is not itself Python.
+Revisit the change of prompt used in the demonstration. Arithmetic is entered at the Python prompt,
+not the shell prompt. A script is saved Python code; running scripts comes later.
+The interpreter displays interactive expression results without a print call.
+A saved script is a file; an interactive session holds temporary state. To return
+to the shell, enter exit() at the Python prompt. IPython later runs in this same
+integrated terminal; a notebook or separate terminal application is not needed.
+Use the interpreter already configured for teaching, not a new installation.
+IPython's conveniences and magic commands are not prerequisites for this opening.
+:::
+
+## Today's morning: chapter walkthrough {.smaller data-timing="120"}
+
+Open [Biological Computing in Python](https://mulquabio.github.io/MQB/notebooks/python.html).
+
+| Booking | Chapter sections | Aim |
+|:--|:--|:--|
+| 10:00-11:00 | [Introduction](https://mulquabio.github.io/MQB/notebooks/python.html#introduction); [Getting started with Python](https://mulquabio.github.io/MQB/notebooks/python.html#getting-started-with-python); [The Zen of Python and good programming practices](https://mulquabio.github.io/MQB/notebooks/python.html#the-zen-of-python-and-good-programming-practices); [ipython](https://mulquabio.github.io/MQB/notebooks/python.html#ipython) | Run small expressions; distinguish shell from Python; predict outputs |
+| 11:25-12:25 | [Python variables](https://mulquabio.github.io/MQB/notebooks/python.html#python-variables); selected [Python data structures](https://mulquabio.github.io/MQB/notebooks/python.html#python-data-structures); introductory [Loops](https://mulquabio.github.io/MQB/notebooks/python.html#loops) and [Control flow tools](https://mulquabio.github.io/MQB/notebooks/python.html#control-flow-tools) | Assign values; use lists and strings; trace a loop and a conditional |
+
+Start small: one value, one list, one decision, one loop.
+
+::: notes
+11:30-13:30. The first row includes this 20-minute opening, leaving 40 minutes
+for the live chapter walkthrough. Use Why Python? briefly; Python versions and
+terminology are orientation, not a long historical diversion. In ipython,
+prioritise evaluating expressions and determining an object's type; defer the
+magic-command catalogue. In data structures, prioritise Lists, Python with
+strings, and Getting help. Show what dictionaries represent only if time permits;
+tuples, sets and copying mutable objects can wait. Jump forward to the introductory
+conditional section intentionally: chapter order need not dictate teaching order.
+:::
+
+## Today's afternoon: your turn {data-timing="90"}
+
+**14:00-17:00 | Supported practical and peer discussion**
+
+| Time | Activity |
+|:--|:--|
+| 14:00-14:30 | Move your coursework into one project folder, with staff help |
+| 14:30-15:30 | Focused Python practice: [values](https://mulquabio.github.io/MQB/notebooks/python.html#python-variables), [lists](https://mulquabio.github.io/MQB/notebooks/python.html#lists), [strings](https://mulquabio.github.io/MQB/notebooks/python.html#python-with-strings) and a [small saved example](https://mulquabio.github.io/MQB/notebooks/python.html#writing-python-code) |
+| 15:30-17:00 | Assignment 1 work and help |
+
+Compare predictions with a partner; keep ownership of your own code. [Getting help](https://mulquabio.github.io/MQB/notebooks/python.html#getting-help).
+
+::: notes
+13:30-15:00. Begin the actual afternoon by saving and committing current work,
+then help students move files deliberately, not with blanket move commands.
+Use the 14:30-15:30 Python block for Python variables, Lists, Python with strings,
+Getting help, Writing Python code and [Testing/running blocks of code](https://mulquabio.github.io/MQB/notebooks/python.html#testing-running-blocks-of-code). Choose a
+small example rather than trying to complete every section in an hour. Trace a
+loop or conditional and outline a site-count summary if time permits.
+Introduce the common synthetic observations
+data only when the checked example input is available. If it is not, the tiny
+table above supports planning without implying example data have been published.
+From 15:30, protect Assignment 1 work time and answer questions using the posted
+brief. Students should write their own plan and small attempt in the Python block;
+there is no requirement to finish the whole week's summary function today.
+Getting help means built-in help and documentation as well as a GTA, not live AI.
+:::
+
+## What comes later? {.smaller data-timing="90"}
+
+| When | Chapter route |
+|:--|:--|
+| Tuesday | [Functions](https://mulquabio.github.io/MQB/notebooks/python.html#functions); independent function and first checks, 14:00-16:00 |
+| Thursday | [Unit testing](https://mulquabio.github.io/MQB/notebooks/python.html#unit-testing); review faulty code in the 11:15-12:30 testing session |
+| Thursday-Friday | Selected [debugging](https://mulquabio.github.io/MQB/notebooks/python.html#debugging), [Python Input/Output](https://mulquabio.github.io/MQB/notebooks/python.html#python-input-output), [Handling csv's](https://mulquabio.github.io/MQB/notebooks/python.html#handling-csv-s), [Writing Python programs](https://mulquabio.github.io/MQB/notebooks/python.html#writing-python-programs) |
+| Week 4 | [Numerical computing](https://mulquabio.github.io/MQB/notebooks/python.html#numerical-computing-in-python), [profiling](https://mulquabio.github.io/MQB/notebooks/python.html#the-need-for-speed-profiling-code), [vectorisation](https://mulquabio.github.io/MQB/notebooks/python.html#vectorization) and [workflows](https://mulquabio.github.io/MQB/notebooks/python.html#using-python-to-build-workflows) |
+
+**Assignment 1 help:** Tue/Thu 16:00-17:00; Fri 14:00-17:00.
+
+::: notes
+15:00-16:30. Not today's checklist: comprehensions, full program boilerplate,
+DNA alignment, regex or every chapter practical. This is a scope boundary, not
+an instruction to skip foundational material permanently.
+Tuesday retains independent function practice with a normal case and a boundary
+or failure check. The prepared faulty-AI-code critique has moved to Thursday's
+existing testing session; compare a test that misses the fault with one that
+detects it, rather than adding another practical.
+Friday's 14:00-16:30 block is for Assignment 1 completion and a clean rerun;
+16:30-17:00 is for submission checks and submission. The short Assignment 2
+formal briefing is in Friday morning Q&A. Offer Python extensions to early finishers.
+Modules and variable scope belong with functions and script
+development. Wednesday's field/equipment activity remains protected. The missing
+oaks exercise follows taught tests and the exact Assignment 2 brief; DNA alignment
+and comprehension exercises are practice or optional unless that brief says
+otherwise. Do not imply every exercise in the long chapter is assessed.
+:::
+
+## Keep one project; follow the released brief {data-timing="90"}
+
+```text
+coursework/
+    README.md
+    .gitignore
+    code/
+    data/
+    results/       generated outputs
+    sandbox/       optional scratch work
+```
+
+- Assignment 1 is already posted: its task list and AI rule remain authoritative.
+- Staff will support the move from `week1/`; do not create `week2/`, `week3/`, or `week4/`.
+- Start core Week 2-3 teaching tasks independently; hands-on AI comes in Week 4.
+
+::: notes
+16:30-18:00. This is a project layout, not a set of commands to execute immediately.
+Preserve existing files, save and commit current work first, and merge README
+content deliberately. Assignment 1 accepts legacy or unified layout; the final portfolio needs
+the unified root. Generated results and optional sandbox are normally ignored;
+results may be absent in a clean clone and created by a script. Direct students
+to the already published Assignment 1 page in the actual course channel; this
+checkout does not contain that brief, so do not invent a URL or reinterpret it.
+The teaching sequence does not replace any assessed task's published AI permission.
+:::
+
+## Before you leave today {.smaller data-timing="120"}
+
+Can you:
+
+- Predict a short Python example and explain one line?
+- Distinguish a missing value from an observed zero?
+- Name your inputs, output and one assumption before coding?
+- Locate your files and rerun the Week 1 commands after the supported migration?
+- Identify what remains to finish Assignment 1 and use the supported work time?
+
+**Approved deadlines: 17:00 UK local time**
+
+9 Oct: Assignment 1 · 16 Oct: Assignment 2 · 23 Oct: Assignment 3
+
+30 Oct: final cumulative portfolio
+
+::: notes
+18:00-20:00. Allow a short pair explanation, then one question. The first three
+submissions are formative; the final cumulative portfolio is summative. The user
+confirmed the plan's deadlines approved on 5 October and Assignment 1 posted.
+The first three deadlines are BST; the 30 October deadline is GMT after the clock
+change. No extra assessed task is introduced by this lecture.
+
+Instructor source map: MQB-project/plans/2026-10-02-bootcamp-weeks-2-4-revision.md
+(booked sessions, learning route, assessment boundaries); the active technical-
+language plan (define terms at point of use); ../../notebooks/python.ipynb
+(Getting started with Python and Baby steps: exact arithmetic and comparison
+expressions, plus chapter headings); ../intro_computing/intro_computing.qmd
+(Reveal.js conventions). Total planned speaking time: 1,200 seconds.
+:::
