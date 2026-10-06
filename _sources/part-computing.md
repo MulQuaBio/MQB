@@ -27,6 +27,16 @@ This part gets you comfortable with the command line, version control, and the c
 2. Then [Git](notebooks/git)
 3. Then pick your primary language: [Python](notebooks/python) and/or [R](notebooks/r)
 
+## Plan, implement, test, explain and rerun
+
+1. **Plan:** name the question, inputs, outputs and assumptions; predict a small example by hand.
+2. **Implement:** translate the plan into a small function or script, starting with your own attempt.
+3. **Test:** compare the result with your prediction, then check a boundary case and an invalid input.
+4. **Explain:** describe why the result answers the question and what each check detects.
+5. **Rerun:** start a fresh process from the documented project root and verify the same result with the same inputs.
+
+Try the [independent Python observations practice](notebooks/python.ipynb#independent-practice-summarise-observations-by-site). Core Python and R practice begins with independent work; a prepared suggestion can be critiqued afterwards without an assistant account. Each released assignment brief controls its assessed tasks and AI permissions; teaching examples do not amend those rules.
+
 ## Where this goes next
 
 Most later chapters assume you can:

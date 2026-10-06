@@ -645,6 +645,14 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-summarize-observations-by-site">Example: summarize observations by site</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-practice-summarise-observations-by-site">Independent practice: summarise observations by site</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-a-worked-function">First, a worked function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-and-project-layout">Inputs and project layout</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#next-a-partially-guided-conversion">Next, a partially guided conversion</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#then-your-independent-summary">Then, your independent summary</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-explain-and-rerun">Check, explain and rerun</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comprehensions">Comprehensions</a></li>
@@ -687,6 +695,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#other-unit-testing-approaches">Other unit testing approaches</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-your-tests-detect-a-plausible-wrong-answer">Can your tests detect a plausible wrong answer?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging">Debugging</a></li>
 </ul>
 </li>
@@ -2248,9 +2257,8 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 </div>
 </div>
 </div>
-<p>So all you get is the start and end point of the range, stored as <code class="docutils literal notranslate"><span class="pre">a</span></code>, whereas you might have expected to see the actual range of numbers.</p>
-<p>But as you saw above, this is a range of integers starting at 0, so 10 will actually not be in the set of numbers that are generated.</p>
-<p>The reason why <code class="docutils literal notranslate"><span class="pre">range(10)</span></code> does not give you the actual range of numbers when you call it, is that it is a “generator”. It doesn’t actually produce all numbers at once, but generates them only when needed (in the loop). This is (memory-)efficient, as it does not require a bunch of numbers to be stored in the rAM memory.</p>
+<p>Printing <code class="docutils literal notranslate"><span class="pre">a</span></code> shows a compact description of the range, not a list of all its values. <code class="docutils literal notranslate"><span class="pre">range(10)</span></code> represents the integers from 0 up to, but not including, 10.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">range</span></code> is a reusable <strong>iterable</strong>, not an iterator or a generator. It stores a compact description of the sequence rather than all the integers, so a large range uses little memory. A loop obtains an iterator from the range to retrieve its values. Use <code class="docutils literal notranslate"><span class="pre">list(a)</span></code> if you actually need a list of those values; that list stores them all.</p>
 <p>You can also use <code class="docutils literal notranslate"><span class="pre">range()</span></code> to generate numbers (and loop over) from a specific range of integers. For example, to generate a range from 1 to 5, do:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2275,14 +2283,13 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 <p class="admonition-title">Note</p>
 <p>In Python 2, <code class="docutils literal notranslate"><span class="pre">range()</span></code> creates a list, while <code class="docutils literal notranslate"><span class="pre">xrange()</span></code> provides a lazy sequence. In Python 3, <code class="docutils literal notranslate"><span class="pre">range()</span></code> is lazy, like Python 2’s <code class="docutils literal notranslate"><span class="pre">xrange()</span></code>, but it is not simply a renamed version. Use <code class="docutils literal notranslate"><span class="pre">range()</span></code> in Python 3.</p>
 </div>
-<p>OK, on to the variable <code class="docutils literal notranslate"><span class="pre">i</span></code> in our loop. This is a temporary placeholder for the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> at each iteration of the loop (AKA the “iterator” variable). So, in the first iteration of the loop, i = 0, which is also the “index” value of the loop at that point. We have used <code class="docutils literal notranslate"><span class="pre">i</span></code>, but you can use any valid variable name, such as <code class="docutils literal notranslate"><span class="pre">j</span></code>, <code class="docutils literal notranslate"><span class="pre">k</span></code>, or even <code class="docutils literal notranslate"><span class="pre">num</span></code> (try it).</p>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">i</span></code> in our loop is the <strong>loop variable</strong>: Python assigns the next value from the iterable to it on each iteration. In <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(10)</span></code>, its first value is 0. That value happens to match the first position in this range, but a loop variable is not necessarily an index and is not the iterator. Choose a meaningful name for the values you are working with, such as <code class="docutils literal notranslate"><span class="pre">height_cm</span></code> when looping over plant heights.</p>
 <section id="iterator-vs-iterable">
 <h3>Iterator vs Iterable<a class="headerlink" href="#iterator-vs-iterable" title="Link to this heading">#</a></h3>
-<p>loops in Python work by generating and then “iterating” over an “iterator”.</p>
-<p>In Python an “iterable” is an object that be can iterated over (e.g., a list or a tuple). In contrast, an “iterator”, also an object, can iterate over an iterable (go element by element through it). An object is called iterable if we can obtain an iterator from it. Built-in Python data structures - lists, tuples, dictionaries - as well as data types like strings are iterables.</p>
-<p>Thus, a list is iterable but not an iterator.</p>
-<p>Technically, in Python an iterator is generated by passing an iterable to an <code class="docutils literal notranslate"><span class="pre">iter()</span></code> method. Iterators themselves have a <code class="docutils literal notranslate"><span class="pre">__next__()</span></code> method, which returns the next item of the object.</p>
-<p>To see how what an iterator vs an iterable is, try out the following:</p>
+<p>An <strong>iterable</strong> is an object from which Python can obtain an iterator using the built-in function <code class="docutils literal notranslate"><span class="pre">iter()</span></code>. Lists, tuples, dictionaries, strings and ranges are examples. A list is iterable, but it is not itself an iterator.</p>
+<p>An <strong>iterator</strong> remembers progress through values. The built-in function <code class="docutils literal notranslate"><span class="pre">next()</span></code> retrieves its next value; when there are no more values, it raises <code class="docutils literal notranslate"><span class="pre">StopIteration</span></code>. Advancing an iterator consumes values from that iterator, not from the original list. An iterator is also iterable: <code class="docutils literal notranslate"><span class="pre">iter()</span></code> on it returns the same iterator, rather than restarting it.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">for</span></code> loop obtains an iterator from its iterable, repeatedly retrieves the next value and assigns it to the loop variable, then ends when the iterator raises <code class="docutils literal notranslate"><span class="pre">StopIteration</span></code>. You do not normally need to call <code class="docutils literal notranslate"><span class="pre">iter()</span></code> or <code class="docutils literal notranslate"><span class="pre">next()</span></code> yourself when writing a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
+<p>To see the difference, try the list and iterator examples below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_iterable</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
@@ -2332,8 +2339,41 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 <p>Once, when you iterated all items in an iterator, and no more data are available, and a <code class="docutils literal notranslate"><span class="pre">StopIteration</span></code> exception is raised.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Generator vs Iterator</strong>: By now you might be wondering what the difference between a <em>generator</em> and an <em>iterator</em> is. The simple answer is “Every iterator is not a generator, but every generator is an iterator”. Its of course not as simple as that because if you try to use the output of <code class="docutils literal notranslate"><span class="pre">range()</span></code> like a normal iterator (e.g., by applying the <code class="docutils literal notranslate"><span class="pre">next()</span></code> method to it), it will not work.  The proper answer is a bit technical, and we do not need to go into it; what matters is that <code class="docutils literal notranslate"><span class="pre">range()</span></code> works for you when looping! You can read more about the difference between generators and iterators <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#iterator-types">here</a> and <a class="reference external" href="https://www.geeksforgeeks.org/difference-between-iterator-vs-generator/">here</a>.</p>
+<p><strong>Generators are a kind of iterator.</strong> A generator expression, such as <code class="docutils literal notranslate"><span class="pre">(height_cm</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">for</span> <span class="pre">height_cm</span> <span class="pre">in</span> <span class="pre">heights)</span></code>, produces values as they are requested. A generator function uses <code class="docutils literal notranslate"><span class="pre">yield</span></code> to supply a value and pause until the next request. Every generator is an iterator, and every iterator is iterable; the reverse relationships are not guaranteed. <code class="docutils literal notranslate"><span class="pre">iter([8,</span> <span class="pre">12,</span> <span class="pre">10])</span></code> is an iterator but not a generator, and <code class="docutils literal notranslate"><span class="pre">range(3)</span></code> is iterable but neither an iterator nor a generator.</p>
 </div>
+<p>Here is a comparison using plant heights. Predict each output before running it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">heights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">height_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">height_iterator</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">height_iterator</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">height_iterator</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span>
+
+<span class="n">height_generator</span> <span class="o">=</span> <span class="p">(</span><span class="n">height_cm</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">height_cm</span> <span class="ow">in</span> <span class="n">heights</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">height_generator</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">height_generator</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">height_generator</span><span class="p">))</span>
+
+<span class="n">height_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">height_range</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">height_range</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The output is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>8
+[12, 10]
+[]
+[8, 12, 10]
+16
+[24, 20]
+[]
+[0, 1, 2]
+[0, 1, 2]
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">next()</span></code> consumes one value; <code class="docutils literal notranslate"><span class="pre">list()</span></code> consumes the remaining values from that iterator and stores them in a new list. Here, <strong>consumption means advancing the iterator</strong>, not deleting values from the original <code class="docutils literal notranslate"><span class="pre">heights</span></code> list. An exhausted iterator has no remaining values to return; consumption does not itself imply a memory saving. The generator also remembers its progress and cannot restart after exhaustion; make a new generator to repeat the calculation. The range, like the list, can supply a fresh iterator for another pass. Being iterable does not itself guarantee reuse: iterators, including generators, are iterable too.</p>
+<p><strong>Generators can save memory by producing values on demand instead of storing a complete result list, but that is distinct from consumption.</strong> For example, a loop can process each generated value without collecting every result. Calling <code class="docutils literal notranslate"><span class="pre">list(height_generator)</span></code>, as above, instead creates and stores a list of the remaining results. The original input list <code class="docutils literal notranslate"><span class="pre">heights</span></code> remains in memory in this example. Not every iterator generates new values or saves memory: the list iterator above still refers to an existing list.</p>
+<p>See Python’s official documentation on <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#iterator-types">iterator types</a> and <a class="reference external" href="https://docs.python.org/3/reference/expressions.html#generator-expressions">generator expressions</a>.</p>
 </section>
 <section id="some-loops-examples">
 <h3>Some loops examples<a class="headerlink" href="#some-loops-examples" title="Link to this heading">#</a></h3>
@@ -2760,6 +2800,163 @@ OUTPUT: known-count total (or unavailable) and missing-count number per site
 </div>
 <p>Work through the rows by hand before attempting an implementation. <strong>Expected:</strong> Site A has a known-count total of 2 and one missing count; site B has a total of 0 and no missing counts. If every count for a site is missing, no known total is available: this is different from an observed zero.</p>
 <p>The plan combines repetition (for each site) and decisions (whether any counts are present), but it does not yet specify the Python data structures and functions needed to implement every step. Keep the expected results as checks when developing the program.</p>
+<div class="tip admonition">
+<p class="admonition-title">Minimum requirements for pseudocode</p>
+<p>There is no universal pseudocode syntax. For MQB, use these minimum conventions so someone else can follow and check your algorithm:</p>
+<ul class="simple">
+<li><p><strong>Inputs and outputs:</strong> name what the algorithm receives and what it reports.</p></li>
+<li><p><strong>Assumptions:</strong> state relevant units and rules, such as how to treat duplicates and missing values.</p></li>
+<li><p><strong>Precise, ordered steps:</strong> say what each step does; use consistent names and indentation to show which steps belong together.</p></li>
+<li><p><strong>Decisions and repetition:</strong> give the condition for each choice and explain which items are repeated over, or when repetition stops.</p></li>
+<li><p><strong>Relevant edge cases:</strong> say what happens for invalid or empty input and missing values; distinguish an unavailable result from an observed zero.</p></li>
+<li><p><strong>A worked check:</strong> trace a small input by hand and compare the result with the expected output.</p></li>
+</ul>
+<p>Plain language is enough; Python syntax and capitalised keywords are not required. These are clarity conventions, not extra assessed tasks: each assignment brief controls its requirements.</p>
+</div>
+</section>
+</section>
+<section id="independent-practice-summarise-observations-by-site">
+<h3>Independent practice: summarise observations by site<a class="headerlink" href="#independent-practice-summarise-observations-by-site" title="Link to this heading">#</a></h3>
+<p>Start with your own plan and attempt, without a coding assistant. This is teaching practice, not a released assessment brief: your assignment brief controls which work is assessed and its AI permissions. Use the <a class="reference internal" href="../part-computing.html#plan-implement-test-explain-and-rerun"><span class="std std-ref">plan, implement, test, explain and rerun routine</span></a>.</p>
+<section id="first-a-worked-function">
+<h4>First, a worked function<a class="headerlink" href="#first-a-worked-function" title="Link to this heading">#</a></h4>
+<p>The plant-height example can become a function with an explicit input and output. All heights here are present and in centimetres:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">count_above</span><span class="p">(</span><span class="n">heights_cm</span><span class="p">,</span> <span class="n">threshold_cm</span><span class="p">):</span>
+    <span class="n">above_threshold</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">height_cm</span> <span class="ow">in</span> <span class="n">heights_cm</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">height_cm</span> <span class="o">&gt;</span> <span class="n">threshold_cm</span><span class="p">:</span>
+            <span class="n">above_threshold</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">above_threshold</span>
+
+<span class="k">assert</span> <span class="n">count_above</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">count_above</span><span class="p">([</span><span class="mi">10</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>An <code class="docutils literal notranslate"><span class="pre">assert</span></code> checks that its condition is true; if it is false, Python stops with an <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code>. Explain why the second check matters and predict the result for an empty list before trying it.</p>
+</section>
+<section id="inputs-and-project-layout">
+<h4>Inputs and project layout<a class="headerlink" href="#inputs-and-project-layout" title="Link to this heading">#</a></h4>
+<p>Download the <a class="reference download internal" download="" href="../_downloads/c4cbe787a8116cbc7dc0fd659f30f96e/bootcamp_observations.csv"><span class="xref download myst">ordinary observations</span></a>, <a class="reference download internal" download="" href="../_downloads/ea6e703504896acb3ad626379cca3c20/bootcamp_observations_boundary.csv"><span class="xref download myst">boundary observations</span></a> and <a class="reference download internal" download="" href="../_downloads/132c2cd4b6616b5b610214075ac94612/bootcamp_observations_invalid.csv"><span class="xref download myst">invalid observations</span></a>. Put these files in your coursework project’s existing <code class="docutils literal notranslate"><span class="pre">data/</span></code> directory. Save practice scripts in <code class="docutils literal notranslate"><span class="pre">code/</span></code>; do not create a new weekly directory. The filenames below identify this practice, not additional assessed files.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Field</p></th>
+<th class="head text-left"><p>Teaching input rule</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">site</span></code></p></td>
+<td class="text-left"><p>Non-empty text identifying a site.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
+<td class="text-left"><p>Non-empty text identifying the sampling date. The supplied dates use <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code>; calendar validation is outside this exercise.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">count</span></code></p></td>
+<td class="text-left"><p>Empty text means missing; otherwise a non-negative integer written as text. Zero is a known observation.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The supplied files have exactly these three columns. This loader uses Python’s standard-library <code class="docutils literal notranslate"><span class="pre">csv</span></code> module, which handles delimiters and returns each row as a dictionary. A blank field remains the empty string <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>, not <code class="docutils literal notranslate"><span class="pre">None</span></code> or zero. Do not write a CSV parser yourself.</p>
+<p>Copy this loader into <code class="docutils literal notranslate"><span class="pre">code/observations_practice.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_observations</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">stream</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">stream</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Open the coursework project folder in VS Code. Run commands from that project’s root, where <code class="docutils literal notranslate"><span class="pre">code/</span></code> and <code class="docutils literal notranslate"><span class="pre">data/</span></code> are siblings, not from inside <code class="docutils literal notranslate"><span class="pre">code/</span></code>. For example, your script can call <code class="docutils literal notranslate"><span class="pre">load_observations(&quot;data/bootcamp_observations.csv&quot;)</span></code>. Inspect the returned rows before writing the summary.</p>
+</section>
+<section id="next-a-partially-guided-conversion">
+<h4>Next, a partially guided conversion<a class="headerlink" href="#next-a-partially-guided-conversion" title="Link to this heading">#</a></h4>
+<p>Add this function below the loader. Complete the unfinished branch using <code class="docutils literal notranslate"><span class="pre">int</span></code> and a check for a negative count. Return <code class="docutils literal notranslate"><span class="pre">None</span></code> for a missing count, an integer for a valid count, and raise <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> for an invalid count. See <a class="reference internal" href="#errors-that-cannot-be-debugged">error handling</a> for raising and catching errors.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">parse_count</span><span class="p">(</span><span class="n">count_text</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">count_text</span> <span class="o">==</span> <span class="s2">""</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Finish conversion and invalid-count handling"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Check <code class="docutils literal notranslate"><span class="pre">&quot;2&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>, then <code class="docutils literal notranslate"><span class="pre">&quot;-1&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;many&quot;</span></code>. <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> here marks an unfinished teaching scaffold, not the required response to invalid data. Keep the missing-versus-zero distinction when you complete it.</p>
+</section>
+<section id="then-your-independent-summary">
+<h4>Then, your independent summary<a class="headerlink" href="#then-your-independent-summary" title="Link to this heading">#</a></h4>
+<p>Write <code class="docutils literal notranslate"><span class="pre">summarise_site(rows,</span> <span class="pre">site)</span></code> in the same script. Its input is a list of row dictionaries with exactly the three named fields and text values, plus a non-empty site name. Return two values as a tuple: <code class="docutils literal notranslate"><span class="pre">(known_total,</span> <span class="pre">missing_count)</span></code>.</p>
+<ol class="arabic simple">
+<li><p>Validate all input rows, including rows for other sites. A missing/extra field, non-text value, empty site/date or invalid count raises <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>; do not silently skip a bad row.</p></li>
+<li><p>Keep one copy of each exact repeated <code class="docutils literal notranslate"><span class="pre">(site,</span> <span class="pre">date,</span> <span class="pre">count)</span></code> record for this example. Rows on different dates are distinct, including missing counts.</p></li>
+<li><p>For the requested site, count missing observations separately and sum only the known counts. A zero count is known.</p></li>
+<li><p>If there is no known count, return <code class="docutils literal notranslate"><span class="pre">None</span></code> for the total. An empty list or absent site therefore returns <code class="docutils literal notranslate"><span class="pre">(None,</span> <span class="pre">0)</span></code>. Do not change the input rows.</p></li>
+</ol>
+<p>Write pseudocode and trace a small case before implementing the function. These duplicate/missing rules are declared teaching assumptions, not universal ecological rules. A repeated row could be a genuine replicate in another study.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Input and requested site</p></th>
+<th class="head text-left"><p>Expected <code class="docutils literal notranslate"><span class="pre">(known_total,</span> <span class="pre">missing_count)</span></code></p></th>
+<th class="head text-left"><p>What it checks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Ordinary fixture, A</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">1)</span></code></p></td>
+<td class="text-left"><p>Duplicate removal and a missing observation.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Ordinary fixture, B</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code></p></td>
+<td class="text-left"><p>An observed zero remains known.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Boundary fixture, C</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">(None,</span> <span class="pre">2)</span></code></p></td>
+<td class="text-left"><p>All counts missing does not imply zero.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Boundary fixture, D</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code></p></td>
+<td class="text-left"><p>A duplicate observed zero is retained once.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Empty list, A</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">(None,</span> <span class="pre">0)</span></code></p></td>
+<td class="text-left"><p>No input observations.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Ordinary fixture, absent site Z</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">(None,</span> <span class="pre">0)</span></code></p></td>
+<td class="text-left"><p>No observations at that site.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Either invalid fixture row, on its own</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ValueError</span></code></p></td>
+<td class="text-left"><p>Negative and non-numeric counts, checked separately.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>A row without <code class="docutils literal notranslate"><span class="pre">date</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ValueError</span></code></p></td>
+<td class="text-left"><p>A required field is missing.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="check-explain-and-rerun">
+<h4>Check, explain and rerun<a class="headerlink" href="#check-explain-and-rerun" title="Link to this heading">#</a></h4>
+<p>Save your checks in <code class="docutils literal notranslate"><span class="pre">code/test_observations_practice.py</span></code>. Import the functions rather than duplicating their implementation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">observations_practice</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_observations</span><span class="p">,</span> <span class="n">summarise_site</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="n">load_observations</span><span class="p">(</span><span class="s2">"data/bootcamp_observations.csv"</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">summarise_site</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">summarise_site</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">boundary_rows</span> <span class="o">=</span> <span class="n">load_observations</span><span class="p">(</span><span class="s2">"data/bootcamp_observations_boundary.csv"</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">summarise_site</span><span class="p">(</span><span class="n">boundary_rows</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">summarise_site</span><span class="p">(</span><span class="n">boundary_rows</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">summarise_site</span><span class="p">([],</span> <span class="s2">"A"</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">summarise_site</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Add your own failure checks. For each invalid row, call the summary on a one-row list, catch the expected <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>, and make the check fail if no error occurs. Also test a missing field and confirm that the input rows remain unchanged. Each failure check must exercise its own case; stopping at the first bad row does not test the second.</p>
+<p>From the project root, run a fresh process:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>code/test_observations_practice.py
+</pre></div>
+</div>
+<p>Passing assertions are silent; a traceback means a check or import/run setup failed. Do not put <code class="docutils literal notranslate"><span class="pre">python3</span></code> or shell commands at Python’s <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> prompt. Keep script startup under <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> so importing a function does not start the analysis.</p>
+<p>For independent transfer, make a small new valid input with a different site and dates; predict its result before running the function. Then assemble a script that reports the summary for each site in the ordinary fixture using your tested function. Compare a peer’s fresh run with your prediction, explain one assumption and one failure check, and record a meaningful Git checkpoint. Verify a clean checkout with the same files and command before calling the practice reproducible.</p>
+<p>Only after this independent attempt, continue to <a class="reference internal" href="#can-your-tests-detect-a-plausible-wrong-answer">the prepared-suggestion critique</a>. Your tests, not an assistant’s confidence, decide whether a suggestion matches the question.</p>
 </section>
 </section>
 </section>
@@ -3927,6 +4124,32 @@ this main function where the printing of the line “This is a boilerplate” ha
 <p>Please start testing as early as possible, but don’t try to test everything either! remember, it is easier to test if code is compartmentalized into functions.</p>
 </section>
 </section>
+<section id="can-your-tests-detect-a-plausible-wrong-answer">
+<h3>Can your tests detect a plausible wrong answer?<a class="headerlink" href="#can-your-tests-detect-a-plausible-wrong-answer" title="Link to this heading">#</a></h3>
+<p>Complete the <a class="reference internal" href="#independent-practice-summarise-observations-by-site">independent observations practice</a> before this critique. This is a staff-written example of a plausible AI suggestion, deliberately containing a fault. It is practice, not a reference solution; no assistant account is needed.</p>
+<p>The suggestion below returns only the known-count total for one site. For this critique, use valid rows and focus on the missing-value rule, not on adding input validation or the separate missing-count output.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">suggested_total</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">site</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="n">record</span> <span class="o">=</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"site"</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">"date"</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">"count"</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"site"</span><span class="p">]</span> <span class="o">==</span> <span class="n">site</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="s2">"count"</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">""</span><span class="p">:</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"count"</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">total</span>
+</pre></div>
+</div>
+<p>Load the ordinary fixture using the practice’s <code class="docutils literal notranslate"><span class="pre">load_observations</span></code> function. These checks pass:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">load_observations</span><span class="p">(</span><span class="s2">"data/bootcamp_observations.csv"</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">suggested_total</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="s2">"A"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">suggested_total</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Passing these two checks does not establish correctness. Load <code class="docutils literal notranslate"><span class="pre">data/bootcamp_observations_boundary.csv</span></code>. Predict the result for C before running the suggestion, then compare it with the contract: <strong>no known count means an unavailable total (<code class="docutils literal notranslate"><span class="pre">None</span></code>), not zero</strong>. Write a check that passes for the known-total part of your own correct summary and fails for this suggestion. Explain why the ordinary fixture did not expose the fault. Also check D: a genuinely observed zero must remain zero.</p>
+<p>Retain or reject a suggestion by checking its behaviour against the stated question, not by its confident wording or the number of tests that pass. After the critique, rerun your own normal, boundary and failure checks from a fresh Python process and explain the missing-versus-zero distinction without an assistant.</p>
+</section>
 <section id="debugging">
 <span id="python-debugging"></span><h3>Debugging<a class="headerlink" href="#debugging" title="Link to this heading">#</a></h3>
 <p>OK, so you unit-tested, let’s go look at life through beer-goggles… BUT NO! YOU WILL VErY LIKELY rUN INTO BUGS!</p>
@@ -4856,8 +5079,8 @@ from the end of an array:</p>
 <section id="the-lotka-volterra-model">
 <h5>The Lotka-Volterra model<a class="headerlink" href="#the-lotka-volterra-model" title="Link to this heading">#</a></h5>
 <p>Now let’s try numerical integration in Python for solving a classical model in biology — the Lotka-Volterra (LV) model for a predator-prey system in two-dimensional space (e.g., on land). The LV model is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b5df4db3-7503-4fde-bb1b-9d63f366ae96">
-<span class="eqno">(2)<a class="headerlink" href="#equation-b5df4db3-7503-4fde-bb1b-9d63f366ae96" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-153bda18-e995-4c3c-a20d-0d9ffad4cd0e">
+<span class="eqno">(2)<a class="headerlink" href="#equation-153bda18-e995-4c3c-a20d-0d9ffad4cd0e" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dr}{dt} &amp;= r r - a C r  \nonumber \\
     \frac{dC}{dt} &amp;= - z C + e a C r
 \end{align}\]</div>
@@ -5337,8 +5560,8 @@ from the end of an array:</p>
 <h3>The Lotka-Volterra model revisited<a class="headerlink" href="#the-lotka-volterra-model-revisited" title="Link to this heading">#</a></h3>
 <p><em>What happens when the consumer population <span class="math notranslate nohighlight">\(C\)</span> goes extinct in the Lotka-Volterra that you encountered above</em>?</p>
 <p>If the consumer population goes extinct, the resources grow to infinity! This is not biologically realistic, of course. To address this, we can introduce density dependence to the resource population <span class="math notranslate nohighlight">\(\left(1 - \frac{r} {K}\right)\)</span>, which changes the ODE system to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d0e769f6-10a7-42a8-8cef-23616d2298a1">
-<span class="eqno">(3)<a class="headerlink" href="#equation-d0e769f6-10a7-42a8-8cef-23616d2298a1" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ea3d8d23-3227-4ade-aabf-3a6873205de0">
+<span class="eqno">(3)<a class="headerlink" href="#equation-ea3d8d23-3227-4ade-aabf-3a6873205de0" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dr}{dt} &amp;= r r \left(1 - \frac{r} {K}\right) - a C r\\
     \frac{dC}{dt} &amp;= - z C + e a C r
 \end{align}\]</div>
@@ -5368,8 +5591,8 @@ from the end of an array:</p>
 <ul class="simple">
 <li><p>Write a discrete-time version of the LV model called <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>. The discrete-time model is:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-eaae8aa2-17d8-4f82-be85-3a9b087f24ee">
-<span class="eqno">(4)<a class="headerlink" href="#equation-eaae8aa2-17d8-4f82-be85-3a9b087f24ee" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-7176aa11-2db0-4ae6-b5fc-8834d8c8b715">
+<span class="eqno">(4)<a class="headerlink" href="#equation-7176aa11-2db0-4ae6-b5fc-8834d8c8b715" title="Permalink to this equation">#</a></span>\[\begin{align} 
     r_{t+1} &amp;= r_t (1 + r \left(1 - \frac{r_t}{K}\right) - a C_t)\\ 
     C_{t+1} &amp;= C_t (1 - z + e a r_t) 
 \end{align}\]</div>
@@ -5380,14 +5603,14 @@ from the end of an array:</p>
 <ul class="simple">
 <li><p>Write a version of the discrete-time model (which you implemented in <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>) simulation with a random gaussian fluctuation in resource’s growth rate at each time-step:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-83d2791b-29b3-463c-8fbe-56a69e8812e8">
-<span class="eqno">(5)<a class="headerlink" href="#equation-83d2791b-29b3-463c-8fbe-56a69e8812e8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e90ae1a7-386c-49bd-8657-01e76a29dc29">
+<span class="eqno">(5)<a class="headerlink" href="#equation-e90ae1a7-386c-49bd-8657-01e76a29dc29" title="Permalink to this equation">#</a></span>\[\begin{align}
         r_{t+1} &amp;= r_t (1 + (r + \epsilon) \left(1 - \frac{r_t}{K}\right)- a C_t)\\
         C_{t+1} &amp;= C_t (1 - z + e a r_t)
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random fluctuation drawn from a gaussian distribution (use <code class="docutils literal notranslate"><span class="pre">sc.stats</span></code> or <code class="docutils literal notranslate"><span class="pre">np.random</span></code>). Include this script in <code class="docutils literal notranslate"> <span class="pre">run_LV.py</span></code>, and profile it as well. You can also add fluctuations to both populations simultaneously this way:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f1d518ca-69f3-4fbb-adfb-0245397618d6">
-<span class="eqno">(6)<a class="headerlink" href="#equation-f1d518ca-69f3-4fbb-adfb-0245397618d6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-be8c6580-ecf1-4c5a-bae3-ef996a8890e5">
+<span class="eqno">(6)<a class="headerlink" href="#equation-be8c6580-ecf1-4c5a-bae3-ef996a8890e5" title="Permalink to this equation">#</a></span>\[\begin{align}
     r_{t+1} &amp;= r_t (1 + (r + \epsilon)  \left(1 - \frac{r_t}{K}\right) - a C_t)\\
     C_{t+1} &amp;= C_t (1 - (z + \epsilon) + e a r_t)
 \end{align}\]</div>
@@ -6454,6 +6677,14 @@ for efficient data crunching</p></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-summarize-observations-by-site">Example: summarize observations by site</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-practice-summarise-observations-by-site">Independent practice: summarise observations by site</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-a-worked-function">First, a worked function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-and-project-layout">Inputs and project layout</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#next-a-partially-guided-conversion">Next, a partially guided conversion</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#then-your-independent-summary">Then, your independent summary</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-explain-and-rerun">Check, explain and rerun</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comprehensions">Comprehensions</a></li>
@@ -6496,6 +6727,7 @@ for efficient data crunching</p></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#other-unit-testing-approaches">Other unit testing approaches</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-your-tests-detect-a-plausible-wrong-answer">Can your tests detect a plausible wrong answer?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging">Debugging</a></li>
 </ul>
 </li>
