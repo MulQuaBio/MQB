@@ -1171,17 +1171,35 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="write-an-algorithm-before-writing-python" class="slide level2" data-timing="120">
+<section id="write-an-algorithm-before-writing-python" class="slide level2 smaller" data-timing="120">
 <h2>Write an algorithm before writing Python</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href aria-label="1"></a>INPUT: observations with site, date and count</span>
-<span id="cb1-2"><a href aria-label="2"></a>Check that the expected fields are present</span>
-<span id="cb1-3"><a href aria-label="3"></a>Identify exact duplicate records</span>
-<span id="cb1-4"><a href aria-label="4"></a>Keep one copy of each record for this example</span>
-<span id="cb1-5"><a href aria-label="5"></a>For each site:</span>
-<span id="cb1-6"><a href aria-label="6"></a>    report how many counts are missing</span>
-<span id="cb1-7"><a href aria-label="7"></a>    add the counts that are present</span>
-<span id="cb1-8"><a href aria-label="8"></a>OUTPUT: known-count total and missing-count number per site</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>This plain-language outline is pseudocode:</strong> an informal sketch of the algorithm, not executable Python. See the book’s <a href="https://mulquabio.github.io/MQB/notebooks/python.html#what-is-an-algorithm">algorithm example</a>.</p>
+<span id="cb1-2"><a href aria-label="2"></a>Check the expected fields; stop and report an error if absent</span>
+<span id="cb1-3"><a href aria-label="3"></a>Keep one copy of each exact duplicate for this example</span>
+<span id="cb1-4"><a href aria-label="4"></a>For each site:</span>
+<span id="cb1-5"><a href aria-label="5"></a>    report how many counts are missing</span>
+<span id="cb1-6"><a href aria-label="6"></a>  if any count is known: add the counts that are present</span>
+<span id="cb1-7"><a href aria-label="7"></a>  otherwise: report that no known total is available</span>
+<span id="cb1-8"><a href aria-label="8"></a>OUTPUT: known-count total (or unavailable) and missing-count number per site</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Pseudocode</strong> plans an algorithm; it is not executable Python. <a href="https://mulquabio.github.io/MQB/notebooks/python.html#designing-an-algorithm-for-imperfect-data">Extended example</a>.</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Minimum requirements for pseudocode</strong></p>
+</div>
+<div class="callout-content">
+<p>MQB conventions, not a universal syntax standard:</p>
+<ul>
+<li>Name inputs, outputs and assumptions.</li>
+<li>Give precise steps; indent decisions and repetition, including when it stops.</li>
+<li>Specify relevant edge cases; trace a small input against its expected result.</li>
+</ul>
+</div>
+</div>
+</div>
 <p><strong>Expected here:</strong> A: total 2, one missing; B: total 0, none missing.</p>
 <p><strong>Zen connection:</strong> “Explicit is better than implicit”; “Readability counts.” State assumptions and use steps a classmate can follow.</p>
 <aside class="notes">
@@ -1322,7 +1340,7 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="todays-afternoon-your-turn" class="slide level2" data-timing="90">
+<section id="todays-afternoon-your-turn" class="slide level2 smaller" data-timing="90">
 <h2>Today’s afternoon: your turn</h2>
 <p><strong>14:00-17:00 | Supported practical and peer discussion</strong></p>
 <table class="caption-top">

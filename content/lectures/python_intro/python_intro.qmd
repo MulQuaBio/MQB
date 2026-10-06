@@ -78,20 +78,29 @@ An identical row could be a genuine replicate in another study. Counts alone
 do not establish abundance differences without sampling-effort information.
 :::
 
-## Write an algorithm before writing Python {data-timing="120"}
+## Write an algorithm before writing Python {.smaller data-timing="120"}
 
 ```text
 INPUT: observations with site, date and count
-Check that the expected fields are present
-Identify exact duplicate records
-Keep one copy of each record for this example
+Check the expected fields; stop and report an error if absent
+Keep one copy of each exact duplicate for this example
 For each site:
     report how many counts are missing
-    add the counts that are present
-OUTPUT: known-count total and missing-count number per site
+  if any count is known: add the counts that are present
+  otherwise: report that no known total is available
+OUTPUT: known-count total (or unavailable) and missing-count number per site
 ```
 
-**This plain-language outline is pseudocode:** an informal sketch of the algorithm, not executable Python. See the book's [algorithm example](https://mulquabio.github.io/MQB/notebooks/python.html#what-is-an-algorithm).
+**Pseudocode** plans an algorithm; it is not executable Python. [Extended example](https://mulquabio.github.io/MQB/notebooks/python.html#designing-an-algorithm-for-imperfect-data).
+
+::: {.callout-tip}
+### Minimum requirements for pseudocode
+MQB conventions, not a universal syntax standard:
+
+- Name inputs, outputs and assumptions.
+- Give precise steps; indent decisions and repetition, including when it stops.
+- Specify relevant edge cases; trace a small input against its expected result.
+:::
 
 **Expected here:** A: total 2, one missing; B: total 0, none missing.
 
@@ -211,7 +220,7 @@ checkable, and readable steps make it easier to explain. The full list is option
 reading; functions and formal testing come later.
 :::
 
-## Today's afternoon: your turn {data-timing="90"}
+## Today's afternoon: your turn {.smaller data-timing="90"}
 
 **14:00-17:00 | Supported practical and peer discussion**
 
