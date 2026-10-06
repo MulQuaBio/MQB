@@ -40,11 +40,11 @@ The Python and Jupyter extensions may offer supporting extensions. Accept only t
 
 ## Use VS Code as a Git GUI
 
-VS Code's built-in Git support uses the same Git installation and repository as the terminal. Install and configure Git first using {ref}`git-ssh-setup`. Open the project root, then select **Source Control** in the Activity Bar or run **View: Show Source Control** from the Command Palette.
+VS Code's built-in Git support uses the same Git installation and repository as the terminal; no additional Git extension is required for this basic workflow. Install and configure Git first using {ref}`git-ssh-setup`. Open the project root, then select **Source Control** in the Activity Bar or run **View: Show Source Control** from the Command Palette.
 
 The Source Control view lists changed files. Select a file to inspect its diff: removed lines appear on one side and added lines on the other. Stage only the files you intend to include in the next commit by selecting the **+** beside each file. Review the files under **Staged Changes** before entering a commit message and selecting **Commit**. A commit records changes locally; it does not upload them.
 
-Before sharing work, check the current branch in the status bar and make sure the intended remote is configured. Use the Source Control **…** menu or status-bar controls to push or pull. Pulling can bring in other commits and may produce conflicts; commit or deliberately set aside your own work first, and inspect any conflicts before continuing. See the [Git chapter](../notebooks/git.ipynb) for the underlying concepts and practice workflow.
+Before sharing work, check the current branch in the status bar and make sure the intended remote is configured. Use the Source Control **…** menu or status-bar controls to push or pull. A **Sync Changes** control may both pull and push; it is not just “save”. Pulling can bring in other commits and may produce conflicts; commit or deliberately set aside your own work first, and inspect any conflicts before continuing. See the [Git chapter](../notebooks/git.ipynb) for the underlying concepts and practice workflow.
 
 :::{figure-md} vscode-source-control
 
