@@ -24,7 +24,7 @@ Use this as an interpretation aid only; marks are awarded strictly by the formal
 
 | #           | Criterion                                                                                                     | Weight                                                        | What earns **full marks**                                                                                                                                                                     | Typical reasons for lost marks                                                                                                 |
 | ----------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| **1**       | **Repository organisation & workflow discipline**                                                             | **13 marks**                                                  | - One coursework repository with a root `README.md`, `code/` and `data/`; generated `results/` are kept out of commits and created when needed; optional `sandbox/` is ignored <br>- Consistent naming and sensible `.gitignore` use. | • Required files spread across per-week repositories or directories • Generated results committed unnecessarily • `.gitignore` absent or incomplete. |
+| **1**       | **Repository organisation & workflow discipline**                                                             | **13 marks**                                                  | - One coursework repository with a root `README.md`, `code/` and `data/`; generated `results/` are kept out of commits and created when needed; optional `sandbox/` is ignored <br>- Consistent naming and sensible `.gitignore` use, following the [coursework-directory guidance](../notebooks/unix.ipynb#building-your-coursework-directory-structure). | • Required files spread across separate chapter or submission repositories/directories • Generated results committed unnecessarily • `.gitignore` absent or incomplete. |
 | **2**       | **Code completeness & functional correctness**                                                                | **21 marks**                                                  | - Required scripts run in the documented environment and produce the specified outputs.                                                                                                      | • Runtime errors, missing inputs, hard-wired paths • Scripts that only work on assessor’s machine after fixes.                 |
 | **3**       | **Code quality & style** (readability, basic structure, commenting)                                           | **8 marks**                                                   | - Basic functions, meaningful variable names, helpful comments explaining *what* and *why*. <br>- Clear code structure with minimal repetition.                                               | • Meaningless variable names • No comments or excessive copy-paste • Monolithic scripts without structure.                     |
 | **4**       | **Documentation** (README + basic usage)                                                                      | **13 marks**                                                  | - One root README summarising the coursework and giving purpose, usage and test examples for required scripts; update it as submissions extend the same project. | • Root README missing or lacking usage examples • No explanation of what scripts do. |
@@ -55,7 +55,7 @@ The following rules apply across **all criteria**:
 
 | Score  | Overall criteria | Classification |
 | ------ | ----------------------- | -----------|
-| 80–100 | Outstanding progress; exemplary foundational computing practice for an intensive bootcamp (of typically 4 weeks). | Distinction |
+| 80–100 | Outstanding progress; exemplary foundational computing practice across the computing bootcamp curriculum. | Distinction |
 | 70–79  | Strong foundational skills with minor areas for improvement.   | Distinction |
 | 60–69  | Competent basic skills with clear areas for development.  | Merit |
 | 50–59  | Meets minimum bootcamp standards; several areas need work.   | Pass |
@@ -65,7 +65,7 @@ The following rules apply across **all criteria**:
 
 ### Group work assessment notes
 
-For bootcamp weeks that include group work:
+For bootcamp chapters or practicals that include group work:
 
 * Group solution quality contributes to Criterion 6 only when the released brief specifies assessed group work and a group repository is provided.
 * Criterion 7 assesses the student's individual contribution in that group repository. If group work is not assessed, Criteria 6–7 are N/A and the individual score is converted from 85 points to a percentage as described above.
@@ -86,7 +86,7 @@ A strong group submission does not guarantee equal marks for all members.
 
 * Compare the published formative submission snapshots with the cumulative submission; use only available, attributable evidence.
 * Look for development in computational reasoning, implementation, testing, documentation, and reproducibility across the stated assignment scope.
-* Do not infer progression from calendar-week directories, language changes alone, commit counts, or unavailable snapshots.
+* Do not infer progression from chapter-specific directories, language changes alone, commit counts, or unavailable snapshots.
 
 **Common considerations:**
 Assessment will:

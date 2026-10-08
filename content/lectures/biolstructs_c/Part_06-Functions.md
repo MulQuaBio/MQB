@@ -66,7 +66,7 @@ int add_integers(int a, int b)
 }
 ```
 
-Once defined (see more about that later), you can call and use your function in `main()` as you have been doing it since the start of the week:
+Once defined (see more about that later), you can call and use your function in `main()` as demonstrated in [Compiler and basics](Part_01-Compiler_and_basics.md):
 
 
 ```C
@@ -317,6 +317,4 @@ Have it report a message if the queried value cannot be found.
 ### 5- recursion
  * It is pretty trivial to write a loop that counts from 0 to 10. Try to write the same loop without using `for` by using a recursive function.
  * Ever hear or read about fork bombs or recursive bombs?
-
-
 
