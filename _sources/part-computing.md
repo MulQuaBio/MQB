@@ -35,7 +35,7 @@ This part gets you comfortable with the command line, version control, and the c
 4. **Explain:** describe why the result answers the question and what each check detects.
 5. **Rerun:** start a fresh process from the documented project root and verify the same result with the same inputs.
 
-Try the [independent Python observations practice](notebooks/python.ipynb#independent-practice-summarise-observations-by-site). Core Python and R practice begins with independent work; a prepared suggestion can be critiqued afterwards without an assistant account. Each released assignment brief controls its assessed tasks and AI permissions; teaching examples do not amend those rules.
+Try the [independent Python observations exercise](notebooks/python.ipynb#independent-exercise-summarise-observations-by-site). Core Python and R exercises begin with independent work; a prepared suggestion can be critiqued afterwards without an assistant account. Each released assignment brief controls its assessed tasks and AI permissions; teaching examples do not amend those rules.
 
 ## Where this goes next
 

@@ -720,7 +720,7 @@
 <p>The properties of an organism’s metabolic pathways, and the underlying (enzyme-mediated) biochemical reactions (kinetics) are arguably its most fundamental “traits”, because these drive all “performance” traits, from photosynthesis and respiration, to movement and growth rate.</p>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Michaelis%E2%80%93Menten_kinetics">Michaelis-Menten</a> model is widely used to quantify reaction kinetics data and estimate key biochemical parameters. This model relates biochemical reaction rate (<span class="math notranslate nohighlight">\(V\)</span>) (rate of formation of the product of the reaction), to concentration of the substrate (<span class="math notranslate nohighlight">\(S\)</span>):</p>
 <div class="math notranslate nohighlight" id="equation-eq-m-m">
-<span class="eqno">(7)<a class="headerlink" href="#equation-eq-m-m" title="Link to this equation">#</a></span>\[ 
+<span class="eqno">(5)<a class="headerlink" href="#equation-eq-m-m" title="Link to this equation">#</a></span>\[ 
 V = \frac{V_{\max} S}{K_M + S} 
 \]</div>
 <p>Here,</p>
@@ -942,7 +942,7 @@ Achieved convergence tolerance: 9.535e-06
 <div class="math notranslate nohighlight">
 \[y = \beta_0\]</div>
 <p>This then allows the TSS, rSS and ESS to be calculated in a meaninglful way, as we <a class="reference internal" href="regress.html"><span class="std std-doc">did before</span></a>, leading to an anova based assessment of significance of the regrssion moel fit to the data.</p>
-<p>Now consider a nonlinear model like the Michaelis-Menten eqn <a class="reference internal" href="#equation-eq-m-m">(7)</a>. <em>What would be an appropriate null model for this equation?</em></p>
+<p>Now consider a nonlinear model like the Michaelis-Menten eqn <a class="reference internal" href="#equation-eq-m-m">(5)</a>. <em>What would be an appropriate null model for this equation?</em></p>
 <p>Thus, the best ways to assess a nlls model’s fit are:</p>
 <ul class="simple">
 <li><p>Compare it’s likelihood to those of other alternative models’ fits (which may include your best guess for a null model).</p></li>
@@ -1397,7 +1397,7 @@ Achieved convergence tolerance: 1.49e-08
 <p>We will look at a very common phenomenon called <a class="reference external" href="https://en.wikipedia.org/wiki/Allometry">allometric scaling</a>. Allometric relationships between linear measurements such as body length, limb length, wing span, and thorax width are a good way to obtain estimates of body weights of individual organisms. We will look at allometric scaling of body weight vs. total body length in dragonflies and damselfiles.</p>
 <p>Allometric relationships take the form:</p>
 <div class="math notranslate nohighlight" id="equation-eq-allom">
-<span class="eqno">(8)<a class="headerlink" href="#equation-eq-allom" title="Link to this equation">#</a></span>\[
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-allom" title="Link to this equation">#</a></span>\[
 y = a x^b
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are morphological measures (body length and body weight respectively, in our current example), the constant is the value of <span class="math notranslate nohighlight">\(y\)</span> at body length <span class="math notranslate nohighlight">\(x = 1\)</span> unit, and <span class="math notranslate nohighlight">\(b\)</span> is the scaling “exponent”. This is also called a power-law, because <span class="math notranslate nohighlight">\(y\)</span> relates to <span class="math notranslate nohighlight">\(x\)</span> through a simple power.</p>
@@ -1469,7 +1469,7 @@ y = a x^b
 </a>
 </div>
 </div>
-<p>You can see these body weights of dragonflies does not increase proportionally with body length – they curve upwards w.R.t. wing length (so the allometric constant <span class="math notranslate nohighlight">\(b\)</span> in eqn <a class="reference internal" href="#equation-eq-allom">(8)</a> mustbe greater than 1), instead of increasing as a straight line (in which case <span class="math notranslate nohighlight">\(b = 1\)</span> (isometry, instead of allometry).</p>
+<p>You can see these body weights of dragonflies does not increase proportionally with body length – they curve upwards w.R.t. wing length (so the allometric constant <span class="math notranslate nohighlight">\(b\)</span> in eqn <a class="reference internal" href="#equation-eq-allom">(6)</a> mustbe greater than 1), instead of increasing as a straight line (in which case <span class="math notranslate nohighlight">\(b = 1\)</span> (isometry, instead of allometry).</p>
 <p>Now fit the model to the data using nlls:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1620,7 +1620,7 @@ b 2.318292e+00 2.872287e+00
 <p>(a) Make the same plot as above, fitted line and all, in <code class="docutils literal notranslate"><span class="pre">ggplot</span></code>, and add (display) the equation you estimated to your new (ggplot) plot. The equation is: <span class="math notranslate nohighlight">\(\text{Weight} = 3.94 \times 10^{-06} \times \text{Length}^{2.59}\)</span></p>
 <p>(b) Try playing with the starting values, and see if you can “break” the model fitting – that is, change the starting values till the nlls fitting does not converge on a solution.</p>
 <p>(c) repeat the model fitting (including a-b above) using the Zygoptera data subset.</p>
-<p>(d) There is an alternative (and in fact, more commonly-used) approach for fitting the allometric model to data: using Ordinary Least Squares on bi-logarithamically transformed data. That is, if you take a log of both sides of the <a class="reference internal" href="#equation-eq-allom">(8)</a> we get,</p>
+<p>(d) There is an alternative (and in fact, more commonly-used) approach for fitting the allometric model to data: using Ordinary Least Squares on bi-logarithamically transformed data. That is, if you take a log of both sides of the <a class="reference internal" href="#equation-eq-allom">(6)</a> we get,</p>
 <div class="math notranslate nohighlight">
 \[
 \log(y) = \log(a) + b \log(x)
@@ -1642,7 +1642,7 @@ b 2.318292e+00 2.872287e+00
 \[
 y = a + b x + c x^2
 \]</div>
-<p>This can also capture curvature in data, and is an alternative model to the <a class="reference internal" href="#equation-eq-allom">(8)</a>. Note that this mode is linear in its parameters (a linear model), which you can fit to the simply data using your familiar <code class="docutils literal notranslate"><span class="pre">lm()</span></code> function:</p>
+<p>This can also capture curvature in data, and is an alternative model to the <a class="reference internal" href="#equation-eq-allom">(6)</a>. Note that this mode is linear in its parameters (a linear model), which you can fit to the simply data using your familiar <code class="docutils literal notranslate"><span class="pre">lm()</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">QuaFit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">BodyWeight</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="nf">poly</span><span class="p">(</span><span class="n">TotalLength</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Data2Fit</span><span class="p">)</span>
@@ -2105,13 +2105,13 @@ F-statistic: 73.42 on 1 and 2 DF,  p-value: 0.01335
 <h3>Using nlls<a class="headerlink" href="#using-nlls" title="Link to this heading">#</a></h3>
 <p>For starters, a classical, (somewhat) mechanistic model is the logistic equation:</p>
 <div class="math notranslate nohighlight" id="equation-eq-logist-growth-sol">
-<span class="eqno">(9)<a class="headerlink" href="#equation-eq-logist-growth-sol" title="Link to this equation">#</a></span>\[
+<span class="eqno">(7)<a class="headerlink" href="#equation-eq-logist-growth-sol" title="Link to this equation">#</a></span>\[
 N_t = \frac{N_0 K e^{r t}}{K + N_0 (e^{r t} - 1)}
 \]</div>
-<p>Here <span class="math notranslate nohighlight">\(N_t\)</span> is population size at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(N_0\)</span> is initial population size, <span class="math notranslate nohighlight">\(r\)</span> is maximum growth rate (AKA <span class="math notranslate nohighlight">\(r_\text{max}\)</span>), and <span class="math notranslate nohighlight">\(K\)</span> is carrying capacity (maximum possible abundance of the population). Note that this model is actually the solution to the differential equation that defines the classic logistic population growth model (eqn. <a class="reference internal" href="appendix-maths.html#equation-eq-logist-growth">(21)</a>).</p>
+<p>Here <span class="math notranslate nohighlight">\(N_t\)</span> is population size at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(N_0\)</span> is initial population size, <span class="math notranslate nohighlight">\(r\)</span> is maximum growth rate (AKA <span class="math notranslate nohighlight">\(r_\text{max}\)</span>), and <span class="math notranslate nohighlight">\(K\)</span> is carrying capacity (maximum possible abundance of the population). Note that this model is actually the solution to the differential equation that defines the classic logistic population growth model (eqn. <a class="reference internal" href="appendix-maths.html#equation-eq-logist-growth">(19)</a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The derivation of eqn. <a class="reference internal" href="#equation-eq-logist-growth-sol">(9)</a> is covered <a class="reference internal" href="appendix-maths.html#logistic-population-growth"><span class="std std-ref">here</span></a>. But you don’t need to know the derivation to fit eqn. <a class="reference internal" href="#equation-eq-logist-growth-sol">(9)</a> to data.</p>
+<p>The derivation of eqn. <a class="reference internal" href="#equation-eq-logist-growth-sol">(7)</a> is covered <a class="reference internal" href="appendix-maths.html#logistic-population-growth"><span class="std std-ref">here</span></a>. But you don’t need to know the derivation to fit eqn. <a class="reference internal" href="#equation-eq-logist-growth-sol">(7)</a> to data.</p>
 </div>
 <p>Let’s fit it to the data. First, we need to define it as a function object:</p>
 <div class="cell docutils container">
@@ -2409,7 +2409,7 @@ Achieved convergence tolerance: 1.49e-08
 <section id="obtaining-them">
 <h4>Obtaining them<a class="headerlink" href="#obtaining-them" title="Link to this heading">#</a></h4>
 <p>Finding the starting values is a <a class="reference external" href="https://en.wikipedia.org/wiki/Non-linear_least_squares#Initial_parameter_estimates">bit of an art</a>. There is no method for finding starting values that works universally (across different types of models).</p>
-<p>The one universal rule though, is that finding starting values requires you to understand the meaning of each of the parameters in your model. So, for example, in the population <a class="reference internal" href="#model-fitting-r-population-growth"><span class="std std-ref">growth rate example</span></a>, the parameters in both the nonlinear models that <a class="reference internal" href="#model-fitting-r-population-growth"><span class="std std-ref">we covered</span></a> (Logistic growth, eqn. <a class="reference internal" href="#equation-eq-logist-growth-sol">(9)</a> , Gompertz model; eqn. <code class="xref eq docutils literal notranslate"><span class="pre">eq:Gompertz</span></code>) have a clear meaning.</p>
+<p>The one universal rule though, is that finding starting values requires you to understand the meaning of each of the parameters in your model. So, for example, in the population <a class="reference internal" href="#model-fitting-r-population-growth"><span class="std std-ref">growth rate example</span></a>, the parameters in both the nonlinear models that <a class="reference internal" href="#model-fitting-r-population-growth"><span class="std std-ref">we covered</span></a> (Logistic growth, eqn. <a class="reference internal" href="#equation-eq-logist-growth-sol">(7)</a> , Gompertz model; eqn. <code class="xref eq docutils literal notranslate"><span class="pre">eq:Gompertz</span></code>) have a clear meaning.</p>
 <p>Furthermore, you will typically need to determine starting values <em>specific</em> to each model <em>and</em> each dataset that that you are wanting to fit that model to (e.g., every distinct functional response dataset to be <a class="reference internal" href="appendix-mini-proj.html#miniproject-fr-models"><span class="std std-ref">fitted to the Holling Type II model</span></a>). To do so, understanding how each parameter in the model corresponds to features of the actual data is really necessary.</p>
 <p>For example, in the Gompertz population growth rate model (eqn. <code class="xref eq docutils literal notranslate"><span class="pre">eq:Gompertz</span></code>), your starting values generator function would, for each dataset,</p>
 <ul class="simple">

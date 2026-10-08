@@ -612,13 +612,13 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referencing-and-bibliography">Referencing and bibliography</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compiling-the-latex-document">Compiling the Latex document</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-bash-script-to-compile-latex">A bash script to compile <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-accept-a-tex-input-path">Exercise: accept a <code class="docutils literal notranslate"><span class="pre">.tex</span></code> input path</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-more-latex-features-and-tips">Some more <span class="math notranslate nohighlight">\(\LaTeX\)</span> features and tips</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals">Practicals</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-latex-example">First <span class="math notranslate nohighlight">\(\LaTeX\)</span> example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals-wrap-up">Practicals wrap-up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latex-practical">LaTeX practical</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-and-version-a-latex-document">Build and version a LaTeX document</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-completion-checklist">Practical completion checklist</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">Readings &amp; Resources</a><ul class="nav section-nav flex-column">
@@ -859,8 +859,8 @@ Gummi, TeXShop, etc.) There are also WYSIWYG frontends (e.g., Lyx, TeXmacs).</p>
 </pre></div>
 </div>
 <p>becomes</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cd206ca5-cc7c-4587-bf86-862b954f2618">
-<span class="eqno">(1)<a class="headerlink" href="#equation-cd206ca5-cc7c-4587-bf86-862b954f2618" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3c2f7275-bd17-4f33-9475-9314a7933778">
+<span class="eqno">(1)<a class="headerlink" href="#equation-3c2f7275-bd17-4f33-9475-9314a7933778" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \int_0^1 \left(\ln \left( \frac{1}{x} \right) 
     \right)^y dx = y!
 \end{equation}\]</div>
@@ -1050,8 +1050,8 @@ rm<span class="w"> </span>*.blg
 </pre></div>
 </div>
 </section>
-<section id="exercise">
-<h3>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
+<section id="exercise-accept-a-tex-input-path">
+<h3>Exercise: accept a <code class="docutils literal notranslate"><span class="pre">.tex</span></code> input path<a class="headerlink" href="#exercise-accept-a-tex-input-path" title="Link to this heading">#</a></h3>
 <p>Note that I have not written the <code class="docutils literal notranslate"><span class="pre">.tex</span></code> extension of <code class="docutils literal notranslate"><span class="pre">FirstExample</span></code> when feeding it to the in latex compilation bash script above. Make this bash script more convenient to use by allowing users to compile the script by using</p>
 <div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>bash CompileLaTeX.sh FirstExample.tex
 </pre></div>
@@ -1068,15 +1068,15 @@ rm<span class="w"> </span>*.blg
 <li><p>You can create new environments and commands, and create new ones in the preamble (which can also be kept as a  separate document and inserted using the <code class="docutils literal notranslate"><span class="pre">\input{}</span></code> command)</p></li>
 </ul>
 </section>
-<section id="practicals">
-<h2>Practicals<a class="headerlink" href="#practicals" title="Link to this heading">#</a></h2>
-<section id="first-latex-example">
-<h3>First <span class="math notranslate nohighlight">\(\LaTeX\)</span> example<a class="headerlink" href="#first-latex-example" title="Link to this heading">#</a></h3>
+<section id="latex-practical">
+<h2>LaTeX practical<a class="headerlink" href="#latex-practical" title="Link to this heading">#</a></h2>
+<section id="build-and-version-a-latex-document">
+<h3>Build and version a LaTeX document<a class="headerlink" href="#build-and-version-a-latex-document" title="Link to this heading">#</a></h3>
 <p>Test <code class="docutils literal notranslate"><span class="pre">CompileLaTeX.sh</span></code> with <code class="docutils literal notranslate"><span class="pre">FirstExample.tex</span></code> and bring them under version control in the root <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory of your coursework project. Make sure that <code class="docutils literal notranslate"><span class="pre">CompileLaTeX.sh</span></code> will work if somebody else runs it from their computer using <code class="docutils literal notranslate"><span class="pre">FirstExample.tex</span></code> as an input.</p>
 </section>
-<section id="practicals-wrap-up">
-<h3>Practicals wrap-up<a class="headerlink" href="#practicals-wrap-up" title="Link to this heading">#</a></h3>
-<p>Make sure your coursework project has a root <code class="docutils literal notranslate"><span class="pre">README.md</span></code> and <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>, with <code class="docutils literal notranslate"><span class="pre">code/</span></code>, <code class="docutils literal notranslate"><span class="pre">data/</span></code>, and <code class="docutils literal notranslate"><span class="pre">results/</span></code> directories (and an optional <code class="docutils literal notranslate"><span class="pre">sandbox/</span></code>). Keep this week’s functional scripts in <code class="docutils literal notranslate"><span class="pre">code/</span></code>, input files in <code class="docutils literal notranslate"><span class="pre">data/</span></code>, and generated outputs in <code class="docutils literal notranslate"><span class="pre">results/</span></code>. Every script should run without errors on my computer. This includes the five solutions (single-line commands you came up with) in <code class="docutils literal notranslate"><span class="pre">unixPrac1.txt</span></code>.</p>
+<section id="practical-completion-checklist">
+<h3>Practical completion checklist<a class="headerlink" href="#practical-completion-checklist" title="Link to this heading">#</a></h3>
+<p>Make sure your coursework project has a root <code class="docutils literal notranslate"><span class="pre">README.md</span></code> and <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>, with <code class="docutils literal notranslate"><span class="pre">code/</span></code>, <code class="docutils literal notranslate"><span class="pre">data/</span></code>, and <code class="docutils literal notranslate"><span class="pre">results/</span></code> directories (and an optional <code class="docutils literal notranslate"><span class="pre">sandbox/</span></code>). Following the <a class="reference internal" href="unix.html#building-your-coursework-directory-structure"><span class="std std-ref">coursework-directory guidance</span></a>, keep functional scripts in <code class="docutils literal notranslate"><span class="pre">code/</span></code>, input files in <code class="docutils literal notranslate"><span class="pre">data/</span></code>, and generated outputs in <code class="docutils literal notranslate"><span class="pre">results/</span></code>. Every script should run without errors on my computer. This includes the five solutions from the <a class="reference internal" href="unix.html#unix-practicals"><span class="std std-ref">Unix practicals</span></a> in <code class="docutils literal notranslate"><span class="pre">unixPrac1.txt</span></code>.</p>
 <p><em>Commit and push every time you do some significant amount of coding work (after testing it), and then again before the given deadline (this will be announced in class).</em></p>
 </section>
 </section>
@@ -1216,13 +1216,13 @@ rm<span class="w"> </span>*.blg
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referencing-and-bibliography">Referencing and bibliography</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compiling-the-latex-document">Compiling the Latex document</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-bash-script-to-compile-latex">A bash script to compile <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-accept-a-tex-input-path">Exercise: accept a <code class="docutils literal notranslate"><span class="pre">.tex</span></code> input path</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-more-latex-features-and-tips">Some more <span class="math notranslate nohighlight">\(\LaTeX\)</span> features and tips</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals">Practicals</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-latex-example">First <span class="math notranslate nohighlight">\(\LaTeX\)</span> example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals-wrap-up">Practicals wrap-up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latex-practical">LaTeX practical</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-and-version-a-latex-document">Build and version a LaTeX document</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-completion-checklist">Practical completion checklist</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings-resources">Readings &amp; Resources</a><ul class="nav section-nav flex-column">

@@ -341,7 +341,7 @@ To get started, you will need 4 things:
     <noreply@imperial.ac.uk> with the subject heading “Welcome from the
     research Computing Service”. If you have not received this email,
     please let me know as soon as possible so we can try and get you
-    added this week.
+    added promptly.
 
 2.  **A method of working on the cluster:** The cluster is accessed
     using Secure Shell (SSH). If you are using Linux or macOS then you

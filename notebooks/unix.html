@@ -608,10 +608,10 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-grep">Using <code class="docutils literal notranslate"><span class="pre">grep</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-files">Finding files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particularly-useful-unix-tools">Particularly useful UNIX tools</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals">Practicals</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unix-practicals">Unix practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-command-challenge">Bash command challenge</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fasta-exercise-inspect-and-summarize-genome-sequences">FASTA exercise: inspect and summarize genome sequences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-set-bash-command-challenge">Exercise set: Bash command challenge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-inspect-and-summarize-fasta-genome-sequences">Practical: inspect and summarize FASTA genome sequences</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose-and-file-structure">Purpose and file structure</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a></li>
 </ul>
@@ -1008,12 +1008,12 @@ ls<span class="w"> </span>-al
 </section>
 <section id="building-your-coursework-directory-structure">
 <h2>Building your coursework directory structure<a class="headerlink" href="#building-your-coursework-directory-structure" title="Link to this heading">#</a></h2>
-<p>For CMEE coursework, use one <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code> directory in a suitable location in your home directory, such as Documents. Keep one project repository for the whole bootcamp instead of creating a new directory for each week or submission. At the project root, use <code class="docutils literal notranslate"><span class="pre">README.md</span></code>, <code class="docutils literal notranslate"><span class="pre">code/</span></code>, <code class="docutils literal notranslate"><span class="pre">data/</span></code>, <code class="docutils literal notranslate"><span class="pre">results/</span></code> and an optional <code class="docutils literal notranslate"><span class="pre">sandbox/</span></code>. Put scripts for all taught languages in <code class="docutils literal notranslate"><span class="pre">code/</span></code>, keep inputs in <code class="docutils literal notranslate"><span class="pre">data/</span></code>, and use <code class="docutils literal notranslate"><span class="pre">results/</span></code> for generated outputs. <code class="docutils literal notranslate"><span class="pre">sandbox/</span></code> is for disposable experiments, not assessed files you need to retain. Keep names lowercase exactly as shown, and bring the project under version control in the <a class="reference internal" href="git.html"><span class="std std-doc">Version Control chapter</span></a>.</p>
+<p>For CMEE coursework, use one <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code> directory in a suitable location in your home directory, such as Documents. Keep one project repository for the whole bootcamp instead of creating a new directory for each chapter or submission. At the project root, use <code class="docutils literal notranslate"><span class="pre">README.md</span></code>, <code class="docutils literal notranslate"><span class="pre">code/</span></code>, <code class="docutils literal notranslate"><span class="pre">data/</span></code>, <code class="docutils literal notranslate"><span class="pre">results/</span></code> and an optional <code class="docutils literal notranslate"><span class="pre">sandbox/</span></code>. Put scripts for all taught languages in <code class="docutils literal notranslate"><span class="pre">code/</span></code>, keep inputs in <code class="docutils literal notranslate"><span class="pre">data/</span></code>, and use <code class="docutils literal notranslate"><span class="pre">results/</span></code> for generated outputs. <code class="docutils literal notranslate"><span class="pre">sandbox/</span></code> is for disposable experiments, not assessed files you need to retain. Keep names lowercase exactly as shown, and bring the project under version control in the <a class="reference internal" href="git.html"><span class="std std-doc">Version Control chapter</span></a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>First rehearse the following file operations in a <strong>fresh temporary directory</strong>. The next cell creates one and enters it; everything through the search exercises should be done in this practice tree, not in existing coursework. Keep this terminal session open so its variables remain available. Do not copy real coursework into it or delete an existing coursework sandbox to repeat the lesson.</p>
 </div>
-<p>After practising, create the same structure in your chosen permanent coursework project root, or use an existing root that already follows this layout. If you already have week-specific coursework folders, follow the course’s supervised migration instructions rather than moving them ad hoc.</p>
+<p>After practising, create the same structure in your chosen permanent coursework project root, or use an existing root that already follows this layout. If you already have separate topic- or submission-specific coursework folders, follow the course’s supervised migration instructions rather than moving them ad hoc.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">practice_root</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="w"> </span>-d<span class="k">)</span>
@@ -1293,54 +1293,11 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>code<span class="w"> </sp
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.:
-<span class=" -Color -Color-Bold -Color-Bold-Blue">week1</span>
-
-./week1:
-<span class=" -Color -Color-Bold -Color-Bold-Blue">code</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">data</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">results</span>  <span class=" -Color -Color-Bold -Color-Bold-Blue">sandbox</span>
-
-./week1/code:
-
-./week1/data:
-
-./week1/results:
-
-./week1/sandbox:
-</pre></div>
-</div>
-</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">-r</span></code> reverses the listing order; it does <strong>not</strong> descend into subdirectories. Compare with <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-R</span></code>, whose uppercase <code class="docutils literal notranslate"><span class="pre">R</span></code> means recursive. Options are case-sensitive.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lr<span class="w"> </span><span class="c1"># same as ls -l -r</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.:
-total 4
-drwxrwxr-x 6 mhasoba mhasoba 4096 Oct  5 12:00 <span class=" -Color -Color-Bold -Color-Bold-Blue">week1</span>
-
-./week1:
-total 16
-drwxrwxr-x 2 mhasoba mhasoba 4096 Oct  5 12:00 <span class=" -Color -Color-Bold -Color-Bold-Blue">code</span>
-drwxrwxr-x 2 mhasoba mhasoba 4096 Oct  5 12:00 <span class=" -Color -Color-Bold -Color-Bold-Blue">data</span>
-drwxrwxr-x 2 mhasoba mhasoba 4096 Oct  5 12:00 <span class=" -Color -Color-Bold -Color-Bold-Blue">results</span>
-drwxrwxr-x 2 mhasoba mhasoba 4096 Oct  5 12:00 <span class=" -Color -Color-Bold -Color-Bold-Blue">sandbox</span>
-
-./week1/code:
-total 0
-
-./week1/data:
-total 0
-
-./week1/results:
-total 0
-
-./week1/sandbox:
-total 0
 </pre></div>
 </div>
 </div>
@@ -1955,20 +1912,20 @@ File3.txt
 </div>
 <p>Next you will learn to automate tools using <a class="reference internal" href="shell-scripting.html"><span class="std std-doc">shell scripts</span></a>. Consult <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">COMMAND</span></code> or <code class="docutils literal notranslate"><span class="pre">whatis</span> <span class="pre">COMMAND</span></code>. Many programs support <code class="docutils literal notranslate"><span class="pre">--help</span></code>, but that option is not universal; shell builtins in Bash can instead be explored with <code class="docutils literal notranslate"><span class="pre">help</span></code>, for example <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">cd</span></code>.</p>
 </section>
-<section id="practicals">
-<h2>Practicals<a class="headerlink" href="#practicals" title="Link to this heading">#</a></h2>
+<section id="unix-practicals">
+<h2>Unix practicals<a class="headerlink" href="#unix-practicals" title="Link to this heading">#</a></h2>
 <section id="instructions">
 <h3>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Review the commands above and explain their outcomes, including the deliberately failing examples. System-specific output may differ from the stored illustrations.</p></li>
 <li><p>Make sure your <strong>permanent</strong> coursework project root (e.g., <code class="docutils literal notranslate"><span class="pre">CMEECourseWork</span></code>) contains <code class="docutils literal notranslate"><span class="pre">README.md</span></code>, <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>, <code class="docutils literal notranslate"><span class="pre">code/</span></code>, <code class="docutils literal notranslate"><span class="pre">data/</span></code>, generated <code class="docutils literal notranslate"><span class="pre">results/</span></code> and optional <code class="docutils literal notranslate"><span class="pre">sandbox/</span></code>.</p></li>
 <li><p>Along with completeness of the practicals/exercises themselves, you will be marked on how complete and well-organised your project structure and content are across the bootcamp.</p></li>
-<li><p>Keep submission guidance in the root README rather than making a new coursework directory or README for each week.</p></li>
+<li><p>Keep submission guidance in the root README rather than making a new coursework directory or README for each chapter or submission.</p></li>
 <li><p>Please put judicious comments in all your script files.</p></li>
 </ul>
 </section>
-<section id="bash-command-challenge">
-<h3>Bash command challenge<a class="headerlink" href="#bash-command-challenge" title="Link to this heading">#</a></h3>
+<section id="exercise-set-bash-command-challenge">
+<h3>Exercise set: Bash command challenge<a class="headerlink" href="#exercise-set-bash-command-challenge" title="Link to this heading">#</a></h3>
 <p>Here is a deliberately inefficient Bash pipeline using two pipes:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>ls<span class="w"> </span>-s<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-n<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-10
 </pre></div>
@@ -2010,8 +1967,8 @@ find<span class="w"> </span>../TestWild<span class="w"> </span>-type<span class=
 <p>Optional extension: investigate <code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">-print0</span></code> and <code class="docutils literal notranslate"><span class="pre">xargs</span> <span class="pre">-0</span></code> for transporting filenames separated by NUL bytes, including names with spaces or newlines. This protects argument boundaries; it does not automatically make a later line-based <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">|</span> <span class="pre">sort</span> <span class="pre">|</span> <span class="pre">head</span></code> report safe for newline-containing names. Our displayed-size exercise uses filenames without newlines. Do not confuse robust filename transport with sorting a human-readable report.</p>
 </div>
 </section>
-<section id="fasta-exercise-inspect-and-summarize-genome-sequences">
-<h3>FASTA exercise: inspect and summarize genome sequences<a class="headerlink" href="#fasta-exercise-inspect-and-summarize-genome-sequences" title="Link to this heading">#</a></h3>
+<section id="practical-inspect-and-summarize-fasta-genome-sequences">
+<h3>Practical: inspect and summarize FASTA genome sequences<a class="headerlink" href="#practical-inspect-and-summarize-fasta-genome-sequences" title="Link to this heading">#</a></h3>
 <section id="purpose-and-file-structure">
 <h4>Purpose and file structure<a class="headerlink" href="#purpose-and-file-structure" title="Link to this heading">#</a></h4>
 <p>FASTA is a plain-text format for biological sequences. A record has a header line beginning with <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> followed by sequence data. The supplied files each contain one record, but FASTA can contain multiple records; this exercise is specifically about the supplied one-record files. Sequence lines may be wrapped for readability. When interpreting the DNA sequence, join those lines without adding spaces: the line breaks are not bases.</p>
@@ -2176,10 +2133,10 @@ GCA
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-grep">Using <code class="docutils literal notranslate"><span class="pre">grep</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-files">Finding files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particularly-useful-unix-tools">Particularly useful UNIX tools</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practicals">Practicals</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unix-practicals">Unix practicals</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-command-challenge">Bash command challenge</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fasta-exercise-inspect-and-summarize-genome-sequences">FASTA exercise: inspect and summarize genome sequences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-set-bash-command-challenge">Exercise set: Bash command challenge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-inspect-and-summarize-fasta-genome-sequences">Practical: inspect and summarize FASTA genome sequences</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose-and-file-structure">Purpose and file structure</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a></li>
 </ul>

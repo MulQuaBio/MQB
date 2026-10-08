@@ -2,13 +2,13 @@
 
 Here are the guidelines for the assessment of any coursework based on the MQB materials.
 
-Assessment may be through computer-based tests, or individual or group/team-based practicals.
+Assessment may be through computer-based tests, exercises, practicals, projects, or individual and group work.
 
 In computer-based tests, you will be expected to apply the concepts and techniques you have learned to address the questions by using appropriate computer code and interpreting the output.
 
-## Assessment of Practicals
+## Assessment of exercises, practicals and projects
 
-Both the correctness and quality of your practical work/solutions, and whether you are following good programming and workflow practices, will be assessed: how well you have learned the principles and implementation of **keeping workflows/pipelines/software organised and reusable** and **good coding practices**, _irrespective of programming language_ (please refer back to the start of the [UNIX](unix) and [Python](python) chapters in particular).
+Both the correctness and quality of your solutions, and whether you are following good programming and workflow practices, will be assessed: how well you have learned the principles and implementation of **keeping workflows/pipelines/software organised and reusable** and **good coding practices**, _irrespective of programming language_ (please refer back to the [Unix](unix.ipynb) and [Python](python.ipynb) chapters in particular).
 
 ```{Note}
 Lowercase for directory names below is a suggestion—just be consistent with whatever you choose, such as [CamelCase](https://en.wikipedia.org/wiki/Camel_case); for example, you may choose to name your `code` directory `Code` instead.
@@ -28,9 +28,9 @@ The basic rules you must follow, irrespective of the submission or project's con
     
 * Most importantly, all scripts should run without errors, taking in data and spitting out the results as necessary.
     
-When necessary, more specific, module-specific details on weekly coursework and assessment will be given when relevant.
+When necessary, more specific details for a chapter, practical or assignment will be provided in the relevant brief.
 
-### Pre-submission practicals wrap-up
+### Pre-submission checklist
 
 Do this after you finish an assignment, and before submission:
 
@@ -44,7 +44,7 @@ Do this after you finish an assignment, and before submission:
     
 
 ```{Note}
-An _in-class script_ is one that is either given to you in class, or which you built from code fragments used in class (typically by re-typing them verbatim) to illustrate one or more good programming concepts, or tools. An _assigned script_ is one you have written yourself, either from scratch or by modifying one given to you to complete an *assigned* practical (always appearing under a "Practicals" subsection of a chapter).
+An _example script_ is supplied, or built from demonstrated code fragments, to illustrate one or more programming concepts or tools. An _assigned script_ is one you write yourself, either from scratch or by modifying a starter, to complete an exercise, practical or project identified in the relevant assignment brief.
 ```
 
 ### Code testing and feedback
@@ -208,7 +208,7 @@ The instructor can provide mediation, reassign work, or adjust individual grades
 #### Timeline expectations
 
 * **Start early**: Begin work within the first few days of receiving the assignment.
-* **Commit regularly**: Aim for commits spread across multiple days/weeks, not concentrated in the final 24 hours.
+* **Commit regularly**: Aim for commits spread across multiple working sessions, not concentrated in the final 24 hours; see [Apply the loop to your coursework](git.ipynb#apply-the-loop-to-your-coursework).
 * **Coordinate meetings**: Schedule regular team meetings (online or in-person) to discuss progress, divide tasks, and resolve issues.
 * **Review before submission**: Allow time for final code review, testing, and documentation polish before the deadline.
 
