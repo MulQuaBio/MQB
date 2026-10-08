@@ -3890,6 +3890,16 @@ python3<span class="w"> </span>run_cfexercises.py
 <li><p>Does it work on any Linux server, or Imperial College’s unix cluster?</p></li>
 </ul>
 <p>The idea is to write <em>independent</em> tests for the <em>smallest units</em> of code. <em>Why the smallest units?</em> — to increase the likelihood of retaining the tests upon code modification.</p>
+<div class="tip admonition">
+<p class="admonition-title">Testing vocabulary for novices</p>
+<p>A <strong>test case</strong> supplies an input and states the expected behaviour. An <strong>assertion</strong> is an executable check that compares the observed behaviour with that expectation. A <strong>unit test</strong> checks one small unit of code, usually a function, separately from the larger workflow.</p>
+<ul class="simple">
+<li><p>A <strong>normal case</strong> uses ordinary valid input and checks the main intended behaviour.</p></li>
+<li><p><strong>Boundary testing</strong>, also called <strong>Boundary Value Analysis (BVA)</strong>, checks values at the edges of a rule and, where meaningful, immediately on either side. For a threshold of 10, useful cases may include 9, 10 and 11. Empty input, an all-missing group or the first and last permitted values can also be boundaries. The function’s stated contract determines which boundaries matter.</p></li>
+<li><p>A <strong>failure case</strong> uses invalid or unsupported input and checks that the code fails clearly in the expected way, rather than silently returning a misleading result.</p></li>
+</ul>
+<p>Use several kinds of case: one passing normal case does not establish that every boundary or invalid input is handled correctly. See <a class="reference internal" href="../appendices/terms.html#id33"><span class="std std-ref">Key computing terms: testing and checking results</span></a> for a short glossary.</p>
+</div>
 <section id="unit-testing-with-doctest">
 <h4>Unit testing with <code class="docutils literal notranslate"><span class="pre">doctest</span></code><a class="headerlink" href="#unit-testing-with-doctest" title="Link to this heading">#</a></h4>
 <p>Let’s try <code class="docutils literal notranslate"><span class="pre">doctest</span></code>, the simplest testing tool in Python: simple tests for each function are embedded in the docstring.</p>
@@ -4526,8 +4536,12 @@ OUTPUT: known-count total (or unavailable) and missing-count number per site
 </section>
 <section id="can-your-tests-detect-a-plausible-wrong-answer">
 <h3>Can your tests detect a plausible wrong answer?<a class="headerlink" href="#can-your-tests-detect-a-plausible-wrong-answer" title="Link to this heading">#</a></h3>
-<p>Complete the <a class="reference internal" href="#independent-exercise-summarise-observations-by-site">independent observations exercise</a>, including its checks and your new predicted input, before this critique. This is a staff-written example of a plausible AI suggestion, deliberately containing a fault. It is an exercise, not a reference solution; no assistant account is needed.</p>
-<p>The suggestion below returns only the known-count total for one site. Use valid rows and focus on the missing-value rule, not on adding validation or the separate missing-count output. Add this function above the startup guard in your implementation script so you can compare it with your own function:</p>
+<p>Complete the <a class="reference internal" href="#independent-exercise-summarise-observations-by-site">independent observations exercise</a>, including its checks and your new predicted input, before this critique.</p>
+<p>The function below was written by the teaching team and deliberately contains a fault. It looks reasonable and passes the ordinary checks, but a boundary test can expose its incorrect assumption. The purpose of this exercise is to practise checking unfamiliar code, regardless of where it came from. It is an exercise, not a reference solution.</p>
+<p>The prepared function returns only the known-count total for one site. Use valid rows and focus on the missing-value rule, not on adding validation or the separate missing-count output. Add this function above the startup guard in your implementation script so you can compare its behaviour with your own function.</p>
+<blockquote>
+<div><p><strong>Prepared faulty example:</strong> do not copy this function into your solution as if it were correct. First predict its behaviour, then use tests to identify the case it handles incorrectly.</p>
+</div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">suggested_total</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">site</span><span class="p">):</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
@@ -4548,20 +4562,20 @@ OUTPUT: known-count total (or unavailable) and missing-count number per site
 <span class="k">assert</span> <span class="n">suggested_total</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
 </pre></div>
 </div>
-<p>Passing these two checks does not establish correctness. Before running the suggestion on <code class="docutils literal notranslate"><span class="pre">boundary_rows</span></code>, predict its result for C and compare it with the rule: <strong>no known count means an unavailable total (<code class="docutils literal notranslate"><span class="pre">None</span></code>), not zero</strong>.</p>
+<p>These checks pass because the ordinary data do not distinguish an unavailable total from a genuine total of zero. Passing them therefore does not establish that the function implements the full data rule. Before running the prepared function on <code class="docutils literal notranslate"><span class="pre">boundary_rows</span></code>, predict its result for C and compare it with the rule: <strong>no known count means an unavailable total (<code class="docutils literal notranslate"><span class="pre">None</span></code>), not zero</strong>.</p>
 <ol class="arabic simple">
 <li><p>Write a check that passes for the known-total part of your own correct summary, <code class="docutils literal notranslate"><span class="pre">summarise_site(boundary_rows,</span> <span class="pre">&quot;C&quot;)[0]</span></code>, but fails for <code class="docutils literal notranslate"><span class="pre">suggested_total(boundary_rows,</span> <span class="pre">&quot;C&quot;)</span></code>. The <code class="docutils literal notranslate"><span class="pre">[0]</span></code> selects the total from your two-item tuple.</p></li>
 <li><p>Explain why the ordinary input did not expose the fault. Also check D: a genuinely observed zero must remain zero.</p></li>
 <li><p>Record the deliberate failure separately, then remove or comment out that failing assertion before rerunning your own normal, boundary and failure checks in a fresh process. Do not weaken the expected result to make the suggestion pass.</p></li>
 </ol>
-<p>Retain or reject a suggestion by checking its behaviour against the stated question, not by its confident wording or the number of checks that pass. Explain the missing-versus-zero distinction without an assistant.</p>
+<p>The important question is not where unfamiliar code came from. Check whether its behaviour matches the stated problem and whether your tests cover the important cases. Retain, revise or reject it on that evidence, not because it looks convincing or because a few tests pass. The same process applies to code suggested by another person, found online or produced by a coding assistant. Explain the missing-versus-zero distinction without assistance.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Reference solution (open after your attempt)</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Open this only after completing your implementation, checks, new predicted input and critique. The reference includes the converter, one-site summary, validation and checks; compare its decisions with yours, not just its final output.</p>
-<p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/9e7dcb76575b89401ccdc1596078163e/observations_practice_solution.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">the</span> <span class="pre">reference</span> <span class="pre">solution</span> <span class="pre">script</span></code></a></p>
+<p class="sd-card-text"><a class="reference download internal" download="" href="../_downloads/7cbc0d978223ee69a79aab361a491436/observations_exercise_solution.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">the</span> <span class="pre">reference</span> <span class="pre">solution</span> <span class="pre">script</span></code></a></p>
 <p class="sd-card-text">Put the downloaded script in your coursework project’s <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory, with the three CSV files in the sibling <code class="docutils literal notranslate"><span class="pre">data/</span></code> directory. From the project root, run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>code/observations_practice_solution.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>code/observations_exercise_solution.py
 </pre></div>
 </div>
 <p class="sd-card-text">It reports A: <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">1)</span></code>, B: <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>, C: <code class="docutils literal notranslate"><span class="pre">(None,</span> <span class="pre">2)</span></code> and D: <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>, followed by <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">reference</span> <span class="pre">checks</span> <span class="pre">passed.</span></code> Keep your own implementation and tests; do not overwrite them with the reference.</p>
@@ -5293,8 +5307,8 @@ from the end of an array:</p>
 <section id="the-lotka-volterra-model">
 <h5>The Lotka-Volterra model<a class="headerlink" href="#the-lotka-volterra-model" title="Link to this heading">#</a></h5>
 <p>Now let’s try numerical integration in Python for solving a classical model in biology — the Lotka-Volterra (LV) model for a predator-prey system in two-dimensional space (e.g., on land). The LV model is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b1c24c77-9c2a-4353-9711-e15c31d4cb82">
-<span class="eqno">(2)<a class="headerlink" href="#equation-b1c24c77-9c2a-4353-9711-e15c31d4cb82" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7c810dad-ca7c-445d-a650-3f24da546e9c">
+<span class="eqno">(2)<a class="headerlink" href="#equation-7c810dad-ca7c-445d-a650-3f24da546e9c" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dr}{dt} &amp;= r r - a C r  \nonumber \\
     \frac{dC}{dt} &amp;= - z C + e a C r
 \end{align}\]</div>
@@ -5771,8 +5785,8 @@ from the end of an array:</p>
 <section id="the-lotkavolterra-model-revisited">
 <h3>The Lotka–Volterra model revisited<a class="headerlink" href="#the-lotkavolterra-model-revisited" title="Link to this heading">#</a></h3>
 <p>In the original Lotka–Volterra model, the resource population grows without bound when consumers are absent. Add logistic density dependence to make resource growth slow as the resource density <span class="math notranslate nohighlight">\(R\)</span> approaches its carrying capacity <span class="math notranslate nohighlight">\(K\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e1d0b7ee-9233-4772-ac94-e1894b00412e">
-<span class="eqno">(3)<a class="headerlink" href="#equation-e1d0b7ee-9233-4772-ac94-e1894b00412e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-72356209-e6ef-4d09-97e4-ae6e09294b8d">
+<span class="eqno">(3)<a class="headerlink" href="#equation-72356209-e6ef-4d09-97e4-ae6e09294b8d" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dR}{dt} &amp;= rR\left(1 - \frac{R}{K}\right) - aCR\\
     \frac{dC}{dt} &amp;= -zC + eaCR
 \end{align}\]</div>
@@ -5803,8 +5817,8 @@ python3<span class="w"> </span>-m<span class="w"> </span>cProfile<span class="w"
 <section id="optional-extension-discrete-time-lv-model">
 <h3>Optional extension: discrete-time LV model<a class="headerlink" href="#optional-extension-discrete-time-lv-model" title="Link to this heading">#</a></h3>
 <p>Write a discrete-time version called <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ea92b081-1a3d-4344-bd7c-dc35ef155f9b">
-<span class="eqno">(4)<a class="headerlink" href="#equation-ea92b081-1a3d-4344-bd7c-dc35ef155f9b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-373c6c1e-0207-4ed9-acfa-c393a1778439">
+<span class="eqno">(4)<a class="headerlink" href="#equation-373c6c1e-0207-4ed9-acfa-c393a1778439" title="Permalink to this equation">#</a></span>\[\begin{align}
     R_{t+1} &amp;= R_t \left(1 + r\left(1 - \frac{R_t}{K}\right) - aC_t\right)\\
     C_{t+1} &amp;= C_t \left(1 - z + eaR_t\right)
 \end{align}\]</div>

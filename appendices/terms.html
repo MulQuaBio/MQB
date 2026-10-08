@@ -595,6 +595,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fork-and-pull-request">Fork and pull request</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-and-checking-results">Testing and checking results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-configuration">Data and configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-json-and-yaml">CSV, JSON and YAML</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a></li>
@@ -816,23 +817,50 @@
 <p>A <strong>fork</strong> is a separate GitHub copy of a repository under another account or organisation. A <strong>pull request</strong> proposes changes from one branch or repository to another for review and possible merging.</p>
 </section>
 </section>
+<section id="testing-and-checking-results">
+<span id="id41"></span><h2>Testing and checking results<a class="headerlink" href="#testing-and-checking-results" title="Link to this heading">#</a></h2>
+<div class="note admonition" id="test-case-and-expected-result">
+<p class="admonition-title">Test case and expected result</p>
+<p>A <strong>test case</strong> is one specified input or situation together with the behaviour you expect. Work out or justify the expected result independently before comparing it with the program’s observed result. A collection of test cases is a <strong>test suite</strong>.</p>
+</div>
+<div class="note admonition" id="assertion">
+<p class="admonition-title">Assertion</p>
+<p>An <strong>assertion</strong> is an executable statement that checks whether a condition is true. In Python, <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">result</span> <span class="pre">==</span> <span class="pre">expected</span></code> passes silently when the condition is true and raises <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> when it is false. Assertions help express tests, but the person writing the test must still justify the expected result.</p>
+</div>
+<div class="note admonition" id="unit-test">
+<p class="admonition-title">Unit test</p>
+<p>A <strong>unit test</strong> checks one small unit of code, usually a function, separately from the larger program. Small, focused tests make it easier to identify which behaviour broke after a change.</p>
+</div>
+<div class="note admonition" id="normal-case-testing">
+<p class="admonition-title">Normal-case testing</p>
+<p>A <strong>normal case</strong> uses typical valid input and checks the main intended behaviour. It is a useful starting point, but normal cases alone often miss errors at thresholds, empty inputs, missing data or other edges.</p>
+</div>
+<div class="note admonition" id="boundary-value-analysis">
+<p class="admonition-title">Boundary testing or Boundary Value Analysis (BVA)</p>
+<p><strong>Boundary testing</strong>, also called <strong>Boundary Value Analysis (BVA)</strong>, checks behaviour at the edges of a rule and, where meaningful, immediately on either side. If a threshold is 10, cases such as 9, 10 and 11 can reveal whether the code uses <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> correctly. Boundaries are defined by the problem and the function’s contract: they can include empty input, an all-missing group, capacity limits, dates or the first and last permitted values—not only numeric minima and maxima.</p>
+</div>
+<div class="note admonition" id="failure-case-testing">
+<p class="admonition-title">Failure-case or negative testing</p>
+<p>A <strong>failure case</strong> supplies invalid or unsupported input and checks that the program rejects it or reports the expected error clearly. This is sometimes called <strong>negative testing</strong>. It does not mean deliberately breaking unrelated parts of the system; it means verifying the promised response to bad input.</p>
+</div>
+</section>
 <section id="data-and-configuration">
 <h2>Data and configuration<a class="headerlink" href="#data-and-configuration" title="Link to this heading">#</a></h2>
 <section id="csv-json-and-yaml">
-<span id="id41"></span><h3>CSV, JSON and YAML<a class="headerlink" href="#csv-json-and-yaml" title="Link to this heading">#</a></h3>
+<span id="id42"></span><h3>CSV, JSON and YAML<a class="headerlink" href="#csv-json-and-yaml" title="Link to this heading">#</a></h3>
 <p><strong>CSV</strong> stores tabular data as rows and delimiters. <strong>JSON</strong> stores structured data using objects, arrays and values. <strong>YAML</strong> stores structured, human-readable configuration and data. Each format has different rules for quoting, nesting and data types.</p>
 </section>
 <section id="metadata">
-<span id="id42"></span><h3>Metadata<a class="headerlink" href="#metadata" title="Link to this heading">#</a></h3>
+<span id="id43"></span><h3>Metadata<a class="headerlink" href="#metadata" title="Link to this heading">#</a></h3>
 <p><strong>Metadata</strong> is information that describes other data, such as units, column meanings, provenance, collection methods or software versions.</p>
 </section>
 <section id="reproducibility">
-<span id="id43"></span><h3>Reproducibility<a class="headerlink" href="#reproducibility" title="Link to this heading">#</a></h3>
+<span id="id44"></span><h3>Reproducibility<a class="headerlink" href="#reproducibility" title="Link to this heading">#</a></h3>
 <p><strong>Reproducibility</strong> means that another person can repeat an analysis and obtain the same or appropriately equivalent results using the recorded code, data, environment and instructions.</p>
 </section>
 </section>
 <section id="ssh-keys">
-<span id="id44"></span><h2>SSH keys<a class="headerlink" href="#ssh-keys" title="Link to this heading">#</a></h2>
+<span id="id45"></span><h2>SSH keys<a class="headerlink" href="#ssh-keys" title="Link to this heading">#</a></h2>
 <p>SSH uses a pair of related files to prove that you control an account. The <strong>private key</strong> stays on your computer and must remain secret. The <strong>public key</strong> can be added to GitHub. A <strong>passphrase</strong> protects a private key if the file is copied; it is not your GitHub password.</p>
 </section>
 </section>
@@ -964,6 +992,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fork-and-pull-request">Fork and pull request</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-and-checking-results">Testing and checking results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-configuration">Data and configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-json-and-yaml">CSV, JSON and YAML</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata">Metadata</a></li>
