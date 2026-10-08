@@ -678,6 +678,8 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-debugging-and-errors">Testing, debugging, and errors</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-testing">Unit testing</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-testing-with-doctest">Unit testing with <code class="docutils literal notranslate"><span class="pre">doctest</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-doctest-to-a-separate-test-script">From doctest to a separate test script</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-meaningful-boundary-test">Add a meaningful boundary test</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#other-unit-testing-approaches">Other unit testing approaches</a></li>
 </ul>
 </li>
@@ -691,7 +693,7 @@
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-exercise-summarise-observations-by-site">Independent exercise: summarise observations by site</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-a-worked-function">First, a worked function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reuse-the-module-and-test-script-pattern">Reuse the module-and-test-script pattern</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-and-project-layout">Inputs and project layout</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-convert-count-text">Exercise: convert count text</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#now-implement-the-site-summary">Now implement the site summary</a></li>
@@ -3898,91 +3900,104 @@ python3<span class="w"> </span>run_cfexercises.py
 <li><p><strong>Boundary testing</strong>, also called <strong>Boundary Value Analysis (BVA)</strong>, checks values at the edges of a rule and, where meaningful, immediately on either side. For a threshold of 10, useful cases may include 9, 10 and 11. Empty input, an all-missing group or the first and last permitted values can also be boundaries. The function’s stated contract determines which boundaries matter.</p></li>
 <li><p>A <strong>failure case</strong> uses invalid or unsupported input and checks that the code fails clearly in the expected way, rather than silently returning a misleading result.</p></li>
 </ul>
-<p>Use several kinds of case: one passing normal case does not establish that every boundary or invalid input is handled correctly. See <a class="reference internal" href="../appendices/terms.html#id33"><span class="std std-ref">Key computing terms: testing and checking results</span></a> for a short glossary.</p>
+<p>Use several kinds of case: one passing normal case does not establish that every boundary or invalid input is handled correctly. See <a class="reference internal" href="../appendices/terms.html#id41"><span class="std std-ref">Key computing terms: testing and checking results</span></a> for a short glossary.</p>
 </div>
 <section id="unit-testing-with-doctest">
 <h4>Unit testing with <code class="docutils literal notranslate"><span class="pre">doctest</span></code><a class="headerlink" href="#unit-testing-with-doctest" title="Link to this heading">#</a></h4>
-<p>Let’s try <code class="docutils literal notranslate"><span class="pre">doctest</span></code>, the simplest testing tool in Python: simple tests for each function are embedded in the docstring.</p>
-<p><span class="math notranslate nohighlight">\(\star\)</span> Copy the file <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code> into the file <code class="docutils literal notranslate"><span class="pre">test_control_flow.py</span></code> and edit the original function so:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<p>Let’s start with <code class="docutils literal notranslate"><span class="pre">doctest</span></code>, a simple testing tool in Python. Its examples sit in a function’s docstring and serve as both documentation and executable checks. Keep the implementation in <code class="docutils literal notranslate"><span class="pre">code/control_flow.py</span></code>; do not copy it into a test file. Edit <code class="docutils literal notranslate"><span class="pre">even_or_odd</span></code> so that its contract, examples and validation are explicit:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">even_or_odd</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Return a description of whether an integer is even or odd.</span>
 
-<span class="sd">"""Some functions exemplifying the use of control statements"""</span>
-
-<span class="n">__author__</span> <span class="o">=</span> <span class="s1">'Your Name (Your.Name@your.email.address)'</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">'0.0.1'</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">doctest</span> <span class="c1"># Import the doctest module</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">even_or_odd</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Find whether a number x is even or odd.</span>
-<span class="sd">      </span>
 <span class="sd">    &gt;&gt;&gt; even_or_odd(10)</span>
 <span class="sd">    '10 is Even!'</span>
-<span class="sd">    </span>
 <span class="sd">    &gt;&gt;&gt; even_or_odd(5)</span>
 <span class="sd">    '5 is Odd!'</span>
-<span class="sd">        </span>
-<span class="sd">    in case of negative numbers, the positive is taken:    </span>
 <span class="sd">    &gt;&gt;&gt; even_or_odd(-2)</span>
 <span class="sd">    '-2 is Even!'</span>
-<span class="sd">    </span>
 <span class="sd">    """</span>
-    <span class="c1">#Define function to be tested</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"x must be an integer"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> is Even!"</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> is Odd!"</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="p">):</span> 
-    <span class="nb">print</span><span class="p">(</span><span class="n">even_or_odd</span><span class="p">(</span><span class="mi">22</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">even_or_odd</span><span class="p">(</span><span class="mi">33</span><span class="p">))</span>
-    <span class="k">return</span> <span class="mi">0</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">):</span>
-    <span class="n">status</span> <span class="o">=</span> <span class="n">main</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-
-<span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>   <span class="c1"># To run with embedded tests</span>
 </pre></div>
 </div>
-<p>You can also suppress the block of code containing <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">main()</span></code> and <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;)</span></code> because you don’t want/need to unit test that section of yuor script.</p>
-<p>Now run it:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run</span> <span class="n">test_control_flow</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">v</span>
+<p>Run the doctests from the project root:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>doctest<span class="w"> </span>-v<span class="w"> </span>code/control_flow.py
 </pre></div>
 </div>
-</div>
-</div>
-<p>You can also run doctest from a terminal without adding <code class="docutils literal notranslate"><span class="pre">doctest.testmod()</span></code> to your script. First, put examples and their expected results in a function’s docstring:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Return the square of a number.</span>
+<p><code class="docutils literal notranslate"><span class="pre">doctest</span></code> imports the module before checking its docstrings. The existing <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> guard prevents the program’s demonstration output from running during that import. The <code class="docutils literal notranslate"><span class="pre">-v</span></code> option shows each example, its expected result and the final pass/fail summary.</p>
+</section>
+<section id="from-doctest-to-a-separate-test-script">
+<span id="python-separate-test-script"></span><h4>From doctest to a separate test script<a class="headerlink" href="#from-doctest-to-a-separate-test-script" title="Link to this heading">#</a></h4>
+<p>Doctests work well for small examples that also document a function. As a test suite grows, keep the implementation in one module and import its functions into a separate test script. Create <code class="docutils literal notranslate"><span class="pre">code/test_control_flow.py</span></code>; do not copy the function definitions into it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">control_flow</span><span class="w"> </span><span class="kn">import</span> <span class="n">even_or_odd</span>
 
-<span class="sd">    &gt;&gt;&gt; square(4)</span>
-<span class="sd">    16</span>
-<span class="sd">    """</span>
-    <span class="k">return</span> <span class="n">number</span> <span class="o">*</span> <span class="n">number</span>
+
+<span class="c1"># Normal cases: representative even and odd integers.</span>
+<span class="k">assert</span> <span class="n">even_or_odd</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"10 is Even!"</span>
+<span class="k">assert</span> <span class="n">even_or_odd</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"5 is Odd!"</span>
+
+<span class="c1"># Edge cases: zero and a negative integer remain valid inputs.</span>
+<span class="k">assert</span> <span class="n">even_or_odd</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"0 is Even!"</span>
+<span class="k">assert</span> <span class="n">even_or_odd</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"-2 is Even!"</span>
+
+<span class="c1"># Failure case: the function's contract requires an integer.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">even_or_odd</span><span class="p">(</span><span class="s2">"10"</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"A non-integer input was accepted"</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Save this as <code class="docutils literal notranslate"><span class="pre">example.py</span></code>, then run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>doctest<span class="w"> </span>-v<span class="w"> </span>example.py
+<p>These assertions express the same expectations as the doctests, but the implementation and checks now have separate responsibilities. <code class="docutils literal notranslate"><span class="pre">try</span></code> calls the function with invalid input, <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">TypeError</span></code> accepts the promised failure, and <code class="docutils literal notranslate"><span class="pre">else</span></code> raises <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> if the invalid input is wrongly accepted. Other exception types remain visible.</p>
+<p>Run the separate test script from the project root:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>code/test_control_flow.py
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">python3</span></code> starts Python 3, <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">doctest</span></code> runs the standard-library doctest module on the named file, and <code class="docutils literal notranslate"><span class="pre">-v</span></code> prints each example, its expected result, and a pass/fail summary. Without <code class="docutils literal notranslate"><span class="pre">-v</span></code>, doctest is quieter and reports failures. Run the command from the directory containing the file, or give the file’s path.</p>
-<p>Doctest imports the file before checking its docstrings, so its top-level code runs. Put program startup code under <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> to keep it from running just because doctest imports the file.</p>
+<p>Passing assertions produce no output; the return of the shell prompt means that every check passed.</p>
+</section>
+<section id="add-a-meaningful-boundary-test">
+<h4>Add a meaningful boundary test<a class="headerlink" href="#add-a-meaningful-boundary-test" title="Link to this heading">#</a></h4>
+<p>Parity gives useful normal and failure cases, but it has no threshold at which the intended rule changes. Add this small biological function to <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code> to practise genuine boundary testing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">count_above</span><span class="p">(</span><span class="n">heights_cm</span><span class="p">,</span> <span class="n">threshold_cm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Return the number of heights strictly above a threshold."""</span>
+    <span class="n">above_threshold</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">height_cm</span> <span class="ow">in</span> <span class="n">heights_cm</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">height_cm</span> <span class="o">&gt;</span> <span class="n">threshold_cm</span><span class="p">:</span>
+            <span class="n">above_threshold</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">above_threshold</span>
+</pre></div>
+</div>
+<p>Import it in <code class="docutils literal notranslate"><span class="pre">test_control_flow.py</span></code> and append these checks:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">control_flow</span><span class="w"> </span><span class="kn">import</span> <span class="n">count_above</span>
+
+
+<span class="c1"># Normal case: some values are above the threshold.</span>
+<span class="k">assert</span> <span class="n">count_above</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+
+<span class="c1"># Boundary case: values immediately below, at and above the threshold.</span>
+<span class="k">assert</span> <span class="n">count_above</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+
+<span class="c1"># Edge case: there are no observations to count.</span>
+<span class="k">assert</span> <span class="n">count_above</span><span class="p">([],</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Explain why the value exactly at the threshold is not counted. A test containing only 8 and 12 would not distinguish <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> from the plausible but incorrect <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>; the 10 in the boundary test does. Rerun <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">code/test_control_flow.py</span></code> after adding the function and checks.</p>
+<p>At this point the same test script checks normal behaviour, an important boundary, empty input and an expected failure. The observations exercise will retain this structure while introducing richer biological records.</p>
 </section>
 <section id="other-unit-testing-approaches">
 <h4>Other unit testing approaches<a class="headerlink" href="#other-unit-testing-approaches" title="Link to this heading">#</a></h4>
-<p>For more complex testing, see documentation of <code class="docutils literal notranslate"><span class="pre">doctest</span></code> <a class="reference external" href="https://docs.python.org/3/library/doctest.html">here</a>.</p>
-<p>Also check out the packages <code class="docutils literal notranslate"><span class="pre">pytest</span></code> and <code class="docutils literal notranslate"><span class="pre">unittest</span></code> (and maybe <code class="docutils literal notranslate"><span class="pre">nose</span></code>, though the first two are more widely used and more intuitive) for more comprehensive and flexible unit testing.</p>
-<p>Please start testing as early as possible, but don’t try to test everything either! remember, it is easier to test if code is compartmentalized into functions.</p>
+<p>For more complex testing, see the official <a class="reference external" href="https://docs.python.org/3/library/doctest.html"><code class="docutils literal notranslate"><span class="pre">doctest</span></code> documentation</a>.</p>
+<p>Python’s standard library also provides <code class="docutils literal notranslate"><span class="pre">unittest</span></code>, while <code class="docutils literal notranslate"><span class="pre">pytest</span></code> is a widely used external testing framework. The plain assertions here keep the first workflow visible; the same test cases can later be expressed in either framework.</p>
+<p>Start testing early, and keep functions small enough that each test has a clear target. Choose cases from the function’s contract rather than trying arbitrary inputs.</p>
 </section>
 </section>
 <section id="debugging">
 <span id="python-debugging"></span><h3>Debugging<a class="headerlink" href="#debugging" title="Link to this heading">#</a></h3>
-<p>OK, so you unit-tested, let’s go look at life through beer-goggles… BUT NO! YOU WILL VErY LIKELY rUN INTO BUGS!</p>
-<p>Bugs (unexpected errors) happen, almost inevitably, in life and programming. You need to find and debug them. Banish all thoughts of littering your code with <code class="docutils literal notranslate"><span class="pre">print</span></code> statements to find bugs.</p>
-<p>Enter the debugger. The command <code class="docutils literal notranslate"><span class="pre">pdb</span></code> turns on the Python debugger. Type the following in a file and save as
-<code class="docutils literal notranslate"><span class="pre">debugme.py</span></code> in your <code class="docutils literal notranslate"> <span class="pre">Code</span></code> directory:</p>
+<p>A failing test tells you that observed behaviour differs from the expected behaviour, but it may not reveal why. A debugger lets you pause execution and inspect the values that led to the failure, without scattering temporary <code class="docutils literal notranslate"><span class="pre">print</span></code> calls throughout the program.</p>
+<p>Python’s built-in debugger is <code class="docutils literal notranslate"><span class="pre">pdb</span></code>. Type the following in a file named <code class="docutils literal notranslate"><span class="pre">debugme.py</span></code> in your <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">buggyfunc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -4260,7 +4275,7 @@ For each site:
 OUTPUT: known-count total (or unavailable) and missing-count number per site
 </pre></div>
 </div>
-<p>This plan describes a report for <strong>all sites</strong>. In the practice below, first write a reusable function that calculates the result for <strong>one requested site</strong>. Only after testing it will you write the loop that calls it for each site. Keep the hand-worked results as checks while developing the program.</p>
+<p>This plan describes a report for <strong>all sites</strong>. In the exercise below, first write a reusable function that calculates the result for <strong>one requested site</strong>. Only after testing it will you write the loop that calls it for each site. Keep the hand-worked results as checks while developing the program.</p>
 <div class="tip admonition">
 <p class="admonition-title">Minimum requirements for pseudocode</p>
 <p>There is no universal pseudocode syntax. For MQB, use these minimum conventions so someone else can follow and check your algorithm:</p>
@@ -4280,25 +4295,41 @@ OUTPUT: known-count total (or unavailable) and missing-count number per site
 <h3>Independent exercise: summarise observations by site<a class="headerlink" href="#independent-exercise-summarise-observations-by-site" title="Link to this heading">#</a></h3>
 <p>Start with your own plan and attempt, without a coding assistant. This is teaching practice, not a released assessment brief: your assignment brief controls which work is assessed and its AI permissions. Use the <a class="reference internal" href="../part-computing.html#plan-implement-test-explain-and-rerun"><span class="std std-ref">plan, implement, test, explain and rerun routine</span></a>.</p>
 <p><strong>Your goal:</strong> write and test a function that returns the known-count total and missing-count number for one site. Work through the checkpoints in order. Code labelled <strong>complete example</strong> can be run unchanged; code labelled <strong>unfinished template</strong> must be completed before its checks can pass. The CSV loader is provided; you write the count converter and site summary.</p>
-<section id="first-a-worked-function">
-<h4>First, a worked function<a class="headerlink" href="#first-a-worked-function" title="Link to this heading">#</a></h4>
-<p>This <strong>complete example</strong> turns the plant-height algorithm into a function. Run the whole block in IPython; it is a warm-up, not a function you need to add to the observations script. All heights here are present and in centimetres:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">count_above</span><span class="p">(</span><span class="n">heights_cm</span><span class="p">,</span> <span class="n">threshold_cm</span><span class="p">):</span>
-    <span class="n">above_threshold</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">height_cm</span> <span class="ow">in</span> <span class="n">heights_cm</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">height_cm</span> <span class="o">&gt;</span> <span class="n">threshold_cm</span><span class="p">:</span>
-            <span class="n">above_threshold</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">above_threshold</span>
-
-<span class="k">assert</span> <span class="n">count_above</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
-<span class="k">assert</span> <span class="n">count_above</span><span class="p">([</span><span class="mi">10</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
-</pre></div>
+<section id="reuse-the-module-and-test-script-pattern">
+<h4>Reuse the module-and-test-script pattern<a class="headerlink" href="#reuse-the-module-and-test-script-pattern" title="Link to this heading">#</a></h4>
+<p>This exercise extends the structure used in <a class="reference internal" href="#python-separate-test-script"><span class="std std-ref">From doctest to a separate test script</span></a>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Testing example</p></th>
+<th class="head text-left"><p>Observations exercise</p></th>
+<th class="head text-left"><p>Responsibility</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">observations_practice.py</span></code></p></td>
+<td class="text-left"><p>Define the functions.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">test_control_flow.py</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">test_observations_practice.py</span></code></p></td>
+<td class="text-left"><p>Import the functions and check them.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Normal, boundary and failure cases</p></td>
+<td class="text-left"><p>Normal, boundary and failure cases</p></td>
+<td class="text-left"><p>Compare behaviour with the function’s contract.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Run from the project root</p></td>
+<td class="text-left"><p>Run from the project root</p></td>
+<td class="text-left"><p>Start a fresh Python process with predictable paths.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">return</span></code> supplies a result to the caller; it does not print it. An <code class="docutils literal notranslate"><span class="pre">assert</span></code> checks that its condition is true. Passing assertions are silent; a false condition raises <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code>. Explain why the second check matters. Predict <code class="docutils literal notranslate"><span class="pre">count_above([],</span> <span class="pre">10)</span></code>, then add an assertion for your prediction and run it.</p>
+<p>The testing method has not changed. The observations problem adds CSV records, missing values and duplicates. Keep implementation code out of the test script and test code out of the implementation functions.</p>
 </section>
 <section id="inputs-and-project-layout">
 <h4>Inputs and project layout<a class="headerlink" href="#inputs-and-project-layout" title="Link to this heading">#</a></h4>
-<p>Download the <a class="reference download internal" download="" href="../_downloads/c4cbe787a8116cbc7dc0fd659f30f96e/bootcamp_observations.csv"><span class="xref download myst">ordinary observations</span></a>, <a class="reference download internal" download="" href="../_downloads/ea6e703504896acb3ad626379cca3c20/bootcamp_observations_boundary.csv"><span class="xref download myst">boundary observations</span></a> and <a class="reference download internal" download="" href="../_downloads/132c2cd4b6616b5b610214075ac94612/bootcamp_observations_invalid.csv"><span class="xref download myst">invalid observations</span></a>. Put them in your coursework project’s existing <code class="docutils literal notranslate"><span class="pre">data/</span></code> directory. Use the existing <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory for the two scripts below; do not create a new weekly directory. These are practice filenames, not additional assessed files.</p>
+<p>Download the <a class="reference download internal" download="" href="../_downloads/c4cbe787a8116cbc7dc0fd659f30f96e/bootcamp_observations.csv"><span class="xref download myst">ordinary observations</span></a>, <a class="reference download internal" download="" href="../_downloads/ea6e703504896acb3ad626379cca3c20/bootcamp_observations_boundary.csv"><span class="xref download myst">boundary observations</span></a> and <a class="reference download internal" download="" href="../_downloads/132c2cd4b6616b5b610214075ac94612/bootcamp_observations_invalid.csv"><span class="xref download myst">invalid observations</span></a>. Put them in your coursework project’s existing <code class="docutils literal notranslate"><span class="pre">data/</span></code> directory. Use the existing <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory for the two scripts below; do not create a separate directory for this exercise. These are working filenames, not additional assessed files.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>coursework-project/
     code/
         observations_practice.py
@@ -4397,30 +4428,20 @@ OUTPUT: known-count total (or unavailable) and missing-count number per site
 </table>
 </div>
 <p>Use <code class="docutils literal notranslate"><span class="pre">isinstance(count_text,</span> <span class="pre">str)</span></code> to check whether the input is text and <code class="docutils literal notranslate"><span class="pre">int(count_text)</span></code> to convert non-empty text. <code class="docutils literal notranslate"><span class="pre">int(&quot;many&quot;)</span></code> already raises <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>; <code class="docutils literal notranslate"><span class="pre">int(&quot;-1&quot;)</span></code> succeeds, so <strong>you</strong> must reject a negative result. Return the converted integer when it is non-negative.</p>
-<p>Before completing the template, try this <strong>complete exception example</strong> in IPython:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">require_non_negative</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Count must be non-negative"</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">number</span>
-
-<span class="k">assert</span> <span class="n">require_non_negative</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">require_non_negative</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"Expected ValueError caught"</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"A negative count was accepted"</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">raise</span></code> stops the current call with an exception instead of returning a result. <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">ValueError</span></code> catches that specific exception. The <code class="docutils literal notranslate"><span class="pre">else</span></code> block runs only if the call did not raise an exception, making the check fail when invalid data is wrongly accepted. Do not catch every exception: a different error should remain visible.</p>
+<p>This is the same failure-testing pattern used for the invalid text passed to <code class="docutils literal notranslate"><span class="pre">even_or_odd</span></code>. Here the promised exception is <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>: <code class="docutils literal notranslate"><span class="pre">raise</span></code> stops the current call, <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">ValueError</span></code> accepts that expected failure, and the <code class="docutils literal notranslate"><span class="pre">else</span></code> block makes the check fail if invalid data are accepted. Do not catch every exception; a different error should remain visible.</p>
 <p>Create <code class="docutils literal notranslate"><span class="pre">code/test_observations_practice.py</span></code> and put these checks in it. This is <strong>test code for your completed function</strong>, not the missing implementation:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">observations_practice</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_observations</span><span class="p">,</span> <span class="n">parse_count</span>
 
+<span class="c1"># Normal case: ordinary count text becomes an integer.</span>
 <span class="k">assert</span> <span class="n">parse_count</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+
+<span class="c1"># Boundary case: zero is a valid known count.</span>
 <span class="k">assert</span> <span class="n">parse_count</span><span class="p">(</span><span class="s2">"0"</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="c1"># Special valid case: blank text represents a missing count.</span>
 <span class="k">assert</span> <span class="n">parse_count</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
 
+<span class="c1"># Failure cases: each invalid value must raise ValueError.</span>
 <span class="k">for</span> <span class="n">bad_count</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"-1"</span><span class="p">,</span> <span class="s2">"many"</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">parse_count</span><span class="p">(</span><span class="n">bad_count</span><span class="p">)</span>
@@ -4526,7 +4547,7 @@ OUTPUT: known-count total (or unavailable) and missing-count number per site
 </pre></div>
 </div>
 <p>No output and a return to the shell prompt means all these checks passed. <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> means a check failed; <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> means a template remains unfinished. <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError</span></code> or <code class="docutils literal notranslate"><span class="pre">FileNotFoundError</span></code> usually means you should check filenames, file locations and the working directory. Do not type shell commands at a Python prompt.</p>
-<p><strong>Finish the algorithm practice:</strong> make a new valid input with a different site and dates, predict its result by hand, then add a check. Explain why <code class="docutils literal notranslate"><span class="pre">(None,</span> <span class="pre">2)</span></code> differs from <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>, how you recognise duplicates, and why an invalid row for another site still raises an error. You are ready for the <a class="reference internal" href="#can-your-tests-detect-a-plausible-wrong-answer">prepared-suggestion critique</a> when your normal, boundary, failure and unchanged-input checks pass and you can explain these decisions.</p>
+<p><strong>Finish the algorithm exercise:</strong> make a new valid input with a different site and dates, predict its result by hand, then add a check. Explain why <code class="docutils literal notranslate"><span class="pre">(None,</span> <span class="pre">2)</span></code> differs from <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>, how you recognise duplicates, and why an invalid row for another site still raises an error. You are ready for the <a class="reference internal" href="#can-your-tests-detect-a-plausible-wrong-answer">prepared-suggestion critique</a> when your normal, boundary, failure and unchanged-input checks pass and you can explain these decisions.</p>
 </section>
 <section id="follow-on-report-and-reproduce">
 <h4>Follow-on: report and reproduce<a class="headerlink" href="#follow-on-report-and-reproduce" title="Link to this heading">#</a></h4>
@@ -4537,6 +4558,7 @@ OUTPUT: known-count total (or unavailable) and missing-count number per site
 <section id="can-your-tests-detect-a-plausible-wrong-answer">
 <h3>Can your tests detect a plausible wrong answer?<a class="headerlink" href="#can-your-tests-detect-a-plausible-wrong-answer" title="Link to this heading">#</a></h3>
 <p>Complete the <a class="reference internal" href="#independent-exercise-summarise-observations-by-site">independent observations exercise</a>, including its checks and your new predicted input, before this critique.</p>
+<p>Before continuing, confirm that your test script now checks ordinary valid input, an important boundary, invalid input that must raise an exception, and empty, missing and duplicated data. You should be able to explain the expected result of every check independently of the implementation. The next task asks whether those checks can distinguish a correct result from a plausible but incorrect one; do not replace or weaken your own implementation.</p>
 <p>The function below was written by the teaching team and deliberately contains a fault. It looks reasonable and passes the ordinary checks, but a boundary test can expose its incorrect assumption. The purpose of this exercise is to practise checking unfamiliar code, regardless of where it came from. It is an exercise, not a reference solution.</p>
 <p>The prepared function returns only the known-count total for one site. Use valid rows and focus on the missing-value rule, not on adding validation or the separate missing-count output. Add this function above the startup guard in your implementation script so you can compare its behaviour with your own function.</p>
 <blockquote>
@@ -4584,7 +4606,8 @@ OUTPUT: known-count total (or unavailable) and missing-count number per site
 </section>
 <section id="capstone-practical-testing-and-debugging-biological-programs">
 <h2>Capstone practical: testing and debugging biological programs<a class="headerlink" href="#capstone-practical-testing-and-debugging-biological-programs" title="Link to this heading">#</a></h2>
-<p>Complete the core alignment and oak tasks independently before attempting the extensions. Predict small results, test normal and boundary cases, and record meaningful Git checkpoints for source code and intentional input data—not generated output.</p>
+<p>Complete the core alignment and oak tasks independently before attempting the extensions. Predict small results, test normal, boundary and failure cases, and record meaningful Git checkpoints for source code and intentional input data—not generated output.</p>
+<p>Reuse the testing choices developed above. Keep the alignment implementation in <code class="docutils literal notranslate"><span class="pre">align_seqs.py</span></code> and import its functions into <code class="docutils literal notranslate"><span class="pre">test_align_seqs.py</span></code>, because several inputs and related expectations are easier to manage in a separate test script. For the small <code class="docutils literal notranslate"><span class="pre">is_an_oak</span></code> contract, concise doctests remain appropriate because the examples also document the function. In either form, derive expected results from the stated contract before running the code.</p>
 <section id="align-dna-sequences">
 <h3>Align DNA sequences<a class="headerlink" href="#align-dna-sequences" title="Link to this heading">#</a></h3>
 <p>Open <code class="docutils literal notranslate"><span class="pre">align_seqs.py</span></code> from MQB’s <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory. This script aligns two DNA sequences using the simple offset-and-score algorithm described below. Run it and make sure you understand what every line does. To inspect execution, insert Python’s built-in <code class="docutils literal notranslate"><span class="pre">breakpoint()</span></code> just after the start of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop in <code class="docutils literal notranslate"><span class="pre">calculate_score</span></code>; use <code class="docutils literal notranslate"><span class="pre">n</span></code>, <code class="docutils literal notranslate"><span class="pre">p</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">q</span></code> as in the debugging section. No additional debugger package is required.</p>
@@ -4596,7 +4619,7 @@ OUTPUT: known-count total (or unavailable) and missing-count number per site
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>align_seqs.py
 </pre></div>
 </div>
-<p>A two-row CSV containing the example sequences is sufficient. Validate that exactly two non-empty sequences were read. You are finished when the saved alignment and score match the original example’s result.</p>
+<p>A two-row CSV containing the example sequences is sufficient. Validate that exactly two non-empty sequences were read. Put program startup under an <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> guard so that <code class="docutils literal notranslate"><span class="pre">test_align_seqs.py</span></code> can import functions without running the whole program. In the test script, include a small normal case with a hand-calculated score, a boundary or edge case such as an alignment reaching the end of a sequence, and failure cases for missing, empty or surplus input sequences. Run it from the project root with <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">code/test_align_seqs.py</span></code>. You are finished when those checks pass and the saved alignment and score match the original example’s result.</p>
 </section>
 <section id="extension-align-fasta-sequences">
 <h3>Extension: align FASTA sequences<a class="headerlink" href="#extension-align-fasta-sequences" title="Link to this heading">#</a></h3>
@@ -4649,6 +4672,8 @@ Genus
 <section id="capstone-completion-checklist">
 <h3>Capstone completion checklist<a class="headerlink" href="#capstone-completion-checklist" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p>For each core function, identify the normal, boundary or edge, and—where its contract rejects invalid input—failure cases. State what each case is intended to detect.</p></li>
+<li><p>Keep reusable functions in the implementation module. Use doctests for compact examples that clarify a docstring and a separate <code class="docutils literal notranslate"><span class="pre">test_*.py</span></code> script when the test suite has several inputs, setup steps or related checks.</p></li>
 <li><p>Run every completed script with <code class="docutils literal notranslate"><span class="pre">python3</span></code> from a fresh shell and verify its stated outputs. Use IPython only for the interactive debugging steps.</p></li>
 <li><p>Add concise module and function docstrings that describe purpose, inputs and returned values.</p></li>
 <li><p>Comment decisions that are not evident from clear names and structure; do not narrate every line.</p></li>
@@ -5307,8 +5332,8 @@ from the end of an array:</p>
 <section id="the-lotka-volterra-model">
 <h5>The Lotka-Volterra model<a class="headerlink" href="#the-lotka-volterra-model" title="Link to this heading">#</a></h5>
 <p>Now let’s try numerical integration in Python for solving a classical model in biology — the Lotka-Volterra (LV) model for a predator-prey system in two-dimensional space (e.g., on land). The LV model is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7c810dad-ca7c-445d-a650-3f24da546e9c">
-<span class="eqno">(2)<a class="headerlink" href="#equation-7c810dad-ca7c-445d-a650-3f24da546e9c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5904cb83-f60a-4385-93fb-112521e706a7">
+<span class="eqno">(2)<a class="headerlink" href="#equation-5904cb83-f60a-4385-93fb-112521e706a7" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dr}{dt} &amp;= r r - a C r  \nonumber \\
     \frac{dC}{dt} &amp;= - z C + e a C r
 \end{align}\]</div>
@@ -5785,8 +5810,8 @@ from the end of an array:</p>
 <section id="the-lotkavolterra-model-revisited">
 <h3>The Lotka–Volterra model revisited<a class="headerlink" href="#the-lotkavolterra-model-revisited" title="Link to this heading">#</a></h3>
 <p>In the original Lotka–Volterra model, the resource population grows without bound when consumers are absent. Add logistic density dependence to make resource growth slow as the resource density <span class="math notranslate nohighlight">\(R\)</span> approaches its carrying capacity <span class="math notranslate nohighlight">\(K\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-72356209-e6ef-4d09-97e4-ae6e09294b8d">
-<span class="eqno">(3)<a class="headerlink" href="#equation-72356209-e6ef-4d09-97e4-ae6e09294b8d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0ad0a18e-d310-4cd7-b336-7814b5673e42">
+<span class="eqno">(3)<a class="headerlink" href="#equation-0ad0a18e-d310-4cd7-b336-7814b5673e42" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dR}{dt} &amp;= rR\left(1 - \frac{R}{K}\right) - aCR\\
     \frac{dC}{dt} &amp;= -zC + eaCR
 \end{align}\]</div>
@@ -5817,8 +5842,8 @@ python3<span class="w"> </span>-m<span class="w"> </span>cProfile<span class="w"
 <section id="optional-extension-discrete-time-lv-model">
 <h3>Optional extension: discrete-time LV model<a class="headerlink" href="#optional-extension-discrete-time-lv-model" title="Link to this heading">#</a></h3>
 <p>Write a discrete-time version called <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-373c6c1e-0207-4ed9-acfa-c393a1778439">
-<span class="eqno">(4)<a class="headerlink" href="#equation-373c6c1e-0207-4ed9-acfa-c393a1778439" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-09f3e7e5-ddb0-4082-b01d-14274d1030ca">
+<span class="eqno">(4)<a class="headerlink" href="#equation-09f3e7e5-ddb0-4082-b01d-14274d1030ca" title="Permalink to this equation">#</a></span>\[\begin{align}
     R_{t+1} &amp;= R_t \left(1 + r\left(1 - \frac{R_t}{K}\right) - aC_t\right)\\
     C_{t+1} &amp;= C_t \left(1 - z + eaR_t\right)
 \end{align}\]</div>
@@ -6945,6 +6970,8 @@ for efficient data crunching</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-debugging-and-errors">Testing, debugging, and errors</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-testing">Unit testing</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-testing-with-doctest">Unit testing with <code class="docutils literal notranslate"><span class="pre">doctest</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-doctest-to-a-separate-test-script">From doctest to a separate test script</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-meaningful-boundary-test">Add a meaningful boundary test</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#other-unit-testing-approaches">Other unit testing approaches</a></li>
 </ul>
 </li>
@@ -6958,7 +6985,7 @@ for efficient data crunching</p></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-exercise-summarise-observations-by-site">Independent exercise: summarise observations by site</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-a-worked-function">First, a worked function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reuse-the-module-and-test-script-pattern">Reuse the module-and-test-script pattern</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-and-project-layout">Inputs and project layout</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-convert-count-text">Exercise: convert count text</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#now-implement-the-site-summary">Now implement the site summary</a></li>
