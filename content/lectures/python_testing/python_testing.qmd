@@ -1,0 +1,124 @@
+---
+pagetitle: "Testing Python functions | Thursday 8 October 2026"
+lang: en-GB
+format:
+  revealjs:
+    theme: simple
+    title-slide: false
+    slide-level: 2
+    width: 1280
+    height: 720
+    margin: 0.08
+    center: false
+    transition: none
+    slide-number: c/t
+    show-slide-number: all
+    incremental: false
+    navigation-mode: linear
+    controls: true
+    progress: true
+    history: true
+    embed-resources: true
+    auto-stretch: false
+execute:
+  enabled: false
+---
+
+## How do we know our function is correct? {data-timing="30"}
+
+### Testing Python functions
+
+**Computing Bootcamp | Thursday 8 October 2026**
+
+Today: predict behaviour, check it, explain what the check detects, and rerun.
+
+::: notes
+00:00-00:30. This is a ten-minute opening before the testing walkthrough.
+Students can watch without typing. State that code running without an error does
+not mean that it produced the right result.
+:::
+
+## What does testing mean? {data-timing="180"}
+
+**A test is an explicit, repeatable check of an expected behaviour.**
+
+```python
+assert count_above([8, 12, 10, 15], 10) == 2
+```
+
+| Part | Question |
+|:--|:--|
+| Input | What do we give the function? |
+| Expected result | What do the stated rules predict? |
+| Observed result | What does the function actually return? |
+
+- The test passes when the observed and expected results agree.
+- A passing test is **evidence**, not proof that the program is always correct.
+
+::: notes
+00:30-03:30. Ask for the expected count before showing or running the assertion.
+The values 12 and 15 exceed 10; the value 10 does not. Explain that a useful
+test begins with an independently justified expectation. Passing assertions are
+silent; a false condition raises AssertionError. Do not introduce doctest or
+pytest syntax here.
+:::
+
+## Why do we test? {data-timing="180"}
+
+- Code can run successfully and still produce the wrong scientific result.
+- Tests make assumptions and ambiguous rules visible.
+- Boundary cases expose faults that ordinary examples can miss.
+- Repeatable checks help other people verify and reproduce our work.
+- Rerunning tests shows whether a later change broke existing behaviour.
+
+> Several passing tests increase our confidence; they do not test every possible input.
+
+::: notes
+03:30-06:30. Connect testing to scientific reasoning: an error message is not
+required for a result to be wrong. A test records a claim about behaviour in a
+form that can be rerun. Emphasise that the choice of cases matters as much as
+the number of tests.
+:::
+
+## Use more than one kind of case {.smaller data-timing="150"}
+
+| Case | Question | Example |
+|:--|:--|:--|
+| **Normal** | Does typical valid input work? | Heights above and below 10 |
+| **Boundary** | What happens at an edge? | A height exactly equal to 10 |
+| **Failure** | Is invalid input handled clearly? | A count that is not numeric |
+
+```python
+assert count_above([8, 12, 10, 15], 10) == 2  # normal
+assert count_above([10], 10) == 0             # boundary
+assert count_above([], 10) == 0               # boundary
+```
+
+**What could still be wrong if only the normal test passes?**
+
+::: notes
+06:30-09:00. Ask students to predict each result. Use the exact-threshold case
+to expose a possible greater-than versus greater-than-or-equal mistake. The
+empty-list case checks the stopping and initial-value behaviour. The table's
+invalid count is a failure-case example for the observations exercise; do not
+imply that count_above must perform that conversion.
+:::
+
+## Today: predict → test → explain → rerun {data-timing="60"}
+
+1. Complete your own function attempt and checks.
+2. Predict what the prepared faulty function will return.
+3. Write a boundary test that exposes its incorrect assumption.
+4. Explain why the ordinary tests did not detect the fault.
+5. Rerun your own checks in a fresh Python process.
+
+[Open the independent observations exercise](https://mulquabio.github.io/MQB/notebooks/python.html#independent-exercise-summarise-observations-by-site)
+
+[Open the faulty-function critique](https://mulquabio.github.io/MQB/notebooks/python.html#can-your-tests-detect-a-plausible-wrong-answer)
+
+::: notes
+09:00-10:00. Hand over to the chapter. Students first work individually, then
+compare predictions and tests in their assigned pairs. Every student retains
+and reruns their own implementation and tests. The prepared function is a
+deliberately faulty teaching example, not a reference solution.
+:::

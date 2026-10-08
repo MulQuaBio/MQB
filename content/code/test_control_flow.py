@@ -1,38 +1,31 @@
 #!/usr/bin/env python3
 
-"""Some functions exemplifying the use of control statements"""
+"""Checks for the small functions in control_flow.py."""
 
-__author__ = 'Your Name (Your.Name@your.email.address)'
-__version__ = '0.0.1'
+from control_flow import count_above, even_or_odd
 
-import sys
-import doctest # Import the doctest module
 
-def even_or_odd(x=0):
-    """Find whether a number x is even or odd.
-      
-    >>> even_or_odd(10)
-    '10 is Even!'
-    
-    >>> even_or_odd(5)
-    '5 is Odd!'
-        
-    in case of negative numbers, the positive is taken:    
-    >>> even_or_odd(-2)
-    '-2 is Even!'
-    
-    """
-    #Define function to be tested
-    if x % 2 == 0:
-        return "%d is Even!" % x
-    return "%d is Odd!" % x
+# Normal cases: representative even and odd integers.
+assert even_or_odd(10) == "10 is Even!"
+assert even_or_odd(5) == "5 is Odd!"
 
-def main(argv): 
-    print(even_or_odd(22))
-    print(even_or_odd(33))
-    return 0
+# Edge cases: zero and a negative integer remain valid inputs.
+assert even_or_odd(0) == "0 is Even!"
+assert even_or_odd(-2) == "-2 is Even!"
 
-if (__name__ == "__main__"):
-    status = main(sys.argv)
-    
-doctest.testmod()   # To run with embedded tests
+# Failure case: the function's contract requires an integer.
+try:
+    even_or_odd("10")
+except TypeError:
+    pass
+else:
+    raise AssertionError("A non-integer input was accepted")
+
+# A normal biological example.
+assert count_above([8, 12, 10, 15], 10) == 2
+
+# Values immediately below, at and above the threshold expose > versus >=.
+assert count_above([9, 10, 11], 10) == 1
+
+# An empty collection contains no values above the threshold.
+assert count_above([], 10) == 0

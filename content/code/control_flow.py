@@ -1,18 +1,36 @@
 #!/usr/bin/env python3
 
-"""Some functions exemplifying the use of control statements"""
+"""Functions exemplifying control flow and small, testable units."""
 
 __author__ = 'Your name (your@email.address)'
 __version__ = '0.0.1'
 
 import sys
 
-def even_or_odd(x=0): # if not specified, x should take value 0.
+def even_or_odd(x=0):
+    """Return a description of whether an integer is even or odd.
 
-    """Find whether a number x is even or odd."""
-    if x % 2 == 0: #The conditional if
-        return "%d is Even!" % x
-    return "%d is Odd!" % x
+    >>> even_or_odd(10)
+    '10 is Even!'
+    >>> even_or_odd(5)
+    '5 is Odd!'
+    >>> even_or_odd(-2)
+    '-2 is Even!'
+    """
+    if not isinstance(x, int):
+        raise TypeError("x must be an integer")
+    if x % 2 == 0:
+        return f"{x} is Even!"
+    return f"{x} is Odd!"
+
+
+def count_above(heights_cm, threshold_cm):
+    """Return the number of heights strictly above a threshold."""
+    above_threshold = 0
+    for height_cm in heights_cm:
+        if height_cm > threshold_cm:
+            above_threshold += 1
+    return above_threshold
 
 def largest_divisor_five(x=120):
     """Find which is the largest divisor of x among 2,3,4,5."""

@@ -245,6 +245,45 @@ A **merge conflict** occurs when Git cannot combine changes automatically, often
 
 A **fork** is a separate GitHub copy of a repository under another account or organisation. A **pull request** proposes changes from one branch or repository to another for review and possible merging.
 
+(testing-and-checking-results)=
+## Testing and checking results
+
+(test-case-and-expected-result)=
+```{admonition} Test case and expected result
+:class: note
+A **test case** is one specified input or situation together with the behaviour you expect. Work out or justify the expected result independently before comparing it with the program's observed result. A collection of test cases is a **test suite**.
+```
+
+(assertion)=
+```{admonition} Assertion
+:class: note
+An **assertion** is an executable statement that checks whether a condition is true. In Python, `assert result == expected` passes silently when the condition is true and raises `AssertionError` when it is false. Assertions help express tests, but the person writing the test must still justify the expected result.
+```
+
+(unit-test)=
+```{admonition} Unit test
+:class: note
+A **unit test** checks one small unit of code, usually a function, separately from the larger program. Small, focused tests make it easier to identify which behaviour broke after a change.
+```
+
+(normal-case-testing)=
+```{admonition} Normal-case testing
+:class: note
+A **normal case** uses typical valid input and checks the main intended behaviour. It is a useful starting point, but normal cases alone often miss errors at thresholds, empty inputs, missing data or other edges.
+```
+
+(boundary-value-analysis)=
+```{admonition} Boundary testing or Boundary Value Analysis (BVA)
+:class: note
+**Boundary testing**, also called **Boundary Value Analysis (BVA)**, checks behaviour at the edges of a rule and, where meaningful, immediately on either side. If a threshold is 10, cases such as 9, 10 and 11 can reveal whether the code uses `>` or `>=` correctly. Boundaries are defined by the problem and the function's contract: they can include empty input, an all-missing group, capacity limits, dates or the first and last permitted values—not only numeric minima and maxima.
+```
+
+(failure-case-testing)=
+```{admonition} Failure-case or negative testing
+:class: note
+A **failure case** supplies invalid or unsupported input and checks that the program rejects it or reports the expected error clearly. This is sometimes called **negative testing**. It does not mean deliberately breaking unrelated parts of the system; it means verifying the promised response to bad input.
+```
+
 ## Data and configuration
 
 (csv-json-and-yaml)=
