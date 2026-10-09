@@ -644,29 +644,26 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-functions-and-control-flow">Exercises: functions and control flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-and-running-python-programs">Writing and running Python programs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-code-compartmentalization">Modules and code compartmentalization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing modules</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-python-scripts">Running Python scripts</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-unix-shell">Using the UNIX shell</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-the-unix-shell-using-ipython">From the UNIX shell, using IPython</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-within-the-ipython-shell">From within the IPython shell</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structuring-python-programs">Structuring Python programs</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-python-program">Components of the Python program</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shebang">The shebang</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-docstring">The Docstring</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-variables">Internal Variables</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#function-definitions-and-modules">Function <code class="docutils literal notranslate"><span class="pre">def</span></code>initions and “modules”</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-include-name-main-and-all-that-jazz">Why include <code class="docutils literal notranslate"><span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">"__main__"</span></code> and all that jazz</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-sys-argv">What is <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>?</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-main-argv">What is <code class="docutils literal notranslate"><span class="pre">main(argv)</span></code> ?</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#finally-sys-exit">Finally, sys.exit()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-main-function-and-main-guard">The <code class="docutils literal notranslate"><span class="pre">main</span></code> function and main guard</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#module-and-function-docstrings">Module and function docstrings</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reference-the-shebang">Further reference: the shebang</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#special-names-and-ordinary-names">Special names and ordinary names</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-and-modules-are-different">Functions and modules are different</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-program-with-control-flows-example">A program-with-control-flows example</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-control-flow-py">Modules and <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reference-command-line-programs">Further reference: command-line programs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-sys-argv">Inspecting <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-success-or-failure">Reporting success or failure</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-input-and-output">Python input and output</a><ul class="nav section-nav flex-column">
@@ -679,7 +676,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-testing">Unit testing</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-testing-with-doctest">Unit testing with <code class="docutils literal notranslate"><span class="pre">doctest</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-doctest-to-a-separate-test-script">From doctest to a separate test script</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-meaningful-boundary-test">Add a meaningful boundary test</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-a-meaningful-boundary-test">Examine a meaningful boundary test</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#other-unit-testing-approaches">Other unit testing approaches</a></li>
 </ul>
 </li>
@@ -3280,8 +3277,9 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 <section id="exercises-functions-and-control-flow">
 <h2>Exercises: functions and control flow<a class="headerlink" href="#exercises-functions-and-control-flow" title="Link to this heading">#</a></h2>
 <p>Return to <code class="docutils literal notranslate"><span class="pre">cfexercises1.py</span></code>, which you created in the control-flow section. Make every <code class="docutils literal notranslate"><span class="pre">foo_*</span></code> function accept arguments and return a result without calling <code class="docutils literal notranslate"><span class="pre">input()</span></code>.</p>
-<p>Add representative calls under an <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> guard. Include boundary checks where they matter—for example, confirm that your factorial functions handle zero—and compare functions that are intended to calculate the same result.</p>
-<p>Run the file with:</p>
+<p>A Python file can be executed directly or imported by another file. Python sets its special <code class="docutils literal notranslate"><span class="pre">__name__</span></code> value to <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code> only during direct execution. The guard <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> checks that value, so calls indented under it run during direct execution but not during import. The next section develops this structure in detail.</p>
+<p>Add representative calls under that guard. Include boundary checks where they matter—for example, confirm that your factorial functions handle zero—and compare functions that are intended to calculate the same result.</p>
+<p>From the coursework project’s <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory, run the file with:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>cfexercises1.py
 </pre></div>
 </div>
@@ -3289,94 +3287,72 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 </section>
 <section id="writing-and-running-python-programs">
 <h2>Writing and running Python programs<a class="headerlink" href="#writing-and-running-python-programs" title="Link to this heading">#</a></h2>
+<p>This section connects the functions you have written to complete, reproducible Python programs. A <strong>program</strong> is code written to perform a task; a <strong>script</strong> is a program saved in a file and commonly run from a shell. A <code class="docutils literal notranslate"><span class="pre">.py</span></code> file is also a <strong>module</strong>: Python can import it so another script, test or notebook can reuse its definitions. These terms describe related roles rather than mutually exclusive kinds of file. A function defined with <code class="docutils literal notranslate"><span class="pre">def</span></code> is contained in a module; it is not itself a module.</p>
+<div class="tip admonition">
+<p class="admonition-title">Core route for first-time Python programmers</p>
+<p>Work through <a class="reference internal" href="#running-python-scripts">Running Python scripts</a>, <a class="reference internal" href="#structuring-python-programs">Structuring Python programs</a>, the explanation of the main guard under <a class="reference internal" href="#components-of-the-python-program">Components of the Python program</a>, and <a class="reference internal" href="#python-control-flow-module"><span class="std std-ref">Modules and <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code></span></a>. Unless an exercise explicitly says otherwise, remain in the coursework project’s <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory and use <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">&lt;file&gt;.py</span></code>. Relative paths are resolved from this working directory, so <code class="docutils literal notranslate"><span class="pre">../data/</span></code> and <code class="docutils literal notranslate"><span class="pre">../results/</span></code> refer to their sibling directories at the project root. This route is enough preparation for the later input/output, testing and observations exercises.</p>
+<p>The material on shebangs, <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>, exit status and IPython execution is further reference. You do not need it to understand imports, tests or the observations program.</p>
+<p>Supplied-file links in this chapter are bundled with the book build, so they match the listings in the version you are reading. Type the short introductory examples when instructed; download longer scripts and datasets directly into the stated <code class="docutils literal notranslate"><span class="pre">code/</span></code> or <code class="docutils literal notranslate"><span class="pre">data/</span></code> directory.</p>
+</div>
 <section id="modules-and-code-compartmentalization">
 <h3>Modules and code compartmentalization<a class="headerlink" href="#modules-and-code-compartmentalization" title="Link to this heading">#</a></h3>
-<p>A Python module is a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file containing reusable definitions, such as functions and variables. Importing a module lets another script or notebook use those definitions without copying the code.</p>
-<p>Modules help keep programs organized, reduce repeated code, and make functions easier to test and reuse.</p>
-</section>
-<section id="importing-modules">
-<h3>Importing modules<a class="headerlink" href="#importing-modules" title="Link to this heading">#</a></h3>
-<p>There are several ways to import a module or one of its functions:</p>
+<p>A module can contain reusable functions, constants and other definitions. Importing it lets another script or notebook use those definitions without copying them. Keeping calculations in functions and startup activity in a small guarded block makes code easier to test and reuse.</p>
+<p>There are several common import forms:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_module</span></code> makes the module available; call a function as <code class="docutils literal notranslate"><span class="pre">my_module.my_function()</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">my_module</span> <span class="pre">import</span> <span class="pre">my_function</span></code> imports one function, which can then be called as <code class="docutils literal notranslate"><span class="pre">my_function()</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_module</span> <span class="pre">as</span> <span class="pre">mm</span></code> gives a long module name a shorter alias; call its function as <code class="docutils literal notranslate"><span class="pre">mm.my_function()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">my_module</span> <span class="pre">import</span> <span class="pre">my_function</span></code> imports one named function; call it as <code class="docutils literal notranslate"><span class="pre">my_function()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">my_module</span> <span class="pre">as</span> <span class="pre">mm</span></code> gives the module a shorter local name; call its function as <code class="docutils literal notranslate"><span class="pre">mm.my_function()</span></code>.</p></li>
 </ul>
-<p>Avoid <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">my_module</span> <span class="pre">import</span> <span class="pre">*</span></code>: it can overwrite names and make it unclear where a function came from. You can also access a module variable with <code class="docutils literal notranslate"><span class="pre">my_module.my_variable</span></code>.</p>
-<p>The later <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code> example uses these import forms with a real module from this chapter.</p>
+<p>Avoid <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">my_module</span> <span class="pre">import</span> <span class="pre">*</span></code>: it can replace existing names and hides where definitions came from. The later <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code> example uses explicit imports.</p>
 </section>
 <section id="running-python-scripts">
 <h3>Running Python scripts<a class="headerlink" href="#running-python-scripts" title="Link to this heading">#</a></h3>
-<p>Instead of pasting or sending code to the Python command prompt like you did above, let’s learn how to write it into a script and run it.</p>
-<p><span class="math notranslate nohighlight">\(\star\)</span> Write the following code into a file called <code class="docutils literal notranslate"><span class="pre">MyExampleScript.py</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-<span class="k">def</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">*=</span> <span class="n">x</span> <span class="c1"># same as x = x*x</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<p>Instead of pasting code at an interactive Python prompt, save related instructions in a script so you can run the same program again. Open the coursework project folder in VS Code and type the following as <code class="docutils literal notranslate"><span class="pre">code/MyExampleScript.py</span></code>. Because this is a short first example, typing it yourself is part of the exercise. If you need to recover or compare an exact copy, use <a class="reference download internal" download="" href="../_downloads/7ebe164319d7556a16b42e8b759c95c6/MyExampleScript.py"><code class="xref download docutils literal notranslate"><span class="pre">the</span> <span class="pre">supplied</span> <span class="pre">MyExampleScript.py</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">"""A first example of saving and running Python code."""</span>
 
-<span class="n">foo</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Return the square of x."""</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The square of 2 is </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 <section id="using-the-unix-shell">
 <h4>Using the UNIX shell<a class="headerlink" href="#using-the-unix-shell" title="Link to this heading">#</a></h4>
-<p>Open another bash terminal, and <code class="docutils literal notranslate"><span class="pre">cd</span> </code> to directory where you have saved this script file. Then, run it using:</p>
+<p>In a shell, use <code class="docutils literal notranslate"><span class="pre">pwd</span></code> to confirm that your working directory is the coursework project’s <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory. If you are at the project root, enter it once with <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">code</span></code>. Then run the script with:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>MyExampleScript.py
 </pre></div>
 </div>
-</section>
-<section id="from-the-unix-shell-using-ipython">
-<h4>From the UNIX shell, using IPython<a class="headerlink" href="#from-the-unix-shell-using-ipython" title="Link to this heading">#</a></h4>
-<p>Alternatively, you can use ipython:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ipython3<span class="w"> </span>MyExampleScript.py
-</pre></div>
+<p>The shell starts a fresh Python process, Python executes the file from top to bottom, and the process then ends. The function calculates and returns a value; the separate <code class="docutils literal notranslate"><span class="pre">print</span></code> call displays it. This first script still performs that call at the top level. The next example introduces the main guard so importing reusable functions does not also run the program’s startup work. If the command fails, read the traceback before changing directory or trying a different execution method. Do not type this shell command at Python’s <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> prompt.</p>
+<div class="note admonition">
+<p class="admonition-title">Optional IPython route</p>
+<p>Inside IPython started from <code class="docutils literal notranslate"><span class="pre">code/</span></code>, <code class="docutils literal notranslate"><span class="pre">%run</span> <span class="pre">MyExampleScript.py</span></code> executes the file using IPython’s special <code class="docutils literal notranslate"><span class="pre">%run</span></code> command. This can be useful for interactive exploration, but it is not the core reproducible route and it does not explain how normal Python imports work. Use the shell command above for this chapter’s program and clean-rerun checks.</p>
 </div>
-<p>With the same result.</p>
-</section>
-<section id="from-within-the-ipython-shell">
-<h4>From within the IPython shell<a class="headerlink" href="#from-within-the-ipython-shell" title="Link to this heading">#</a></h4>
-<p>You can also execute Python scripts from within the <code class="docutils literal notranslate"><span class="pre">ipython</span></code> shell with</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="n">MyExampleScript</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-<p>That is, enter <code class="docutils literal notranslate"><span class="pre">ipython</span></code> from bash (or switch to a terminal where you are already in the ipython shell), and then use the <code class="docutils literal notranslate"><span class="pre">run</span></code> command with the name of the script file.</p>
-<p>To run the script from the native Python shell, you would use <code class="docutils literal notranslate"><span class="pre">exec(open(&quot;./filename&quot;).read())</span></code>, but we won’t bother doing that (though you can/should try it out for fun!).</p>
 </section>
 </section>
 <section id="structuring-python-programs">
 <h3>Structuring Python programs<a class="headerlink" href="#structuring-python-programs" title="Link to this heading">#</a></h3>
-<p>Now let’s start with proper Python programs.</p>
-<p>The difference between scripts (which you have been writing till now) and programs is that the latter can be “compiled” into a self standing application or utility. This distinction will not mean much to you currently, but eventually will, once you have converted a script to a program below!</p>
-<p>We will start with a “boilerplate” (template) program, just as we did in the <a class="reference internal" href="shell-scripting.html#your-first-shell-script"><span class="std std-ref">shell scripting chapter</span></a>.</p>
-<p><span class="math notranslate nohighlight">\(\star\)</span> Type the code below and save as <code class="docutils literal notranslate"><span class="pre">boilerplate.py</span></code> in the coursework project’s root-level <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory:</p>
+<p>A short script can contain calculations and output in one sequence. As a program grows, separate reusable functions from the small amount of startup code that coordinates them. This structure allows a test or another module to import the functions without automatically running the complete program.</p>
+<p>The example below is a <strong>boilerplate</strong>, or reusable structural template, similar to the template introduced in the <a class="reference internal" href="shell-scripting.html#your-first-shell-script"><span class="std std-ref">shell scripting chapter</span></a>. For the core route, focus on three parts: definitions, a <code class="docutils literal notranslate"><span class="pre">main</span></code> function that coordinates the program, and the final <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> guard. Its shebang, metadata, command-line arguments and exit status belong to the further-reference route later in this section.</p>
+<p>Type the displayed example as <code class="docutils literal notranslate"><span class="pre">code/boilerplate.py</span></code> in the coursework project. If you need to recover or compare an exact copy, use <a class="reference download internal" download="" href="../_downloads/037c82af7404f3210a6ec7ff38c8e2e2/boilerplate.py"><code class="xref download docutils literal notranslate"><span class="pre">the</span> <span class="pre">supplied</span> <span class="pre">boilerplate.py</span></code></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 
-<span class="sd">"""Description of this program or application.</span>
-<span class="sd">You can use several lines"""</span>
-
-<span class="n">__appname__</span> <span class="o">=</span> <span class="s1">'[application name here]'</span>
-<span class="n">__author__</span> <span class="o">=</span> <span class="s1">'Your Name (your@email.address)'</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">'0.0.1'</span>
-<span class="n">__license__</span> <span class="o">=</span> <span class="s2">"License for this code/program"</span>
-
-<span class="c1">## imports ##</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span> <span class="c1"># module to interface our program with the operating system</span>
-
-<span class="c1">## constants ##</span>
+<span class="sd">"""A minimal structure for an import-safe Python program."""</span>
 
 
-<span class="c1">## functions ##</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">""" Main entry point of the program """</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'This is a boilerplate'</span><span class="p">)</span> <span class="c1"># NOTE: indented using two tabs or 4 spaces</span>
-    <span class="k">return</span> <span class="mi">0</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""Run the program's main task."""</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"This is a boilerplate"</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span> 
-<span class="w">    </span><span class="sd">"""Makes sure the "main" function is called from command line"""</span>  
-    <span class="n">status</span> <span class="o">=</span> <span class="n">main</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Now open another bash terminal, and <code class="docutils literal notranslate"><span class="pre">cd</span> </code> to the code directory and run the code. Then, run the code (NOT in the Python or ipython shell, but the bash shell! ):</p>
+<p>From a shell whose working directory remains <code class="docutils literal notranslate"><span class="pre">code/</span></code>, run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>boilerplate.py
 </pre></div>
 </div>
@@ -3384,12 +3360,8 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>This<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>boilerplate
 </pre></div>
 </div>
-<p>Alternatively, you can use ipython like you did above:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ipython3<span class="w"> </span>boilerplate.py
-</pre></div>
-</div>
-<p>With the same result.</p>
-<p>And again, like before, you can also execute this program file from within the <code class="docutils literal notranslate"><span class="pre">ipython</span></code> shell with <code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">MyScript.py</span></code>. Enter <code class="docutils literal notranslate"><span class="pre">ipython</span></code> from bash (or switch to a terminal where you are already in the ipython shell), and do:</p>
+<p>This is the core execution route. It starts a fresh process and works whether or not you have previously opened IPython.</p>
+<p>The next two cells show the older optional IPython route: change IPython’s current directory to <code class="docutils literal notranslate"><span class="pre">code/</span></code>, then use <code class="docutils literal notranslate"><span class="pre">%run</span> <span class="pre">boilerplate.py</span></code>. They are not additional steps after the shell command, and they are not needed for the later testing or observations exercises.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> boilerplate.py
@@ -3400,17 +3372,24 @@ this       module    &lt;module 'this' from '/usr&lt;...&gt;/lib/python3.12/this
 </section>
 <section id="components-of-the-python-program">
 <h3>Components of the Python program<a class="headerlink" href="#components-of-the-python-program" title="Link to this heading">#</a></h3>
-<p>Now let’s examine the elements of your first, boilerplate code:</p>
-<section id="the-shebang">
-<h4>The shebang<a class="headerlink" href="#the-shebang" title="Link to this heading">#</a></h4>
-<p>Just like UNIX shell scripts, the first “shebang” line tells the computer where to look for python. It determines the script’s ability to be executed when compiled as part of a standalone program. It isn’t absolutely necessary, but it is good practice to use it, and it is also also useful because when someone examines the file in an editor, they immediately know what they’re looking at.</p>
-<p>However, which shebang line you use is important. Here by using <code class="docutils literal notranslate"><span class="pre">#!/usr/bin/env</span> <span class="pre">python3</span></code> we are specifying the location to the Python executable in your machine that the rest of the script needs to be interpreted with. You may use <code class="docutils literal notranslate"><span class="pre">#!/usr/bin/python</span></code> instead, but this might not work on somebody else’s machine if the Python executable isn’t actually located at <code class="docutils literal notranslate"><span class="pre">/usr/bin/</span></code>.</p>
+<p>Now examine the roles of the boilerplate’s main components.</p>
+<section id="the-main-function-and-main-guard">
+<h4>The <code class="docutils literal notranslate"><span class="pre">main</span></code> function and main guard<a class="headerlink" href="#the-main-function-and-main-guard" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">main()</span></code> is an ordinary function used by convention to coordinate a program. Defining it does not run it. When Python executes a file directly, Python sets that module’s special <code class="docutils literal notranslate"><span class="pre">__name__</span></code> value to <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code>; when another file imports the module, Python sets <code class="docutils literal notranslate"><span class="pre">__name__</span></code> to the module’s import name. The guard checks that value:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Code indented under the guard therefore runs during direct execution but is skipped during import. The guard does not set <code class="docutils literal notranslate"><span class="pre">__name__</span></code>, and it does not stop other unguarded top-level statements from running during import. Keep reusable function definitions above the guard and keep startup actions—such as loading a particular file or printing a report—inside <code class="docutils literal notranslate"><span class="pre">main()</span></code> or the guarded block.</p>
 </section>
-<section id="the-docstring">
-<h4>The Docstring<a class="headerlink" href="#the-docstring" title="Link to this heading">#</a></h4>
-<p>Triple quotes start a “docstring” comment, which is meant to describe the operation of the script or a function/module within it. Docstrings are considered part of the running code, while normal comments are
-stripped. Hence, you can access your docstrings at run time. It is a good idea to have doctrings at the start of every Python script and module as it can provide useful information to the user and you as well, down the line.</p>
-<p>You can access the docstring(s) in a script (both for the overall script and the ones in each of its functions), by importing the function (say, <code class="docutils literal notranslate"><span class="pre">my_func</span></code>), and then typing <code class="docutils literal notranslate"><span class="pre">help(my_func)</span></code> or <code class="docutils literal notranslate"><span class="pre">?my_func</span></code> in the Python or ipython shell. For example, try <code class="docutils literal notranslate"> <span class="pre">import</span> <span class="pre">boilerplate</span></code> and then <code class="docutils literal notranslate"><span class="pre">help(boilerplate)</span></code> (but you have to be in the Python or ipython shell).</p>
+<section id="module-and-function-docstrings">
+<h4>Module and function docstrings<a class="headerlink" href="#module-and-function-docstrings" title="Link to this heading">#</a></h4>
+<p>A <strong>docstring</strong> is a string placed as the first statement in a module, function or class. Python stores it in <code class="docutils literal notranslate"><span class="pre">__doc__</span></code>, so tools such as <code class="docutils literal notranslate"><span class="pre">help()</span></code> can display it. A module docstring states the file’s purpose; a function docstring describes its inputs, returned value and important behaviour. A <code class="docutils literal notranslate"><span class="pre">#</span></code> comment instead explains a source-code decision that is not obvious from the names and structure. A docstring is documentation, not a special kind of comment.</p>
+<p>After importing the example at an interactive Python or IPython prompt, <code class="docutils literal notranslate"><span class="pre">help(boilerplate)</span></code> displays the module docstring. IPython also supports the convenience syntax <code class="docutils literal notranslate"><span class="pre">boilerplate?</span></code>.</p>
+</section>
+<section id="further-reference-the-shebang">
+<h4>Further reference: the shebang<a class="headerlink" href="#further-reference-the-shebang" title="Link to this heading">#</a></h4>
+<p>The first line <code class="docutils literal notranslate"><span class="pre">#!/usr/bin/env</span> <span class="pre">python3</span></code> is a <strong>shebang</strong>. On Unix-like systems it tells the operating system which interpreter to use only when an executable file is invoked directly, for example as <code class="docutils literal notranslate"><span class="pre">./boilerplate.py</span></code>. The <code class="docutils literal notranslate"><span class="pre">env</span></code> command searches the current <code class="docutils literal notranslate"><span class="pre">PATH</span></code> for <code class="docutils literal notranslate"><span class="pre">python3</span></code>; it does not specify a fixed installation location. The shebang is ignored when you run <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">boilerplate.py</span></code>, so executable permissions and direct invocation are not part of the core route. A shebang does not compile Python into a standalone application.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">boilerplate</span>
@@ -3427,29 +3406,17 @@ stripped. Hence, you can access your docstrings at run time. It is a good idea t
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Docstrings vs. Comments</strong>: In short, Docstrings tell the user how to use some python code, while and Comments explain why and how certain parts of the code work. Thus Docstrings are are enhanced comments that serve as documentation for python code, including for any functions/modules and classes in it. Comments explain non-obvious portions of the code.</p>
+<p><strong>Docstrings and comments have different jobs.</strong> Use docstrings to document how a module or function is used. Use comments sparingly to explain a non-obvious decision. Neither replaces clear names, small functions or tests.</p>
 </div>
 </section>
-<section id="internal-variables">
-<h4>Internal Variables<a class="headerlink" href="#internal-variables" title="Link to this heading">#</a></h4>
-<p>“<code class="docutils literal notranslate"><span class="pre">__</span></code>” signal “internal” variables (never name your variables so!). These are special variables names reserved by Python for its own purposes. For more on the usage of underscores in Python, <a class="reference external" href="https://www.datacamp.com/community/tutorials/role-underscore-Python">see this</a>.</p>
+<section id="special-names-and-ordinary-names">
+<h4>Special names and ordinary names<a class="headerlink" href="#special-names-and-ordinary-names" title="Link to this heading">#</a></h4>
+<p>Python defines some special <strong>dunder</strong> names with two leading and two trailing underscores, including <code class="docutils literal notranslate"><span class="pre">__name__</span></code> and <code class="docutils literal notranslate"><span class="pre">__doc__</span></code>. Learn the meaning of a special name before using it, and do not invent new dunder names for ordinary variables. This is different from a single leading underscore, which is a naming convention for an internal implementation detail rather than a reserved Python variable.</p>
 </section>
-<section id="function-definitions-and-modules">
-<h4>Function <code class="docutils literal notranslate"><span class="pre">def</span></code>initions and “modules”<a class="headerlink" href="#function-definitions-and-modules" title="Link to this heading">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">def</span></code> indicates the start of a Python function (aka “module”); all subsequent lines must be indented.</p>
-<p>It’s important to know that somewhat confusingly, pythonistas call a file containing function <code class="docutils literal notranslate"><span class="pre">def</span></code>itions) and statements (e.g., assignments of constant variables) a “module”. There is a practical reason (there’s always one!) for this. You might want to use a particular set of Python <code class="docutils literal notranslate"><span class="pre">def</span></code>’s (functions) and statements either as a standalone function, or use it or subsets of it from other scripts. So in theory, every function you <code class="docutils literal notranslate"><span class="pre">def</span></code>ine can be a sub-module usable by other scripts.</p>
-<p><em>In other words, <code class="docutils literal notranslate"><span class="pre">def</span></code>initions from a module can be imported into other modules and scripts, or into the main program itself.</em></p>
-<p>The last few lines, including the <code class="docutils literal notranslate"><span class="pre">main</span></code> function/module are somewhat esoteric but important; more on this below.</p>
-</section>
-<section id="why-include-name-main-and-all-that-jazz">
-<h4>Why include <code class="docutils literal notranslate"><span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;</span></code> and all that jazz<a class="headerlink" href="#why-include-name-main-and-all-that-jazz" title="Link to this heading">#</a></h4>
-<p>When you run a Python module with or without arguments, the code in the called module will be executed just as if you imported it, but with the <code class="docutils literal notranslate"><span class="pre">__name__</span></code> set to <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code> (analogous to the special <code class="docutils literal notranslate"><span class="pre">$0</span></code> variable in shell scripts).</p>
-<p>So adding this code at the end of your module:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">):</span>
-</pre></div>
-</div>
-<p>directs the Python interpreter to set the special <code class="docutils literal notranslate"><span class="pre">__name__</span></code> variable to have a value <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code>, so that the file is usable as a script <em>as well as</em> an importable module (important for packaging and re-usability).</p>
-<p>How do you import? Simply as (in Python or ipython shell):</p>
+<section id="functions-and-modules-are-different">
+<h4>Functions and modules are different<a class="headerlink" href="#functions-and-modules-are-different" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">def</span></code> begins a function definition, and its body is indented using four spaces. A function is one reusable operation. A module is the complete <code class="docutils literal notranslate"><span class="pre">.py</span></code> file that can contain several function definitions, constants and other statements. Import a module to reuse its functions; a function is not a module or submodule.</p>
+<p>At a Python or IPython prompt started with <code class="docutils literal notranslate"><span class="pre">code/</span></code> on the import path, import the example module with:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">boilerplate</span>
@@ -3457,7 +3424,7 @@ stripped. Hence, you can access your docstrings at run time. It is a good idea t
 </div>
 </div>
 </div>
-<p>Then type</p>
+<p>Typing the module name at an interactive prompt displays its representation; it does not run the program again. Use <code class="docutils literal notranslate"><span class="pre">help(boilerplate)</span></code> for its documentation or call a named function explicitly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boilerplate</span>
@@ -3465,22 +3432,28 @@ stripped. Hence, you can access your docstrings at run time. It is a good idea t
 </div>
 </div>
 </div>
-<p>So when you ran your module by itself using <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">boilerplate.py</span></code> (as you did above by opening a separate bash shell), having <code class="docutils literal notranslate"><span class="pre">__name__</span> <span class="pre">=</span> <span class="pre">&quot;__main__&quot;</span></code> made the Python interpreter assign the string <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code> to the <code class="docutils literal notranslate"><span class="pre">__name__</span></code> variable inside the module, so that the your module execution was forced to start with the control flow <em>first</em> passing through the <code class="docutils literal notranslate"><span class="pre">main</span></code> function.</p>
-<p>On the other hand, if <em>some other module</em> (not <code class="docutils literal notranslate"><span class="pre">boilerplate</span></code>) is the main program, and you want to import the boilerplate module into it (with <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">boilerplate</span></code>), the interpreter looks at the filename of your module (<code class="docutils literal notranslate"><span class="pre">boilerplate.py</span></code>), strips off the <code class="docutils literal notranslate"><span class="pre">.py</span></code>, and assigns that string (<code class="docutils literal notranslate"><span class="pre">boilerplate</span></code>) to the imported module’s <code class="docutils literal notranslate"><span class="pre">__name__</span></code> variable instead, skipping the command(s) under the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement of <code class="docutils literal notranslate"><span class="pre">boilerplate.py</span></code>.</p>
-<p>Let’s write a script to illustrate this.</p>
-<p><span class="math notranslate nohighlight">\(\star\)</span> Type and save the following in a script file called <code class="docutils literal notranslate"><span class="pre">using_name.py</span></code>:</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">boilerplate.py</span></code> executes the file directly from <code class="docutils literal notranslate"><span class="pre">code/</span></code>, Python has already set <code class="docutils literal notranslate"><span class="pre">__name__</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code>, so the condition is true and the guarded call to <code class="docutils literal notranslate"><span class="pre">main</span></code> runs. If another file executes <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">boilerplate</span></code>, Python sets the imported module’s <code class="docutils literal notranslate"><span class="pre">__name__</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;boilerplate&quot;</span></code>; the condition is false and the guarded call is skipped. Function definitions and any other unguarded top-level statements are still processed during import.</p>
+<p>The following small diagnostic makes those two <code class="docutils literal notranslate"><span class="pre">__name__</span></code> values visible. Type it as <code class="docutils literal notranslate"><span class="pre">code/using_name.py</span></code>, or use <a class="reference download internal" download="" href="../_downloads/a2a82518eb3033c621840761a7c380e7/using_name.py"><code class="xref download docutils literal notranslate"><span class="pre">the</span> <span class="pre">supplied</span> <span class="pre">using_name.py</span></code></a> to recover or compare an exact copy:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-<span class="c1"># Filename: using_name.py</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'This program is being run by itself!'</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'I am being imported from another script/program/module!'</span><span class="p">)</span>
+<span class="sd">"""Demonstrate the value Python assigns to __name__."""</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"This module's name is: "</span> <span class="o">+</span> <span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">module_name</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""Return the name Python assigned to this module."""</span>
+    <span class="k">return</span> <span class="vm">__name__</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""Report the module name during direct execution."""</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"This module's name is: </span><span class="si">{</span><span class="n">module_name</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Now run it:</p>
+<p>From <code class="docutils literal notranslate"><span class="pre">code/</span></code>, <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">using_name.py</span></code> reports <code class="docutils literal notranslate"><span class="pre">__main__</span></code>. The next <code class="docutils literal notranslate"><span class="pre">%run</span></code> cell is the optional IPython equivalent. Both routes execute the file directly, so the guarded call to <code class="docutils literal notranslate"><span class="pre">main()</span></code> runs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> using_name.py
@@ -3488,154 +3461,103 @@ stripped. Hence, you can access your docstrings at run time. It is a good idea t
 </div>
 </div>
 </div>
-<p>Now, try:</p>
+<p>Now import the same file at a Python or IPython prompt with <code class="docutils literal notranslate"><span class="pre">code/</span></code> on the import path, then call its function. Importing alone produces no report; the explicit function call returns the module name <code class="docutils literal notranslate"><span class="pre">using_name</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">using_name</span>
+<span class="n">using_name</span><span class="o">.</span><span class="n">module_name</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Also please look up the <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">official python doc for modules</a>.</p>
+<p>The <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html">official Python tutorial on modules</a> provides a longer reference on imports, module search paths and packages.</p>
 </div>
-</section>
-</section>
-<section id="what-is-sys-argv">
-<h3>What is <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>?<a class="headerlink" href="#what-is-sys-argv" title="Link to this heading">#</a></h3>
-<p>In your boilerplate code, as any other Python code, <code class="docutils literal notranslate"><span class="pre">argv</span></code> is the “argument variable”. Such variables are necessarily very common across programming languages, and play an important role — <code class="docutils literal notranslate"><span class="pre">argv</span></code> is a variable that holds the arguments you pass to your Python script when you run it (like <code class="docutils literal notranslate"><span class="pre">$var</span></code> in shell scripts). <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> is simply an object created by Python using the <code class="docutils literal notranslate"><span class="pre">sys</span></code> module (which you imported at the beginning of the script) that contains the names of the argument variables in the current script.</p>
-<p>To understand this in a practical way, write and save a script called <code class="docutils literal notranslate"><span class="pre">sysargv.py</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"This is the name of the script: "</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of arguments: "</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"The arguments are: "</span> <span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>Now run <code class="docutils literal notranslate"><span class="pre">sysargv.py</span></code> with different numbers of arguments:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> sysargv.py
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run</span> <span class="n">sysargv</span><span class="o">.</span><span class="n">py</span> <span class="n">var1</span> <span class="n">var2</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run</span> <span class="n">sysargv</span><span class="o">.</span><span class="n">py</span> <span class="mi">1</span> <span class="mi">2</span> <span class="n">var3</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>As you can see the first variable is always the file name, and is always available to the Python interpreter.</p>
-<p>Then, the command <code class="docutils literal notranslate"><span class="pre">main(argv=sys.argv)</span></code> directs the interpreter to pass the argument variables to the main function.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>As the number of arguments increases, handling <code class="docutils literal notranslate"><span class="pre">sys.</span></code>argv becomes less readable and more error-prone. You must manually validate and parse each argument, which can lead to complex code. Instead of <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>, you may want to use <code class="docutils literal notranslate"><span class="pre">argparse</span></code> when building scripts or programs that require more complex argument parsing, error handling, and user-friendly help messages.</p>
-</div>
-<section id="what-is-main-argv">
-<h4>What is <code class="docutils literal notranslate"><span class="pre">main(argv)</span></code> ?<a class="headerlink" href="#what-is-main-argv" title="Link to this heading">#</a></h4>
-<p>Now for the final bit of your Python boilerplate:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'This is a boilerplate'</span><span class="p">)</span> <span class="c1"># NOTE: indented using two tabs or four spaces</span>
-</pre></div>
-</div>
-<p>This is the main function. Arguments obtained in the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;):</span></code> part of the script are “fed” to
-this main function where the printing of the line “This is a boilerplate” happens.</p>
-</section>
-<section id="finally-sys-exit">
-<h4>Finally, sys.exit()<a class="headerlink" href="#finally-sys-exit" title="Link to this heading">#</a></h4>
-<p>OK, finally, what about:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sys.exit<span class="o">(</span>status<span class="o">)</span>
-</pre></div>
-</div>
-<p>It’s just a way to terminate and exit the Python program in an explicit manner, returning an appropriate status code (recall the <code class="docutils literal notranslate"><span class="pre">exit</span></code> command from the <a class="reference internal" href="shell-scripting.html"><span class="std std-doc">shell scripting chapter</span></a>). In this case, we have decided that <code class="docutils literal notranslate"><span class="pre">main()</span></code> returns 0 on a successful run, so <code class="docutils literal notranslate"> <span class="pre">sys.exit(status)</span></code> will return zero (because status = 0 upon successful termination of the <code class="docutils literal notranslate"><span class="pre">main</span></code> program) indicating “successful termination”.</p>
-<p>Try putting <code class="docutils literal notranslate"><span class="pre">sys.exit(&quot;I</span> <span class="pre">am</span> <span class="pre">exiting</span> <span class="pre">right</span> <span class="pre">now!&quot;)</span></code> in other places in <code class="docutils literal notranslate"><span class="pre">boilerplate.py</span></code> and see what happens.</p>
 </section>
 </section>
 <section id="a-program-with-control-flows-example">
 <h3>A program-with-control-flows example<a class="headerlink" href="#a-program-with-control-flows-example" title="Link to this heading">#</a></h3>
-<p>Let’s now look at an example of a script that uses various control flow tools within a standard Python program structure.</p>
-<p>To begin, first copy and rename <code class="docutils literal notranslate"><span class="pre">boilerplate.py</span></code> (to make use of it’s existing structure and save you some typing):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>boilerplate.py<span class="w"> </span>control_flow.py
-</pre></div>
-</div>
-<p>Then type the following script into <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code> brings earlier functions into one module and uses a small startup section to display example results. Read it in two layers: the functions calculate and return values; <code class="docutils literal notranslate"><span class="pre">main</span></code> selects example inputs and presents results. This separation is the pattern later used for data loading, summaries and tests.</p>
+<p>Download <a class="reference download internal" download="" href="../_downloads/a337de39a6e4d456c4418f4085c97fb8/control_flow.py"><code class="xref download docutils literal notranslate"><span class="pre">the</span> <span class="pre">supplied</span> <span class="pre">control_flow.py</span></code></a> into your coursework project’s <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory. The complete listing is shown below so that you can inspect and annotate it without switching to the MQB repository. The indented lines beginning with <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> are documentation examples that can also be checked automatically; the testing section explains them shortly.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 
-<span class="sd">"""Some functions exemplifying the use of control statements"""</span>
-<span class="c1">#docstrings are considered part of the running code (normal comments are</span>
-<span class="c1">#stripped). Hence, you can access your docstrings at run time.</span>
-<span class="n">__author__</span> <span class="o">=</span> <span class="s1">'Samraat Pawar (s.pawar@imperial.ac.uk)'</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">'0.0.1'</span>
+<span class="sd">"""Small, reusable functions that demonstrate control flow."""</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">even_or_odd</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span> <span class="c1"># if not specified, x should take value 0.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">even_or_odd</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Return a description of whether integer x is even or odd.</span>
 
-<span class="w">    </span><span class="sd">"""Find whether a number x is even or odd."""</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#The conditional if</span>
+<span class="sd">    &gt;&gt;&gt; even_or_odd(10)</span>
+<span class="sd">    '10 is Even!'</span>
+<span class="sd">    &gt;&gt;&gt; even_or_odd(5)</span>
+<span class="sd">    '5 is Odd!'</span>
+<span class="sd">    &gt;&gt;&gt; even_or_odd(-2)</span>
+<span class="sd">    '-2 is Even!'</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"x must be an integer"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> is Even!"</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> is Odd!"</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">largest_divisor_five</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">120</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Find which is the largest divisor of x among 2,3,4,5."""</span>
-    <span class="n">largest</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">largest</span> <span class="o">=</span> <span class="mi">5</span>
-    <span class="k">elif</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#means "else, if"</span>
-        <span class="n">largest</span> <span class="o">=</span> <span class="mi">4</span>
-    <span class="k">elif</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">largest</span> <span class="o">=</span> <span class="mi">3</span>
-    <span class="k">elif</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">largest</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="k">else</span><span class="p">:</span> <span class="c1"># When all other (if, elif) conditions are not met</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"No divisor found for </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">!"</span> <span class="c1"># Each function can return a value or a variable.</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">"The largest divisor of </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">largest</span><span class="si">}</span><span class="s2">"</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">is_prime</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">70</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Find whether an integer is prime."""</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span> <span class="c1">#  "range" returns a sequence of integers</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> is not a prime: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> is a divisor"</span><span class="p">)</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">largest_divisor_five</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Return the largest divisor of x among 2, 3, 4 and 5, or None."""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"x must be an integer"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">divisor</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="n">divisor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">divisor</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_prime</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Return True when integer x is prime, and False otherwise."""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"x must be an integer"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">divisor</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="n">divisor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> is a prime!"</span><span class="p">)</span>
-    <span class="k">return</span> <span class="kc">True</span> 
+    <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">find_all_primes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">22</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Find all the primes up to x"""</span>
-    <span class="n">allprimes</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
-            <span class="n">allprimes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">allprimes</span><span class="p">)</span><span class="si">}</span><span class="s2"> primes between 2 and </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">allprimes</span>
-      
-<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="p">):</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_all_primes</span><span class="p">(</span><span class="n">limit</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Return a list of all prime integers from 2 through limit."""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">"limit must be an integer"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">number</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">limit</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">number</span><span class="p">)]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">count_above</span><span class="p">(</span><span class="n">heights_cm</span><span class="p">,</span> <span class="n">threshold_cm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Return the number of heights strictly above a threshold."""</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">height_cm</span> <span class="ow">in</span> <span class="n">heights_cm</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">height_cm</span> <span class="o">&gt;</span> <span class="n">threshold_cm</span><span class="p">:</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">count</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""Display representative results from the functions above."""</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">even_or_odd</span><span class="p">(</span><span class="mi">22</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">even_or_odd</span><span class="p">(</span><span class="mi">33</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">largest_divisor_five</span><span class="p">(</span><span class="mi">120</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">largest_divisor_five</span><span class="p">(</span><span class="mi">121</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">is_prime</span><span class="p">(</span><span class="mi">60</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">is_prime</span><span class="p">(</span><span class="mi">59</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">find_all_primes</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-    <span class="k">return</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Largest divisor among 2, 3, 4 and 5: </span><span class="si">{</span><span class="n">largest_divisor_five</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Is 59 prime? </span><span class="si">{</span><span class="n">is_prime</span><span class="p">(</span><span class="mi">59</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Primes up to 20: </span><span class="si">{</span><span class="n">find_all_primes</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">):</span>
-    <span class="n">status</span> <span class="o">=</span> <span class="n">main</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Now run the code:</p>
+<p>Now run the program from <code class="docutils literal notranslate"><span class="pre">code/</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>control_flow.py
+</pre></div>
+</div>
+<p>The next cell shows the optional IPython <code class="docutils literal notranslate"><span class="pre">%run</span></code> route.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run</span> <span class="n">control_flow</span><span class="o">.</span><span class="n">py</span>
@@ -3643,7 +3565,7 @@ this main function where the printing of the line “This is a boilerplate” ha
 </div>
 </div>
 </div>
-<p>You can also call any of the functions within <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code>:</p>
+<p>After the optional IPython <code class="docutils literal notranslate"><span class="pre">%run</span> <span class="pre">control_flow.py</span></code> cell above, IPython places the file’s definitions in the interactive namespace, so this call works in that same session. This is a <code class="docutils literal notranslate"><span class="pre">%run</span></code> convenience, not what happens after the core shell command <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">control_flow.py</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">even_or_odd</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
@@ -3651,20 +3573,16 @@ this main function where the printing of the line “This is a boilerplate” ha
 </div>
 </div>
 </div>
-<p>This is possible without explicitly importing the modules because you are only running one script. You would have to do an explicit <code class="docutils literal notranslate"><span class="pre">import</span></code> if you needed a module from another Python script file.</p>
+<p>Ordinary shell execution starts a separate process; when that process ends, its functions do not become available in a different Python session. To reuse a function from another <code class="docutils literal notranslate"><span class="pre">.py</span></code> file, import its module or import the named function explicitly, as shown below.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Notice in the above script the use of a normal string but with an f in front, i.e. <code class="docutils literal notranslate"><span class="pre">f&quot;test</span> <span class="pre">string&quot;</span></code>. This is the current best-practice method for incorporating variables into a string.</p>
-<p>You call it by prefixing the string with an <code class="docutils literal notranslate"><span class="pre">f</span></code>, and then including any variable you want to print in curly brackets:<code class="docutils literal notranslate"><span class="pre">{}</span></code>.</p>
-<p>e.g. <code class="docutils literal notranslate"><span class="pre">f&quot;The</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">x</span> <span class="pre">is</span> <span class="pre">{x}.&quot;</span></code></p>
-<p>You can get exceptionally in-depth with pretty string formatting, but at the very least you will be expected to use this type of string formatting (or the .format() method) in your scripts going forward.</p>
-<p>For more documentation on the current f-string method as well as the older .format() method, <a class="reference external" href="https://fstring.help/">see this</a> and <a class="reference external" href="https://pyformat.info">this</a> respectively..</p>
+<p>An <strong>f-string</strong> inserts the value of an expression written inside braces. If <code class="docutils literal notranslate"><span class="pre">x</span></code> is <code class="docutils literal notranslate"><span class="pre">5</span></code>, then <code class="docutils literal notranslate"><span class="pre">f&quot;The</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">x</span> <span class="pre">is</span> <span class="pre">{x}.&quot;</span></code> produces <code class="docutils literal notranslate"><span class="pre">&quot;The</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">x</span> <span class="pre">is</span> <span class="pre">5.&quot;</span></code>. Use f-strings for clear labelled output; keep calculations in functions rather than embedding complex logic in a display string.</p>
 </div>
 </section>
 <section id="modules-and-control-flow-py">
-<h3>Modules and <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code><a class="headerlink" href="#modules-and-control-flow-py" title="Link to this heading">#</a></h3>
-<p>You can practise importing <strong>modules</strong> using the file <strong><code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code></strong>.</p>
-<p>When you import a module in Python, you make all of its functions available in your current script or notebook. run the following code in a new Python terminal in your code directory.</p>
+<span id="python-control-flow-module"></span><h3>Modules and <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code><a class="headerlink" href="#modules-and-control-flow-py" title="Link to this heading">#</a></h3>
+<p>Importing <code class="docutils literal notranslate"><span class="pre">control_flow</span></code> executes the module’s definitions and makes them available through the module name. Because its demonstration calls belong under the main guard, importing it should not run the complete demonstration or print its report.</p>
+<p>The core reusable pattern appears in the later separate test script: from <code class="docutils literal notranslate"><span class="pre">code/</span></code>, <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">test_control_flow.py</span></code> imports its sibling <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code>. The following interactive example is optional and assumes that Python or IPython was started with the coursework <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory on its import path:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">control_flow</span>
@@ -3674,7 +3592,7 @@ this main function where the printing of the line “This is a boilerplate” ha
 </div>
 </div>
 </div>
-<p>To import one function directly, name it explicitly:</p>
+<p>To import one named function directly, use an explicit <code class="docutils literal notranslate"><span class="pre">from</span></code> import. Prefer either this form or the qualified <code class="docutils literal notranslate"><span class="pre">control_flow.even_or_odd(...)</span></code> form over <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">control_flow</span> <span class="pre">import</span> <span class="pre">*</span></code>, which hides where names originated:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">control_flow</span><span class="w"> </span><span class="kn">import</span> <span class="n">even_or_odd</span>
@@ -3683,6 +3601,70 @@ this main function where the printing of the line “This is a boilerplate” ha
 </div>
 </div>
 </div>
+</section>
+<section id="further-reference-command-line-programs">
+<h3>Further reference: command-line programs<a class="headerlink" href="#further-reference-command-line-programs" title="Link to this heading">#</a></h3>
+<p>The core route is complete: you can run a script, protect startup work with the main guard, import functions without triggering a report and keep checks in a separate file. The observations practical does not require command-line arguments or explicit exit statuses. Read this reference when you need a program to accept values typed after its filename or report success and failure to the shell.</p>
+<section id="inspecting-sys-argv">
+<h4>Inspecting <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code><a class="headerlink" href="#inspecting-sys-argv" title="Link to this heading">#</a></h4>
+<p>After <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sys</span></code>, <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> is a list of strings describing how the current script was invoked. <code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code> identifies the invoked script; elements from index 1 onwards are the arguments supplied after the script name. These are text values, even when an argument looks like a number. <code class="docutils literal notranslate"><span class="pre">argv</span></code> is traditionally short for <strong>argument vector</strong>; it is not a collection of Python variable names.</p>
+<p>Type the displayed example as <code class="docutils literal notranslate"><span class="pre">code/sysargv.py</span></code>, or use <a class="reference download internal" download="" href="../_downloads/d2a53d1e79c45c064af369ef966b5980/sysargv.py"><code class="xref download docutils literal notranslate"><span class="pre">the</span> <span class="pre">supplied</span> <span class="pre">sysargv.py</span></code></a> to recover or compare an exact copy:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="sd">"""Display the command-line arguments supplied to this program."""</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""Report the script name and its command-line arguments."""</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Script name: </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of arguments: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Arguments: </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>From a shell in <code class="docutils literal notranslate"><span class="pre">code/</span></code>, compare these direct executions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>sysargv.py
+python3<span class="w"> </span>sysargv.py<span class="w"> </span>oak<span class="w"> </span><span class="m">12</span>
+</pre></div>
+</div>
+<p>The second run has two user-supplied arguments, the strings <code class="docutils literal notranslate"><span class="pre">&quot;oak&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;12&quot;</span></code>. Python does not pass <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> into <code class="docutils literal notranslate"><span class="pre">main()</span></code> automatically. A program may read <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> as above, or explicitly call a function such as <code class="docutils literal notranslate"><span class="pre">main(sys.argv)</span></code>; in the latter form, <code class="docutils literal notranslate"><span class="pre">argv</span></code> is simply an ordinary parameter name.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Direct indexing is suitable for this small demonstration. For a real command-line interface, use Python’s standard-library <code class="docutils literal notranslate"><span class="pre">argparse</span></code> module to define arguments, convert values, validate input and generate <code class="docutils literal notranslate"><span class="pre">--help</span></code> text. Do not add a command-line interface when a task does not require one.</p>
+</div>
+</section>
+<section id="reporting-success-or-failure">
+<h4>Reporting success or failure<a class="headerlink" href="#reporting-success-or-failure" title="Link to this heading">#</a></h4>
+<p>A process reports an integer <strong>exit status</strong> to the shell: zero conventionally means success and a non-zero value means failure. The following optional example has a real failure condition—exactly one argument is required. Save it as <code class="docutils literal notranslate"><span class="pre">code/require_one_argument.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Usage: python3 require_one_argument.py VALUE"</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Received: </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">0</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Run both paths from a shell in <code class="docutils literal notranslate"><span class="pre">code/</span></code>; <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">$?</span></code> displays the status of the immediately preceding command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>require_one_argument.py
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+python3<span class="w"> </span>require_one_argument.py<span class="w"> </span>oak
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+</pre></div>
+</div>
+<p>The missing-argument run prints usage information to standard error and reports status 1; the valid run prints <code class="docutils literal notranslate"><span class="pre">Received:</span> <span class="pre">oak</span></code> and reports status 0. <code class="docutils literal notranslate"><span class="pre">sys.exit(main())</span></code> passes the integer returned by <code class="docutils literal notranslate"><span class="pre">main()</span></code> to the shell. This explicit machinery is useful only when the program has a meaningful success/failure contract.</p>
+</section>
 </section>
 </section>
 <section id="python-input-and-output">
@@ -3813,7 +3795,7 @@ this main function where the printing of the line “This is a boilerplate” ha
 <section id="handling-csv-files">
 <h3>Handling CSV files<a class="headerlink" href="#handling-csv-files" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">csv</span></code> package makes it easy to manipulate CSV files. Let’s try it.</p>
-<p><span class="math notranslate nohighlight">\(\star\)</span> Get <code class="docutils literal notranslate"> <span class="pre">testcsv.csv</span></code> from MQB’s <code class="docutils literal notranslate"><span class="pre">data</span></code> directory. Then type the following script in a script file called <code class="docutils literal notranslate"><span class="pre">basic_csv.py</span></code> and run it:</p>
+<p><span class="math notranslate nohighlight">\(\star\)</span> Download <a class="reference download internal" download="" href="../_downloads/2793132b38689ed5c8445389a55d55f1/testcsv.csv"><code class="xref download docutils literal notranslate"><span class="pre">testcsv.csv</span></code></a> into your coursework project’s <code class="docutils literal notranslate"><span class="pre">data/</span></code> directory. Then type the following script in a script file called <code class="docutils literal notranslate"><span class="pre">basic_csv.py</span></code> and run it:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
 
 <span class="c1"># read a file containing:</span>
@@ -3905,8 +3887,8 @@ python3<span class="w"> </span>run_cfexercises.py
 <section id="unit-testing-with-doctest">
 <h4>Unit testing with <code class="docutils literal notranslate"><span class="pre">doctest</span></code><a class="headerlink" href="#unit-testing-with-doctest" title="Link to this heading">#</a></h4>
 <p>Let’s start with <code class="docutils literal notranslate"><span class="pre">doctest</span></code>, a simple testing tool in Python. Its examples sit in a function’s docstring and serve as both documentation and executable checks. Keep the implementation in <code class="docutils literal notranslate"><span class="pre">code/control_flow.py</span></code>; do not copy it into a test file. Edit <code class="docutils literal notranslate"><span class="pre">even_or_odd</span></code> so that its contract, examples and validation are explicit:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">even_or_odd</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Return a description of whether an integer is even or odd.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">even_or_odd</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Return a description of whether integer x is even or odd.</span>
 
 <span class="sd">    &gt;&gt;&gt; even_or_odd(10)</span>
 <span class="sd">    '10 is Even!'</span>
@@ -3922,16 +3904,26 @@ python3<span class="w"> </span>run_cfexercises.py
     <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> is Odd!"</span>
 </pre></div>
 </div>
-<p>Run the doctests from the project root:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>doctest<span class="w"> </span>-v<span class="w"> </span>code/control_flow.py
+<p>Run the doctests from the <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>doctest<span class="w"> </span>-v<span class="w"> </span>control_flow.py
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">doctest</span></code> imports the module before checking its docstrings. The existing <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> guard prevents the program’s demonstration output from running during that import. The <code class="docutils literal notranslate"><span class="pre">-v</span></code> option shows each example, its expected result and the final pass/fail summary.</p>
 </section>
 <section id="from-doctest-to-a-separate-test-script">
 <span id="python-separate-test-script"></span><h4>From doctest to a separate test script<a class="headerlink" href="#from-doctest-to-a-separate-test-script" title="Link to this heading">#</a></h4>
-<p>Doctests work well for small examples that also document a function. As a test suite grows, keep the implementation in one module and import its functions into a separate test script. Create <code class="docutils literal notranslate"><span class="pre">code/test_control_flow.py</span></code>; do not copy the function definitions into it:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">control_flow</span><span class="w"> </span><span class="kn">import</span> <span class="n">even_or_odd</span>
+<p>Doctests work well for small examples that also document a function. As a test suite grows, keep the implementation in one module and import its functions into a separate test script. Download <a class="reference download internal" download="" href="../_downloads/80d765c820da79ebaf1dedd58131e354/test_control_flow.py"><code class="xref download docutils literal notranslate"><span class="pre">the</span> <span class="pre">supplied</span> <span class="pre">test_control_flow.py</span></code></a> into <code class="docutils literal notranslate"><span class="pre">code/</span></code>. Its complete listing is shown below; notice that it imports functions rather than copying their definitions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="sd">"""Checks for the small functions in control_flow.py."""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">control_flow</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">count_above</span><span class="p">,</span>
+    <span class="n">even_or_odd</span><span class="p">,</span>
+    <span class="n">find_all_primes</span><span class="p">,</span>
+    <span class="n">is_prime</span><span class="p">,</span>
+    <span class="n">largest_divisor_five</span><span class="p">,</span>
+<span class="p">)</span>
 
 
 <span class="c1"># Normal cases: representative even and odd integers.</span>
@@ -3949,28 +3941,52 @@ python3<span class="w"> </span>run_cfexercises.py
     <span class="k">pass</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"A non-integer input was accepted"</span><span class="p">)</span>
+
+<span class="c1"># The divisor function returns an integer or None, not display text.</span>
+<span class="k">assert</span> <span class="n">largest_divisor_five</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="k">assert</span> <span class="n">largest_divisor_five</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="k">assert</span> <span class="n">largest_divisor_five</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+
+<span class="c1"># Integers below 2 are not prime; 2 is the first prime.</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">is_prime</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">is_prime</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">is_prime</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">is_prime</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">is_prime</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">is_prime</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">find_all_primes</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="k">assert</span> <span class="n">find_all_primes</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="c1"># A normal biological example.</span>
+<span class="k">assert</span> <span class="n">count_above</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+
+<span class="c1"># Values immediately below, at and above the threshold expose &gt; versus &gt;=.</span>
+<span class="k">assert</span> <span class="n">count_above</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+
+<span class="c1"># An empty collection contains no values above the threshold.</span>
+<span class="k">assert</span> <span class="n">count_above</span><span class="p">([],</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
 </pre></div>
 </div>
-<p>These assertions express the same expectations as the doctests, but the implementation and checks now have separate responsibilities. <code class="docutils literal notranslate"><span class="pre">try</span></code> calls the function with invalid input, <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">TypeError</span></code> accepts the promised failure, and <code class="docutils literal notranslate"><span class="pre">else</span></code> raises <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> if the invalid input is wrongly accepted. Other exception types remain visible.</p>
-<p>Run the separate test script from the project root:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>code/test_control_flow.py
+<p>The first assertions express the same expectations as the doctests, while the remaining checks cover the other functions’ normal, boundary and failure behaviour. In particular, <code class="docutils literal notranslate"><span class="pre">is_prime</span></code> is checked below, at and above 2. The implementation and checks now have separate responsibilities. <code class="docutils literal notranslate"><span class="pre">try</span></code> calls <code class="docutils literal notranslate"><span class="pre">even_or_odd</span></code> with invalid input, <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">TypeError</span></code> accepts the promised failure, and <code class="docutils literal notranslate"><span class="pre">else</span></code> raises <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> if the invalid input is wrongly accepted. Other exception types remain visible.</p>
+<p>Run the separate test script from the <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>test_control_flow.py
 </pre></div>
 </div>
 <p>Passing assertions produce no output; the return of the shell prompt means that every check passed.</p>
 </section>
-<section id="add-a-meaningful-boundary-test">
-<h4>Add a meaningful boundary test<a class="headerlink" href="#add-a-meaningful-boundary-test" title="Link to this heading">#</a></h4>
-<p>Parity gives useful normal and failure cases, but it has no threshold at which the intended rule changes. Add this small biological function to <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code> to practise genuine boundary testing:</p>
+<section id="examine-a-meaningful-boundary-test">
+<h4>Examine a meaningful boundary test<a class="headerlink" href="#examine-a-meaningful-boundary-test" title="Link to this heading">#</a></h4>
+<p>Parity gives useful normal and failure cases, but it has no threshold at which the intended rule changes. The <code class="docutils literal notranslate"><span class="pre">count_above</span></code> function in <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code> provides a simple biological example for genuine boundary testing:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">count_above</span><span class="p">(</span><span class="n">heights_cm</span><span class="p">,</span> <span class="n">threshold_cm</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Return the number of heights strictly above a threshold."""</span>
-    <span class="n">above_threshold</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">height_cm</span> <span class="ow">in</span> <span class="n">heights_cm</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">height_cm</span> <span class="o">&gt;</span> <span class="n">threshold_cm</span><span class="p">:</span>
-            <span class="n">above_threshold</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">above_threshold</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">count</span>
 </pre></div>
 </div>
-<p>Import it in <code class="docutils literal notranslate"><span class="pre">test_control_flow.py</span></code> and append these checks:</p>
+<p>The complete <code class="docutils literal notranslate"><span class="pre">test_control_flow.py</span></code> listing above imports it and includes these checks:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">control_flow</span><span class="w"> </span><span class="kn">import</span> <span class="n">count_above</span>
 
 
@@ -3984,8 +4000,8 @@ python3<span class="w"> </span>run_cfexercises.py
 <span class="k">assert</span> <span class="n">count_above</span><span class="p">([],</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
 </pre></div>
 </div>
-<p>Explain why the value exactly at the threshold is not counted. A test containing only 8 and 12 would not distinguish <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> from the plausible but incorrect <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>; the 10 in the boundary test does. Rerun <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">code/test_control_flow.py</span></code> after adding the function and checks.</p>
-<p>At this point the same test script checks normal behaviour, an important boundary, empty input and an expected failure. The observations exercise will retain this structure while introducing richer biological records.</p>
+<p>Explain why the value exactly at the threshold is not counted. A test containing only 8 and 12 would not distinguish <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> from the plausible but incorrect <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>; the 10 in the boundary test does. From <code class="docutils literal notranslate"><span class="pre">code/</span></code>, rerun <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">test_control_flow.py</span></code> after examining the function and checks.</p>
+<p>At this point the same test script checks normal behaviour, an important boundary, empty input and an expected failure. You now have the reusable program pattern used later: an implementation module defines functions, a guarded <code class="docutils literal notranslate"><span class="pre">main()</span></code> handles the report, and a separate test script imports the functions without triggering that report. The <a class="reference internal" href="#python-observations-practice"><span class="std std-ref">integrated observations practical</span></a> retains these responsibilities while introducing CSV records, missing values and duplicates.</p>
 </section>
 <section id="other-unit-testing-approaches">
 <h4>Other unit testing approaches<a class="headerlink" href="#other-unit-testing-approaches" title="Link to this heading">#</a></h4>
@@ -4183,7 +4199,7 @@ Automatic<span class="w"> </span>pdb<span class="w"> </span>calling<span class="
 </section>
 </section>
 <section id="integrated-practical-summarising-observations">
-<h2>Integrated practical: summarising observations<a class="headerlink" href="#integrated-practical-summarising-observations" title="Link to this heading">#</a></h2>
+<span id="python-observations-practice"></span><h2>Integrated practical: summarising observations<a class="headerlink" href="#integrated-practical-summarising-observations" title="Link to this heading">#</a></h2>
 <p>This practical brings together functions, control flow, file handling, exceptions and testing. Plan the calculation, implement it in stages, and check the results against small inputs worked out by hand.</p>
 <section id="designing-an-algorithm-for-imperfect-data">
 <h3>Designing an algorithm for imperfect data<a class="headerlink" href="#designing-an-algorithm-for-imperfect-data" title="Link to this heading">#</a></h3>
@@ -4318,9 +4334,9 @@ OUTPUT: known-count total (or unavailable) and missing-count number per site
 <td class="text-left"><p>Normal, boundary and failure cases</p></td>
 <td class="text-left"><p>Compare behaviour with the function’s contract.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>Run from the project root</p></td>
-<td class="text-left"><p>Run from the project root</p></td>
-<td class="text-left"><p>Start a fresh Python process with predictable paths.</p></td>
+<tr class="row-odd"><td class="text-left"><p>From <code class="docutils literal notranslate"><span class="pre">code/</span></code>: <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">test_control_flow.py</span></code></p></td>
+<td class="text-left"><p>From the project root: <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">code/test_observations_practice.py</span></code></p></td>
+<td class="text-left"><p>Start a fresh Python process from the working directory stated by the exercise.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4329,7 +4345,7 @@ OUTPUT: known-count total (or unavailable) and missing-count number per site
 </section>
 <section id="inputs-and-project-layout">
 <h4>Inputs and project layout<a class="headerlink" href="#inputs-and-project-layout" title="Link to this heading">#</a></h4>
-<p>Download the <a class="reference download internal" download="" href="../_downloads/c4cbe787a8116cbc7dc0fd659f30f96e/bootcamp_observations.csv"><span class="xref download myst">ordinary observations</span></a>, <a class="reference download internal" download="" href="../_downloads/ea6e703504896acb3ad626379cca3c20/bootcamp_observations_boundary.csv"><span class="xref download myst">boundary observations</span></a> and <a class="reference download internal" download="" href="../_downloads/132c2cd4b6616b5b610214075ac94612/bootcamp_observations_invalid.csv"><span class="xref download myst">invalid observations</span></a>. Put them in your coursework project’s existing <code class="docutils literal notranslate"><span class="pre">data/</span></code> directory. Use the existing <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory for the two scripts below; do not create a separate directory for this exercise. These are working filenames, not additional assessed files.</p>
+<p>Download the <a class="reference download internal" download="" href="../_downloads/c4cbe787a8116cbc7dc0fd659f30f96e/bootcamp_observations.csv"><code class="xref download docutils literal notranslate"><span class="pre">ordinary</span> <span class="pre">observations</span></code></a>, <a class="reference download internal" download="" href="../_downloads/ea6e703504896acb3ad626379cca3c20/bootcamp_observations_boundary.csv"><code class="xref download docutils literal notranslate"><span class="pre">boundary</span> <span class="pre">observations</span></code></a> and <a class="reference download internal" download="" href="../_downloads/132c2cd4b6616b5b610214075ac94612/bootcamp_observations_invalid.csv"><code class="xref download docutils literal notranslate"><span class="pre">invalid</span> <span class="pre">observations</span></code></a>. Put them in your coursework project’s existing <code class="docutils literal notranslate"><span class="pre">data/</span></code> directory. Use the existing <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory for the two scripts below; do not create a separate directory for this exercise. These are working filenames, not additional assessed files.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>coursework-project/
     code/
         observations_practice.py
@@ -4340,7 +4356,7 @@ OUTPUT: known-count total (or unavailable) and missing-count number per site
         bootcamp_observations_invalid.csv
 </pre></div>
 </div>
-<p>Open the coursework project folder in VS Code. <strong>For this exercise, run terminal commands from the project root</strong>, where <code class="docutils literal notranslate"><span class="pre">code/</span></code> and <code class="docutils literal notranslate"><span class="pre">data/</span></code> are siblings, not from inside <code class="docutils literal notranslate"><span class="pre">code/</span></code>. The paths in this exercise are relative to that root.</p>
+<p>Open the coursework project folder in VS Code. <strong>This exercise is an explicit exception to the earlier <code class="docutils literal notranslate"><span class="pre">code/</span></code> convention:</strong> run its terminal commands from the project root, where <code class="docutils literal notranslate"><span class="pre">code/</span></code> and <code class="docutils literal notranslate"><span class="pre">data/</span></code> are siblings. Its supplied examples use paths such as <code class="docutils literal notranslate"><span class="pre">data/bootcamp_observations.csv</span></code>, which are relative to that root. Use <code class="docutils literal notranslate"><span class="pre">pwd</span></code> before running a command; do not silently switch between the two working-directory conventions.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Field</p></th>
@@ -4610,7 +4626,7 @@ OUTPUT: known-count total (or unavailable) and missing-count number per site
 <p>Reuse the testing choices developed above. Keep the alignment implementation in <code class="docutils literal notranslate"><span class="pre">align_seqs.py</span></code> and import its functions into <code class="docutils literal notranslate"><span class="pre">test_align_seqs.py</span></code>, because several inputs and related expectations are easier to manage in a separate test script. For the small <code class="docutils literal notranslate"><span class="pre">is_an_oak</span></code> contract, concise doctests remain appropriate because the examples also document the function. In either form, derive expected results from the stated contract before running the code.</p>
 <section id="align-dna-sequences">
 <h3>Align DNA sequences<a class="headerlink" href="#align-dna-sequences" title="Link to this heading">#</a></h3>
-<p>Open <code class="docutils literal notranslate"><span class="pre">align_seqs.py</span></code> from MQB’s <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory. This script aligns two DNA sequences using the simple offset-and-score algorithm described below. Run it and make sure you understand what every line does. To inspect execution, insert Python’s built-in <code class="docutils literal notranslate"><span class="pre">breakpoint()</span></code> just after the start of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop in <code class="docutils literal notranslate"><span class="pre">calculate_score</span></code>; use <code class="docutils literal notranslate"><span class="pre">n</span></code>, <code class="docutils literal notranslate"><span class="pre">p</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">q</span></code> as in the debugging section. No additional debugger package is required.</p>
+<p>Download <a class="reference download internal" download="" href="../_downloads/00d3c6c5148826a910955a1f22108a1b/align_seqs.py"><code class="xref download docutils literal notranslate"><span class="pre">align_seqs.py</span></code></a> into your coursework project’s <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory. This script aligns two DNA sequences using the simple offset-and-score algorithm described below. Run it and make sure you understand what every line does. To inspect execution, insert Python’s built-in <code class="docutils literal notranslate"><span class="pre">breakpoint()</span></code> just after the start of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop in <code class="docutils literal notranslate"><span class="pre">calculate_score</span></code>; use <code class="docutils literal notranslate"><span class="pre">n</span></code>, <code class="docutils literal notranslate"><span class="pre">p</span></code>, <code class="docutils literal notranslate"><span class="pre">l</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">q</span></code> as in the debugging section. No additional debugger package is required.</p>
 <p>The aligning algorithm is simple. Start by positioning the beginning of the shorter sequence at all positions (bases) of the longer one (the start position), and count the number of bases matched downstream. Then, for each start position, count the “score” as total of number of bases matched. The alignment with the highest score wins. Ties are possible, in which case, you just take the arbitrary alignment (e.g., first or last) with the highest score.</p>
 <p>Your tasks:</p>
 <ul class="simple">
@@ -4619,7 +4635,7 @@ OUTPUT: known-count total (or unavailable) and missing-count number per site
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>align_seqs.py
 </pre></div>
 </div>
-<p>A two-row CSV containing the example sequences is sufficient. Validate that exactly two non-empty sequences were read. Put program startup under an <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> guard so that <code class="docutils literal notranslate"><span class="pre">test_align_seqs.py</span></code> can import functions without running the whole program. In the test script, include a small normal case with a hand-calculated score, a boundary or edge case such as an alignment reaching the end of a sequence, and failure cases for missing, empty or surplus input sequences. Run it from the project root with <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">code/test_align_seqs.py</span></code>. You are finished when those checks pass and the saved alignment and score match the original example’s result.</p>
+<p>A two-row CSV containing the example sequences is sufficient. Validate that exactly two non-empty sequences were read. Put program startup under an <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> guard so that <code class="docutils literal notranslate"><span class="pre">test_align_seqs.py</span></code> can import functions without running the whole program. In the test script, include a small normal case with a hand-calculated score, a boundary or edge case such as an alignment reaching the end of a sequence, and failure cases for missing, empty or surplus input sequences. From <code class="docutils literal notranslate"><span class="pre">code/</span></code>, run <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">test_align_seqs.py</span></code>. You are finished when those checks pass and the saved alignment and score match the original example’s result.</p>
 </section>
 <section id="extension-align-fasta-sequences">
 <h3>Extension: align FASTA sequences<a class="headerlink" href="#extension-align-fasta-sequences" title="Link to this heading">#</a></h3>
@@ -4647,7 +4663,7 @@ OUTPUT: known-count total (or unavailable) and missing-count number per site
 <section id="missing-oaks-problem">
 <h3>Missing oaks problem<a class="headerlink" href="#missing-oaks-problem" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Open and run the code <code class="docutils literal notranslate"><span class="pre">oaks_debugme.py</span></code> — there’s a bug, for no oaks are being found! (<em>where’s <code class="docutils literal notranslate"><span class="pre">test_oaks_data.csv</span></code>?</em> — in the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory of MQB repo!)</p></li>
+<li><p>Download <a class="reference download internal" download="" href="../_downloads/8e55827b96cf37cbe14788cb5d1378c3/oaks_debugme.py"><code class="xref download docutils literal notranslate"><span class="pre">oaks_debugme.py</span></code></a> into <code class="docutils literal notranslate"><span class="pre">code/</span></code> and <a class="reference download internal" download="" href="../_downloads/dd0864465a59f873ac49f697bfc10b30/test_oaks_data.csv"><code class="xref download docutils literal notranslate"><span class="pre">test_oaks_data.csv</span></code></a> into <code class="docutils literal notranslate"><span class="pre">data/</span></code>. Run the script—there is a bug, because no oaks are being found.</p></li>
 <li><p>Fix the bug, using the built-in <code class="docutils literal notranslate"><span class="pre">breakpoint()</span></code> if you need to inspect execution.</p></li>
 <li><p>Now, write doctests to make sure that, bug or no bug, your <code class="docutils literal notranslate"><span class="pre">is_an_oak</span></code> function is working as expected (hint: <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span> <span class="pre">is_an_oak('Fagus</span> <span class="pre">sylvatica')</span></code> should return <code class="docutils literal notranslate"><span class="pre">False</span></code>)</p></li>
 </ul>
@@ -5332,8 +5348,8 @@ from the end of an array:</p>
 <section id="the-lotka-volterra-model">
 <h5>The Lotka-Volterra model<a class="headerlink" href="#the-lotka-volterra-model" title="Link to this heading">#</a></h5>
 <p>Now let’s try numerical integration in Python for solving a classical model in biology — the Lotka-Volterra (LV) model for a predator-prey system in two-dimensional space (e.g., on land). The LV model is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5904cb83-f60a-4385-93fb-112521e706a7">
-<span class="eqno">(2)<a class="headerlink" href="#equation-5904cb83-f60a-4385-93fb-112521e706a7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e24b0670-7575-4b85-91b1-1eccac9bc571">
+<span class="eqno">(2)<a class="headerlink" href="#equation-e24b0670-7575-4b85-91b1-1eccac9bc571" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dr}{dt} &amp;= r r - a C r  \nonumber \\
     \frac{dC}{dt} &amp;= - z C + e a C r
 \end{align}\]</div>
@@ -5810,8 +5826,8 @@ from the end of an array:</p>
 <section id="the-lotkavolterra-model-revisited">
 <h3>The Lotka–Volterra model revisited<a class="headerlink" href="#the-lotkavolterra-model-revisited" title="Link to this heading">#</a></h3>
 <p>In the original Lotka–Volterra model, the resource population grows without bound when consumers are absent. Add logistic density dependence to make resource growth slow as the resource density <span class="math notranslate nohighlight">\(R\)</span> approaches its carrying capacity <span class="math notranslate nohighlight">\(K\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0ad0a18e-d310-4cd7-b336-7814b5673e42">
-<span class="eqno">(3)<a class="headerlink" href="#equation-0ad0a18e-d310-4cd7-b336-7814b5673e42" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-80eadda6-9a05-4ff6-ac9c-5ca0752cdbbf">
+<span class="eqno">(3)<a class="headerlink" href="#equation-80eadda6-9a05-4ff6-ac9c-5ca0752cdbbf" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dR}{dt} &amp;= rR\left(1 - \frac{R}{K}\right) - aCR\\
     \frac{dC}{dt} &amp;= -zC + eaCR
 \end{align}\]</div>
@@ -5842,8 +5858,8 @@ python3<span class="w"> </span>-m<span class="w"> </span>cProfile<span class="w"
 <section id="optional-extension-discrete-time-lv-model">
 <h3>Optional extension: discrete-time LV model<a class="headerlink" href="#optional-extension-discrete-time-lv-model" title="Link to this heading">#</a></h3>
 <p>Write a discrete-time version called <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-09f3e7e5-ddb0-4082-b01d-14274d1030ca">
-<span class="eqno">(4)<a class="headerlink" href="#equation-09f3e7e5-ddb0-4082-b01d-14274d1030ca" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ef6ca4d8-8e43-41d0-9019-5c524db1fc11">
+<span class="eqno">(4)<a class="headerlink" href="#equation-ef6ca4d8-8e43-41d0-9019-5c524db1fc11" title="Permalink to this equation">#</a></span>\[\begin{align}
     R_{t+1} &amp;= R_t \left(1 + r\left(1 - \frac{R_t}{K}\right) - aC_t\right)\\
     C_{t+1} &amp;= C_t \left(1 - z + eaR_t\right)
 \end{align}\]</div>
@@ -6310,7 +6326,7 @@ python3<span class="w"> </span>-m<span class="w"> </span>cProfile<span class="w"
 </div>
 </div>
 <p>Nice! This is very handy for extracting specific patterns from text data. Note that we excluded the <code class="docutils literal notranslate"><span class="pre">,</span></code>’s and the <code class="docutils literal notranslate"><span class="pre">\s</span></code>’s from the grouping parentheses because we don’t want them to be returned in the match group list.</p>
-<p>Have a look at <code class="docutils literal notranslate"><span class="pre">re4.py</span></code> in MQB’s code repository for more on parsing email addresses using regexes.</p>
+<p>Download and examine <a class="reference download internal" download="" href="../_downloads/a93fe0f748d8477e1fc513e2a05945e8/re4.py"><code class="xref download docutils literal notranslate"><span class="pre">re4.py</span></code></a> for another example of parsing email addresses using regular expressions.</p>
 </section>
 <section id="useful-re-commands">
 <h3>Useful <code class="docutils literal notranslate"><span class="pre">re</span></code> commands<a class="headerlink" href="#useful-re-commands" title="Link to this heading">#</a></h3>
@@ -6486,7 +6502,7 @@ python3<span class="w"> </span>-m<span class="w"> </span>cProfile<span class="w"
 </section>
 <section id="regex-capstone-blackbirds">
 <h3>Regex capstone: Blackbirds<a class="headerlink" href="#regex-capstone-blackbirds" title="Link to this heading">#</a></h3>
-<p>Complete <code class="docutils literal notranslate"><span class="pre">blackbirds.py</span></code> using <code class="docutils literal notranslate"><span class="pre">data/blackbirds.txt</span></code>. Extract the kingdom, phylum and two-word scientific name for every species record.</p>
+<p>Download <a class="reference download internal" download="" href="../_downloads/1b2b55812b37201dc6bbc8595633e74c/blackbirds.py"><code class="xref download docutils literal notranslate"><span class="pre">blackbirds.py</span></code></a> into <code class="docutils literal notranslate"><span class="pre">code/</span></code> and <a class="reference download internal" download="" href="../_downloads/49481939d48cb0007ca89ad592fc38e5/blackbirds.txt"><code class="xref download docutils literal notranslate"><span class="pre">blackbirds.txt</span></code></a> into <code class="docutils literal notranslate"><span class="pre">data/</span></code>. Complete the script by extracting the kingdom, phylum and two-word scientific name for every species record.</p>
 <p>Required result:</p>
 <ul class="simple">
 <li><p>four records are found;</p></li>
@@ -6699,12 +6715,12 @@ Python script. A simple example, where the output is a platform-dependent direct
 <h3>Workflow practical: R and filesystem automation<a class="headerlink" href="#workflow-practical-r-and-filesystem-automation" title="Link to this heading">#</a></h3>
 <section id="run-an-r-analysis-from-python">
 <h4>Run an R analysis from Python<a class="headerlink" href="#run-an-r-analysis-from-python" title="Link to this heading">#</a></h4>
-<p>Read <code class="docutils literal notranslate"><span class="pre">fmr.R</span></code> and confirm that <code class="docutils literal notranslate"><span class="pre">data/nagy_et_al_1999.csv</span></code> is present. Write <code class="docutils literal notranslate"><span class="pre">run_fmr_r.py</span></code> that runs <code class="docutils literal notranslate"><span class="pre">Rscript</span> <span class="pre">fmr.R</span></code> from the coursework project’s <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory using <code class="docutils literal notranslate"><span class="pre">subprocess.run()</span></code> without <code class="docutils literal notranslate"><span class="pre">shell=True</span></code>.</p>
+<p>Download <a class="reference download internal" download="" href="../_downloads/e0cf27a76a2fb862d644b7acbc319825/fmr.R"><code class="xref download docutils literal notranslate"><span class="pre">fmr.R</span></code></a> into <code class="docutils literal notranslate"><span class="pre">code/</span></code> and <a class="reference download internal" download="" href="../_downloads/99c92614aebde2c2107e79ae16c8f752/nagy_et_al_1999.csv"><code class="xref download docutils literal notranslate"><span class="pre">nagy_et_al_1999.csv</span></code></a> into <code class="docutils literal notranslate"><span class="pre">data/</span></code>. Read the R script, then write <code class="docutils literal notranslate"><span class="pre">run_fmr_r.py</span></code> that runs <code class="docutils literal notranslate"><span class="pre">Rscript</span> <span class="pre">fmr.R</span></code> from the coursework project’s <code class="docutils literal notranslate"><span class="pre">code/</span></code> directory using <code class="docutils literal notranslate"><span class="pre">subprocess.run()</span></code> without <code class="docutils literal notranslate"><span class="pre">shell=True</span></code>.</p>
 <p>Capture standard output and standard error as text, print both streams with labels, and print whether the command succeeded based on its return code. On success, verify that <code class="docutils literal notranslate"><span class="pre">results/fmr_plot.pdf</span></code> exists and is non-empty; on failure, exit with a non-zero status. Your wrapper is complete when a normal run reports success and deliberately using a nonexistent R script reports failure without a Python traceback.</p>
 </section>
 <section id="traverse-directories-with-os">
 <h4>Traverse directories with <code class="docutils literal notranslate"><span class="pre">os</span></code><a class="headerlink" href="#traverse-directories-with-os" title="Link to this heading">#</a></h4>
-<p>Open <code class="docutils literal notranslate"><span class="pre">using_os.py</span></code> and complete its three tasks using the <code class="docutils literal notranslate"><span class="pre">os</span></code> module directly, including <code class="docutils literal notranslate"><span class="pre">os.walk()</span></code>—do not access <code class="docutils literal notranslate"><span class="pre">os</span></code> through <code class="docutils literal notranslate"><span class="pre">subprocess</span></code>. For a small temporary test directory, predict and check the returned files and directories before scanning a larger tree. Keep files and directories as separate results and make the case-sensitive and case-insensitive name rules explicit.</p>
+<p>Download <a class="reference download internal" download="" href="../_downloads/806564b2bbb0c87463c9fee722103e25/using_os.py"><code class="xref download docutils literal notranslate"><span class="pre">using_os.py</span></code></a> into <code class="docutils literal notranslate"><span class="pre">code/</span></code> and complete its three tasks using the <code class="docutils literal notranslate"><span class="pre">os</span></code> module directly, including <code class="docutils literal notranslate"><span class="pre">os.walk()</span></code>—do not access <code class="docutils literal notranslate"><span class="pre">os</span></code> through <code class="docutils literal notranslate"><span class="pre">subprocess</span></code>. For a small temporary test directory, predict and check the returned files and directories before scanning a larger tree. Keep files and directories as separate results and make the case-sensitive and case-insensitive name rules explicit.</p>
 </section>
 </section>
 </section>
@@ -6936,29 +6952,26 @@ for efficient data crunching</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-functions-and-control-flow">Exercises: functions and control flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-and-running-python-programs">Writing and running Python programs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-code-compartmentalization">Modules and code compartmentalization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing modules</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-python-scripts">Running Python scripts</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-unix-shell">Using the UNIX shell</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-the-unix-shell-using-ipython">From the UNIX shell, using IPython</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-within-the-ipython-shell">From within the IPython shell</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structuring-python-programs">Structuring Python programs</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-python-program">Components of the Python program</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shebang">The shebang</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-docstring">The Docstring</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-variables">Internal Variables</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#function-definitions-and-modules">Function <code class="docutils literal notranslate"><span class="pre">def</span></code>initions and “modules”</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-include-name-main-and-all-that-jazz">Why include <code class="docutils literal notranslate"><span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">"__main__"</span></code> and all that jazz</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-sys-argv">What is <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>?</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-main-argv">What is <code class="docutils literal notranslate"><span class="pre">main(argv)</span></code> ?</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#finally-sys-exit">Finally, sys.exit()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-main-function-and-main-guard">The <code class="docutils literal notranslate"><span class="pre">main</span></code> function and main guard</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#module-and-function-docstrings">Module and function docstrings</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reference-the-shebang">Further reference: the shebang</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#special-names-and-ordinary-names">Special names and ordinary names</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-and-modules-are-different">Functions and modules are different</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-program-with-control-flows-example">A program-with-control-flows example</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-and-control-flow-py">Modules and <code class="docutils literal notranslate"><span class="pre">control_flow.py</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reference-command-line-programs">Further reference: command-line programs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-sys-argv">Inspecting <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-success-or-failure">Reporting success or failure</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-input-and-output">Python input and output</a><ul class="nav section-nav flex-column">
@@ -6971,7 +6984,7 @@ for efficient data crunching</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-testing">Unit testing</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-testing-with-doctest">Unit testing with <code class="docutils literal notranslate"><span class="pre">doctest</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-doctest-to-a-separate-test-script">From doctest to a separate test script</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-meaningful-boundary-test">Add a meaningful boundary test</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-a-meaningful-boundary-test">Examine a meaningful boundary test</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#other-unit-testing-approaches">Other unit testing approaches</a></li>
 </ul>
 </li>
