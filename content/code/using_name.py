@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
-# Filename: using_name.py
 
-if __name__ == '__main__':
-    print('This program is being run by itself!')
-else:
-    print('I am being imported from another script/program/module!')
+"""Demonstrate the value Python assigns to __name__."""
 
-print("This module's name is: " + __name__)
+
+def module_name():
+    """Return the name Python assigned to this module."""
+    return __name__
+
+
+def main():
+    """Report the module name during direct execution."""
+    print(f"This module's name is: {module_name()}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,14 +1,10 @@
 #!/usr/bin/env python3
 
-"""Functions exemplifying control flow and small, testable units."""
+"""Small, reusable functions that demonstrate control flow."""
 
-__author__ = 'Your name (your@email.address)'
-__version__ = '0.0.1'
 
-import sys
-
-def even_or_odd(x=0):
-    """Return a description of whether an integer is even or odd.
+def even_or_odd(x):
+    """Return a description of whether integer x is even or odd.
 
     >>> even_or_odd(10)
     '10 is Even!'
@@ -24,59 +20,52 @@ def even_or_odd(x=0):
     return f"{x} is Odd!"
 
 
+def largest_divisor_five(x):
+    """Return the largest divisor of x among 2, 3, 4 and 5, or None."""
+    if not isinstance(x, int):
+        raise TypeError("x must be an integer")
+    for divisor in (5, 4, 3, 2):
+        if x % divisor == 0:
+            return divisor
+    return None
+
+
+def is_prime(x):
+    """Return True when integer x is prime, and False otherwise."""
+    if not isinstance(x, int):
+        raise TypeError("x must be an integer")
+    if x < 2:
+        return False
+    for divisor in range(2, x):
+        if x % divisor == 0:
+            return False
+    return True
+
+
+def find_all_primes(limit):
+    """Return a list of all prime integers from 2 through limit."""
+    if not isinstance(limit, int):
+        raise TypeError("limit must be an integer")
+    return [number for number in range(2, limit + 1) if is_prime(number)]
+
+
 def count_above(heights_cm, threshold_cm):
     """Return the number of heights strictly above a threshold."""
-    above_threshold = 0
+    count = 0
     for height_cm in heights_cm:
         if height_cm > threshold_cm:
-            above_threshold += 1
-    return above_threshold
+            count += 1
+    return count
 
-def largest_divisor_five(x=120):
-    """Find which is the largest divisor of x among 2,3,4,5."""
-    largest = 0
-    if x % 5 == 0:
-        largest = 5
-    elif x % 4 == 0: #means "else, if"
-        largest = 4
-    elif x % 3 == 0:
-        largest = 3
-    elif x % 2 == 0:
-        largest = 2
-    else: # When all other (if, elif) conditions are not met
-        return "No divisor found for %d!" % x # Each function can return a value or a variable.
-    return "The largest divisor of %d is %d" % (x, largest)
 
-def is_prime(x=70):
-    """Find whether an integer is prime."""
-    for i in range(2, x): #  "range" returns a sequence of integers
-        if x % i == 0:
-          print("%d is not a prime: %d is a divisor" % (x, i)) #Print formatted text "%d %s %f %e" % (20,"30",0.0003,0.00003)
-
-          return False
-    print ("%d is a prime!" % x)
-    return True 
-
-def find_all_primes(x=22):
-    """Find all the primes up to x"""
-    allprimes = []
-    for i in range(2, x + 1):
-      if is_prime(i):
-        allprimes.append(i)
-    print("There are %d primes between 2 and %d" % (len(allprimes), x))
-    return allprimes
-
-def main(argv):
-    # sys.exit("don't want to do this right now!")
+def main():
+    """Display representative results from the functions above."""
     print(even_or_odd(22))
     print(even_or_odd(33))
-    print(largest_divisor_five(120))
-    print(largest_divisor_five(121))
-    print(is_prime(60))
-    print(is_prime(59))
-    print(find_all_primes(100))
-    return 0
+    print(f"Largest divisor among 2, 3, 4 and 5: {largest_divisor_five(120)}")
+    print(f"Is 59 prime? {is_prime(59)}")
+    print(f"Primes up to 20: {find_all_primes(20)}")
 
-if (__name__ == "__main__"):
-    status = main(sys.argv)
-    sys.exit(status)
+
+if __name__ == "__main__":
+    main()
