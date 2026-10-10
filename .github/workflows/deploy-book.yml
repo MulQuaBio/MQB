@@ -86,6 +86,11 @@ jobs:
           execution["execute_notebooks"] = "force"
           execution["allow_errors"] = False
           execution["timeout"] = 180
+          # This introductory page deliberately demonstrates Python and R
+          # cells in one document, so no single kernel can execute it all.
+          execution["exclude_patterns"] = [
+              "notebooks/appendix-jupy-intro.ipynb"
+          ]
           config.setdefault("sphinx", {}).setdefault("config", {})[
               "nb_execution_raise_on_error"
           ] = True
