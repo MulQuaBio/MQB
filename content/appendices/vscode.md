@@ -1,7 +1,7 @@
 (vscode-setup)=
 # VS Code for MQB
 
-Visual Studio Code (VS Code) is a multilingual editor that can work with Python scripts, R scripts, terminals and Jupyter notebooks in one project folder. It is an option, not a requirement: use RStudio where that better suits your R work. This page assumes that you already have the Python environment from {ref}`python-environments` and, for the R route, a working R installation. A separate R setup guide will cover installing R itself.
+Visual Studio Code (VS Code) is a multilingual editor that can work with Python scripts, R scripts, terminals and Jupyter notebooks in one project folder. It is an option, not a requirement: use RStudio where that better suits your R work. This page assumes that you already have the Python environment from {ref}`python-environments` and, for R, a working installation from {ref}`r-setup`.
 
 ## Before you start
 
@@ -131,7 +131,7 @@ If **R: Create R Terminal** cannot find R, first run `R --version` in the VS Cod
 }
 ```
 
-Use your installed version and path; do not paste the example unchanged. On macOS or Linux, resolve the path visible to VS Code's terminal before adding any extension setting. A dedicated R setup page will cover installation and user-library troubleshooting.
+Use your installed version and path; do not paste the example unchanged. On macOS or Linux, resolve the path visible to VS Code's terminal before adding any extension setting. See {ref}`r-setup` for installation and user-library troubleshooting.
 
 R debugging is separate from the R language extension and needs its own supported debugger and prerequisites. Do not claim a script has been debugged merely because it ran. An R `.ipynb` notebook uses an IRkernel chosen in the notebook kernel picker; it is distinct from sending code to an `.R` terminal.
 
