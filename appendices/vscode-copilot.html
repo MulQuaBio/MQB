@@ -1,0 +1,914 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Getting started with GitHub Copilot in VS Code &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=cf591445" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendices/vscode-copilot';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <script src="../_static/sidebar-toggles.js?v=98d0e6e2"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Git, GitHub and SSH Setup" href="git-ssh.html" />
+    <link rel="prev" title="VS Code for MQB" href="vscode.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MulQuaBio - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-computing.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/python.html">Biological Computing in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/object-oriented-programming.html">Object-Oriented Programming</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/r.html">Biological Computing in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/ai-assisted-programming.html">AI-assisted programming in biology</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-basic-stats.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/data-r.html">Data Management and Visualization in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/exp-design.html">Experimental design and data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced E&amp;E Modelling and Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-eemodelling.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/populations.html">Single Populations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/micrm-to-logistic.html">From consumer–resource dynamics to logistic growth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/populations-practicals.html">Populations: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/interactions.html">Species interactions</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/competitive-dynamics.html">Competitive dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/competitive-dynamics-practicals.html">Competitive Dynamics: Practicals</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/predator-prey.html">Predator–prey dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/predator-prey-practicals.html">Predator–prey dynamics: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/epidemiology.html">Epidemiological dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/epidemiology-practicals.html">Epidemiological dynamics: Practicals</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/microbial-growth.html">Microbial Growth rates in R</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/mle.html">Model Fitting using Maximum Likelihood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/bayesian.html">Bayesian inference for biological data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/appendix-assessment.html">MQB Coursework Assessment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_Bootcamp_Rubric.html">Computing Bootcamp Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/appendix-mini-proj.html">The Computing Miniproject</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_MiniProject_Rubric.html">Computing MiniProject Rubric</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="tooling.html">Tooling and Environments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="terms.html">Key computing terms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macos-tools.html">macOS Tools and Homebrew</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python-environments.html">Python Installation and Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r-setup.html">R Installation and User Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vscode.html">VS Code for MQB</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Getting started with GitHub Copilot in VS Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-ssh.html">Git, GitHub and SSH Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="ubuntu-admin.html">Linux Setup and Ubuntu Administration</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fappendices/vscode-copilot.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/appendices/vscode-copilot.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Getting started with GitHub Copilot in VS Code</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-start">Before you start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-an-access-route">Choose an access route</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eligible-students">Eligible students</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-you-are-at-imperial-college-london">If you are at Imperial College London</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sign-in-through-vs-code">Sign in through VS Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-controls">Copilot controls</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-it-with-a-small-prediction">Check it with a small prediction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-and-run-locally">Predict and run locally</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ask-copilot">Ask Copilot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correct-and-check-the-code">Correct and check the code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-something-does-not-work">If something does not work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ready-what-next">Ready? What next?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icl-guidance">ICL guidance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-guidance-including-for-students-outside-icl">General guidance, including for students outside ICL</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-started-with-github-copilot-in-vs-code">
+<span id="vscode-copilot-setup"></span><h1>Getting started with GitHub Copilot in VS Code<a class="headerlink" href="#getting-started-with-github-copilot-in-vs-code" title="Link to this heading">#</a></h1>
+<p>This appendix introduces the GitHub Copilot and VS Code setup used for AI-assisted programming in MQB. It supports the <a class="reference internal" href="../notebooks/ai-assisted-programming.html"><span class="std std-doc">AI-assisted programming in biology chapter</span></a> and <a class="reference download internal" download="" href="../_downloads/fe49d5fe8948145f2413ceb63cbb652b/ai_coding.html"><span class="xref download myst">lecture</span></a>.</p>
+<p>As you gain experience, you can explore other AI coding tools, such as OpenAI’s Codex or Claude Code.</p>
+<section id="before-you-start">
+<h2>Before you start<a class="headerlink" href="#before-you-start" title="Link to this heading">#</a></h2>
+<p>Set up <a class="reference internal" href="vscode.html"><span class="std std-doc">VS Code for MQB</span></a> and <a class="reference internal" href="python-environments.html"><span class="std std-doc">Python</span></a> for the check below.</p>
+</section>
+<section id="choose-an-access-route">
+<span id="copilot-access"></span><h2>Choose an access route<a class="headerlink" href="#choose-an-access-route" title="Link to this heading">#</a></h2>
+<p>GitHub hosts code; GitHub Copilot provides AI assistance with coding. Having a GitHub account does not mean you have Copilot access. Check <a class="reference external" href="https://github.com/settings/copilot">Copilot settings</a> for the account you want to use.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you are preparing for a taught session, apply for Copilot access at least ten days beforehand. Approval can take time, and you may still need to activate Copilot afterwards.</p>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Your situation</p></th>
+<th class="head"><p>Next action</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>You already have Copilot access</p></td>
+<td><p>Use the GitHub account with that access when you sign in through VS Code.</p></td>
+</tr>
+<tr class="row-odd"><td><p>You are an eligible student</p></td>
+<td><p>Apply for GitHub Education benefits, then activate Copilot Student as described below.</p></td>
+</tr>
+<tr class="row-even"><td><p>Your institution or employer provides access</p></td>
+<td><p>Follow its instructions and check that a licence has been assigned to your account. Ask its support team about any restrictions.</p></td>
+</tr>
+<tr class="row-odd"><td><p>You do not have access yet</p></td>
+<td><p>Check whether your account qualifies for Copilot Free in VS Code. If you cannot get access, follow the <a class="reference internal" href="#if-something-does-not-work">troubleshooting steps below</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For an MQB class, do not buy a subscription to complete setup. Tell the teaching team if you cannot get access or have reached your usage limit. Plans and allowances change; check the <a class="reference external" href="https://docs.github.com/en/copilot/how-tos/manage-your-account/get-started-with-a-copilot-plan">current GitHub plan guide</a>.</p>
+<section id="eligible-students">
+<h3>Eligible students<a class="headerlink" href="#eligible-students" title="Link to this heading">#</a></h3>
+<p>In your web browser:</p>
+<ol class="arabic simple">
+<li><p>Sign in to the GitHub account you want to use, then open <a class="reference external" href="https://github.com/settings/education/benefits">Education benefits</a>.</p></li>
+<li><p>If you are not yet verified, start an application and follow GitHub’s evidence requirements. Check <a class="reference external" href="https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student">student eligibility and application instructions</a> if you are unsure whether you qualify.</p></li>
+<li><p>After GitHub verifies your student status, return to Education benefits and follow the prompts to activate <strong>Copilot Student</strong>. See <a class="reference external" href="https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students">GitHub’s activation and troubleshooting guide</a> if you need help.</p></li>
+<li><p>Check Copilot settings again. If you still see only a trial or a payment page, consult the guide’s troubleshooting section.</p></li>
+</ol>
+</section>
+<section id="if-you-are-at-imperial-college-london">
+<h3>If you are at Imperial College London<a class="headerlink" href="#if-you-are-at-imperial-college-london" title="Link to this heading">#</a></h3>
+<p>Start with <a class="reference external" href="https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/research-support-systems/github/github-copilot/">ICL’s GitHub Copilot information page</a> for an overview of code completion, chat and the supported tools. Then follow <a class="reference external" href="https://imperialcollegelondon.github.io/docs/copilot/request_access">ICL’s access instructions</a> for your role:</p>
+<ul class="simple">
+<li><p><strong>Undergraduate and postgraduate students:</strong> apply through GitHub Education for free student access, then complete the activation steps above.</p></li>
+<li><p><strong>Postgraduates seeking a Business licence for research:</strong> first agree funding with your department or project. Follow the paid-billing process, then submit the licence request after the Azure subscription has been created.</p></li>
+<li><p><strong>Centrally funded staff:</strong> sign in to the ICL GitHub organisation and submit the licence request. ICT initially funds usage within its fair usage policy; additional usage requires paid billing.</p></li>
+<li><p><strong>Externally funded staff:</strong> arrange funding through a cost code and follow the paid-billing process before submitting the licence request. Check your funding category with your line manager if unsure.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You must belong to the ICL GitHub organisation to use the institutional licence request form. Joining the organisation does not automatically activate Copilot. GitHub Education verification is a separate process. Once Copilot is active, use the same GitHub account in VS Code.</p>
+</div>
+<p>If you are not at ICL, follow the student instructions above or ask your institution or employer about access. The VS Code setup and checks below are the same whichever route you use.</p>
+</section>
+</section>
+<section id="sign-in-through-vs-code">
+<h2>Sign in through VS Code<a class="headerlink" href="#sign-in-through-vs-code" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Before sending coursework to Copilot, check the assignment brief: may you use AI, and how should you acknowledge it? For research, check your institution’s and project’s rules on sending code or data to an external AI service.</p>
+<p>For this setup, use a separate practice project with made-up data. Do not include passwords, access tokens, other people’s work or restricted research data.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Create a separate folder called <code class="docutils literal notranslate"><span class="pre">copilot-practice</span></code>. Inside it, create <code class="docutils literal notranslate"><span class="pre">code/</span></code>, <code class="docutils literal notranslate"><span class="pre">data/</span></code> and <code class="docutils literal notranslate"><span class="pre">results/</span></code> folders and a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file. Use <strong>File → Open Folder…</strong> to open <code class="docutils literal notranslate"><span class="pre">copilot-practice</span></code> in VS Code. Do not use your coursework repository or the downloaded MQB book source. See <a class="reference internal" href="../part-computing.html#organising-your-learning-project"><span class="std std-ref">Organising your learning project</span></a> for the folder layout.</p></li>
+<li><p>Follow the current <a class="reference external" href="https://code.visualstudio.com/docs/setup/copilot">VS Code Copilot setup guide</a>. Select the Copilot status-bar control, choose <strong>Use AI Features</strong> if offered, and complete GitHub sign-in in the browser. Use the account whose access you checked above.</p></li>
+<li><p>If prompted to install or enable Copilot, follow VS Code’s instructions and check that the extension is published by GitHub. Ask IT for help if your computer blocks installation. The <a class="reference internal" href="vscode.html"><span class="std std-doc">MQB editor guide</span></a> covers Python and R language support.</p></li>
+<li><p>Open the <strong>Accounts</strong> menu in VS Code and confirm the account used for Copilot. If you have several GitHub accounts, the <a class="reference external" href="https://code.visualstudio.com/docs/setup/copilot#use-a-different-github-account-with-copilot">account-switching instructions</a> explain how to select another one.</p></li>
+</ol>
+<p>VS Code can include selected code and other files with your request. Check the files and context listed in chat before sending it. A private repository restricts who can see your files on GitHub. It does not give you permission to share them with Copilot: your coursework and research rules still apply.</p>
+</section>
+<section id="copilot-controls">
+<span id="id1"></span><h2>Copilot controls<a class="headerlink" href="#copilot-controls" title="Link to this heading">#</a></h2>
+<p>Before sending your first request, find the mode, model and permissions controls.</p>
+ <!-- The chapter explains {ref}`what the options mean <ai-copilot-options>` and {ref}`how to choose a model <ai-model-choice>`; here we just get ready to use them. -->
+<ol class="arabic simple">
+<li><p>Open the Chat view from VS Code’s Chat menu. Find the mode/agent picker beside the message box and choose <strong>Ask</strong>. If a <strong>Session Target</strong> control appears, use <strong>Copilot</strong> for these setup instructions. See the <a class="reference external" href="https://code.visualstudio.com/docs/agents/run/chat-view">Chat view guide</a> if your layout differs.</p></li>
+<li><p>Open the model picker and choose <strong>Auto</strong>. Leave thinking effort at its default. See <a class="reference external" href="https://code.visualstudio.com/docs/agent-customization/language-models">VS Code’s model controls</a> for the current layout.</p></li>
+<li><p>Before an Agent task, choose <strong>Manual permissions</strong>. If the setting is hidden in a narrow Chat panel, click the speech-bubble icon below the message box to reveal it, or widen the panel. Check which actions are already approved to run without asking you. See the <a class="reference external" href="https://code.visualstudio.com/docs/agents/run/approvals">permissions guide</a>.</p></li>
+<li><p>GitHub currently lists Free and Student as Auto-only plans. Check your plan and remaining allowance in Copilot settings, and consult the <a class="reference external" href="https://docs.github.com/en/copilot/get-started/plans">current plan comparison</a>.</p></li>
+</ol>
+</section>
+<section id="check-it-with-a-small-prediction">
+<span id="copilot-setup-check"></span><h2>Check it with a small prediction<a class="headerlink" href="#check-it-with-a-small-prediction" title="Link to this heading">#</a></h2>
+<p>This exercise checks two things: can Python run your script, and can you check Copilot’s explanation of the result?</p>
+<section id="predict-and-run-locally">
+<h3>Predict and run locally<a class="headerlink" href="#predict-and-run-locally" title="Link to this heading">#</a></h3>
+<p>In VS Code, create <code class="docutils literal notranslate"><span class="pre">code/copilot_setup_check.py</span></code> inside <code class="docutils literal notranslate"><span class="pre">copilot-practice</span></code> and save this deliberately imperfect example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">heights_cm</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+<span class="n">threshold_cm</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">height</span> <span class="o">&gt;=</span> <span class="n">threshold_cm</span> <span class="k">for</span> <span class="n">height</span> <span class="ow">in</span> <span class="n">heights_cm</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The question is: <strong>how many heights are strictly greater than 10 cm?</strong> Work out your answer before running the code. Should a height of exactly 10 cm count?</p>
+<p>Open <strong>Terminal → New Terminal</strong>. From the <code class="docutils literal notranslate"><span class="pre">copilot-practice</span></code> folder, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>code/copilot_setup_check.py
+</pre></div>
+</div>
+<p>If you normally run Python with <code class="docutils literal notranslate"><span class="pre">python</span></code>, use that command instead.</p>
+<p>The script prints <code class="docutils literal notranslate"><span class="pre">3</span></code>: it counts 12, 10 and 15. But our question excludes 10, so the answer should be <code class="docutils literal notranslate"><span class="pre">2</span></code>. The code runs, but it answers the wrong question.</p>
+</section>
+<section id="ask-copilot">
+<h3>Ask Copilot<a class="headerlink" href="#ask-copilot" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If Copilot is unavailable, follow the <a class="reference internal" href="#if-something-does-not-work">troubleshooting steps below</a>. Return to this exercise once access is working.</p>
+</div>
+<p>Select the four lines of code, right-click the selection and choose <strong>Add Selection to Chat</strong>. Check that an attachment above the prompt box shows the filename and selected line range, such as <code class="docutils literal notranslate"><span class="pre">copilot_setup_check.py:1-4</span></code>. Then ask:</p>
+<blockquote>
+<div><p>My question is how many heights are strictly greater than 10 cm. I predicted two, but this code prints three. Explain which value accounts for the difference and why. Do not edit files or run commands.</p>
+</div></blockquote>
+<p>Check Copilot’s explanation against the list: which value should have been excluded?</p>
+</section>
+<section id="correct-and-check-the-code">
+<h3>Correct and check the code<a class="headerlink" href="#correct-and-check-the-code" title="Link to this heading">#</a></h3>
+<p>Change <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> to <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> yourself, save the file and run it again. It should now print <code class="docutils literal notranslate"><span class="pre">2</span></code>. Keeping the threshold at 10, try a list containing only <code class="docutils literal notranslate"><span class="pre">[10]</span></code>, then an empty list (<code class="docutils literal notranslate"><span class="pre">[]</span></code>). Both should print <code class="docutils literal notranslate"><span class="pre">0</span></code>. Finally, restore the original list.</p>
+<p>To try an inline suggestion, add a comment such as <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Count</span> <span class="pre">heights</span> <span class="pre">strictly</span> <span class="pre">greater</span> <span class="pre">than</span> <span class="pre">10</span> <span class="pre">cm</span></code>. Copilot will suggest some code to insert there. Read the suggested code before accepting it. If no suggestion appears, try the chat check above or the troubleshooting steps below.</p>
+</section>
+</section>
+<section id="if-something-does-not-work">
+<h2>If something does not work<a class="headerlink" href="#if-something-does-not-work" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symptom</p></th>
+<th class="head"><p>What to check</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Python cannot run the file</p></td>
+<td><p>Check the saved filename, project folder and Python command using the <a class="reference internal" href="vscode.html#python-scripts-select-run-and-debug"><span class="std std-ref">MQB editor checks</span></a>. Get the script running before troubleshooting Copilot.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GitHub has verified your student status, but Copilot is missing</p></td>
+<td><p>Check that you have activated Copilot Student. See GitHub’s <a class="reference external" href="https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students#troubleshooting">student-benefit troubleshooting</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>VS Code uses the wrong account</p></td>
+<td><p>Compare the account in the browser’s Copilot settings with the one selected for Copilot in VS Code. Follow the official account-switching steps above.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Copilot or chat is unavailable</p></td>
+<td><p>Check that Copilot is enabled in VS Code and that your organisation allows chat. See <a class="reference external" href="https://docs.github.com/en/copilot/how-tos/troubleshoot-copilot/troubleshoot-common-issues">GitHub’s troubleshooting guide</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Only Auto is available, or a model is missing</p></td>
+<td><p>Check the signed-in account, the current plan comparison and organisation restrictions. Do not relax security settings to obtain another model.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Your mode picker differs from a tutorial</p></td>
+<td><p>Use the current guides linked above. For the setup check, use Ask. The chapter explains the other modes and legacy Edit option.</p></td>
+</tr>
+<tr class="row-even"><td><p>Access worked, then requests stopped</p></td>
+<td><p>Read the error message and check your usage allowance. If you have reached a limit, tell the teaching team. For other errors, follow GitHub’s troubleshooting guide above.</p></td>
+</tr>
+<tr class="row-odd"><td><p>You cannot install or enable Copilot on a course machine</p></td>
+<td><p>Ask teaching staff or IT for help.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If you are still waiting for access, tell the teaching team before the session. At ICL, contact <a class="reference external" href="https://www.imperial.ac.uk/admin-services/ict/contact-ict-service-desk/">ICT support</a> for help with institutional access. For GitHub Education problems, follow the support instructions in the student-verification guide above.</p>
+<p>When reporting a problem, include your operating system, VS Code version, relevant extension versions, the step that failed and the error text. Remove passwords, tokens and personal information from copied messages or screenshots.</p>
+</section>
+<section id="ready-what-next">
+<h2>Ready? What next?<a class="headerlink" href="#ready-what-next" title="Link to this heading">#</a></h2>
+<p>Your setup is ready when you can run <code class="docutils literal notranslate"><span class="pre">code/copilot_setup_check.py</span></code> in VS Code, ask Copilot to explain its output and check that explanation against your own calculation. Check which GitHub account is active and locate the mode, model and permissions controls. Can you explain why the script first printed <code class="docutils literal notranslate"><span class="pre">3</span></code> and how you checked your correction? Take the same approach to larger problems: <strong>plan → implement → test → explain → rerun</strong>.</p>
+<p>Next, work through the <a class="reference internal" href="../notebooks/ai-assisted-programming.html"><span class="std std-doc">AI-assisted programming in biology chapter</span></a> for the concepts and practicals. In a workshop, follow the <a class="reference download internal" download="" href="../_downloads/fe49d5fe8948145f2413ceb63cbb652b/ai_coding.html"><span class="xref download myst">lecture</span></a> and use the chapter for the practicals.</p>
+<p>To prepare for the chapter’s R practicals, follow the <a class="reference internal" href="r-setup.html"><span class="std std-doc">R setup guide</span></a>.</p>
+<p>For coursework, follow the assignment’s rules on AI use and acknowledgement. For research, follow the project’s data and authorship requirements. If you need to acknowledge AI use, record the tool, date, what you asked it to do and how you checked the result.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p>These are the official guides used for this appendix. They were checked in October 2026; consult the current versions when setting up.</p>
+<section id="icl-guidance">
+<h3>ICL guidance<a class="headerlink" href="#icl-guidance" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/research-support-systems/github/github-copilot/">ICL ICT: GitHub Copilot</a> — features, supported tools and links to further setup resources.</p></li>
+<li><p><a class="reference external" href="https://imperialcollegelondon.github.io/docs/copilot/request_access">ICL GitHub documentation: Requesting access</a> — student and staff routes, organisation membership and funding requirements.</p></li>
+</ul>
+</section>
+<section id="general-guidance-including-for-students-outside-icl">
+<h3>General guidance, including for students outside ICL<a class="headerlink" href="#general-guidance-including-for-students-outside-icl" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student">GitHub: Apply to GitHub Education as a student</a> — eligibility, evidence and application steps.</p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students">GitHub: Access GitHub Copilot for free as a student</a> — activating the benefit after verification and resolving delays.</p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com/docs/setup/copilot">VS Code: Set up GitHub Copilot</a> — editor setup, sign-in and account switching.</p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com/docs/agents/run/chat-view">VS Code: Use the Chat view</a> — finding the session, mode, model and permissions controls.</p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com/docs/agent-customization/language-models">VS Code: AI language models</a> and <a class="reference external" href="https://code.visualstudio.com/docs/agents/run/approvals">approvals and permissions</a> — model selection and action approvals. These controls were checked on 23 October 2026.</p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/copilot/get-started/plans">GitHub: Plans for Copilot</a> — plan features, model access and usage allowances.</p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/copilot/how-tos/manage-your-account/get-started-with-a-copilot-plan">GitHub: Getting started with a GitHub Copilot plan</a> — access options when student or institutional access is unavailable.</p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/copilot/how-tos/copilot-in-your-ide/chat-with-copilot/chat-in-ide">GitHub: Asking GitHub Copilot questions in your IDE</a> — chat modes, requests and project context.</p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/copilot/how-tos/troubleshoot-copilot/troubleshoot-common-issues">GitHub: Troubleshooting common issues with GitHub Copilot</a> — sign-in, extension and service problems.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./appendices"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="vscode.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">VS Code for MQB</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="git-ssh.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Git, GitHub and SSH Setup</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-start">Before you start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-an-access-route">Choose an access route</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eligible-students">Eligible students</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-you-are-at-imperial-college-london">If you are at Imperial College London</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sign-in-through-vs-code">Sign in through VS Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-controls">Copilot controls</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-it-with-a-small-prediction">Check it with a small prediction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-and-run-locally">Predict and run locally</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ask-copilot">Ask Copilot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correct-and-check-the-code">Correct and check the code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-something-does-not-work">If something does not work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ready-what-next">Ready? What next?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icl-guidance">ICL guidance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-guidance-including-for-students-outside-icl">General guidance, including for students outside ICL</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
