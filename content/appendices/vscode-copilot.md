@@ -75,7 +75,7 @@ Before sending your first request, find the mode, model and permissions controls
 
 1. Open the Chat view from VS Code's Chat menu. Find the mode/agent picker beside the message box and choose **Ask**. If a **Session Target** control appears, use **Copilot** for these setup instructions. See the [Chat view guide](https://code.visualstudio.com/docs/agents/run/chat-view) if your layout differs.
 2. Open the model picker and choose **Auto**. Leave thinking effort at its default. See [VS Code's model controls](https://code.visualstudio.com/docs/agent-customization/language-models) for the current layout.
-3. Before an Agent task, choose **Manual permissions**. Check which actions are already approved to run without asking you. See the [permissions guide](https://code.visualstudio.com/docs/agents/run/approvals).
+3. Before an Agent task, choose **Manual permissions**. If the setting is hidden in a narrow Chat panel, click the speech-bubble icon below the message box to reveal it, or widen the panel. Check which actions are already approved to run without asking you. See the [permissions guide](https://code.visualstudio.com/docs/agents/run/approvals).
 4. GitHub currently lists Free and Student as Auto-only plans. Check your plan and remaining allowance in Copilot settings, and consult the [current plan comparison](https://docs.github.com/en/copilot/get-started/plans).
 
 (copilot-setup-check)=
@@ -112,7 +112,7 @@ The script prints `3`: it counts 12, 10 and 15. But our question excludes 10, so
 If Copilot is unavailable, follow the [troubleshooting steps below](#if-something-does-not-work). Return to this exercise once access is working.
 ```
 
-Select the four lines of code and add them to your chat request. Check that chat shows the practice file as context. Ask:
+Select the four lines of code, right-click the selection and choose **Add Selection to Chat**. Check that an attachment above the prompt box shows the filename and selected line range, such as `copilot_setup_check.py:1-4`. Then ask:
 
 > My question is how many heights are strictly greater than 10 cm. I predicted two, but this code prints three. Explain which value accounts for the difference and why. Do not edit files or run commands.
 
