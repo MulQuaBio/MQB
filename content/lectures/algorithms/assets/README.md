@@ -83,4 +83,3 @@ directory because they were not embedded raster images. The Quarto source
 reconstructs the substantive content. If contributor review identifies a
 missing visual that existed only as a vector object, add an editable recreation
 or a labelled placeholder and record it here.
-
