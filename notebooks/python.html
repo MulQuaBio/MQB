@@ -293,6 +293,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microbiome-analysis.html">Exploring a soil microbiome in R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glms.html">Generalised Linear Models</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
@@ -6636,8 +6637,8 @@ from the end of an array:</p>
 <section id="the-lotka-volterra-model">
 <h5>The Lotka-Volterra model<a class="headerlink" href="#the-lotka-volterra-model" title="Link to this heading">#</a></h5>
 <p>Now let’s try numerical integration in Python for solving a classical model in biology — the Lotka-Volterra (LV) model for a predator-prey system in two-dimensional space (e.g., on land). The LV model is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-05075bad-6bb0-445b-a546-3825bd19b860">
-<span class="eqno">(2)<a class="headerlink" href="#equation-05075bad-6bb0-445b-a546-3825bd19b860" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b74b4859-219c-4bf1-b123-5c4874434404">
+<span class="eqno">(2)<a class="headerlink" href="#equation-b74b4859-219c-4bf1-b123-5c4874434404" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dR}{dt} &amp;= r R - a C R  \nonumber \\
     \frac{dC}{dt} &amp;= - z C + e a C R
 \end{align}\]</div>
@@ -7201,8 +7202,8 @@ Set N=10000000
 <section id="the-lotkavolterra-model-revisited">
 <h3>The Lotka–Volterra model revisited<a class="headerlink" href="#the-lotkavolterra-model-revisited" title="Link to this heading">#</a></h3>
 <p>In the original Lotka–Volterra model, the resource population grows without bound when consumers are absent. Add logistic density dependence to make resource growth slow as the resource density <span class="math notranslate nohighlight">\(R\)</span> approaches its carrying capacity <span class="math notranslate nohighlight">\(K\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c0f08ada-0924-4be6-8ed2-5e509da41e1f">
-<span class="eqno">(3)<a class="headerlink" href="#equation-c0f08ada-0924-4be6-8ed2-5e509da41e1f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-17239e00-56c8-4f9d-af0f-583521e7643b">
+<span class="eqno">(3)<a class="headerlink" href="#equation-17239e00-56c8-4f9d-af0f-583521e7643b" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dR}{dt} &amp;= rR\left(1 - \frac{R}{K}\right) - aCR\\
     \frac{dC}{dt} &amp;= -zC + eaCR
 \end{align}\]</div>
@@ -7233,8 +7234,8 @@ python3<span class="w"> </span>-m<span class="w"> </span>cProfile<span class="w"
 <section id="extension-discrete-time-lv-model">
 <h3>Extension: discrete-time LV model<a class="headerlink" href="#extension-discrete-time-lv-model" title="Link to this heading">#</a></h3>
 <p>Write a discrete-time version called <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-94ea87d3-459e-48dd-b04e-9a9068271216">
-<span class="eqno">(4)<a class="headerlink" href="#equation-94ea87d3-459e-48dd-b04e-9a9068271216" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b8133233-dadd-41ac-85b9-25a4d32a65b4">
+<span class="eqno">(4)<a class="headerlink" href="#equation-b8133233-dadd-41ac-85b9-25a4d32a65b4" title="Permalink to this equation">#</a></span>\[\begin{align}
     R_{t+1} &amp;= R_t \left(1 + r\left(1 - \frac{R_t}{K}\right) - aC_t\right)\\
     C_{t+1} &amp;= C_t \left(1 - z + eaR_t\right)
 \end{align}\]</div>

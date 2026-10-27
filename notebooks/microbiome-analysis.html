@@ -1,0 +1,1100 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Exploring a soil microbiome in R &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=cf591445" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/microbiome-analysis';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <script src="../_static/sidebar-toggles.js?v=98d0e6e2"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Generalised Linear Models" href="glms.html" />
+    <link rel="prev" title="Introduction &amp; prerequisites" href="../part-advanced-stats.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MulQuaBio - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-computing.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="python.html">Biological Computing in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="object-oriented-programming.html">Object-Oriented Programming</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="r.html">Biological Computing in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai-assisted-programming.html">AI-assisted programming in biology</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-basic-stats.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-r.html">Data Management and Visualization in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exp-design.html">Experimental design and data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced E&amp;E Modelling and Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-eemodelling.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="populations.html">Single Populations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="micrm-to-logistic.html">From consumer–resource dynamics to logistic growth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="populations-practicals.html">Populations: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="competitive-dynamics.html">Competitive dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="competitive-dynamics-practicals.html">Competitive Dynamics: Practicals</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="predator-prey.html">Predator–prey dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="predator-prey-practicals.html">Predator–prey dynamics: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="epidemiology.html">Epidemiological dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="epidemiology-practicals.html">Epidemiological dynamics: Practicals</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exploring a soil microbiome in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="microbial-growth.html">Microbial Growth rates in R</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayesian.html">Bayesian inference for biological data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_Bootcamp_Rubric.html">Computing Bootcamp Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_MiniProject_Rubric.html">Computing MiniProject Rubric</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/terms.html">Key computing terms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/macos-tools.html">macOS Tools and Homebrew</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/python-environments.html">Python Installation and Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/r-setup.html">R Installation and User Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/vscode.html">VS Code for MQB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/vscode-copilot.html">Getting started with GitHub Copilot in VS Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/git-ssh.html">Git, GitHub and SSH Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/ubuntu-admin.html">Linux Setup and Ubuntu Administration</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MulQuaBio/MQB/master?urlpath=lab/tree/notebooks/microbiome-analysis.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MulQuaBio/MQB/blob/master/notebooks/microbiome-analysis.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/microbiome-analysis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/microbiome-analysis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exploring a soil microbiome in R</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals-and-preparation">Learning goals and preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-your-files-in-rstudio">Set up your files in RStudio</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-question-and-the-data">The question and the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-inspect">1. Import and inspect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrangle-the-sample-and-otu-data">2. Wrangle the sample and OTU data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-sequencing-totals-and-richness">Explore sequencing totals and richness</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-patterns-visually">3. Explore patterns visually</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-another-measurement">Optional: another measurement</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-patterns-to-hypotheses">4. From patterns to hypotheses</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-a-figure-in-results">Save a figure in <code class="docutils literal notranslate"><span class="pre">results/</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-figure-and-mini-presentation">5. Group figure and mini-presentation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exploring-a-soil-microbiome-in-r">
+<span id="microbiome-analysis"></span><h1>Exploring a soil microbiome in R<a class="headerlink" href="#exploring-a-soil-microbiome-in-r" title="Link to this heading">#</a></h1>
+<p>In this practical you will work in a group of three to explore a soil microbiome dataset and develop a question for a short presentation. Start with the data processing session, work through the core activities in the two microbiome practical sessions, and use your results in the group visualisation activity and mini-presentations. Share roles (coding, checking and interpreting) and rotate them so everyone takes part.</p>
+<section id="learning-goals-and-preparation">
+<h2>Learning goals and preparation<a class="headerlink" href="#learning-goals-and-preparation" title="Link to this heading">#</a></h2>
+<p>By the end you should be able to inspect and wrangle a community dataset, use visualisations to explore patterns, and develop a testable hypothesis while recognising the limits of the data. You need a working knowledge of R. Revisit the data wrangling, data exploration and visualisation sections of <a class="reference internal" href="data-r.html"><span class="std std-doc">Data Management and Visualization in R</span></a>. Its advice to preserve the original data, document transformations, inspect distributions and choose informative graphics applies here too.</p>
+<p>The core uses base R and needs no extra R package. Read this page in your browser and use RStudio to run the examples. In RStudio, select <strong>File → New File → R Script</strong>, save it as <code class="docutils literal notranslate"><span class="pre">code/microbiome_analysis.R</span></code> in the practical folder described below, and copy the code blocks into it in order. Place the cursor on a line and select <strong>Run</strong> (or select several lines and run them together). Keep the same R session open as you work: later commands use objects created earlier. The outputs on this page are examples; inspect your own results in RStudio’s Console and Plots panes.</p>
+<section id="set-up-your-files-in-rstudio">
+<h3>Set up your files in RStudio<a class="headerlink" href="#set-up-your-files-in-rstudio" title="Link to this heading">#</a></h3>
+<p>Use the MQB convention: <code class="docutils literal notranslate"><span class="pre">code/</span></code> holds scripts, <code class="docutils literal notranslate"><span class="pre">data/</span></code> holds the original input data and metadata, and <code class="docutils literal notranslate"><span class="pre">results/</span></code> holds generated figures and other outputs. Choose a practical folder and arrange it as follows:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>microbiome-practical/              ← working directory
+├── code/
+│   └── microbiome_analysis.R      ← your script
+├── data/
+│   └── microbiome/
+│       ├── V.profile_bootstrap_cleaned_Oct18_ver4.csv
+│       └── microbiome_metadata.md
+└── results/                       ← figures and other outputs
+</pre></div>
+</div>
+<ol class="arabic">
+<li><p>Create the practical folder and its <code class="docutils literal notranslate"><span class="pre">code</span></code>, <code class="docutils literal notranslate"><span class="pre">data/microbiome</span></code> and <code class="docutils literal notranslate"><span class="pre">results</span></code> subfolders. Download the CSV and metadata using the links below and put them in <code class="docutils literal notranslate"><span class="pre">data/microbiome/</span></code>. Keep these original inputs unchanged.</p></li>
+<li><p>In the RStudio <strong>Console</strong>, use <code class="docutils literal notranslate"><span class="pre">setwd()</span></code> to set the <strong>practical folder</strong>, not one of its subfolders, as your working directory. Replace the example path with the actual path to your folder:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">setwd</span><span class="p">(</span><span class="s">"/path/to/microbiome-practical"</span><span class="p">)</span>
+<span class="nf">getwd</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>On Windows you can use forward slashes, for example <code class="docutils literal notranslate"><span class="pre">setwd(&quot;C:/Users/your-name/microbiome-practical&quot;)</span></code>. Check that <code class="docutils literal notranslate"><span class="pre">getwd()</span></code> displays your practical folder. Run <code class="docutils literal notranslate"><span class="pre">setwd()</span></code> again in the Console when you start a new R session if needed.</p>
+</li>
+<li><p>Create your R script in RStudio and save it as <code class="docutils literal notranslate"><span class="pre">code/microbiome_analysis.R</span></code>. Copy and run the examples in order, keeping the same R session open.</p></li>
+<li><p>The import command below reads from <code class="docutils literal notranslate"><span class="pre">data/microbiome/</span></code> relative to the working directory; save your figures and other outputs in <code class="docutils literal notranslate"><span class="pre">results/</span></code>. If you choose a different location for the CSV, adjust the import path. Keep your computer-specific <code class="docutils literal notranslate"><span class="pre">setwd()</span></code> command in the Console rather than the shared script so that others can run the script from their own practical folder.</p></li>
+</ol>
+<p>Alternatively, run <code class="docutils literal notranslate"><span class="pre">soil</span> <span class="pre">&lt;-</span> <span class="pre">read.csv(file.choose())</span></code> in RStudio and select the CSV in <code class="docutils literal notranslate"><span class="pre">data/microbiome/</span></code>. Record where the file came from so the analysis remains reproducible.</p>
+</section>
+</section>
+<section id="the-question-and-the-data">
+<h2>The question and the data<a class="headerlink" href="#the-question-and-the-data" title="Link to this heading">#</a></h2>
+<p>At Nash’s Field, grassland soils have received different treatments, including lime and pesticides. The original practical asked whether bacterial communities in acidic environments might respond differently to pesticides from those in more neutral environments. Here we will explore patterns that might inspire questions for later study. Liming is a treatment, not a direct measurement of pH.</p>
+<p>Download the <a class="reference download internal" download="" href="../_downloads/56981083106f2df78759f99e602448f5/V.profile_bootstrap_cleaned_Oct18_ver4.csv"><span class="xref download myst">data CSV</span></a> and its <a class="reference download internal" download="" href="../_downloads/082616dc3e70764c65488dde46623b8d/microbiome_metadata.md"><code class="xref download docutils literal notranslate"><span class="pre">metadata</span></code></a>. The data were provided by Prof. T. Bell, Imperial College London, who gave permission for publication. They come from the 2025–26 microbiome practical. Rows represent soil samples; the first six columns contain sample information and the remaining columns contain sequence counts for operational taxonomic units (OTUs).</p>
+<p>Read the metadata before starting. Sequences were clustered into OTUs at 97% similarity. Counts are sequencing observations, not direct counts of organisms, and an OTU is not necessarily a species.</p>
+<div class="caution admonition">
+<p class="admonition-title">What we do not yet know</p>
+<p>Plot identifiers, how depths relate to plots or cores, treatment allocation and replication, sequencing details and the exact rarefaction procedure are not yet available. The row number is not a confirmed plot identifier. Do not assume the rows are independent experimental replicates or infer causal treatment effects from these plots. We will update the documentation when this information becomes available.</p>
+</div>
+</section>
+<section id="import-and-inspect">
+<h2>1. Import and inspect<a class="headerlink" href="#import-and-inspect" title="Link to this heading">#</a></h2>
+<p>Read the CSV from <code class="docutils literal notranslate"><span class="pre">data/microbiome/</span></code> and keep the original data unchanged; add the commands to your script in <code class="docutils literal notranslate"><span class="pre">code/</span></code>. Inspect the data types, the size and a small part of the table. The blank first header becomes <code class="docutils literal notranslate"><span class="pre">X</span></code> when imported with <code class="docutils literal notranslate"><span class="pre">read.csv()</span></code> using its default settings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">soil</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">"data/microbiome/V.profile_bootstrap_cleaned_Oct18_ver4.csv"</span><span class="p">)</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">soil</span><span class="p">)</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">soil</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">]</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">soil</span><span class="p">[,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">])</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">soil</span><span class="p">[,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>58</li><li>9688</li></ol>
+</div><div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'X'</li><li>'Cide'</li><li>'Liming'</li><li>'Depth'</li><li>'Moisture'</li><li>'ATP.biomass'</li><li>'OTU100'</li><li>'OTU10000'</li><li>'OTU1001'</li><li>'OTU10010'</li><li>'OTU10021'</li><li>'OTU10027'</li></ol>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'data.frame':	58 obs. of  6 variables:
+ $ X          : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ Cide       : chr  "Control" "Control" "Control" "Control" ...
+ $ Liming     : chr  "limed" "limed" "limed" "limed" ...
+ $ Depth      : int  1 2 3 4 5 1 2 3 4 5 ...
+ $ Moisture   : int  26 25 25 25 19 33 33 19 20 15 ...
+ $ ATP.biomass: num  NA 4.51 20.72 43.81 5.73 ...
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>X</th><th scope=col>Cide</th><th scope=col>Liming</th><th scope=col>Depth</th><th scope=col>Moisture</th><th scope=col>ATP.biomass</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1</td><td>Control</td><td>limed  </td><td>1</td><td>26</td><td>        NA</td></tr>
+	<tr><th scope=row>2</th><td>2</td><td>Control</td><td>limed  </td><td>2</td><td>25</td><td>  4.514441</td></tr>
+	<tr><th scope=row>3</th><td>3</td><td>Control</td><td>limed  </td><td>3</td><td>25</td><td> 20.724364</td></tr>
+	<tr><th scope=row>4</th><td>4</td><td>Control</td><td>limed  </td><td>4</td><td>25</td><td> 43.805707</td></tr>
+	<tr><th scope=row>5</th><td>5</td><td>Control</td><td>limed  </td><td>5</td><td>19</td><td>  5.725536</td></tr>
+	<tr><th scope=row>6</th><td>6</td><td>Control</td><td>unlimed</td><td>1</td><td>33</td><td>132.117217</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p><strong>Discuss:</strong> What does one row represent? Which columns describe samples and which describe OTUs? Compare the answers with the metadata. How many missing values are there in each sample variable?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">colSums</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">soil</span><span class="p">[,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">]))</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">soil</span><span class="o">$</span><span class="n">Cide</span><span class="p">,</span><span class="w"> </span><span class="n">soil</span><span class="o">$</span><span class="n">Liming</span><span class="p">)</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">soil</span><span class="o">$</span><span class="n">Depth</span><span class="p">,</span><span class="w"> </span><span class="n">soil</span><span class="o">$</span><span class="n">Liming</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>X</dt><dd>0</dd><dt>Cide</dt><dd>0</dd><dt>Liming</dt><dd>0</dd><dt>Depth</dt><dd>0</dd><dt>Moisture</dt><dd>0</dd><dt>ATP.biomass</dt><dd>3</dd></dl>
+</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         
+          limed unlimed
+  Control    10       9
+  Insect      9      10
+  Mollusc    10      10
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   
+    limed unlimed
+  1     6       6
+  2     6       5
+  3     6       6
+  4     6       6
+  5     5       6
+</pre></div>
+</div>
+</div>
+</div>
+<p>Counts in these tables are numbers of <strong>samples</strong>, not necessarily independent plots. Notice any unequal sample counts or missing values; consider how they affect a plot.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ask an AI assistant: inspecting data</p>
+<p>In the free ChatGPT or Gemini chat interface, paste your dimensions, column names and a small summary (not the entire CSV), then ask: “Explain R code for checking column types and missing values in this dataset. What should I inspect before plotting?”</p>
+<p><strong>Check:</strong> Run the suggestions, compare the output with the metadata, and explain to your group what each command does. A chatbot cannot see your R session unless you provide context.</p>
+</div>
+</section>
+<section id="wrangle-the-sample-and-otu-data">
+<h2>2. Wrangle the sample and OTU data<a class="headerlink" href="#wrangle-the-sample-and-otu-data" title="Link to this heading">#</a></h2>
+<p>Make separate objects for the metadata and the OTU counts, while retaining the original table. Check types, missing values, non-negative counts and row alignment. Avoid printing the whole OTU matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sample_info</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">soil</span><span class="p">[,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">]</span>
+<span class="n">otu</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">soil</span><span class="p">[,</span><span class="w"> </span><span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">)]</span>
+<span class="nf">stopifnot</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">sample_info</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">otu</span><span class="p">),</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span><span class="nf">vapply</span><span class="p">(</span><span class="n">otu</span><span class="p">,</span><span class="w"> </span><span class="n">is.numeric</span><span class="p">,</span><span class="w"> </span><span class="nf">logical</span><span class="p">(</span><span class="m">1</span><span class="p">))))</span>
+<span class="nf">c</span><span class="p">(</span><span class="n">samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">otu</span><span class="p">),</span><span class="w"> </span><span class="n">otus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ncol</span><span class="p">(</span><span class="n">otu</span><span class="p">),</span><span class="w"> </span><span class="n">missing_counts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">otu</span><span class="p">)),</span><span class="w"> </span><span class="n">negative_counts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">otu</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">otu</span><span class="p">[,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>samples</dt><dd>58</dd><dt>otus</dt><dd>9682</dd><dt>missing_counts</dt><dd>0</dd><dt>negative_counts</dt><dd>0</dd></dl>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>OTU100</th><th scope=col>OTU10000</th><th scope=col>OTU1001</th><th scope=col>OTU10010</th><th scope=col>OTU10021</th><th scope=col>OTU10027</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>2</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>3</th><td>0</td><td>0</td><td>1</td><td>0</td><td>4</td><td>0</td></tr>
+	<tr><th scope=row>4</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>5</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><th scope=row>6</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Each row in <code class="docutils literal notranslate"><span class="pre">sample_info</span></code> still corresponds to the same row in <code class="docutils literal notranslate"><span class="pre">otu</span></code>. Check this alignment whenever you filter or reorder data. Find OTUs with no recorded sequences in any sample. Retain the original object and create a separate analysis object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">zero_otus</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">colSums</span><span class="p">(</span><span class="n">otu</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span>
+<span class="nf">sum</span><span class="p">(</span><span class="n">zero_otus</span><span class="p">)</span>
+<span class="n">otu_observed</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">otu</span><span class="p">[,</span><span class="w"> </span><span class="o">!</span><span class="n">zero_otus</span><span class="p">,</span><span class="w"> </span><span class="n">drop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">]</span>
+<span class="nf">c</span><span class="p">(</span><span class="n">remaining_otus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ncol</span><span class="p">(</span><span class="n">otu_observed</span><span class="p">),</span><span class="w"> </span><span class="n">samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">otu_observed</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">452</div><div class="output text_html"><style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>remaining_otus</dt><dd>9230</dd><dt>samples</dt><dd>58</dd></dl>
+</div></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ask an AI assistant: wrangling</p>
+<p>Paste the dimensions and the first few column names, then ask: “Explain how to separate the first six metadata columns from the remaining OTU columns in R. How can I check that rows still match?”</p>
+<p><strong>Check:</strong> Compare the proposed dimensions and row order with the original. Explain the indexing to your group before using the code. Keep the original data unchanged.</p>
+</div>
+<section id="explore-sequencing-totals-and-richness">
+<h3>Explore sequencing totals and richness<a class="headerlink" href="#explore-sequencing-totals-and-richness" title="Link to this heading">#</a></h3>
+<p>The original practical says samples above approximately 5,000 sequences were subsampled. Inspect the actual totals below; the exact processing is still to be confirmed. Observed richness is the number of OTUs with a nonzero count in a sample. It is influenced by sequencing and does not measure all organisms present.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sample_info</span><span class="o">$</span><span class="n">sequences</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rowSums</span><span class="p">(</span><span class="n">otu_observed</span><span class="p">)</span>
+<span class="n">sample_info</span><span class="o">$</span><span class="n">richness</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rowSums</span><span class="p">(</span><span class="n">otu_observed</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">sample_info</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"sequences"</span><span class="p">,</span><span class="w"> </span><span class="s">"richness"</span><span class="p">)])</span>
+<span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">))</span>
+<span class="nf">hist</span><span class="p">(</span><span class="n">sample_info</span><span class="o">$</span><span class="n">sequences</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Sequences per sample"</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Recorded sequences"</span><span class="p">)</span>
+<span class="nf">hist</span><span class="p">(</span><span class="n">sample_info</span><span class="o">$</span><span class="n">richness</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Observed OTU richness"</span><span class="p">,</span><span class="w"> </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"OTUs with nonzero counts"</span><span class="p">)</span>
+<span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   sequences       richness     
+ Min.   :4870   Min.   : 226.0  
+ 1st Qu.:4936   1st Qu.: 841.8  
+ Median :4964   Median :1057.5  
+ Mean   :4956   Mean   :1018.8  
+ 3rd Qu.:4978   3rd Qu.:1284.0  
+ Max.   :5000   Max.   :1568.0  
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/4ac276fb260f7d16d142db8af81bcef3a8056710afcef24da4614e864f11db7d.png"><img alt="../_images/4ac276fb260f7d16d142db8af81bcef3a8056710afcef24da4614e864f11db7d.png" src="../_images/4ac276fb260f7d16d142db8af81bcef3a8056710afcef24da4614e864f11db7d.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p><strong>Discuss:</strong> What do the distributions look like? Are sample sequencing totals equal? How might sequencing depth affect observed richness? A sample accumulation curve and a sequence rarefaction curve answer different questions; this exercise does not establish that all diversity has been sampled.</p>
+<div class="caution admonition">
+<p class="admonition-title">Sequencing and sampling caveat</p>
+<p>The counts have already undergone processing and approximate subsampling, but the details are incomplete. Differences in richness may reflect sampling and sequencing as well as biology. Zeros mean no recorded sequences, not certain absence.</p>
+</div>
+</section>
+</section>
+<section id="explore-patterns-visually">
+<h2>3. Explore patterns visually<a class="headerlink" href="#explore-patterns-visually" title="Link to this heading">#</a></h2>
+<p>Begin with a simple plot, then try another grouping or a different visual representation. Individual points show the distribution more directly than means alone. Depth values are ordered categories, not known physical depths. The code below makes depth categorical for display.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sample_info</span><span class="o">$</span><span class="n">Depth</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="n">sample_info</span><span class="o">$</span><span class="n">Depth</span><span class="p">,</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">ordered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">boxplot</span><span class="p">(</span><span class="n">richness</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">Liming</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample_info</span><span class="p">,</span>
+<span class="w">        </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Liming treatment"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Observed OTU richness"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Richness across liming treatments"</span><span class="p">)</span>
+<span class="nf">stripchart</span><span class="p">(</span><span class="n">richness</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">Liming</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample_info</span><span class="p">,</span><span class="w"> </span><span class="n">vertical</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+<span class="w">           </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"jitter"</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../_images/20e039df9a2c4b8940c1d3d8857959301ce3050247c9df6d46bb83bac121a764.png"><img alt="../_images/20e039df9a2c4b8940c1d3d8857959301ce3050247c9df6d46bb83bac121a764.png" src="../_images/20e039df9a2c4b8940c1d3d8857959301ce3050247c9df6d46bb83bac121a764.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p><strong>Group task:</strong> Make at least two exploratory plots, for example richness by pesticide treatment or depth, or moisture versus richness coloured by liming. Consider whether a log scale would help for a skewed positive variable. Label axes with meaningful names and units where known; show individual observations and make legends readable. Add your plotting commands to your script in <code class="docutils literal notranslate"><span class="pre">code/</span></code>. Compare plots and describe a pattern and a counterexample or uncertainty.</p>
+<div class="caution admonition">
+<p class="admonition-title">Comparisons are exploratory</p>
+<p>Samples may share plots or cores and the allocation and replication of treatments are unknown. Differences between groups in a figure are descriptive; they do not establish treatment effects. Depth category is not a measured depth in centimetres, and liming is not a measured pH.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ask an AI assistant: choosing a plot</p>
+<p>Tell ChatGPT or Gemini your question, the variables and their types, and a small summary of the data. Ask: “Suggest two R plot types for exploring this question, and explain what each could hide.”</p>
+<p><strong>Check:</strong> Make and compare the plots. Inspect individual observations, missing values, labels, scales and the metadata. Decide as a group which plot best answers your question and why.</p>
+</div>
+<section id="optional-another-measurement">
+<h3>Optional: another measurement<a class="headerlink" href="#optional-another-measurement" title="Link to this heading">#</a></h3>
+<p>ATP is described as an indicator of microbial metabolic activity; its units and measurement details are unavailable. Check missing and positive values before exploring a logarithmic axis. A log scale can make skewed positive values easier to see, but does not automatically validate a model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sum</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">sample_info</span><span class="o">$</span><span class="n">ATP.biomass</span><span class="p">))</span>
+<span class="nf">sum</span><span class="p">(</span><span class="n">sample_info</span><span class="o">$</span><span class="n">ATP.biomass</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">atp_ok</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">sample_info</span><span class="o">$</span><span class="n">ATP.biomass</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sample_info</span><span class="o">$</span><span class="n">ATP.biomass</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">sample_info</span><span class="o">$</span><span class="n">richness</span><span class="p">[</span><span class="n">atp_ok</span><span class="p">],</span><span class="w"> </span><span class="n">sample_info</span><span class="o">$</span><span class="n">ATP.biomass</span><span class="p">[</span><span class="n">atp_ok</span><span class="p">],</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"y"</span><span class="p">,</span>
+<span class="w">     </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Observed OTU richness"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ATP measurement (log scale; units unavailable)"</span><span class="p">,</span>
+<span class="w">     </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ATP and observed richness"</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">3</div><div class="output text_html">0</div><a class="reference internal image-reference" href="../_images/f32ae90c88368852ec36e68ad5f5355dd726c20bf6d3b3a882068cf37e5b0090.png"><img alt="../_images/f32ae90c88368852ec36e68ad5f5355dd726c20bf6d3b3a882068cf37e5b0090.png" src="../_images/f32ae90c88368852ec36e68ad5f5355dd726c20bf6d3b3a882068cf37e5b0090.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p><strong>Discuss:</strong> How many samples are excluded from this plot? Does an association establish that richness determines ATP? What other explanations or missing information matter?</p>
+<div class="tip admonition">
+<p class="admonition-title">Ask an AI assistant: debugging</p>
+<p>If a command fails, paste the shortest relevant code, the exact error and a small description such as <code class="docutils literal notranslate"><span class="pre">str(sample_info)</span></code> into ChatGPT or Gemini. Ask: “Explain the likely cause and suggest a small correction.”</p>
+<p><strong>Check:</strong> Test the correction, inspect the output and explain why it works. Do not paste the entire dataset or accept a fix you cannot understand.</p>
+</div>
+</section>
+</section>
+<section id="from-patterns-to-hypotheses">
+<h2>4. From patterns to hypotheses<a class="headerlink" href="#from-patterns-to-hypotheses" title="Link to this heading">#</a></h2>
+<p>Choose one pattern from your exploratory figures. Write (1) an observation describing what is visible, (2) at least two plausible explanations, and (3) a testable hypothesis for a future study. Specify what you would measure and what pattern the hypothesis predicts. Consider other variables, missing design information and alternative explanations. Exploring many plots can produce patterns by chance, so treat your hypothesis as a starting point rather than a confirmed result.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ask an AI assistant: developing ideas</p>
+<p>Describe your observed pattern, the variables and the known design gaps. Ask ChatGPT or Gemini: “Suggest two alternative explanations and a testable follow-up hypothesis. Separate observations from speculation.”</p>
+<p><strong>Check:</strong> Does each suggestion follow from the figure and metadata? The chatbot cannot recover missing plot identifiers or replication. Check biological claims against reliable sources and choose a hypothesis your group can explain.</p>
+</div>
+<section id="save-a-figure-in-results">
+<h3>Save a figure in <code class="docutils literal notranslate"><span class="pre">results/</span></code><a class="headerlink" href="#save-a-figure-in-results" title="Link to this heading">#</a></h3>
+<p>Add figure-export commands to your script in <code class="docutils literal notranslate"><span class="pre">code/</span></code> so you can recreate the file. For example, with the practical folder as the working directory, the following creates a PNG in <code class="docutils literal notranslate"><span class="pre">results/</span></code>. The seed makes the jittered point positions reproducible. Run the whole block together; <code class="docutils literal notranslate"><span class="pre">dev.off()</span></code> closes the file. Adapt the plot and filename for your own group figure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">png</span><span class="p">(</span><span class="s">"results/richness_by_liming.png"</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1200</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">900</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">150</span><span class="p">)</span>
+<span class="nf">boxplot</span><span class="p">(</span><span class="n">richness</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">Liming</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample_info</span><span class="p">,</span>
+<span class="w">        </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Liming treatment"</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Observed OTU richness"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Richness across liming treatments"</span><span class="p">)</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">42</span><span class="p">)</span>
+<span class="nf">stripchart</span><span class="p">(</span><span class="n">richness</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">Liming</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sample_info</span><span class="p">,</span><span class="w"> </span><span class="n">vertical</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+<span class="w">           </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"jitter"</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rgb</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">dev.off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>agg_record_1f9e939360474:</strong> 2</div></div>
+</div>
+</section>
+</section>
+<section id="group-figure-and-mini-presentation">
+<h2>5. Group figure and mini-presentation<a class="headerlink" href="#group-figure-and-mini-presentation" title="Link to this heading">#</a></h2>
+<p>For the data visualisation group activity, prepare a short presentation with:</p>
+<ol class="arabic simple">
+<li><p>Your question and the variables used.</p></li>
+<li><p>One clearly labelled figure, including a legend if needed and the observations or sample counts where useful.</p></li>
+<li><p>What the figure shows, including variability and any missing or excluded values.</p></li>
+<li><p>A testable hypothesis, an alternative explanation and a possible follow-up measurement or study.</p></li>
+<li><p>The key design and sequencing limitations that prevent stronger conclusions.</p></li>
+</ol>
+<p>Each group member should be ready to explain part of the work. Save the code used to produce the figure in <code class="docutils literal notranslate"><span class="pre">code/microbiome_analysis.R</span></code> and the finished figure in <code class="docutils literal notranslate"><span class="pre">results/</span></code>, so that the group can reproduce and use it in the presentation; consult the <code class="docutils literal notranslate"><span class="pre">data-r</span></code> chapter for figure design and export.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ask an AI assistant: presentation feedback</p>
+<p>Paste your question, figure labels and a short description of the pattern into ChatGPT or Gemini. Ask: “What might confuse an audience, and where does this interpretation go beyond the observations?”</p>
+<p><strong>Check:</strong> Compare the feedback with your plot and metadata. Revise the figure and wording yourselves; your group is responsible for the interpretation and caveats.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../part-advanced-stats.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction &amp; prerequisites</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="glms.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Generalised Linear Models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals-and-preparation">Learning goals and preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-your-files-in-rstudio">Set up your files in RStudio</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-question-and-the-data">The question and the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-inspect">1. Import and inspect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrangle-the-sample-and-otu-data">2. Wrangle the sample and OTU data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-sequencing-totals-and-richness">Explore sequencing totals and richness</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-patterns-visually">3. Explore patterns visually</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-another-measurement">Optional: another measurement</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-patterns-to-hypotheses">4. From patterns to hypotheses</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-a-figure-in-results">Save a figure in <code class="docutils literal notranslate"><span class="pre">results/</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-figure-and-mini-presentation">5. Group figure and mini-presentation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
