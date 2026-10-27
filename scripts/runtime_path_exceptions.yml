@@ -5,6 +5,13 @@ Failed to create stream fd: Operation not permitted
 # Remove an entry in the same commit that removes its matched legacy path.
 version: 1
 exceptions:
+- location: notebooks/microbiome-analysis.ipynb:cell 1:fence 1
+  rule: working_directory_change
+  value: 'setwd('
+  count: 1
+  reason: Intentional console-only example for selecting the student's practical folder; the saved script uses relative paths.
+  owner: Microbiome practical teaching owner
+  target_phase: Retain for practical setup
 - location: notebooks/unix.ipynb:cell 75
   rule: parent_project_path
   value: ../data

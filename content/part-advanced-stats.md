@@ -2,6 +2,8 @@
 
 This part builds toward modern statistical modelling and inference workflows used in quantitative biology.
 
+The [soil microbiome practical](notebooks/microbiome-analysis) applies the data wrangling and visualisation principles from [Data Management and Visualization in R](notebooks/data-r) to community data. It can be completed as a group activity before the modelling chapters.
+
 ## Learning goals
 
 By the end of this part, you will be able to:
