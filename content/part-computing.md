@@ -39,6 +39,7 @@ If you already have a project with this layout, reuse it. For a new project, the
 - Use `git` to version-control your work and collaborate
 - Work with LaTeX for scientific writing
 - Get started with Python and R in a reproducible project setup
+- Understand how algorithms shape the problems that computation can solve
 
 ## Prerequisites
 
@@ -58,6 +59,9 @@ For the full computing route:
 1. Start with [Unix](notebooks/unix).
 2. Learn to retain and inspect your history with [Git](notebooks/git).
 3. Continue into [Shell scripting](notebooks/shell-scripting), [Python](notebooks/python) and [R](notebooks/r), following your course's teaching sequence.
+4. Use [Algorithms: solving problems with computation](notebooks/algorithms)
+   to compare solutions across languages and think about what becomes possible
+   as problems grow.
 
 For standalone study, go directly to the chapter you need and check its prerequisites. Return to Unix for unfamiliar file operations and to Git when you want version control; you do not need a separate project for each topic.
 
@@ -79,3 +83,10 @@ Most later chapters assume you can:
 - run commands in a terminal,
 - manage files with relative paths,
 - and, where an exercise uses version control, pull/update a repository with `git`.
+
+Once you can express a solution in code, the next question is whether you have
+chosen a good way to solve the problem. [Algorithms: solving problems with
+computation](notebooks/algorithms) examines correctness, data
+structures, scientific feasibility, scaling and the wider consequences of
+algorithmic choices. The [performance appendix](appendices/performance.md)
+continues into profiling, memory and larger computing resources.
