@@ -1,85 +1,106 @@
 # Algorithms: solving problems with computation
 
-This directory contains a draft MQB adaptation of Stanislav (Stanley) Modrak's
-48-slide *Analysis of algorithms* lecture, itself credited as adapted from
-Robert Sedgewick and Kevin Wayne at Princeton. The examples and sequence align
-particularly closely with Sedgewick and Wayne's *Algorithms*, 4th edition
-(Addison-Wesley, 2011), [Section 1.4: Analysis of
-Algorithms](https://algs4.cs.princeton.edu/14analysis/) and the corresponding
-[Princeton lecture
-slides](https://algs4.cs.princeton.edu/lectures/keynote/14AnalysisOfAlgorithms.pdf).
+This MQB lecture adapts Stanislav (Stanley) Modrak's *Analysis of algorithms*,
+including the 61-page Bootcamp lecture supplied on 27 October 2026, itself
+adapted from Robert Sedgewick and Kevin Wayne's *Algorithms*, 4th edition,
+[Section 1.4](https://algs4.cs.princeton.edu/14analysis/) and its
+[Princeton lecture material](https://algs4.cs.princeton.edu/lectures/keynote/14AnalysisOfAlgorithms.pdf).
+It accompanies the [core algorithms chapter](../../notebooks/algorithms.md).
+Contributor review remains open; this is not a release record.
 
-The redraft retains the original lecture's broad case for studying algorithms:
-their scientific and social reach, their role in becoming a proficient
-programmer, their intellectual appeal, the problems they make tractable, their
-potential to reveal the workings of life and the universe, and—less
-romantically—their commercial value. It then develops 3-SUM, experimental
-analysis, operation-count models, orders of growth, a 2-SUM comparison, memory
-and the parallelism/HPC signpost.
+The revision keeps the wider scientific, intellectual, programming, social and
+commercial motivations but reaches 3-SUM by minute eight. The progression is
+deliberate: 3-SUM reveals growth, 1-SUM simplifies counting operations, and
+2-SUM compares algorithms and their time–memory trade-off. It restores the new
+lecture's two incorrect 2-SUM implementations as prediction questions.
 
-The MQB adaptation adds explicit correctness checks, repeated timing, input
-assumptions, tighter asymptotic language and time-memory trade-offs. It treats
-performance as one reason for studying algorithms rather than the subject's
-only motivation, and connects the lecture to the programming language-agnostic
-[algorithms chapter](../../notebooks/algorithms.md).
+Both core 2-SUM algorithms take **distinct integers**, count pairs of positions
+`i < j`, and preserve the input. Repeated values require the separate
+frequency-map extension. Time claims for the hash-set version are expected
+linear time under average constant-time hashing assumptions.
 
-The source and assets are retained for contributor review. This is not yet an
-approved or released lecture.
-
-## Render locally
+## Render and build
 
 From the MQB repository root:
 
 ```bash
 quarto render content/lectures/algorithms/algorithms.qmd --to revealjs
+make test
 ```
 
-The generated `algorithms.html` embeds its presentation resources.
-Press `S` while presenting to open the speaker view.
+The generated `algorithms.html` embeds presentation resources. The local
+`algorithms.scss` uses system fonts and the equations use native MathML,
+avoiding font and mathematics CDN dependencies. Use a current browser with
+MathML support. Press `S` to open speaker view.
 
-## Timing
+The book's `mqb_lectures` extension copies the deck to
+`lectures/algorithms/algorithms.html` in the HTML build. This preserves the
+chapter-to-deck URL and the deck's relative links to the rendered chapter.
+Open the built chapter and deck together when checking navigation; the source
+directory itself does not contain the rendered chapter.
 
-The draft budgets approximately 111 minutes, including a ten-minute break and a
-15-minute paired practical. Any remaining time can be used for questions,
-completion and discussion.
+Quarto execution is disabled. Separately check the Python examples and run the
+completed practical; a successful presentation render does not execute code.
 
-| Approximate time | Focus |
-| :-- | :-- |
-| 00:00–18:30 | Why algorithms matter, definitions and the evidence chain |
-| 18:30–37:30 | 3-SUM and experimental measurement |
-| 37:30–55:30 | Cost models and orders of growth |
-| 55:30–65:30 | Break |
-| 65:30–77:00 | Two 2-SUM algorithms and correctness checks |
-| 77:00–97:00 | Paired timing practical and debrief |
-| 97:00–111:00 | Memory, parallelism, conclusions and reproducible evidence |
+## Prerequisites and practical
 
-## Source and asset record
+Students need functions, loops, basic containers and independently expected
+tests. Sets are explained in the lecture. No profiler, notebook, AI account,
+external animation or additional Python package is needed.
 
-The supplied source PDF had SHA-256:
+The [chapter practical](../../notebooks/algorithms.md#practical-predict-test-measure-and-explain)
+links a partial script and a measured fallback CSV with metadata. The script
+supplies timing, known-answer input construction and writing; students complete
+two functions, add a test, predict scaling and interpret the results.
+Use a project with `code/`, `data/` and `results/`, running:
 
-```text
-1640b9cfa450bd006b413bd775c61b25cff5695166022c97032a4e5ade36271c
+```bash
+python3 code/algorithms_compare_starter.py
 ```
 
-`assets/original/` contains every raster image and soft mask that `pdfimages`
-could extract from that PDF. See [the asset manifest](assets/README.md) for the
-page mapping. Several images contain text or third-party logos and are retained
-for audit and contributor review rather than automatically reused in the
-redraft. Their provenance and permission status must be resolved before public
-release.
+Defaults: `n=128,256,512,1024`, one warm-up, five measured calls, median seconds.
+Use identical non-mutating inputs for both algorithms. The prepared data are
+measurements from one machine, not grading thresholds. The illustrative cubic
+table earlier in the lecture is a model, explicitly labelled as such.
+Keep reference practical verification in the private solutions repository.
 
-The [Princeton booksite](https://algs4.cs.princeton.edu/home/) asks teachers who
-adapt its online material to follow normal academic attribution, while its
-[FAQ](https://algs4.cs.princeton.edu/faq/) also asks instructors to contact the
-authors for permission. The citation above therefore records the intellectual
-source but does not, by itself, establish permission to republish the original
-slides or graphics. Before release, confirm which Princeton material Stanley
-used, whether permission was obtained, and which source-derived visuals can be
-retained. Where that cannot be established, link to the source and use MQB's
-own prose, code or newly drawn diagrams instead.
+## Timing and optional material
 
-Some apparent diagrams and equations in the PDF are vector or text objects
-rather than embedded images. They have been reconstructed as editable text,
-tables, equations or code in the Quarto source. No extractable raster asset has
-been silently discarded.
+The source has 32 core slides, including break and discussion, and three optional
+slides. Their timing metadata totals 120 minutes. This is a proposed delivery
+budget, not evidence of an observed full classroom trial.
 
+| Minutes | Focus |
+| --- | --- |
+| 00–08 | Question, wider motivations and definitions |
+| 08–18 | 3-SUM contract, implementation and editable trace |
+| 18–30 | Repeated timing, doubling prediction and empirical model |
+| 30–42 | 1-SUM count and return to the exact 3-SUM count |
+| 42–55 | Theta, Big O, growth classes and doubling ratios |
+| 55–65 | Break |
+| 65–80 | 2-SUM contract, diagnostic errors and two correct algorithms |
+| 80–100 | Fifteen-minute paired practical and five-minute debrief |
+| 100–110 | Memory, scientific relevance, HPC and exit question |
+| 110–120 | Protected questions and practical recovery |
+
+The full log transformation, repeated-value extension and source slide follow
+the discussion slide with zero extra core time. Do not add them on top of a
+full two-hour delivery.
+
+## Source versions and graphics
+
+| Source PDF | SHA-256 | Treatment |
+| --- | --- | --- |
+| Earlier 48-page source used by the first MQB draft | `1640b9cfa450bd006b413bd775c61b25cff5695166022c97032a4e5ade36271c` | Original extraction and page mapping retained for audit. |
+| New 61-page source supplied 27 October 2026 | `579ed377b204d66dd9282acf20ac59318d9bc4ff51964c78adaa7f26103f1b99` | Current reference for content and flow revision; recorded separately. |
+
+The [asset record](assets/README.md) distinguishes these versions. The updated
+deck uses editable code, equations, tables and a locally constructed trace.
+It does not embed any files from `assets/original/`. The old files and masks
+remain available for contributor provenance review; their retention does not
+establish permission for public reuse.
+
+The original Sedgewick/Wayne attribution and the source/permission questions
+tracked in MQB issues [219](https://github.com/MulQuaBio/MQB/issues/219) and
+[220](https://github.com/MulQuaBio/MQB/issues/220) remain part of contributor
+review. Record any future visual reuse and its source in the manifest.
