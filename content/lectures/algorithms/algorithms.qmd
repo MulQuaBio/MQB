@@ -3,7 +3,8 @@ pagetitle: "Algorithms: solving problems with computation"
 lang: en-GB
 format:
   revealjs:
-    theme: simple
+    theme: [default, algorithms.scss]
+    html-math-method: mathml
     title-slide: false
     slide-level: 2
     width: 1280
@@ -26,191 +27,110 @@ execute:
 
 ## Algorithms: solving problems with computation {data-timing="30"}
 
-### Ideas that shape what programs—and science—can do
+### How much work are we asking the computer to do?
 
 Stanislav (Stanley) Modrak  
-Draft MQB adaptation for contributor review
+MQB adaptation for contributor review
 
-After Robert Sedgewick and Kevin Wayne, *Algorithms*, 4th edition  
-[Section 1.4: Analysis of Algorithms](https://algs4.cs.princeton.edu/14analysis/)
-
-::: notes
-00:00–00:30. The deck is a draft adaptation of Stanislav Modrak's original
-lecture, itself adapted from teaching by Robert Sedgewick and Kevin Wayne. Open
-with the wider idea: algorithms affect what can be expressed, investigated and
-solved—not only how quickly one program runs.
-:::
-
-## The question {data-timing="90"}
-
-Suppose we have a scientific problem and a program that appears to solve it.
-
-**Is this a good way to solve the problem—and what might a better algorithm
-make possible?**
-
-We will consider:
-
-1. correctness, assumptions and clarity;
-2. data structures and alternative procedures;
-3. measurements and models of how work grows; and
-4. the scientific and wider consequences of algorithmic choices.
+After Modrak's *Analysis of algorithms* and Robert Sedgewick and Kevin Wayne,
+*Algorithms*, [Section 1.4](https://algs4.cs.princeton.edu/14analysis/).
 
 ::: notes
-00:30–02:00. Begin from a practical scientific decision. A successful run on a
-small example establishes neither correctness for every input nor that the
-problem has been formulated well. Performance is one part of the comparison,
-not the definition of a good algorithm.
+00:00–00:30. Begin with a calculation that works on a small dataset. Ask what
+students would want to know before running it on a much larger one. Connect
+their answers to correctness, required work and available computing resources.
+The chapter provides the fuller explanation and optional material.
 :::
 
-## Where this fits in the MQB workflow {data-timing="120"}
+## The question {data-timing="60"}
 
-**Plan → implement → test → profile → analyse → improve → explain → rerun**
+Your program gives the answer you expect for eight observations.
 
-- Testing asks whether observed behaviour agrees with an independently expected result.
-- Profiling asks where a particular run spent its time.
-- Algorithm analysis asks how the required work changes with input size.
+**What happens when you give it eight million?**
 
-**Correctness comes first.** A fast wrong answer is still wrong—just sooner.
+We need to check the answer and understand how much work the procedure requires.
 
 ::: notes
-02:00–04:00. Connect to the MQB habits already developed in shell, Python and R.
-Do not present algorithm analysis as a replacement for testing or profiling. An
-improvement must retain the program's specified behaviour, and the comparison
-therefore needs common correctness checks.
+00:30–01:30. Invite a prediction before introducing the terminology. A successful
+small run leaves us with two questions: whether the answer remains correct and
+whether the calculation remains feasible. Return to both at the end.
 :::
 
-## Why study algorithms? {.smaller data-timing="150"}
+## Why study algorithms? {data-timing="150"}
 
-- **To solve problems that could not otherwise be addressed.** A different
-  formulation can remove enormous amounts of unnecessary work.
-- **To become a proficient programmer.** Syntax helps us express a solution;
-  algorithms help us decide whether it is a sensible solution.
-- **For intellectual stimulation.** Some people relax with crosswords. Others
-  try to remove a factor of $n$. We shall not judge either group.
+- **Solve otherwise inaccessible problems:** make a calculation feasible by
+  changing the procedure.
+- **Become a proficient programmer:** think through what needs calculating,
+  storing and repeating.
+- **For intellectual stimulation:** discover a simpler way to solve the problem.
 
 ::: notes
-04:00–06:30. Restore the breadth of the original motivation before introducing
-performance. Proficiency includes problem formulation, choice of representation
-and the ability to explain why a procedure works—not simply fluency in syntax.
+01:30–04:00. Relate these reasons to the students' experience of programming.
+They may already have found that reorganising a task can matter more than
+writing another line of code. Invite one example, then move on.
 :::
 
-## Algorithms go rather a long way {.smaller data-timing="150"}
+## Their reach extends beyond our programs {data-timing="120"}
 
-:::: columns
-::: {.column width="55%"}
+- **Broad impact:** transport, medicine, communication and public services.
+- **Scientific discovery:** investigate life and the universe through sequences,
+  images, signals and simulations.
+- **Commercial value:** search, routing and recommendation.
 
-- **Their impact is broad and far-reaching:** science, transport, medicine,
-  communication, finance and everyday life online.
-- **They may unlock the secrets of life—and perhaps the universe.** It seems
-  polite to give both a well-specified algorithm and a proper test.
-- **For profit.** Search, routing, recommendation and trading algorithms have
-  done rather well. Profit is not, however, evidence of scientific validity or
-  social virtue.
-
-:::
-::: {.column width="45%"}
-
-![A montage from the original lecture showing algorithms in public discussion.](assets/original/asset-000.jpg){width="98%"}
-
-:::
-::::
+The procedure we choose can change which questions we can investigate—and
+whose needs the computation serves.
 
 ::: notes
-06:30–09:00. Retain the scientific, intellectual and commercial motivations
-from the original lecture. Invite students to add an example of an algorithm
-that has changed a field or an everyday activity. The image is an extracted
-original asset; attribution and reuse need confirmation during review.
+04:00–06:00. Ask students to connect one of these uses to a question they care
+about. Commercial success and scientific validity are different criteria.
+Keep this brief so that the motivations lead into the worked example.
 :::
 
-## Two ideas we need {data-timing="150"}
+## Four terms we need {data-timing="120"}
 
-**Algorithm:** a precise sequence of steps for solving a specified problem.
+| Term | Meaning |
+|:--|:--|
+| Problem | Inputs, required output and assumptions |
+| Algorithm | A precise procedure to solve that problem |
+| Data structure | How information is organised for useful operations |
+| Implementation | The procedure expressed in a language and environment |
 
-**Data structure:** a way of organising data so that useful operations can be carried out.
-
-The same problem may have several correct algorithms. Their choice of data
-structure can change how much work they require.
+**Problem → algorithm → implementation → checks → measurements → model**
 
 ::: notes
-09:00–11:30. Readers may already have used lists, dictionaries, sets and data
-frames. Make the connection explicit: these are not interchangeable containers.
-Their supported operations and costs shape possible algorithms.
+06:00–08:00. Use lists and dictionaries as familiar examples of data structures.
+The same procedure can be expressed in Python or R; changing the procedure
+itself is a different decision. We will measure an implementation and use the
+algorithm to explain its work. Begin the first example at minute eight.
 :::
 
-## A long history, not a new fashion {.smaller data-timing="90"}
+## 3-SUM: what are we counting? {data-timing="180"}
 
-:::: columns
-::: {.column width="52%"}
+Given a list of **distinct integers**, count triples with
+$i<j<k$ and $x_i+x_j+x_k=0$.
 
-![Charles Babbage's Analytical Engine from the original lecture.](assets/original/asset-012.jpg){width="90%"}
+For `[30, -40, -20, -10, 40, 0, 10, 5]`:
 
-:::
-::: {.column width="48%"}
+| Positions | Values summing to zero |
+|:--|:--|
+| (0, 1, 6) | 30, -40, 10 |
+| (0, 2, 3) | 30, -20, -10 |
+| (1, 4, 5) | -40, 40, 0 |
+| (3, 5, 6) | -10, 0, 10 |
 
-Long before electronic computers, people were already asking:
-
-- Which operations must be performed?
-- How many times must each operation be repeated?
-- Can the procedure be reorganised?
-
-:::
-::::
+Expected answer: **4**. Fewer than three inputs: **0**.
 
 ::: notes
-11:30–13:00. This retains the historical motivation from the original deck
-without relying on its exact machine-operation quotation. The extracted image
-is retained with the other source assets pending provenance review.
+08:00–11:00. Give students a moment to find a triple before working through the
+table. Positions start at zero. Ask why we insist on increasing indices: we
+want each group once, with no element reused. Establish the answer before code.
 :::
 
-## Algorithms can change what science is feasible {data-timing="180"}
-
-- Genome assembly became tractable through graph-based representations and
-  algorithms that avoid comparing every possible reconstruction.
-- Ecological null models and simulations can often reuse quantities that have
-  not changed instead of recalculating the entire state.
-
-The important claim is not one universal complexity for either field. It is
-that **reformulating the computation can remove enormous amounts of repeated work**.
-
-::: notes
-13:00–16:00. The source deck gives simplified linear-versus-quadratic examples
-for genome and community assembly. Those are useful motivations but too broad as
-general complexity claims. Keep the scientific examples while stating the
-mechanism modestly. Ask Stanislav to supply a precise reference if a numerical
-complexity claim is restored.
-:::
-
-## Develop the evidence in the right order {data-timing="150"}
-
-![A diagram from the original lecture connecting the problem, algorithm, implementation and observed running time.](assets/original/asset-021.jpg){height="470"}
-
-**Problem → algorithm → implementation → measurement → model**
-
-::: notes
-16:00–18:30. An implementation mixes the algorithm with language, libraries,
-hardware and operating-system effects. We need it for experiments, but we should
-not mistake its measured time for a universal property of the algorithm.
-:::
-
-## Worked example: 3-SUM {data-timing="150"}
-
-Given a collection of **distinct integers**, how many triples sum to exactly zero?
-
-![Four triples summing to zero in the eight-value example from the original lecture.](assets/original/asset-022.jpg){height="300"}
-
-For `30, -40, -20, -10, 40, 0, 10, 5`, the expected answer is **4**.
-
-::: notes
-18:30–21:00. Establish the input assumptions and expected result before code.
-The original example says the integers are distinct; retain that condition
-because it matters when deciding what counts as a different triple.
-:::
-
-## A transparent brute-force algorithm {.smaller data-timing="180"}
+## Examine every allowed triple {.smaller data-timing="240"}
 
 ```python
 def count_three_sum(values: list[int]) -> int:
-    """Count index triples whose values sum to zero."""
+    """Count zero-sum index triples, i < j < k."""
     n = len(values)
     count = 0
     for i in range(n):
@@ -221,151 +141,138 @@ def count_three_sum(values: list[int]) -> int:
     return count
 ```
 
-**Before timing it:** which test would persuade you that it counts the intended triples?
+Before running it, explain why `j` and `k` start after the preceding index.
 
 ::: notes
-21:00–24:00. Walk through why the increasing indices avoid permutations and
-reusing one element. Ask for a small hand-worked test. Correctness checks should
-be shared by every later implementation.
+11:00–15:00. Let students explain the loop bounds before tracing an example.
+Each group of positions is visited once and the input is left unchanged.
+We use distinct integers throughout the core examples. This index enumeration
+can also count repeated values as separate positions.
 :::
 
-## What does input size mean here? {data-timing="120"}
+## Follow the loops {data-timing="180"}
 
-Let $n$ be the number of integers.
+For four input positions, the candidate triples are:
 
-The running time is a function $T(n)$, but it can also depend on:
+| First index | Remaining candidates |
+|:--|:--|
+| 0 | (0, 1, 2), (0, 1, 3), (0, 2, 3) |
+| 1 | (1, 2, 3) |
 
-- the actual values in the input;
-- the Python implementation and libraries;
-- the processor, memory and cache;
-- the operating system and other work on the machine.
+Every sum is checked once, whether it is zero or not.
 
-So how can we measure it sensibly?
+How many sums do we test, even if none is zero?
 
 ::: notes
-24:00–26:00. Define n explicitly. Avoid saying that the algorithm alone always
-determines the exponent and the input only determines a coefficient; some
-algorithms have input-dependent best, average and worst cases.
+15:00–18:00. Ask students to trace four positions and compare their candidates.
+Keep the number of tests separate from the number of matches. The optional
+animation at https://smith558.github.io/cmee-algorithms/ provides another way
+to inspect the loops; the table supports the same discussion offline.
 :::
 
-## When should we optimise? {data-timing="60"}
+## Measure equivalent work {data-timing="180"}
 
-> “Premature optimization is the root of all evil.”
->
-> — Donald Knuth, [*Structured Programming with go to
-> Statements*](https://doi.org/10.1145/356635.356640), 1974
+Let $n$ be the number of input integers and $T(n)$ elapsed seconds.
 
-**What does this warning *not* mean?**
+1. Construct one input and check its expected answer.
+2. Time only the counting function.
+3. Warm up, then repeat at least five times and report the median.
+4. Repeat for several input sizes and record the environment.
+
+**Keep input generation, file access, checks and printing outside the timer.**
 
 ::: notes
-26:00–27:00. It does not mean that performance is unimportant. Knuth is warning
-against small, speculative efficiencies before we have a correct solution and
-evidence about the real cost. Make the problem precise, test the result, then
-measure. This leads directly into the timing method.
+18:00–21:00. Ask what the clock would measure if file reading or printing were
+included. We want to compare the counting functions on the same data. If a
+function changes its input, repeated calls need fresh equivalent data.
+Profiling is a separate tool for finding where a particular run spends time.
 :::
 
-## Measure before you model {.smaller data-timing="150"}
+## A small timing helper {.smaller data-timing="180"}
 
 ```python
 from statistics import median
 from time import perf_counter
 
-def elapsed_seconds(function, argument, repetitions=5):
-    function(argument)  # untimed warm-up
+def elapsed_seconds(function, values, repetitions=5):
+    function(values)  # untimed warm-up
     times = []
     for _ in range(repetitions):
         start = perf_counter()
-        function(argument)
+        function(values)
         times.append(perf_counter() - start)
     return median(times)
 ```
 
-- Use several input sizes.
-- Repeat timings and report the median.
-- Time equivalent work and record the environment.
-- Check the result as well as the clock.
+Record the input sizes, runtime version, machine and repetitions.
 
 ::: notes
-27:00–29:30. This strengthens the source deck's single-run perf_counter example.
-perf_counter is appropriate for elapsed-duration measurements. A warm-up and
-median do not remove all noise, but they are a defensible classroom baseline.
-Do not include file reading or printing when comparing only the algorithm.
+21:00–24:00. Walk through where the clock starts and stops. Ask why we make
+several calls. The median reduces occasional outliers, while systematic effects
+can remain. Use small demonstrations; the practical includes prepared data
+so students can reason about scaling even if they cannot run the comparison.
 :::
 
-## What pattern do the measurements suggest? {data-timing="150"}
+## Predict the next runtime {data-timing="180"}
 
-![Original log-log timing plot for the brute-force 3-SUM example.](assets/original/asset-027.jpg){height="470"}
+**Prediction exercise: times from an illustrative cubic model**
 
-If multiplying $n$ by 2 multiplies time by about 8, that is evidence
-consistent with cubic growth because $2^3 = 8$.
+| Input size $n$ | Model time, seconds | Doubling ratio |
+|:--|--:|--:|
+| 1,000 | 0.1 | — |
+| 2,000 | 0.8 | 8 |
+| 4,000 | 6.4 | 8 |
+| 8,000 | ? | ? |
+
+::: {.fragment}
+Model prediction: **51.2 seconds**, because $(2n)^3/n^3=8$.
+:::
 
 ::: notes
-29:30–32:00. Ask students to predict the multiplier before revealing it. The
-plot is historical evidence from the source lecture, not a benchmark for their
-machine. A log-log line can suggest a power law; it does not prove one.
+24:00–27:00. Pause before revealing and ask students to explain their prediction.
+These values come from T(n)=10^-10 n^3 seconds. They illustrate a model;
+actual measurements will include noise and other costs. Keep the units visible.
 :::
 
-## A useful empirical model {data-timing="180"}
+## A model to test {data-timing="180"}
 
-Suppose the measurements are consistent with
+If the measurements support it, try
 
-\[
-T(n) \approx a n^b.
-\]
+$$T(n)\approx a n^b.$$
 
-Taking logarithms gives
+- $b$ describes observed scaling over the measured sizes.
+- $a$ reflects costs for that input family, implementation and environment.
+- Check whether this power law fits the sizes you measured.
 
-\[
-\log T(n) \approx \log a + b\log n.
-\]
-
-The slope $b$ describes the observed scaling over the measured range. The
-coefficient $a$ absorbs machine- and implementation-dependent costs.
+Can we explain the timing pattern by examining the code?
 
 ::: notes
-32:00–35:00. This makes explicit the log transformation behind the original
-regression slide. State the limitation: a fitted power law is an empirical model
-over the tested sizes. Small inputs, cache boundaries or mixed operations can
-produce a different pattern.
+27:00–30:00. Treat the power law as a hypothesis to check. Other patterns,
+including n log n and exponential growth, need different descriptions. Input
+characteristics, caches, memory limits and software can affect observed scaling.
+Lead into operation counts; keep the full logarithm derivation optional.
 :::
 
-## Faster hardware changes the coefficient—not the question {data-timing="150"}
+## Choose an operation to count {data-timing="120"}
 
-![A historical computer and a modern laptop linked by a large speed increase.](assets/original/asset-028.jpg){width="82%"}
+In principle:
 
-A faster computer may reduce every measured time. It does not usually change
-the number of triples examined by this algorithm.
+$$\text{runtime}=\sum_{\text{operations}}\text{frequency}\times\text{cost}.$$
 
-**How long until growth in the input consumes the hardware gain?**
+Rather than account for every detail, choose an operation that represents the
+main repeated work.
+
+We will practise with **1-SUM**, counting zeroes, before returning to the
+triple loop.
 
 ::: notes
-35:00–37:30. The exact hardware comparison in the original figure is a period
-illustration, not a current benchmark. The conceptual point remains useful:
-constant-factor improvements cannot indefinitely compensate for a poor growth
-rate.
+30:00–32:00. Explain why this simplification is useful: we can reason about
+growth without knowing the cost of every machine instruction. Here operations
+on small integers are treated as constant time. Costs can grow when arithmetic
+uses arbitrarily large integers.
 :::
 
-## From timings to a mathematical model {data-timing="150"}
-
-In principle, running time is a sum of
-
-\[
-\text{frequency of an operation} \times \text{cost of that operation}.
-\]
-
-Exact costs are awkward and machine-dependent. Instead:
-
-1. choose an operation that captures the main repeated work; and
-2. count how often the algorithm performs it as $n$ grows.
-
-::: notes
-37:30–40:00. Do not use the source deck's old nanosecond table as if it were a
-current universal measurement. Assignment, arithmetic, indexing and function
-calls have different costs, and Python objects add overhead. We want a useful
-model, not false precision.
-:::
-
-## A simple cost model: 1-SUM {.smaller data-timing="180"}
+## 1-SUM: count the comparisons {.smaller data-timing="240"}
 
 ```python
 def count_zeros(values: list[int]) -> int:
@@ -376,115 +283,183 @@ def count_zeros(values: list[int]) -> int:
     return count
 ```
 
-If comparison with zero is the chosen operation, how many comparisons occur
-for a list of length $n$?
+How many comparisons with zero will a list of $n$ values require?
 
-**Exactly $n$**—whether the list contains no zeroes or many.
+::: {.fragment}
+Exactly **$n$**, regardless of how many values are zero.
+:::
 
 ::: notes
-40:00–43:00. The source calls this 1-SUM. Use a descriptive function name while
-retaining the example. Students should identify the comparison as the counted
-operation. Other operations matter to elapsed time, but they also grow linearly.
+32:00–36:00. Ask students to compare lists with no zeroes and many zeroes.
+Every value is checked once. The number of increments changes, but the overall
+work remains linear under our model.
+:::
+
+## Return to 3-SUM: explain the cubic growth {data-timing="360"}
+
+Each group of three positions is tested once:
+
+$$
+\binom n3=\frac{n(n-1)(n-2)}6
+=\frac{n^3}6-\frac{n^2}2+\frac n3.
+$$
+
+- Four inputs: **4** candidate triples.
+- Eight inputs: **56** candidate triples, with **4** matches in our example.
+- For large $n$, the cubic term dominates.
+
+Now we can explain why doubling the input approaches eight times the work.
+
+::: notes
+36:00–42:00. Build the count as n choices, n-1 choices, n-2 choices, divided by
+the six possible orders of a triple. The increasing indices already choose one
+order. Check n=4 and n=8 against the earlier examples. Ask students to identify
+the term that matters most as n grows. This connects their timing prediction
+to a count of what the program does; the ratio approaches eight for large n.
 :::
 
 ## Keep the part that governs growth {data-timing="180"}
 
-Suppose an operation count is
+For $4n^3+2n^2+16$, we describe the growth as $\Theta(n^3)$.
 
-\[
-4n^3 + 2n^2 + 16.
-\]
+**Theta** means that, for sufficiently large $n$, the work is bounded above
+and below by positive constant multiples of the named function.
 
-For large $n$, the $n^3$ term dominates. We therefore describe the growth as
-
-\[
-\Theta(n^3).
-\]
-
-This discards the leading coefficient and lower-order terms—not because they
-never matter, but because the model is asking how the work scales.
+For the input sizes you actually use, constants and smaller terms still matter.
 
 ::: notes
-43:00–46:00. Correct the original line that said small n does not matter.
-Constants and lower-order terms can decide which implementation is faster for
-the input sizes we actually use. Asymptotic notation addresses the large-input
-trend.
+42:00–45:00. Explain the constant-multiple meaning before using the shortcut
+of dropping coefficients and smaller terms. Students should be able to say
+what the notation tells them about growth and why it does not predict seconds.
 :::
 
-## Big Theta and Big O are not interchangeable {data-timing="180"}
+## Big O gives an upper bound {data-timing="120"}
 
-- $\Theta(g(n))$: a **tight** asymptotic growth class—both an upper and lower bound.
-- $O(g(n))$: an asymptotic **upper bound**.
+- $\Theta(g(n))$: a tight asymptotic growth class.
+- $O(g(n))$: an asymptotic upper bound.
 
-If an algorithm takes $\Theta(n)$ work, it is also $O(n^2)$, but $O(n^2)$
-does not describe it tightly.
+Linear work is both $O(n)$ and $O(n^2)$, but only the first is tight.
 
-In informal conversation people often say “Big O” when they mean order of
-growth. Here we will use $\Theta$ when claiming a tight class.
+Use **Theta** when you mean a tight growth class.
 
 ::: notes
-46:00–49:00. This resolves the source deck's mixture of Big Theta and Big O.
-Do not turn this into a proof course. Students need to interpret and
-compare growth classes accurately.
+45:00–47:00. Use the linear example to show why an upper bound need not be
+tight. Also state whether a claim concerns expected or worst-case behaviour.
+Focus on interpreting the distinction rather than formal proofs.
 :::
 
-## Common orders of growth {.smaller data-timing="210"}
+## Common orders of growth {.smaller data-timing="240"}
 
-![Curves for constant, logarithmic, linear, linearithmic, quadratic, cubic and exponential growth from the original lecture.](assets/original/asset-032.jpg){height="520"}
+| Class | Example under a suitable cost model |
+|:--|:--|
+| $\Theta(1)$ | Access one list element by index |
+| $\Theta(\log n)$ | Binary search, worst case |
+| $\Theta(n)$ | Count zeroes |
+| $\Theta(n\log n)$ | Mergesort |
+| $\Theta(n^2)$ | Check every pair |
+| $\Theta(n^3)$ | Check every triple |
+| $\Theta(2^n)$ | Visit all subsets, constant work per subset |
 
 ::: notes
-49:00–52:30. Read the plot from left to right. Linear and n log n algorithms
-often remain useful at much larger n than quadratic or cubic ones. That is a
-guide, not a universal runtime ranking: coefficients, libraries and input size
-still matter.
+47:00–51:00. Connect each class to the operation being counted. Visiting all
+subsets gives the stated example only with constant work per subset. Encourage
+students to follow iterations rather than assign a power from the number of
+nested loops. A vectorised expression can still perform quadratic work.
 :::
 
-## What happens when the input doubles? {.smaller data-timing="180"}
+## What happens when input doubles? {.smaller data-timing="240"}
 
-| Growth | Approximate multiplier when $n\rightarrow2n$ |
-|:--|--:|
-| $1$ | 1 |
-| $\log n$ | slightly more than 1 |
-| $n$ | 2 |
-| $n\log n$ | a little more than 2 |
-| $n^2$ | 4 |
-| $n^3$ | 8 |
-| $2^n$ | squares its previous value |
+| Function $T(n)$ | Ratio $T(2n)/T(n)$ |
+|:--|:--|
+| $1$ | $1$ |
+| $\log n$ | $\log(2n)/\log n$, approaching $1$ |
+| $n$ | $2$ |
+| $n\log n$ | $2\log(2n)/\log n$, approaching $2$ |
+| $n^2$ | $4$ |
+| $n^3$ | $8$ |
+| $2^n$ | $2^n$ |
 
-**Predict first:** which pattern should the triple loop show?
+Which patterns should our single and triple loops approach? Explain why.
 
 ::: notes
-52:30–55:30. This is a practical way to connect experiments with asymptotic
-classes. Doubling ratios are approximate when lower-order terms and overheads
-are visible.
+51:00–55:00. Work one polynomial ratio together, then ask students to explain
+another. The ratios shown are for the named functions; measured times also
+include overhead. For the exponential example, distinguish the new value,
+T(2n)=(T(n))^2, from the multiplier 2^n.
 :::
 
 ## Break {data-timing="600"}
 
-When we return: can a different data structure turn a quadratic algorithm into
-a linear one?
+When we return, we will ask whether remembering information can save repeated work.
 
 ::: notes
-55:30–65:30. Ten-minute break.
+55:00–65:00. Ten-minute break.
 :::
 
-## Worked comparison: 2-SUM {data-timing="120"}
+## 2-SUM: one problem, two algorithms {data-timing="120"}
 
-Given a collection of **distinct integers**, count the pairs whose sum is zero.
+Given **distinct integers**, count pairs with $i<j$ and $x_i+x_j=0$.
 
-Before seeing code:
+- `[3, -3, 5, 8, -8]` → **2**
+- `[]` → **0**
+- `[0]` → **0**
 
-- What result do you expect for `[3, -3, 5, 8, -8]`?
-- What should happen for an empty list?
-- Why does “distinct integers” matter?
+Both implementations must preserve the input and return the same count.
 
 ::: notes
-65:30–67:30. Expected answer is two pairs. Ask students to state whether pairs
-refer to values or indices. The distinct-value assumption lets the simple set
-algorithm below count each complementary pair once.
+65:00–67:00. Explain the change of example: we can now describe growth, so let
+us compare two ways to solve the same problem. Ask students to justify the
+small expected answers. Both algorithms assume distinct integers; repeated
+values are considered separately in the chapter.
 :::
 
-## Approach 1: compare every pair {.smaller data-timing="180"}
+## Plausible mistake: check only neighbours {.smaller data-timing="150"}
+
+```python
+def count_two_sum_adjacent(values: list[int]) -> int:
+    count = 0
+    for i in range(len(values) - 1):
+        if values[i] + values[i + 1] == 0:
+            count += 1
+    return count
+```
+
+Before running it, predict the result for `[-2, 5, 2]`.
+
+::: {.fragment}
+It returns **0**, but the separated values -2 and 2 form **one** pair.
+:::
+
+::: notes
+67:00–69:30. Give students time to trace the two adjacent comparisons. Ask
+which valid pair the procedure never reaches, then reveal the result.
+:::
+
+## Plausible mistake: check every ordered pair {.smaller data-timing="150"}
+
+```python
+def count_two_sum_ordered(values: list[int]) -> int:
+    count = 0
+    for i in range(len(values)):
+        for j in range(len(values)):
+            if values[i] + values[j] == 0:
+                count += 1
+    return count
+```
+
+Try `[-3, 3]` and `[0]` by hand. What will this function count?
+
+::: {.fragment}
+It returns **2** and **1**: it counts both orders and allows self-pairing.
+:::
+
+::: notes
+69:30–72:00. The intended answers are one and zero. Ask which loop iterations
+produce the extra counts. Students should explain how their examples expose
+double counting and self-pairing, rather than only say that a test failed.
+:::
+
+## Approach 1: compare every pair once {.smaller data-timing="210"}
 
 ```python
 def count_two_sum_brute(values: list[int]) -> int:
@@ -497,20 +472,15 @@ def count_two_sum_brute(values: list[int]) -> int:
     return count
 ```
 
-The number of comparisons is
-
-\[
-\frac{n(n-1)}{2},
-\]
-
-so the running time is $\Theta(n^2)$.
+Sum tests: $n(n-1)/2$. Running time: **$\Theta(n^2)$**.
 
 ::: notes
-67:30–70:30. Ask why j begins at i+1. Expand n(n-1)/2 only as far as needed to
-see the n-squared leading term.
+72:00–75:30. Return to the mistakes just identified. Ask how starting j at i+1
+fixes both. Each pair of positions is tested once, giving n(n-1)/2 comparisons.
+Have students connect the leading term to a doubling ratio approaching four.
 :::
 
-## Approach 2: remember what we have seen {.smaller data-timing="210"}
+## Approach 2: remember earlier values {.smaller data-timing="270"}
 
 ```python
 def count_two_sum_set(values: list[int]) -> int:
@@ -523,176 +493,193 @@ def count_two_sum_set(values: list[int]) -> int:
     return count
 ```
 
-With average constant-time set lookup and insertion:
-
-- expected running time: $\Theta(n)$;
-- additional memory: $\Theta(n)$.
+Average constant-time hash operations give **expected $\Theta(n)$ time**,
+using **$\Theta(n)$ extra space**.
 
 ::: notes
-70:30–74:00. Trace one pair. Make the assumption explicit: Python set lookup is
-average constant time, not an unconditional worst-case guarantee. This approach
-trades memory for speed.
+75:30–80:00. Trace [3, -3, 5] and ask what the set remembers at each step.
+Why check before adding? A zero must not pair with itself. Then connect the
+stored information to the comparisons we have avoided. A set records presence;
+repeated-value counts need more information. Retain the expected-time hashing
+assumption and check both functions against the same hand-worked examples.
 :::
 
-## Same answer? Check before celebrating {data-timing="180"}
+## Practical: predict, test, measure, explain {.smaller data-timing="900"}
 
-```python
-examples = [
-    ([], 0),
-    ([4], 0),
-    ([3, -3, 5, 8, -8], 2),
-    ([-10, -2, 0, 6, 10], 1),
-]
+Use the [chapter practical](../../notebooks/algorithms.html#practical-predict-test-measure-and-explain)
+and save its starter script in `code/`.
 
-for values, expected in examples:
-    assert count_two_sum_brute(values) == expected
-    assert count_two_sum_set(values) == expected
+1. Predict each growth class and doubling multiplier.
+2. Complete the two functions and add a hand-worked test.
+3. Run the shared checks, then the supplied timings.
+4. Explain the ratios and which algorithm you would choose.
+
+```bash
+python3 code/algorithms_compare_starter.py
 ```
 
-These checks support the stated **distinct-integer** problem. They do not show
-that the set version counts every index pair correctly when values repeat.
+The chapter provides a measured fallback table if you cannot run the script.
 
 ::: notes
-74:00–77:00. This limitation is deliberate. For example, repeated zeroes or
-multiple copies of a complementary value require a frequency-aware algorithm if
-the task is to count index pairs. Performance comparisons are meaningless when
-the implementations solve different problems.
-:::
-
-## Practical: predict, test and explain scaling {.smaller data-timing="900"}
-
-In pairs:
-
-1. Copy the two 2-SUM functions into a fresh script.
-2. Add the shared correctness checks.
-3. Predict the growth class of each implementation and the effect of doubling $n$.
-4. Generate distinct inputs of several sizes with known or independently checked answers.
-5. After one warm-up, record the median of at least five timings for each size.
-6. Decide whether the evidence agrees with your prediction.
-
-Record the environment and time only the pair-counting function—not input
-generation, printing or plotting.
-
-::: notes
-77:00–92:00. Give students fifteen minutes. Provide a prepared timing table if
-machines or setup fail. Discourage very large brute-force inputs. The goal is to
-connect a prediction to evidence, not to freeze the room for the longest run.
+80:00–95:00. Give students fifteen minutes in pairs. Ask them to write a
+prediction before running and explain one test before timing. The starter
+handles input construction, warm-up, five repetitions and CSV output at
+n=128,256,512,1024. Its n=2m distinct nonzero values have m pairs: ask why.
+Use the prepared table if needed, so everyone can interpret the comparison.
 :::
 
 ## Practical debrief {data-timing="300"}
 
 Be ready to explain:
 
-- whether both functions passed the same checks;
-- how elapsed time changed when $n$ doubled;
-- why the set changes the amount of repeated work;
-- what extra memory the faster algorithm uses; and
-- one limitation of your measurement.
+- Which test catches a plausible mistake?
+- Do the measured ratios support linear or quadratic growth?
+- Why might small or noisy runs disagree with the prediction?
+- What does the set store, and when is that worthwhile?
+
+**A faster result is useful only if it answers the same question.**
 
 ::: notes
-92:00–97:00. Invite two comparisons, preferably including one noisy result.
-Treat disagreement as a reason to inspect input sizes, repetitions and timed
-work rather than as failure.
+95:00–100:00. Invite two explanations, including an unexpected result if one
+arises. Ask what could explain it and what students would check next. Return
+to the timing boundaries and sizes before drawing a conclusion about growth.
+Distinguish their measurements from the earlier illustrative cubic model.
 :::
 
-## Memory is part of performance {data-timing="180"}
+## Memory: what did the faster algorithm cost? {data-timing="180"}
 
-Ask how the largest amount of memory held at one time grows with $n$.
+| Distinct-input 2-SUM | Time | Extra space |
+|:--|:--|:--|
+| Every pair | $\Theta(n^2)$ | $\Theta(1)$ |
+| Hash set | Expected $\Theta(n)$ | $\Theta(n)$ |
 
-- The brute-force 2-SUM loop uses little additional memory: $\Theta(1)$.
-- The set-based algorithm stores up to $n$ values: $\Theta(n)$.
-
-The faster algorithm is not free. It exchanges memory for fewer comparisons.
+Both still hold the input. **Auxiliary space** excludes it; peak total memory
+also includes inputs, outputs and runtime overhead.
 
 ::: notes
-97:00–100:00. This develops the source deck's brief memory slide into an
-explicit time-memory trade-off. Distinguish additional working memory from the
-memory already occupied by the input.
+100:00–103:00. Ask what the faster algorithm had to remember. Use this to
+introduce auxiliary space and distinguish it from the input already held in
+memory. Allocations outside the timer still contribute to peak memory use.
 :::
 
-## Improve the algorithm before buying hardware {data-timing="150"}
+## What does this mean for biological computing? {data-timing="120"}
 
-![Original illustration of the orders of growth that remain practical as problem size increases.](assets/original/asset-038.jpg){height="465"}
+- Genome assembly: graph representations organise sequence relationships.
+- Ecological null models: some updates reuse quantities that have not changed.
+- 2-SUM: a set avoids repeatedly searching earlier values.
 
-A change from $\Theta(n^2)$ to expected $\Theta(n)$ can save orders of magnitude.
-Adding processors usually changes performance by a bounded factor.
+In each case, organising the calculation differently can remove repeated work.
 
 ::: notes
-100:00–102:30. Use the original table qualitatively; its exact solvable sizes
-depend on operation cost and hardware. The ordering is the lesson.
+103:00–105:00. Bring the discussion back to scientific questions students may
+want to investigate. Explain the repeated work that can be avoided. Precise
+complexity claims would require a specified task and input representation;
+keep these biological examples as motivations rather than universal bounds.
 :::
 
-## Parallelism and HPC: the next layer {data-timing="180"}
+## Parallelism and HPC {data-timing="120"}
 
-**Parallelism** performs independent operations at the same time.
+**Parallelism:** perform independent work at the same time.
 
-**High-performance computing (HPC)** provides larger or specialised resources—such as many CPU cores, GPUs or high-memory nodes—for suitable workloads.
+**HPC:** larger or specialised resources, such as many cores, GPUs or
+high-memory nodes.
 
-- Independent simulations or parameter combinations may parallelise well.
-- Steps that depend on previous results remain sequential.
-- Coordination and data movement also cost time.
+Dependent stages, coordination and data movement limit the benefit.
 
-**Choose a suitable algorithm first; then ask whether parallel hardware helps.**
+**Choose a suitable algorithm, then assess whether parallel hardware helps.**
 
 ::: notes
-102:30–105:30. Keep this conceptual. Operational HPC guidance belongs in the
-performance and HPC appendices and remains under separate MQB review. Avoid
-implying that moving code to a cluster automatically makes it faster.
+105:00–107:00. Ask which parts of a simulation could run independently and
+which must wait for previous results. Coordination and moving data also take
+time. A suitable algorithm and suitable hardware can both help; the performance
+and HPC appendices develop the implementation details.
 :::
 
-## What should you now be able to do? {data-timing="150"}
+## Return to the opening question {data-timing="180"}
 
-Given two implementations of the same problem, you should be able to:
+**Will your program answer the question reliably with the intended data?**
 
-1. explain why the algorithmic choice matters;
-2. state the input, output and assumptions;
-3. check that both produce the intended result;
-4. measure comparable runs over several input sizes;
-5. predict and explain their orders of growth;
-6. identify a time-memory trade-off; and
-7. justify which implementation you would use.
+1. Specify the problem and check small cases independently.
+2. Predict the work and measure equivalent runs.
+3. Compare time, memory, clarity and realistic sizes.
+4. Explain your choice and rerun it reproducibly.
+
+Someone offers you a “faster” implementation. What would you check before
+using it for your analysis?
 
 ::: notes
-105:30–108:00. Return to the opening question. The answer is not simply “use the
-fastest”. It depends on correctness, expected input sizes, memory, clarity and
-how often the work will be repeated.
+107:00–110:00. Return to the eight versus eight-million observations. Ask
+students to explain how correctness checks, operation counts and measurements
+inform their choice. The same reasoning applies to a suggestion from a colleague
+or an AI tool. A script, results table and explanation can record the evidence.
 :::
 
-## From an algorithm to evidence {data-timing="120"}
+## Questions and practical recovery {data-timing="600"}
 
-A clean notebook can present:
+What would you investigate next if you encountered:
 
-- the problem and assumptions;
-- the shared correctness checks;
-- the timing method and results;
-- the predicted and observed scaling; and
-- your reason for accepting or rejecting any suggested improvement.
-
-The notebook explains the evidence. The reusable functions still belong in a
-script that can be tested independently.
+- a wrong answer;
+- a different doubling ratio;
+- unexpectedly high memory use; or
+- a proposed improvement?
 
 ::: notes
-108:00–110:00. Connect the conceptual comparison to a reproducible scientific
-account. If an AI tool proposes a change, it must be tested against the
-independent baseline established before assistance.
+110:00–120:00. Leave these ten minutes for questions, finishing the comparison
+and working through misunderstandings. Ask students to explain their next
+diagnostic step. The following slides support optional discussion or later reading.
 :::
 
-## Sources and review status {.smaller data-timing="60"}
+## Optional: why a log–log plot can help {data-timing="0"}
 
-This draft adapts:
+If $T(n)\approx an^b$, then
 
-> Stanislav (Stanley) Modrak, *Analysis of algorithms*, adapted from Robert
-> Sedgewick and Kevin Wayne, *Algorithms*, 4th edition (Addison-Wesley, 2011),
-> especially [Section 1.4: Analysis of
-> Algorithms](https://algs4.cs.princeton.edu/14analysis/) and its [Princeton
-> lecture slides](https://algs4.cs.princeton.edu/lectures/keynote/14AnalysisOfAlgorithms.pdf).
+$$\log T(n)\approx\log a+b\log n.$$
 
-The MQB redraft retains the broad motivations while adding explicit
-correctness checks, repeated timing and clearer time-memory trade-offs.
+A plot of $\log T$ against $\log n$ has approximate slope $b$.
 
-**Before release:** review the visual provenance, permissions and teaching fit.
+Use one base consistently: intercept $c$ gives $a=2^c$ in base two,
+or $a=e^c$ with natural logs.
 
 ::: notes
-110:00–111:00. Use any remaining time for questions, unfinished practical work
-and discussion. Do not present this draft as approved or published material.
+Optional reading. Start from the doubling intuition and show how logarithms let
+us examine the same idea on a plot. Use positive unrounded timings and ask how
+well the line fits. A short straight-looking segment cannot establish behaviour
+at every larger input size.
+:::
+
+## Optional: repeated values change the problem {data-timing="0"}
+
+If pairs of positions still count, `[0, 0, 0]` has **three** pairs.
+
+A set remembers presence. To count repeated occurrences, use a frequency map:
+
+```text
+for each x:
+    add the number of earlier occurrences of -x to count
+    increase the recorded frequency of x
+```
+
+For the three zeroes, additions to count are **0, 1, 2**.
+
+::: notes
+Optional extension. Ask students to find the two index pairs in [1,-1,-1],
+then trace the zero example. The question has changed because repeated values
+are now permitted. Make that change explicit before comparing procedures.
+:::
+
+## Sources and further reading {.smaller data-timing="0"}
+
+- Stanislav (Stanley) Modrak, *Analysis of algorithms*, 61-page Bootcamp lecture
+  supplied 27 October 2026.
+- Robert Sedgewick and Kevin Wayne, *Algorithms*, 4th edition,
+  [Section 1.4](https://algs4.cs.princeton.edu/14analysis/) and accompanying teaching material.
+- [MQB algorithms chapter](../../notebooks/algorithms.html): explanations,
+  practical downloads and self-checks.
+- [Performance, Scaling, and Compute](../../appendices/performance.html):
+  further implementation and HPC material.
+
+::: notes
+Direct students to the chapter for the fuller explanations, practical and
+optional material, and to the cited sources for further study. The lecture
+README records source versions and the outstanding contributor review.
 :::
