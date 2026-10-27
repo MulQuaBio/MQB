@@ -5,6 +5,8 @@ This appendix introduces the GitHub Copilot and VS Code setup used for AI-assist
 
 As you gain experience, you can explore other AI coding tools, such as OpenAI's Codex or Claude Code.
 
+If you prefer RStudio for your own R work, see the [optional RStudio setup](#copilot-in-rstudio).
+
 ## Before you start
 
 Set up [VS Code for MQB](vscode.md) and [Python](python-environments.md) for the check below.
@@ -151,6 +153,21 @@ To prepare for the chapter's R practicals, follow the [R setup guide](r-setup.md
 
 For coursework, follow the assignment's rules on AI use and acknowledgement. For research, follow the project's data and authorship requirements. If you need to acknowledge AI use, record the tool, date, what you asked it to do and how you checked the result.
 
+(copilot-in-rstudio)=
+## Optional: Copilot in RStudio
+
+You can also use GitHub Copilot inside RStudio for your own R work. **The MQB lecture, chapter and workshop use VS Code.**
+
+RStudio's integration offers inline code suggestions as you type. Use VS Code for the Chat controls and setup exercise above.
+
+Follow [Posit's Copilot guide](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html) for installation requirements and setup. In the current RStudio interface:
+
+1. Open **Tools → Global Options → Assistant** and select **GitHub Copilot** under **Use code assistant**.
+2. Install the Copilot Agent components when prompted, then click **Sign In**. Complete the browser verification steps using the GitHub account with Copilot access.
+3. Open an `.R` file and write a comment describing what you want the code to do. Read any grey suggestion before accepting it with **Tab**.
+
+For RStudio Server or Posit Workbench, an administrator must enable the integration first.
+
 ## References
 
 These are the official guides used for this appendix. They were checked in October 2026; consult the current versions when setting up.
@@ -165,6 +182,7 @@ These are the official guides used for this appendix. They were checked in Octob
 - [GitHub: Apply to GitHub Education as a student](https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student) — eligibility, evidence and application steps.
 - [GitHub: Access GitHub Copilot for free as a student](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students) — activating the benefit after verification and resolving delays.
 - [VS Code: Set up GitHub Copilot](https://code.visualstudio.com/docs/setup/copilot) — editor setup, sign-in and account switching.
+- [Posit: GitHub Copilot in RStudio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html) — requirements, sign-in and inline code suggestions for the optional RStudio setup.
 - [VS Code: Use the Chat view](https://code.visualstudio.com/docs/agents/run/chat-view) — finding the session, mode, model and permissions controls.
 - [VS Code: AI language models](https://code.visualstudio.com/docs/agent-customization/language-models) and [approvals and permissions](https://code.visualstudio.com/docs/agents/run/approvals) — model selection and action approvals. These controls were checked on 23 October 2026.
 - [GitHub: Plans for Copilot](https://docs.github.com/en/copilot/get-started/plans) — plan features, model access and usage allowances.
