@@ -518,4 +518,4 @@ route with Python implementations and prediction questions. It is an MQB
 adaptation of Stanley Modrak's lecture, itself adapted from Sedgewick and Wayne.
 
 To practise the reasoning with your own measurements, work through the
-[algorithms workshop](algorithms-workshop.md).
+[algorithms practice](algorithms-workshop.md).
