@@ -147,7 +147,7 @@ When reporting a problem, include your operating system, VS Code version, releva
 
 Your setup is ready when you can run `code/copilot_setup_check.py` in VS Code, ask Copilot to explain its output and check that explanation against your own calculation. Check which GitHub account is active and locate the mode, model and permissions controls. Can you explain why the script first printed `3` and how you checked your correction? Take the same approach to larger problems: **plan → implement → test → explain → rerun**.
 
-Next, work through the [AI-assisted programming in biology chapter](../notebooks/ai-assisted-programming.ipynb) for the concepts and practicals. In a workshop, follow the [lecture](../lectures/ai_coding/ai_coding.html) and use the chapter for the practicals.
+Next, work through the [AI-assisted programming in biology chapter](../notebooks/ai-assisted-programming.ipynb) for the concepts and practicals. In a workshop, follow the [lecture](../lectures/ai_coding/ai_coding.html) and use the chapter for the practicals; the [workshop worksheet](ai-coding-workshop.md) guides you through a timed route.
 
 To prepare for the chapter's R practicals, follow the [R setup guide](r-setup.md).
 
