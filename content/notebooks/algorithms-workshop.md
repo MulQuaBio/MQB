@@ -1,9 +1,9 @@
 (algorithms-workshop)=
-# Algorithms workshop: choose, test and defend an algorithm
+# Algorithms practice: choose, test and defend an algorithm
 
-In the [algorithms lecture and chapter](algorithms.md) you saw how the work done by a program grows with its input, and how a different data structure can change that growth. In this workshop you will do the reasoning yourself. You will complete two algorithms for the same problem, try to break your own tests, measure time and memory, and then decide what to use and why.
+In the [algorithms lecture and chapter](algorithms.md) you saw how the work done by a program grows with its input, and how a different data structure can change that growth. In this practical you will do the reasoning yourself. You will complete two algorithms for the same problem, try to break your own tests, measure time and memory, and then decide what to use and why.
 
-This workshop uses the **2-SUM** problem from the chapter: given a list of distinct integers, count the pairs of positions $i<j$ whose values sum to zero. You need Python, a text editor or VS Code, and a project folder containing `code/`, `data/` and `results/`. You do not need a notebook, an AI assistant or any package that is not already part of Python.
+This practical uses the **2-SUM** problem from the chapter: given a list of distinct integers, count the pairs of positions $i<j$ whose values sum to zero. You need Python, a text editor or VS Code, and a project folder containing `code/`, `data/` and `results/`. You do not need a notebook, an AI assistant or any package that is not already part of Python.
 
 ```{admonition} What you will produce
 By the end you will have:
@@ -13,25 +13,12 @@ By the end you will have:
 - a short note explaining what changes when the input is allowed to contain repeated values; and
 - a paragraph that justifies your choice of algorithm for a stated situation, using evidence.
 
-This is practice. It is not assessed and it does not change any issued assignment brief. Keep your notes in `results/algorithms_workshop_notes.md` so that you can come back to them.
+This is practice. It is not assessed and it does not change any issued assignment brief. Keep your notes in `results/algorithms_practice_notes.md` so that you can come back to them.
 ```
 
-## Plan for the session
+## Suggested pacing
 
-| Time | Activity |
-| --- | --- |
-| 14:00 | Check your setup |
-| 14:10 | Short lecture: the ideas you need |
-| 14:40 | Part 1: predict and diagnose |
-| 14:55 | Part 2: implement and test |
-| 15:30 | Break |
-| 15:40 | Part 3: measure time |
-| 16:05 | Part 4: measure memory |
-| 16:25 | Part 5: change the problem |
-| 16:45 | Part 6: decide and defend |
-| 17:00 | Finish |
-
-Work in pairs if you wish, but each of you should write your own notes. If you fall behind, finish Part 6 before you finish Part 5: choosing an algorithm and explaining why is the aim of the day. The starred tasks are for you if you finish early.
+The practical takes about three hours, with a break. Allow roughly 10 minutes for setup, 15 for Part 1, 35 for Part 2, 25 for Part 3, 20 for Part 4, 20 for Part 5 and 15 for Part 6. Work in pairs if you wish, but write your own notes. If you fall behind, finish Part 6 before Part 5: choosing an algorithm and explaining why is the aim. The starred tasks are for you if you finish early.
 
 ## Check your setup
 
@@ -53,8 +40,8 @@ You are ready when the starter script starts and then stops with a message that 
 
    You should see `Complete count_two_sum_brute before timing.` and nothing else. If you see a different error, ask for help now.
 
-```{admonition} If you cannot run Python today
-Download the {download}`prepared timing table <../data/algorithms_timing_example.csv>` and its {download}`measurement record <../data/algorithms_timing_example_metadata.md>`. You can still do Parts 1, 5 and 6 on paper, and you can use the prepared table for Part 3. Tell a member of staff, and pair with someone whose setup works for Parts 2 and 4.
+```{admonition} If you cannot run Python
+Download the {download}`prepared timing table <../data/algorithms_timing_example.csv>` and its {download}`measurement record <../data/algorithms_timing_example_metadata.md>`. You can still do Parts 1, 5 and 6 on paper, and you can use the prepared table for Part 3. Pair with someone whose setup works for Parts 2 and 4.
 ```
 
 ## Part 1: predict and diagnose
@@ -181,7 +168,7 @@ Write about 150 words in your notes stating which algorithm you would use and wh
 
 ## Check your understanding
 
-Answer these in your notes without looking at the chapter. Staff will go through them at the end of the session.
+Answer these in your notes without looking at the chapter. Check your answers with a partner or a member of staff.
 
 1. What is the difference between an algorithm and its implementation?
 2. Why can two programs that give the same answer be very different in the work they do?
