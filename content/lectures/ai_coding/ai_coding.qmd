@@ -35,9 +35,10 @@ The Multilingual Quantitative Biologist (MQB)
 Lecture for the AI-assisted programming chapter and workshop.
 
 ::: notes
-00:00–00:30. Welcome people and say what the next thirty minutes are for: a way
-of working that will outlast the next change of buttons, models and product
-names. The hands-on practicals follow. Ask for a show of hands: who has already
+00:00–00:30. Welcome people and say what the next twenty-five minutes are for: a
+way of working that will outlast the next change of buttons, models and product
+names. A readiness check comes next, then a controls tour in your own chat
+view, then the practicals. Ask for a show of hands: who has already
 asked an assistant for code? Who has had a confident answer that was wrong?
 Keep the tone friendly; nobody needs to confess to anything.
 :::
@@ -305,23 +306,25 @@ enough: a faster wrong answer is not an improved analysis.
 | Level | Practicals (IDs in the chapter) |
 |:--|:--|
 | Create | **C-A** alignment ties, **C-B** tree-survey rejection summary, **C-C** population-series classification; **P1** one command across Python, R and Bash |
-| Evaluate | **E1** observations summary, E2 invented functions and units, E3 non-reproducible fixes, **E4** human versus AI candidates |
+| Evaluate | **E1** observations summary, E2 invented functions and units, E3 non-reproducible fixes, E4 human versus AI candidates |
 | Analyse | **N1** the failing loop, N2 profiling |
-| Apply | **A1** tree-height port, A2 AT/GC ratio, **A3** documentation edit |
-| Understand | **U1** what a pipeline sorts, U2 a regular expression, U3 R species names |
+| Apply | **A1** tree-height port, A2 AT/GC ratio, A3 documentation edit |
+| Understand | U1 what a pipeline sorts, U2 a regular expression, U3 R species names |
 | Remember | R1 read a CSV, **R2** strict thresholds, R3 shell flags, R4 FASTA headers |
 
 : {tbl-colwidths="[13,87]"}
 
-Bold: the short route. The rest are for later; P1 is a separate 60–90 minute
-project.
+Bold: today's practicals. The rest, including U1 and E4, are for study
+afterwards; P1 is a separate 60–90 minute project.
 
 ::: notes
 13:30–15:00. This is a menu, not a reading assignment. Point out that each
 practical has a prediction first, a bounded request, independent checks and an
 explanation. The full bank is in the chapter, so nobody needs to finish
-everything. Mention the short route (R2, U1, A1, N1, E1 with E4, then one
-Create track) and that P1 is chapter work, not today's task.
+everything. Today's route is R2, A1 (the function part), N1, E1, then one
+Create track in 40 minutes. U1 and E4 are afterwards study, and A3 is the kind
+of edit you will see in the controls tour. P1 is chapter work, not today's
+task.
 :::
 
 ## One routine: plan → implement → test → explain → rerun {data-timing="60"}
@@ -343,120 +346,12 @@ The assistant can help with step 2. Steps 1, 3, 4 and 5 stay with you.
 15:00–16:00. This is the routine for the whole afternoon; say it twice. The
 assistant may help with the other steps too, for example by suggesting extra
 test cases, but you decide whether they are the right ones. Link plan and
-explain back to the Create and Understand levels. Next section: how to choose
-the kind of help.
+explain back to the Create and Understand levels. Next: where your code and
+data go. The controls (Ask, Plan, Agent, models, permissions) come later, in
+the controls tour after the readiness check.
 :::
 
-## Chat, mode, model, effort, context, permissions {.smaller data-timing="60"}
-
-| Control | What it decides | A sensible start |
-|:--|:--|:--|
-| **Chat** | Where you talk to the assistant | Open it in VS Code |
-| **Mode** | What kind of help | **Ask** to explain, **Plan** for a reviewed approach, **Agent** for a bounded change |
-| **Model** | Which model generates the response | **Auto** |
-| **Thinking effort** | How much reasoning a model attempts | The default; more is slower |
-| **Context** | What the request can see | Inspect it before sending |
-| **Permissions** | What it may do without asking | **Manual** for agent work |
-
-: {tbl-colwidths="[17,33,50]"}
-
-*Your picker may show different names; look for the same ideas.*
-
-::: ask
-Same model, but I switch from Ask to Agent: what changes? Does a stronger model
-let us skip the boundary test?
-:::
-
-::: notes
-16:00–17:00. One decision slide. Ask is a mode within Chat, not a competing
-product. Model, effort and permissions are separate: a stronger model does not
-widen or narrow what the tools can do, and more authority does not make the
-science right. Rule of thumb: begin with Auto and default effort; a fast
-model for routine help, a reasoning model for a demanding diagnosis, if your
-account lets you choose. Free and Student plans may be Auto-only, so a missing
-model list is not a fault. Under Manual permissions some actions may already be
-approved, so do not assume every command will ask. Answer to the question: the
-tool authority changes; the independent test stays.
-:::
-
-## Demonstration: Ask, then Plan, then a bounded Agent {.smaller data-timing="120"}
-
-Same account, same model, same practice function for site C.
-
-| Step | You type | You inspect |
-|:--|:--|:--|
-| **Ask** | "Why does this summary turn missing counts into zero?" | An explanation; nothing is edited. Compare it with your prediction. |
-| **Plan** | "Plan a change to `summarise_site` only. State how all-missing differs from an observed zero." | The plan, before approval. Edit it if needed. |
-| **Agent** (Manual) | "Make that change in the practice function only. Do not edit data or tests." | The diff, then your own check: C gives `(None, 2)`, D gives `(0, 0)`. |
-
-: {tbl-colwidths="[13,47,40]"}
-
-::: take
-Changing the mode changed what the tool could do, not what counts as correct.
-:::
-
-::: notes
-17:00–19:00. Roughly 40 seconds per step. Use a practice copy of the E1
-candidate, not coursework or research files. Keep the account and model
-constant so students can see what the mode alone changes. If live access is
-slow or unavailable, step through a prepared recording or screenshots of the
-same three steps and say so honestly. After the agent edit, show the
-independent all-missing and observed-zero check, not the assistant's success
-message. Plan can be started from the mode picker or with /plan in current
-VS Code.
-:::
-
-## A small diff and a big diff {.smaller data-timing="30"}
-
-**A3, documentation only:** did anything but the docstring change?
-
-```diff
- def tree_height(distance_m, angle_deg):
-+    """Height in metres from distance (m, 0 < d <= 100)
-+    and angle (degrees, 0 < a < 90). Works for any angle."""
-     ...
-```
-
-**P1, coordinated:** Python producer, CSV, R figure, Bash runner, tests. Do the
-pieces still agree?
-
-::: ask
-Which sentence in the docstring would you reject?
-:::
-
-::: notes
-19:00–19:30. The illustration is invented for this slide. "Works for any angle"
-contradicts the stated range, so reject it, and rerun the unchanged-behaviour
-checks. P1's coordinated diff is previewed here and is chapter work, not
-today's task. The warm-up after the readiness check demonstrates one small edit
-of the A3 kind. Keep to thirty seconds.
-:::
-
-## VS Code or GitHub.com? Choose where the work happens {.smaller data-timing="30"}
-
-| | VS Code | GitHub.com |
-|:--|:--|:--|
-| Files | Local project, including uncommitted edits | Hosted repository, issues, pull requests |
-| Commands run | In the environment you selected | In the task's own remote environment |
-| Useful for | Editing, debugging and checking your analysis | Repository questions, reviews, delegated hosted work |
-
-: {tbl-colwidths="[16,42,42]"}
-
-Labels and features vary by plan and organisation policy.
-
-::: take
-A successful remote run does not check your laptop's setup.
-:::
-
-::: notes
-19:30–20:00. The distinction is where the work, context and execution
-environment are, not which product is better. Hosted work does not see your
-local, uncommitted changes. Do not ask anyone to create an issue, push a branch
-or start a cloud task today. Point to the chapter's section on choosing an
-interface and the appendix controls check for locating the options.
-:::
-
-## What leaves your computer? {data-timing="90"}
+## What leaves your computer? {data-timing="60"}
 
 Running Python locally is not the same as sending a request to a remote model.
 
@@ -476,7 +371,7 @@ What is in the request that you did not type?
 :::
 
 ::: notes
-20:00–21:30. The five-minute data segment begins. Trace a synthetic request
+16:00–17:00. The four-minute data segment begins. Trace a synthetic request
 along the arrows. Local execution and remote processing are separate actions.
 Inspect the listed context before sending; the tool's documentation says what
 else may be included. Which services are involved depends on the product,
@@ -486,7 +381,7 @@ using ChatGPT or the OpenAI API directly. Do not claim specifics beyond the
 chapter's cited sources.
 :::
 
-## Processing, retention and training {data-timing="90"}
+## Processing, retention and training {data-timing="75"}
 
 | Use of your request | What it means |
 |:--|:--|
@@ -505,7 +400,7 @@ Four different uses, four places to check.
 :::
 
 ::: notes
-21:30–23:00. Do not state retention periods or training defaults from memory;
+17:00–18:15. Do not state retention periods or training defaults from memory;
 they vary by product, plan and date. State the principle and point to the
 sources on the final slide and in the chapter's data section. Deleting a
 visible chat may not delete every associated record, and turning off training
@@ -526,7 +421,7 @@ account types. If you cannot see one, find out who controls it. Mark anything
 unknown as unknown.
 
 ::: notes
-23:00–24:00. If you have a staff demonstration account or a dated screenshot,
+18:15–19:15. If you have a staff demonstration account or a dated screenshot,
 show one control now and say who can change it and what it does not do (for
 example, it does not remove information already submitted). Otherwise show the
 prepared screenshot. Students' accounts may be institution-managed and show
@@ -534,7 +429,7 @@ different options; do not ask anyone to change their settings. The sources
 slide lists the references and the ICL Copilot page.
 :::
 
-## Check your understanding {data-timing="60"}
+## Check your understanding {data-timing="45"}
 
 ::: ask
 If I turn off use of my requests for training, does the request stay on my
@@ -551,7 +446,7 @@ A private repository, an opt-out or institutional access does not answer all
 three. Practise with **synthetic or approved data only**.
 
 ::: notes
-24:00–25:00. Take answers, then say neither follows: a training switch does
+19:15–20:00. Take answers, then say neither follows: a training switch does
 not keep a request on your computer and does not say whether a record is kept.
 Ask for one check they would make before sharing research material. Mention the
 fictional ecologist in the chapter whose script contains sensitive survey
@@ -574,7 +469,7 @@ A reply that says "just remove the empty rows" would lose the missing count:
 reject it. The specification decides, not the confidence of the paragraph.
 
 ::: notes
-25:00–26:00. This is the pattern for every practical. The request names what
+20:00–21:00. This is the pattern for every practical. The request names what
 you already tried and how you will check the answer, so the assistant has a
 chance of being useful and you have a record of what you intended. Ask
 students what is missing from a prompt that says "fix my function".
@@ -582,8 +477,8 @@ students what is missing from a prompt that says "fix my function".
 
 ## The same scrutiny for everyone's code {.smaller data-timing="60"}
 
-Candidates A and B, one specification, one set of checks, **before** you learn
-who wrote what (E4).
+Judge every candidate against one specification and one set of checks, whoever
+wrote it: you, a colleague or an assistant.
 
 | Typical failure | What catches it |
 |:--|:--|
@@ -598,20 +493,27 @@ A person can make a fluent mistake too. Authorship does not change what counts
 as evidence.
 
 ::: notes
-26:00–27:00. Both a correct and a faulty candidate are valid outcomes of E4; do
-not suggest either author type is always wrong. Judge on the checks, then
-reveal provenance. Do not call it an experiment. The chapter links each failure
-pattern to a small practical (E1 to E3).
+21:00–22:00. Both a correct and a faulty candidate are valid outcomes of a
+human-versus-AI comparison; do not suggest either author type is always
+wrong. Judge on the checks, not on who wrote the code. E4 in the chapter lets
+students practise this afterwards, with candidates labelled A and B before the
+provenance is revealed; it is not on today's route. The chapter links each
+failure pattern to a small practical (E1 to E3).
 :::
 
 ## Permission and acknowledgement {.smaller data-timing="60"}
 
 - **Today:** practice files and synthetic data, as set out in your worksheet.
-- **Coursework:** follow the assignment's rules. **Assignment 4 is individual,
-  and its brief sets its own rules on AI.** Read that brief; today's practice
-  is not permission.
+- **Coursework:** follow the assignment's rules on assistance and
+  acknowledgement.
 - **Research:** follow institutional, funder, collaborator and data-use
   requirements.
+
+::: ask
+Today's practice tools and files are not for your portfolio. Do not use them on,
+or to rewrite, any file you will submit. Assignment 4 has its own brief and AI
+rules; follow it.
+:::
 
 If acknowledgement is required, be accurate. An illustration (use the
 assignment's own wording if it gives one):
@@ -622,36 +524,45 @@ assignment's own wording if it gives one):
 > records against hand-worked results.
 
 ::: notes
-27:00–28:00. Do not state any rule for Assignment 4 beyond what is on the slide:
-the brief is the authority. Permission comes from the specific piece of work.
-Say that the example declaration shows the kind of content (tool, date,
-purpose, what was used, how it was checked) and is not a universal policy.
-Questions about a particular assignment go to the course team, not the lecture
-slides.
+22:00–23:00. Read the boxed statement aloud, word for word. Do not say anything
+about the content of the Assignment 4 AI rules; the brief is the authority and
+questions about it go to the course team. Two practical examples (tree height
+and the observations summary) use the same biological problems as earlier
+coursework, so students must work on the separate practice files from the
+supplied pack and never on their own TreeHeight or observations scripts, and
+must not use today's tools to rewrite anything they will submit. Permission
+comes from the specific piece of work. The example declaration shows the kind
+of content (tool, date, purpose, what was used, how it was checked); it is not
+a universal policy.
 :::
 
-## Your route through the practicals {.smaller data-timing="40"}
+## Your route through the practicals {.smallest data-timing="40"}
 
-| Block | Practical |
-|:--|:--|
-| Readiness check, interface warm-up | A3-style documentation edit, demonstrated |
-| Remember, 10 min | **R2** strict thresholds |
-| Understand, 10 min | **U1** what is this pipeline sorting? |
-| Apply, 15 min | **A1** tree-height function |
-| Analyse, 15 min | **N1** the failing loop |
-| Evaluate, 25 min | **E1** and **E4** observations summary |
-| Create, 35 min | One of C-A, C-B, C-C |
-| Reflection, 10 min | Three sentences, in your own words |
+| Block | Minutes | Practical |
+|:--|:-:|:--|
+| Lecture | 25 | This lecture |
+| Readiness check | 15 | Account, practice folder, one harmless request |
+| Controls tour and warm-up | 10 | Ask, Plan, Agent in your own chat view |
+| Remember | 10 | **R2** strict thresholds |
+| Apply | 15 | **A1** tree-height function |
+| Break | 10 | |
+| Analyse | 15 | **N1** the failing loop |
+| Evaluate | 25 | **E1** observations summary |
+| Create | 40 | One of C-A, C-B, C-C |
+| Reflection, exit ticket and discussion | 15 | Your own words |
 
-: {tbl-colwidths="[40,60]"}
+: {tbl-colwidths="[46,12,42]"}
 
 No account? Use the supplied responses: the predictions and checks are the same.
+U1, E4 and the rest of the chapter are for afterwards.
 
 ::: notes
-28:00–28:40. Point at the worksheet for the clock times. Reassure people who
-have no live access: they can still predict, inspect, test, edit and explain
-the prepared responses. P1 is separate chapter work (60–90 minutes) and is not
-on today's timetable. Do not read the table aloud.
+23:00–23:40. Do not read the table aloud, and do not give clock times; the
+worksheet has them. We will do the controls tour after the readiness check.
+Reassure people who have no live access: they can still predict, inspect, test,
+edit and explain the prepared responses. U1 and E4 are not on today's route;
+they are afterwards study. P1 is separate chapter work (60–90 minutes) and is
+not on today's timetable.
 :::
 
 ## Create: choose one extension {.smaller data-timing="50"}
@@ -664,22 +575,25 @@ on today's timetable. Do not read the table aloud.
 
 : {tbl-colwidths="[22,40,38]"}
 
-Write the pseudocode and a worked example **before** asking for code.
+You have 40 minutes. Write the pseudocode and a worked example **before** asking
+for code.
 
 ::: ask
 Which track will your pair choose, and what is your first check?
 :::
 
 ::: notes
-28:40–29:30. Show all three choices; do not silently default to C-B. C-C needs
+23:40–24:30. Show all three choices; do not silently default to C-B. C-C needs
 some population-model background, so groups without it can pick A or B. The
 timed task is the extension, not rebuilding the original practical. Agent mode
-is an available route, not a requirement. Pairs choose one track each.
+is an available route, not a requirement. Pairs choose one track each. This
+happens at the end of the afternoon, after R2, A1, N1 and E1.
 :::
 
-## What to keep as evidence {data-timing="30"}
+## What to keep as evidence {.smaller data-timing="30"}
 
 - Your **plan**: pseudocode and a hand-worked example.
+- Your **prediction** before you asked, and whether it was right.
 - One useful **prompt**, and your decision to accept, revise or reject.
 - The **check** that supported it, and the command to rerun it.
 - The **tool and date** you used.
@@ -687,13 +601,223 @@ is an available route, not a requirement. Pairs choose one track each.
 You do not need the whole conversation or a count of prompts.
 
 ::: ask
-Next time you ask for help, what will your rule be?
+Today's practice tools and files are not for your portfolio. Do not use them on,
+or to rewrite, any file you will submit. Assignment 4 has its own brief and AI
+rules; follow it.
+:::
+
+We will do the controls tour after the readiness check.
+
+::: notes
+24:30–25:00. Close by repeating the routine: plan, implement, test, explain,
+rerun. Read the boxed statement again; it is the point most worth repeating.
+Say that what they keep here is what the exit ticket at the end of the session
+asks about. Then send people to the readiness check; the controls tour follows
+it, in their own Copilot chat view. The tour and the other slides that follow
+are not part of the 25 minutes.
+:::
+
+## Controls tour and warm-up (delivered at 14:40, after the readiness check) {data-timing="30"}
+
+Open your practice folder in VS Code. We will work in **your own Copilot chat
+view**, on a **practice copy** of the tree-height function, about two minutes
+per step.
+
+Before you ask anything, write down the function's contract: its arguments,
+their units, the permitted ranges and what it returns.
+
+::: ask
+Is this a practice file from the supplied pack, and not a script you will
+submit?
 :::
 
 ::: notes
-29:30–30:00. Close by repeating the routine: plan, implement, test, explain,
-rerun. End on the question and send people to the readiness check. The
-optional slides that follow are not part of the thirty minutes.
+Tour 00:00–00:30. This block follows the readiness check and is for the
+students' hands, not a watched demonstration. Everyone opens the practice
+folder and the practice tree-height function (Python or R, whichever they
+use). The tree-height problem is the same one as in earlier coursework, so
+check aloud that nobody has opened their own TreeHeight script. Give 30 seconds
+to write the contract from memory: arguments, units, 0 < distance <= 100,
+0 < angle < 90 degrees, and the height returned. Anyone without live access
+follows on your screen or with the supplied responses.
+:::
+
+## Find the controls {.smallest data-timing="90"}
+
+Find each one in **your own window** now. Your picker may show different names;
+look for the same ideas.
+
+| Control | What it decides | A sensible start |
+|:--|:--|:--|
+| **Chat** | Where you talk to the assistant | Open it in VS Code |
+| **Mode** | What kind of help | **Ask** to explain, **Plan** for a reviewed approach, **Agent** for a bounded change |
+| **Model** | Which model generates the response | **Auto** |
+| **Thinking effort** | How much reasoning a model attempts | The default; more is slower |
+| **Context** | What the request can see | Inspect it before sending |
+| **Permissions** | What it may do without asking | **Manual** for agent work |
+
+: {tbl-colwidths="[17,33,50]"}
+
+::: ask
+Same model, but I switch from Ask to Agent: what changes? Does a stronger model
+let us skip the check?
+:::
+
+::: notes
+Tour 00:30–02:00. One decision slide, with every student finding each control in
+their own window; walk the room. Ask is a mode within Chat, not a competing
+product. Model, effort and permissions are separate: a stronger model does not
+widen or narrow what the tools can do, and more authority does not make the
+science right. Begin with Auto and default effort; a fast model for routine
+help, a reasoning model for a demanding diagnosis, if the account lets you
+choose. Free and Student plans may be Auto-only, so a missing model list is not
+a fault. If a control is missing, ask them to say so; plans and managed
+policies differ. Under Manual permissions some actions may already be approved,
+so do not assume every command will ask. Answer to the question: the tool's
+authority changes; the independent check stays. Plan can be chosen in the mode
+picker or with /plan in current VS Code.
+:::
+
+## Step 1: Ask {.smaller data-timing="120"}
+
+In Chat, choose **Ask**. Leave the model on **Auto** and the effort at its
+default. Attach the practice function and look at the context listed.
+
+> What does this function assume about its inputs? State the units and the
+> permitted ranges.
+
+Compare the answer with **the contract you wrote**. Nothing is edited in Ask.
+
+::: ask
+What did the answer assume, or leave out, that your contract did not?
+:::
+
+::: notes
+Tour 02:00–04:00, about two minutes. 30 seconds to choose Ask, attach the file
+and type the request; a minute for responses and reading; 30 seconds to
+compare with the contract and take one or two answers. Responses differ between
+students, even for the same request: point that out as a feature of how
+assistants generate text. Ask is read-only; students should see that no file
+changed. If a response is slow, move on and return.
+:::
+
+## Step 2: Plan {.smaller data-timing="120"}
+
+Choose **Plan** (or type `/plan`).
+
+> Plan a documentation-only change to this function: arguments, units,
+> permitted ranges, return value, errors and one example. Do not change the
+> calculation. Do not edit anything yet.
+
+Read the plan. Cross out anything you cannot support from the function or your
+contract.
+
+::: ask
+Which line of the plan goes beyond what you asked for?
+:::
+
+::: notes
+Tour 04:00–06:00, about two minutes. The plan is a proposal to review, not an
+edit. Same account and model as step 1 so that students see what changing the
+mode alone does. Look for invented promises, such as ranges the function does
+not check. If Plan is not available in someone's picker, they can ask the
+current mode for a plan and say "do not change files".
+:::
+
+## Step 3: a bounded Agent {.smaller data-timing="120"}
+
+Set permissions to **Manual** and check which actions are already approved.
+Choose **Agent**.
+
+> Add that documentation to this function only. Do not change the calculation,
+> its defaults or any other file.
+
+Read each proposed edit and command **before** you allow it. Then check the
+diff, and rerun the check: **8 m at 45 degrees gives 8 m**, and invalid input
+still fails.
+
+::: take
+Changing the mode changed what the tool could do, not what counts as correct.
+:::
+
+::: notes
+Tour 06:00–08:00, about two minutes. Allow only the edit to the practice file;
+decline anything else and say so out loud. Under Manual, some actions may
+already be approved, so students should look rather than assume. The diff must
+show documentation lines only. The independent check does not need the
+assistant: 8 m at 45 degrees gives 8 m, and an out-of-range angle must raise an
+error. If someone's agent changed the calculation, that is the teaching moment:
+reject it and rerun. Those without live access apply the supplied patch and run
+the same check.
+:::
+
+## A small diff and a big diff {.smaller data-timing="60"}
+
+**What you just did (A3, documentation only):** did anything but the docstring
+change?
+
+```diff
+ def tree_height(distance_m, angle_deg):
++    """Height in metres from distance (m, 0 < d <= 100)
++    and angle (degrees, 0 < a < 90). Works for any angle."""
+     ...
+```
+
+**P1, coordinated:** Python producer, CSV, R figure, Bash runner, tests. Do the
+pieces still agree?
+
+::: ask
+Which sentence in the docstring would you reject?
+:::
+
+::: notes
+Tour 08:00–09:00. The illustration is invented for this slide. "Works for any
+angle" contradicts the stated range, so reject it, and rerun the
+unchanged-behaviour checks. Ask what the students' own diffs contained.
+P1's coordinated diff is previewed here and is chapter work, not today's task.
+:::
+
+## VS Code or GitHub.com? Choose where the work happens {.smaller data-timing="60"}
+
+| | VS Code | GitHub.com |
+|:--|:--|:--|
+| Files | Local project, including uncommitted edits | Hosted repository, issues, pull requests |
+| Commands run | In the environment you selected | In the task's own remote environment |
+| Useful for | Editing, debugging and checking your analysis | Repository questions, reviews, delegated hosted work |
+
+: {tbl-colwidths="[16,42,42]"}
+
+Labels and features vary by plan and organisation policy.
+
+::: take
+A successful remote run does not check your laptop's setup.
+:::
+
+::: notes
+Tour 09:00–10:00. The distinction is where the work, context and execution
+environment are, not which product is better. Hosted work does not see your
+local, uncommitted changes. Do not ask anyone to create an issue, push a branch
+or start a cloud task today. Point to the chapter's section on choosing an
+interface and the appendix controls check. Then move straight to R2.
+:::
+
+## Fallback: if the tour or a live account fails {.smaller data-timing="0"}
+
+- Say so, and switch to the prepared sequence: the same three prompts, the plan
+  and the diff.
+- Anyone without live access follows on your screen or uses the supplied
+  responses. The independent check needs no account.
+- A missing model option or mode is not necessarily a fault: plans and managed
+  policies differ.
+- Do not upgrade a plan, bypass managed restrictions or enable old settings to
+  match the demonstration.
+
+::: notes
+Optional instructor slide, part of the tour section but not timed. Pickers and
+labels change between VS Code versions. If the Ask, Plan and Agent entries
+differ from the slide, name what you see and explain the same idea in terms of
+the labels on your screen. Do not spend more than the ten minutes on the tour;
+everyone moves on to R2 together.
 :::
 
 ## Optional: what a correct rule looks like {.smaller data-timing="0"}
@@ -753,22 +877,6 @@ Optional. P1 is a 60–90 minute chapter practical with its own worked route
 timetable.
 :::
 
-## Optional: if the live demonstration fails {.smaller data-timing="0"}
-
-- Say so, and switch to the prepared sequence: the same three prompts, the plan
-  and the diff.
-- Keep the independent check live: it needs no account.
-- A missing model option or mode is not necessarily a fault: plans and managed
-  policies differ.
-- Do not upgrade a plan, bypass managed restrictions or enable old settings to
-  match the demonstration.
-
-::: notes
-Optional instructor slide. Pickers and labels change between VS Code versions.
-If the Ask, Plan and Agent entries differ from the slide, name what you see and
-explain the same idea in terms of the labels on your screen.
-:::
-
 ## Sources and further reading {.smaller data-timing="0"}
 
 - **Chapter and setup:** [AI-assisted programming in biology](../../notebooks/ai-assisted-programming.html)
@@ -795,4 +903,28 @@ explain the same idea in terms of the labels on your screen.
 Optional. Product documentation changes often, so check the date of the page
 before quoting it. The chapter's references section and the contributor README
 list what was verified and when.
+:::
+
+## Exit ticket (end of the session) {data-timing="30"}
+
+Answer in your own words, without asking the assistant:
+
+(a) What did you predict before you asked, and was it right?
+(b) Which check would have caught the error that mattered?
+(c) What rule will you use next time you ask for help?
+
+::: take
+Use what you kept as evidence. Your answers help improve the session; they are
+not marked.
+:::
+
+::: notes
+Used at the end of the session, in the final block (after the individual
+explanation), not during the lecture or the controls tour. About 30 seconds to
+introduce it, then people write their answers individually. Its time belongs to
+the closing block, so it is outside both the 25-minute lecture and the
+10-minute tour. Collect it as the worksheet says (paper or a form). It matches
+the "What to keep as evidence" slide: the prediction, the check and the rule.
+Remind everyone, once more, that today's practice tools and files are not for
+their portfolio, and that Assignment 4 has its own brief and AI rules.
 :::

@@ -1,12 +1,15 @@
 # AI-assisted programming in biology: lecture
 
-The 30-minute lecture that opens the MQB AI-assisted coding workshop. It
-accompanies the [chapter](../../notebooks/ai-assisted-programming.ipynb) and the
+The 25-minute lecture that opens the MQB AI-assisted coding workshop, followed
+in the same deck by a 10-minute controls tour and warm-up that the students do in
+their own Copilot chat view. It accompanies the
+[chapter](../../notebooks/ai-assisted-programming.ipynb) and the
 [workshop worksheet](../../appendices/ai-coding-workshop.md), and uses the
 chapter's terminology, opening example (missing counts at site C), strict versus
-inclusive boundary example and practical IDs (R2, U1, A1, A3, N1, E1, E4, C-A,
-C-B, C-C, P1). The chapter is revised in parallel: the slides cite practical IDs,
-not section numbers, so check them against the chapter if it changes.
+inclusive boundary example and practical IDs (R2, A1, A3, N1, E1, C-A, C-B, C-C,
+P1; U1 and E4 are cited as afterwards study). The chapter is revised in
+parallel: the slides cite practical IDs, not section numbers, so check them
+against the chapter if it changes.
 
 ## Render
 
@@ -19,45 +22,87 @@ quarto render content/lectures/ai_coding/ai_coding.qmd --to revealjs
 The generated `ai_coding.html` embeds its resources and needs no network. Quarto
 leaves trailing whitespace in the embedded CSS and JavaScript; strip it after
 rendering (`sed -i -E 's/[ \t]+$//' content/lectures/ai_coding/ai_coding.html`)
-so that `git diff --check` passes, as for the algorithms deck. The
-local `ai_coding.scss` uses system fonts and adds a few classes: `.ask` for the
-question on a slide, `.take` for its takeaway and `.box` for the one diagram.
-There are no CDN requests, images or mathematics. Press `S` for speaker view.
-Quarto execution is disabled; the deck contains no code that is run.
+so that `git diff --check` passes, as for the algorithms deck. The local
+`ai_coding.scss` uses system fonts and adds a few classes: `.ask` for the
+question on a slide, `.take` for its takeaway, `.box` for the one diagram and
+`.smallest` for the densest slides. There are no CDN requests, images or
+mathematics. Press `S` for speaker view. Quarto execution is disabled; the deck
+contains no code that is run.
 
 The book's `mqb_lectures` extension is expected to copy the deck to
 `lectures/ai_coding/ai_coding.html`, as for the algorithms lecture. Its links to
 the chapter, appendix and algorithms resources are relative (`../../notebooks/…`,
 `../algorithms/…`) and resolve only in the built book.
 
-## Timing
+## Deck structure and timing
 
-There are 26 core slides, whose `data-timing` values total 1800 s, followed by
-five optional slides at 0 s (including Sources). Each slide's notes begin with
-its clock range.
+The `data-timing` values (seconds) are per section. Each slide's notes begin with
+a clock range within its section (lecture `00:00–25:00`; the tour `Tour
+00:00–10:00`).
+
+| Section | Slides | Seconds | Delivered |
+| --- | --- | ---: | --- |
+| Lecture | 1–22 | 1500 | First 25 minutes |
+| Controls tour and warm-up | 23–29 (plus an untimed fallback slide, 30) | 600 | After the readiness check, in the students' own chat view |
+| Optional and backup (correct rule, R2 answers, P1 pipeline, Sources) | 31–34 | 0 | Only if asked |
+| Exit ticket | 35 | 30 | In the final block of the session, not in the lecture or tour |
+
+Lecture segments:
 
 | Minutes | Slides | Content |
 | --- | --- | --- |
 | 00–04 | 1–4 | Create first; site C and D example; the plausible wrong answer |
 | 04–10 | 5–8 | How an assistant works; training, context and tools; variability; what a passing run shows |
 | 10–16 | 9–12 | Bloom's six levels, algorithms link, practical map, plan → implement → test → explain → rerun |
-| 16–20 | 13–16 | Mode/model/effort/context/permissions decision slide; Ask, Plan, Agent demonstration; A3 and P1 diffs; VS Code versus GitHub.com |
-| 20–25 | 17–20 | Where code and data go; processing, retention, training; who controls what; check question |
-| 25–28 | 21–23 | Goal, attempt, help, check; equal scrutiny; permitted use and acknowledgement |
-| 28–30 | 24–26 | Route through the practicals; three Create tracks; evidence to keep |
+| 16–20 | 13–16 | Where code and data go (four slides): what leaves your computer; processing, retention, review, training; who controls what; check question |
+| 20–23 | 17–19 | Goal, attempt, help, check; the same scrutiny for everyone's code; permission, acknowledgement and the assessment boundary |
+| 23–25 | 20–22 | Route through the practicals (durations only); three Create tracks; evidence to keep (repeats the assessment boundary and says "we will do the controls tour after the readiness check") |
 
-Minutes 16–20 are tight. If the live demonstration (slide 14) runs over, use the
-prepared sequence and keep slides 15 and 16 to a sentence each.
+Controls tour (10 minutes): intro and contract writing (30 s); find the controls
+(90 s); Step 1 Ask, Step 2 Plan, Step 3 bounded Agent (120 s each, students
+following along); a small diff and a big diff (60 s); VS Code or GitHub.com (60
+s).
 
-Optional slides (after slide 26, not presented in the 30 minutes): a sketch of a
-correct site summary, R2 expected answers, the P1 pipeline, what to do if the live
-demonstration fails, and Sources. The worksheet carries clock times; the route
-slide gives durations only so that the deck stays reusable.
+Session blocks as shown on the route slide, durations only (no clock times, so
+that the deck stays reusable; the worksheet carries them): lecture 25, readiness
+check 15, controls tour and warm-up 10, R2 10, A1 15, break 10, N1 15, E1 25,
+Create 40, reflection, exit ticket and discussion 15 (total 180).
+
+### What changed in the revision, and why
+
+- The lecture shrank from 30 to 25 minutes because the session now has a longer
+  Create block and a closing discussion. The four slides on controls and
+  surfaces (decision slide, Ask/Plan/Agent demonstration, small and big diffs,
+  VS Code versus GitHub.com) moved out of minutes 16–20 into the tour, where the
+  students use their own tools rather than watch. The data segment shrank from
+  five to four minutes and stays at four slides. Other timings are unchanged.
+- The tour example is the A3-style documentation edit on a practice copy of the
+  tree-height function (Ask, then Plan, then a bounded Agent edit), so that it
+  matches the worksheet. The site C example remains the lecture's thread and the
+  E1 practical. The independent check in the tour is 8 m at 45 degrees giving
+  8 m, plus invalid input still failing.
+- U1 and E4 are no longer on the session route; they are afterwards study. The
+  slide on equal scrutiny of human- and AI-written code stays in the lecture and
+  points to E4 for later practice.
+- The permission slide and the evidence slide state the assessment boundary
+  word for word: "Today's practice tools and files are not for your portfolio.
+  Do not use them on, or to rewrite, any file you will submit. Assignment 4 has
+  its own brief and AI rules; follow it." Nothing more is said about the content
+  of the Assignment 4 rules. The notes remind the instructor that the tree-height
+  and observations examples use the same biological problems as earlier
+  coursework, so students must use the separate practice files and never their own
+  TreeHeight or observations scripts.
+- A final "Exit ticket" slide carries the three questions used in the worksheet's
+  closing block.
+- The "if the live demonstration fails" slide is now the untimed fallback slide
+  inside the tour section.
+
+Minutes 20–25 and the tour are tight. If the tour runs over, shorten the last
+two slides (diffs, GitHub.com) to a sentence each and move on to R2.
 
 ## What the lecture does not do
 
-- It states no AI rules for assessed work. Assignment 4 is individual and its
-  brief sets its own rules; the slide says only that.
+- It states no AI rules for assessed work beyond the boundary statement above.
 - It states no retention, training or hosting facts. It teaches the distinctions
   (processing, retention, review, training; user, institution, provider) and
   points to the chapter's data section and the cited sources.
@@ -95,12 +140,12 @@ reference the chapter uses.
 
 ## Checked in the rendered deck
 
-On 24 November 2026, with Google Chrome 158 at 1280 × 720 and a Playwright
+After the revision, with Google Chrome 158 at 1280 × 720 and a Playwright
 script: no slide's content extends beyond the frame; every slide has speaker
-notes; timings total 1800 s over 26 core slides; no request to a non-local
-address when the deck loads. The repository's `check_content.py` and
-`check_runtime_paths.py` reported no issues. The full book build and `make test`
-were not run.
+notes; the lecture totals 1500 s over 22 slides, the tour 600 s and the exit
+ticket 30 s; no request to a non-local address when the deck loads. I viewed
+screenshots of the changed slides. The repository's `check_content.py` reported
+no issues; the full book build was not run.
 
 ## Not verified
 
@@ -108,8 +153,8 @@ were not run.
   picker and permissions picker on an ICL account.
 - Whether ICL students' Copilot is Business/Enterprise or Student, and which model
   choices and data controls their accounts show.
-- The live Ask → Plan → Agent demonstration, and its timing. The deck was not
-  rehearsed aloud.
+- The tour as students would do it (two minutes per step), and the lecture's
+  timing. Neither was rehearsed aloud.
 - Links within the built book (chapter, appendix, algorithms lecture and chapter).
 - Contrast on the classroom projector, and screen-reader behaviour.
 
@@ -117,15 +162,15 @@ were not run.
 
 1. In the VS Code you will present from, confirm the Chat input shows Ask, Agent
    and Plan (or `/plan`), a model picker and a permissions picker. If a label
-   differs, say it aloud and keep the slide's idea; update slides 13 and 14 if
-   the difference will confuse people.
+   differs, say it aloud and keep the slide's idea; update the tour slides
+   (24–27) if the difference will confuse people.
 2. Check the account you will demonstrate: plan, whether the model list is
    Auto-only, whether Manual permissions is selected, and whether any approvals are
    already saved.
-3. Run the slide 14 sequence once on a practice copy of the E1 candidate. Keep a
-   screenshot or recording as the fallback.
-4. Prepare the dated screenshot or staff-account view for slide 19 (one data
+3. Run the tour's three steps once on a practice copy of the tree-height
+   function. Keep a screenshot or recording as the fallback.
+4. Prepare the dated screenshot or staff-account view for slide 15 (one data
    control, who can change it, what it does not do).
 5. Check that nothing you plan to say contradicts the Assignment 4 brief, and
-   that the worksheet's wording matches slide 23.
+   that the worksheet's wording matches slides 19 and 22.
 6. Open the built book's lecture and check the three relative links.
