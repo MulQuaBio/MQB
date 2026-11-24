@@ -8,7 +8,7 @@ The worksheet selects a route through the practicals in the {ref}`AI-assisted pr
 ```{admonition} This is practice, not assessment
 There are no marks. The work you produce is for your own learning and for the closing discussion.
 
-Assignment 4 has its own brief and its own rules on AI. Follow the brief for that work. Use the workshop's practice files only for the workshop.
+**Do not use the workshop's tools or practice files on your portfolio.** Two of the practicals (tree heights and the observations summary) use the same biological problems as earlier coursework. Work on the separate practice files only, and never on your own `TreeHeight` or observations scripts, or on any other file you will submit. Assignment 4 has its own brief and its own rules on AI use; follow the brief for that work.
 ```
 
 ## Before 14:00
@@ -31,17 +31,16 @@ All times are GMT.
 
 | Time | Minutes | Block | Chapter practical |
 | --- | ---: | --- | --- |
-| 14:00–14:30 | 30 | Lecture | {ref}`Why a plausible answer needs checking <ai-plausible>` |
-| 14:30–14:45 | 15 | Readiness check | {ref}`Prepare a practice workspace <ai-practicals>` |
-| 14:45–14:50 | 5 | Interface warm-up | {ref}`A3 <ai-a3>`, demonstrated |
+| 14:00–14:25 | 25 | Lecture | {ref}`Why a plausible answer needs checking <ai-plausible>` |
+| 14:25–14:40 | 15 | Readiness check | {ref}`Prepare a practice workspace <ai-practicals>` |
+| 14:40–14:50 | 10 | Controls tour and warm-up | {ref}`A3 <ai-a3>`, demonstrated, with you following along |
 | 14:50–15:00 | 10 | Remember | {ref}`R2 <ai-r2>` |
-| 15:00–15:10 | 10 | Understand | {ref}`U1 <ai-u1>` |
-| 15:10–15:25 | 15 | Apply | {ref}`A1 <ai-a1>`, function part |
-| 15:25–15:35 | 10 | Break | |
-| 15:35–15:50 | 15 | Analyse | {ref}`N1 <ai-n1>` |
-| 15:50–16:15 | 25 | Evaluate | {ref}`E1 <ai-e1>` and {ref}`E4 <ai-e4>` |
-| 16:15–16:50 | 35 | Create | {ref}`C-A <ai-ca>`, {ref}`C-B <ai-cb>` or {ref}`C-C <ai-cc>` |
-| 16:50–17:00 | 10 | Individual explanation and reflection | |
+| 15:00–15:15 | 15 | Apply | {ref}`A1 <ai-a1>`, function part |
+| 15:15–15:25 | 10 | Break | |
+| 15:25–15:40 | 15 | Analyse | {ref}`N1 <ai-n1>` |
+| 15:40–16:05 | 25 | Evaluate | {ref}`E1 <ai-e1>` |
+| 16:05–16:45 | 40 | Create | {ref}`C-A <ai-ca>`, {ref}`C-B <ai-cb>` or {ref}`C-C <ai-cc>` |
+| 16:45–17:00 | 15 | Explanation, exit ticket and closing discussion | |
 | | **180** | | |
 
 ## How to work every block
@@ -54,7 +53,7 @@ Each block follows the same pattern, so that the AI never does your thinking for
 4. **Run an independent check.** The check must come from your own prediction, a hand calculation or the specification. It must not come from the assistant telling you that it works.
 5. **Write down what you decided and why.**
 
-Start with **Ask** mode and **Auto**, as in the appendix's {ref}`controls check <copilot-controls>`. You don't need an agent for anything in the main route. If you do use one for the Create block, choose Manual permissions and read the proposed edits and commands before you approve them. The chapter's {ref}`decision guide <ai-model-choice>` explains how mode, model and permissions differ. Use your own Copilot chat view, not a screenshot, to find the controls. Labels vary between versions.
+Start with **Ask** mode and **Auto**, as in the appendix's {ref}`controls check <copilot-controls>`. You will see the controls in action in the controls tour after the readiness check. You don't need an agent for anything in the main route. If you do use one for the Create block, choose Manual permissions and read the proposed edits and commands before you approve them. The chapter's {ref}`decision guide <ai-model-choice>` explains how mode, model and permissions differ. Use your own Copilot chat view, not a screenshot, to find the controls. Labels vary between versions.
 
 If something about your account or Copilot stops working, go straight to the {ref}`route for working without Copilot <no-account-route>`.
 
@@ -70,11 +69,11 @@ Listen for the opening observations example, where a missing count turns into a 
 - **Stuck?** Ask for help now. Use the route for working without Copilot if the problem doesn't resolve quickly.
 - **Write down:** which route you are using (live Copilot, or supplied responses).
 
-## Interface warm-up
+## Controls tour and warm-up
 
 **Practical:** {ref}`A3 — Documentation is also code review <ai-a3>`.
 
-**Goal:** learn how to reject a completion, ask about selected code, see what a request includes and review an edit before keeping it. Staff will demonstrate one small documentation edit for the tree-height function. You follow along.
+**Goal:** learn what the controls in your Copilot chat view do, how to reject a completion, ask about selected code, see what a request includes and review an edit before keeping it. Staff will demonstrate one small documentation edit for the tree-height function in a separate practice file, moving from Ask to Plan to a bounded Agent edit. Follow along in your own chat view and note that changing the mode changes what the tool *can do*, not what counts as correct.
 
 - **Before you ask:** state the function's contract yourself: what its arguments mean, their units, the permitted ranges and what it returns.
 - **Check:** the diff should show documentation only. The calculation should behave exactly as before, so rerun the behaviour checks.
@@ -92,19 +91,9 @@ The chapter card contains the Python and R versions and a misleading prepared pa
 - **Check:** compare the card's expectations with the result, including the edge cases. Can you say why `>` and `>=` ask different scientific questions? The card is written in R. If you prefer Python, do the same strict count there and compare it with R.
 - **Write down:** the expression, its expected result and one sentence on `>` versus `>=`.
 
-## Understand
-
-**Practical:** {ref}`U1 — What is this pipeline actually sorting? <ai-u1>`.
-
-**Goal:** understand a shell pipeline well enough to explain each stage yourself, including what `ls -s` measures on this machine.
-
-- **Before you ask:** predict what the pipeline orders. Then ask for an explanation of one stage at a time, and ask the assistant *not* to rewrite the command yet.
-- **Check:** compare the explanation with the output the card produces and with your local `ls` manual page. Allocated disk blocks are not logical file sizes, and the defaults differ between systems.
-- **Write down:** a short annotation of each stage, and one assumption that you verified or corrected.
-
 ## Apply
 
-**Practical:** {ref}`A1 — Port the tree-height calculation <ai-a1>`. In this session, stop after the function. The whole-file CSV port is for afterwards.
+**Practical:** {ref}`A1 — Port the tree-height calculation <ai-a1>`. In this session, stop after the function. The whole-file CSV port is for afterwards. Use only the supplied practice files for this: not your own `TreeHeight` scripts.
 
 **Goal:** carry a calculation you know in R into Python without changing its units or its input rules.
 
@@ -128,15 +117,15 @@ Ten minutes away from the screen.
 
 ## Evaluate
 
-**Practicals:** {ref}`E1 — Catch the plausible observations summary <ai-e1>` and {ref}`E4 — Same specification, same scrutiny <ai-e4>`.
+**Practical:** {ref}`E1 — Catch the plausible observations summary <ai-e1>`. Use the supplied practice files, not your own observations scripts.
 
-**Goal:** decide whether a candidate meets a written specification, and show that you apply the same standard whoever wrote it.
+**Goal:** decide whether a candidate meets a written specification, and show that you apply the same standard to every candidate.
 
 - **Before you ask:** write your expected results for the ordinary and boundary data before you look at any candidate. What should an entirely missing site report, and how does that differ from an observed zero?
-- **Check:** run the same checks against every candidate. Add one hand-derived case of your own. For E4, judge candidates A and B against the specification and decide to accept, revise or reject each one *before* you open the note about where they came from.
+- **Check:** run the same checks against the candidate. Add one hand-derived case of your own, then decide to accept, revise or reject it, with a reason.
 - **Write down:** the case that failed or passed, what it means for the biology, and your decision with its reason. Note one assumption that the checks leave untested.
 
-A correct candidate is a valid outcome. The chapter cards are longer than the time here, so do the core checks now and the rest afterwards.
+A correct candidate is a valid outcome. The chapter card is longer than the time here, so do the core checks now and the rest afterwards.
 
 ## Create
 
@@ -157,13 +146,15 @@ Work in this order:
 
 The card for your track gives the scoring, the file names and the checks. Keep the card's scaffold and prepared checks as they are. If C-C takes longer than the slot, finish it after the session.
 
-## Individual explanation and reflection
+## Individual explanation, exit ticket and discussion
 
-Explain your work in your own words. A partner may ask you questions, but the explanation is yours. Then write three sentences:
+Spend the first few minutes explaining your work in your own words. A partner may ask you questions, but the explanation is yours. Then complete the **exit ticket**, which staff will collect (on paper or through a form; staff will say which). It has three questions:
 
-1. Where did assistance save you effort while still leaving you able to explain the result?
-2. Which check detected, or would have detected, a plausible error that mattered scientifically?
+1. What did you predict before you asked for help, and was it right?
+2. Which check would have caught, or did catch, a plausible error that mattered scientifically?
 3. What rule will you use when you ask for help on your next project?
+
+Your answers help staff improve the session. They are not marked.
 
 **What to keep.** You don't need the whole conversation, or a count of your prompts. In your practice `README.md`, keep:
 
@@ -192,13 +183,13 @@ Not having working access doesn't stop you doing any of this. Tell a member of s
 
 **Finishing early.** Deepen what you have done before you start something new: add another hand-worked case, break your own check on purpose, or rerun from the project root and compare the results. If you still have time, try another practical at the same level from the chapter's {ref}`practical bank <ai-practicals>`.
 
-**Afterwards.** The other practicals are for you to take at your own pace. Start with the whole-file part of A1 and the full A3 card, since you have already begun them. {ref}`P1 <ai-p1>` is a separate project of 60–90 minutes of study. It is not part of the session. It builds on one of the Create tracks, with C-B as the worked route and transfer routes for C-A and C-C.
+**Afterwards.** The other practicals are for you to take at your own pace. Start with the pipeline practical ({ref}`U1 <ai-u1>`), the comparison of two candidates with hidden provenance ({ref}`E4 <ai-e4>`), the whole-file part of A1 and the full A3 card. Keep using separate practice files, and follow your assignment's rules on AI for anything you submit. {ref}`P1 <ai-p1>` is a separate project of 60–90 minutes of study. It is not part of the session. It builds on one of the Create tracks, with C-B as the worked route and transfer routes for C-A and C-C.
 
 ## For the closing discussion
 
 Bring:
 
-- your three-sentence reflection;
+- your three exit-ticket answers;
 - one check that caught, or would have caught, an error, and what the error would have done to a biological conclusion;
 - one suggestion you rejected or revised, and your reason;
 - your Create track, your pseudocode and one thing you would do differently next time;
