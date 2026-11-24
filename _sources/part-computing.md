@@ -75,7 +75,7 @@ For standalone study, go directly to the chapter you need and check its prerequi
 
 Try the [independent Python observations exercise](notebooks/python.ipynb#independent-exercise-summarise-observations-by-site). The Python and R exercises begin with your own attempt; afterwards, you can critique a prepared suggestion without an assistant account. Each released assignment brief controls its assessed tasks and AI permissions; teaching examples do not amend those rules.
 
-See [AI-assisted programming in biology](notebooks/ai-assisted-programming.ipynb) and the accompanying [lecture slides](lectures/ai_coding/ai_coding.html), both in progress. For setup, use [Getting started with GitHub Copilot in VS Code](appendices/vscode-copilot.md).
+See [AI-assisted programming in biology](notebooks/ai-assisted-programming.ipynb) and the accompanying <a href="lectures/ai_coding/ai_coding.html">lecture slides</a>. For setup, use [Getting started with GitHub Copilot in VS Code](appendices/vscode-copilot.md).
 
 ## Where this goes next
 
