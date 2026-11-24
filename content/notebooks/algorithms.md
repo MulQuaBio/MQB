@@ -365,8 +365,9 @@ the set can hold $n$ values, giving $\Theta(n)$ auxiliary space.
 ### Optional extension: allow repeated values
 
 What changes if the problem permits repeated values but still counts pairs of
-positions? For `[1, -1, -1]` the answer is two; for `[0, 0, 0]` it is three.
-A set remembers whether a value appeared, but forgets how often it appeared.
+positions? For `[1, 1, -1]` the answer is two; for `[0, 0, 0]` it is three.
+A set remembers whether a value appeared, but forgets how often it appeared:
+it would return one and two for these lists.
 
 Use a frequency map instead:
 
@@ -515,3 +516,6 @@ Before moving on, explain:
 The <a href="../lectures/algorithms/algorithms.html">companion lecture</a> follows the same
 route with Python implementations and prediction questions. It is an MQB
 adaptation of Stanley Modrak's lecture, itself adapted from Sedgewick and Wayne.
+
+To practise the reasoning with your own measurements, work through the
+[algorithms workshop](algorithms-workshop.md).
