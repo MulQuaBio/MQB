@@ -72,7 +72,7 @@ Write your answers in your notes **before** you run any code. Wrong predictions 
 
 ## Part 2: implement and test
 
-Open `code/algorithms_compare_starter.py` and complete `count_two_sum_brute` and `count_two_sum_set`. Use the pseudocode in the chapter's [2-SUM section](algorithms.md#sum-change-the-algorithm). Each function must return one non-negative integer and must not change the list it receives.
+Open `code/algorithms_compare_starter.py` and complete `count_two_sum_brute` and `count_two_sum_set`. Use the pseudocode in the chapter's [2-SUM section](algorithms.md#2-sum-change-the-algorithm). Each function must return one non-negative integer and must not change the list it receives.
 
 1. Complete the two functions, then run the script again. It checks five small cases before it times anything. Both functions should pass.
 2. Add **one case of your own** to `check_small_cases` and write a comment saying which mistake it is designed to catch.
