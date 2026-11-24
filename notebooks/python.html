@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=cf591445" />
@@ -236,6 +236,11 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="r.html">Biological Computing in R</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="algorithms.html">Algorithms: solving problems with computation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="algorithms-workshop.html">Algorithms workshop: choose, test and defend an algorithm</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="ai-assisted-programming.html">AI-assisted programming in biology</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
 <ul class="nav bd-sidenav">
@@ -292,6 +297,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microbiome-analysis.html">Exploring a soil microbiome in R</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glms.html">Generalised Linear Models</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
@@ -322,6 +328,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../appendices/python-environments.html">Python Installation and Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/r-setup.html">R Installation and User Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/vscode.html">VS Code for MQB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/vscode-copilot.html">Getting started with GitHub Copilot in VS Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendices/git-ssh.html">Git, GitHub and SSH Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-jupy-intro.html">Introduction to Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
@@ -875,7 +882,7 @@
 <li><p>After the last height, report the counter.</p></li>
 </ol>
 <p>These steps form an algorithm: a precise, ordered procedure for solving a specified problem. Its input is a collection of recorded heights in centimetres; its output is the number greater than 10 cm. Here, the expected answer is <strong>2</strong>. The height of exactly 10 cm is not counted because the question says “exceed”, not “equal or exceed”.</p>
-<p>The algorithm does not depend on a particular programming language. A <strong>program</strong> implements its steps as instructions a computer can run. In a shell script, we might implement the procedure by combining commands; in Python, we can express the data, repetition and decision directly using a collection, a loop and a conditional. Why choose Python for this work?</p>
+<p>The algorithm does not depend on a particular programming language. A <strong>program</strong> implements its steps as instructions a computer can run. In a shell script, we might implement the procedure by combining commands; in Python, we can express the data, repetition and decision directly using a collection, a loop and a conditional. The later chapter <a class="reference internal" href="algorithms.html"><span class="std std-doc">Algorithms: solving problems with computation</span></a> returns to this distinction and asks why one algorithm may make a problem clearer—or possible at all—while another does not. Why choose Python for this work?</p>
 </section>
 <section id="why-python">
 <span id="python-why-python"></span><h3>Why Python?<a class="headerlink" href="#why-python" title="Link to this heading">#</a></h3>
@@ -6634,8 +6641,8 @@ from the end of an array:</p>
 <section id="the-lotka-volterra-model">
 <h5>The Lotka-Volterra model<a class="headerlink" href="#the-lotka-volterra-model" title="Link to this heading">#</a></h5>
 <p>Now let’s try numerical integration in Python for solving a classical model in biology — the Lotka-Volterra (LV) model for a predator-prey system in two-dimensional space (e.g., on land). The LV model is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-67997f2e-8d26-405d-8c41-7f01087f0de6">
-<span class="eqno">(2)<a class="headerlink" href="#equation-67997f2e-8d26-405d-8c41-7f01087f0de6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-33781c49-0edd-4022-a140-9c3d9be1f470">
+<span class="eqno">(2)<a class="headerlink" href="#equation-33781c49-0edd-4022-a140-9c3d9be1f470" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dR}{dt} &amp;= r R - a C R  \nonumber \\
     \frac{dC}{dt} &amp;= - z C + e a C R
 \end{align}\]</div>
@@ -6845,6 +6852,7 @@ from the end of an array:</p>
 <h2>The need for speed: profiling code<a class="headerlink" href="#the-need-for-speed-profiling-code" title="Link to this heading">#</a></h2>
 <p>Donald Knuth says: <em>Premature optimization is the root of all evil</em>.</p>
 <p>Indeed, computational speed may not be your initial concern. Also, you should focus on developing clean, reliable, reusable code rather than worrying first about how fast your code runs. However, speed will become an issue when and if your analysis or modeling becomes complex enough (e.g., food web or large network simulations). In that case, knowing which parts of your code take the most time is useful – optimizing those parts may save you lots of time.</p>
+<p>Profiling tells us <strong>where</strong> a particular implementation spends its time. It does not tell us whether we chose a sensible algorithm in the first place. <a class="reference internal" href="algorithms.html"><span class="std std-doc">Algorithms: solving problems with computation</span></a> considers that broader question, including correctness, data structures, scientific feasibility and scaling.</p>
 <section id="profiling">
 <h3>Profiling<a class="headerlink" href="#profiling" title="Link to this heading">#</a></h3>
 <p>To find out what is slowing down your code you need to “profile” your code: locate the sections of your code where  speed bottlenecks exist.</p>
@@ -7056,12 +7064,12 @@ from the end of an array:</p>
 <section id="vectorization">
 <h2>Vectorization<a class="headerlink" href="#vectorization" title="Link to this heading">#</a></h2>
 <p>We have now had fairly extensive practice in iteratively creating solutions to problems using for loops. Thus far all our problems have been mathematically quite straightforward, and not very computationally intensive. As you begin to move on from your taught modules into project work, you may find yourselves solving larger and more complex problems, at which point you will start to discover that for-loops have a fundamental weakness - speed!</p>
-<p>In a nutshell, there are two issues keeping loops slow:</p>
+<p>In a nutshell, explicit Python loops can be slow for two related reasons:</p>
 <ul class="simple">
-<li><p>Producing solutions to a large problem one loop iteration at a time means that our scripts and functions spend a lot of time doing stuff other than actually solving the problem we want them to solve - e.g. shuffling data around between variables in each loop iteration, or storing the result of the current loop’s calculations in a (sometimes temporary) variable.</p></li>
-<li><p>loops (at least in Python) are not generally able to take advantage of the parallel computing capabilities of modern-day computers, and thus must literally compute a solution one loop iteration at a time. vectorized functions tend to be optimised to spread their computations over multiple processors/threads, which can be much faster!</p></li>
+<li><p>Producing solutions to a large problem one loop iteration at a time means that the Python interpreter repeatedly handles loop control, object access and intermediate results.</p></li>
+<li><p>Vectorized functions move much of that repeated work into compiled, highly optimized library code. Some libraries can also use parallel hardware for particular operations, but vectorization does not itself mean parallel execution.</p></li>
 </ul>
-<p>These issues become especially pronounced in the case of nested loops - which often appear in more spatially-explicit problems or time-dependent ones.</p>
+<p>These issues become especially pronounced with nested loops, which often appear in spatial or time-dependent problems. Vectorization can improve an implementation without changing its underlying algorithm; choosing a different algorithm can change how the amount of work itself grows. The <a class="reference internal" href="algorithms.html"><span class="std std-doc">algorithms chapter</span></a> explains that distinction.</p>
 <p>The following two examples will showcase the difference in runtime between a loop method and a vectorized method using numpy. The first is a relatively simple (if artificial) problem, intended to demonstrate basically at-a-glace the difference between the two approaches. The second is taken from current research on metabolic models of bacterial communities.</p>
 <section id="an-example">
 <h3>An example<a class="headerlink" href="#an-example" title="Link to this heading">#</a></h3>
@@ -7199,8 +7207,8 @@ Set N=10000000
 <section id="the-lotkavolterra-model-revisited">
 <h3>The Lotka–Volterra model revisited<a class="headerlink" href="#the-lotkavolterra-model-revisited" title="Link to this heading">#</a></h3>
 <p>In the original Lotka–Volterra model, the resource population grows without bound when consumers are absent. Add logistic density dependence to make resource growth slow as the resource density <span class="math notranslate nohighlight">\(R\)</span> approaches its carrying capacity <span class="math notranslate nohighlight">\(K\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8ea08059-a7da-4e3f-b338-9751078292c6">
-<span class="eqno">(3)<a class="headerlink" href="#equation-8ea08059-a7da-4e3f-b338-9751078292c6" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-43258f8b-ed12-4c29-bed5-4580a23164cc">
+<span class="eqno">(3)<a class="headerlink" href="#equation-43258f8b-ed12-4c29-bed5-4580a23164cc" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{dR}{dt} &amp;= rR\left(1 - \frac{R}{K}\right) - aCR\\
     \frac{dC}{dt} &amp;= -zC + eaCR
 \end{align}\]</div>
@@ -7231,8 +7239,8 @@ python3<span class="w"> </span>-m<span class="w"> </span>cProfile<span class="w"
 <section id="extension-discrete-time-lv-model">
 <h3>Extension: discrete-time LV model<a class="headerlink" href="#extension-discrete-time-lv-model" title="Link to this heading">#</a></h3>
 <p>Write a discrete-time version called <code class="docutils literal notranslate"><span class="pre">LV3.py</span></code>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dcc5863d-e8d4-4bcd-ae9d-4add03e15d41">
-<span class="eqno">(4)<a class="headerlink" href="#equation-dcc5863d-e8d4-4bcd-ae9d-4add03e15d41" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a9631dbb-bf30-4c1d-a8be-7af0677fa1bd">
+<span class="eqno">(4)<a class="headerlink" href="#equation-a9631dbb-bf30-4c1d-a8be-7af0677fa1bd" title="Permalink to this equation">#</a></span>\[\begin{align}
     R_{t+1} &amp;= R_t \left(1 + r\left(1 - \frac{R_t}{K}\right) - aC_t\right)\\
     C_{t+1} &amp;= C_t \left(1 - z + eaR_t\right)
 \end{align}\]</div>

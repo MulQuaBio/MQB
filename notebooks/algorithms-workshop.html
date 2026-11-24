@@ -1,0 +1,921 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Algorithms workshop: choose, test and defend an algorithm &#8212; MulQuaBio</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=cf591445" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/algorithms-workshop';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child@latest"></script>
+    <script src="../_static/sidebar-toggles.js?v=98d0e6e2"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AI-assisted programming in biology" href="ai-assisted-programming.html" />
+    <link rel="prev" title="Algorithms: solving problems with computation" href="algorithms.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MulQuaBio - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MulQuaBio - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to The Multilingual Quantitative Biologist!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-computing.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unix.html">UNIX and Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell-scripting.html">Shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">Version control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latex.html">Scientific documents with <span class="math notranslate nohighlight">\(\LaTeX\)</span></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="python.html">Biological Computing in Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="object-oriented-programming.html">Object-Oriented Programming</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="r.html">Biological Computing in R</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="algorithms.html">Algorithms: solving problems with computation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Algorithms workshop: choose, test and defend an algorithm</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="ai-assisted-programming.html">AI-assisted programming in biology</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-basic-stats.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-r.html">Data Management and Visualization in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exp-design.html">Experimental design and data exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t-f-tests.html">Basic hypothesis testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regress.html">Linear Models: regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anova.html">Linear Models: Analysis of variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl.html">Linear Models: Multiple explanatory variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mul-expl-inter.html">Linear Models: Multiple variables with interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-simp.html">Model simplification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced E&amp;E Modelling and Statistics Pre-work</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-prework.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mqb-prework-exercises.html">EnE Modelling and Advanced Data Science Pre-work</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecological &amp; Evolutionary Modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-eemodelling.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metabolic-basis.html">The Metabolic Basis of Ecology and Evolutionary dynamics</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="populations.html">Single Populations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="micrm-to-logistic.html">From consumer–resource dynamics to logistic growth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="populations-practicals.html">Populations: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="interactions.html">Species interactions</a></li>
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="competitive-dynamics.html">Competitive dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="competitive-dynamics-practicals.html">Competitive Dynamics: Practicals</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="predator-prey.html">Predator–prey dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="predator-prey-practicals.html">Predator–prey dynamics: Practicals</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="epidemiology.html">Epidemiological dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="epidemiology-practicals.html">Epidemiological dynamics: Practicals</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced Data Analyses and Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-advanced-stats.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microbiome-analysis.html">Exploring a soil microbiome in R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glms.html">Generalised Linear Models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="nlls.html">Model Fitting using Non-linear Least-squares</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="nlls-python.html">Nonlinear least squares (NLLS) in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="microbial-growth.html">Microbial Growth rates in R</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="mle.html">Model Fitting using Maximum Likelihood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bayesian.html">Bayesian inference for biological data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments and Assessments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-assignments.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-assessment.html">MQB Coursework Assessment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_Bootcamp_Rubric.html">Computing Bootcamp Rubric</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="appendix-mini-proj.html">The Computing Miniproject</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rubrics/Computing_MiniProject_Rubric.html">Computing MiniProject Rubric</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../part-appendices.html">Introduction &amp; prerequisites</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/tooling.html">Tooling and Environments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/terms.html">Key computing terms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/macos-tools.html">macOS Tools and Homebrew</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/python-environments.html">Python Installation and Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/r-setup.html">R Installation and User Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/vscode.html">VS Code for MQB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/vscode-copilot.html">Getting started with GitHub Copilot in VS Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/git-ssh.html">Git, GitHub and SSH Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-jupy-intro.html">Introduction to Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/ubuntu-admin.html">Linux Setup and Ubuntu Administration</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/data-python.html">Data Analysis in Python (Optional)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-data-python.html">Data analyses  with Python &amp; Jupyter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/maths.html">Maths and Quantitative Foundations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-maths.html">Mathematical models in Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-mathsforbiologists/maths-for-biologists.html">Maths for Biologists</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendices/performance.html">Performance, Scaling, and Compute</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendix-high-performance-computing.html">Introduction to High-Performance Computing (HPC)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MulQuaBio/MQB/issues/new?title=Issue%20on%20page%20%2Fnotebooks/algorithms-workshop.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/algorithms-workshop.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Algorithms workshop: choose, test and defend an algorithm</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-for-the-session">Plan for the session</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-setup">Check your setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-predict-and-diagnose">Part 1: predict and diagnose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-implement-and-test">Part 2: implement and test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-measure-time">Part 3: measure time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-measure-memory">Part 4: measure memory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-5-change-the-problem">Part 5: change the problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-6-decide-and-defend">Part 6: decide and defend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">Check your understanding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-and-reuse">Keep and reuse</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="algorithms-workshop-choose-test-and-defend-an-algorithm">
+<span id="algorithms-workshop"></span><h1>Algorithms workshop: choose, test and defend an algorithm<a class="headerlink" href="#algorithms-workshop-choose-test-and-defend-an-algorithm" title="Link to this heading">#</a></h1>
+<p>In the <a class="reference internal" href="algorithms.html"><span class="std std-doc">algorithms lecture and chapter</span></a> you saw how the work done by a program grows with its input, and how a different data structure can change that growth. In this workshop you will do the reasoning yourself. You will complete two algorithms for the same problem, try to break your own tests, measure time and memory, and then decide what to use and why.</p>
+<p>This workshop uses the <strong>2-SUM</strong> problem from the chapter: given a list of distinct integers, count the pairs of positions <span class="math notranslate nohighlight">\(i&lt;j\)</span> whose values sum to zero. You need Python, a text editor or VS Code, and a project folder containing <code class="docutils literal notranslate"><span class="pre">code/</span></code>, <code class="docutils literal notranslate"><span class="pre">data/</span></code> and <code class="docutils literal notranslate"><span class="pre">results/</span></code>. You do not need a notebook, an AI assistant or any package that is not already part of Python.</p>
+<div class="admonition-what-you-will-produce admonition">
+<p class="admonition-title">What you will produce</p>
+<p>By the end you will have:</p>
+<ul class="simple">
+<li><p>a script with two completed, tested 2-SUM functions;</p></li>
+<li><p>a timing table and a memory table that you have measured yourself;</p></li>
+<li><p>a short note explaining what changes when the input is allowed to contain repeated values; and</p></li>
+<li><p>a paragraph that justifies your choice of algorithm for a stated situation, using evidence.</p></li>
+</ul>
+<p>This is practice. It is not assessed and it does not change any issued assignment brief. Keep your notes in <code class="docutils literal notranslate"><span class="pre">results/algorithms_workshop_notes.md</span></code> so that you can come back to them.</p>
+</div>
+<section id="plan-for-the-session">
+<h2>Plan for the session<a class="headerlink" href="#plan-for-the-session" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Time</p></th>
+<th class="head"><p>Activity</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>14:00</p></td>
+<td><p>Check your setup</p></td>
+</tr>
+<tr class="row-odd"><td><p>14:10</p></td>
+<td><p>Short lecture: the ideas you need</p></td>
+</tr>
+<tr class="row-even"><td><p>14:40</p></td>
+<td><p>Part 1: predict and diagnose</p></td>
+</tr>
+<tr class="row-odd"><td><p>14:55</p></td>
+<td><p>Part 2: implement and test</p></td>
+</tr>
+<tr class="row-even"><td><p>15:30</p></td>
+<td><p>Break</p></td>
+</tr>
+<tr class="row-odd"><td><p>15:40</p></td>
+<td><p>Part 3: measure time</p></td>
+</tr>
+<tr class="row-even"><td><p>16:05</p></td>
+<td><p>Part 4: measure memory</p></td>
+</tr>
+<tr class="row-odd"><td><p>16:25</p></td>
+<td><p>Part 5: change the problem</p></td>
+</tr>
+<tr class="row-even"><td><p>16:45</p></td>
+<td><p>Part 6: decide and defend</p></td>
+</tr>
+<tr class="row-odd"><td><p>17:00</p></td>
+<td><p>Finish</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Work in pairs if you wish, but each of you should write your own notes. If you fall behind, finish Part 6 before you finish Part 5: choosing an algorithm and explaining why is the aim of the day. The starred tasks are for you if you finish early.</p>
+</section>
+<section id="check-your-setup">
+<h2>Check your setup<a class="headerlink" href="#check-your-setup" title="Link to this heading">#</a></h2>
+<p>You are ready when the starter script starts and then stops with a message that you have not yet written the functions. That message is the expected result at this stage.</p>
+<ol class="arabic">
+<li><p>Open a terminal in your project folder and check your Python version:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>You need Python 3.9 or later. If your system uses <code class="docutils literal notranslate"><span class="pre">python</span></code> or <code class="docutils literal notranslate"><span class="pre">py</span></code> instead of <code class="docutils literal notranslate"><span class="pre">python3</span></code>, use that name wherever this page says <code class="docutils literal notranslate"><span class="pre">python3</span></code>.</p>
+</li>
+<li><p>Download the <a class="reference download internal" download="" href="../_downloads/889695a24981caf3394f0e7fbe28820c/algorithms_compare_starter.py"><code class="xref download docutils literal notranslate"><span class="pre">partial</span> <span class="pre">Python</span> <span class="pre">scaffold</span></code></a> and save it as <code class="docutils literal notranslate"><span class="pre">code/algorithms_compare_starter.py</span></code>.</p></li>
+<li><p>From the project folder (not from inside <code class="docutils literal notranslate"><span class="pre">code/</span></code>), run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>code/algorithms_compare_starter.py
+</pre></div>
+</div>
+<p>You should see <code class="docutils literal notranslate"><span class="pre">Complete</span> <span class="pre">count_two_sum_brute</span> <span class="pre">before</span> <span class="pre">timing.</span></code> and nothing else. If you see a different error, ask for help now.</p>
+</li>
+</ol>
+<div class="admonition-if-you-cannot-run-python-today admonition">
+<p class="admonition-title">If you cannot run Python today</p>
+<p>Download the <a class="reference download internal" download="" href="../_downloads/dd468dc5ac34c1ccf1e252516ec3c357/algorithms_timing_example.csv"><code class="xref download docutils literal notranslate"><span class="pre">prepared</span> <span class="pre">timing</span> <span class="pre">table</span></code></a> and its <a class="reference download internal" download="" href="../_downloads/2ff077e702b703c7e75e938b1a33db52/algorithms_timing_example_metadata.md"><code class="xref download docutils literal notranslate"><span class="pre">measurement</span> <span class="pre">record</span></code></a>. You can still do Parts 1, 5 and 6 on paper, and you can use the prepared table for Part 3. Tell a member of staff, and pair with someone whose setup works for Parts 2 and 4.</p>
+</div>
+</section>
+<section id="part-1-predict-and-diagnose">
+<h2>Part 1: predict and diagnose<a class="headerlink" href="#part-1-predict-and-diagnose" title="Link to this heading">#</a></h2>
+<p>Write your answers in your notes <strong>before</strong> you run any code. Wrong predictions are useful: they show you which part of the reasoning to repair.</p>
+<ol class="arabic">
+<li><p>A 3-SUM program tests every triple <span class="math notranslate nohighlight">\(i&lt;j&lt;k\)</span>. How many times does it test a sum when <span class="math notranslate nohighlight">\(n=10\)</span>? Use the formula from the chapter, and then say what you expect to happen to the running time when <span class="math notranslate nohighlight">\(n\)</span> doubles.</p></li>
+<li><p>A cubic-time program takes 2 seconds for 1000 values. What do you expect for 2000 values? What assumptions are you making?</p></li>
+<li><p>Two plausible 2-SUM versions are wrong:</p>
+<ul class="simple">
+<li><p><em>adjacent only</em>: compare each value only with the next one; and</p></li>
+<li><p><em>every ordered pair</em>: compare every position <span class="math notranslate nohighlight">\(i\)</span> with every position <span class="math notranslate nohighlight">\(j\)</span>, including <span class="math notranslate nohighlight">\(j=i\)</span>.</p></li>
+</ul>
+<p>For each, write down one small list on which it gives a <strong>different</strong> answer from the correct count, and say what the correct answer is. Do not run anything yet.</p>
+</li>
+<li><p>For the correct all-pairs algorithm and the set algorithm, predict the doubling ratio <span class="math notranslate nohighlight">\(T(2n)/T(n)\)</span> that you expect to see for large <span class="math notranslate nohighlight">\(n\)</span>. Then say why you might not see exactly that number on a laptop.</p></li>
+</ol>
+</section>
+<section id="part-2-implement-and-test">
+<h2>Part 2: implement and test<a class="headerlink" href="#part-2-implement-and-test" title="Link to this heading">#</a></h2>
+<p>Open <code class="docutils literal notranslate"><span class="pre">code/algorithms_compare_starter.py</span></code> and complete <code class="docutils literal notranslate"><span class="pre">count_two_sum_brute</span></code> and <code class="docutils literal notranslate"><span class="pre">count_two_sum_set</span></code>. Use the pseudocode in the chapter’s <a class="reference internal" href="algorithms.html#sum-change-the-algorithm"><span class="std std-ref">2-SUM section</span></a>. Each function must return one non-negative integer and must not change the list it receives.</p>
+<ol class="arabic simple">
+<li><p>Complete the two functions, then run the script again. It checks five small cases before it times anything. Both functions should pass.</p></li>
+<li><p>Add <strong>one case of your own</strong> to <code class="docutils literal notranslate"><span class="pre">check_small_cases</span></code> and write a comment saying which mistake it is designed to catch.</p></li>
+<li><p><strong>Test your tests.</strong> Copy each of the two wrong versions from Part 1 into a temporary function, put it in the <code class="docutils literal notranslate"><span class="pre">functions</span></code> dictionary in <code class="docutils literal notranslate"><span class="pre">main</span></code>, and run the script. Do the existing checks catch both? If one slips through, add a case that catches it. Then remove the wrong versions. A test that cannot fail is not telling you much.</p></li>
+<li><p>Write one sentence for each case in <code class="docutils literal notranslate"><span class="pre">check_small_cases</span></code>: what mistake would it detect?</p></li>
+</ol>
+<div class="admonition-stuck admonition">
+<p class="admonition-title">Stuck?</p>
+<p>Trace a small list by hand and write down what each variable holds after every step. For the set version, check which operation comes first: testing whether <span class="math notranslate nohighlight">\(-x\)</span> is already in the set, or adding <span class="math notranslate nohighlight">\(x\)</span>. Swapping them makes <code class="docutils literal notranslate"><span class="pre">[0]</span></code> wrong.</p>
+</div>
+</section>
+<section id="part-3-measure-time">
+<h2>Part 3: measure time<a class="headerlink" href="#part-3-measure-time" title="Link to this heading">#</a></h2>
+<p>Run the comparison with the default sizes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>code/algorithms_compare_starter.py
+</pre></div>
+</div>
+<p>Open <code class="docutils literal notranslate"><span class="pre">results/algorithms_timings.csv</span></code>.</p>
+<ol class="arabic">
+<li><p>For each algorithm, look at the <code class="docutils literal notranslate"><span class="pre">median_seconds</span></code> and <code class="docutils literal notranslate"><span class="pre">doubling_ratio</span></code> columns. Do they agree with your Part 1 predictions? Where do they not, and what could explain it?</p></li>
+<li><p>Run the script again, without changing anything. Which numbers moved, and by how much? What does this tell you about how much to trust a single measurement?</p></li>
+<li><p>Extend the series so that the largest size is 8192:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>code/algorithms_compare_starter.py<span class="w"> </span>--sizes<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="m">1024</span><span class="w"> </span><span class="m">2048</span><span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="m">8192</span><span class="w"> </span>--output<span class="w"> </span>results/algorithms_timings_large.csv
+</pre></div>
+</div>
+<p>This can take a few seconds or longer on a slow machine; stop it with <code class="docutils literal notranslate"><span class="pre">Ctrl+C</span></code> if it takes more than a minute. Do the ratios become clearer at larger sizes? Why might that be?</p>
+</li>
+<li><p>Use your table to estimate how long the all-pairs function would take for <span class="math notranslate nohighlight">\(n=100\,000\)</span>. Say which assumption your estimate depends on. Do not run it.</p></li>
+</ol>
+</section>
+<section id="part-4-measure-memory">
+<h2>Part 4: measure memory<a class="headerlink" href="#part-4-measure-memory" title="Link to this heading">#</a></h2>
+<p>The set made the algorithm faster by remembering values. What did that cost? Python’s <code class="docutils literal notranslate"><span class="pre">tracemalloc</span></code> module records the memory that a function allocates while it runs. Create <code class="docutils literal notranslate"><span class="pre">code/algorithms_memory.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tracemalloc</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">algorithms_compare_starter</span><span class="w"> </span><span class="kn">import</span> <span class="n">count_two_sum_brute</span><span class="p">,</span> <span class="n">count_two_sum_set</span><span class="p">,</span> <span class="n">make_input</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">peak_bytes</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Peak extra memory, in bytes, allocated while function runs."""</span>
+    <span class="n">tracemalloc</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">function</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">peak</span> <span class="o">=</span> <span class="n">tracemalloc</span><span class="o">.</span><span class="n">get_traced_memory</span><span class="p">()</span>
+    <span class="n">tracemalloc</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">peak</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"n,brute_bytes,set_bytes"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">2048</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="mi">8192</span><span class="p">]:</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">make_input</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># the list already exists, so it is not counted</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">peak_bytes</span><span class="p">(</span><span class="n">count_two_sum_brute</span><span class="p">,</span> <span class="n">values</span><span class="p">),</span> <span class="n">peak_bytes</span><span class="p">(</span><span class="n">count_two_sum_set</span><span class="p">,</span> <span class="n">values</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">","</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Run it with <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">code/algorithms_memory.py</span></code> and copy the table into your notes.</p>
+<ol class="arabic simple">
+<li><p>What happens to the all-pairs function’s memory as <span class="math notranslate nohighlight">\(n\)</span> grows? What happens to the set’s? Relate each pattern to the auxiliary space in the chapter’s <a class="reference internal" href="algorithms.html#compare-time-memory-and-practical-suitability"><span class="std std-ref">comparison table</span></a>.</p></li>
+<li><p>The set’s memory does not grow smoothly: it jumps and then stays level. Suggest why a set might allocate memory in steps rather than one value at a time.</p></li>
+<li><p>The snippet measures memory allocated <strong>during</strong> the call. Why does it not include the list that you pass in? When would you need to count that list as well?</p></li>
+<li><p>Estimate the set’s memory for <span class="math notranslate nohighlight">\(n=10^8\)</span> values. Would that matter on your laptop?</p></li>
+</ol>
+<div class="admonition-stretch-a-third-algorithm admonition">
+<p class="admonition-title">★ Stretch: a third algorithm</p>
+<p>Sort a copy of the list, then use two positions that start at the two ends and move inwards: add 1 to the count and move both when the values sum to zero, move the lower one if the sum is negative, and move the upper one otherwise. Implement it as <code class="docutils literal notranslate"><span class="pre">count_two_sum_sorted</span></code> and add it to your checks. Then answer:</p>
+<ul class="simple">
+<li><p>What is its running time, and what dominates it?</p></li>
+<li><p>Does it satisfy the rule that the function must not change its input? What does that rule cost you in memory?</p></li>
+<li><p>Measure its time and memory next to the other two. Where would you use it?</p></li>
+</ul>
+</div>
+</section>
+<section id="part-5-change-the-problem">
+<h2>Part 5: change the problem<a class="headerlink" href="#part-5-change-the-problem" title="Link to this heading">#</a></h2>
+<p>Everything so far assumed that the values are <strong>distinct</strong>. Real data rarely are. Does your set function still answer the same question when a value can occur more than once?</p>
+<ol class="arabic">
+<li><p>Work out by hand how many pairs of positions <span class="math notranslate nohighlight">\(i&lt;j\)</span> sum to zero in <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">1,</span> <span class="pre">-1]</span></code> and in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0]</span></code>. Then run the all-pairs function and the set function on both lists. Which function agrees with your hand count, and where do they disagree?</p></li>
+<li><p>Instead of guessing a failing example, search for one. Add this to a scratch script that imports your two functions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2000</span><span class="p">):</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">))]</span>
+    <span class="k">if</span> <span class="n">count_two_sum_brute</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">!=</span> <span class="n">count_two_sum_set</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">count_two_sum_brute</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="n">count_two_sum_set</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+<p>Here the slow, easy-to-check function is acting as a trusted reference for the faster one. Why can that be a sensible way to test an optimised algorithm? What does it not tell you?</p>
+</li>
+<li><p>Explain in a sentence why remembering only that a value <em>has</em> appeared loses information that the count needs.</p></li>
+<li><p>Write <code class="docutils literal notranslate"><span class="pre">count_two_sum_repeated</span></code>, which uses a dictionary that records <strong>how many times</strong> each value has appeared so far. For each value <span class="math notranslate nohighlight">\(x\)</span>, add the number of earlier occurrences of <span class="math notranslate nohighlight">\(-x\)</span> to the count, and then record <span class="math notranslate nohighlight">\(x\)</span>. Check it against the all-pairs function on 2000 random lists with repeated values.</p></li>
+<li><p>Has the time or memory comparison changed? Write down which of your Part 3 and Part 4 conclusions still hold, and which now need a qualification.</p></li>
+</ol>
+</section>
+<section id="part-6-decide-and-defend">
+<h2>Part 6: decide and defend<a class="headerlink" href="#part-6-decide-and-defend" title="Link to this heading">#</a></h2>
+<p>Use your own tables, not recollections of the lecture.</p>
+<p>Choose one situation:</p>
+<ul class="simple">
+<li><p><strong>A.</strong> You check 5000 pairs of lists, each with about 200 values, once.</p></li>
+<li><p><strong>B.</strong> You process lists of about <span class="math notranslate nohighlight">\(10^7\)</span> integers, many times, on a shared server where each job has a small memory allowance.</p></li>
+<li><p><strong>C.</strong> You process a few lists of about <span class="math notranslate nohighlight">\(10^5\)</span> values, which may contain repeated values, on your own laptop.</p></li>
+</ul>
+<p>Write about 150 words in your notes stating which algorithm you would use and why. Your answer should use correctness (does it solve the problem you actually have?), time, memory, the expected input size and how easy the code is to understand and maintain. Name one measurement from your tables, and say what additional evidence would change your mind.</p>
+</section>
+<section id="check-your-understanding">
+<h2>Check your understanding<a class="headerlink" href="#check-your-understanding" title="Link to this heading">#</a></h2>
+<p>Answer these in your notes without looking at the chapter. Staff will go through them at the end of the session.</p>
+<ol class="arabic simple">
+<li><p>What is the difference between an algorithm and its implementation?</p></li>
+<li><p>Why can two programs that give the same answer be very different in the work they do?</p></li>
+<li><p>A measured doubling ratio of 3.6 appeared for a function you expected to be quadratic. Name two explanations that you would check before concluding that the function is not quadratic.</p></li>
+<li><p>In what sense is the set version “faster”, and what did it cost?</p></li>
+<li><p>You test an optimised function against a simple one on random inputs and they always agree. What have you shown, and what have you not shown?</p></li>
+</ol>
+</section>
+<section id="keep-and-reuse">
+<h2>Keep and reuse<a class="headerlink" href="#keep-and-reuse" title="Link to this heading">#</a></h2>
+<p>Keep your script, <code class="docutils literal notranslate"><span class="pre">results/algorithms_timings.csv</span></code>, your memory table and your notes. They are a worked example of how to compare algorithms using evidence, and the same pattern applies when you compare code that you or an AI assistant has written. Before you accept a faster version of anything, ask whether it solves the same problem, whether you can check it independently, and what it costs.</p>
+<p>If an explanation in the chapter or this page was unclear, or something took much longer than the plan suggests, tell us. We will use that to improve the next version.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="algorithms.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Algorithms: solving problems with computation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ai-assisted-programming.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AI-assisted programming in biology</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plan-for-the-session">Plan for the session</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-setup">Check your setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-predict-and-diagnose">Part 1: predict and diagnose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-implement-and-test">Part 2: implement and test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-measure-time">Part 3: measure time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-measure-memory">Part 4: measure memory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-5-change-the-problem">Part 5: change the problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-6-decide-and-defend">Part 6: decide and defend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">Check your understanding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-and-reuse">Keep and reuse</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By MulQuaBio collective!
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
