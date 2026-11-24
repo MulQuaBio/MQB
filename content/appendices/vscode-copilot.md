@@ -1,7 +1,7 @@
 (vscode-copilot-setup)=
 # Getting started with GitHub Copilot in VS Code
 
-This appendix introduces the GitHub Copilot and VS Code setup used for AI-assisted programming in MQB. It supports the [AI-assisted programming in biology chapter](../notebooks/ai-assisted-programming.ipynb) and [lecture](../lectures/ai_coding/ai_coding.html).
+This appendix introduces the GitHub Copilot and VS Code setup used for AI-assisted programming in MQB. It supports the [AI-assisted programming in biology chapter](../notebooks/ai-assisted-programming.ipynb) and <a href="../lectures/ai_coding/ai_coding.html">lecture</a>.
 
 As you gain experience, you can explore other AI coding tools, such as OpenAI's Codex or Claude Code.
 
@@ -147,7 +147,7 @@ When reporting a problem, include your operating system, VS Code version, releva
 
 Your setup is ready when you can run `code/copilot_setup_check.py` in VS Code, ask Copilot to explain its output and check that explanation against your own calculation. Check which GitHub account is active and locate the mode, model and permissions controls. Can you explain why the script first printed `3` and how you checked your correction? Take the same approach to larger problems: **plan → implement → test → explain → rerun**.
 
-Next, work through the [AI-assisted programming in biology chapter](../notebooks/ai-assisted-programming.ipynb) for the concepts and practicals. In a workshop, follow the [lecture](../lectures/ai_coding/ai_coding.html) and use the chapter for the practicals; the [workshop worksheet](ai-coding-workshop.md) guides you through a timed route.
+Next, work through the [AI-assisted programming in biology chapter](../notebooks/ai-assisted-programming.ipynb) for the concepts and practicals. In a workshop, follow the <a href="../lectures/ai_coding/ai_coding.html">lecture</a> and use the chapter for the practicals; the [workshop worksheet](ai-coding-workshop.md) guides you through a timed route.
 
 To prepare for the chapter's R practicals, follow the [R setup guide](r-setup.md).
 
