@@ -5,11 +5,11 @@ This appendix introduces the GitHub Copilot and VS Code setup used for AI-assist
 
 As you gain experience, you can explore other AI coding tools, such as OpenAI's Codex or Claude Code.
 
-If you prefer RStudio for your own R work, see the [optional RStudio setup](#copilot-in-rstudio).
+For R work, see {ref}`Copilot in RStudio <copilot-in-rstudio>`.
 
 ## Before you start
 
-Set up [VS Code for MQB](vscode.md) and [Python](python-environments.md) for the check below.
+Set up [Python](python-environments.md) and download the {download}`pollinator practice pack <../data/workshop_ai_pollinators.zip>`. You can open `task.html` and work through the workshop with a terminal and any editor. For live Copilot suggestions in VS Code, also follow the [MQB editor setup](vscode.md).
 
 (copilot-access)=
 ## Choose an access route
@@ -17,7 +17,7 @@ Set up [VS Code for MQB](vscode.md) and [Python](python-environments.md) for the
 GitHub hosts code; GitHub Copilot provides AI assistance with coding. Having a GitHub account does not mean you have Copilot access. Check [Copilot settings](https://github.com/settings/copilot) for the account you want to use.
 
 ```{important}
-If you are preparing for a taught session, apply for Copilot access at least ten days beforehand. Approval can take time, and you may still need to activate Copilot afterwards.
+Apply for student or institutional access ahead of the workshop if you want to use it. Verification and activation are separate steps. The practice pack includes the replies and diffs used in class.
 ```
 
 | Your situation | Next action |
@@ -61,70 +61,34 @@ Before sending coursework to Copilot, check the assignment brief: may you use AI
 For this setup, use a separate practice project with made-up data. Do not include passwords, access tokens, other people's work or restricted research data.
 ```
 
-1. Create a separate folder called `copilot-practice`. Inside it, create `code/`, `data/` and `results/` folders and a `README.md` file. Use **File → Open Folder…** to open `copilot-practice` in VS Code. Do not use your coursework repository or the downloaded MQB book source. See [Organising your learning project](../part-computing.md#organising-your-learning-project) for the folder layout.
+1. Extract the practice pack and use **File → Open Folder…** to open that folder in VS Code. Keep your coursework and research projects separate.
 2. Follow the current [VS Code Copilot setup guide](https://code.visualstudio.com/docs/setup/copilot). Select the Copilot status-bar control, choose **Use AI Features** if offered, and complete GitHub sign-in in the browser. Use the account whose access you checked above.
 3. If prompted to install or enable Copilot, follow VS Code's instructions and check that the extension is published by GitHub. Ask IT for help if your computer blocks installation. The [MQB editor guide](vscode.md) covers Python and R language support.
 4. Open the **Accounts** menu in VS Code and confirm the account used for Copilot. If you have several GitHub accounts, the [account-switching instructions](https://code.visualstudio.com/docs/setup/copilot#use-a-different-github-account-with-copilot) explain how to select another one.
 
-VS Code can include selected code and other files with your request. Check the files and context listed in chat before sending it. A private repository restricts who can see your files on GitHub. It does not give you permission to share them with Copilot: your coursework and research rules still apply.
+VS Code can include editor context and tool results with your request. Inspect the listed attachments, use a practice folder containing only shareable material, and check the relevant coursework or research rules. See the chapter’s {ref}`data and permissions discussion <ai-data>`.
 
 (copilot-controls)=
 ## Copilot controls
 
-Before sending your first request, find the mode, model and permissions controls.
-
- <!-- The chapter explains {ref}`what the options mean <ai-copilot-options>` and {ref}`how to choose a model <ai-model-choice>`; here we just get ready to use them. -->
+Before sending your first request, find the agent, model and permission controls. The chapter explains {ref}`what each choice delegates <ai-interfaces>`.
 
 1. Open the Chat view from VS Code's Chat menu. Find the mode/agent picker beside the message box and choose **Ask**. If a **Session Target** control appears, use **Copilot** for these setup instructions. See the [Chat view guide](https://code.visualstudio.com/docs/agents/run/chat-view) if your layout differs.
 2. Open the model picker and choose **Auto**. Leave thinking effort at its default. See [VS Code's model controls](https://code.visualstudio.com/docs/agent-customization/language-models) for the current layout.
-3. Before an Agent task, choose **Manual permissions**. If the setting is hidden in a narrow Chat panel, click the speech-bubble icon below the message box to reveal it, or widen the panel. Check which actions are already approved to run without asking you. See the [permissions guide](https://code.visualstudio.com/docs/agents/run/approvals).
+3. For the instructor’s Agent demonstration, check **Manual permissions**, saved approvals and the available sandbox. Use Ask or `/plan` to inspect the task first. The picker controls when you’re asked. The sandbox limits which files and tools are accessible. See the [permissions guide](https://code.visualstudio.com/docs/agents/run/approvals).
 4. GitHub currently lists Free and Student as Auto-only plans. Check your plan and remaining allowance in Copilot settings, and consult the [current plan comparison](https://docs.github.com/en/copilot/get-started/plans).
 
 (copilot-setup-check)=
 ## Check it with a small prediction
 
-This exercise checks two things: can Python run your script, and can you check Copilot's explanation of the result?
+Run the local command in the chapter’s {ref}`Remember exercise <ai-live-remember>`.
+Predict the result before you run it. With Copilot active, open the practice
+script, select `pooled_rate` and look at the context shown in Chat. Ask for an
+explanation of the branch that handles a site without observed effort. Check
+the explanation using the two cases in the {ref}`Apply exercise <ai-live-apply>`.
 
-### Predict and run locally
-
-In VS Code, create `code/copilot_setup_check.py` inside `copilot-practice` and save this deliberately imperfect example:
-
-```python
-heights_cm = [8, 12, 10, 15]
-threshold_cm = 10
-count = sum(height >= threshold_cm for height in heights_cm)
-print(count)
-```
-
-The question is: **how many heights are strictly greater than 10 cm?** Work out your answer before running the code. Should a height of exactly 10 cm count?
-
-Open **Terminal → New Terminal**. From the `copilot-practice` folder, run:
-
-```bash
-python3 code/copilot_setup_check.py
-```
-
-If you normally run Python with `python`, use that command instead.
-
-The script prints `3`: it counts 12, 10 and 15. But our question excludes 10, so the answer should be `2`. The code runs, but it answers the wrong question.
-
-### Ask Copilot
-
-```{note}
-If Copilot is unavailable, follow the [troubleshooting steps below](#if-something-does-not-work). Return to this exercise once access is working.
-```
-
-Select the four lines of code, right-click the selection and choose **Add Selection to Chat**. Check that an attachment above the prompt box shows the filename and selected line range, such as `copilot_setup_check.py:1-4`. Then ask:
-
-> My question is how many heights are strictly greater than 10 cm. I predicted two, but this code prints three. Explain which value accounts for the difference and why. Do not edit files or run commands.
-
-Check Copilot's explanation against the list: which value should have been excluded?
-
-### Correct and check the code
-
-Change `>=` to `>` yourself, save the file and run it again. It should now print `2`. Keeping the threshold at 10, try a list containing only `[10]`, then an empty list (`[]`). Both should print `0`. Finally, restore the original list.
-
-To try an inline suggestion, add a comment such as `# Count heights strictly greater than 10 cm`. Copilot will suggest some code to insert there. Read the suggested code before accepting it. If no suggestion appears, try the chat check above or the troubleshooting steps below.
+If Copilot is unavailable, use the prepared reply and completion in `task.html`.
+The local command and independent check are the same.
 
 ## If something does not work
 
@@ -145,32 +109,85 @@ When reporting a problem, include your operating system, VS Code version, releva
 
 ## Ready? What next?
 
-Your setup is ready when you can run `code/copilot_setup_check.py` in VS Code, ask Copilot to explain its output and check that explanation against your own calculation. Check which GitHub account is active and locate the mode, model and permissions controls. Can you explain why the script first printed `3` and how you checked your correction? Take the same approach to larger problems: **plan → implement → test → explain → rerun**.
-
-Next, work through the [AI-assisted programming in biology chapter](../notebooks/ai-assisted-programming.ipynb) for the concepts and practicals. In a workshop, follow the <a href="../lectures/ai_coding/ai_coding.html">lecture</a> and use the chapter for the practicals; the [workshop worksheet](ai-coding-workshop.md) guides you through a timed route.
-
-To prepare for the chapter's R practicals, follow the [R setup guide](r-setup.md).
-
-For coursework, follow the assignment's rules on AI use and acknowledgement. For research, follow the project's data and authorship requirements. If you need to acknowledge AI use, record the tool, date, what you asked it to do and how you checked the result.
+If you can run the practice script and explain your prediction, open the
+[chapter](../notebooks/ai-assisted-programming.ipynb) and follow the
+[workshop worksheet](ai-coding-workshop.md).
 
 (copilot-in-rstudio)=
-## Optional: Copilot in RStudio
+## Copilot in RStudio
 
-You can also use GitHub Copilot inside RStudio for your own R work. **The MQB lecture, chapter and workshop use VS Code.**
+GitHub Copilot in RStudio offers suggestions in the source editor. The example
+below uses base R and can be completed with the prepared suggestion. The
+[AI-assisted coding workshop](ai-coding-workshop.md) uses Python for the pollinator survey.
 
-RStudio's integration offers inline code suggestions as you type. Use VS Code for the Chat controls and setup exercise above.
+### Enable GitHub Copilot
 
-Follow [Posit's Copilot guide](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html) for installation requirements and setup. In the current RStudio interface:
+1. Install R and a compatible version of RStudio Desktop using the [MQB R setup guide](r-setup.md). Posit documents Copilot support from RStudio Desktop 2023.09.0. Menu labels below follow the Posit guide for 2026.11.1. A managed RStudio Server or Posit Workbench installation needs an administrator to enable Copilot.
+2. Check that your GitHub account has access using the {ref}`shared access instructions <copilot-access>`. Use an internet connection for sign-in and live suggestions.
+3. In RStudio, open **Tools → Global Options → Assistant**, select **GitHub Copilot** under **Use code assistant**, and install the Copilot components when prompted. Select **Sign In**. Follow the device verification link in your browser, enter the code shown by RStudio and authorise GitHub Copilot. Verify that RStudio shows the expected account.
+4. Open a new practice project containing only the synthetic exercise below. In Global Options, find **Index project files with GitHub Copilot**. Leave indexing off for this exercise. Copilot still uses material in the active file, and Posit says snippets or whole files may be sent to GitHub for suggestions. If the indexing setting is enabled, other supported project files may contribute context.
 
-1. Open **Tools → Global Options → Assistant** and select **GitHub Copilot** under **Use code assistant**.
-2. Install the Copilot Agent components when prompted, then click **Sign In**. Complete the browser verification steps using the GitHub account with Copilot access.
-3. Open an `.R` file and write a comment describing what you want the code to do. Read any grey suggestion before accepting it with **Tab**.
+[Posit setup](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html#setup) ·
+[Posit usage and data handling](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html#using-copilot)
 
-For RStudio Server or Posit Workbench, an administrator must enable the integration first.
+### Predict, inspect and check an inline suggestion
+
+In an R script, write a comment stating what `visit_rate` should do with
+`visits` and `observed_minutes`. Use the rule from the chapter’s
+{ref}`pollinator specification <ai-live-remember>`, with `NA_real_` to represent
+a rate unavailable in R. Predict the result for `(3, 15)`, `(0, 5)` and `(0, 0)`.
+Start writing the function and pause for the grey suggestion. Read it before
+pressing **Tab** to accept it. You can keep typing to ignore it. Save and source
+your script, then run these checks in the R console:
+
+```r
+stopifnot(isTRUE(all.equal(visit_rate(3, 15), 0.2)))
+stopifnot(identical(visit_rate(0, 5), 0))
+stopifnot(identical(visit_rate(0, 0), NA_real_))
+```
+
+<details>
+<summary>Hint</summary>
+
+Use observed minutes to decide whether a rate is available.
+
+</details>
+
+<details>
+<summary>Prepared completion · Use with or without an account</summary>
+
+```r
+visit_rate <- function(visits, observed_minutes) {
+    if (observed_minutes == 0) {
+        return(NA_real_)
+    }
+    visits / observed_minutes
+}
+```
+
+This is an MQB teaching example. Read it, compare it with your attempt and use
+the same checks.
+
+</details>
+
+<details>
+<summary>Worked explanation</summary>
+
+Zero visits in five minutes gives a rate of zero. Zero observed minutes makes a
+rate unavailable to calculate, so R returns `NA_real_`. The two checks detect a
+suggestion that returns zero in both cases.
+
+</details>
+
+To pause automatic suggestions in a document, search for **Copilot: Toggle
+Automatic Completions** in RStudio’s Command Palette. To disable Copilot
+globally, change **Use code assistant** in Global Options. If a managed
+installation cannot sign in or show suggestions, ask its administrator and use
+the prepared completion for the exercise. [Posit controls and diagnostics](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html)
 
 ## References
 
-These are the official guides used for this appendix. They were checked in October 2026; consult the current versions when setting up.
+Documentation checked on **25 November 2026**. Account access, policy and controls depend on your plan and installation.
 
 ### ICL guidance
 
@@ -184,7 +201,7 @@ These are the official guides used for this appendix. They were checked in Octob
 - [VS Code: Set up GitHub Copilot](https://code.visualstudio.com/docs/setup/copilot) — editor setup, sign-in and account switching.
 - [Posit: GitHub Copilot in RStudio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html) — requirements, sign-in and inline code suggestions for the optional RStudio setup.
 - [VS Code: Use the Chat view](https://code.visualstudio.com/docs/agents/run/chat-view) — finding the session, mode, model and permissions controls.
-- [VS Code: AI language models](https://code.visualstudio.com/docs/agent-customization/language-models) and [approvals and permissions](https://code.visualstudio.com/docs/agents/run/approvals) — model selection and action approvals. These controls were checked on 23 October 2026.
+- [VS Code: AI language models](https://code.visualstudio.com/docs/agent-customization/language-models) and [approvals and permissions](https://code.visualstudio.com/docs/agents/run/approvals) — model selection and action approvals. Check the controls against the classroom installation.
 - [GitHub: Plans for Copilot](https://docs.github.com/en/copilot/get-started/plans) — plan features, model access and usage allowances.
 - [GitHub: Getting started with a GitHub Copilot plan](https://docs.github.com/en/copilot/how-tos/manage-your-account/get-started-with-a-copilot-plan) — access options when student or institutional access is unavailable.
 - [GitHub: Asking GitHub Copilot questions in your IDE](https://docs.github.com/en/copilot/how-tos/copilot-in-your-ide/chat-with-copilot/chat-in-ide) — chat modes, requests and project context.

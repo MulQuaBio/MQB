@@ -67,7 +67,7 @@
     <script src="../_static/sidebar-toggles.js?v=98d0e6e2"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="AI-assisted coding workshop: worksheet" href="ai-coding-workshop.html" />
+    <link rel="next" title="AI-assisted coding workshop" href="ai-coding-workshop.html" />
     <link rel="prev" title="VS Code for MQB" href="vscode.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -327,7 +327,7 @@
 <li class="toctree-l2"><a class="reference internal" href="r-setup.html">R Installation and User Libraries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vscode.html">VS Code for MQB</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Getting started with GitHub Copilot in VS Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ai-coding-workshop.html">AI-assisted coding workshop: worksheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ai-coding-workshop.html">AI-assisted coding workshop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-ssh.html">Git, GitHub and SSH Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-jupy-intro.html">Introduction to Jupyter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../notebooks/appendix-databases.html">Databases <span class="tocSkip"></span></a></li>
@@ -551,15 +551,14 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sign-in-through-vs-code">Sign in through VS Code</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-controls">Copilot controls</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-it-with-a-small-prediction">Check it with a small prediction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-and-run-locally">Predict and run locally</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ask-copilot">Ask Copilot</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correct-and-check-the-code">Correct and check the code</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-it-with-a-small-prediction">Check it with a small prediction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-something-does-not-work">If something does not work</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ready-what-next">Ready? What next?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-copilot-in-rstudio">Optional: Copilot in RStudio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-in-rstudio">Copilot in RStudio</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-github-copilot">Enable GitHub Copilot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-inspect-and-check-an-inline-suggestion">Predict, inspect and check an inline suggestion</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icl-guidance">ICL guidance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-guidance-including-for-students-outside-icl">General guidance, including for students outside ICL</a></li>
@@ -580,17 +579,17 @@
 <span id="vscode-copilot-setup"></span><h1>Getting started with GitHub Copilot in VS Code<a class="headerlink" href="#getting-started-with-github-copilot-in-vs-code" title="Link to this heading">#</a></h1>
 <p>This appendix introduces the GitHub Copilot and VS Code setup used for AI-assisted programming in MQB. It supports the <a class="reference internal" href="../notebooks/ai-assisted-programming.html"><span class="std std-doc">AI-assisted programming in biology chapter</span></a> and <a href="../lectures/ai_coding/ai_coding.html">lecture</a>.</p>
 <p>As you gain experience, you can explore other AI coding tools, such as OpenAI’s Codex or Claude Code.</p>
-<p>If you prefer RStudio for your own R work, see the <a class="reference internal" href="#copilot-in-rstudio">optional RStudio setup</a>.</p>
+<p>For R work, see <a class="reference internal" href="#copilot-in-rstudio"><span class="std std-ref">Copilot in RStudio</span></a>.</p>
 <section id="before-you-start">
 <h2>Before you start<a class="headerlink" href="#before-you-start" title="Link to this heading">#</a></h2>
-<p>Set up <a class="reference internal" href="vscode.html"><span class="std std-doc">VS Code for MQB</span></a> and <a class="reference internal" href="python-environments.html"><span class="std std-doc">Python</span></a> for the check below.</p>
+<p>Set up <a class="reference internal" href="python-environments.html"><span class="std std-doc">Python</span></a> and download the <a class="reference download internal" download="" href="../_downloads/6934963fd5319b53cbb665ef2899097c/workshop_ai_pollinators.zip"><code class="xref download docutils literal notranslate"><span class="pre">pollinator</span> <span class="pre">practice</span> <span class="pre">pack</span></code></a>. You can open <code class="docutils literal notranslate"><span class="pre">task.html</span></code> and work through the workshop with a terminal and any editor. For live Copilot suggestions in VS Code, also follow the <a class="reference internal" href="vscode.html"><span class="std std-doc">MQB editor setup</span></a>.</p>
 </section>
 <section id="choose-an-access-route">
 <span id="copilot-access"></span><h2>Choose an access route<a class="headerlink" href="#choose-an-access-route" title="Link to this heading">#</a></h2>
 <p>GitHub hosts code; GitHub Copilot provides AI assistance with coding. Having a GitHub account does not mean you have Copilot access. Check <a class="reference external" href="https://github.com/settings/copilot">Copilot settings</a> for the account you want to use.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>If you are preparing for a taught session, apply for Copilot access at least ten days beforehand. Approval can take time, and you may still need to activate Copilot afterwards.</p>
+<p>Apply for student or institutional access ahead of the workshop if you want to use it. Verification and activation are separate steps. The practice pack includes the replies and diffs used in class.</p>
 </div>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -649,61 +648,32 @@
 <p>For this setup, use a separate practice project with made-up data. Do not include passwords, access tokens, other people’s work or restricted research data.</p>
 </div>
 <ol class="arabic simple">
-<li><p>Create a separate folder called <code class="docutils literal notranslate"><span class="pre">copilot-practice</span></code>. Inside it, create <code class="docutils literal notranslate"><span class="pre">code/</span></code>, <code class="docutils literal notranslate"><span class="pre">data/</span></code> and <code class="docutils literal notranslate"><span class="pre">results/</span></code> folders and a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file. Use <strong>File → Open Folder…</strong> to open <code class="docutils literal notranslate"><span class="pre">copilot-practice</span></code> in VS Code. Do not use your coursework repository or the downloaded MQB book source. See <a class="reference internal" href="../part-computing.html#organising-your-learning-project"><span class="std std-ref">Organising your learning project</span></a> for the folder layout.</p></li>
+<li><p>Extract the practice pack and use <strong>File → Open Folder…</strong> to open that folder in VS Code. Keep your coursework and research projects separate.</p></li>
 <li><p>Follow the current <a class="reference external" href="https://code.visualstudio.com/docs/setup/copilot">VS Code Copilot setup guide</a>. Select the Copilot status-bar control, choose <strong>Use AI Features</strong> if offered, and complete GitHub sign-in in the browser. Use the account whose access you checked above.</p></li>
 <li><p>If prompted to install or enable Copilot, follow VS Code’s instructions and check that the extension is published by GitHub. Ask IT for help if your computer blocks installation. The <a class="reference internal" href="vscode.html"><span class="std std-doc">MQB editor guide</span></a> covers Python and R language support.</p></li>
 <li><p>Open the <strong>Accounts</strong> menu in VS Code and confirm the account used for Copilot. If you have several GitHub accounts, the <a class="reference external" href="https://code.visualstudio.com/docs/setup/copilot#use-a-different-github-account-with-copilot">account-switching instructions</a> explain how to select another one.</p></li>
 </ol>
-<p>VS Code can include selected code and other files with your request. Check the files and context listed in chat before sending it. A private repository restricts who can see your files on GitHub. It does not give you permission to share them with Copilot: your coursework and research rules still apply.</p>
+<p>VS Code can include editor context and tool results with your request. Inspect the listed attachments, use a practice folder containing only shareable material, and check the relevant coursework or research rules. See the chapter’s <a class="reference internal" href="../notebooks/ai-assisted-programming.html#ai-data"><span class="std std-ref">data and permissions discussion</span></a>.</p>
 </section>
 <section id="copilot-controls">
 <span id="id1"></span><h2>Copilot controls<a class="headerlink" href="#copilot-controls" title="Link to this heading">#</a></h2>
-<p>Before sending your first request, find the mode, model and permissions controls.</p>
- <!-- The chapter explains {ref}`what the options mean <ai-copilot-options>` and {ref}`how to choose a model <ai-model-choice>`; here we just get ready to use them. -->
+<p>Before sending your first request, find the agent, model and permission controls. The chapter explains <a class="reference internal" href="../notebooks/ai-assisted-programming.html#ai-interfaces"><span class="std std-ref">what each choice delegates</span></a>.</p>
 <ol class="arabic simple">
 <li><p>Open the Chat view from VS Code’s Chat menu. Find the mode/agent picker beside the message box and choose <strong>Ask</strong>. If a <strong>Session Target</strong> control appears, use <strong>Copilot</strong> for these setup instructions. See the <a class="reference external" href="https://code.visualstudio.com/docs/agents/run/chat-view">Chat view guide</a> if your layout differs.</p></li>
 <li><p>Open the model picker and choose <strong>Auto</strong>. Leave thinking effort at its default. See <a class="reference external" href="https://code.visualstudio.com/docs/agent-customization/language-models">VS Code’s model controls</a> for the current layout.</p></li>
-<li><p>Before an Agent task, choose <strong>Manual permissions</strong>. If the setting is hidden in a narrow Chat panel, click the speech-bubble icon below the message box to reveal it, or widen the panel. Check which actions are already approved to run without asking you. See the <a class="reference external" href="https://code.visualstudio.com/docs/agents/run/approvals">permissions guide</a>.</p></li>
+<li><p>For the instructor’s Agent demonstration, check <strong>Manual permissions</strong>, saved approvals and the available sandbox. Use Ask or <code class="docutils literal notranslate"><span class="pre">/plan</span></code> to inspect the task first. The picker controls when you’re asked. The sandbox limits which files and tools are accessible. See the <a class="reference external" href="https://code.visualstudio.com/docs/agents/run/approvals">permissions guide</a>.</p></li>
 <li><p>GitHub currently lists Free and Student as Auto-only plans. Check your plan and remaining allowance in Copilot settings, and consult the <a class="reference external" href="https://docs.github.com/en/copilot/get-started/plans">current plan comparison</a>.</p></li>
 </ol>
 </section>
 <section id="check-it-with-a-small-prediction">
 <span id="copilot-setup-check"></span><h2>Check it with a small prediction<a class="headerlink" href="#check-it-with-a-small-prediction" title="Link to this heading">#</a></h2>
-<p>This exercise checks two things: can Python run your script, and can you check Copilot’s explanation of the result?</p>
-<section id="predict-and-run-locally">
-<h3>Predict and run locally<a class="headerlink" href="#predict-and-run-locally" title="Link to this heading">#</a></h3>
-<p>In VS Code, create <code class="docutils literal notranslate"><span class="pre">code/copilot_setup_check.py</span></code> inside <code class="docutils literal notranslate"><span class="pre">copilot-practice</span></code> and save this deliberately imperfect example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">heights_cm</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
-<span class="n">threshold_cm</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">height</span> <span class="o">&gt;=</span> <span class="n">threshold_cm</span> <span class="k">for</span> <span class="n">height</span> <span class="ow">in</span> <span class="n">heights_cm</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The question is: <strong>how many heights are strictly greater than 10 cm?</strong> Work out your answer before running the code. Should a height of exactly 10 cm count?</p>
-<p>Open <strong>Terminal → New Terminal</strong>. From the <code class="docutils literal notranslate"><span class="pre">copilot-practice</span></code> folder, run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>code/copilot_setup_check.py
-</pre></div>
-</div>
-<p>If you normally run Python with <code class="docutils literal notranslate"><span class="pre">python</span></code>, use that command instead.</p>
-<p>The script prints <code class="docutils literal notranslate"><span class="pre">3</span></code>: it counts 12, 10 and 15. But our question excludes 10, so the answer should be <code class="docutils literal notranslate"><span class="pre">2</span></code>. The code runs, but it answers the wrong question.</p>
-</section>
-<section id="ask-copilot">
-<h3>Ask Copilot<a class="headerlink" href="#ask-copilot" title="Link to this heading">#</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If Copilot is unavailable, follow the <a class="reference internal" href="#if-something-does-not-work">troubleshooting steps below</a>. Return to this exercise once access is working.</p>
-</div>
-<p>Select the four lines of code, right-click the selection and choose <strong>Add Selection to Chat</strong>. Check that an attachment above the prompt box shows the filename and selected line range, such as <code class="docutils literal notranslate"><span class="pre">copilot_setup_check.py:1-4</span></code>. Then ask:</p>
-<blockquote>
-<div><p>My question is how many heights are strictly greater than 10 cm. I predicted two, but this code prints three. Explain which value accounts for the difference and why. Do not edit files or run commands.</p>
-</div></blockquote>
-<p>Check Copilot’s explanation against the list: which value should have been excluded?</p>
-</section>
-<section id="correct-and-check-the-code">
-<h3>Correct and check the code<a class="headerlink" href="#correct-and-check-the-code" title="Link to this heading">#</a></h3>
-<p>Change <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> to <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> yourself, save the file and run it again. It should now print <code class="docutils literal notranslate"><span class="pre">2</span></code>. Keeping the threshold at 10, try a list containing only <code class="docutils literal notranslate"><span class="pre">[10]</span></code>, then an empty list (<code class="docutils literal notranslate"><span class="pre">[]</span></code>). Both should print <code class="docutils literal notranslate"><span class="pre">0</span></code>. Finally, restore the original list.</p>
-<p>To try an inline suggestion, add a comment such as <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Count</span> <span class="pre">heights</span> <span class="pre">strictly</span> <span class="pre">greater</span> <span class="pre">than</span> <span class="pre">10</span> <span class="pre">cm</span></code>. Copilot will suggest some code to insert there. Read the suggested code before accepting it. If no suggestion appears, try the chat check above or the troubleshooting steps below.</p>
-</section>
+<p>Run the local command in the chapter’s <a class="reference internal" href="../notebooks/ai-assisted-programming.html#ai-live-remember"><span class="std std-ref">Remember exercise</span></a>.
+Predict the result before you run it. With Copilot active, open the practice
+script, select <code class="docutils literal notranslate"><span class="pre">pooled_rate</span></code> and look at the context shown in Chat. Ask for an
+explanation of the branch that handles a site without observed effort. Check
+the explanation using the two cases in the <a class="reference internal" href="../notebooks/ai-assisted-programming.html#ai-live-apply"><span class="std std-ref">Apply exercise</span></a>.</p>
+<p>If Copilot is unavailable, use the prepared reply and completion in <code class="docutils literal notranslate"><span class="pre">task.html</span></code>.
+The local command and independent check are the same.</p>
 </section>
 <section id="if-something-does-not-work">
 <h2>If something does not work<a class="headerlink" href="#if-something-does-not-work" title="Link to this heading">#</a></h2>
@@ -746,26 +716,73 @@
 </section>
 <section id="ready-what-next">
 <h2>Ready? What next?<a class="headerlink" href="#ready-what-next" title="Link to this heading">#</a></h2>
-<p>Your setup is ready when you can run <code class="docutils literal notranslate"><span class="pre">code/copilot_setup_check.py</span></code> in VS Code, ask Copilot to explain its output and check that explanation against your own calculation. Check which GitHub account is active and locate the mode, model and permissions controls. Can you explain why the script first printed <code class="docutils literal notranslate"><span class="pre">3</span></code> and how you checked your correction? Take the same approach to larger problems: <strong>plan → implement → test → explain → rerun</strong>.</p>
-<p>Next, work through the <a class="reference internal" href="../notebooks/ai-assisted-programming.html"><span class="std std-doc">AI-assisted programming in biology chapter</span></a> for the concepts and practicals. In a workshop, follow the <a href="../lectures/ai_coding/ai_coding.html">lecture</a> and use the chapter for the practicals; the <a class="reference internal" href="ai-coding-workshop.html"><span class="std std-doc">workshop worksheet</span></a> guides you through a timed route.</p>
-<p>To prepare for the chapter’s R practicals, follow the <a class="reference internal" href="r-setup.html"><span class="std std-doc">R setup guide</span></a>.</p>
-<p>For coursework, follow the assignment’s rules on AI use and acknowledgement. For research, follow the project’s data and authorship requirements. If you need to acknowledge AI use, record the tool, date, what you asked it to do and how you checked the result.</p>
+<p>If you can run the practice script and explain your prediction, open the
+<a class="reference internal" href="../notebooks/ai-assisted-programming.html"><span class="std std-doc">chapter</span></a> and follow the
+<a class="reference internal" href="ai-coding-workshop.html"><span class="std std-doc">workshop worksheet</span></a>.</p>
 </section>
-<section id="optional-copilot-in-rstudio">
-<span id="copilot-in-rstudio"></span><h2>Optional: Copilot in RStudio<a class="headerlink" href="#optional-copilot-in-rstudio" title="Link to this heading">#</a></h2>
-<p>You can also use GitHub Copilot inside RStudio for your own R work. <strong>The MQB lecture, chapter and workshop use VS Code.</strong></p>
-<p>RStudio’s integration offers inline code suggestions as you type. Use VS Code for the Chat controls and setup exercise above.</p>
-<p>Follow <a class="reference external" href="https://docs.posit.co/ide/user/ide/guide/tools/copilot.html">Posit’s Copilot guide</a> for installation requirements and setup. In the current RStudio interface:</p>
+<section id="copilot-in-rstudio">
+<span id="id2"></span><h2>Copilot in RStudio<a class="headerlink" href="#copilot-in-rstudio" title="Link to this heading">#</a></h2>
+<p>GitHub Copilot in RStudio offers suggestions in the source editor. The example
+below uses base R and can be completed with the prepared suggestion. The
+<a class="reference internal" href="ai-coding-workshop.html"><span class="std std-doc">AI-assisted coding workshop</span></a> uses Python for the pollinator survey.</p>
+<section id="enable-github-copilot">
+<h3>Enable GitHub Copilot<a class="headerlink" href="#enable-github-copilot" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Open <strong>Tools → Global Options → Assistant</strong> and select <strong>GitHub Copilot</strong> under <strong>Use code assistant</strong>.</p></li>
-<li><p>Install the Copilot Agent components when prompted, then click <strong>Sign In</strong>. Complete the browser verification steps using the GitHub account with Copilot access.</p></li>
-<li><p>Open an <code class="docutils literal notranslate"><span class="pre">.R</span></code> file and write a comment describing what you want the code to do. Read any grey suggestion before accepting it with <strong>Tab</strong>.</p></li>
+<li><p>Install R and a compatible version of RStudio Desktop using the <a class="reference internal" href="r-setup.html"><span class="std std-doc">MQB R setup guide</span></a>. Posit documents Copilot support from RStudio Desktop 2023.09.0. Menu labels below follow the Posit guide for 2026.11.1. A managed RStudio Server or Posit Workbench installation needs an administrator to enable Copilot.</p></li>
+<li><p>Check that your GitHub account has access using the <a class="reference internal" href="#copilot-access"><span class="std std-ref">shared access instructions</span></a>. Use an internet connection for sign-in and live suggestions.</p></li>
+<li><p>In RStudio, open <strong>Tools → Global Options → Assistant</strong>, select <strong>GitHub Copilot</strong> under <strong>Use code assistant</strong>, and install the Copilot components when prompted. Select <strong>Sign In</strong>. Follow the device verification link in your browser, enter the code shown by RStudio and authorise GitHub Copilot. Verify that RStudio shows the expected account.</p></li>
+<li><p>Open a new practice project containing only the synthetic exercise below. In Global Options, find <strong>Index project files with GitHub Copilot</strong>. Leave indexing off for this exercise. Copilot still uses material in the active file, and Posit says snippets or whole files may be sent to GitHub for suggestions. If the indexing setting is enabled, other supported project files may contribute context.</p></li>
 </ol>
-<p>For RStudio Server or Posit Workbench, an administrator must enable the integration first.</p>
+<p><a class="reference external" href="https://docs.posit.co/ide/user/ide/guide/tools/copilot.html#setup">Posit setup</a> ·
+<a class="reference external" href="https://docs.posit.co/ide/user/ide/guide/tools/copilot.html#using-copilot">Posit usage and data handling</a></p>
+</section>
+<section id="predict-inspect-and-check-an-inline-suggestion">
+<h3>Predict, inspect and check an inline suggestion<a class="headerlink" href="#predict-inspect-and-check-an-inline-suggestion" title="Link to this heading">#</a></h3>
+<p>In an R script, write a comment stating what <code class="docutils literal notranslate"><span class="pre">visit_rate</span></code> should do with
+<code class="docutils literal notranslate"><span class="pre">visits</span></code> and <code class="docutils literal notranslate"><span class="pre">observed_minutes</span></code>. Use the rule from the chapter’s
+<a class="reference internal" href="../notebooks/ai-assisted-programming.html#ai-live-remember"><span class="std std-ref">pollinator specification</span></a>, with <code class="docutils literal notranslate"><span class="pre">NA_real_</span></code> to represent
+a rate unavailable in R. Predict the result for <code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">15)</span></code>, <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">5)</span></code> and <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>.
+Start writing the function and pause for the grey suggestion. Read it before
+pressing <strong>Tab</strong> to accept it. You can keep typing to ignore it. Save and source
+your script, then run these checks in the R console:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">stopifnot</span><span class="p">(</span><span class="nf">isTRUE</span><span class="p">(</span><span class="nf">all.equal</span><span class="p">(</span><span class="nf">visit_rate</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="p">),</span><span class="w"> </span><span class="m">0.2</span><span class="p">)))</span>
+<span class="nf">stopifnot</span><span class="p">(</span><span class="nf">identical</span><span class="p">(</span><span class="nf">visit_rate</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">),</span><span class="w"> </span><span class="m">0</span><span class="p">))</span>
+<span class="nf">stopifnot</span><span class="p">(</span><span class="nf">identical</span><span class="p">(</span><span class="nf">visit_rate</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">),</span><span class="w"> </span><span class="kc">NA_real_</span><span class="p">))</span>
+</pre></div>
+</div>
+<details>
+<summary>Hint</summary>
+<p>Use observed minutes to decide whether a rate is available.</p>
+</details>
+<details>
+<summary>Prepared completion · Use with or without an account</summary>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">visit_rate</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">visits</span><span class="p">,</span><span class="w"> </span><span class="n">observed_minutes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">observed_minutes</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kr">return</span><span class="p">(</span><span class="kc">NA_real_</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">visits</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">observed_minutes</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is an MQB teaching example. Read it, compare it with your attempt and use
+the same checks.</p>
+</details>
+<details>
+<summary>Worked explanation</summary>
+<p>Zero visits in five minutes gives a rate of zero. Zero observed minutes makes a
+rate unavailable to calculate, so R returns <code class="docutils literal notranslate"><span class="pre">NA_real_</span></code>. The two checks detect a
+suggestion that returns zero in both cases.</p>
+</details>
+<p>To pause automatic suggestions in a document, search for <strong>Copilot: Toggle
+Automatic Completions</strong> in RStudio’s Command Palette. To disable Copilot
+globally, change <strong>Use code assistant</strong> in Global Options. If a managed
+installation cannot sign in or show suggestions, ask its administrator and use
+the prepared completion for the exercise. <a class="reference external" href="https://docs.posit.co/ide/user/ide/guide/tools/copilot.html">Posit controls and diagnostics</a></p>
+</section>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<p>These are the official guides used for this appendix. They were checked in October 2026; consult the current versions when setting up.</p>
+<p>Documentation checked on <strong>25 November 2026</strong>. Account access, policy and controls depend on your plan and installation.</p>
 <section id="icl-guidance">
 <h3>ICL guidance<a class="headerlink" href="#icl-guidance" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -781,7 +798,7 @@
 <li><p><a class="reference external" href="https://code.visualstudio.com/docs/setup/copilot">VS Code: Set up GitHub Copilot</a> — editor setup, sign-in and account switching.</p></li>
 <li><p><a class="reference external" href="https://docs.posit.co/ide/user/ide/guide/tools/copilot.html">Posit: GitHub Copilot in RStudio</a> — requirements, sign-in and inline code suggestions for the optional RStudio setup.</p></li>
 <li><p><a class="reference external" href="https://code.visualstudio.com/docs/agents/run/chat-view">VS Code: Use the Chat view</a> — finding the session, mode, model and permissions controls.</p></li>
-<li><p><a class="reference external" href="https://code.visualstudio.com/docs/agent-customization/language-models">VS Code: AI language models</a> and <a class="reference external" href="https://code.visualstudio.com/docs/agents/run/approvals">approvals and permissions</a> — model selection and action approvals. These controls were checked on 23 October 2026.</p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com/docs/agent-customization/language-models">VS Code: AI language models</a> and <a class="reference external" href="https://code.visualstudio.com/docs/agents/run/approvals">approvals and permissions</a> — model selection and action approvals. Check the controls against the classroom installation.</p></li>
 <li><p><a class="reference external" href="https://docs.github.com/en/copilot/get-started/plans">GitHub: Plans for Copilot</a> — plan features, model access and usage allowances.</p></li>
 <li><p><a class="reference external" href="https://docs.github.com/en/copilot/how-tos/manage-your-account/get-started-with-a-copilot-plan">GitHub: Getting started with a GitHub Copilot plan</a> — access options when student or institutional access is unavailable.</p></li>
 <li><p><a class="reference external" href="https://docs.github.com/en/copilot/how-tos/copilot-in-your-ide/chat-with-copilot/chat-in-ide">GitHub: Asking GitHub Copilot questions in your IDE</a> — chat modes, requests and project context.</p></li>
@@ -835,7 +852,7 @@
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">AI-assisted coding workshop: worksheet</p>
+        <p class="prev-next-title">AI-assisted coding workshop</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -865,15 +882,14 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sign-in-through-vs-code">Sign in through VS Code</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-controls">Copilot controls</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-it-with-a-small-prediction">Check it with a small prediction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-and-run-locally">Predict and run locally</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ask-copilot">Ask Copilot</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correct-and-check-the-code">Correct and check the code</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-it-with-a-small-prediction">Check it with a small prediction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-something-does-not-work">If something does not work</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ready-what-next">Ready? What next?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-copilot-in-rstudio">Optional: Copilot in RStudio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copilot-in-rstudio">Copilot in RStudio</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-github-copilot">Enable GitHub Copilot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-inspect-and-check-an-inline-suggestion">Predict, inspect and check an inline suggestion</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icl-guidance">ICL guidance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-guidance-including-for-students-outside-icl">General guidance, including for students outside ICL</a></li>
