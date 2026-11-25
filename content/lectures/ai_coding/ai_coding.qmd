@@ -13,7 +13,6 @@ format:
     center: false
     transition: none
     slide-number: c/t
-    show-slide-number: all
     incremental: false
     navigation-mode: linear
     controls: true
@@ -21,910 +20,457 @@ format:
     history: true
     embed-resources: true
     auto-stretch: false
-    code-line-numbers: false
 execute:
   enabled: false
 ---
 
-## AI-assisted programming in biology {data-timing="30"}
+## AI-assisted programming in biology {data-timing="45"}
 
-### Deciding what to ask for, and how to check the answer
+### *Why learn to programme when AI can write code for you?*
 
-The Multilingual Quantitative Biologist (MQB)
+An assistant can help you read a file, make sense of an error or get a first plot on the screen.
 
-Lecture for the AI-assisted programming chapter and workshop.
+Say your plot shows how many animals you saw at two field sites. The count is higher at the site where you spent twice as long watching. **How would you *plot* the data to compare the sites fairly?**
 
-::: notes
-00:00–00:30. Welcome people and say what the next twenty-five minutes are for: a
-way of working that will outlast the next change of buttons, models and product
-names. A readiness check comes next, then a controls tour in your own chat
-view, then the practicals. Ask for a show of hands: who has already
-asked an assistant for code? Who has had a confident answer that was wrong?
-Keep the tone friendly; nobody needs to confess to anything.
-:::
-
-## Why learn to code when an assistant can write it? {data-timing="60"}
-
-Start with **Create**, before any code exists:
-
-- What question are we trying to answer?
-- What should a *correct* answer mean for this biological problem?
-- What evidence would convince us?
-
-An assistant can type quickly. It has only what you tell it about what you
-meant to find out.
-
-::: ask
-If the answer arrives in ten seconds, who decides whether it is right?
+::: {.take}
+Before asking for a plot, decide what a fair comparison would mean.
 :::
 
 ::: notes
-00:30–01:30. Pose the title question and let two or three people answer. Steer
-the discussion towards the three bullets: choosing the question, specifying a
-method and deciding whether a result means anything are not typing tasks. Say
-that this is where the lecture is heading; the next half hour supplies tools
-for doing it. Mention that the chapter holds the fuller version of every idea
-today.
+Think of a time you were stuck making a plot. An assistant can get the code
+started. Once you see the plot, ask what might account for the higher count.
+Could it simply be that you spent longer at that site? Listen to one or two
+ideas, then move from comparing sites to working out the observation time at
+one site.
 :::
 
-## A small field dataset {data-timing="90"}
+## Pollinator watches at Meadow {data-timing="45"}
 
-A field team records counts at several sites. **An empty count means *not
-recorded*.** A zero means *we looked and found none*.
+| Watch | Minutes | Pollinator visits |
+| --- | ---: | ---: |
+| Meadow, morning | 5 | 0 |
+| Meadow, afternoon | 10 | 3 |
+| Meadow, cancelled | 10 planned | |
 
-| site | date | count |
-|:--|:--|:--|
-| C | 1 Oct | *(empty)* |
-| C | 2 Oct | *(empty)* |
-| D | 1 Oct | 0 |
-| D | 1 Oct | 0 |
+::: {.ask}
+We want to report visits per minute. How many visits did we see in total, and how many minutes did we actually spend watching?
+:::
 
-Rules: add up known counts; count missing observations separately; an exact
-repeated record counts once; with no known counts, report `None`.
-
-::: ask
-What should site C's known total be, and how many missing observations does it
-have? What about site D? Write your prediction down.
+::: {.take}
+A watch can tell you something even when you see zero visits.
 :::
 
 ::: notes
-01:30–03:00. Give people thirty seconds in silence to write down both answers
-for both sites. Then take answers. Expected: C has no known total (`None`) and
-two missing observations; D has a known total of zero and no missing
-observations (the repeated zero is one observation). Do not reveal the faulty
-code yet. Say that these rules are our specification, or contract: what the
-program must do. The chapter writes the answer as a pair, (known total,
-missing count).
+Give learners time to add the visits and minutes separately. We spent 15
+minutes watching and saw three visits, so the rate is 3 divided by 15.
+The first watch gave us five minutes of evidence, including the observed
+zero. The last row records a plan. Use the extracted practice folder and
+the Remember exercise in the chapter. Keep coursework in a separate folder.
 :::
 
-## A plausible answer {data-timing="60"}
+# Remember
 
-An assistant offers this short, readable summary:
-
-```python
-total = sum(int(row["count"] or 0)
-            for row in rows if row["site"] == "C")
-```
-
-It runs. It returns **0** for site C. We wanted **`None`** and two missing
-observations.
-
-"We do not know" has become "there were none". A later comparison of sites would
-now contain invented evidence of absence.
-
-::: ask
-What question does this answer, what assumption does it make, and what check
-would catch it?
+::: {.take}
+Recall what each value in the table represents before you give it to a program.
 :::
 
 ::: notes
-03:00–04:00. Reveal the result. Point at `or 0`: it silently turns an empty
-count into zero, so C and D become indistinguishable. Stress that nothing
-crashed and the code is tidy; the error is scientific, not syntactic. Introduce
-the three questions on the slide as the habit for the whole afternoon. The
-chapter's first section has the executable version of this example.
+Ask someone to describe the zero in the morning row in their own words.
+Then use a small example to explain how a language model suggests code.
 :::
 
-## How an assistant produces code {data-timing="120"}
+## What does a language model generate? {data-timing="75"}
 
-Think of extending a partly written recipe.
+![](../../images/ai-coding/llm.png){height=315 fig-alt="Given a function signature, the language model predicts a return statement using patterns learned from code."}
 
-:::: {.columns}
-::: {.column width="30%"}
-::: box
-**Patterns** learned from large collections of text and code
-:::
-:::
-::: {.column width="8%"}
-::: arrow
-\+
-:::
-:::
-::: {.column width="30%"}
-::: box
-**Your request and context:** selected code, files, conversation, test output
-:::
-:::
-::: {.column width="8%"}
-::: arrow
-→
-:::
-:::
-::: {.column width="24%"}
-::: box
-A **plausible continuation**, built piece by piece
-:::
-:::
-::::
+A **large language model (LLM)** learns patterns from text, often including code. Here it takes the first line of a Python function and suggests how to finish it.
 
-Patterns suggest likely next steps. Your ingredients, your intended dish and
-whether the cake rises are not in them.
-
-::: take
-Plausible means "fits the pattern", not "is correct for your data".
+::: {.take}
+The line looks familiar. What happens if you give it an empty list?
 :::
 
 ::: notes
-04:00–06:00. Use the recipe analogy and then state its limits: learned patterns
-help propose steps, but your actual ingredients (data), the intended result and
-the checks are not in the patterns. The assistant generates text and code piece
-by piece; those pieces are called tokens, and you can leave the word at that.
-Avoid model architecture, equations and any numbers about training data or
-productivity. Avoid saying the model "understands" or "thinks"; say it
-produces, suggests or generates.
+“A large language model, or LLM, is a computer model trained on large
+collections of text, often including code. Give it the start of a sentence
+or a line of code and it predicts what might come next. It builds a reply
+by repeating that step.”
+
+Read the proposed line aloud in ordinary language. It adds the numbers and
+divides by how many there are. Ask how many numbers are in an empty list and
+what happens when you divide by that number. A sensible-looking line can still
+need a decision about what to do in a particular case.
 :::
 
-## Training, context and tools are different things {data-timing="90"}
+## One token at a time {data-timing="75"}
 
-| Term | What it is | What follows |
-|:--|:--|:--|
-| **Training** | How the model acquired its patterns, before you arrived | Attaching a file does not retrain it |
-| **Context** | What is supplied for *this* request | Mentioning a filename does not supply the file's contents |
-| **Tools** | What the surrounding software can do: search, read, edit, run | Check what it actually read and ran |
+![](../../images/ai-coding/llm_blocks.png){height=270 fig-alt="Input tokens go into the language model. The original tokens and a new output token appear on the right."}
 
-: {tbl-colwidths="[14,46,40]"}
+A **token** is a small piece of text. It might be a word, part of a word or a bracket.
 
-An **agent** is a model plus tools, repeating steps: read files, edit code, run
-commands, try again.
-
-::: ask
-If an agent edits a test until it passes, what has been shown?
+::: {.take}
+Each new piece of text helps shape what the model writes next.
 :::
 
 ::: notes
-06:00–07:30. Keep this concrete. Training is finished before the request;
-context is what you and the tool put into this request; tools are the
-surrounding software's abilities. An agent can investigate a failing test, but
-review both the code changes and any changes to the tests: rewriting a test to
-accept a mistake avoids the question rather than answering it. Take one answer
-to the question on the slide.
+Say “The total was …” and ask learners for possible next words. After “zero”,
+the rest of the sentence might go a different way than it would after “three”.
+A model also uses what it has written so far to work out what could come next.
+Send learners to the Remember exercise to run the script. Move on to
+Understand at minute 10.
 :::
 
-## The same request can give different answers {data-timing="90"}
+# Understand
 
-Both expressions count heights above 10 cm. Both pass the easy case.
-
-```python
-strict    = lambda heights: sum(h > 10 for h in heights)
-inclusive = lambda heights: sum(h >= 10 for h in heights)
-```
-
-| Input | `strict` | `inclusive` |
-|:--|:-:|:-:|
-| `[8, 12]` | 1 | 1 |
-| `[10]` | 0 | 1 |
-
-::: ask
-Which boundary case separates them, and which one answers *your* biological
-question?
+::: {.take}
+Work out why two assistants might give different answers to the same question.
 :::
 
 ::: notes
-07:30–09:00. Ask before showing the table. The easy case cannot separate the two
-expressions; the boundary does. Say that the same request can produce different
-responses, and a precise request helps but does not remove the need to check.
-Ask which scientific question "strictly greater than 10 cm" is the right one
-for; the answer comes from the specification. This is R2 in the practicals,
-written in R there.
+An explanation should say which assumption led to each answer. Use the two
+replies in the chapter after the introduction to the tools.
 :::
 
-## A passing run shows only what was checked {data-timing="60"}
+## How are code models trained? {data-timing="90"}
 
-- A test suite with no all-missing site passes the faulty candidate.
-- An agent saying "tests passed" is a report of what ran, not a scientific
-  validation.
-- Fast and wrong is still wrong.
+**Pre-training.** The model learns patterns from many examples of text and code. It might learn what usually follows the first line of a Python function.
 
-Before accepting anything, ask what the check could never have caught.
+**Instruction tuning.** It sees examples of requests and useful replies, such as how to respond when someone asks, “What does this loop count?”
 
-::: take
-Your independent checks come from the specification, not from the suggestion.
+::: {.take}
+Examples can teach a model how to write and explain code. Tell it what the numbers in your own table represent.
 :::
 
 ::: notes
-09:00–10:00. Connect back to site C: the check that would have caught it needs
-an all-missing site and an observed zero in the same set of records. Execution
-feedback can help an agent revise a proposal, but the tests and the biology
-still need your scrutiny. Move on by asking: so what should you be doing while
-the assistant types? That is the next section.
+Minute 10. Explain that instruction tuning is one kind of further training.
+OpenCodeInstruct is an example linked in the chapter. It contains requests,
+example programs and information about tests. Ask what a good Python example
+could teach. Then ask how the assistant would know whether the ten minutes in
+a cancelled row were planned or observed.
 :::
 
-## Six kinds of thinking {.smaller data-timing="120"}
+## Cut-offs and context {data-timing="90"}
 
-Bloom's revised taxonomy, applied to computational biology. Start with **Create**.
+![](../../images/ai-coding/hidden_context.png){height=190 fig-alt="Three open files in an editor, including a file with secrets, may supply context for a request."}
 
-| Kind of thinking | What you do | Practicals |
-|:--|:--|:--|
-| **Create** | Define a new workflow and the evidence it must produce | C-A, C-B, C-C, P1 |
-| **Evaluate** | Accept, revise or reject a candidate against a specification | E1–E4 |
-| **Analyse** | Trace a failure or measure a bottleneck | N1, N2 |
-| **Apply** | Use a known method in another language or context | A1–A3 |
-| **Understand** | Explain behaviour and its assumptions in your own words | U1–U3 |
-| **Remember** | Recall syntax for an operation you already understand | R1–R4 |
+The model learned from examples collected up to a **cut-off date**. The information it receives for this reply is its **context**. The diagram shows how other open files might be included.
 
-: {tbl-colwidths="[21,55,24]"}
+A **library** is a collection of code you can reuse. The Python library pandas gives you functions for working with tables.
 
-These are your kinds of thinking, not features of the assistant.
-
-::: notes
-10:00–12:00. Walk the table from the top. Say that in the practicals you move
-the other way, from Remember up to Create, so that you learn the interface
-before delegating a bigger task. A chat question can support several levels,
-and a one-line suggestion can still change a scientific result; do not assign
-a fixed risk to a level. Evidence of understanding is a prediction, a trace, a
-test and an explanation in your own words, not the volume of generated code.
-:::
-
-## Create first: plan before you ask {data-timing="90"}
-
-Name the **inputs, outputs, assumptions and ordered steps**. That is
-algorithmic thinking, and it is what makes a suggestion checkable.
-
-Compare alternatives on **correctness first**, then time and memory.
-
-- [Algorithms lecture](../algorithms/algorithms.html): specifying and comparing
-  procedures.
-- [Algorithms chapter](../../notebooks/algorithms.html): the worked 2-SUM
-  example.
-
-::: ask
-Which of these did we fail to state when the candidate turned missing into
-zero?
+::: {.take}
+If an assistant suggests a pandas function that’s changed, where would you check what it does in the version you’re using?
 :::
 
 ::: notes
-12:00–13:30. Link to the algorithms lecture and chapter: their contribution is
-reasoning about specifications, correctness, data structures, time and memory.
-Here, planning is the human part. For site C the missing item was an explicit
-rule for "no known counts". Ask students to say it aloud as an input/output
-statement. If they have not seen the algorithms lecture, one sentence is
-enough: a faster wrong answer is not an improved analysis.
+The model may have learned how a function behaved in an earlier version.
+An assistant with a suitable tool can look up newer information and pass it
+to the model with the request. Point out the other tabs in the diagram.
+The tool and its settings determine which files may be included.
+Ask where to find the documentation for the version of pandas installed on
+their computer.
 :::
 
-## A map of the practicals {.smaller data-timing="90"}
+## Scenario I · Chat {data-timing="60"}
 
-| Level | Practicals (IDs in the chapter) |
-|:--|:--|
-| Create | **C-A** alignment ties, **C-B** tree-survey rejection summary, **C-C** population-series classification; **P1** one command across Python, R and Bash |
-| Evaluate | **E1** observations summary, E2 invented functions and units, E3 non-reproducible fixes, E4 human versus AI candidates |
-| Analyse | **N1** the failing loop, N2 profiling |
-| Apply | **A1** tree-height port, A2 AT/GC ratio, A3 documentation edit |
-| Understand | U1 what a pipeline sorts, U2 a regular expression, U3 R species names |
-| Remember | R1 read a CSV, **R2** strict thresholds, R3 shell flags, R4 FASTA headers |
+![](../../images/ai-coding/intro_chatbot.png){height=265 fig-alt="The learner exchanges text with a chatbot and manually copies a reviewed suggestion into an editor."}
 
-: {tbl-colwidths="[13,87]"}
+Type a question and decide what to try from the reply. What would you tell the assistant about the cancelled watch?
 
-Bold: today's practicals. The rest, including U1 and E4, are for study
-afterwards; P1 is a separate 60–90 minute project.
-
-::: notes
-13:30–15:00. This is a menu, not a reading assignment. Point out that each
-practical has a prediction first, a bounded request, independent checks and an
-explanation. The full bank is in the chapter, so nobody needs to finish
-everything. Today's route is R2, A1 (the function part), N1, E1, then one
-Create track in 40 minutes. U1 and E4 are afterwards study, and A3 is the kind
-of edit you will see in the controls tour. P1 is chapter work, not today's
-task.
-:::
-
-## One routine: plan → implement → test → explain → rerun {data-timing="60"}
-
-For site C:
-
-1. **Plan:** write the rule and the hand-worked answers: C gives `(None, 2)`,
-   D gives `(0, 0)`.
-2. **Implement:** ask for one bounded change.
-3. **Test:** ordinary, boundary, invalid input; inputs unchanged.
-4. **Explain:** say what the check detected, in your own words.
-5. **Rerun:** from a clean start, using the documented command.
-
-::: take
-The assistant can help with step 2. Steps 1, 3, 4 and 5 stay with you.
+::: {.take}
+**Understand → Apply.** Explain why two replies disagree, then try a hint on a case you’ve worked out yourself.
 :::
 
 ::: notes
-15:00–16:00. This is the routine for the whole afternoon; say it twice. The
-assistant may help with the other steps too, for example by suggesting extra
-test cases, but you decide whether they are the right ones. Link plan and
-explain back to the Create and Understand levels. Next: where your code and
-data go. The controls (Ask, Plan, Agent, models, permissions) come later, in
-the controls tour after the readiness check.
+Introduce the three scenarios from CodeRefinery. Here you might send a few
+synthetic rows and ask whether the planned minutes belong in the calculation.
+Use the two replies in the Understand exercise. Ask which assumption each reply
+makes about the minutes column and what the learner would add to the request.
 :::
 
-## What leaves your computer? {data-timing="60"}
+## Scenario II · Editor assistance {data-timing="60"}
 
-Running Python locally is not the same as sending a request to a remote model.
+![](../../images/ai-coding/intro_ide-integ.png){height=225 fig-alt="A code editor with an extension communicates with a remote AI server that processes code context."}
 
-```text
-your editor: message + selected code + attached files + tool output
-      →  the coding-assistance service
-      →  the model host for that feature
-      ←  a generated response
-      ←  a suggestion in your editor
-```
+In this example, a remote service receives code context from your editor. When the suggestion appears right where you’re typing, it’s called an **inline completion**.
 
-Selecting four lines does not prove that only four lines were sent. Tracebacks
-and filenames can travel too.
-
-::: ask
-What is in the request that you did not type?
+::: {.take}
+**Apply → Evaluate.** Read the suggested line in place. Predict what it will do, then try your check before deciding whether to keep it.
 :::
 
 ::: notes
-16:00–17:00. The four-minute data segment begins. Trace a synthetic request
-along the arrows. Local execution and remote processing are separate actions.
-Inspect the listed context before sending; the tool's documentation says what
-else may be included. Which services are involved depends on the product,
-feature and account, so check the documented route rather than inferring it
-from a model's name; choosing an OpenAI model in Copilot is not the same as
-using ChatGPT or the OpenAI API directly. Do not claim specifics beyond the
-chapter's cited sources.
+Show where a suggestion appears in the editor. The words around the cursor
+or other material from the project can help produce it. Use the supplied
+practice folder and see which files the assistant is showing as context.
+There are instructions for VS Code and RStudio in the appendix.
 :::
 
-## Processing, retention and training {data-timing="75"}
+## Scenario III · Agents {data-timing="60"}
 
-| Use of your request | What it means |
-|:--|:--|
-| **Processing** | Using your request to produce the answer |
-| **Retention** | Keeping a record afterwards: chat history, logs, application state |
-| **Review** | Whether authorised people can read it, for example for security or support |
-| **Training** | Using it to improve a later model |
+![](../../images/ai-coding/intro_agentic.png){height=275 fig-alt="A person gives an agent a task. Possible actions include reading or editing files, running commands and using Git."}
 
-: {tbl-colwidths="[18,82]"}
+An **agent** can use tools to open files, edit code and run commands. You give it a task and decide what it may do.
 
-"Not used for training" does not mean "not sent", "not stored" or "never seen by
-anyone". Check each separately for your product and account.
-
-::: take
-Four different uses, four places to check.
+::: {.take}
+**Analyse → Evaluate.** Read the plan, then check which files changed and what commands ran.
 :::
 
 ::: notes
-17:00–18:15. Do not state retention periods or training defaults from memory;
-they vary by product, plan and date. State the principle and point to the
-sources on the final slide and in the chapter's data section. Deleting a
-visible chat may not delete every associated record, and turning off training
-does not stop processing. Keep this at an intuitive level: no legal terms.
+Use the report as the example. You could ask for advice in chat, try a line in
+the editor, or let an agent edit the report and run a check. All three can
+help with the same task. Ask what the agent would need permission to change.
+Move on to Apply at minute 25.
 :::
 
-## Who controls what? {.smaller data-timing="60"}
+# Apply
 
-| | You | Your institution or administrator | The provider |
-|:--|:--|:--|:--|
-| Examples | What you send; whether to use a remote service at all; which context to attach | Managed policies; which features and models are on; may override personal choices | Terms of the service; where models are hosted; fixed retention rules |
-| Ask | "Did I inspect the context?" | "Who manages this setting?" | "Where is this documented?" |
-
-: {tbl-colwidths="[10,30,31,29]"}
-
-Some settings, such as an option about model training, appear only for some
-account types. If you cannot see one, find out who controls it. Mark anything
-unknown as unknown.
-
-::: notes
-18:15–19:15. If you have a staff demonstration account or a dated screenshot,
-show one control now and say who can change it and what it does not do (for
-example, it does not remove information already submitted). Otherwise show the
-prepared screenshot. Students' accounts may be institution-managed and show
-different options; do not ask anyone to change their settings. The sources
-slide lists the references and the ICL Copilot page.
-:::
-
-## Check your understanding {data-timing="45"}
-
-::: ask
-If I turn off use of my requests for training, does the request stay on my
-computer? Does the provider keep no record?
-:::
-
-Before sending anything, answer three separate questions:
-
-1. **What will I send?**
-2. **What may the service do with it?**
-3. **Am I allowed to share it?**
-
-A private repository, an opt-out or institutional access does not answer all
-three. Practise with **synthetic or approved data only**.
-
-::: notes
-19:15–20:00. Take answers, then say neither follows: a training switch does
-not keep a request on your computer and does not say whether a record is kept.
-Ask for one check they would make before sharing research material. Mention the
-fictional ecologist in the chapter whose script contains sensitive survey
-locations: replace them with made-up values and check filenames and tracebacks
-too. Do not put real research data, credentials or other people's work into the
-practice workspace.
-:::
-
-## Asking for help: goal, attempt, help, check {.smaller data-timing="60"}
-
-> **Goal:** the known total and number of missing observations per site. An empty
-> count is missing, not zero; exact repeats count once.\
-> **Attempt:** `int(count or 0)`, so an all-missing site becomes zero.\
-> **Help:** explain that error and suggest a small change to the summary
-> function only.\
-> **Check:** site C gives `(None, 2)`, site D gives `(0, 0)`, invalid counts
-> raise an error, inputs unchanged. Do not install packages or edit my data.
-
-A reply that says "just remove the empty rows" would lose the missing count:
-reject it. The specification decides, not the confidence of the paragraph.
-
-::: notes
-20:00–21:00. This is the pattern for every practical. The request names what
-you already tried and how you will check the answer, so the assistant has a
-chance of being useful and you have a record of what you intended. Ask
-students what is missing from a prompt that says "fix my function".
-:::
-
-## The same scrutiny for everyone's code {.smaller data-timing="60"}
-
-Judge every candidate against one specification and one set of checks, whoever
-wrote it: you, a colleague or an assistant.
-
-| Typical failure | What catches it |
-|:--|:--|
-| An invented function (E2) | The official documentation |
-| Wrong units or columns (E2) | A hand calculation; the input schema |
-| Missing treated as zero (E1) | An explicit rule and an all-missing test |
-| A fix that only works on your machine (E3) | A rerun from a fresh project root |
-
-: {tbl-colwidths="[50,50]"}
-
-A person can make a fluent mistake too. Authorship does not change what counts
-as evidence.
-
-::: notes
-21:00–22:00. Both a correct and a faulty candidate are valid outcomes of a
-human-versus-AI comparison; do not suggest either author type is always
-wrong. Judge on the checks, not on who wrote the code. E4 in the chapter lets
-students practise this afterwards, with candidates labelled A and B before the
-provenance is revealed; it is not on today's route. The chapter links each
-failure pattern to a small practical (E1 to E3).
-:::
-
-## Permission and acknowledgement {.smaller data-timing="60"}
-
-- **Today:** practice files and synthetic data, as set out in your worksheet.
-- **Coursework:** follow the assignment's rules on assistance and
-  acknowledgement.
-- **Research:** follow institutional, funder, collaborator and data-use
-  requirements.
-
-::: ask
-Today's practice tools and files are not for your portfolio. Do not use them on,
-or to rewrite, any file you will submit. Assignment 4 has its own brief and AI
-rules; follow it.
-:::
-
-If acknowledgement is required, be accurate. An illustration (use the
-assignment's own wording if it gives one):
-
-> Tool: GitHub Copilot; date: [date]; purpose: explanation of a missing-value
-> bug. I used the distinction between unobserved and observed zero, wrote the
-> change myself, and checked ordinary, all-missing, duplicate and invalid
-> records against hand-worked results.
-
-::: notes
-22:00–23:00. Read the boxed statement aloud, word for word. Do not say anything
-about the content of the Assignment 4 AI rules; the brief is the authority and
-questions about it go to the course team. Two practical examples (tree height
-and the observations summary) use the same biological problems as earlier
-coursework, so students must work on the separate practice files from the
-supplied pack and never on their own TreeHeight or observations scripts, and
-must not use today's tools to rewrite anything they will submit. Permission
-comes from the specific piece of work. The example declaration shows the kind
-of content (tool, date, purpose, what was used, how it was checked); it is not
-a universal policy.
-:::
-
-## Your route through the practicals {.smallest data-timing="40"}
-
-| Block | Minutes | Practical |
-|:--|:-:|:--|
-| Lecture | 25 | This lecture |
-| Readiness check | 15 | Account, practice folder, one harmless request |
-| Controls tour and warm-up | 10 | Ask, Plan, Agent in your own chat view |
-| Remember | 10 | **R2** strict thresholds |
-| Apply | 15 | **A1** tree-height function |
-| Break | 10 | |
-| Analyse | 15 | **N1** the failing loop |
-| Evaluate | 25 | **E1** observations summary |
-| Create | 40 | One of C-A, C-B, C-C |
-| Reflection, exit ticket and discussion | 15 | Your own words |
-
-: {tbl-colwidths="[46,12,42]"}
-
-No account? Use the supplied responses: the predictions and checks are the same.
-U1, E4 and the rest of the chapter are for afterwards.
-
-::: notes
-23:00–23:40. Do not read the table aloud, and do not give clock times; the
-worksheet has them. We will do the controls tour after the readiness check.
-Reassure people who have no live access: they can still predict, inspect, test,
-edit and explain the prepared responses. U1 and E4 are not on today's route;
-they are afterwards study. P1 is separate chapter work (60–90 minutes) and is
-not on today's timetable.
-:::
-
-## Create: choose one extension {.smaller data-timing="50"}
-
-| Track | Question | Hand check |
-|:--|:--|:--|
-| **C-A** alignment ties | Keep **every** best-scoring alignment, not just one | `AAAA` and `AA`: score 2 at starts 0, 1, 2 |
-| **C-B** tree-survey summary | Which locations have **more than half** their rows rejected? | Silwood Bottom 2 of 3 is flagged; Nash's Field 1 of 2 is not |
-| **C-C** population series | What does this trace actually support? | Design the rule, including "indeterminate" |
-
-: {tbl-colwidths="[22,40,38]"}
-
-You have 40 minutes. Write the pseudocode and a worked example **before** asking
-for code.
-
-::: ask
-Which track will your pair choose, and what is your first check?
+::: {.take}
+Try a suggestion on a case you can work out by hand.
 :::
 
 ::: notes
-23:40–24:30. Show all three choices; do not silently default to C-B. C-C needs
-some population-model background, so groups without it can pick A or B. The
-timed task is the extension, not rebuilding the original practical. Agent mode
-is an available route, not a requirement. Pairs choose one track each. This
-happens at the end of the afternoon, after R2, A1, N1 and E1.
+Leave time for learners to write down what they expect before they try the
+suggestion or look at the worked answer.
 :::
 
-## What to keep as evidence {.smaller data-timing="30"}
+## Check a suggestion before you keep it {data-timing="100"}
 
-- Your **plan**: pseudocode and a hand-worked example.
-- Your **prediction** before you asked, and whether it was right.
-- One useful **prompt**, and your decision to accept, revise or reject.
-- The **check** that supported it, and the command to rerun it.
-- The **tool and date** you used.
+1. You watched for five minutes and saw zero visits.
+2. You cancelled the watch before it began.
 
-You do not need the whole conversation or a count of prompts.
-
-::: ask
-Today's practice tools and files are not for your portfolio. Do not use them on,
-or to rewrite, any file you will submit. Assignment 4 has its own brief and AI
-rules; follow it.
+::: {.ask}
+What should the program report for each case?
 :::
 
-We will do the controls tour after the readiness check.
+::: {.take}
+Write down both answers first. Then try the same two cases on the suggested code.
+:::
+
+[Apply exercise](../../notebooks/ai-assisted-programming.html#ai-live-apply)
 
 ::: notes
-24:30–25:00. Close by repeating the routine: plan, implement, test, explain,
-rerun. Read the boxed statement again; it is the point most worth repeating.
-Say that what they keep here is what the exit ticket at the end of the session
-asks about. Then send people to the readiness check; the controls tour follows
-it, in their own Copilot chat view. The tour and the other slides that follow
-are not part of the 25 minutes.
+Minute 25. Five minutes with zero visits gives a rate of zero. With no minutes
+of observation, there’s no rate to calculate. Keep the answers for discussion
+after learners have tried their checks. If Copilot is slow or unavailable,
+use the prepared suggestion and the same cases. A third check uses a row that
+the program should report as invalid. Take the break at minute 43.
 :::
 
-## Controls tour and warm-up (delivered at 14:40, after the readiness check) {data-timing="30"}
+# Analyse
 
-Open your practice folder in VS Code. We will work in **your own Copilot chat
-view**, on a **practice copy** of the tree-height function, about two minutes
-per step.
-
-Before you ask anything, write down the function's contract: its arguments,
-their units, the permitted ranges and what it returns.
-
-::: ask
-Is this a practice file from the supplied pack, and not a script you will
-submit?
+::: {.take}
+Follow the values through the code until you see where the answer changes.
 :::
 
 ::: notes
-Tour 00:00–00:30. This block follows the readiness check and is for the
-students' hands, not a watched demonstration. Everyone opens the practice
-folder and the practice tree-height function (Python or R, whichever they
-use). The tree-height problem is the same one as in earlier coursework, so
-check aloud that nobody has opened their own TreeHeight script. Give 30 seconds
-to write the contract from memory: arguments, units, 0 < distance <= 100,
-0 < angle < 90 degrees, and the height returned. Anyone without live access
-follows on your screen or with the supplied responses.
+Ask learners to write down a running total before discussing how to change the
+program.
 :::
 
-## Find the controls {.smallest data-timing="90"}
+## Where did the extra minutes come from? {data-timing="70"}
 
-Find each one in **your own window** now. Your picker may show different names;
-look for the same ideas.
+Keep a running total of the visits and the time spent watching. Here’s the first row worked out.
 
-| Control | What it decides | A sensible start |
-|:--|:--|:--|
-| **Chat** | Where you talk to the assistant | Open it in VS Code |
-| **Mode** | What kind of help | **Ask** to explain, **Plan** for a reviewed approach, **Agent** for a bounded change |
-| **Model** | Which model generates the response | **Auto** |
-| **Thinking effort** | How much reasoning a model attempts | The default; more is slower |
-| **Context** | What the request can see | Inspect it before sending |
-| **Permissions** | What it may do without asking | **Manual** for agent work |
+| After reading this row | Visits so far | Minutes watched so far |
+| --- | ---: | ---: |
+| Morning | 0 | 5 |
+| Afternoon | ? | ? |
+| Cancelled | ? | ? |
 
-: {tbl-colwidths="[17,33,50]"}
-
-::: ask
-Same model, but I switch from Ask to Agent: what changes? Does a stronger model
-let us skip the check?
+::: {.take}
+If the time goes up when you read the cancelled row, look for the line that added those minutes.
 :::
 
 ::: notes
-Tour 00:30–02:00. One decision slide, with every student finding each control in
-their own window; walk the room. Ask is a mode within Chat, not a competing
-product. Model, effort and permissions are separate: a stronger model does not
-widen or narrow what the tools can do, and more authority does not make the
-science right. Begin with Auto and default effort; a fast model for routine
-help, a reasoning model for a demanding diagnosis, if the account lets you
-choose. Free and Student plans may be Auto-only, so a missing model list is not
-a fault. If a control is missing, ask them to say so; plans and managed
-policies differ. Under Manual permissions some actions may already be approved,
-so do not assume every command will ask. Answer to the question: the tool's
-authority changes; the independent check stays. Plan can be chosen in the mode
-picker or with /plan in current VS Code.
+Minute 53. Have learners fill the two rows before revealing the faulty
+candidate. The totals after the afternoon are three visits and 15 minutes.
+The cancelled row adds neither visits nor minutes watched. Point to the part
+of the program that adds minutes and ask when it runs.
 :::
 
-## Step 1: Ask {.smaller data-timing="120"}
+## Agent demonstration · one report change {data-timing="200"}
 
-In Chat, choose **Ask**. Leave the model on **Auto** and the effort at its
-default. Attach the practice function and look at the context listed.
+![](../../images/ai-coding/agentic.png){height=265 fig-alt="An example agent can plan, read and write files, run tests, install packages and make Git commits."}
 
-> What does this function assume about its inputs? State the units and the
-> permitted ranges.
+The diagram shows several actions an agent might take on a larger task. For our survey, ask for one report column. A **diff** shows which lines changed.
 
-Compare the answer with **the contract you wrote**. Nothing is edited in Ask.
-
-::: ask
-What did the answer assume, or leave out, that your contract did not?
+::: {.take}
+Read the diff. Then check that the new column gives you the minutes you expected and that the visit rate still agrees with your hand calculation.
 :::
 
 ::: notes
-Tour 02:00–04:00, about two minutes. 30 seconds to choose Ask, attach the file
-and type the request; a minute for responses and reading; 30 seconds to
-compare with the contract and take one or two answers. Responses differ between
-students, even for the same request: point that out as a feature of how
-assistants generate text. Ask is read-only; students should see that no file
-changed. If a response is slow, move on and return.
+Open the Analyse exercise and the prepared files `report_with_minutes.diff`
+and `command-output.txt`. Read the plan before showing the change. It calls for
+an edit to the report writer. Ask what the learner would do if an agent also
+wanted to edit the test or install something. Show the two changed lines and
+run the separate check in the exercise. Ask learners to predict the minutes
+and rate for Meadow before showing the output. Use a clean practice folder
+for a rehearsed live demonstration, and review what the tool can read or run
+before starting. If the live attempt stalls, use the prepared files.
 :::
 
-## Step 2: Plan {.smaller data-timing="120"}
-
-Choose **Plan** (or type `/plan`).
-
-> Plan a documentation-only change to this function: arguments, units,
-> permitted ranges, return value, errors and one example. Do not change the
-> calculation. Do not edit anything yet.
-
-Read the plan. Cross out anything you cannot support from the function or your
-contract.
-
-::: ask
-Which line of the plan goes beyond what you asked for?
-:::
-
-::: notes
-Tour 04:00–06:00, about two minutes. The plan is a proposal to review, not an
-edit. Same account and model as step 1 so that students see what changing the
-mode alone does. Look for invented promises, such as ranges the function does
-not check. If Plan is not available in someone's picker, they can ask the
-current mode for a plan and say "do not change files".
-:::
-
-## Step 3: a bounded Agent {.smaller data-timing="120"}
-
-Set permissions to **Manual** and check which actions are already approved.
-Choose **Agent**.
-
-> Add that documentation to this function only. Do not change the calculation,
-> its defaults or any other file.
-
-Read each proposed edit and command **before** you allow it. Then check the
-diff, and rerun the check: **8 m at 45 degrees gives 8 m**, and invalid input
-still fails.
-
-::: take
-Changing the mode changed what the tool could do, not what counts as correct.
-:::
-
-::: notes
-Tour 06:00–08:00, about two minutes. Allow only the edit to the practice file;
-decline anything else and say so out loud. Under Manual, some actions may
-already be approved, so students should look rather than assume. The diff must
-show documentation lines only. The independent check does not need the
-assistant: 8 m at 45 degrees gives 8 m, and an out-of-range angle must raise an
-error. If someone's agent changed the calculation, that is the teaching moment:
-reject it and rerun. Those without live access apply the supplied patch and run
-the same check.
-:::
-
-## A small diff and a big diff {.smaller data-timing="60"}
-
-**What you just did (A3, documentation only):** did anything but the docstring
-change?
+## AI-assisted version control {data-timing="45"}
 
 ```diff
- def tree_height(distance_m, angle_deg):
-+    """Height in metres from distance (m, 0 < d <= 100)
-+    and angle (degrees, 0 < a < 90). Works for any angle."""
-     ...
+-    writer.writerow(["site", "visits_per_minute"])
++    writer.writerow(["site", "observed_minutes", "visits_per_minute"])
 ```
 
-**P1, coordinated:** Python producer, CSV, R figure, Bash runner, tests. Do the
-pieces still agree?
+A minus marks the old line and a plus marks its replacement. This part of the change adds a column heading.
 
-::: ask
-Which sentence in the docstring would you reject?
+::: {.ask}
+What would you check before trusting an AI summary of this change?
+:::
+
+::: {.take}
+Read the whole diff. Then use Git to **stage** the changes you want to save together.
+:::
+
+[Optional practical](../../notebooks/ai-assisted-programming.html#ai-version-control)
+
+::: notes
+Spend about 45 seconds here. This excerpt shows a heading. Ask whether it tells
+you how the new column was calculated or whether another part of the file
+changed. In the optional exercise, learners inspect both groups of changed
+lines and run a check involving an observed zero. Staging selects the changes
+to put in the next commit, which is a saved version in Git. They draft a
+message based on what they actually staged.
+:::
+
+# Evaluate
+
+::: {.take}
+Decide what you’d keep and explain which check helped you decide.
 :::
 
 ::: notes
-Tour 08:00–09:00. The illustration is invented for this slide. "Works for any
-angle" contradicts the stated range, so reject it, and rerun the
-unchanged-behaviour checks. Ask what the students' own diffs contained.
-P1's coordinated diff is previewed here and is chapter work, not today's task.
+A check gives you evidence to explain your decision to someone else. Ask for
+a concrete example from the survey.
 :::
 
-## VS Code or GitHub.com? Choose where the work happens {.smaller data-timing="60"}
+## Three questions about the same change {data-timing="110"}
 
-| | VS Code | GitHub.com |
-|:--|:--|:--|
-| Files | Local project, including uncommitted edits | Hosted repository, issues, pull requests |
-| Commands run | In the environment you selected | In the task's own remote environment |
-| Useful for | Editing, debugging and checking your analysis | Repository questions, reviews, delegated hosted work |
+::: {.columns}
+::: {.column width="49%"}
+![](../../images/ai-coding/risk-domains.png){height=330 fig-alt="Three overlapping circles show research integrity, confidentiality and cybersecurity, with examples where they intersect."}
+:::
+::: {.column width="51%"}
+**Does the number make sense?** Check how the rate was calculated.
 
-: {tbl-colwidths="[16,42,42]"}
+**May I send this file?** Think about who is allowed to see it.
 
-Labels and features vary by plan and organisation policy.
-
-::: take
-A successful remote run does not check your laptop's setup.
+**What can the tool do?** Check what it can read, change or run.
+:::
 :::
 
-::: notes
-Tour 09:00–10:00. The distinction is where the work, context and execution
-environment are, not which product is better. Hosted work does not see your
-local, uncommitted changes. Do not ask anyone to create an issue, push a branch
-or start a cloud task today. Point to the chapter's section on choosing an
-interface and the appendix controls check. Then move straight to R2.
-:::
-
-## Fallback: if the tour or a live account fails {.smaller data-timing="0"}
-
-- Say so, and switch to the prepared sequence: the same three prompts, the plan
-  and the diff.
-- Anyone without live access follows on your screen or uses the supplied
-  responses. The independent check needs no account.
-- A missing model option or mode is not necessarily a fault: plans and managed
-  policies differ.
-- Do not upgrade a plan, bypass managed restrictions or enable old settings to
-  match the demonstration.
-
-::: notes
-Optional instructor slide, part of the tour section but not timed. Pickers and
-labels change between VS Code versions. If the Ask, Plan and Agent entries
-differ from the slide, name what you see and explain the same idea in terms of
-the labels on your screen. Do not spend more than the ten minutes on the tour;
-everyone moves on to R2 together.
-:::
-
-## Optional: what a correct rule looks like {.smaller data-timing="0"}
-
-```python
-def summarise_site(rows, site):
-    unique = {(r["site"], r["date"], r["count"])
-              for r in rows if r["site"] == site}
-    known = [int(c) for _, _, c in unique if c != ""]
-    missing = sum(1 for _, _, c in unique if c == "")
-    return (sum(known) if known else None), missing
-```
-
-Gives `(None, 2)` for C, `(0, 0)` for D and `(None, 0)` for a site with no
-records. This sketch omits validation of invalid counts.
-
-::: notes
-Optional. A sketch only: it deduplicates exact (site, date, count) records,
-separates empty from zero and returns None when nothing was observed. It omits
-validation of non-integer and negative counts; the E1 checks remain the
-standard. Do not present it as the reference implementation.
-:::
-
-## Optional: R2 expected answers {.smaller data-timing="0"}
-
-For heights 8, 12, 10 and 15 cm, count values **strictly greater** than 10:
-
-| Expression or input | Expected |
-|:--|:-:|
-| `sum(heights_cm > 10)` | 2 |
-| `c(10)` | 0 |
-| `numeric(0)` | 0 |
-| row means of rows `1, 3, 5` and `2, 4, 6` | 3 and 4 |
-
-: {tbl-colwidths="[70,30]"}
-
-::: notes
-Optional. Use if asked what R2 contains. The practical also asks why `>=`
-changes the scientific question and why `apply(x, 1, mean)` means rows.
-:::
-
-## Optional: P1, one command, several languages {.smaller data-timing="0"}
-
-```text
-Python producer  →  CSV contract  →  R figure
-Bash runner runs each stage; tests check the whole chain
-```
-
-Before delegating: specify the CSV schema, the figure's meaning, the files the
-agent may edit and one end-to-end hand check. Review the plan, the scope, the
-diff and your own final run. A prompt's list of files is a scope instruction,
-not a security boundary.
-
-::: notes
-Optional. P1 is a 60–90 minute chapter practical with its own worked route
-(Track B) and transfer routes for A and C. It is not part of today's
-timetable.
-:::
-
-## Sources and further reading {.smaller data-timing="0"}
-
-- **Chapter and setup:** [AI-assisted programming in biology](../../notebooks/ai-assisted-programming.html)
-  and the [Copilot setup appendix](../../appendices/vscode-copilot.html).
-- **Algorithms:** [lecture](../algorithms/algorithms.html) and
-  [chapter](../../notebooks/algorithms.html).
-- Krathwohl, D. R. (2002). [A revision of Bloom's taxonomy](https://doi.org/10.1207/s15430421tip4104_2).
-- Chen, M. et al. (2021). [Evaluating large language models trained on code](https://arxiv.org/abs/2107.03374).
-- **Interfaces and controls:** [VS Code agents overview](https://code.visualstudio.com/docs/agents/overview),
-  [built-in agents](https://code.visualstudio.com/docs/agents/run/agent-harnesses#choose-a-built-in-agent),
-  [language models](https://code.visualstudio.com/docs/agent-customization/language-models),
-  [approvals](https://code.visualstudio.com/docs/agents/run/approvals),
-  [Copilot on GitHub.com](https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-on-github),
-  [Copilot plans](https://docs.github.com/en/copilot/get-started/plans).
-- **Data:** [model hosting](https://docs.github.com/en/copilot/reference/ai-models/model-hosting),
-  [Copilot policies](https://docs.github.com/en/copilot/how-tos/manage-your-account/manage-policies),
-  [GitHub privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement),
-  [ICL: GitHub Copilot](https://www.imperial.ac.uk/admin-services/ict/self-service/research-support/research-support-systems/github/github-copilot/).
-- **Inspiration:** Imperial College London ECRI,
-  [Introduction to AI-Assisted Programming](https://www.imperial.ac.uk/early-career-researcher-institute/learning-and-development/courses-by-programme/research-computing-and-data-science/ai-assisted/),
-  for the progression from how generative AI works, through the Copilot interface, to reviewing, editing and writing code. The text and examples here are new.
-
-::: notes
-Optional. Product documentation changes often, so check the date of the page
-before quoting it. The chapter's references section and the contributor README
-list what was verified and when.
-:::
-
-## Exit ticket (end of the session) {data-timing="30"}
-
-Answer in your own words, without asking the assistant:
-
-(a) What did you predict before you asked, and was it right?
-(b) Which check would have caught the error that mattered?
-(c) What rule will you use next time you ask for help?
-
-::: take
-Use what you kept as evidence. Your answers help improve the session; they are
-not marked.
+::: {.take}
+These questions can come up together. An agent might open an unpublished survey and then alter the data used to produce a result.
 :::
 
 ::: notes
-Used at the end of the session, in the final block (after the individual
-explanation), not during the lecture or the controls tour. About 30 seconds to
-introduce it, then people write their answers individually. Its time belongs to
-the closing block, so it is outside both the 25-minute lecture and the
-10-minute tour. Collect it as the worksheet says (paper or a form). It matches
-the "What to keep as evidence" slide: the prediction, the check and the rule.
-Remind everyone, once more, that today's practice tools and files are not for
-their portfolio, and that Assignment 4 has its own brief and AI rules.
+Minute 72. Start with the minutes in the survey. If the number is wrong, ask how
+that might affect a comparison between sites. Now imagine the file contains
+unpublished observations. Who can see the file, and what can the tool do with
+it? If a file tells the assistant to run a command, ask whether that action
+belongs in the task. Give learners time to think through one case in the
+Evaluate exercise.
+:::
+
+## Make a decision someone else can check {data-timing="60"}
+
+Say you expect three visits in 15 minutes. The script runs, but divides by 25
+minutes after adding the cancelled watch.
+
+What would you change? What would you tell someone who had already used that rate to compare sites?
+
+::: {.take}
+Write down the case you checked, the result you got and what you decided to keep or change.
+:::
+
+[Evaluate exercise](../../notebooks/ai-assisted-programming.html#ai-live-evaluate)
+
+::: notes
+The report can look tidy even if site differences reflect which watches
+were cancelled. Ask learners to name the check that caught the mistake and
+describe what another person would need to run it. Follow the relevant rules
+for recording assistance in coursework or research.
+:::
+
+# Create
+
+::: {.take}
+Decide what you want to learn from the data before asking for code.
+:::
+
+::: notes
+Give learners a chance to describe their intended comparison. Ask what
+someone reading their report should be able to tell from its numbers.
+:::
+
+## Which comparison are you trying to make? {data-timing="110"}
+
+**Use all the time you watched.** Add the visits at a site and divide by the total time you actually spent watching.
+
+**Give each completed watch equal weight.** Work out a rate for each watch, then average those rates.
+
+::: {.take}
+Choose a comparison you can explain. Find two watches for which these calculations would give different answers.
+:::
+
+::: notes
+Minute 90. Ask learners to make a choice and write the steps in plain
+language. In the first method every minute gets equal weight. In the
+second every watch gets equal weight. What happens if one watch is much
+longer than the other? Let learners work out a small case before opening
+the worked example. Once they have a plan and a check, they can ask for an
+explanation, try a suggested line or give an agent a small edit to make.
+:::
+
+## Try this independently {data-timing="45"}
+
+Open the [final exercise](../../notebooks/ai-assisted-programming.html#ai-live-transfer). It gives you a new set of watches and a suggested change.
+
+1. Work out what you expect, then write and run your own check.
+2. Decide whether to keep the change and tell us why.
+3. Say what the result tells you about the sites you watched.
+
+::: {.take}
+Your explanation should make sense to someone who has only the data, the code and your check.
+:::
+
+::: notes
+Minute 110. Leave ten minutes. Ask each learner to write a check, a decision
+and a sentence about the survey. They can open the worked answer after
+recording their own decision.
+:::
+
+## Sources and figure credits {.smaller data-timing="0"}
+
+Adapted from CodeRefinery, Enrico Glerean, Bjørn Lindi, Ina Pöhner, Jarno
+Rantaharju, Simon Christ, Thomas Pfau, Bahareh Tasdighi and Ashwin Mohanan,
+*Responsible Use of Generative AI in Assisted Coding*, 2026-11-13.
+[DOI 10.5281/zenodo.19335927](https://doi.org/10.5281/zenodo.19335927) ·
+[Pinned source](https://github.com/coderefinery/coding-with-ai/tree/d1a0a7049d890f5ebeb9ee6ee713a40d810a2572)
+
+Copyright (c) CodeRefinery. MQB reorganised the lesson around Bloom, developed
+the pollinator practical and checks for the workshop. Adapted instructional
+material is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+The original MQB scripts and synthetic data carry the [MQB MIT licence](https://github.com/MulQuaBio/MQB/blob/main/LICENSE).
+
+The six categories follow [Krathwohl (2002)](https://doi.org/10.1207/s15430421tip4104_2).
+The MQB Collective developed their application to quantitative biology.
+The token diagram is credited to Simo Tuomisto.
+
+::: {.take}
+Use the chapter to try the exercises. The worksheet helps you work through them in two hours.
+:::
+
+[Full chapter and figure credits](../../notebooks/ai-assisted-programming.html#ai-references) ·
+[Workshop worksheet](../../appendices/ai-coding-workshop.html) ·
+[Copilot setup](../../appendices/vscode-copilot.html)
+
+::: notes
+The CodeRefinery introduction supplies the lecture order. The chapter's figure
+notice gives the pinned source files and licences for the original figures.
+The CodeRefinery Jupyter lesson is credited for the notebook diagrams in the
+chapter. The original Imperial ECRI influence on the MQB design is credited
+in the chapter.
 :::
