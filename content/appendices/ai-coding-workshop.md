@@ -9,7 +9,7 @@ Set aside two hours, including a ten-minute break. You can work on your own or w
 
 ## Get set up
 
-1. Download the {download}`pollinator practice pack <../data/workshop_ai_pollinators.zip>` and extract it into a separate folder. Open `task.html` for a local copy of the chapter’s exercises. Check that `python --version` works in a terminal. Use `python3` or `py -3` if that is how you start Python.
+1. Download the {download}`pollinator practice folder <../data/workshop_ai_pollinators.zip>` and extract it into a separate folder. `task.html` inside it is an optional local copy of the chapter’s exercises; you can follow the chapter instead. Check that `python --version` works in a terminal. Use `python3` or `py -3` if that is how you start Python.
 2. Open the practice folder in your editor. Keep coursework, private data and credentials outside it.
 3. If you already have Copilot set up, you can use it in the practice folder. Otherwise, use the prepared examples in each exercise and run the same checks. The {ref}`VS Code setup <vscode-copilot-setup>` is available if you want to try Copilot later.
 
