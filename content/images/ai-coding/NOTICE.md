@@ -18,6 +18,7 @@ context of the chapter and lecture.
 | --- | --- |
 | `llm.png`, `intro_chatbot.png`, `intro_ide-integ.png` and `intro_agentic.png` | [CodeRefinery introduction](https://coderefinery.github.io/coding-with-ai/introduction/) |
 | `llm_blocks.png` | CodeRefinery credits this token diagram to [Simo Tuomisto](https://simo-tuomisto.github.io/understanding-ai-landscape-lecture/#3). Copyright (c) 2026 Simo Tuomisto. See the {download}`Tuomisto MIT notice <Simo-Tuomisto-MIT.txt>`. |
+| `full_control.png` | [CodeRefinery’s chat-based coding episode](https://coderefinery.github.io/coding-with-ai/scenario-full-control/) |
 | `hidden_context.png` | [CodeRefinery’s editor integration episode](https://coderefinery.github.io/coding-with-ai/scenario-ide-integration/) |
 | `agentic.png` | [CodeRefinery’s agentic coding episode](https://coderefinery.github.io/coding-with-ai/scenario-agentic/) |
 | `risk-domains.png` | [CodeRefinery’s risks episode](https://coderefinery.github.io/coding-with-ai/security/) |
